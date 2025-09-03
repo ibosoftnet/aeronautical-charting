@@ -1,8 +1,11 @@
 # Havacılık Haritası Üretimi İçin Kaynaklar ve QGIS Şablonu
 
+
 ## Amaç:
 
 Bu proje, bireysel kullanıcıların, ICAO standartları ve SARP'ları doğrultusunda hobi amaçlı kendi havacılık haritalarını hazırlayabilmesini amaçlamaktadır.
+
+![](Images%20About%20Project/Example-2.png)
 
 ## Dokümantasyon:
 
@@ -59,3 +62,18 @@ Bu repository, aletli yaklaşma ile alakalı çok daha ileri düzey hesaplayıc�
 * ICAO doc 8697 Aeronautical Chart Manual 3rd Ed, 2016, Amend 1, Corr 1
 * ICAO doc 8168 (PANS OPS) Aircraft Operations volume I 6th ed. amend 11, 2024
 * ICAO doc 8168 (PANS OPS) Aircraft Operations volume II 7th ed. amend 10 corr 2, 2024
+
+### Örnek Görseller:
+Görseller güncel olmayabilir.
+#### Genel Harita Görünümü
+![](Images%20About%20Project/Example-1.png)
+![](Images%20About%20Project/Example-2.png)
+#### Tamamlanan ICAO Annex 4 Sembolleri:
+![](Images%20About%20Project/Symbology-1.png)
+![](Images%20About%20Project/Symbology-2.png)
+![](Images%20About%20Project/Symbology-3.png)
+![](Images%20About%20Project/Symbology-4.png)
+![](Images%20About%20Project/Symbology-5.png)
+![](Images%20About%20Project/Symbology-6.png)
+![](Images%20About%20Project/Symbology-7.png)
+![](Images%20About%20Project/Symbology-8.png)
