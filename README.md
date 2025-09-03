@@ -122,6 +122,7 @@ This repository is a QGIS plugin that contains much more advanced calculators re
 * ICAO doc 8697 Aeronautical Chart Manual 3rd Ed, 2016, Amend 1, Corr 1
 * ICAO doc 8168 (PANS OPS) Aircraft Operations volume I 6th ed. amend 11, 2024
 * ICAO doc 8168 (PANS OPS) Aircraft Operations volume II 7th ed. amend 10 corr 2, 2024
+* ICAO doc 10066 (PANS AIM) Aeronautical Information Management 1st ed. amend 3, 2024
 
 ---
 
