@@ -37,10 +37,10 @@ Proje henüz erken ssafhada olduğundan dokümantasyon henüz hazırlanmamışt�
 * Havacılık verisi için diğer kaynaklar yerine gerçek AIXM verilerinin kullanımı.
 
 ## Test Verisi Hakkında:
-Şablonda görsellik oluşturması için bir test verisi sağlanmaktadır. İlgili katmanların kaynakalrını değiştirerek kendi verilerinizi de kullanabilirsiniz.
+Şablonda görsellik oluşturması için bir test verisi sağlanmaktadır. İlgili katmanların kaynaklarını değiştirerek kendi verilerinizi de kullanabilirsiniz.
 
 Test verisi, Türkiye'yi kapsayacak şekilde şu kaynaklardan alınmıştır:
-* Topoğrafya için Antalya bölgesini kapsayacak şekilde, ölçü birimi fit'e dönüştürülmüş SRTM 1 Arc-Second Global 30 m doğrulukla GeoTIFF DEM verisi.
+* Topoğrafya için Antalya bölgesini kapsayacak şekilde, ölçü birimi fit'e dönüştürülmüş SRTM 1 Arc-Second Global 30 m doğruluklu GeoTIFF DEM verisi.
 * Hidrografya için Geofabrik ve Overpass Turbo aracılığıyla çıktı alınan OSM verileri.
 * Kültür verisi için Overpass Turbo aracılığıyla çıktı alınan OSM verileri.
 * Havacılık verisi için EUROCONTROL EAD BAsic'den elde edilen SDO verileri.
