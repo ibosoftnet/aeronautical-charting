@@ -1,0 +1,857 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-09-01T20:50:15Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/10188271",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Koza Altın Maden İşletmesi",
+        "resource": "gold",
+        "source": "bing",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.2167899,
+          39.5206028
+        ]
+      },
+      "id": "relation/10188271"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/14048152",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Ovacık Altın Madeni",
+        "operator": "Koza Altın İşletmeleri",
+        "type": "multipolygon",
+        "wikidata": "Q12811290",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.065974,
+          39.0782078
+        ]
+      },
+      "id": "relation/14048152"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/117330785",
+        "industrial": "mine",
+        "man_made": "works",
+        "name": "Kaltun Madencilik Sarıkısık Tesisleri",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8412335,
+          37.4413215
+        ]
+      },
+      "id": "way/117330785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/142163140",
+        "man_made": "mine",
+        "source": "FirstLook",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.3145479,
+          38.6646253
+        ]
+      },
+      "id": "way/142163140"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/142163155",
+        "man_made": "mine",
+        "source": "FirstLook",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.314993,
+          38.6635447
+        ]
+      },
+      "id": "way/142163155"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/142163156",
+        "man_made": "mine",
+        "source": "FirstLook",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.3139374,
+          38.6627962
+        ]
+      },
+      "id": "way/142163156"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/142165310",
+        "man_made": "mine",
+        "source": "FirstLook",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.3041554,
+          38.6571134
+        ]
+      },
+      "id": "way/142165310"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/142165325",
+        "man_made": "mine",
+        "source": "FirstLook",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.3041755,
+          38.6569228
+        ]
+      },
+      "id": "way/142165325"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/142165327",
+        "man_made": "mine",
+        "source": "FirstLook",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.3136181,
+          38.6668676
+        ]
+      },
+      "id": "way/142165327"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/142546231",
+        "man_made": "mine",
+        "source": "FirstLook",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.3409509,
+          38.682712
+        ]
+      },
+      "id": "way/142546231"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/175096817",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "name": "Çan Linyitleri İşletmesi",
+        "resource": "lignite;coal",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.0190127,
+          40.0255152
+        ]
+      },
+      "id": "way/175096817"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/176358452",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "ETİ Gümüş A.Ş.",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.7235718,
+          39.4629789
+        ]
+      },
+      "id": "way/176358452"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/426185078",
+        "addr:city": "Uşak",
+        "addr:district": "Eşme",
+        "addr:housenumber": "328",
+        "addr:postcode": "64602",
+        "addr:street": "Kayalı Köyü",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Sibelco Turkey Uşak Plant",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0521562,
+          38.3376663
+        ]
+      },
+      "id": "way/426185078"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/444133147",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Anagold Erzincan İliç Altın Madeni",
+        "phone": "+ 90 (446) 711 40 60",
+        "source": "bing",
+        "website": "http://www.anagold.com.tr/tr/anasayfa",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.5322412,
+          39.438523
+        ]
+      },
+      "id": "way/444133147"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/510637608",
+        "addr:city": "Kütahya",
+        "addr:district": "Merkez",
+        "addr:neighbourhood": "Eskişehir Kütahya Karayolu 9.KM",
+        "addr:postcode": "43001",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "mapillary": "Maxar",
+        "name": "KÜMAŞ Manyezit Sanayi A.Ş.",
+        "operator": "OYAK",
+        "phone": "+90 274 225 00 50",
+        "start_date": "1972",
+        "website": "https://www.kumasref.com/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.0426599,
+          39.4860453
+        ]
+      },
+      "id": "way/510637608"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/616897111",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Esan Yeniköy Tesisi",
+        "operator": "ESAN Eczacıbaşı Endüstriyel Hammaddeler San. ve Tic. A.Ş.",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9034086,
+          37.4519381
+        ]
+      },
+      "id": "way/616897111"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/619978636",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "name": "Bahar Madencilik Altıntepe",
+        "resource": "gold",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3974046,
+          40.9943881
+        ]
+      },
+      "id": "way/619978636"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/633836257",
+        "area": "yes",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8068236,
+          37.4102979
+        ]
+      },
+      "id": "way/633836257"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/646363107",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Eczacıbaşı Esan, Balya Kurşun - Çinko Madeni",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.584156,
+          39.7432568
+        ]
+      },
+      "id": "way/646363107"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/679669884",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6767599,
+          40.0795694
+        ]
+      },
+      "id": "way/679669884"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/702644804",
+        "addr:city": "Aydın",
+        "addr:district": "Söke",
+        "addr:housenumber": "187",
+        "addr:neighbourhood": "Karakaya Mah.",
+        "addr:street": "Karakaya Sk.",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Kormad Madencilik Tesisi",
+        "website": "http://www.kormad.com.tr",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.5740535,
+          37.5867125
+        ]
+      },
+      "id": "way/702644804"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/708289018",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Kuzey Ege Bakır İşletmeleri",
+        "resource": "copper",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1081113,
+          39.6441621
+        ]
+      },
+      "id": "way/708289018"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/708289019",
+        "industrial": "mine",
+        "landfill:waste": "mining_waste",
+        "landuse": "industrial",
+        "name": "Atık su havuzu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1071703,
+          39.6469841
+        ]
+      },
+      "id": "way/708289019"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/710002572",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8007974,
+          39.9790376
+        ]
+      },
+      "id": "way/710002572"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/712479188",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7669257,
+          40.0998893
+        ]
+      },
+      "id": "way/712479188"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/712479190",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7557668,
+          40.0382446
+        ]
+      },
+      "id": "way/712479190"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/712479191",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.7580841,
+          40.036912
+        ]
+      },
+      "id": "way/712479191"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/712479192",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.8176507,
+          40.0359958
+        ]
+      },
+      "id": "way/712479192"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/810882413",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Çalışkan Madencilik Kırklareli Vize Tesisi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8192751,
+          41.5662343
+        ]
+      },
+      "id": "way/810882413"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/819816564",
+        "area": "yes",
+        "industrial": "mine",
+        "name": "Kazan Soda Sondaj Sahası",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5132928,
+          40.121599
+        ]
+      },
+      "id": "way/819816564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/909234776",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.420792,
+          41.2645495
+        ]
+      },
+      "id": "way/909234776"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/909234777",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.4124001,
+          41.2581157
+        ]
+      },
+      "id": "way/909234777"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/909234783",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.4114107,
+          41.2621227
+        ]
+      },
+      "id": "way/909234783"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/950034848",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Imerys",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8376375,
+          37.4515762
+        ]
+      },
+      "id": "way/950034848"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/956579471",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "TÜMAD Altın madeni",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.178229,
+          39.3949587
+        ]
+      },
+      "id": "way/956579471"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/956580800",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "TÜMAD Altın madeni",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1860621,
+          39.413063
+        ]
+      },
+      "id": "way/956580800"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1017378337",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Maden",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1672449,
+          39.7665564
+        ]
+      },
+      "id": "way/1017378337"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1052409881",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "mine": "gold",
+        "name": "Ovacık Altın Madeni ÇED İzin Alanı",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.065974,
+          39.0782078
+        ]
+      },
+      "id": "way/1052409881"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1052443177",
+        "area": "yes",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Çöpler Altın Madeni Atık Sahası",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.5525615,
+          39.4337318
+        ]
+      },
+      "id": "way/1052443177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1148137357",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "Altıntepe Madencilik San. Ve Tic. A.Ş.",
+        "website": "https://altintepemaden.com.tr/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3961298,
+          40.9937128
+        ]
+      },
+      "id": "way/1148137357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1196071936",
+        "industrial": "mine",
+        "landuse": "quarry",
+        "resource": "gold",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3934551,
+          41.0012392
+        ]
+      },
+      "id": "way/1196071936"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1210877433",
+        "area": "yes",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8449102,
+          37.4420493
+        ]
+      },
+      "id": "way/1210877433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1303412230",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "name": "TTK Kömür Tesisi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.7503522,
+          41.434157
+        ]
+      },
+      "id": "way/1303412230"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1323871615",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.707464,
+          40.9378748
+        ]
+      },
+      "id": "way/1323871615"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1349745245",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.52354,
+          41.0158386
+        ]
+      },
+      "id": "way/1349745245"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1372507276",
+        "industrial": "mine",
+        "landuse": "industrial",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.6340987,
+          38.9754483
+        ]
+      },
+      "id": "way/1372507276"
+    }
+  ]
+}
