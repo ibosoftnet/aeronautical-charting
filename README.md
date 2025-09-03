@@ -44,6 +44,7 @@ Test verisi, Türkiye'yi kapsayacak şekilde şu kaynaklardan alınmıştır:
 * Hidrografya için Geofabrik ve Overpass Turbo aracılığıyla çıktı alınan OSM verileri.
 * Kültür verisi için Overpass Turbo aracılığıyla çıktı alınan OSM verileri.
 * Havacılık verisi için EUROCONTROL EAD BAsic'den elde edilen SDO verileri.
+* Havacılık engel verisi için ENR 5.4 ve Antalya AIXM engel verileri.
 
 ## Diğer Bilgiler:
 
