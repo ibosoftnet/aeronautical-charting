@@ -1,0 +1,1588 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-09-06T16:23:25Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/1735806",
+        "addr:city": "Istanbul",
+        "addr:district": "Kadiköy",
+        "addr:housenumber": "2",
+        "addr:postcode": "34724",
+        "addr:street": "Zühtüpaşa, Bağdat Caddesi",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.036943,
+          40.9876317
+        ]
+      },
+      "id": "relation/1735806"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/2339036",
+        "building": "stadium",
+        "capacity": "32864",
+        "leisure": "stadium",
+        "name": "RHG Enertürk Enerji Stadyumu",
+        "name:tr": "RHG Enertürk Enerji Stadyumu",
+        "sport": "soccer",
+        "start_date": "2009",
+        "type": "multipolygon",
+        "wikidata": "Q1493501",
+        "wikimedia_commons": "Category:Kadir Has Stadium",
+        "wikipedia": "tr:Kayseri Kadir Has Şehir Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.423217,
+          38.7372229
+        ]
+      },
+      "id": "relation/2339036"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/5884306",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1780113,
+          38.4349845
+        ]
+      },
+      "id": "relation/5884306"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/5887279",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.8068516,
+          37.1476942
+        ]
+      },
+      "id": "relation/5887279"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/6970589",
+        "building": "stadium",
+        "capacity": "10842",
+        "leisure": "stadium",
+        "name": "Bahçeşehir Okulları Stadyumu",
+        "start_date": "2011",
+        "type": "multipolygon",
+        "wikidata": "Q12808383",
+        "wikipedia": "tr:Alanya Oba Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.0791703,
+          36.5626312
+        ]
+      },
+      "id": "relation/6970589"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/7362988",
+        "building": "stadium",
+        "capacity": "15000",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.1327306,
+          37.8569751
+        ]
+      },
+      "id": "relation/7362988"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/7517667",
+        "building": "stadium",
+        "source": "bing",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.0823875,
+          37.7659515
+        ]
+      },
+      "id": "relation/7517667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/7933645",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.6567528,
+          41.2054436
+        ]
+      },
+      "id": "relation/7933645"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/8838842",
+        "building": "stadium",
+        "building:levels": "5",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.6683671,
+          36.888137
+        ]
+      },
+      "id": "relation/8838842"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/9106168",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4460627,
+          38.3373486
+        ]
+      },
+      "id": "relation/9106168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/9106193",
+        "addr:city": "Balıkesir",
+        "addr:district": "Altıeylül",
+        "addr:housenumber": "10",
+        "addr:neighbourhood": "Hasan Basri Çantay Mahallesi",
+        "addr:postcode": "10050",
+        "addr:street": "Stadyum Caddesi",
+        "building": "stadium",
+        "capacity": "13732",
+        "name": "Balıkesir Atatürk Stadyumu",
+        "type": "multipolygon",
+        "wikidata": "Q4853221",
+        "wikipedia": "tr:Balıkesir Atatürk Stadyumu",
+        "year_of_construction": "1953",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8877004,
+          39.6415487
+        ]
+      },
+      "id": "relation/9106193"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/9131692",
+        "building": "stadium",
+        "name": "Sivasspor Yeni 4 Eylül Stadyumu",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.9841998,
+          39.7285349
+        ]
+      },
+      "id": "relation/9131692"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/9132387",
+        "building": "stadium",
+        "type": "multipolygon",
+        "wikipedia": "tr:Kâzım Karabekir Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          41.2381112,
+          39.911156
+        ]
+      },
+      "id": "relation/9132387"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/9132434",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.479867,
+          38.7918597
+        ]
+      },
+      "id": "relation/9132434"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/9319406",
+        "building": "stadium",
+        "name": "Eryaman Stadyumu",
+        "name:en": "Eryaman Stadium",
+        "name:tr": "Eryaman Stadyumu",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.6138975,
+          39.9799984
+        ]
+      },
+      "id": "relation/9319406"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/9509541",
+        "building": "stadium",
+        "leisure": "stadium",
+        "name": "Kocaeli Stadyumu",
+        "name:en": "Kocaeli Stadium",
+        "sport": "soccer",
+        "type": "multipolygon",
+        "wikidata": "Q19611724",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.0177734,
+          40.7750899
+        ]
+      },
+      "id": "relation/9509541"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/10022399",
+        "building": "stadium",
+        "type": "multipolygon",
+        "wikidata": "Q17512849",
+        "wikipedia": "tr:Kalyon Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.3825292,
+          37.1239542
+        ]
+      },
+      "id": "relation/10022399"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/11036662",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.2690587,
+          37.1690136
+        ]
+      },
+      "id": "relation/11036662"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/12078204",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.9227258,
+          40.53453
+        ]
+      },
+      "id": "relation/12078204"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/12154263",
+        "addr:postcode": "35290",
+        "building": "stadium",
+        "leisure": "stadium",
+        "name": "Gürsel Aksel Spor ve Sağlıklı Yaşam Merkezi",
+        "type": "multipolygon",
+        "website": "https://www.tff.org/Default.aspx?pageId=394&stadID=304",
+        "wikidata": "Q5995439",
+        "wikimedia_commons": "Category:Gürsel Aksel Stadium",
+        "wikipedia": "tr:Gürsel Aksel Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.0758052,
+          38.3967594
+        ]
+      },
+      "id": "relation/12154263"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/12195122",
+        "building": "stadium",
+        "capacity": "20.000",
+        "leisure": "stadium",
+        "name": "Yeni Ordu Stadyumu",
+        "sport": "soccer",
+        "type": "multipolygon",
+        "wikidata": "Q110470981",
+        "wikipedia": "tr:Yeni Ordu Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9240052,
+          40.9820986
+        ]
+      },
+      "id": "relation/12195122"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/12303103",
+        "building": "stadium",
+        "capacity": "35000",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.3750486,
+          37.0634898
+        ]
+      },
+      "id": "relation/12303103"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/12434854",
+        "building": "stadium",
+        "capacity": "25000",
+        "sport": "soccer",
+        "start_date": "12.03.2021",
+        "type": "multipolygon",
+        "wikidata": "Q107540426",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.2078336,
+          36.2584139
+        ]
+      },
+      "id": "relation/12434854"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/12745203",
+        "building": "stadium",
+        "name": "Ortahisar Yavuz Selim Stadı",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.649303,
+          40.997191
+        ]
+      },
+      "id": "relation/12745203"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/12753128",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8118674,
+          38.9209932
+        ]
+      },
+      "id": "relation/12753128"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/13678269",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1507905,
+          38.4373242
+        ]
+      },
+      "id": "relation/13678269"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/13911940",
+        "building": "stadium",
+        "leisure": "stadium",
+        "name": "Stadyum",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.538624,
+          39.8397073
+        ]
+      },
+      "id": "relation/13911940"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/13911960",
+        "building": "stadium",
+        "sport": "soccer",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.7193172,
+          38.1070144
+        ]
+      },
+      "id": "relation/13911960"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/13923778",
+        "addr:city": "Balıkesir",
+        "addr:district": "Bandırma",
+        "addr:postcode": "10200",
+        "building": "stadium",
+        "leisure": "stadium",
+        "name": "17 Eylül Stadyumu",
+        "type": "multipolygon",
+        "wikidata": "Q6047639",
+        "wikipedia": "tr:Bandırma 17 Eylül Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9848576,
+          40.3382402
+        ]
+      },
+      "id": "relation/13923778"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/13923925",
+        "building": "stadium",
+        "name": "Buca Arena",
+        "type": "multipolygon",
+        "wikidata": "Q997619",
+        "wikipedia": "tr:Yeni Buca Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1928259,
+          38.3951548
+        ]
+      },
+      "id": "relation/13923925"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/13923954",
+        "building": "stadium",
+        "leisure": "stadium",
+        "name": "Bolu Atatürk Stadyumu",
+        "type": "multipolygon",
+        "wikidata": "Q2074256",
+        "wikipedia": "tr:Bolu Atatürk Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.6069284,
+          40.7361755
+        ]
+      },
+      "id": "relation/13923954"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/14214021",
+        "building": "stadium",
+        "name": "Eskişehir Yeni Atatürk Stadyumu",
+        "type": "multipolygon",
+        "wikidata": "Q17512831",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4678464,
+          39.7623939
+        ]
+      },
+      "id": "relation/14214021"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/14758473",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.4966911,
+          39.7505255
+        ]
+      },
+      "id": "relation/14758473"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/15091483",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.9288272,
+          36.6039204
+        ]
+      },
+      "id": "relation/15091483"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/15409209",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          39.1977239,
+          38.6710046
+        ]
+      },
+      "id": "relation/15409209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/15466985",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.4128262,
+          40.1503443
+        ]
+      },
+      "id": "relation/15466985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/15567531",
+        "building": "stadium",
+        "name": "Turgutlu Stadyumu",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6899285,
+          38.498205
+        ]
+      },
+      "id": "relation/15567531"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/16338926",
+        "addr:city": "Konya",
+        "addr:district": "Selçuklu",
+        "addr:housenumber": "7",
+        "addr:neighbourhood": "Parsana Mahallesi",
+        "addr:postcode": "42130",
+        "addr:street": "Kaletaş Caddesi",
+        "architect": "Bahadır Kul",
+        "building": "stadium",
+        "smoking": "outside",
+        "type": "multipolygon",
+        "wikidata": "Q7009690",
+        "wikimedia_commons": "Category:Konya Büyükşehir Stadium",
+        "wikipedia": "tr:Konya Büyükşehir Belediye Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.4880729,
+          37.9461321
+        ]
+      },
+      "id": "relation/16338926"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/16343428",
+        "building": "stadium",
+        "leisure": "stadium",
+        "source": "Maxar",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.7189795,
+          38.6231958
+        ]
+      },
+      "id": "relation/16343428"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/17671514",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4323873,
+          40.7806123
+        ]
+      },
+      "id": "relation/17671514"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/19142289",
+        "building": "stadium",
+        "type": "multipolygon",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.9405561,
+          39.6750465
+        ]
+      },
+      "id": "relation/19142289"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/166618963",
+        "building": "stadium",
+        "source": "Bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2267061,
+          40.6338602
+        ]
+      },
+      "id": "way/166618963"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/166618971",
+        "building": "stadium",
+        "source": "Bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.2266945,
+          40.6338877
+        ]
+      },
+      "id": "way/166618971"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/169248695",
+        "building": "stadium",
+        "name": "Büyükçekmece Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.5877509,
+          41.0286039
+        ]
+      },
+      "id": "way/169248695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/216642202",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.6205298,
+          41.2039119
+        ]
+      },
+      "id": "way/216642202"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/216643160",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.6199381,
+          41.2051053
+        ]
+      },
+      "id": "way/216643160"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/216643686",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.6207105,
+          41.204639
+        ]
+      },
+      "id": "way/216643686"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/302447663",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5018485,
+          40.0113629
+        ]
+      },
+      "id": "way/302447663"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/302447664",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.5024324,
+          40.0115873
+        ]
+      },
+      "id": "way/302447664"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/342791714",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.6992663,
+          41.0135061
+        ]
+      },
+      "id": "way/342791714"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/342793323",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.699818,
+          41.0142089
+        ]
+      },
+      "id": "way/342793323"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/495488585",
+        "building": "stadium",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3634567,
+          37.2116452
+        ]
+      },
+      "id": "way/495488585"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/495488586",
+        "building": "stadium",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3644731,
+          37.2124071
+        ]
+      },
+      "id": "way/495488586"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/501040137",
+        "building": "stadium",
+        "source": "bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.3772653,
+          38.6356463
+        ]
+      },
+      "id": "way/501040137"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/511045836",
+        "building": "stadium",
+        "name": "Spor Toto Tenis Park",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.663354,
+          41.0571405
+        ]
+      },
+      "id": "way/511045836"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/616526115",
+        "addr:city": "İstanbul",
+        "addr:district": "Ataşehir",
+        "addr:neighbourhood": "Barbaros Mahallesi",
+        "addr:postcode": "34746",
+        "alt_name": "Ülker Arena;Ülker Sports Arena",
+        "building": "stadium",
+        "leisure": "stadium",
+        "name": "Fenerbahçe Ülker Spor ve Etkinlik Salonu",
+        "website": "http://ulkersportsarena.com",
+        "wikidata": "Q334778",
+        "wikimedia_commons": "Category:Fenerbahçe Uluslararası Spor Kompleksi Ülker Spor Arena",
+        "wikipedia": "tr:Ülker Spor ve Etkinlik Salonu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1048274,
+          40.992886
+        ]
+      },
+      "id": "way/616526115"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/618209247",
+        "building": "stadium",
+        "source": "Maxar Premium-Luftbilder (Beta)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9727281,
+          41.0327948
+        ]
+      },
+      "id": "way/618209247"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/618209248",
+        "building": "stadium",
+        "source": "Maxar Premium-Luftbilder (Beta)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9715816,
+          41.0325438
+        ]
+      },
+      "id": "way/618209248"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/623575212",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2616381,
+          38.4470452
+        ]
+      },
+      "id": "way/623575212"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/623575213",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2628318,
+          38.446951
+        ]
+      },
+      "id": "way/623575213"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/623575214",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2622274,
+          38.4476883
+        ]
+      },
+      "id": "way/623575214"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/623575215",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2622539,
+          38.4464986
+        ]
+      },
+      "id": "way/623575215"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/639344643",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.470496,
+          39.7433154
+        ]
+      },
+      "id": "way/639344643"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/648220676",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1747387,
+          38.4360586
+        ]
+      },
+      "id": "way/648220676"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/648220677",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1746261,
+          38.4358012
+        ]
+      },
+      "id": "way/648220677"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/648220678",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1745818,
+          38.4354944
+        ]
+      },
+      "id": "way/648220678"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/648220679",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1746463,
+          38.4351836
+        ]
+      },
+      "id": "way/648220679"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/648220680",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1747861,
+          38.4349454
+        ]
+      },
+      "id": "way/648220680"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/659170754",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.6140908,
+          37.8174756
+        ]
+      },
+      "id": "way/659170754"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/670676876",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.7760648,
+          37.2636678
+        ]
+      },
+      "id": "way/670676876"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/677616947",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.4531646,
+          41.2265023
+        ]
+      },
+      "id": "way/677616947"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/681247048",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          33.979404,
+          38.3206327
+        ]
+      },
+      "id": "way/681247048"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/740156549",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.1676354,
+          41.7872321
+        ]
+      },
+      "id": "way/740156549"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/878209684",
+        "building": "stadium",
+        "name": "Bayındır Şehir Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.6464421,
+          38.2201839
+        ]
+      },
+      "id": "way/878209684"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1004304500",
+        "building": "stadium",
+        "height": "20",
+        "name": "Makü Spor Toto Stadyumu",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.3384126,
+          37.6795588
+        ]
+      },
+      "id": "way/1004304500"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1020632044",
+        "building": "stadium",
+        "source": "Maxar Premium-Luftbilder (Beta)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9714213,
+          41.0327949
+        ]
+      },
+      "id": "way/1020632044"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1020632045",
+        "building": "stadium",
+        "source": "Maxar Premium-Luftbilder (Beta)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9720095,
+          41.0331025
+        ]
+      },
+      "id": "way/1020632045"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1058371788",
+        "building": "stadium",
+        "name": "Çifteler İlçe Stadı",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.031924,
+          39.3725859
+        ]
+      },
+      "id": "way/1058371788"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1127963618",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.8912386,
+          38.2753989
+        ]
+      },
+      "id": "way/1127963618"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1128220829",
+        "building": "stadium",
+        "sport": "basketball",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.3460417,
+          38.6500638
+        ]
+      },
+      "id": "way/1128220829"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1143823654",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.1418639,
+          36.0450522
+        ]
+      },
+      "id": "way/1143823654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1144299093",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          32.6196629,
+          41.2043388
+        ]
+      },
+      "id": "way/1144299093"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1160639930",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.4369098,
+          40.8030768
+        ]
+      },
+      "id": "way/1160639930"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1209690157",
+        "building": "stadium",
+        "smoking": "outside",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2510354,
+          37.8482384
+        ]
+      },
+      "id": "way/1209690157"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1209690158",
+        "building": "stadium",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.2513324,
+          37.8471773
+        ]
+      },
+      "id": "way/1209690158"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1349609587",
+        "building": "stadium",
+        "building:levels": "2",
+        "name": "Nilüfer Belediyesi İbrahim Yazıcı Stadyumu",
+        "smoking": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.9676834,
+          40.2068321
+        ]
+      },
+      "id": "way/1349609587"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1352969907",
+        "building": "stadium",
+        "name": "Şehit Osman Koç Stadı",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9744361,
+          38.0788764
+        ]
+      },
+      "id": "way/1352969907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1421102152",
+        "building": "stadium",
+        "name": "Tören Alanı",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.555657,
+          38.3800477
+        ]
+      },
+      "id": "way/1421102152"
+    }
+  ]
+}
