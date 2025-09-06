@@ -18,13 +18,13 @@ Proje henüz erken ssafhada olduğundan dokümantasyon henüz hazırlanmamışt�
 
 ### Üzerinde Uğraşılanlar:
 * QGIS için şablon dosya.
+* ICAO Doc 8126 & 10066 ile uyumlu boş AIP şablonu. (MS Office Word için.)
 
 ### Planlanan Hedefler:
 * Eksik Annex 4 sembolojilerinin tamamlanması.
 * ICAO Doc 8697 doğrutusunda farklı renklendirmelerin, semboller veya QGIS şablonu üzerinden ayarlanması.
 * ICAO Doc 8697 ile uyumlu ADC, PRKG, IAC, SID, STAR chartları için QGZ baskı düzeninin oluşturulması.
-* ICAO doc 8126 ile uyumlu boş AIP şablonu. (MS Office Word için.)
-* QGIS için PANS-OSP uyumlu AMA hesaplayıcı.
+* QGIS için ICAO PANS-OSP uyumlu AMA hesaplayıcı.
 * QGIS için ICAO PANS-OPS uyumlu PAR OCS alanı oluşturucu.
 
 ### Daha Sonrası İçin Hedefler:
@@ -76,13 +76,13 @@ Documentation has not been prepared yet as the project is still in its early sta
 
 ### Work in Progress:
 * Template file for QGIS.
+* Blank AIP template compatible with ICAO doc 8126 & 10066. (For MS Office Word.)
 
 ### Planned Aims:
 * Completion of missing Annex 4 symbologies.
 * Setting up different colorations in accordance with ICAO Doc 8697 through symbols or QGIS template.
 * Creation of QGZ print layout for ADC, PRKG, IAC, SID, STAR charts compatible with ICAO Doc 8697.
-* Blank AIP template compatible with ICAO doc 8126. (For MS Office Word.)
-* PANS-OSP compatible AMA calculator for QGIS.
+* ICAO PANS-OSP compatible AMA calculator for QGIS.
 * ICAO PANS-OPS compatible PAR OCS area generator for QGIS.
 
 ### Future Aims:
