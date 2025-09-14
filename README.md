@@ -28,7 +28,7 @@ Proje henüz erken ssafhada olduğundan dokümantasyon henüz hazırlanmamışt�
 * QGIS için ICAO PANS-OPS uyumlu PAR OCS alanı oluşturucu.
 
 ### Daha Sonrası İçin Hedefler:
-* AOC, PATC, ENC, WAC, VAC, ATCSMAC chartları için QGZ baskı düzenleri.
+* AOC, PATC, ENC, ARC, VAC, ATCSMAC chartları için QGZ baskı düzenleri.
 * NATO/MIPS sembolojisi.
 * QGIS için ICAO PANS-OPS uyumlu MSA hesaplayıcı.
 * QGIS için ICAO PANS-OPS uyumlu Circling alanı hesaplayıcı.
@@ -82,11 +82,11 @@ Documentation has not been prepared yet as the project is still in its early sta
 * Completion of missing Annex 4 symbologies.
 * Setting up different colorations in accordance with ICAO Doc 8697 through symbols or QGIS template.
 * Creation of QGZ print layout for ADC, PRKG, IAC, SID, STAR charts compatible with ICAO Doc 8697.
-* ICAO PANS-OSP compatible AMA calculator for QGIS.
+* ICAO PANS-OPS compatible AMA calculator for QGIS.
 * ICAO PANS-OPS compatible PAR OCS area generator for QGIS.
 
 ### Future Aims:
-* QGZ print layouts for AOC, PATC, ENC, WAC, VAC, ATCSMAC charts.
+* QGZ print layouts for AOC, PATC, ENC, ARC, VAC, ATCSMAC charts.
 * NATO/MIPS symbology.
 * ICAO PANS-OPS compatible MSA calculator for QGIS.
 * ICAO PANS-OPS compatible Circling area calculator for QGIS.
