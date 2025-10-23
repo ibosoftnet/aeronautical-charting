@@ -2,6 +2,8 @@
 
 ![](Images%20About%20Project/Example-2.png)
 
+## Duyuru: Bu proje, farklı projelerden dolayı bir süre ertelenmiştir.
+
 ## Amaç:
 
 Bu proje, bireysel kullanıcıların, ICAO standartları ve SARP'ları doğrultusunda hobi amaçlı kendi havacılık haritalarını hazırlayabilmesini amaçlamaktadır.
