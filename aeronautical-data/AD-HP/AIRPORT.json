@@ -1,0 +1,1897 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          28.75194,
+          41.27528
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL",
+        "pic": "ISTANBUL AH LTFM",
+        "ip": "../../images/airport/yellow.png",
+        "t": 5,
+        "kid": "uuid.00cf8ec6-d8d1-4854-bb0f-3eec7511b70e",
+        "cip": "../../images/airport/yellow.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFM\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.01694,
+          39.42667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KUTAHYA",
+        "pic": "KUTAHYA AD LTBN",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.036f11aa-18ce-4820-993c-92011d3db37e",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBN\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.995,
+          40.12806
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA ESENBOGA",
+        "pic": "ANKARA ESENBOGA AD LTAC",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.14bcde27-8ebc-4220-a8cc-c27f467edc8a",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAC\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.9025,
+          39.81417
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SIVAS NURI DEMIRAG",
+        "pic": "SIVAS NURI DEMIRAG AD LTAR",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.15457293-9f9f-4a5a-be56-49c4f2a2b362",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAR\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.08333,
+          40.735
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KOCAELI CENGIZ TOPEL",
+        "pic": "KOCAELI CENGIZ TOPEL AD LTBQ",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.1dc8d0cd-973e-4b59-adc1-5b9513ce944d",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBQ\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.83444,
+          38.80944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MANISA AKHISAR",
+        "pic": "MANISA AKHISAR AD LTBT",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.1fdc156e-7597-48c7-861f-e1dc6c3ac8ca",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBT\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.86639,
+          39.98306
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IGDIR SEHIT BULENT AYDIN",
+        "pic": "IGDIR SEHIT BULENT AYDIN AD LTCT",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.2398ce74-8df8-4ce3-9470-bee047a50d54",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCT\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          26.42778,
+          40.13833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "CANAKKALE",
+        "pic": "CANAKKALE AD LTBH",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.2665b843-bd37-4ccd-8414-1e86b903ad74",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBH\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          37.47889,
+          36.94778
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GAZIANTEP",
+        "pic": "GAZIANTEP AD LTAJ",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.27b121ad-51d6-4f56-8bd3-a43d1351dc7d",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAJ\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.199861,
+          37.893611
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DIYARBAKIR",
+        "pic": "DIYARBAKIR AD LTCC",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.2b028338-c2b5-45a1-bdc5-a9d91ac2b6b2",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCC\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          26.97722,
+          38.5175
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR KAKLIC",
+        "pic": "IZMIR KAKLIC AH LTFA",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.2d8968c4-48b0-4c09-806c-f4cd96eeae5b",
+        "cip": "../../images/airport/military.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFA\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          33.79611,
+          41.31694
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KASTAMONU",
+        "pic": "KASTAMONU AD LTAL",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.336e5362-73f0-4ab1-b6f9-8422ce2cf6a3",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAL\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.66889,
+          37.14
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BODRUM IMSIK",
+        "pic": "BODRUM IMSIK AD LTBV",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.3872a931-c3b8-4e7f-aaa7-4adbd2acaf8b",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBV\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.11639,
+          37.93222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BATMAN",
+        "pic": "BATMAN AD LTCJ",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.39818a79-3b94-4b12-9de3-3865419d9fed",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCJ\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.52194,
+          40.83139
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "AMASYA MERZIFON",
+        "pic": "AMASYA MERZIFON AD LTAP",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.3a4ea37e-1724-4b45-ad67-b9c1eae8cff3",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAP\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          44.2375,
+          37.54972
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "HAKKARI YUKSEKOVA SELAHADDIN EYYUBI",
+        "pic": "HAKKARI YUKSEKOVA SELAHADDIN EYYUBI AD LTCW",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.410efa6b-3b32-4f78-bccd-352dd96f1979",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCW\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.90806,
+          37.4566667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SANLIURFA GAP",
+        "pic": "SANLIURFA GAP AD LTCS",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.470c7f5e-9f9f-48de-8db4-46bf526b78fb",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCS\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          34.52667,
+          38.77528
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KAPADOKYA",
+        "pic": "KAPADOKYA AD LTAZ",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.48d5986b-b17f-46a2-9523-1c8f500ebde6",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAZ\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.28139,
+          38.59778
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ELAZIG",
+        "pic": "ELAZIG AD LTCA",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.4d8392f8-c22a-45ec-a55f-6d44f489878b",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCA\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.55,
+          41.10417
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL HEZARFEN",
+        "pic": "ISTANBUL HEZARFEN AD LTBW",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.4e86b556-53ab-44b0-b7fc-6c733476c797",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBW\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.705,
+          37.78778
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DENIZLI CARDAK",
+        "pic": "DENIZLI CARDAK AD LTAY",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.4fc3806a-b724-4436-91e4-2545f818ac38",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAY\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.21611,
+          40.99056
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL SAMANDIRA",
+        "pic": "ISTANBUL SAMANDIRA AD LTBX",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.56da2663-9f63-4aee-9a43-b2383de8b1c5",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBX\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.08306,
+          38.43222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MALATYA",
+        "pic": "MALATYA AH LTAT",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.6179c36b-fd84-4d10-98f6-a963780c6a4e",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAT\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.02861,
+          39.6475
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "AGRI AHMED-I HANI",
+        "pic": "AGRI AHMED-I HANI AD LTCO",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.61d5fe5c-92bd-4b3d-97f1-e0e210cb5f8b",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCO\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.88806,
+          37.81528
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "AYDIN CILDIR",
+        "pic": "AYDIN CILDIR AD LTBD",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.6214355d-2c41-4969-be97-f5cf73ecdd5e",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBD\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          26.43861,
+          40.13833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "CANAKKALE MILITARY HELIPORT",
+        "pic": "CANAKKALE MILITARY HELIPORT HP LTHC",
+        "ip": "../../images/airport/heliport.png",
+        "t": 5,
+        "kid": "uuid.6ebd2f4b-018b-41c4-a530-5c81a7e3d0fa",
+        "cip": "../../images/airport/heliport.png",
+        "type": "HP",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTHC\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          31.365,
+          39.45139
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ESKISEHIR SIVRIHISAR",
+        "pic": "ESKISEHIR SIVRIHISAR AD LTAV",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.6efbf816-5c05-466b-b876-4f62db1b1873",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAV\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.84333,
+          39.80333
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA UFUK DANISMEND POLICE HELIPORT",
+        "pic": "ANKARA UFUK DANISMEND POLICE HELIPORT AH LTHA",
+        "ip": "../../images/airport/heliport.png",
+        "t": 5,
+        "kid": "uuid.6f2cffa7-4d74-4ed7-b215-8f65e96d5688",
+        "cip": "../../images/airport/heliport.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTHA\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          25.88167,
+          40.2
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GOKCEADA",
+        "pic": "GOKCEADA AD LTFK",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.72b6d994-e569-4034-a4a0-03bf19d93c13",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFK\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.82222,
+          40.98167
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DHMI ATATURK HELIPORT",
+        "pic": "DHMI ATATURK HELIPORT HP LTHF",
+        "ip": "../../images/airport/heliport.png",
+        "t": 5,
+        "kid": "uuid.73b6df3b-fcfa-4caf-ba51-e2c66738fe3e",
+        "cip": "../../images/airport/heliport.png",
+        "type": "HP",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTHF\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.49528,
+          38.77028
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KAYSERI",
+        "pic": "KAYSERI AD LTAU",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.73dfeda9-04cb-41f9-9617-efb76781b512",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAU\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.23028,
+          37.92667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DIYARBAKIR ORGENERAL ESREF BITLIS GENDARMERIE HELIPORT",
+        "pic": "DIYARBAKIR ORGENERAL ESREF BITLIS GENDARMERIE HELIPORT HP LTHD",
+        "ip": "../../images/airport/heliport.png",
+        "t": 5,
+        "kid": "uuid.750df390-0090-4a74-b537-f6312c8f99cb",
+        "cip": "../../images/airport/heliport.png",
+        "type": "HP",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTHD\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.36694,
+          37.85583
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISPARTA SULEYMAN DEMIREL",
+        "pic": "ISPARTA SULEYMAN DEMIREL AD LTFC",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.77c75c21-344d-4b11-b2be-554b0966af38",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFC\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.78528,
+          40.99583
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "TRABZON",
+        "pic": "TRABZON AD LTCG",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.789bb7bc-151e-4d83-9d56-4ead90f3b8a4",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCG\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.56556,
+          40.07889
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA MURTED",
+        "pic": "ANKARA MURTED AD LTAE",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.7e82d6d2-0980-4a17-9096-a48fd93f6a73",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAE\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.95194,
+          37.53833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KAHRAMANMARAS",
+        "pic": "KAHRAMANMARAS AD LTCN",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.7f668ec3-731b-4002-afa9-539055b12f70",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCN\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.79139,
+          36.7125
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MUGLA DALAMAN",
+        "pic": "MUGLA DALAMAN AD LTBS",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.7fbef05e-48c0-4de0-948a-f4cf8b22cae7",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBS\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.30139,
+          36.29944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GAZIPASA ALANYA",
+        "pic": "GAZIPASA ALANYA AD LTFG",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.8393149c-6f10-4c45-9ada-11d7412b6e26",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFG\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.47167,
+          38.68139
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "USAK",
+        "pic": "USAK AD LTBO",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.84c39d82-816b-4e68-b37f-32e77e3eb06e",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBO\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.66472,
+          37.24944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DHMI MILAS BODRUM",
+        "pic": "DHMI MILAS BODRUM HP LTHG",
+        "ip": "../../images/airport/yellow.png",
+        "t": 5,
+        "kid": "uuid.85e3ebb0-51b3-410a-a143-147ccdafbf50",
+        "cip": "../../images/airport/yellow.png",
+        "type": "HP",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTHG\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.39056,
+          40.32472
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "TOKAT",
+        "pic": "TOKAT AD LTAW",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.897a5630-d8df-4807-a915-793d7e83f125",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAW\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.28028,
+          36.98222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ADANA",
+        "pic": "ADANA AD LTAF",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.8b090ed3-cce3-4904-8c8b-8226cbc76bef",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAF\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.15972,
+          38.32
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR GAZIEMIR",
+        "pic": "IZMIR GAZIEMIR AD LTBK",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.8cbbc635-3e0e-43a4-a057-8480a1cfff44",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBK\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.74083,
+          39.93528
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA GUVERCINLIK",
+        "pic": "ANKARA GUVERCINLIK AD LTAB",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.94a7a10e-3fa2-45e5-86c6-82d04d4f3cdb",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAB\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.17056,
+          39.95583
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ERZURUM",
+        "pic": "ERZURUM AD LTCE",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.9750fd1b-c0bf-4c9b-b38e-d28459375401",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCE\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.66472,
+          37.24944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MILAS BODRUM",
+        "pic": "MILAS BODRUM AH LTFE",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.9c379b9b-a608-4695-9e59-813369048ff9",
+        "cip": "../../images/airport/civil.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFE\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.64056,
+          37.23278
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MARDIN PROF DR AZIZ SANCAR",
+        "pic": "MARDIN PROF DR AZIZ SANCAR AD LTCR",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.9d580f25-6f09-418f-a1e1-a29f0a8cf26f",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCR\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.33278,
+          37.95111
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR SELCUK EFES",
+        "pic": "IZMIR SELCUK EFES AD LTFB",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.9df0c404-47d8-483d-a55a-9b96160b2639",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFB\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.5925,
+          38.86111
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BINGOL",
+        "pic": "BINGOL AD LTCU",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.a396ba36-0bf4-4280-a7aa-b113efb3c541",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCU\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.08972,
+          41.50694
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ZONGULDAK CAYCUMA",
+        "pic": "ZONGULDAK CAYCUMA AD LTAS",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.a3aaf039-c22d-4a7e-b3cd-ee8ff921799c",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAS\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.43222,
+          37.00333
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ADANA INCIRLIK",
+        "pic": "ADANA INCIRLIK AD LTAG",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.a7e72f09-90cf-4562-ad55-e17419d626ac",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAG\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.83917,
+          37.97806
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SIIRT",
+        "pic": "SIIRT AD LTCL",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.a8e6ebb6-3d24-446e-badb-4decd0aafdf1",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCL\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.52056,
+          39.71306
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ERZINCAN YILDIRIM AKBULUT",
+        "pic": "ERZINCAN YILDIRIM AKBULUT AD LTCD",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.ac41b7bc-2488-4d28-aadf-5cdd0b6e1bcc",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCD\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.603361,
+          36.833917
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANTALYA SULEYMAN SATIR MILITARY HELIPORT",
+        "pic": "ANTALYA SULEYMAN SATIR MILITARY HELIPORT HP LTHE",
+        "ip": "../../images/airport/heliport.png",
+        "t": 5,
+        "kid": "uuid.ad95f27a-5185-4b7d-b8a2-68b773394aef",
+        "cip": "../../images/airport/heliport.png",
+        "type": "HP",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTHE\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.33222,
+          38.46806
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "VAN FERIT MELEN",
+        "pic": "VAN FERIT MELEN AD LTCI",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.b4b7ed8a-3ef8-4e82-966c-a4c038a8ed86",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCI\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.6875,
+          39.95167
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA ETIMESGUT",
+        "pic": "ANKARA ETIMESGUT AD LTAD",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.b5ea5ae2-19fd-45d5-891a-858690dd2366",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAD\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.28306,
+          36.36194
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "HATAY",
+        "pic": "HATAY AD LTDA",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.b5ebf93e-720d-4393-bced-be6f8545516e",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTDA\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          26.60667,
+          40.78722
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KESAN",
+        "pic": "KESAN AH LTFL",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.b6de41e1-93d7-42f8-a1db-e3837d10958a",
+        "cip": "../../images/airport/military.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFL\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.155,
+          38.28917
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR ADNAN MENDERES",
+        "pic": "IZMIR ADNAN MENDERES AD LTBJ",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.bc5967c6-9c69-45e4-b0ce-240217fed71d",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBJ\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.08194,
+          40.96722
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ORDU-GIRESUN",
+        "pic": "ORDU-GIRESUN AD LTCB",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.bd14ee8a-304f-49aa-b6b4-724d32c451ce",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCB\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.81417,
+          40.97611
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL ATATURK",
+        "pic": "ISTANBUL ATATURK AH LTBA",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.bf11efe1-6fba-4e8c-9eb9-ef64d607874e",
+        "cip": "../../images/airport/civil.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBA\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.07111,
+          36.89167
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "CUKUROVA",
+        "pic": "CUKUROVA AD LTDB",
+        "ip": "../../images/airport/yellow.png",
+        "t": 5,
+        "kid": "uuid.c21f3bbd-5b55-4c4b-9dc8-6aff062aeb0b",
+        "cip": "../../images/airport/yellow.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTDB\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.97778,
+          40.31833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BALIKESIR BANDIRMA",
+        "pic": "BALIKESIR BANDIRMA AD LTBG",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.c61f78e9-ca17-4533-b745-91f1d8937d82",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBG\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.84889,
+          41.17972
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "RIZE-ARTVIN",
+        "pic": "RIZE-ARTVIN AD LTFO",
+        "ip": "../../images/airport/yellow.png",
+        "t": 5,
+        "kid": "uuid.c822536b-7162-4a10-b709-4807d34a5680",
+        "cip": "../../images/airport/yellow.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFO\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.58194,
+          39.78417
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ESKISEHIR",
+        "pic": "ESKISEHIR AD LTBI",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.cc7db641-f369-40d5-a1a0-86b6294cb881",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBI\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.90639,
+          41.12944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "TEKIRDAG CORLU  ATATURK",
+        "pic": "TEKIRDAG CORLU  ATATURK AD LTBU",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.cfcedc02-16d0-4e4d-bbea-aa6c606b1f57",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBU\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.56194,
+          40.25611
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BURSA YENISEHIR",
+        "pic": "BURSA YENISEHIR AD LTBR",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.d773a30a-4af4-42c7-8978-9c221774d007",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBR\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.37806,
+          40.68639
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "YALOVA",
+        "pic": "YALOVA AH LTBP",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.d88a880f-8c3b-4841-80cf-47be5dbecb29",
+        "cip": "../../images/airport/military.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBP\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.46917,
+          37.73222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ADIYAMAN",
+        "pic": "ADIYAMAN AD LTCP",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.e1ab4697-6dba-45db-9384-969bf6a27ffc",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCP\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.01028,
+          39.5525
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BALIKESIR KOCA SEYIT",
+        "pic": "BALIKESIR KOCA SEYIT AD LTFD",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.e2e434d0-61d2-4af4-a16a-dc8634e01085",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFD\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.13028,
+          39.11139
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ZAFER",
+        "pic": "ZAFER AD LTBZ",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.e4ae5391-ec17-475d-adba-260c73860d7c",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBZ\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.30917,
+          40.89833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL SABIHA GOKCEN",
+        "pic": "ISTANBUL SABIHA GOKCEN AD LTFJ",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.e61c022f-eadf-4852-871e-75c195ee74cf",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFJ\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.92611,
+          39.61944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BALIKESIR MERKEZ",
+        "pic": "BALIKESIR MERKEZ AD LTBF",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.e66fc35e-d577-495c-abe1-421fc883e6b6",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBF\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.66889,
+          38.74472
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MUS SULTAN ALPARSLAN",
+        "pic": "MUS SULTAN ALPARSLAN AD LTCK",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.e76b005d-9076-4325-b181-ea4d3e384e5b",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCK\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.25444,
+          38.35306
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MALATYA TULGA",
+        "pic": "MALATYA TULGA AH LTAO",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.ea47b864-e09a-41af-b9b1-4a07f7a604fc",
+        "cip": "../../images/airport/military.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAO\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.355,
+          37.86361
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISPARTA KILIC",
+        "pic": "ISPARTA KILIC AD LTFN",
+        "ip": "../../images/airport/yellow.png",
+        "t": 5,
+        "kid": "uuid.ec916e8c-34d3-4c2d-9e65-5a2893b248ec",
+        "cip": "../../images/airport/yellow.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFN\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.01,
+          38.52667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR CIGLI",
+        "pic": "IZMIR CIGLI AH LTBL",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.edfb4068-4769-45d1-b5ef-cc737716a635",
+        "cip": "../../images/airport/military.png",
+        "type": "AH",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBL\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.11472,
+          40.56222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KARS HARAKANI",
+        "pic": "KARS HARAKANI AD LTCF",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.ee882745-c0e4-4066-9d73-a7773a09b329",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCF\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.52056,
+          39.8125
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ESKISEHIR HASAN POLATKAN",
+        "pic": "ESKISEHIR HASAN POLATKAN AD LTBY",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.ef0940bd-00bf-4c63-8d15-c258b6b3dc56",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTBY\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.5625,
+          37.98056
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KONYA",
+        "pic": "KONYA AD LTAN",
+        "ip": "../../images/airport/civilmilitary.png",
+        "t": 5,
+        "kid": "uuid.f006bf0e-939e-43a1-b7f6-80b0402237bb",
+        "cip": "../../images/airport/civilmilitary.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAN\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.06639,
+          42.01583
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SINOP",
+        "pic": "SINOP AD LTCM",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.f357bfa3-2908-43bd-befb-b75d02a1f066",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCM\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.60139,
+          38.72639
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "AFYON",
+        "pic": "AFYON AD LTAH",
+        "ip": "../../images/airport/military.png",
+        "t": 5,
+        "kid": "uuid.f37958a8-81ed-4d93-bddb-fa5602f74f68",
+        "cip": "../../images/airport/military.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAH\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.79278,
+          36.90028
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANTALYA",
+        "pic": "ANTALYA AD LTAI",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.f71afecd-7a97-4f16-a373-27c00acc5250",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTAI\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          42.06,
+          37.36389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SIRNAK SERAFETTIN ELCI",
+        "pic": "SIRNAK SERAFETTIN ELCI AD LTCV",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.f77ad120-9975-4388-b3e4-da43cb2bc2ee",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTCV\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.54861,
+          41.26556
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SAMSUN CARSAMBA",
+        "pic": "SAMSUN CARSAMBA AD LTFH",
+        "ip": "../../images/airport/civil.png",
+        "t": 5,
+        "kid": "uuid.f8892ea1-419e-4699-a7a6-325aa3842dec",
+        "cip": "../../images/airport/civil.png",
+        "type": "AD",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTFH\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.29528,
+          37.93806
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DIYARBAKIR UNAL ERKAN POLICE HELIPORT",
+        "pic": "DIYARBAKIR UNAL ERKAN POLICE HELIPORT HP LTHB",
+        "ip": "../../images/airport/heliport.png",
+        "t": 5,
+        "kid": "uuid.fb35b592-1fbc-4330-bb27-d502f01e2d4f",
+        "cip": "../../images/airport/heliport.png",
+        "type": "HP",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airportInfo.aspx?icao=LTHB\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1020
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

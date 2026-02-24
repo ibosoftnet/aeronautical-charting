@@ -1,0 +1,2095 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          35.080722,
+          36.902083
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "CUKUROVA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ICKU<br><b>NAME : </b>CUKUROVA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°54'07''N  035°04'51''E  ",
+        "kid": "uuid.0d1aeaf6-6c8c-43d6-9ec5-3785c03d1dea",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.0d1aeaf6-6c8c-43d6-9ec5-3785c03d1dea\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          37.383444,
+          36.900056
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GAZIANTEP",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>DGP<br><b>NAME : </b>GAZIANTEP<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°54'00''N  037°23'00''E  ",
+        "kid": "uuid.0fc9abd1-5737-43c5-9d16-5cae88d406c6",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.0fc9abd1-5737-43c5-9d16-5cae88d406c6\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.679194,
+          37.249167
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MILAS BODRUM",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IGML<br><b>NAME : </b>MILAS BODRUM<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°14'57''N  027°40'45''E  ",
+        "kid": "uuid.11506af8-7597-4e3b-9dbe-e3b365491642",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.11506af8-7597-4e3b-9dbe-e3b365491642\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.295389,
+          38.599194
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ELAZIG",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IELG<br><b>NAME : </b>ELAZIG<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°35'57''N  039°17'43''E  ",
+        "kid": "uuid.135034a9-9bff-452f-9bdb-80d1632468f8",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.135034a9-9bff-452f-9bdb-80d1632468f8\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.828333,
+          39.953278
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ANK<br><b>NAME : </b>ANKARA<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°57'12''N  032°49'42''E  ",
+        "kid": "uuid.199df3a0-9893-4165-b9cc-6aef0e4fe3d8",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.199df3a0-9893-4165-b9cc-6aef0e4fe3d8\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          34.52275,
+          38.777861
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KAPADOKYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ITZK<br><b>NAME : </b>KAPADOKYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°46'40''N  034°31'22''E  ",
+        "kid": "uuid.248c152b-d8d6-4085-94f4-1dbee31645dd",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.248c152b-d8d6-4085-94f4-1dbee31645dd\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.507194,
+          39.716833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ERZINCAN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IEZC<br><b>NAME : </b>ERZINCAN<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°43'01''N  039°30'26''E  ",
+        "kid": "uuid.24edf60a-2ffc-484a-a7df-c27db2421291",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.24edf60a-2ffc-484a-a7df-c27db2421291\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.509083,
+          38.771833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KAYSERI",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IKSR<br><b>NAME : </b>KAYSERI<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°46'19''N  035°30'33''E  ",
+        "kid": "uuid.282e98f7-c21f-49bf-bb65-a612ffd2579f",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.282e98f7-c21f-49bf-bb65-a612ffd2579f\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          44.231611,
+          37.563972
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": null,
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IHAG<br><b>NAME : </b><br><b>TYPE : </b>DME<br><b>POSITION : </b>37°33'50''N  044°13'54''E  ",
+        "kid": "uuid.2e78438e-5204-479d-b748-a2f01974e4f4",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.2e78438e-5204-479d-b748-a2f01974e4f4\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.2975,
+          36.304389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GAZIPASA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>GZP<br><b>NAME : </b>GAZIPASA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°18'16''N  032°17'51''E  ",
+        "kid": "uuid.308dbfda-a15a-40cd-8ddc-eafdd12ac41c",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.308dbfda-a15a-40cd-8ddc-eafdd12ac41c\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.924028,
+          39.608639
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BALIKESIR/MERKEZ",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IBRI<br><b>NAME : </b>BALIKESIR/MERKEZ<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°36'31''N  027°55'27''E  ",
+        "kid": "uuid.349d56a9-91cf-4557-a151-9971ef0f3610",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.349d56a9-91cf-4557-a151-9971ef0f3610\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.098167,
+          38.446583
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MALATYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IMLY<br><b>NAME : </b>MALATYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°26'48''N  038°05'53''E  ",
+        "kid": "uuid.35b82347-5ff3-4eb6-9ee0-807456c8e0a1",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.35b82347-5ff3-4eb6-9ee0-807456c8e0a1\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.557833,
+          41.262639
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SAMSUN/CARSAMBA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ICRM<br><b>NAME : </b>SAMSUN/CARSAMBA<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°15'46''N  036°33'28''E  ",
+        "kid": "uuid.3a5abedd-65a5-483e-9105-1c84157b581e",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.3a5abedd-65a5-483e-9105-1c84157b581e\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.852333,
+          37.982667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SIIRT",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISTR<br><b>NAME : </b>SIIRT<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°58'58''N  041°51'08''E  ",
+        "kid": "uuid.415b803e-d5c5-4cf5-bc2b-c3653d9b11b0",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.415b803e-d5c5-4cf5-bc2b-c3653d9b11b0\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.5095,
+          39.436639
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "HAYMANA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>HAY<br><b>NAME : </b>HAYMANA<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°26'12''N  032°30'34''E  ",
+        "kid": "uuid.420b29d0-6281-4266-b8e6-077847fcbbe0",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.420b29d0-6281-4266-b8e6-077847fcbbe0\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.510278,
+          40.824389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "AMASYA/MERZIFON",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IMRI<br><b>NAME : </b>AMASYA/MERZIFON<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°49'28''N  035°30'37''E  ",
+        "kid": "uuid.446beabb-ab1b-495d-b96b-3391ea42a608",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.446beabb-ab1b-495d-b96b-3391ea42a608\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.793139,
+          36.912833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANTALYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IATY<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°54'46''N  030°47'35''E  ",
+        "kid": "uuid.46d15763-d00e-4ba8-9132-4b10f19abc3a",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.46d15763-d00e-4ba8-9132-4b10f19abc3a\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.779083,
+          40.99925
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "TRABZON",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ITBZ<br><b>NAME : </b>TRABZON<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°59'57''N  039°46'45''E  ",
+        "kid": "uuid.46ee57f9-607e-4024-8b98-5bab6b8e9e66",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.46ee57f9-607e-4024-8b98-5bab6b8e9e66\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.910083,
+          37.460083
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SANLIURFA/GAP",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISAN<br><b>NAME : </b>SANLIURFA/GAP<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°27'36''N  038°54'36''E  ",
+        "kid": "uuid.4864e39b-4188-4b07-aa03-25f711e6c168",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.4864e39b-4188-4b07-aa03-25f711e6c168\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          37.5955,
+          36.840556
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GAZIANTEP",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>DGT<br><b>NAME : </b>GAZIANTEP<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°50'26''N  037°35'44''E  ",
+        "kid": "uuid.4888ce08-ce61-4b1c-ba5c-02a531ee1766",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.4888ce08-ce61-4b1c-ba5c-02a531ee1766\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.789833,
+          36.888194
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANTALYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IAYT<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°53'17''N  030°47'23''E  ",
+        "kid": "uuid.4c25d841-473a-48f8-969c-9561a4505271",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.4c25d841-473a-48f8-969c-9561a4505271\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.555639,
+          40.069
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA/MURTED",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IZIR<br><b>NAME : </b>ANKARA/MURTED<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°04'08''N  032°33'20''E  ",
+        "kid": "uuid.5359d56f-a246-418f-a9d4-414f57325922",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.5359d56f-a246-418f-a9d4-414f57325922\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.152389,
+          38.303333
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR ADNAN MENDERES",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IIMR<br><b>NAME : </b>IZMIR ADNAN MENDERES<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°18'12''N  027°09'09''E  ",
+        "kid": "uuid.59a2cab5-213b-4be5-8c87-47300d0ff81f",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.59a2cab5-213b-4be5-8c87-47300d0ff81f\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          26.977389,
+          38.528389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR/KAKLIC",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IKLC<br><b>NAME : </b>IZMIR/KAKLIC<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°31'42''N  026°58'39''E  ",
+        "kid": "uuid.5b58af27-13c9-42a0-b8e4-faed44dc9c7d",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.5b58af27-13c9-42a0-b8e4-faed44dc9c7d\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.296361,
+          40.892806
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL/SABIHA GOKCEN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISAB<br><b>NAME : </b>ISTANBUL/SABIHA GOKCEN<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°53'34''N  029°17'47''E  ",
+        "kid": "uuid.5c52ded9-8bd9-4764-b497-1ad14c2d0a15",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.5c52ded9-8bd9-4764-b497-1ad14c2d0a15\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.833917,
+          40.975472
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL/ATATURK",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IATA<br><b>NAME : </b>ISTANBUL/ATATURK<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°58'32''N  028°50'02''E  ",
+        "kid": "uuid.5e728c51-28a4-4df2-bfc7-54ab9e8de791",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.5e728c51-28a4-4df2-bfc7-54ab9e8de791\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.992972,
+          40.101889
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ESENBOGA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IAES<br><b>NAME : </b>ESENBOGA<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°06'07''N  032°59'35''E  ",
+        "kid": "uuid.639fe804-c58f-4d83-af6f-3e86fb7dcc53",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.639fe804-c58f-4d83-af6f-3e86fb7dcc53\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.151667,
+          39.955944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ERZURUM",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IEZR<br><b>NAME : </b>ERZURUM<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°57'21''N  041°09'06''E  ",
+        "kid": "uuid.63e77e9f-87c8-458b-91ec-5c917349d167",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.63e77e9f-87c8-458b-91ec-5c917349d167\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.022556,
+          39.669056
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "AGRI AHMED-I HANI",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IAGR<br><b>NAME : </b>AGRI AHMED-I HANI<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°40'09''N  043°01'21''E  ",
+        "kid": "uuid.69f68790-9099-48d2-b362-ee8f742a8bdd",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.69f68790-9099-48d2-b362-ee8f742a8bdd\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.815611,
+          40.966972
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL/ATATURK",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IIST<br><b>NAME : </b>ISTANBUL/ATATURK<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°58'01''N  028°48'56''E  ",
+        "kid": "uuid.6ac72e5c-b81e-4357-aa02-b5d62f5eec88",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.6ac72e5c-b81e-4357-aa02-b5d62f5eec88\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          37.491278,
+          36.944361
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GAZIANTEP",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IGNP<br><b>NAME : </b>GAZIANTEP<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°56'40''N  037°29'29''E  ",
+        "kid": "uuid.6ac74f11-40ea-4a35-bfc7-62f2761554a4",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.6ac74f11-40ea-4a35-bfc7-62f2761554a4\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.306639,
+          40.885139
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SABIHA GOKCEN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISGN<br><b>NAME : </b>SABIHA GOKCEN<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°53'07''N  029°18'24''E  ",
+        "kid": "uuid.6c10b6ec-a44b-4f88-b813-880853fa31b8",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.6c10b6ec-a44b-4f88-b813-880853fa31b8\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          33.014694,
+          40.124611
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ESENBOGA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IAEG<br><b>NAME : </b>ESENBOGA<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°07'29''N  033°00'53''E  ",
+        "kid": "uuid.702d08c9-2e76-4e4b-8c13-92fae64b5b81",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.702d08c9-2e76-4e4b-8c13-92fae64b5b81\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.100389,
+          40.965611
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ORDU GIRESUN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IOGR<br><b>NAME : </b>ORDU GIRESUN<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°57'56''N  038°06'01''E  ",
+        "kid": "uuid.74965127-c39c-45c0-a2c5-8c6fb3860ff3",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.74965127-c39c-45c0-a2c5-8c6fb3860ff3\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.884389,
+          37.437278
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SANLIURFA/GAP",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISUR<br><b>NAME : </b>SANLIURFA/GAP<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°26'14''N  038°53'04''E  ",
+        "kid": "uuid.762f8a7c-4164-4f31-8b62-39ed5e354cb3",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.762f8a7c-4164-4f31-8b62-39ed5e354cb3\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.337583,
+          40.896528
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SABIHA GOKCEN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISGB<br><b>NAME : </b>SABIHA GOKCEN<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°53'48''N  029°20'15''E  ",
+        "kid": "uuid.7a175050-e2b0-4aac-a5ba-e1349dc06d02",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.7a175050-e2b0-4aac-a5ba-e1349dc06d02\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.064167,
+          36.88025
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "CUKUROVA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ICKR<br><b>NAME : </b>CUKUROVA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°52'49''N  035°03'51''E  ",
+        "kid": "uuid.7b184c02-b9f0-4007-9426-50e7b99ff229",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.7b184c02-b9f0-4007-9426-50e7b99ff229\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.085833,
+          41.498056
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ZONGULDAK/CAYCUMA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IZCA<br><b>NAME : </b>ZONGULDAK/CAYCUMA<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°29'53''N  032°05'09''E  ",
+        "kid": "uuid.7c26edf9-c18e-4d4c-8e72-43a0f2796be6",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.7c26edf9-c18e-4d4c-8e72-43a0f2796be6\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.342972,
+          38.479083
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "VAN/FERIT MELEN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IVAN<br><b>NAME : </b>VAN/FERIT MELEN<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°28'45''N  043°20'35''E  ",
+        "kid": "uuid.81bb174d-9e2c-4bab-a65b-46f53acc5f1d",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.81bb174d-9e2c-4bab-a65b-46f53acc5f1d\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.984139,
+          40.116694
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ESENBOGA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IANK<br><b>NAME : </b>ESENBOGA<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°07'00''N  032°59'03''E  ",
+        "kid": "uuid.8570cbf0-796e-4559-8eed-bb57bee92fc2",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.8570cbf0-796e-4559-8eed-bb57bee92fc2\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.575278,
+          40.259917
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BURSA/YENISEHIR",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IYEN<br><b>NAME : </b>BURSA/YENISEHIR<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°15'36''N  029°34'31''E  ",
+        "kid": "uuid.8f7b3951-5a29-40e7-b743-d6d59ca539ec",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.8f7b3951-5a29-40e7-b743-d6d59ca539ec\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.18925,
+          39.956917
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ERZURUM",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IERZ<br><b>NAME : </b>ERZURUM<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°57'25''N  041°11'21''E  ",
+        "kid": "uuid.91b6e59a-c1c2-417f-b295-35247fad7bc6",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.91b6e59a-c1c2-417f-b295-35247fad7bc6\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.139694,
+          39.103722
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ZAFER",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IZFE<br><b>NAME : </b>ZAFER<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°06'13''N  030°08'23''E  ",
+        "kid": "uuid.9449cb7e-76f1-41d5-adea-e9cf5c06bb7e",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.9449cb7e-76f1-41d5-adea-e9cf5c06bb7e\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.876667,
+          39.982361
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IGDIR",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IIGD<br><b>NAME : </b>IGDIR<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°58'56''N  043°52'36''E  ",
+        "kid": "uuid.95f4ec77-41f1-4b72-81be-1d5ba73f1ca4",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.95f4ec77-41f1-4b72-81be-1d5ba73f1ca4\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.984583,
+          40.120556
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA ESENBOGA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IAKR<br><b>NAME : </b>ANKARA ESENBOGA<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°07'14''N  032°59'04''E  ",
+        "kid": "uuid.97259b4c-ea11-4beb-b6fe-0c470bb27afb",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.97259b4c-ea11-4beb-b6fe-0c470bb27afb\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.713806,
+          37.789972
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DENIZLI/CARDAK",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ICRD<br><b>NAME : </b>DENIZLI/CARDAK<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°47'24''N  029°42'50''E  ",
+        "kid": "uuid.9800a338-e5c8-49c1-901d-a8e50372aa57",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.9800a338-e5c8-49c1-901d-a8e50372aa57\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.652722,
+          37.255472
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MILAS BODRUM",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IBDR<br><b>NAME : </b>MILAS BODRUM<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°15'20''N  027°39'10''E  ",
+        "kid": "uuid.9ab3c796-5cda-41a3-8b2a-12f01d9ece68",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.9ab3c796-5cda-41a3-8b2a-12f01d9ece68\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.705361,
+          41.296194
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL AD",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IUCB<br><b>NAME : </b>ISTANBUL AD<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°17'46''N  028°42'19''E  ",
+        "kid": "uuid.9af95c70-f639-47c3-b505-c6ba58cf8641",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.9af95c70-f639-47c3-b505-c6ba58cf8641\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.975972,
+          40.307306
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BALIKESIR/BANDIRMA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IBDM<br><b>NAME : </b>BALIKESIR/BANDIRMA<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°18'26''N  027°58'33''E  ",
+        "kid": "uuid.9b26406b-349d-466a-a4d0-1d9863e61a4b",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.9b26406b-349d-466a-a4d0-1d9863e61a4b\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.377806,
+          40.322556
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "TOKAT",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ITKA<br><b>NAME : </b>TOKAT<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°19'21''N  036°22'40''E  ",
+        "kid": "uuid.9e0a9c3e-17c4-4693-bc21-53cebe9a275e",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.9e0a9c3e-17c4-4693-bc21-53cebe9a275e\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.586472,
+          38.865028
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BINGOL",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IBIN<br><b>NAME : </b>BINGOL<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°51'54''N  040°35'11''E  ",
+        "kid": "uuid.a27f1dc6-6bf3-4853-9a60-6ca513553c1f",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.a27f1dc6-6bf3-4853-9a60-6ca513553c1f\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.204722,
+          37.880889
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DIYARBAKIR",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IDBN<br><b>NAME : </b>DIYARBAKIR<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°52'51''N  040°12'17''E  ",
+        "kid": "uuid.a3672a67-66b1-46c8-af54-5b93e37df1f5",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.a3672a67-66b1-46c8-af54-5b93e37df1f5\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.119167,
+          39.117694
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ZAFER",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IZFR<br><b>NAME : </b>ZAFER<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°07'04''N  030°07'09''E  ",
+        "kid": "uuid.a5df161e-c899-40cc-bf84-a26d252b55c4",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.a5df161e-c899-40cc-bf84-a26d252b55c4\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.0795,
+          42.021417
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SINOP",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISDP<br><b>NAME : </b>SINOP<br><b>TYPE : </b>DME<br><b>POSITION : </b>42°01'17''N  035°04'46''E  ",
+        "kid": "uuid.ad26aa5b-4ee6-480b-bb76-08d3a6de0522",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.ad26aa5b-4ee6-480b-bb76-08d3a6de0522\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.808917,
+          36.883389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANTALYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IALY<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°53'00''N  030°48'32''E  ",
+        "kid": "uuid.afe453bd-b404-4475-9fd6-f45bfd38b4bf",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.afe453bd-b404-4475-9fd6-f45bfd38b4bf\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          33.798222,
+          41.321667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KASTAMONU",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IKAS<br><b>NAME : </b>KASTAMONU<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°19'18''N  033°47'54''E  ",
+        "kid": "uuid.b3adbf94-7962-464b-9fe4-d3a82cacd517",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.b3adbf94-7962-464b-9fe4-d3a82cacd517\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.159139,
+          38.2805
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR/ADNAN MENDERES",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IMEN<br><b>NAME : </b>IZMIR/ADNAN MENDERES<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°16'50''N  027°09'33''E  ",
+        "kid": "uuid.b4c4665b-5aea-4498-bdce-3af2ab6d7e4d",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.b4c4665b-5aea-4498-bdce-3af2ab6d7e4d\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.383778,
+          37.866444
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISPARTA/SULEYMAN DEMIREL",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISPT<br><b>NAME : </b>ISPARTA/SULEYMAN DEMIREL<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°51'59''N  030°23'02''E  ",
+        "kid": "uuid.b5758e92-2b7c-47e0-8896-81fc097d3067",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.b5758e92-2b7c-47e0-8896-81fc097d3067\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          26.998278,
+          39.547083
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BALIKESIR/KOCA SEYIT",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IKFZ<br><b>NAME : </b>BALIKESIR/KOCA SEYIT<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°32'49''N  026°59'54''E  ",
+        "kid": "uuid.b62492bf-bf49-491d-a96d-5f1666a2dd31",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.b62492bf-bf49-491d-a96d-5f1666a2dd31\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          37.619611,
+          37.127667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GAZIANTEP",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>DGA<br><b>NAME : </b>GAZIANTEP<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°07'40''N  037°37'11''E  ",
+        "kid": "uuid.b90012f9-f97a-488b-81c2-3904b99fd6b3",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.b90012f9-f97a-488b-81c2-3904b99fd6b3\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.757667,
+          41.287361
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL AD",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IUCD<br><b>NAME : </b>ISTANBUL AD<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°17'14''N  028°45'28''E  ",
+        "kid": "uuid.b95fdf10-b50b-4379-96bb-579beb63b966",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.b95fdf10-b50b-4379-96bb-579beb63b966\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.772,
+          41.000556
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "TRABZON",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ITRB<br><b>NAME : </b>TRABZON<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°00'02''N  039°46'19''E  ",
+        "kid": "uuid.bc98b2d4-7674-4711-b331-3a26eefd64e8",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.bc98b2d4-7674-4711-b331-3a26eefd64e8\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          42.046444,
+          37.370278
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SIRNAK/SERAFETTIN ELCI",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISNK<br><b>NAME : </b>SIRNAK/SERAFETTIN ELCI<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°22'13''N  042°02'47''E  ",
+        "kid": "uuid.c199fb72-fc6d-4bc6-a1b1-283770cdf29e",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.c199fb72-fc6d-4bc6-a1b1-283770cdf29e\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.007389,
+          38.523611
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "IZMIR/CIGLI",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ICIG<br><b>NAME : </b>IZMIR/CIGLI<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°31'25''N  027°00'27''E  ",
+        "kid": "uuid.c1bea3d2-17a2-4faf-87c9-de6c857e61f4",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.c1bea3d2-17a2-4faf-87c9-de6c857e61f4\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.100389,
+          40.555861
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KARS/HARAKANI",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IKAR<br><b>NAME : </b>KARS/HARAKANI<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°33'21''N  043°06'01''E  ",
+        "kid": "uuid.c55a2e6e-c488-45af-aa33-d3b336d9d8fa",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.c55a2e6e-c488-45af-aa33-d3b336d9d8fa\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.626056,
+          37.215889
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MARDIN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IMRD<br><b>NAME : </b>MARDIN<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°12'57''N  040°37'34''E  ",
+        "kid": "uuid.d1559837-821d-4537-946b-5ce5722b2593",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d1559837-821d-4537-946b-5ce5722b2593\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.86225,
+          41.184444
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "RIZE-ARTVIN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IRAT<br><b>NAME : </b>RIZE-ARTVIN<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°11'04''N  040°51'44''E  ",
+        "kid": "uuid.d166ff11-302f-492a-90a2-0b360bf69d0c",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d166ff11-302f-492a-90a2-0b360bf69d0c\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.790333,
+          36.702583
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MUGLA/DALAMAN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IDLM<br><b>NAME : </b>MUGLA/DALAMAN<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°42'09''N  028°47'25''E  ",
+        "kid": "uuid.d189321a-8587-4c53-a141-3c3e43ff8c29",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d189321a-8587-4c53-a141-3c3e43ff8c29\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          26.416889,
+          40.130139
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "CANAKKALE",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ICNK<br><b>NAME : </b>CANAKKALE<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°07'49''N  026°25'01''E  ",
+        "kid": "uuid.d1f2247c-ebd9-4a78-9e03-1b0d7d0668cb",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d1f2247c-ebd9-4a78-9e03-1b0d7d0668cb\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.909222,
+          41.130556
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "TEKIRDAG/CORLU",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ICRL<br><b>NAME : </b>TEKIRDAG/CORLU<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°07'50''N  027°54'33''E  ",
+        "kid": "uuid.d1f49ee4-3a59-4b5e-86ee-0cd0634ab541",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d1f49ee4-3a59-4b5e-86ee-0cd0634ab541\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          33.006111,
+          40.139722
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA/ESENBOGA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IESB<br><b>NAME : </b>ANKARA/ESENBOGA<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°08'23''N  033°00'22''E  ",
+        "kid": "uuid.d354173e-1bba-40ab-b5d0-ca7fee94226b",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d354173e-1bba-40ab-b5d0-ca7fee94226b\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.596417,
+          39.785194
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ESKISEHIR",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IESK<br><b>NAME : </b>ESKISEHIR<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°47'07''N  030°35'47''E  ",
+        "kid": "uuid.d35a8cdc-f788-4eba-8a93-f5ad1d57b0a0",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d35a8cdc-f788-4eba-8a93-f5ad1d57b0a0\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.106444,
+          40.963639
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ORDU GIRESUN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IOGN<br><b>NAME : </b>ORDU GIRESUN<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°57'49''N  038°06'23''E  ",
+        "kid": "uuid.d5ba2c47-b63c-4254-8d1d-2cf58ffe77a6",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d5ba2c47-b63c-4254-8d1d-2cf58ffe77a6\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.271722,
+          36.975667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ADANA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IADA<br><b>NAME : </b>ADANA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°58'32''N  035°16'18''E  ",
+        "kid": "uuid.d61f3ac7-a207-43d1-9db5-6f768721f7ab",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d61f3ac7-a207-43d1-9db5-6f768721f7ab\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.554111,
+          37.968389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KONYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IKNY<br><b>NAME : </b>KONYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°58'06''N  032°33'15''E  ",
+        "kid": "uuid.d6907d0b-858e-42ac-82f8-4657f5b180c1",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d6907d0b-858e-42ac-82f8-4657f5b180c1\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.72625,
+          41.265222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL AD",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IUCE<br><b>NAME : </b>ISTANBUL AD<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°15'55''N  028°43'34''E  ",
+        "kid": "uuid.d8bcb507-a259-4006-ac92-e68baa363a0f",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d8bcb507-a259-4006-ac92-e68baa363a0f\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.787583,
+          36.696389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MUGLA/DALAMAN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IDMN<br><b>NAME : </b>MUGLA/DALAMAN<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°41'47''N  028°47'15''E  ",
+        "kid": "uuid.d9a4893d-d94d-4988-b7b3-d50c876a3543",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.d9a4893d-d94d-4988-b7b3-d50c876a3543\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.812417,
+          36.908361
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANTALYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ILRA<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°54'30''N  030°48'45''E  ",
+        "kid": "uuid.db4af89d-2000-4d37-8313-3351173b1bbe",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.db4af89d-2000-4d37-8313-3351173b1bbe\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.899139,
+          39.800389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SIVAS/NURI DEMIRAG",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISVS<br><b>NAME : </b>SIVAS/NURI DEMIRAG<br><b>TYPE : </b>DME<br><b>POSITION : </b>39°48'01''N  036°53'57''E  ",
+        "kid": "uuid.dc7a7f54-e061-4ea1-a818-a35100ed46ec",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.dc7a7f54-e061-4ea1-a818-a35100ed46ec\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.312222,
+          36.300667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GAZIPASA ALANYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IGZP<br><b>NAME : </b>GAZIPASA ALANYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°18'02''N  032°18'44''E  ",
+        "kid": "uuid.e2604660-08ff-47e3-847b-245209f64ba9",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.e2604660-08ff-47e3-847b-245209f64ba9\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          40.835083,
+          41.177389
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "RIZE-ARTVIN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IART<br><b>NAME : </b>RIZE-ARTVIN<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°10'39''N  040°50'06''E  ",
+        "kid": "uuid.e285055a-0920-4c70-b7d3-aa49a3488453",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.e285055a-0920-4c70-b7d3-aa49a3488453\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.836722,
+          37.976722
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SIIRT",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>SIR<br><b>NAME : </b>SIIRT<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°58'36''N  041°50'12''E  ",
+        "kid": "uuid.e2930b30-6d24-48ba-9573-fd3c591f7b3a",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.e2930b30-6d24-48ba-9573-fd3c591f7b3a\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.676861,
+          38.742944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MUS/SULTAN ALPARSLAN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IMUS<br><b>NAME : </b>MUS/SULTAN ALPARSLAN<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°44'35''N  041°40'37''E  ",
+        "kid": "uuid.e52ff34c-e503-4e4d-85cd-8533bdb4dd1a",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.e52ff34c-e503-4e4d-85cd-8533bdb4dd1a\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.109333,
+          37.919194
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BATMAN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IBAT<br><b>NAME : </b>BATMAN<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°55'09''N  041°06'34''E  ",
+        "kid": "uuid.e7516a99-2d18-47c0-937c-458412530134",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.e7516a99-2d18-47c0-937c-458412530134\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.789306,
+          36.875722
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANTALYA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ANT<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>DME<br><b>POSITION : </b>36°52'33''N  030°47'22''E  ",
+        "kid": "uuid.e85c957c-8552-4221-baa9-aaaecdbd344c",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.e85c957c-8552-4221-baa9-aaaecdbd344c\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.758083,
+          41.265361
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL AD",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IUCC<br><b>NAME : </b>ISTANBUL AD<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°15'55''N  028°45'29''E  ",
+        "kid": "uuid.ee30ef4a-3945-49da-bcdc-cb83262de327",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.ee30ef4a-3945-49da-bcdc-cb83262de327\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.725667,
+          41.296361
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL AD",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IUCF<br><b>NAME : </b>ISTANBUL AD<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°17'47''N  028°43'32''E  ",
+        "kid": "uuid.ee32d83d-9fc3-43de-822f-34123da36145",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.ee32d83d-9fc3-43de-822f-34123da36145\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.705917,
+          41.268083
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL AD",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IUCA<br><b>NAME : </b>ISTANBUL AD<br><b>TYPE : </b>DME<br><b>POSITION : </b>41°16'05''N  028°42'21''E  ",
+        "kid": "uuid.f09fb637-2c45-452f-acae-765bb43155e8",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.f09fb637-2c45-452f-acae-765bb43155e8\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          33.00375,
+          40.140694
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ANKARA ESENBOGA",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IEBG<br><b>NAME : </b>ANKARA ESENBOGA<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°08'26''N  033°00'13''E  ",
+        "kid": "uuid.f2117024-09eb-4994-98f7-21aabdddf30e",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.f2117024-09eb-4994-98f7-21aabdddf30e\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.097056,
+          40.734833
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KOCAELI/CENGIZ TOPEL",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ICNG<br><b>NAME : </b>KOCAELI/CENGIZ TOPEL<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°44'05''N  030°05'49''E  ",
+        "kid": "uuid.f6df1cc8-7ab2-4d20-a49e-2fbc1f7a55ea",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.f6df1cc8-7ab2-4d20-a49e-2fbc1f7a55ea\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.616778,
+          38.717139
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "AFYON",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IKFK<br><b>NAME : </b>AFYON<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°43'02''N  030°37'00''E  ",
+        "kid": "uuid.f808264e-a12f-48cb-9ec5-02527d0560d6",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.f808264e-a12f-48cb-9ec5-02527d0560d6\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          38.461556,
+          37.724944
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ADIYAMAN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IADY<br><b>NAME : </b>ADIYAMAN<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°43'30''N  038°27'42''E  ",
+        "kid": "uuid.f9b57b65-a217-4cbb-9d10-66edf85471fb",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.f9b57b65-a217-4cbb-9d10-66edf85471fb\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.322583,
+          40.902028
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ISTANBUL/SABIHA GOKCEN",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>ISBH<br><b>NAME : </b>ISTANBUL/SABIHA GOKCEN<br><b>TYPE : </b>DME<br><b>POSITION : </b>40°54'07''N  029°19'21''E  ",
+        "kid": "uuid.f9df4f4a-3461-4f61-9e38-01f0df571c51",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.f9df4f4a-3461-4f61-9e38-01f0df571c51\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.267972,
+          38.593917
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ELAZIG",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IELZ<br><b>NAME : </b>ELAZIG<br><b>TYPE : </b>DME<br><b>POSITION : </b>38°35'38''N  039°16'05''E  ",
+        "kid": "uuid.fdf57ef6-db98-4b4a-8087-4b2739512664",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.fdf57ef6-db98-4b4a-8087-4b2739512664\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.941778,
+          37.543528
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KAHRAMANMARAS",
+        "t": 2,
+        "pic": "<b>DESIGNATOR : </b>IKAH<br><b>NAME : </b>KAHRAMANMARAS<br><b>TYPE : </b>DME<br><b>POSITION : </b>37°32'37''N  036°56'30''E  ",
+        "kid": "uuid.febf062f-9599-4c03-ab7e-93c92f621696",
+        "ip": "../../images/AIXM/dme-icon.png",
+        "type": "DME",
+        "cip": "../../images/AIXM/dme-icon.png",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/navaidInfo.aspx?icao=uuid.febf062f-9599-4c03-ab7e-93c92f621696\" style=\"border:none; width:400px; height:150px;\" allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1021
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

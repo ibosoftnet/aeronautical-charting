@@ -2,7 +2,8 @@
 
 ![](Images%20About%20Project/Example-2.png)
 
-## Duyuru: Bu proje, farklı projelerden dolayı bir süre ertelenmiştir.
+
+## Duyuru: Proje aşamaları değiştirilmiştir. İlk öncelikle Ibosoft AIS web haritası için bazı gerekliliklerin hazırlanması planlanmaktadır. Sonrasında bazı hesaplama araçlarının hazırlanmasının ardından kağıt harita üretimi için şablonlar hazırlanacaktır.
 
 ## Amaç:
 
@@ -18,34 +19,34 @@ Proje henüz erken ssafhada olduğundan dokümantasyon henüz hazırlanmamışt�
 
 * ICAO Annex 4'den çıkarılan SVG semboller ve QGIS kütüphane dosyası (Nokta sembollerinin tamamına yakını kapsanmaktadır, çizgi ve alan sembolojisinde henüz eksiklikler vardır.)
 
-### Üzerinde Uğraşılanlar:
-* QGIS için şablon dosya.
-* ICAO Doc 8126 & 10066 ile uyumlu boş AIP şablonu. (MS Office Word için.)
+### ~~Üzerinde Uğraşılanlar:~~
+* ~~QGIS için şablon dosya.~~
+* ~~ICAO Doc 8126 & 10066 ile uyumlu boş AIP şablonu. (MS Office Word için.)~~
 
-### Planlanan Hedefler:
-* Eksik Annex 4 sembolojilerinin tamamlanması.
-* ICAO Doc 8697 doğrutusunda farklı renklendirmelerin, semboller veya QGIS şablonu üzerinden ayarlanması.
-* ICAO Doc 8697 ile uyumlu ADC, PRKG, IAC, SID, STAR chartları için QGZ baskı düzeninin oluşturulması.
-* QGIS için ICAO PANS-OSP uyumlu AMA hesaplayıcı.
-* QGIS için ICAO PANS-OPS uyumlu PAR OCS alanı oluşturucu.
+### ~~Planlanan Hedefler:~~
+* ~~Eksik Annex 4 sembolojilerinin tamamlanması.~~
+* ~~ICAO Doc 8697 doğrutusunda farklı renklendirmelerin, semboller veya QGIS şablonu üzerinden ayarlanması.~~
+* ~~ICAO Doc 8697 ile uyumlu ADC, PRKG, IAC, SID, STAR chartları için QGZ baskı düzeninin oluşturulması.~~
+* ~~QGIS için ICAO PANS-OSP uyumlu AMA hesaplayıcı.~~
+* ~~QGIS için ICAO PANS-OPS uyumlu PAR OCS alanı oluşturucu.~~
 
-### Daha Sonrası İçin Hedefler:
-* AOC, PATC, ENC, ARC, VAC, ATCSMAC chartları için QGZ baskı düzenleri.
-* NATO/MIPS sembolojisi.
-* QGIS için ICAO PANS-OPS uyumlu MSA hesaplayıcı.
-* QGIS için ICAO PANS-OPS uyumlu Circling alanı hesaplayıcı.
-* QGIS için MIPS uyumlu Emergency Safe Altitude 100 NM hesaplayıcı.
-* Havacılık verisi için diğer kaynaklar yerine gerçek AIXM verilerinin kullanımı.
+### ~~Daha Sonrası İçin Hedefler:~~
+* ~~AOC, PATC, ENC, ARC, VAC, ATCSMAC chartları için QGZ baskı düzenleri.~~
+* ~~NATO/MIPS sembolojisi.~~
+* ~~QGIS için ICAO PANS-OPS uyumlu MSA hesaplayıcı.~~
+* ~~QGIS için ICAO PANS-OPS uyumlu Circling alanı hesaplayıcı.~~
+* ~~QGIS için MIPS uyumlu Emergency Safe Altitude 100 NM hesaplayıcı.~~
+* ~~Havacılık verisi için diğer kaynaklar yerine gerçek AIXM verilerinin kullanımı.~~
 
-## Test Verisi Hakkında:
-Şablonda görsellik oluşturması için bir test verisi sağlanmaktadır. İlgili katmanların kaynaklarını değiştirerek kendi verilerinizi de kullanabilirsiniz.
+## ~~Test Verisi Hakkında:~~
+~~Şablonda görsellik oluşturması için bir test verisi sağlanmaktadır. İlgili katmanların kaynaklarını değiştirerek kendi verilerinizi de kullanabilirsiniz.~~
 
-Test verisi, Türkiye'yi kapsayacak şekilde şu kaynaklardan alınmıştır:
-* Topoğrafya için Antalya bölgesini kapsayacak şekilde, ölçü birimi fit'e dönüştürülmüş SRTM 1 Arc-Second Global 30 m doğruluklu GeoTIFF DEM verisi.
-* Hidrografya için Geofabrik ve Overpass Turbo aracılığıyla çıktı alınan OSM verileri.
-* Kültür verisi için Overpass Turbo aracılığıyla çıktı alınan OSM verileri.
-* Havacılık verisi için EUROCONTROL EAD BAsic'den elde edilen SDO verileri.
-* Havacılık engel verisi için ENR 5.4 ve Antalya AIXM engel verileri.
+~~Test verisi, Türkiye'yi kapsayacak şekilde şu kaynaklardan alınmıştır:~~
+* ~~Topoğrafya için Antalya bölgesini kapsayacak şekilde, ölçü birimi fit'e dönüştürülmüş SRTM 1 Arc-Second Global 30 m doğruluklu GeoTIFF DEM verisi.~~
+* ~~Hidrografya için Geofabrik ve Overpass Turbo aracılığıyla çıktı alınan OSM verileri.~~
+* ~~Kültür verisi için Overpass Turbo aracılığıyla çıktı alınan OSM verileri.~~
+* ~~Havacılık verisi için EUROCONTROL EAD BAsic'den elde edilen SDO verileri.~~
+* ~~Havacılık engel verisi için ENR 5.4 ve Antalya AIXM engel verileri.~~
 
 ## Diğer Bilgiler:
 
@@ -60,6 +61,8 @@ Bu repository, aletli yaklaşma ile alakalı çok daha ileri düzey hesaplayıc�
 --- 
 
 # Resources and QGIS Template for Aeronautical Chart Production
+
+## Announcement: Project stages have been changed. First of all, preparations for some requirements for the Ibosoft AIS web map are planned. Afterwards, following the preparation of some calculation tools, templates for paper map production will be prepared.
 
 ## Purpose:
 
@@ -76,34 +79,34 @@ Documentation has not been prepared yet as the project is still in its early sta
 
 * SVG symbols extracted from ICAO Annex 4 and QGIS library file (Nearly all point symbols are covered, but there are still deficiencies in line and area symbology.)
 
-### Work in Progress:
-* Template file for QGIS.
-* Blank AIP template compatible with ICAO doc 8126 & 10066. (For MS Office Word.)
+### ~~Work in Progress:~~
+* ~~Template file for QGIS.~~
+* ~~Blank AIP template compatible with ICAO doc 8126 & 10066. (For MS Office Word.)~~
 
-### Planned Aims:
-* Completion of missing Annex 4 symbologies.
-* Setting up different colorations in accordance with ICAO Doc 8697 through symbols or QGIS template.
-* Creation of QGZ print layout for ADC, PRKG, IAC, SID, STAR charts compatible with ICAO Doc 8697.
-* ICAO PANS-OPS compatible AMA calculator for QGIS.
-* ICAO PANS-OPS compatible PAR OCS area generator for QGIS.
+### ~~Planned Aims:~~
+* ~~Completion of missing Annex 4 symbologies.~~
+* ~~Setting up different colorations in accordance with ICAO Doc 8697 through symbols or QGIS template.~~
+* ~~Creation of QGZ print layout for ADC, PRKG, IAC, SID, STAR charts compatible with ICAO Doc 8697.~~
+* ~~ICAO PANS-OPS compatible AMA calculator for QGIS.~~
+* ~~ICAO PANS-OPS compatible PAR OCS area generator for QGIS.~~
 
-### Future Aims:
-* QGZ print layouts for AOC, PATC, ENC, ARC, VAC, ATCSMAC charts.
-* NATO/MIPS symbology.
-* ICAO PANS-OPS compatible MSA calculator for QGIS.
-* ICAO PANS-OPS compatible Circling area calculator for QGIS.
-* MIPS compatible Emergency Safe Altitude 100 NM calculator for QGIS.
-* Use of real AIXM data instead of other sources for aeronautical data.
+### ~~Future Aims:~~
+* ~~QGZ print layouts for AOC, PATC, ENC, ARC, VAC, ATCSMAC charts.~~
+* ~~NATO/MIPS symbology.~~
+* ~~ICAO PANS-OPS compatible MSA calculator for QGIS.~~
+* ~~ICAO PANS-OPS compatible Circling area calculator for QGIS.~~
+* ~~MIPS compatible Emergency Safe Altitude 100 NM calculator for QGIS.~~
+* ~~Use of real AIXM data instead of other sources for aeronautical data.~~
 
-## About Test Data:
-Test data is provided to create visuality in the template. You can also use your own data by changing the sources of the relevant layers.
+## ~~About Test Data:~~
+~~Test data is provided to create visuality in the template. You can also use your own data by changing the sources of the relevant layers.~~
 
-Test data has been obtained from the following sources to cover Turkey:
-* SRTM 1 Arc-Second Global 30m accuracy GeoTIFF DEM data converted to feet unit covering the Antalya region for topography.
-* OSM data extracted through Geofabrik and Overpass Turbo for hydrography.
-* OSM data extracted through Overpass Turbo for cultural data.
-* SDO data obtained from EUROCONTROL EAD Basic for aeronautical data.
-* ENR 5.4 and Antalya AIXM obstacle data for aeronautical obstacle data.
+~~Test data has been obtained from the following sources to cover Turkey:~~
+* ~~SRTM 1 Arc-Second Global 30m accuracy GeoTIFF DEM data converted to feet unit covering the Antalya region for topography.~~
+* ~~OSM data extracted through Geofabrik and Overpass Turbo for hydrography.~~
+* ~~OSM data extracted through Overpass Turbo for cultural data.~~
+* ~~SDO data obtained from EUROCONTROL EAD Basic for aeronautical data.~~
+* ~~ENR 5.4 and Antalya AIXM obstacle data for aeronautical obstacle data.~~
 
 ## Other Information:
 
