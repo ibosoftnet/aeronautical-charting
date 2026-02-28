@@ -10016,7 +10016,8 @@
         "type": "FIR",
         "cip": "../images/aixm/fir_icon.png",
         "pic": "<table><br><b>TYPE : </b>FIR<br><b>NAME : </b>LTAA<br><b>NAME : </b>ANKARA FIR<br><b>UPPER LIMIT : </b>999<br><b>UPPER LIMIT REF. : </b>STD<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>MSL",
-        "zi": 301
+        "zi": 301,
+        "classification": "C: FL305 - FL 660"
       },
       "type": "Feature"
     },
@@ -12492,7 +12493,8 @@
         "type": "FIR",
         "cip": "../images/aixm/fir_icon.png",
         "pic": "<table><br><b>TYPE : </b>FIR<br><b>NAME : </b>LTBB<br><b>NAME : </b>ISTANBUL FIR<br><b>UPPER LIMIT : </b>999<br><b>UPPER LIMIT REF. : </b>STD<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>MSL",
-        "zi": 301
+        "zi": 301,
+        "classification": ""
       },
       "type": "Feature"
     }
