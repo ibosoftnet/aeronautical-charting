@@ -22,6 +22,8 @@ Proje henüz erken ssafhada olduğundan dokümantasyon henüz hazırlanmamışt�
 ### ~~Üzerinde Uğraşılanlar:~~
 * ~~QGIS için şablon dosya.~~
 * ~~ICAO Doc 8126 & 10066 ile uyumlu boş AIP şablonu. (MS Office Word için.)~~
+* ATS hava sahası simgeleri ve etiketleri hazırlanıyor.  
+![alt text](Images%20About%20Project/image.png)
 
 ### ~~Planlanan Hedefler:~~
 * ~~Eksik Annex 4 sembolojilerinin tamamlanması.~~
