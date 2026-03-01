@@ -1,0 +1,3602 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              33,
+              42
+            ],
+            [
+              34,
+              42
+            ],
+            [
+              34,
+              43
+            ],
+            [
+              33,
+              43
+            ],
+            [
+              33,
+              42
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 4600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34,
+              42
+            ],
+            [
+              35,
+              42
+            ],
+            [
+              35,
+              43
+            ],
+            [
+              34,
+              43
+            ],
+            [
+              34,
+              42
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 3800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35,
+              42
+            ],
+            [
+              36,
+              42
+            ],
+            [
+              36,
+              43
+            ],
+            [
+              35,
+              43
+            ],
+            [
+              35,
+              42
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 4200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              26,
+              41
+            ],
+            [
+              27,
+              41
+            ],
+            [
+              27,
+              42
+            ],
+            [
+              26,
+              42
+            ],
+            [
+              26,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 6200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27,
+              41
+            ],
+            [
+              28,
+              41
+            ],
+            [
+              28,
+              42
+            ],
+            [
+              27,
+              42
+            ],
+            [
+              27,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 6800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              28,
+              41
+            ],
+            [
+              29,
+              41
+            ],
+            [
+              29,
+              42
+            ],
+            [
+              28,
+              42
+            ],
+            [
+              28,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 5000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29,
+              41
+            ],
+            [
+              30,
+              41
+            ],
+            [
+              30,
+              42
+            ],
+            [
+              29,
+              42
+            ],
+            [
+              29,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 5100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30,
+              41
+            ],
+            [
+              31,
+              41
+            ],
+            [
+              31,
+              42
+            ],
+            [
+              30,
+              42
+            ],
+            [
+              30,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 4700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              31,
+              41
+            ],
+            [
+              32,
+              41
+            ],
+            [
+              32,
+              42
+            ],
+            [
+              31,
+              42
+            ],
+            [
+              31,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              32,
+              41
+            ],
+            [
+              33,
+              41
+            ],
+            [
+              33,
+              42
+            ],
+            [
+              32,
+              42
+            ],
+            [
+              32,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              33,
+              41
+            ],
+            [
+              34,
+              41
+            ],
+            [
+              34,
+              42
+            ],
+            [
+              33,
+              42
+            ],
+            [
+              33,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34,
+              41
+            ],
+            [
+              35,
+              41
+            ],
+            [
+              35,
+              42
+            ],
+            [
+              34,
+              42
+            ],
+            [
+              34,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35,
+              41
+            ],
+            [
+              36,
+              41
+            ],
+            [
+              36,
+              42
+            ],
+            [
+              35,
+              42
+            ],
+            [
+              35,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              36,
+              41
+            ],
+            [
+              37,
+              41
+            ],
+            [
+              37,
+              42
+            ],
+            [
+              36,
+              42
+            ],
+            [
+              36,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 7800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              37,
+              41
+            ],
+            [
+              38,
+              41
+            ],
+            [
+              38,
+              42
+            ],
+            [
+              37,
+              42
+            ],
+            [
+              37,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 5900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              38,
+              41
+            ],
+            [
+              39,
+              41
+            ],
+            [
+              39,
+              42
+            ],
+            [
+              38,
+              42
+            ],
+            [
+              38,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 5700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39,
+              41
+            ],
+            [
+              40,
+              41
+            ],
+            [
+              40,
+              42
+            ],
+            [
+              39,
+              42
+            ],
+            [
+              39,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 7100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              40,
+              41
+            ],
+            [
+              41,
+              41
+            ],
+            [
+              41,
+              42
+            ],
+            [
+              40,
+              42
+            ],
+            [
+              40,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              41,
+              41
+            ],
+            [
+              42,
+              41
+            ],
+            [
+              42,
+              42
+            ],
+            [
+              41,
+              42
+            ],
+            [
+              41,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 15300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              42,
+              41
+            ],
+            [
+              43,
+              41
+            ],
+            [
+              43,
+              42
+            ],
+            [
+              42,
+              42
+            ],
+            [
+              42,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              43,
+              41
+            ],
+            [
+              44,
+              41
+            ],
+            [
+              44,
+              42
+            ],
+            [
+              43,
+              42
+            ],
+            [
+              43,
+              41
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              25,
+              40
+            ],
+            [
+              26,
+              40
+            ],
+            [
+              26,
+              41
+            ],
+            [
+              25,
+              41
+            ],
+            [
+              25,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              26,
+              40
+            ],
+            [
+              27,
+              40
+            ],
+            [
+              27,
+              41
+            ],
+            [
+              26,
+              41
+            ],
+            [
+              26,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 6500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27,
+              40
+            ],
+            [
+              28,
+              40
+            ],
+            [
+              28,
+              41
+            ],
+            [
+              27,
+              41
+            ],
+            [
+              27,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 6700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              28,
+              40
+            ],
+            [
+              29,
+              40
+            ],
+            [
+              29,
+              41
+            ],
+            [
+              28,
+              41
+            ],
+            [
+              28,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 7700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29,
+              40
+            ],
+            [
+              30,
+              40
+            ],
+            [
+              30,
+              41
+            ],
+            [
+              29,
+              41
+            ],
+            [
+              29,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30,
+              40
+            ],
+            [
+              31,
+              40
+            ],
+            [
+              31,
+              41
+            ],
+            [
+              30,
+              41
+            ],
+            [
+              30,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              31,
+              40
+            ],
+            [
+              32,
+              40
+            ],
+            [
+              32,
+              41
+            ],
+            [
+              31,
+              41
+            ],
+            [
+              31,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              32,
+              40
+            ],
+            [
+              33,
+              40
+            ],
+            [
+              33,
+              41
+            ],
+            [
+              32,
+              41
+            ],
+            [
+              32,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              33,
+              40
+            ],
+            [
+              34,
+              40
+            ],
+            [
+              34,
+              41
+            ],
+            [
+              33,
+              41
+            ],
+            [
+              33,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34,
+              40
+            ],
+            [
+              35,
+              40
+            ],
+            [
+              35,
+              41
+            ],
+            [
+              34,
+              41
+            ],
+            [
+              34,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35,
+              40
+            ],
+            [
+              36,
+              40
+            ],
+            [
+              36,
+              41
+            ],
+            [
+              35,
+              41
+            ],
+            [
+              35,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              36,
+              40
+            ],
+            [
+              37,
+              40
+            ],
+            [
+              37,
+              41
+            ],
+            [
+              36,
+              41
+            ],
+            [
+              36,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              37,
+              40
+            ],
+            [
+              38,
+              40
+            ],
+            [
+              38,
+              41
+            ],
+            [
+              37,
+              41
+            ],
+            [
+              37,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              38,
+              40
+            ],
+            [
+              39,
+              40
+            ],
+            [
+              39,
+              41
+            ],
+            [
+              38,
+              41
+            ],
+            [
+              38,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39,
+              40
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              40,
+              41
+            ],
+            [
+              39,
+              41
+            ],
+            [
+              39,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              40,
+              40
+            ],
+            [
+              41,
+              40
+            ],
+            [
+              41,
+              41
+            ],
+            [
+              40,
+              41
+            ],
+            [
+              40,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 15900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              41,
+              40
+            ],
+            [
+              42,
+              40
+            ],
+            [
+              42,
+              41
+            ],
+            [
+              41,
+              41
+            ],
+            [
+              41,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 16700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              42,
+              40
+            ],
+            [
+              43,
+              40
+            ],
+            [
+              43,
+              41
+            ],
+            [
+              42,
+              41
+            ],
+            [
+              42,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              43,
+              40
+            ],
+            [
+              44,
+              40
+            ],
+            [
+              44,
+              41
+            ],
+            [
+              43,
+              41
+            ],
+            [
+              43,
+              40
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              25,
+              39
+            ],
+            [
+              26,
+              39
+            ],
+            [
+              26,
+              40
+            ],
+            [
+              25,
+              40
+            ],
+            [
+              25,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 5300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              26,
+              39
+            ],
+            [
+              27,
+              39
+            ],
+            [
+              27,
+              40
+            ],
+            [
+              26,
+              40
+            ],
+            [
+              26,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27,
+              39
+            ],
+            [
+              28,
+              39
+            ],
+            [
+              28,
+              40
+            ],
+            [
+              27,
+              40
+            ],
+            [
+              27,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 7800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              28,
+              39
+            ],
+            [
+              29,
+              39
+            ],
+            [
+              29,
+              40
+            ],
+            [
+              28,
+              40
+            ],
+            [
+              28,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29,
+              39
+            ],
+            [
+              30,
+              39
+            ],
+            [
+              30,
+              40
+            ],
+            [
+              29,
+              40
+            ],
+            [
+              29,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30,
+              39
+            ],
+            [
+              31,
+              39
+            ],
+            [
+              31,
+              40
+            ],
+            [
+              30,
+              40
+            ],
+            [
+              30,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              31,
+              39
+            ],
+            [
+              32,
+              39
+            ],
+            [
+              32,
+              40
+            ],
+            [
+              31,
+              40
+            ],
+            [
+              31,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              32,
+              39
+            ],
+            [
+              33,
+              39
+            ],
+            [
+              33,
+              40
+            ],
+            [
+              32,
+              40
+            ],
+            [
+              32,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              33,
+              39
+            ],
+            [
+              34,
+              39
+            ],
+            [
+              34,
+              40
+            ],
+            [
+              33,
+              40
+            ],
+            [
+              33,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34,
+              39
+            ],
+            [
+              35,
+              39
+            ],
+            [
+              35,
+              40
+            ],
+            [
+              34,
+              40
+            ],
+            [
+              34,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35,
+              39
+            ],
+            [
+              36,
+              39
+            ],
+            [
+              36,
+              40
+            ],
+            [
+              35,
+              40
+            ],
+            [
+              35,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              36,
+              39
+            ],
+            [
+              37,
+              39
+            ],
+            [
+              37,
+              40
+            ],
+            [
+              36,
+              40
+            ],
+            [
+              36,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              37,
+              39
+            ],
+            [
+              38,
+              39
+            ],
+            [
+              38,
+              40
+            ],
+            [
+              37,
+              40
+            ],
+            [
+              37,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              38,
+              39
+            ],
+            [
+              39,
+              39
+            ],
+            [
+              39,
+              40
+            ],
+            [
+              38,
+              40
+            ],
+            [
+              38,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39,
+              39
+            ],
+            [
+              40,
+              39
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              39,
+              40
+            ],
+            [
+              39,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 15100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              40,
+              39
+            ],
+            [
+              41,
+              39
+            ],
+            [
+              41,
+              40
+            ],
+            [
+              40,
+              40
+            ],
+            [
+              40,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              41,
+              39
+            ],
+            [
+              42,
+              39
+            ],
+            [
+              42,
+              40
+            ],
+            [
+              41,
+              40
+            ],
+            [
+              41,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              42,
+              39
+            ],
+            [
+              43,
+              39
+            ],
+            [
+              43,
+              40
+            ],
+            [
+              42,
+              40
+            ],
+            [
+              42,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              43,
+              39
+            ],
+            [
+              44,
+              39
+            ],
+            [
+              44,
+              40
+            ],
+            [
+              43,
+              40
+            ],
+            [
+              43,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 15100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              44,
+              39
+            ],
+            [
+              45,
+              39
+            ],
+            [
+              45,
+              40
+            ],
+            [
+              44,
+              40
+            ],
+            [
+              44,
+              39
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 20400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              26,
+              38
+            ],
+            [
+              27,
+              38
+            ],
+            [
+              27,
+              39
+            ],
+            [
+              26,
+              39
+            ],
+            [
+              26,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 7600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27,
+              38
+            ],
+            [
+              28,
+              38
+            ],
+            [
+              28,
+              39
+            ],
+            [
+              27,
+              39
+            ],
+            [
+              27,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              28,
+              38
+            ],
+            [
+              29,
+              38
+            ],
+            [
+              29,
+              39
+            ],
+            [
+              28,
+              39
+            ],
+            [
+              28,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29,
+              38
+            ],
+            [
+              30,
+              38
+            ],
+            [
+              30,
+              39
+            ],
+            [
+              29,
+              39
+            ],
+            [
+              29,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30,
+              38
+            ],
+            [
+              31,
+              38
+            ],
+            [
+              31,
+              39
+            ],
+            [
+              30,
+              39
+            ],
+            [
+              30,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              31,
+              38
+            ],
+            [
+              32,
+              38
+            ],
+            [
+              32,
+              39
+            ],
+            [
+              31,
+              39
+            ],
+            [
+              31,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              32,
+              38
+            ],
+            [
+              33,
+              38
+            ],
+            [
+              33,
+              39
+            ],
+            [
+              32,
+              39
+            ],
+            [
+              32,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              33,
+              38
+            ],
+            [
+              34,
+              38
+            ],
+            [
+              34,
+              39
+            ],
+            [
+              33,
+              39
+            ],
+            [
+              33,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34,
+              38
+            ],
+            [
+              35,
+              38
+            ],
+            [
+              35,
+              39
+            ],
+            [
+              34,
+              39
+            ],
+            [
+              34,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35,
+              38
+            ],
+            [
+              36,
+              38
+            ],
+            [
+              36,
+              39
+            ],
+            [
+              35,
+              39
+            ],
+            [
+              35,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 16300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              36,
+              38
+            ],
+            [
+              37,
+              38
+            ],
+            [
+              37,
+              39
+            ],
+            [
+              36,
+              39
+            ],
+            [
+              36,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              37,
+              38
+            ],
+            [
+              38,
+              38
+            ],
+            [
+              38,
+              39
+            ],
+            [
+              37,
+              39
+            ],
+            [
+              37,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              38,
+              38
+            ],
+            [
+              39,
+              38
+            ],
+            [
+              39,
+              39
+            ],
+            [
+              38,
+              39
+            ],
+            [
+              38,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39,
+              38
+            ],
+            [
+              40,
+              38
+            ],
+            [
+              40,
+              39
+            ],
+            [
+              39,
+              39
+            ],
+            [
+              39,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              40,
+              38
+            ],
+            [
+              41,
+              38
+            ],
+            [
+              41,
+              39
+            ],
+            [
+              40,
+              39
+            ],
+            [
+              40,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              41,
+              38
+            ],
+            [
+              42,
+              38
+            ],
+            [
+              42,
+              39
+            ],
+            [
+              41,
+              39
+            ],
+            [
+              41,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              42,
+              38
+            ],
+            [
+              43,
+              38
+            ],
+            [
+              43,
+              39
+            ],
+            [
+              42,
+              39
+            ],
+            [
+              42,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 16800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              43,
+              38
+            ],
+            [
+              44,
+              38
+            ],
+            [
+              44,
+              39
+            ],
+            [
+              43,
+              39
+            ],
+            [
+              43,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 15500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              44,
+              38
+            ],
+            [
+              45,
+              38
+            ],
+            [
+              45,
+              39
+            ],
+            [
+              44,
+              39
+            ],
+            [
+              44,
+              38
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 15500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27,
+              37
+            ],
+            [
+              28,
+              37
+            ],
+            [
+              28,
+              38
+            ],
+            [
+              27,
+              38
+            ],
+            [
+              27,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              28,
+              37
+            ],
+            [
+              29,
+              37
+            ],
+            [
+              29,
+              38
+            ],
+            [
+              28,
+              38
+            ],
+            [
+              28,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29,
+              37
+            ],
+            [
+              30,
+              37
+            ],
+            [
+              30,
+              38
+            ],
+            [
+              29,
+              38
+            ],
+            [
+              29,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30,
+              37
+            ],
+            [
+              31,
+              37
+            ],
+            [
+              31,
+              38
+            ],
+            [
+              30,
+              38
+            ],
+            [
+              30,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              31,
+              37
+            ],
+            [
+              32,
+              37
+            ],
+            [
+              32,
+              38
+            ],
+            [
+              31,
+              38
+            ],
+            [
+              31,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              32,
+              37
+            ],
+            [
+              33,
+              37
+            ],
+            [
+              33,
+              38
+            ],
+            [
+              32,
+              38
+            ],
+            [
+              32,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              33,
+              37
+            ],
+            [
+              34,
+              37
+            ],
+            [
+              34,
+              38
+            ],
+            [
+              33,
+              38
+            ],
+            [
+              33,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34,
+              37
+            ],
+            [
+              35,
+              37
+            ],
+            [
+              35,
+              38
+            ],
+            [
+              34,
+              38
+            ],
+            [
+              34,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 15000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35,
+              37
+            ],
+            [
+              36,
+              37
+            ],
+            [
+              36,
+              38
+            ],
+            [
+              35,
+              38
+            ],
+            [
+              35,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 15800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              36,
+              37
+            ],
+            [
+              37,
+              37
+            ],
+            [
+              37,
+              38
+            ],
+            [
+              36,
+              38
+            ],
+            [
+              36,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              37,
+              37
+            ],
+            [
+              38,
+              37
+            ],
+            [
+              38,
+              38
+            ],
+            [
+              37,
+              38
+            ],
+            [
+              37,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12700
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              38,
+              37
+            ],
+            [
+              39,
+              37
+            ],
+            [
+              39,
+              38
+            ],
+            [
+              38,
+              38
+            ],
+            [
+              38,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              39,
+              37
+            ],
+            [
+              40,
+              37
+            ],
+            [
+              40,
+              38
+            ],
+            [
+              39,
+              38
+            ],
+            [
+              39,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              40,
+              37
+            ],
+            [
+              41,
+              37
+            ],
+            [
+              41,
+              38
+            ],
+            [
+              40,
+              38
+            ],
+            [
+              40,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              41,
+              37
+            ],
+            [
+              42,
+              37
+            ],
+            [
+              42,
+              38
+            ],
+            [
+              41,
+              38
+            ],
+            [
+              41,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8500
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              42,
+              37
+            ],
+            [
+              43,
+              37
+            ],
+            [
+              43,
+              38
+            ],
+            [
+              42,
+              38
+            ],
+            [
+              42,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 14100
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              43,
+              37
+            ],
+            [
+              44,
+              37
+            ],
+            [
+              44,
+              38
+            ],
+            [
+              43,
+              38
+            ],
+            [
+              43,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 17000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              44,
+              37
+            ],
+            [
+              45,
+              37
+            ],
+            [
+              45,
+              38
+            ],
+            [
+              44,
+              38
+            ],
+            [
+              44,
+              37
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 17000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              27,
+              36
+            ],
+            [
+              28,
+              36
+            ],
+            [
+              28,
+              37
+            ],
+            [
+              27,
+              37
+            ],
+            [
+              27,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 7400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              28,
+              36
+            ],
+            [
+              29,
+              36
+            ],
+            [
+              29,
+              37
+            ],
+            [
+              28,
+              37
+            ],
+            [
+              28,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 8000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29,
+              36
+            ],
+            [
+              30,
+              36
+            ],
+            [
+              30,
+              37
+            ],
+            [
+              29,
+              37
+            ],
+            [
+              29,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30,
+              36
+            ],
+            [
+              31,
+              36
+            ],
+            [
+              31,
+              37
+            ],
+            [
+              30,
+              37
+            ],
+            [
+              30,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              31,
+              36
+            ],
+            [
+              32,
+              36
+            ],
+            [
+              32,
+              37
+            ],
+            [
+              31,
+              37
+            ],
+            [
+              31,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 12000
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              32,
+              36
+            ],
+            [
+              33,
+              36
+            ],
+            [
+              33,
+              37
+            ],
+            [
+              32,
+              37
+            ],
+            [
+              32,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 13300
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              33,
+              36
+            ],
+            [
+              34,
+              36
+            ],
+            [
+              34,
+              37
+            ],
+            [
+              33,
+              37
+            ],
+            [
+              33,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 11600
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              34,
+              36
+            ],
+            [
+              35,
+              36
+            ],
+            [
+              35,
+              37
+            ],
+            [
+              34,
+              37
+            ],
+            [
+              34,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10900
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35,
+              36
+            ],
+            [
+              36,
+              36
+            ],
+            [
+              36,
+              37
+            ],
+            [
+              35,
+              37
+            ],
+            [
+              35,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 9400
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              36,
+              36
+            ],
+            [
+              37,
+              36
+            ],
+            [
+              37,
+              37
+            ],
+            [
+              36,
+              37
+            ],
+            [
+              36,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 10800
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              37,
+              36
+            ],
+            [
+              38,
+              36
+            ],
+            [
+              38,
+              37
+            ],
+            [
+              37,
+              37
+            ],
+            [
+              37,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 7200
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              38,
+              36
+            ],
+            [
+              39,
+              36
+            ],
+            [
+              39,
+              37
+            ],
+            [
+              38,
+              37
+            ],
+            [
+              38,
+              36
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "altitude": 5800
+      }
+    }
+  ]
+}

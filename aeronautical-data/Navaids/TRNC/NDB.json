@@ -1,0 +1,27 @@
+﻿{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          33.743056,
+          35.231667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GECITKALE",
+        "t": null,
+        "pic": "<b>DESIGNATOR : </b>GKE<br><b>NAME : </b>GECITKALE<br><b>TYPE : </b>NDB<br><b>POSITION : </b>35\u00b013'54''N  033\u00b044'35''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "NDB",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": null
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}

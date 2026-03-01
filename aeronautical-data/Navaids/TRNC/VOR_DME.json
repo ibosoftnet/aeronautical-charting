@@ -1,0 +1,49 @@
+﻿{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          33.491389,
+          35.156667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ERCAN",
+        "t": null,
+        "pic": "<b>DESIGNATOR : </b>ECN<br><b>NAME : </b>ERCAN<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>35\u00b009'24''N  033\u00b029'29''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "VOR_DME",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": null
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          33.763611,
+          35.235278
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GECITKALE",
+        "t": null,
+        "pic": "<b>DESIGNATOR : </b>GKE<br><b>NAME : </b>GECITKALE<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>35\u00b014'07''N  033\u00b045'49''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "VOR_DME",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": null
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}
