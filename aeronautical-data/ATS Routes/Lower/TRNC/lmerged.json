@@ -1907,6 +1907,359 @@
                 "ais_END_POINT_COORDINATES": "36.86277777777778 33.291666666666664"
             },
             "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    33.36166666666667,
+                    35.63972222222222
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ip": "",
+                "t": "",
+                "hi": "GIRNE",
+                "pic": "<br><b>TYPE : </b>DP<br><b>GML POS : </b>35.639722N  33.361667E  ",
+                "kid": "",
+                "rpType": "",
+                "type": "DP",
+                "cip": "",
+                "ais_REPORTING_ATC": "COMPULSORY",
+                "ais_NAVIGATION_TYPE": "CONV"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    33.491388888888886,
+                    35.15666666666667
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ip": "",
+                "t": "",
+                "hi": "ERCAN VOR",
+                "pic": "<br><b>TYPE : </b>VOR<br><b>GML POS : </b>35.156667N  33.491389E  ",
+                "kid": "",
+                "rpType": "",
+                "type": "VOR",
+                "cip": "",
+                "ais_REPORTING_ATC": "COMPULSORY",
+                "ais_NAVIGATION_TYPE": "CONV"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    34.47472222222222,
+                    34.72222222222222
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ip": "",
+                "t": "",
+                "hi": "SAHIL",
+                "pic": "<br><b>TYPE : </b>DP<br><b>GML POS : </b>34.722222N  34.474722E  ",
+                "kid": "",
+                "rpType": "",
+                "type": "DP",
+                "cip": "",
+                "ais_REPORTING_ATC": "COMPULSORY",
+                "ais_NAVIGATION_TYPE": "CONV"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    30.888611111111112,
+                    35.1775
+                ],
+                "type": "Point"
+            },
+            "properties": {
+                "ip": "",
+                "t": "",
+                "hi": "MEDIT",
+                "pic": "<br><b>TYPE : </b>DP<br><b>GML POS : </b>35.177500N  30.888611E  ",
+                "kid": "",
+                "rpType": "",
+                "type": "DP",
+                "cip": "",
+                "ais_REPORTING_ATC": "COMPULSORY",
+                "ais_NAVIGATION_TYPE": "CONV"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        30.824444444444444,
+                        36.04055555555556
+                    ],
+                    [
+                        30.849722222222223,
+                        35.61555555555556
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "hi": "A 16",
+                "t": "",
+                "pic": "",
+                "kid": "",
+                "strclr": "#023E9E",
+                "ip": "",
+                "type": "ROUTE",
+                "cip": "",
+                "ipm": "",
+                "is": "",
+                "sa": "175",
+                "ea": "355",
+                "cil": "",
+                "ht": "",
+                "zi": "",
+                "ais_LEVEL": "LOWER",
+                "ais_LENGTH": "26",
+                "ais_WIDTH_LEFT": "",
+                "ais_WIDTH_RIGHT": "",
+                "ais_LOWER_LIMIT": "55",
+                "ais_LOWER_LIMIT_REFERENCE": "STD",
+                "ais_UPPER_LIMIT": "460",
+                "ais_UPPER_LIMIT_REFERENCE": "STD",
+                "ais_TRUE_TRACK": "",
+                "ais_REVERSE_TRUE_TRACK": "",
+                "ais_MAGNETIC_TRACK": "175",
+                "ais_NAVIGATION_TYPE": "CONV",
+                "ais_REVERSE_MAGNETIC_TRACK": "355",
+                "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
+                "ais_START_POINT_NAME": "TOMBI",
+                "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_END_POINT_NAME": "DASNI",
+                "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_START_POINT_COORDINATES": "36.04055555555556 30.824444444444444",
+                "ais_END_POINT_COORDINATES": "35.61555555555556 30.849722222222223"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        30.849722222222223,
+                        35.61555555555556
+                    ],
+                    [
+                        30.888611111111112,
+                        35.1775
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "hi": "A 16",
+                "t": "",
+                "pic": "",
+                "kid": "",
+                "strclr": "#023E9E",
+                "ip": "",
+                "type": "ROUTE",
+                "cip": "",
+                "ipm": "",
+                "is": "",
+                "sa": "175",
+                "ea": "355",
+                "cil": "",
+                "ht": "",
+                "zi": "",
+                "ais_LEVEL": "LOWER",
+                "ais_LENGTH": "26",
+                "ais_WIDTH_LEFT": "",
+                "ais_WIDTH_RIGHT": "",
+                "ais_LOWER_LIMIT": "55",
+                "ais_LOWER_LIMIT_REFERENCE": "STD",
+                "ais_UPPER_LIMIT": "460",
+                "ais_UPPER_LIMIT_REFERENCE": "STD",
+                "ais_TRUE_TRACK": "",
+                "ais_REVERSE_TRUE_TRACK": "",
+                "ais_MAGNETIC_TRACK": "175",
+                "ais_NAVIGATION_TYPE": "CONV",
+                "ais_REVERSE_MAGNETIC_TRACK": "355",
+                "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
+                "ais_START_POINT_NAME": "DASNI",
+                "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_END_POINT_NAME": "MEDIT",
+                "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_START_POINT_COORDINATES": "35.61555555555556 30.849722222222223",
+                "ais_END_POINT_COORDINATES": "35.1775 30.888611111111112"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        33.282777777777774,
+                        35.93222222222222
+                    ],
+                    [
+                        33.36166666666667,
+                        35.63972222222222
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "hi": "A 28",
+                "t": "",
+                "pic": "",
+                "kid": "",
+                "strclr": "#023E9E",
+                "ip": "",
+                "type": "ROUTE",
+                "cip": "",
+                "ipm": "",
+                "is": "",
+                "sa": "163",
+                "ea": "344",
+                "cil": "",
+                "ht": "",
+                "zi": "",
+                "ais_LEVEL": "LOWER",
+                "ais_LENGTH": "17.9",
+                "ais_WIDTH_LEFT": "",
+                "ais_WIDTH_RIGHT": "",
+                "ais_LOWER_LIMIT": "95",
+                "ais_LOWER_LIMIT_REFERENCE": "STD",
+                "ais_UPPER_LIMIT": "460",
+                "ais_UPPER_LIMIT_REFERENCE": "STD",
+                "ais_TRUE_TRACK": "",
+                "ais_REVERSE_TRUE_TRACK": "",
+                "ais_MAGNETIC_TRACK": "163",
+                "ais_NAVIGATION_TYPE": "CONV",
+                "ais_REVERSE_MAGNETIC_TRACK": "344",
+                "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
+                "ais_START_POINT_NAME": "DOREN",
+                "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_END_POINT_NAME": "GIRNE",
+                "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_START_POINT_COORDINATES": "35.93222222222222 33.282777777777774",
+                "ais_END_POINT_COORDINATES": "35.63972222222222 33.36166666666667"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        33.36166666666667,
+                        35.63972222222222
+                    ],
+                    [
+                        33.491388888888886,
+                        35.15666666666667
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "hi": "A 28",
+                "t": "",
+                "pic": "",
+                "kid": "",
+                "strclr": "#023E9E",
+                "ip": "",
+                "type": "ROUTE",
+                "cip": "",
+                "ipm": "",
+                "is": "",
+                "sa": "163",
+                "ea": "344",
+                "cil": "",
+                "ht": "",
+                "zi": "",
+                "ais_LEVEL": "LOWER",
+                "ais_LENGTH": "29.6",
+                "ais_WIDTH_LEFT": "",
+                "ais_WIDTH_RIGHT": "",
+                "ais_LOWER_LIMIT": "55",
+                "ais_LOWER_LIMIT_REFERENCE": "STD",
+                "ais_UPPER_LIMIT": "460",
+                "ais_UPPER_LIMIT_REFERENCE": "STD",
+                "ais_TRUE_TRACK": "",
+                "ais_REVERSE_TRUE_TRACK": "",
+                "ais_MAGNETIC_TRACK": "163",
+                "ais_NAVIGATION_TYPE": "CONV",
+                "ais_REVERSE_MAGNETIC_TRACK": "344",
+                "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
+                "ais_START_POINT_NAME": "GIRNE",
+                "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_END_POINT_NAME": "ERCAN VOR",
+                "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_START_POINT_COORDINATES": "35.63972222222222 33.36166666666667",
+                "ais_END_POINT_COORDINATES": "35.15666666666667 33.491388888888886"
+            },
+            "type": "Feature"
+        },
+        {
+            "geometry": {
+                "coordinates": [
+                    [
+                        34.6275,
+                        35.035
+                    ],
+                    [
+                        34.47472222222222,
+                        34.72222222222222
+                    ]
+                ],
+                "type": "LineString"
+            },
+            "properties": {
+                "hi": "R 18",
+                "t": "",
+                "pic": "",
+                "kid": "",
+                "strclr": "#023E9E",
+                "ip": "",
+                "type": "ROUTE",
+                "cip": "",
+                "ipm": "",
+                "is": "",
+                "sa": "199",
+                "ea": "019",
+                "cil": "",
+                "ht": "",
+                "zi": "",
+                "ais_LEVEL": "LOWER",
+                "ais_LENGTH": "20",
+                "ais_WIDTH_LEFT": "",
+                "ais_WIDTH_RIGHT": "",
+                "ais_LOWER_LIMIT": "55",
+                "ais_LOWER_LIMIT_REFERENCE": "STD",
+                "ais_UPPER_LIMIT": "460",
+                "ais_UPPER_LIMIT_REFERENCE": "STD",
+                "ais_TRUE_TRACK": "",
+                "ais_REVERSE_TRUE_TRACK": "",
+                "ais_MAGNETIC_TRACK": "199",
+                "ais_NAVIGATION_TYPE": "CONV",
+                "ais_REVERSE_MAGNETIC_TRACK": "019",
+                "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
+                "ais_START_POINT_NAME": "ALSUS",
+                "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_END_POINT_NAME": "SAHIL",
+                "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
+                "ais_START_POINT_COORDINATES": "35.035 34.6275",
+                "ais_END_POINT_COORDINATES": "34.72222222222222 34.47472222222222"
+            },
+            "type": "Feature"
         }
     ]
 }

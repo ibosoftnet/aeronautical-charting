@@ -1,0 +1,269 @@
+{
+  "features": [
+    {
+      "geometry": {
+        "coordinates": [
+          34.6275,
+          35.035
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "ALSUS",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>35°02'06''N  034°37'39''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.05,
+          34.483333333333334
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BALMA",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>34°29'00''N  035°03'00''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          34.64972222222222,
+          34.594166666666666
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "BARIS",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>34°35'39''N  034°38'59''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.85,
+          35.61666666666667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "DASNI",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>35°37'00''N  030°51'00''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.0,
+          35.833333333333336
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "EVENO",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>35°50'00''N  030°00'00''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          33.36166666666667,
+          35.63972222222222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GIRNE",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>35°38'23''N  033°21'42''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.76638888888889,
+          35.11555555555556
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "LEFKE",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>35°06'56''N  032°45'59''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          30.888611111111112,
+          35.1775
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MEDIT",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>35°10'39''N  030°53'19''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          34.14972222222222,
+          34.941111111111105
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MURAT",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>34°56'28''N  034°08'59''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.71638888888889,
+          35.19194444444444
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "NIKAS",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>35°11'31''N  035°42'59''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          34.47472222222222,
+          34.72222222222222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "SAHIL",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>34°43'20''N  034°28'29''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          32.058055555555555,
+          35.305277777777775
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "VADUS",
+        "t": 3,
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>35°18'19''N  032°03'29''E  ",
+        "kid": "",
+        "ip": "",
+        "type": "DP",
+        "cip": "",
+        "cil": "",
+        "ht": true,
+        "zi": ""
+      },
+      "type": "Feature"
+    }
+  ],
+  "type": "FeatureCollection"
+}
