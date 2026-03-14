@@ -1,0 +1,81 @@
+ROCK-ISLET
+
+
+[out:json][timeout:25];
+
+(
+  node["natural"="reef"](33,24,44,47);
+  node["natural"="shoal"](33,24,44,47);
+  node["natural"="islet"](33,24,44,47);
+
+  node["seamark:type"="rock"](33,24,44,47);
+  node["seamark:type"="reef"](33,24,44,47);
+  node["seamark:type"="isolated_danger"](33,24,44,47);
+);
+
+out body;
+
+
+
+RESERVOIL
+
+[out:json][timeout:25];
+
+(
+  node["natural"="water"]["water"="reservoir"](33,24,44,47);
+  node["landuse"="reservoir"](33,24,44,47);
+  node["water"="reservoir"](33,24,44,47);
+);
+
+out body;
+>;
+out skel qt;
+
+
+KURU TUZ GÖLLERİ
+
+[out:json][timeout:25];
+
+(
+  way["natural"="playa"](33,24,44,47);
+  relation["natural"="playa"](33,24,44,47);
+
+  way["natural"="salt_pan"](33,24,44,47);
+  relation["natural"="salt_pan"](33,24,44,47);
+
+  way["natural"="water"]["salt"="yes"]["water"!="lake"](33,24,44,47);
+  relation["natural"="water"]["salt"="yes"]["water"!="lake"](33,24,44,47);
+);
+
+out geom;
+
+
+
+SHOAL LIKE WATER AREAS
+
+[out:json][timeout:120];
+
+(
+  way["natural"="shoal"](33,24,44,47);
+  relation["natural"="shoal"](33,24,44,47);
+
+  way["natural"="reef"](33,24,44,47);
+  relation["natural"="reef"](33,24,44,47);
+
+  way["seamark:type"="sandbank"](33,24,44,47);
+  relation["seamark:type"="sandbank"](33,24,44,47);
+
+  way["natural"="wetland"]["wetland"="marsh"](33,24,44,47);
+  relation["natural"="wetland"]["wetland"="marsh"](33,24,44,47);
+
+  way["natural"="wetland"]["wetland"="mud"](33,24,44,47);
+  relation["natural"="wetland"]["wetland"="mud"](33,24,44,47);
+
+  way["natural"="wetland"]["wetland"="tidalflat"](33,24,44,47);
+  relation["natural"="wetland"]["wetland"="tidalflat"](33,24,44,47);
+
+  way["natural"="wetland"]["wetland"="saltmarsh"](33,24,44,47);
+  relation["natural"="wetland"]["wetland"="saltmarsh"](33,24,44,47);
+);
+
+out geom;

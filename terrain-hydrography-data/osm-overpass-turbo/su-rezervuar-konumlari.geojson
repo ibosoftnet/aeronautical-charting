@@ -1,0 +1,562 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-03-14T00:26:29Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/572538626",
+        "alt_name": "سبيل أرض السطوح",
+        "int_name": "Sabil Ard es Stouh, Sabîl Ard es Stoûh, Sabīl Arḑ as Suţūḩ",
+        "landuse": "reservoir",
+        "name": "سبيل أرض السطوح",
+        "name:ar": "سبيل أرض السطوح",
+        "name:ar1": "سبيل أرض السطوح",
+        "name:de": "Sabil Ard as Sutuh",
+        "name:en": "Sabil Ard as Sutuh",
+        "name:fr": "Sabil Ard as Sutuh"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.8166667,
+          35.9
+        ]
+      },
+      "id": "node/572538626"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/573541021",
+        "alt_name": "أبو البور",
+        "int_name": "Bir Abou el Baour, Bîr Abou el Baoûr, Abū al Bawr",
+        "is_in": "Syria, الجمهورية العربية السورية ، سوريا",
+        "landuse": "reservoir",
+        "name": "أبو البور",
+        "name:ar": "أبو البور",
+        "name:ar1": "أبو البور",
+        "name:de": "Abu al Bawr",
+        "name:en": "Abu al Bawr",
+        "name:fr": "Abu al Bawr"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.7666667,
+          34.8833333
+        ]
+      },
+      "id": "node/573541021"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/573542372",
+        "alt_name": "بئر الشعر",
+        "int_name": "Bir Chaar, Bîr Chaar, Bi'r Ash Sha`r",
+        "is_in": "Syria, الجمهورية العربية السورية ، سوريا",
+        "landuse": "reservoir",
+        "name": "بئر الشعر",
+        "name:ar": "بئر الشعر",
+        "name:ar1": "بئر الشعر",
+        "name:de": "Bi'r Ash Sha`r",
+        "name:en": "Bi'r Ash Sha`r",
+        "name:fr": "Bi'r Ash Sha`r"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38,
+          34.9333333
+        ]
+      },
+      "id": "node/573542372"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/573543367",
+        "alt_name": "بحيرة الأسد",
+        "int_name": "Bahret Assad, Buhayrat al Assad, Lake Assad, Buḩayrat al Asad",
+        "is_in": "Syria, الجمهورية العربية السورية ، سوريا",
+        "landuse": "reservoir",
+        "name": "بحيرة الأسد",
+        "name:ar": "بحيرة الأسد",
+        "name:ar1": "بحيرة الأسد",
+        "name:de": "Buhayrat al Asad",
+        "name:en": "Buhayrat al Asad",
+        "name:fr": "Buhayrat al Asad"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.1680556,
+          35.9991667
+        ]
+      },
+      "id": "node/573543367"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/646746364",
+        "landuse": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.4618363,
+          33.5873712
+        ]
+      },
+      "id": "node/646746364"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/646746373",
+        "landuse": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.5238061,
+          33.607389
+        ]
+      },
+      "id": "node/646746373"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/797303333",
+        "content": "water",
+        "man_made": "storage_tank",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          26.9631629,
+          36.7203732
+        ]
+      },
+      "id": "node/797303333"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2485170729",
+        "alt_name": "هور الحبانية",
+        "int_name": "Hawr al Ḩabbānīyah, Hawr al Habbaniyah",
+        "landuse": "reservoir",
+        "name": "هور الحبانية",
+        "name:ar": "هور الحبانية",
+        "name:ar1": "هور الحبانية",
+        "name:de": "Hawr al Habbaniyah",
+        "name:en": "Hawr al Habbaniyah",
+        "name:fr": "Hawr al Habbaniyah"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.5200907,
+          33.2969871
+        ]
+      },
+      "id": "node/2485170729"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2489330107",
+        "alt_name": "بحيرة سد حمرين",
+        "int_name": "Buḩayrat Ḩamrīn, Buḩayrat Sadd Ḩammrīn, Hamrin Lake, بحيرة حمرين, بحيرة سد حمرين, Buhayrat Hamrin, Buhayrat Sadd Hammrin, Hamrin Lake, بحيرة حمرين, بحيرة سد حمرين",
+        "landuse": "reservoir",
+        "name": "بحيرة سد حمرين",
+        "name:ar": "بحيرة سد حمرين",
+        "name:ar1": "بحيرة سد حمرين",
+        "name:de": "Buhayrat Hamrin",
+        "name:en": "Buhayrat Hamrin",
+        "name:fr": "Buhayrat Hamrin"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.992104,
+          34.238575
+        ]
+      },
+      "id": "node/2489330107"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3378317969",
+        "man_made": "reservoir_covered",
+        "name": "Su Deposu",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          29.1425273,
+          36.6134899
+        ]
+      },
+      "id": "node/3378317969"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6635032804",
+        "content": "water",
+        "location": "underground",
+        "man_made": "storage_tank",
+        "material": "concrete",
+        "name": "Su deposu",
+        "natural": "water",
+        "operator": "Goverment",
+        "source": "Local Goverment Manager",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          27.8422205,
+          41.1587434
+        ]
+      },
+      "id": "node/6635032804"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6831319378",
+        "landuse": "reservoir",
+        "name": "سد ارس"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.3975468,
+          39.0902863
+        ]
+      },
+      "id": "node/6831319378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9084410023",
+        "description": "Camp's water is provided through a tank pool, and it is not drinkable. Only for washing. Instead a spring close to the camp offers drinkable water",
+        "name": "camp water",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          24.5057295,
+          41.5060995
+        ]
+      },
+      "id": "node/9084410023"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10295706286",
+        "emergency": "water_tank",
+        "natural": "water",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          45.3313949,
+          41.9176682
+        ]
+      },
+      "id": "node/10295706286"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10795294761",
+        "emergency": "water_tank",
+        "name": "Fire Pool",
+        "natural": "water",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          30.4476559,
+          36.6072274
+        ]
+      },
+      "id": "node/10795294761"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450159",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4957449,
+          33.7376766
+        ]
+      },
+      "id": "node/10978450159"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450160",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4957276,
+          33.7376569
+        ]
+      },
+      "id": "node/10978450160"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450161",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4957025,
+          33.7376443
+        ]
+      },
+      "id": "node/10978450161"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450162",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4956735,
+          33.7376406
+        ]
+      },
+      "id": "node/10978450162"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450163",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.495645,
+          33.7376464
+        ]
+      },
+      "id": "node/10978450163"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450164",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4956214,
+          33.7376609
+        ]
+      },
+      "id": "node/10978450164"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450165",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4956062,
+          33.7376817
+        ]
+      },
+      "id": "node/10978450165"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450166",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4956087,
+          33.7377295
+        ]
+      },
+      "id": "node/10978450166"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450167",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4956261,
+          33.7377492
+        ]
+      },
+      "id": "node/10978450167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450168",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4956512,
+          33.7377618
+        ]
+      },
+      "id": "node/10978450168"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450169",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4956802,
+          33.7377655
+        ]
+      },
+      "id": "node/10978450169"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450170",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4957087,
+          33.7377597
+        ]
+      },
+      "id": "node/10978450170"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450171",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4957323,
+          33.7377452
+        ]
+      },
+      "id": "node/10978450171"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450172",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4957475,
+          33.7377244
+        ]
+      },
+      "id": "node/10978450172"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450173",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4957519,
+          33.7377003
+        ]
+      },
+      "id": "node/10978450173"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10978450174",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.4956017,
+          33.7377058
+        ]
+      },
+      "id": "node/10978450174"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13372981007",
+        "check_date": "2025-07-01",
+        "fixme": "location;shape",
+        "natural": "water",
+        "water": "reservoir"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          44.1555348,
+          40.2910854
+        ]
+      },
+      "id": "node/13372981007"
+    }
+  ]
+}
