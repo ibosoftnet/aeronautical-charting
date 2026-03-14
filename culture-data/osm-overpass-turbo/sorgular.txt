@@ -1,0 +1,252 @@
+COUNTRIES:
+
+[out:json][timeout:25];
+
+(
+  node["place"="country"](33,24,44,47);
+  relation["boundary"="administrative"]["admin_level"="2"](33,24,44,47);
+);
+
+out center;
+
+
+CITY CENTRES:
+
+[out:json][timeout:25];
+
+(
+  node["place"="city"](33,24,44,47);
+  node["place"="town"]["capital"="4"](33,24,44,47);
+);
+
+out;
+
+
+ILÇE MERKEZLERİ
+
+[out:json][timeout:25];
+
+(
+  node["capital"="6"](33,24,44,47);
+  node["place"="town"]["capital"!="4"](33,24,44,47);
+);
+
+out;
+
+TOWNS
+
+[out:json][timeout:25];
+
+(
+  node["place"="city"](33,24,44,47);
+  node["place"="town"](33,24,44,47);
+);
+
+out;
+
+
+STADIUMS:
+
+[out:json][timeout:25];
+
+(
+  node["leisure"="stadium"](33,24,44,47);
+  way["building"="stadium"](33,24,44,47);
+  relation["building"="stadium"](33,24,44,47);
+);
+
+out center;
+
+
+MINES:
+
+[out:json][timeout:25];
+
+(
+  way["landuse"="quarry"]["name"]["operator"](33,24,44,47);
+  relation["landuse"="quarry"]["name"]["operator"](33,24,44,47);
+
+  node["man_made"="mine"](33,24,44,47);
+);
+
+out center;
+
+WAY-MOTORWAY (Otoyol O/E)
+
+[out:json][timeout:120];
+
+(
+  way["highway"="motorway"](33,24,44,47);
+  way["highway"="motorway_link"](33,24,44,47);
+);
+
+out geom;
+
+WAY-PRIMARY (Devlet Yolu D/E)
+
+[out:json][timeout:120];
+
+(
+  /* Türkiye – Primary olmayan D yolları */
+  way["highway"~"trunk|secondary"]["ref"~"^D[- ]?[0-9]+"](33,24,44,47);
+
+  /* Genel primary (il yolları XX-XX hariç) */
+  way["highway"="primary"]["ref"!~"^[0-9]{2}-[0-9]{2}"](33,24,44,47);
+);
+
+out geom;
+
+IL YOLU (XX-XX)
+
+[out:json][timeout:120];
+
+(
+  way["highway"~"trunk|primary|secondary"]["ref"~"^[0-9]{2}-[0-9]{2}"](33,24,44,47);
+);
+
+out geom;
+
+WAY-TRUNK (Yan yollar vs. Devlet ve il yolu hariç)
+
+[out:json][timeout:120];
+
+(
+  way["highway"="trunk"]
+     ["ref"!~"^D[- ]?[0-9]+"]
+     ["ref"!~"^[0-9]{2}-[0-9]{2}"]
+     (33,24,44,47);
+);
+
+out geom;
+
+
+MARITIME BOUNDARIES
+
+[out:json][timeout:25];
+
+(
+  way["boundary"="maritime"](33,24,44,47);
+  way["maritime"="yes"](33,24,44,47);
+);
+
+out geom;
+
+
+RAILROADS
+
+[out:json][timeout:60];
+
+way["railway"="rail"](33,24,44,47);
+
+out geom;
+
+
+LIGHT RAIL TRANSPORT
+
+[out:json][timeout:60];
+
+(
+  way["railway"="subway"](33,24,44,47);
+  way["railway"="light_rail"](33,24,44,47);
+  way["railway"="tram"](33,24,44,47);
+  way["railway"="monorail"](33,24,44,47);
+);
+
+out geom;
+
+
+HW TRANSMISSION LINES
+
+[out:json][timeout:60];
+
+way
+["power"="line"]
+["voltage"~"154000|220000|380000|400000"]
+(33,24,44,47);
+
+out geom;
+
+OTHER TRANSMISSION LINES
+
+[out:json][timeout:60];
+
+way
+["power"="line"]
+["voltage"!~"154000|220000|380000|400000"]
+["location"!="underground"]
+["tunnel"!="yes"]
+(33,24,44,47);
+
+out geom;
+
+ISLANDS
+
+[out:json][timeout:60];
+
+(
+  way["place"="island"]["name"](33,24,44,47);
+  relation["place"="island"]["name"](33,24,44,47);
+
+  way["place"="archipelago"]["name"](33,24,44,47);
+  relation["place"="archipelago"]["name"](33,24,44,47);
+);
+
+out center;
+
+NATIONAL PARKS
+
+[out:json][timeout:60];
+
+(
+  relation["boundary"="national_park"](33,24,44,47);
+  relation["boundary"="protected_area"]["protect_class"="2"](33,24,44,47);
+);
+
+out center;
+
+MOUNTAIN PASSES
+
+[out:json][timeout:60];
+
+node["mountain_pass"="yes"](33,24,44,47);
+
+out body;
+
+VOLCANO
+
+[out:json][timeout:25];
+
+node["natural"="volcano"]["volcano:status"="active"](33,24,44,47);
+
+out body;
+
+
+MOUNTAINS
+
+
+[out:json][timeout:120];
+
+(
+  node["natural"="peak"]
+  ["name"]
+  ["prominence"]
+  (33,24,44,47);
+
+  node["natural"="volcano"]
+  ["name"]
+  ["prominence"]
+  ["volcano:status"!~"active"]
+  (33,24,44,47);
+  
+  node["natural"="volcano"]
+  ["name"]
+  ["wikidata"]
+  ["volcano:status"!~"active"]
+  (33,24,44,47);
+);
+
+out body;
+
+
+
+
