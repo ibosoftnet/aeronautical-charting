@@ -49,3 +49,4 @@ terrain-hydrography-data/osm-geofabrik/cy/*.cpg filter=lfs diff=lfs merge=lfs -t
 terrain-hydrography-data/osm-geofabrik/cy/*.a* filter=lfs diff=lfs merge=lfs -text
 terrain-hydrography-data/srtm-1arcsec-metre-merged.vrt filter=lfs diff=lfs merge=lfs -text
 terrain-hydrography-data/world-polygon.geojson filter=lfs diff=lfs merge=lfs -text
+terrain-hydrography-data/contours.gpkg filter=lfs diff=lfs merge=lfs -text

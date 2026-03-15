@@ -2,13 +2,9 @@ COUNTRIES:
 
 [out:json][timeout:25];
 
-(
-  node["place"="country"](33,24,44,47);
-  relation["boundary"="administrative"]["admin_level"="2"](33,24,44,47);
-);
+node["place"="country"](33,24,44,47);
 
-out center;
-
+out;
 
 CITY CENTRES:
 
@@ -33,14 +29,20 @@ ILÇE MERKEZLERİ
 
 out;
 
-TOWNS
+TOWNS AND VILLAGES
 
-[out:json][timeout:25];
+[out:json][timeout:120];
 
 (
-  node["place"="city"](33,24,44,47);
-  node["place"="town"](33,24,44,47);
-);
+  node["place"~"town|village"]["name"]["wikidata"](33,24,44,47);
+)->.all;
+
+(
+  node["capital"="6"](33,24,44,47);
+  node["place"="town"]["capital"!="4"](33,24,44,47);
+)->.districts;
+
+(.all; - .districts;);
 
 out;
 
@@ -189,14 +191,20 @@ ISLANDS
 
 out center;
 
-NATIONAL PARKS
+NATIONAL AND NATURAL PARKS
 
 [out:json][timeout:60];
 
 (
   relation["boundary"="national_park"](33,24,44,47);
-  relation["boundary"="protected_area"]["protect_class"="2"](33,24,44,47);
+  relation["boundary"="protected_area"](33,24,44,47);
+  relation["leisure"="nature_reserve"](33,24,44,47);
+
+  way["leisure"="park"]["name"~"Orman|Milli|Tabiat|Nature|National",i](33,24,44,47);
+  relation["leisure"="park"]["name"~"Orman|Milli|Tabiat|Nature|National",i](33,24,44,47);
 );
+
+out center;
 
 out center;
 
@@ -243,6 +251,117 @@ MOUNTAINS
 
 out body;
 
+HOSPITALS
+
+[out:json][timeout:60];
+
+(
+  node["amenity"="hospital"]["healthcare"!="clinic"]["healthcare"!="doctors"](33,24,44,47);
+  way["amenity"="hospital"]["healthcare"!="clinic"]["healthcare"!="doctors"](33,24,44,47);
+  relation["amenity"="hospital"]["healthcare"!="clinic"]["healthcare"!="doctors"](33,24,44,47);
+);
+
+out center;
+
+UNIVERSITIES
+
+[out:json][timeout:60];
+
+(
+  node["amenity"="university"](33,24,44,47);
+  way["amenity"="university"](33,24,44,47);
+  relation["amenity"="university"](33,24,44,47);
+);
+
+out center;
+
+LANDMARK BUILDINGS - POINT OF INTERESTS
 
 
+[out:json][timeout:60];
 
+(
+  node["historic"="monument"]["wikidata"](33,24,44,47);
+  way["historic"="monument"]["wikidata"](33,24,44,47);
+
+  node["historic"="memorial"]["wikidata"](33,24,44,47);
+  way["historic"="memorial"]["wikidata"](33,24,44,47);
+
+  node["name"~"Valiliği"](33,24,44,47);
+  way["name"~"Valiliği"](33,24,44,47);
+
+  node["government"="provincial"](33,24,44,47);
+  way["government"="provincial"](33,24,44,47);
+
+);
+
+out center;
+
+
+HARBORS
+
+
+[out:json][timeout:60];
+
+(
+  node["landuse"="port"]["name"](33,24,44,47);
+  way["landuse"="port"]["name"](33,24,44,47);
+
+  node["leisure"="marina"]["name"](33,24,44,47);
+  way["leisure"="marina"]["name"](33,24,44,47);
+
+  node["harbour"="yes"]["name"](33,24,44,47);
+  way["harbour"="yes"]["name"](33,24,44,47);
+);
+
+out center;
+
+NUCLEAR POWER PLANTS
+
+[out:json][timeout:60];
+
+(
+  node["power"="plant"]["plant:source"="nuclear"](33,24,44,47);
+  way["power"="plant"]["plant:source"="nuclear"](33,24,44,47);
+  relation["power"="plant"]["plant:source"="nuclear"](33,24,44,47);
+);
+
+out center;
+
+MOSQUES
+
+[out:json][timeout:60];
+
+(
+  node["building"="mosque"]["wikidata"](33,24,44,47);
+  way["building"="mosque"]["wikidata"](33,24,44,47);
+);
+
+out center;
+
+CHURCHS
+
+[out:json][timeout:60];
+
+(
+  node["building"="church"]["wikidata"](33,24,44,47);
+  way["building"="church"]["wikidata"](33,24,44,47);
+);
+
+out center;
+
+TANK FARMS (please set cluster)
+
+[out:json][timeout:60];
+
+(
+  node["man_made"="storage_tank"]
+  ["content"!~"water|wastewater|sewage|slurry|digestate"]
+  (33,24,44,47);
+
+  way["man_made"="storage_tank"]
+  ["content"!~"water|wastewater|sewage|slurry|digestate"]
+  (33,24,44,47);
+);
+
+out center;
