@@ -6,7 +6,7 @@
     <GeometryType>1</GeometryType>
     <SRSName>urn:ogc:def:crs:EPSG::4326</SRSName>
     <DatasetSpecificInfo>
-      <FeatureCount>7114</FeatureCount>
+      <FeatureCount>7115</FeatureCount>
       <ExtentXMin>25.96414</ExtentXMin>
       <ExtentXMax>44.68161</ExtentXMax>
       <ExtentYMin>35.37719</ExtentYMin>
@@ -22,7 +22,8 @@
       <Name>beginPosition</Name>
       <ElementPath>timeSlice|VerticalStructureTimeSlice|validTime|TimePeriod|beginPosition</ElementPath>
       <Type>String</Type>
-      <Width>19</Width>
+      <Subtype>DateTime</Subtype>
+      <Width>0</Width>
     </PropertyDefn>
     <PropertyDefn>
       <Name>interpretation</Name>
@@ -44,7 +45,8 @@
       <Name>timeSlice|VerticalStructureTimeSlice|featureLifetime|TimePeriod|beginPosition</Name>
       <ElementPath>timeSlice|VerticalStructureTimeSlice|featureLifetime|TimePeriod|beginPosition</ElementPath>
       <Type>String</Type>
-      <Width>19</Width>
+      <Subtype>DateTime</Subtype>
+      <Width>0</Width>
     </PropertyDefn>
     <PropertyDefn>
       <Name>name</Name>

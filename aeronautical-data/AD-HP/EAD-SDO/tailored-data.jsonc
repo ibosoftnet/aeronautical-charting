@@ -1,0 +1,105 @@
+{
+  // Tailored airport overrides / ek kayıtlar
+  // ------------------------------------------------------------
+  // Bu dosya `ad_hp_airports` nihai çıktı alan adlarını kullanır.
+  // Buraya eklenen kayıtlar `join_key` / `code_icao` / `code_id` ile eşleşir.
+  // Aynı ICAO mevcutsa bu kayıt TAM override sayılır:
+  // kaynak XML'den alan mirası yapılmaz, vermediğiniz alanlar boş kalır.
+  // (Mevcut kaydın haritada kalabilmesi için koordinatlar otomatik korunur.)
+  //
+  // Gerekli minimum alanlar:
+  // - yeni kayıt için: `join_key` (veya `code_icao`) + `lat_dd` + `lon_dd`
+  // - mevcut kaydı override için: yalnızca değiştirmek istediğiniz alanları yazmanız yeterlidir
+  //
+  // Sık kullanılan temel alanlar:
+  // `name`, `city`, `country`, `code_iata`, `code_type`,
+  // `lat_dd`, `lon_dd`, `lat_text`, `lon_text`, `sys_rmk`
+  //
+  // Kullanılabilen AD-HP usage alanları:
+  // `usage_mid`, `usage_dt_wef`, `usage_dt_com`,
+  // `usage_limit`, `usage_work_hr`, `usage_work_hr_rmk`,
+  // `usage_time_ref`, `usage_valid_wef`, `usage_valid_til`,
+  // `usage_day`, `usage_day_til`, `usage_time_wef`, `usage_time_til`,
+  // `usage_event_wef`, `usage_event_til`, `usage_comb_til`,
+  // `usage_type`, `usage_rule`, `usage_mil`, `usage_origin`,
+  // `usage_purpose`, `usage_status`, `usage_capability`,
+  // `usage_aircraft_type`, `usage_engine_no`, `usage_engine_type`, `usage_org_name`
+  //
+  // Not:
+  // - Bu dosyada bir ICAO tanımlandıysa, o kayıt sıfırdan tanımlanmış kabul edilir.
+  // - Yazmadığınız `usage_*` ya da diğer alanlar boş kalır; XML'den otomatik doldurulmaz.
+  // - Mevcut bir meydanı override ederken koordinatı korumak istemiyorsanız yeni koordinatları açıkça yazın.
+  //
+  // İsteğe bağlı: `enabled: false` ile bir kaydı geçici olarak devre dışı bırakabilirsiniz.
+  "airports": [
+    // ÖRNEK 1 — mevcut bir ICAO kaydını bastırma / override etme
+    // {
+    //   "enabled": true,
+    //   "join_key": "LTFM",
+    //   "name": "ISTANBUL AIRPORT (TAILORED)",
+    //   "city": "ISTANBUL",
+    //   "country": "TÜRKİYE",
+    //   "code_icao": "LTFM",
+    //   "code_iata": "IST",
+    //   "code_type": "AD",
+    //   "lat_dd": 41.27528,
+    //   "lon_dd": 28.75194,
+    //   "lat_text": "411631N",
+    //   "lon_text": "0284507E",
+    //   "usage_mid": "TAILORED-LTFM-001",
+    //   "usage_dt_wef": "05/04/2026",
+    //   "usage_dt_com": "05/04/2026",
+    //   "usage_limit": "PPR",
+    //   "usage_work_hr": "H24",
+    //   "usage_work_hr_rmk": "Operasyon öncesi slot/PPR gerekli",
+    //   "usage_time_ref": "UTC",
+    //   "usage_valid_wef": "05/04/2026",
+    //   "usage_valid_til": "31/12/2026",
+    //   "usage_day": "MON",
+    //   "usage_day_til": "SUN",
+    //   "usage_time_wef": "0000",
+    //   "usage_time_til": "2359",
+    //   "usage_type": "AD",
+    //   "usage_rule": "IFR|VFR",
+    //   "usage_mil": "CIVIL",
+    //   "usage_origin": "TAILORED",
+    //   "usage_purpose": "PUBLIC",
+    //   "usage_status": "ACTIVE",
+    //   "usage_capability": "JET",
+    //   "usage_aircraft_type": "A320|B738",
+    //   "usage_engine_no": "2",
+    //   "usage_engine_type": "JET",
+    //   "usage_org_name": "IBOSOFT",
+    //   "sys_rmk": "Tailored override örneği"
+    // },
+
+    // ÖRNEK 2 — tamamen yeni bir havalimanı/heliport ekleme
+    // {
+    //   "enabled": true,
+    //   "join_key": "ZZZZ",
+    //   "name": "ORNEK MEYDAN",
+    //   "city": "ANKARA",
+    //   "country": "TÜRKİYE",
+    //   "code_icao": "ZZZZ",
+    //   "code_iata": "",
+    //   "code_type": "AD",
+    //   "lat_dd": 39.9500,
+    //   "lon_dd": 32.8500,
+    //   "lat_text": "395700N",
+    //   "lon_text": "0325100E",
+    //   "usage_mid": "TAILORED-ZZZZ-001",
+    //   "usage_limit": "PRIVATE",
+    //   "usage_work_hr": "HJ",
+    //   "usage_work_hr_rmk": "Sadece özel izinli operasyon",
+    //   "usage_time_ref": "LOCAL",
+    //   "usage_type": "AD",
+    //   "usage_rule": "VFR",
+    //   "usage_origin": "TAILORED",
+    //   "usage_purpose": "PRIVATE",
+    //   "usage_status": "ACTIVE",
+    //   "usage_capability": "GA",
+    //   "usage_org_name": "IBOSOFT",
+    //   "sys_rmk": "Tailored yeni kayıt örneği"
+    // }
+  ]
+}
