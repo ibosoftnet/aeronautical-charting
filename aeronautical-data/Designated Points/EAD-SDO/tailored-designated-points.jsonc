@@ -1,0 +1,55 @@
+/**
+ * Tailored Designated Point Veri Dosyası
+ *
+ * Bu dosya manuel giriş, değişiklik ve suppress işlemleri için kullanılır.
+ *
+ * Suppress Mantığı:
+ *   - code_id ve created_by IKISI DA girilirse: EAD-SDO'daki matching kaydı siler,
+ *     yerine tailored giriş eklenir
+ *   - code_id veya created_by boşsa: Ek kayıt olarak layer'a eklenir, XML verisi dokunulmaz
+ *
+ * Fields:
+ *   - code_id: Designation Point Code (örn. "ABMEL", "ALVOR")
+ *   - code_type: Type (örn. "ADHP", "RNAV")
+ *   - name: Descriptive name
+ *   - datum: Coordinate datum (örn. "WGE" = WGS84)
+ *   - lat_dd: Latitude (decimal degrees)
+ *   - lon_dd: Longitude (decimal degrees)
+ *   - created_by: Creator organization
+ *   - dt_wef: Date with effect (örn. "01/04/2026")
+ */
+
+[
+  // Örnek 1: DP suppress (EAD-SDO'daki matching kaydını sil, yenisini ekle)
+  /*
+  {
+    "suppress": {
+      "code_id": "ABMEL",
+      "created_by": "EUROCONTROL"
+    },
+    "code_id": "ABMEL",
+    "code_type": "ADHP",
+    "name": "ABMEL (Updated)",
+    "datum": "WGE",
+    "lat_dd": 40.1234,
+    "lon_dd": 28.5678,
+    "created_by": "EUROCONTROL",
+    "dt_wef": "01/04/2026"
+  },
+  */
+
+  // Örnek 2: DP ek kayıt (suppress boş → sadece ekle)
+  /*
+  {
+    "suppress": {},
+    "code_id": "NEWDP",
+    "code_type": "RNAV",
+    "name": "NEW DESIGNATED POINT",
+    "datum": "WGE",
+    "lat_dd": 40.5000,
+    "lon_dd": 29.5000,
+    "created_by": "MANUAL",
+    "dt_wef": "01/04/2026"
+  }
+  */
+]

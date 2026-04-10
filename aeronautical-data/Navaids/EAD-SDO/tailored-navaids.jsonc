@@ -1,0 +1,115 @@
+/**
+ * Tailored Navaid Veri Dosyası
+ *
+ * Bu dosya manuel giriş, değişiklik ve suppress işlemleri için kullanılır.
+ *
+ * Suppress Mantığı:
+ *   - ident ve originator IKISI DA girilirse: O type'ın XML'inde matching kaydı siler,
+ *     yerine tailored giriş eklenir
+ *   - ident veya originator boşsa: Ek kayıt olarak layer'a eklenir, XML verisi dokunulmaz
+ *
+ * Fields (type'a göre örnek alan adları):
+ *
+ *   type: "ils"
+ *   - code_id, ahp_code_id, ahp_code_icao, rwy_desig, rdn_desig, freq, uom_freq
+ *   - mag_brg, true_brg, course_width, back_course, mag_var, mag_var_date
+ *   - datum, elev, uom_dist_ver, fir_code_id, lat_dd, lon_dd, lat_text, lon_text
+ *   - dt_wef, dt_com, created_by, work_hr, emission, rmk, work_hr_rmk
+ *   Sub-elements:
+ *   - gp: {mid, lat_dd, lon_dd, lat_text, lon_text, freq, slope, elev, rdh, uom_rdh, datum, emission, crc, dt_wef}
+ *   - dme: {mid, code_id, lat_dd, lon_dd, lat_text, lon_text, channel, ghost_freq, uom_ghost_freq, datum, work_hr, dt_wef}
+ *
+ *   type: "vor"
+ *   - code_id, name, code_type, freq, uom_freq, north_ref, declination
+ *   - mag_var, mag_var_date, emission, datum, crc, elev, uom_dist_ver, elev_accuracy
+ *   - geoid_undulation, vert_datum, country, created_by, dt_wef, dt_com, work_hr, rmk
+ *   - lat_dd, lon_dd, lat_text, lon_text
+ *   Sub-elements:
+ *   - dme: {mid, code_id, name, lat_dd, lon_dd, lat_text, lon_text, channel, ghost_freq, datum, work_hr, dt_wef}
+ *
+ *   type: "vor_dme"  (DME joined VOR — TACAN alt eleman içermez)
+ *   - Aynı VOR alanları
+ *   Sub-elements:
+ *   - dme: {mid, code_id, name, lat_dd, lon_dd, lat_text, lon_text, channel, ghost_freq, uom_ghost_freq, datum, work_hr, dt_wef}
+ *
+ *   type: "vortac"  (TACAN joined VOR — DME alt eleman içermez)
+ *   - code_id, name, code_type, freq, uom_freq, north_ref, declination
+ *   - mag_var, mag_var_date, emission, datum, crc, elev, uom_dist_ver, elev_accuracy
+ *   - geoid_undulation, vert_datum, country, created_by, dt_wef, dt_com, work_hr, rmk
+ *   - lat_dd, lon_dd, lat_text, lon_text
+ *   Sub-elements:
+ *   - tacan: {mid, code_id, name, lat_dd, lon_dd, lat_text, lon_text, channel, datum, work_hr, dt_wef}
+ *
+ *   type: "dme"
+ *   - code_id, name, country, channel, ghost_freq, uom_ghost_freq
+ *   - vor_code_id, datum, work_hr, created_by, dt_wef
+ *   - lat_dd, lon_dd, lat_text, lon_text
+ *
+ *   type: "tacan"
+ *   - code_id, name, country, channel, datum, vor_code_id
+ *   - vor_lat_text, vor_lon_text, work_hr, created_by, dt_wef
+ *   - lat_dd, lon_dd, lat_text, lon_text
+ */
+
+[
+  // Örnek 1: ILS suppress (EAD-SDO'daki IJKI/EUROCONTROL kaydını sil, yenisini ekle)
+  /*
+  {
+    "suppress": {
+      "ident": "IJKI",
+      "originator": "EUROCONTROL"
+    },
+    "type": "ils",
+    "code_id": "IJKI",
+    "ahp_code_id": "LTAC",
+    "ahp_code_icao": "LTAC",
+    "freq": "110.50",
+    "mag_brg": "123",
+    "true_brg": "130",
+    "lat_dd": 41.1234,
+    "lon_dd": 28.9876,
+    "created_by": "EUROCONTROL",
+    "dt_wef": "26/03/2026",
+    "gp": {
+      "lat_dd": 41.1250,
+      "lon_dd": 28.9880,
+      "slope": 3.0
+    },
+    "dme": {
+      "channel": "44Y"
+    }
+  },
+  */
+
+  // Örnek 2: VOR ek kayıt (suppress boş → sadece ekle)
+  /*
+  {
+    "suppress": {},
+    "type": "vor",
+    "code_id": "XXX",
+    "name": "EXAMPLE VOR",
+    "code_type": "VOR",
+    "freq": "115.00",
+    "country": "TURKEY",
+    "lat_dd": 40.5000,
+    "lon_dd": 29.5000,
+    "created_by": "MANUAL",
+    "dt_wef": "01/04/2026"
+  },
+  */
+
+  // Örnek 3: DME ek kayıt
+  /*
+  {
+    "suppress": {},
+    "type": "dme",
+    "code_id": "XYZ",
+    "channel": "99X",
+    "country": "TURKEY",
+    "lat_dd": 40.6000,
+    "lon_dd": 29.6000,
+    "created_by": "MANUAL",
+    "dt_wef": "01/04/2026"
+  }
+  */
+]

@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+
+    {"type":"Feature","properties":{"chart":"A"},"geometry":{"type":"Polygon","coordinates":[[
+      [-137.4,67.0],[-12.6,67.0],[-12.6,-54.0],[-137.4,-54.0],[-137.4,67.0]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"ASIA"},"geometry":{"type":"Polygon","coordinates":[[
+      [53.0,36.0],[108.0,36.0],[108.0,0.0],[53.0,0.0],[53.0,36.0]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"B"},"geometry":{"type":"Polygon","coordinates":[[
+      [-135.95,3.07],[-1.9,76.73],[67.53,37.12],[-52.67,-62.28],[-135.95,3.07]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"B1"},"geometry":{"type":"Polygon","coordinates":[[
+      [-125.0,62.7],[40.0,62.7],[40.0,-45.5],[-125.0,-45.5],[-125.0,62.7]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"C"},"geometry":{"type":"Polygon","coordinates":[[
+      [-35.0,75.0],[70.0,75.0],[70.0,-45.0],[-35.0,-45.0],[-35.0,75.0]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"D"},"geometry":{"type":"Polygon","coordinates":[[
+      [-15.0,63.0],[132.0,63.0],[132.0,-27.0],[-15.0,-27.0],[-15.0,63.0]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"E"},"geometry":{"type":"Polygon","coordinates":[[
+      [24.77,44.92],[180.0,44.92],[180.0,-53.92],[24.77,-53.92],[24.77,44.92]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"F"},"geometry":{"type":"Polygon","coordinates":[[
+      [100.0,50.0],[-110.0,50.0],[-110.0,-52.7],[100.0,-52.7],[100.0,50.0]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"M"},"geometry":{"type":"Polygon","coordinates":[[
+      [100.0,70.0],[-110.0,70.0],[-110.0,-10.0],[100.0,-10.0],[100.0,70.0]
+    ]]}} ,
+
+    {"type":"Feature","properties":{"chart":"MID"},"geometry":{"type":"Polygon","coordinates":[[
+      [17.0,44.0],[70.0,44.0],[70.0,10.0],[17.0,10.0],[17.0,44.0]
+    ]]}} 
+
+  ]
+}
