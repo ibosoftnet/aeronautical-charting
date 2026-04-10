@@ -373,7 +373,7 @@ def load_gp_records(xml_path: Path) -> dict[tuple[str, str, str, str], dict[str,
             elem.clear()
             continue
 
-        key = (ahp_code_id, fir_code_id or "", ilz_code_id, originator)
+        key = (ahp_code_id or "", fir_code_id or "", ilz_code_id or "", originator or "")
 
         records[key] = {
             "mid": (elem.findtext("mid") or "").strip() or None,
@@ -580,7 +580,7 @@ def load_vor_records(
     valid, reason = looks_like_xml(xml_path)
     if not valid:
         print(f"  VOR atlandı: {reason}")
-        return vor_rows, vortac_rows, dme_consumed_by_vor, tacan_consumed_by_vor
+        return vor_rows, vor_dme_rows, vortac_rows, dme_consumed_by_vor, tacan_consumed_by_vor
 
     for _, elem in ET.iterparse(xml_path, events=("end",)):
         if elem.tag != "Record":
@@ -691,18 +691,16 @@ def load_tailored_data(json_path: Path) -> tuple[dict[str, list[dict[str, Any]]]
     """Tailored JSON yükle: {"ils": [...], "vor": [...], "dme": [...], "tacan": [...]}
     Suppress bilgileri: {type: {(ident, originator), ...}}"""
     tailored_by_type: dict[str, list[dict[str, Any]]] = {
-        "ils_loc": [],
+        "loc": [],
+        "gp": [],
         "vor": [],
-        "vor_dme": [],
-        "vortac": [],
         "dme": [],
         "tacan": [],
     }
     suppress_by_type: dict[str, set[tuple[str, str]]] = {
-        "ils_loc": set(),
+        "loc": set(),
+        "gp": set(),
         "vor": set(),
-        "vor_dme": set(),
-        "vortac": set(),
         "dme": set(),
         "tacan": set(),
     }
@@ -739,16 +737,15 @@ def load_tailored_data(json_path: Path) -> tuple[dict[str, list[dict[str, Any]]]
             if suppress_ident and suppress_originator:
                 suppress_by_type[nav_type].add((suppress_ident.upper(), suppress_originator))
 
-            # Giriş verisi ekle
-            record = dict(entry)
+            # Giriş verisi ekle (meta anahtarları çıkar)
+            record = {k: v for k, v in entry.items() if k not in ("suppress", "type")}
             record["source"] = "tailored"
             tailored_by_type[nav_type].append(record)
 
         print(
-            f"  Tailored okunan: ILS_LOC={len(tailored_by_type['ils_loc'])}, "
-            f"VOR={len(tailored_by_type['vor'])}, VOR_DME={len(tailored_by_type['vor_dme'])}, "
-            f"VORTAC={len(tailored_by_type['vortac'])}, DME={len(tailored_by_type['dme'])}, "
-            f"TACAN={len(tailored_by_type['tacan'])}"
+            f"  Tailored okunan: LOC={len(tailored_by_type['loc'])}, "
+            f"GP={len(tailored_by_type['gp'])}, VOR={len(tailored_by_type['vor'])}, "
+            f"DME={len(tailored_by_type['dme'])}, TACAN={len(tailored_by_type['tacan'])}"
         )
         return tailored_by_type, suppress_by_type
 
@@ -1058,10 +1055,10 @@ def main():
 
     # Suppress uygula
     print("\n[3] Suppress uygulanıyor...")
-    loc_rows = apply_suppress(loc_rows, suppress_by_type["ils_loc"], "loc_code_id", "loc_created_by")
+    loc_rows = apply_suppress(loc_rows, suppress_by_type["loc"], "loc_code_id", "loc_created_by")
     vor_rows = apply_suppress(vor_rows, suppress_by_type["vor"], "vor_code_id", "vor_created_by")
-    vor_dme_rows = apply_suppress(vor_dme_rows, suppress_by_type["vor_dme"], "vor_code_id", "vor_created_by")
-    vortac_rows = apply_suppress(vortac_rows, suppress_by_type["vortac"], "vor_code_id", "vor_created_by")
+    vor_dme_rows = apply_suppress(vor_dme_rows, suppress_by_type.get("vor_dme", set()), "vor_code_id", "vor_created_by")
+    vortac_rows = apply_suppress(vortac_rows, suppress_by_type.get("vortac", set()), "vor_code_id", "vor_created_by")
 
     # Kalan DME / TACAN ekle
     print("\n[4] Kalan kayıtlar (standalone) toplanıyor...")
@@ -1078,14 +1075,61 @@ def main():
     ]
     tacan_standalone = apply_suppress(tacan_standalone, suppress_by_type["tacan"], "tacan_code_id", "tacan_created_by")
 
-    # Tailored verisi ekle
+    # Tailored verisi ekle (eşleştirme motoru)
     print("\n[5] Tailored kayıtlar ekleniyor...")
-    loc_rows.extend(tailored_by_type["ils_loc"])
-    vor_rows.extend(tailored_by_type["vor"])
-    vor_dme_rows.extend(tailored_by_type["vor_dme"])
-    vortac_rows.extend(tailored_by_type["vortac"])
-    dme_standalone.extend(tailored_by_type["dme"])
+
+    # Tailored LOC kayıtlarını loc_code_id'ye göre index'le (GP/DME join için)
+    tailored_loc_index: dict[str, dict[str, Any]] = {
+        r["loc_code_id"]: r
+        for r in tailored_by_type["loc"]
+        if r.get("loc_code_id")
+    }
+
+    # LOC → loc_rows (doğrudan)
+    loc_rows.extend(tailored_by_type["loc"])
+
+    # GP → karşılık gelen tailored LOC alanlarını merge et, sonra gp_rows'a ekle
+    for gp_rec in tailored_by_type["gp"]:
+        loc_id = gp_rec.get("loc_code_id")
+        if loc_id and loc_id in tailored_loc_index:
+            merged = {**tailored_loc_index[loc_id], **gp_rec}  # GP alanları öncelikli
+        else:
+            merged = gp_rec
+        gp_rows.append(merged)
+
     tacan_standalone.extend(tailored_by_type["tacan"])
+
+    # VOR + DME eşleştirme: vor_code_id üzerinden join, yoksa ayrı katmanlara
+    t_dme_by_vor: dict[str, dict[str, Any]] = {}   # vor_code_id → dme record
+    t_dme_to_ils: list[dict[str, Any]] = []         # dme with loc_code_id → ils_dme
+    t_dme_standalone: list[dict[str, Any]] = []     # bağımsız dme
+
+    for dme_rec in tailored_by_type["dme"]:
+        vor_id = dme_rec.get("vor_code_id") or dme_rec.get("dme_vor_code_id")
+        loc_id = dme_rec.get("loc_code_id")
+        if vor_id:
+            t_dme_by_vor[vor_id] = dme_rec
+        elif loc_id:
+            if loc_id in tailored_loc_index:
+                t_dme_to_ils.append({**tailored_loc_index[loc_id], **dme_rec})
+            else:
+                t_dme_to_ils.append(dme_rec)
+        else:
+            t_dme_standalone.append(dme_rec)
+
+    for vor_rec in tailored_by_type["vor"]:
+        code_id = vor_rec.get("vor_code_id")
+        if code_id and code_id in t_dme_by_vor:
+            row = {**vor_rec, **t_dme_by_vor.pop(code_id)}
+            vor_dme_rows.append(row)
+        else:
+            vor_rows.append(vor_rec)
+
+    # vor_code_id'si olan ama eşleşmeyen tailored DME'ler → standalone
+    t_dme_standalone.extend(t_dme_by_vor.values())
+
+    ils_dme_rows.extend(t_dme_to_ils)
+    dme_standalone.extend(t_dme_standalone)
 
     # Frequency pairing yükle
     print("\n[5.5] Frequency pairing yükleniyor...")

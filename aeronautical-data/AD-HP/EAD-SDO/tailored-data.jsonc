@@ -100,6 +100,91 @@
     //   "usage_capability": "GA",
     //   "usage_org_name": "IBOSOFT",
     //   "sys_rmk": "Tailored yeni kayıt örneği"
-    // }
+    // },
+
+    // ============================================================
+    // LCIK — Girne/Karter Heliport — EAD-SDO'da yok
+    // Kaynak: TRNC AIP AD 2 LCIK
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LCIK",
+      "name": "GİRNE/KARTER HELIPORT",
+      "city": "GİRNE",
+      "country": "NORTHERN CYPRUS",
+      "code_icao": "LCIK",
+      "code_iata": "",
+      "code_type": "HP",
+      "lat_dd": 35.275833,
+      "lon_dd": 33.267222,
+      "lat_text": "351633N",
+      "lon_text": "0331602E",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT | OAT",
+      "usage_rule": "IFR | VFR",
+      "usage_mil": "CIVIL | MIL",
+      "usage_origin": "IBOSOFT",
+      "usage_purpose": "NS | P",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Güvenlik Kuvvetleri Havacılık Birlik Komutanlığı, Dikmen/GİRNE",
+      "sys_rmk": "Elev 772 FT (235.30 M). Geoid undulation 91 FT. Mag var 5.26E (2020), annual change 4.5. AFS: LCIKZTZX. Traffic: NTL, IFR-VFR, Military-Non-scheduled-Private. Authorization from TRNC Security Forces Command required before filing flight plans. IFR traffic approaches LCEN (Ercan), lands at Karter after obtaining VFR. Fuel: JP-8 (limited), 1 truck 20600 L, 1000 L/min. De-icing: NIL. Hangar: 2 semi-closed. Fire: H2; CFR team summer 0500-1400, winter 0600-1500 UTC. Seasonal clearing: NIL. Landing area 50x50 M asphalt; parking 60x100 M concrete; taxiway 22 M concrete, T1-T4. Security: H24. AIS/ARO/MET via LCEN. Customs: not available."
+    },
+
+    // ============================================================
+    // LCGK — Geçitkale/Gazimağusa International — EAD-SDO'da yok
+    // Kaynak: TRNC AIP AD 2 LCGK, 07 SEP 23
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LCGK",
+      "name": "GAZİMAĞUSA/GEÇİTKALE INTERNATIONAL",
+      "city": "GAZİMAĞUSA",
+      "country": "NORTHERN CYPRUS",
+      "code_icao": "LCGK",
+      "code_iata": "GEC",
+      "code_type": "AH",
+      "lat_dd": 35.237222,
+      "lon_dd": 33.720278,
+      "lat_text": "351414N",
+      "lon_text": "0334313E",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT | OAT",
+      "usage_rule": "IFR | VFR",
+      "usage_mil": "CIVIL | MIL",
+      "usage_origin": "IBOSOFT",
+      "usage_purpose": "NS | P",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Civil Aviation Department, Geçitkale Airport G.Mağusa via Mersin 10 TÜRKİYE",
+      "sys_rmk": "Elev 143 FT MSL. Mag var 3.8E (2004), 0.04 increasing. AFS: LCGKYDYX. Traffic: NTL, IFR-VFR, Military-Non-scheduled-Private. Fuel: Piston (100-130), Turbine Jet A1, by tanker unlimited. De-icing: NIL. Fire: Cat 7, RWY foaming not available; rescue when operative as ERCAN. Seasonal clearing: not available; standing water on RWY by NOTAM. AD admin: NOTAM. Customs, immigration, health, AIS, ARO, MET, ATS, fueling, handling, security: during operation."
+    },
+
+    // ============================================================
+    // LCEN — Lefkoşa/Ercan International — EAD-SDO'da yok
+    // Kaynak: TRNC AIP AD 2 LCEN, 15 MAY 25
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LCEN",
+      "name": "LEFKOŞA/ERCAN INTERNATIONAL",
+      "city": "LEFKOŞA",
+      "country": "NORTHERN CYPRUS",
+      "code_icao": "LCEN",
+      "code_iata": "ECN",
+      "code_type": "AD",
+      "lat_dd": 35.149444,
+      "lon_dd": 33.512778,
+      "lat_text": "350858N",
+      "lon_text": "0333046E",
+      "usage_work_hr": "H24",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "IFR | VFR",
+      "usage_mil": "CIVIL",
+      "usage_origin": "IBOSOFT",
+      "usage_purpose": "S | NS | P",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "T&T Havalimanı İşletmeciliği İnşaat Sanayi ve Ticaret Şirketi Limited",
+      "sys_rmk": "Elev 402 FT. Geoid undulation 90 FT. Mag var 4E (2012). AFS: LCENYDYX. Traffic: INTL-NTL, IFR-VFR, Scheduled-Non-scheduled-Private. Fuel: Jet A1 by tanker, unlimited. Fire: Cat 7 (Cat 8 and 9 on demand); RWY foaming not available. De-icing: not available. Seasonal clearing: not available. AD admin, customs, immigration, health, AIS, ARO, ATS, fueling, handling, security: H24."
+    }
   ]
 }

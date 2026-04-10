@@ -8,14 +8,14 @@ Bu araç, EAD-SDO (European AIS Data Service - Standardized Data Only) kaynaklar
 
 | Katman | Geometri Kaynağı | İçerik | Kayıt Sayısı |
 |--------|------------------|--------|-------------|
-| `ils_loc` | LOC kaydı | ILS LOC + sub-element GP/DME alanları | ~548 |
-| `ils_gp` | GP kaydı | ILS GP (sub-element olarak bulunmuş) | ~522 |
-| `ils_dme` | DME kaydı | ILS DME (sub-element olarak bulunmuş) | ~402 |
-| `vor` | VOR kaydı | Standalone VOR navigasyonu | ~328 |
-| `vor_dme` | VOR kaydı | VOR+DME joined | ~2797 |
-| `vortac` | VOR kaydı | VOR+TACAN joined | ~467 |
-| `dme` | DME kaydı | Standalone DME navigasyonu | ~1467 |
-| `tacan` | TACAN kaydı | Standalone TACAN navigasyonu | ~410 |
+| `ils_loc` | LOC kaydı | ILS LOC + sub-element GP/DME alanları | ~550 |
+| `ils_gp` | GP kaydı | ILS GP (sub-element olarak bulunmuş) | ~524 |
+| `ils_dme` | DME kaydı | ILS DME (sub-element olarak bulunmuş) | ~404 |
+| `vor` | VOR kaydı | Standalone VOR navigasyonu | ~278 |
+| `vor_dme` | VOR kaydı | VOR+DME joined | ~2798 |
+| `vortac` | VOR kaydı | VOR+TACAN joined | ~518 |
+| `dme` | DME kaydı | Standalone DME navigasyonu | ~1730 |
+| `tacan` | TACAN kaydı | Standalone TACAN navigasyonu | ~409 |
 
 ## Standardize Frequency Fields
 
@@ -116,31 +116,77 @@ Ortak alanlar (prefix yok):
 | `ils_dme` | `dme_code_id`     | NULL            |
 | `ils_gp`  | `loc_code_id`     | NULL            |
 
-## Suppress/Override Mekanizması
+## Tailored/Override Mekanizması
 
 Dosya: `tailored-navaids.jsonc`
 
 Manuel olarak navaid verilerini:
 1. **Suppress** etmek (EAD-SDO'daki kaydı sil, yerine yenisini ekle)
-2. **Ek kayıt** olarak eklemek
+2. **Ek kayıt** olarak eklemek (suppress boş → sadece ekle)
 
-Örnek:
+### Giriş Tipleri
+
+Her entry SDO ekipman tipine karşılık gelir. Build script matching engine bunları uygun katmanlara yönlendirir:
+
+| `type` | Yönlendirildiği katman | Eşleşme anahtarı |
+|--------|------------------------|------------------|
+| `loc`  | `ils_loc` | — |
+| `gp`   | `ils_gp` | `loc_code_id` (LOC ile ilişkilendirme) |
+| `dme`  | `ils_dme` (loc_code_id varsa) veya `dme` (standalone) veya `vor_dme` (vor_code_id varsa join) | `loc_code_id` / `vor_code_id` |
+| `vor`  | `vor_dme` (eşleşen `dme` varsa join) veya `vor` | `vor_code_id` |
+| `tacan`| `tacan` | — |
+
+### Örnek — Standalone DME ek kayıt
+
 ```jsonc
 {
-  "suppress": {
-    "ident": "IJKI",
-    "originator": "EUROCONTROL"
-  },
-  "type": "ils",
-  "code_id": "IJKI",
-  "ahp_code_id": "LTAC",
-  "freq": "110.50",
-  "lat_dd": 41.1234,
-  "lon_dd": 28.9876,
-  "created_by": "EUROCONTROL",
-  "dt_wef": "26/03/2026"
+  "suppress": {},
+  "type": "dme",
+  "dme_code_id": "IST",
+  "dme_name": "ISTANBUL",
+  "dme_channel": "72X",
+  "dme_lat_dd": 40.961472,
+  "dme_lon_dd": 28.810694,
+  "dme_created_by": "IBOSOFT"
 }
 ```
+
+### Örnek — VOR+DME ek kayıt (matching engine join eder)
+
+```jsonc
+{
+  "suppress": {},
+  "type": "vor",
+  "vor_code_id": "ECN",
+  "vor_name": "ERCAN",
+  "vor_freq": "117.0",
+  "vor_lat_dd": 35.156667,
+  "vor_lon_dd": 33.491389,
+  "vor_created_by": "IBOSOFT"
+},
+{
+  "suppress": {},
+  "type": "dme",
+  "vor_code_id": "ECN",
+  "dme_code_id": "ECN",
+  "dme_channel": "117X",
+  "dme_lat_dd": 35.156667,
+  "dme_lon_dd": 33.491389,
+  "dme_created_by": "IBOSOFT"
+}
+```
+
+### Örnek — ILS ayrı component'lar (loc + gp + dme)
+
+```jsonc
+{ "suppress": {}, "type": "loc", "loc_code_id": "IECR", "loc_freq": "108.3", "loc_lat_dd": 35.160556, "loc_lon_dd": 33.485278, "loc_created_by": "IBOSOFT" },
+{ "suppress": {}, "type": "gp",  "loc_code_id": "IECR", "gp_freq": "334.1", "gp_lat_dd": 35.152667, "gp_lon_dd": 33.512861, "gp_slope": 3.0, "gp_created_by": "IBOSOFT" },
+{ "suppress": {}, "type": "dme", "loc_code_id": "IECR", "dme_code_id": "IECR", "dme_channel": "20X", "dme_lat_dd": 35.152667, "dme_lon_dd": 33.512861, "dme_created_by": "IBOSOFT" }
+```
+
+### Field İsimlendirme
+
+Tailored entry'lerde EAD-SDO rows ile aynı prefix'li alan adları kullanılır (`loc_*`, `gp_*`, `dme_*`, `vor_*`, `tacan_*`). `suppress` ve `type` meta anahtarları GeoPackage'a yazılmaz.
 
 ## Script Kullanımı
 

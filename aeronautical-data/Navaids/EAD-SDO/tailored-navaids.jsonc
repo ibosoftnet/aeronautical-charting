@@ -112,4 +112,169 @@
     "dt_wef": "01/04/2026"
   }
   */
+
+  // ============================================================
+  // TRNC — LCGK (Gecitkale) navaids — EAD-SDO'da yok
+  // Kaynak: TRNC AIP AD 2 LCGK-7, 07 SEP 23
+  // ============================================================
+
+  // GKE VOR — 114.3 MHz
+  // * GKE VOR/DME unusable: BTN R090-R105 beyond 15 NM; BTN R106-R230 beyond 12 NM; BTN R231-R265 beyond 16 NM
+  {
+    "suppress": {},
+    "type": "vor",
+    "vor_code_id": "GKE",
+    "vor_name": "GECITKALE",
+    "vor_freq": "114.3",
+    "vor_lat_dd": 35.235278,
+    "vor_lon_dd": 33.763611,
+    "vor_work_hr": "H24",
+    "vor_created_by": "IBOSOFT",
+    "vor_rmk": "Coverage 200 NM. Unusable: BTN R090-R105 beyond 15 NM; BTN R106-R230 beyond 12 NM; BTN R231-R265 beyond 16 NM"
+  },
+
+  // GKE DME — CH90X / Elevation 60 M
+  {
+    "suppress": {},
+    "type": "dme",
+    "vor_code_id": "GKE",
+    "dme_code_id": "GKE",
+    "dme_channel": "90X",
+    "dme_lat_dd": 35.235278,
+    "dme_lon_dd": 33.763611,
+    "dme_elev": 60,
+    "dme_uom_dist_ver": "M",
+    "dme_work_hr": "H24",
+    "dme_created_by": "IBOSOFT"
+  },
+
+  // ============================================================
+  // TRNC — LCEN (Ercan) navaids — EAD-SDO'da yok
+  // Kaynak: TRNC AIP AD 2 LCEN-7, 15 MAY 25
+  // ============================================================
+
+  // ECN VOR — 117.0 MHz
+  // ** ECN VOR/DME unusable: BTN R090-R105 beyond 15 NM; BTN R106-R125 beyond 10 NM; BTN R126-R300
+  {
+    "suppress": {},
+    "type": "vor",
+    "vor_code_id": "ECN",
+    "vor_name": "ERCAN",
+    "vor_freq": "117.0",
+    "vor_lat_dd": 35.156667,
+    "vor_lon_dd": 33.491389,
+    "vor_work_hr": "H24",
+    "vor_created_by": "IBOSOFT",
+    "vor_rmk": "Coverage 250 NM. Unusable: BTN R090-R105 beyond 15 NM; BTN R106-R125 beyond 10 NM; BTN R126-R300"
+  },
+
+  // ECN DME — CH117X / Elevation 40 M
+  {
+    "suppress": {},
+    "type": "dme",
+    "vor_code_id": "ECN",
+    "dme_code_id": "ECN",
+    "dme_channel": "117X",
+    "dme_lat_dd": 35.156667,
+    "dme_lon_dd": 33.491389,
+    "dme_elev": 40,
+    "dme_uom_dist_ver": "M",
+    "dme_work_hr": "H24",
+    "dme_created_by": "IBOSOFT"
+  },
+
+  // IECR LOC RWY 29R — 108.3 MHz
+  // * Unusable outside 10° left side of LLZ centerline (90 HZ sector II)
+  //   and beyond 11 NM (90 HZ-150 HZ sector I) of LLZ antenna for CAT I operations
+  {
+    "suppress": {},
+    "type": "loc",
+    "loc_code_id": "IECR",
+    "loc_ahp_code_id": "LCEN",
+    "loc_rwy_desig": "RWY-11L/29R",
+    "loc_rdn_desig": "29R",
+    "loc_mag_brg": "288",
+    "loc_freq": "108.3",
+    "loc_lat_dd": 35.160556,
+    "loc_lon_dd": 33.485278,
+    "loc_work_hr": "H24",
+    "loc_created_by": "IBOSOFT",
+    "loc_rmk": "Unusable outside 10 degrees left side of LLZ centerline (90 HZ sector II) and beyond 11 NM (90 HZ-150 HZ sector I) of LLZ antenna for CAT I operations"
+  },
+
+  // IECR GP RWY 29R — 334.1 MHz / 3° / RDH 55 FT
+  {
+    "suppress": {},
+    "type": "gp",
+    "loc_code_id": "IECR",
+    "gp_freq": "334.1",
+    "gp_lat_dd": 35.152667,
+    "gp_lon_dd": 33.512861,
+    "gp_slope": 3.0,
+    "gp_rdh": 55,
+    "gp_uom_rdh": "FT",
+    "gp_work_hr": "H24",
+    "gp_created_by": "IBOSOFT"
+  },
+
+  // IECR DME RWY 29R — CH20X / Elevation 110 M
+  {
+    "suppress": {},
+    "type": "dme",
+    "loc_code_id": "IECR",
+    "dme_code_id": "IECR",
+    "dme_channel": "20X",
+    "dme_lat_dd": 35.152667,
+    "dme_lon_dd": 33.512861,
+    "dme_elev": 110,
+    "dme_uom_dist_ver": "M",
+    "dme_work_hr": "H24",
+    "dme_created_by": "IBOSOFT"
+  },
+
+  // IEKT LOC RWY 29L — 110.7 MHz
+  {
+    "suppress": {},
+    "type": "loc",
+    "loc_code_id": "IEKT",
+    "loc_ahp_code_id": "LCEN",
+    "loc_rwy_desig": "RWY-11R/29L",
+    "loc_rdn_desig": "29L",
+    "loc_mag_brg": "288",
+    "loc_freq": "110.7",
+    "loc_lat_dd": 35.155639,
+    "loc_lon_dd": 33.494056,
+    "loc_work_hr": "H24",
+    "loc_created_by": "IBOSOFT"
+  },
+
+  // IEKT GP RWY 29L — 330.2 MHz / 3° / RDH 55 FT
+  {
+    "suppress": {},
+    "type": "gp",
+    "loc_code_id": "IEKT",
+    "gp_freq": "330.2",
+    "gp_lat_dd": 35.144361,
+    "gp_lon_dd": 33.524833,
+    "gp_slope": 3.0,
+    "gp_rdh": 55,
+    "gp_uom_rdh": "FT",
+    "gp_work_hr": "H24",
+    "gp_created_by": "IBOSOFT"
+  },
+
+  // IEKT DME RWY 29L — CH44X / Elevation 100 M
+  {
+    "suppress": {},
+    "type": "dme",
+    "loc_code_id": "IEKT",
+    "dme_code_id": "IEKT",
+    "dme_channel": "44X",
+    "dme_lat_dd": 35.144361,
+    "dme_lon_dd": 33.524833,
+    "dme_elev": 100,
+    "dme_uom_dist_ver": "M",
+    "dme_work_hr": "H24",
+    "dme_created_by": "IBOSOFT"
+  }
 ]
