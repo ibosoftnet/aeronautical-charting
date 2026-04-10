@@ -84,8 +84,37 @@ Prefix-based field naming:
 - `tacan_*`: TACAN element fields
 
 Ortak alanlar (prefix yok):
+- `type`: Katmanın navaid tipi (sabit string, QGIS sembol/filtre için)
+- `ident`: Primary elementin tanımlayıcısı (QGIS sembol/label için)
+- `name`: Primary elementin adı (ILS katmanlarında NULL)
 - `channelNo`: Channel numarası (standardize)
 - `frequency`: Frequency değeri (standardize)
+
+### `type` Değerleri
+
+| Katman    | `type` değeri |
+|-----------|---------------|
+| `ils_loc` | `LOC`         |
+| `ils_gp`  | `GP`          |
+| `ils_dme` | `DME`         |
+| `vor`     | `VOR`         |
+| `vor_dme` | `VOR DME`     |
+| `vortac`  | `VORTAC`      |
+| `dme`     | `DME`         |
+| `tacan`   | `TACAN`       |
+
+### `ident` ve `name` Kaynak Mapping
+
+| Katman    | `ident` kaynağı  | `name` kaynağı  |
+|-----------|-------------------|-----------------|
+| `vor`     | `vor_code_id`     | `vor_name`      |
+| `vor_dme` | `vor_code_id`     | `vor_name`      |
+| `tacan`   | `tacan_code_id`   | `tacan_name`    |
+| `vortac`  | `vor_code_id` (yoksa `tacan_code_id`) | `vor_name` (yoksa `tacan_name`) |
+| `dme`     | `dme_code_id`     | `dme_name`      |
+| `ils_loc` | `loc_code_id`     | NULL            |
+| `ils_dme` | `dme_code_id`     | NULL            |
+| `ils_gp`  | `loc_code_id`     | NULL            |
 
 ## Suppress/Override Mekanizması
 

@@ -853,6 +853,27 @@ def load_frequency_pairing(csv_path: Path) -> tuple[dict[str, str], dict[str, st
     return channel_to_vhf, vhf_to_channel, channel_to_gp, gp_to_channel
 
 
+def add_common_ident(
+    rows: list[dict[str, Any]],
+    ident_field: str,
+    name_field: str | None = None,
+    ident_fallback_field: str | None = None,
+    name_fallback_field: str | None = None,
+) -> list[dict[str, Any]]:
+    """Her row'a 'ident' ve 'name' ortak alanlarını ekle."""
+    for row in rows:
+        ident = row.get(ident_field)
+        if not ident and ident_fallback_field:
+            ident = row.get(ident_fallback_field)
+        row["ident"] = ident
+
+        name = row.get(name_field) if name_field else None
+        if not name and name_fallback_field:
+            name = row.get(name_fallback_field)
+        row["name"] = name
+    return rows
+
+
 def enrich_frequency_fields(
     rows: list[dict[str, Any]],
     channel_to_vhf: dict[str, str],
@@ -1088,6 +1109,28 @@ def main():
     dme_standalone = enrich_frequency_fields(dme_standalone, channel_to_vhf, vhf_to_channel, channel_to_gp, gp_to_channel, primary_freq_field="dme_ghost_freq", primary_channel_field="dme_channel", is_gp=False)
     # TACAN (standalone): kendi tacan_channel'ı, frequency = tacan_channel'dan hesaplanan
     tacan_standalone = enrich_frequency_fields(tacan_standalone, channel_to_vhf, vhf_to_channel, channel_to_gp, gp_to_channel, primary_freq_field=None, primary_channel_field="tacan_channel", is_gp=False)
+
+    print("\n[5.7] Ortak ident/name alanları ekleniyor...")
+    loc_rows        = add_common_ident(loc_rows,        "loc_code_id",   name_field=None)
+    gp_rows         = add_common_ident(gp_rows,         "loc_code_id",   name_field=None)
+    ils_dme_rows    = add_common_ident(ils_dme_rows,    "dme_code_id",   name_field=None)
+    vor_rows        = add_common_ident(vor_rows,        "vor_code_id",   name_field="vor_name")
+    vor_dme_rows    = add_common_ident(vor_dme_rows,    "vor_code_id",   name_field="vor_name")
+    vortac_rows     = add_common_ident(vortac_rows,     "vor_code_id",   name_field="vor_name",
+                                       ident_fallback_field="tacan_code_id",
+                                       name_fallback_field="tacan_name")
+    dme_standalone  = add_common_ident(dme_standalone,  "dme_code_id",   name_field="dme_name")
+    tacan_standalone = add_common_ident(tacan_standalone, "tacan_code_id", name_field="tacan_name")
+
+    print("\n[5.8] Ortak type alanı ekleniyor...")
+    for row in loc_rows:        row["type"] = "LOC"
+    for row in gp_rows:         row["type"] = "GP"
+    for row in ils_dme_rows:    row["type"] = "DME"
+    for row in vor_rows:        row["type"] = "VOR"
+    for row in vor_dme_rows:    row["type"] = "VOR DME"
+    for row in vortac_rows:     row["type"] = "VORTAC"
+    for row in dme_standalone:  row["type"] = "DME"
+    for row in tacan_standalone: row["type"] = "TACAN"
 
     # GeoPackage yazma
     print("\n[6] GeoPackage yazılıyor...")
