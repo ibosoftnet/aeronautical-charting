@@ -276,11 +276,11 @@
         "ip": "../images/aixm/triangleblack.ico",
         "t": 2,
         "hi": "ANTALYA",
-        "pic": "<b>DESIGNATOR : </b>AYT<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>VOR<br><b>POSITION : </b>36°55'15''N  030°47'40''E  ",
-        "kid": "uuid.81428b79-97f2-4f59-8b0a-2567a25da1c0",
+        "pic": "<b>DESIGNATOR : </b>AYT<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>36°55'15''N  030°47'40''E  ",
+        "kid": "uuid.4e58d61c-7f0f-47d5-a355-48d2c57f7d71",
         "rpType": 1,
-        "type": "VOR",
-        "cip": "../../images/AIXM/vor-icon.png",
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -1387,6 +1387,27 @@
     {
       "geometry": {
         "coordinates": [
+          30.794472,
+          36.920806
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "ANTALYA",
+        "pic": "<b>DESIGNATOR : </b>AYT<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>VOR<br><b>POSITION : </b>36°55'15''N  030°47'40''E  ",
+        "kid": "uuid.81428b79-97f2-4f59-8b0a-2567a25da1c0",
+        "rpType": 1,
+        "type": "VOR",
+        "cip": "../../images/AIXM/vor-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           [
             31.01861,
             38.48194
@@ -1873,6 +1894,27 @@
     {
       "geometry": {
         "coordinates": [
+          30.546833,
+          38.804139
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "AFYON",
+        "pic": "<b>DESIGNATOR : </b>KFK<br><b>NAME : </b>AFYON<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>38°48'15''N  030°32'49''E  ",
+        "kid": "uuid.39e4d7b4-2882-41ae-8724-683c8747cf47",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           [
             30.546833,
             38.804139
@@ -2030,11 +2072,11 @@
         "ip": "../images/aixm/triangleblack.ico",
         "t": 2,
         "hi": "BEYKOZ",
-        "pic": "<b>DESIGNATOR : </b>BKZ<br><b>NAME : </b>BEYKOZ<br><b>TYPE : </b>VOR<br><b>POSITION : </b>41°07'37''N  029°08'34''E  ",
-        "kid": "uuid.a57441f0-aff0-4aee-ac92-b618ac9ab1f5",
+        "pic": "<b>DESIGNATOR : </b>BKZ<br><b>NAME : </b>BEYKOZ<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>41°07'37''N  029°08'34''E  ",
+        "kid": "uuid.3c5d5120-e058-44fc-b999-f94e72180067",
         "rpType": 1,
-        "type": "VOR",
-        "cip": "../../images/AIXM/vor-icon.png",
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -6385,11 +6427,11 @@
         "ip": "../images/aixm/triangleblack.ico",
         "t": 2,
         "hi": "YALOVA",
-        "pic": "<b>DESIGNATOR : </b>YAA<br><b>NAME : </b>YALOVA<br><b>TYPE : </b>VOR<br><b>POSITION : </b>40°28'30''N  029°12'27''E  ",
-        "kid": "uuid.31f3e567-5b6f-4054-8847-9b8b131c89a2",
+        "pic": "<b>DESIGNATOR : </b>YAA<br><b>NAME : </b>YALOVA<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>40°28'30''N  029°12'27''E  ",
+        "kid": "uuid.c1fef7dc-11cd-4821-b2f5-387d7c5d53a6",
         "rpType": 1,
-        "type": "VOR",
-        "cip": "../../images/AIXM/vor-icon.png",
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -6444,6 +6486,48 @@
         "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
         "ais_START_POINT_COORDINATES": "39.89028 29.71861",
         "ais_END_POINT_COORDINATES": "40.475028 29.207556"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.207556,
+          40.475028
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "YALOVA",
+        "pic": "<b>DESIGNATOR : </b>YAA<br><b>NAME : </b>YALOVA<br><b>TYPE : </b>VOR<br><b>POSITION : </b>40°28'30''N  029°12'27''E  ",
+        "kid": "uuid.31f3e567-5b6f-4054-8847-9b8b131c89a2",
+        "rpType": 1,
+        "type": "VOR",
+        "cip": "../../images/AIXM/vor-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          29.142889,
+          41.126972
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "BEYKOZ",
+        "pic": "<b>DESIGNATOR : </b>BKZ<br><b>NAME : </b>BEYKOZ<br><b>TYPE : </b>VOR<br><b>POSITION : </b>41°07'37''N  029°08'34''E  ",
+        "kid": "uuid.a57441f0-aff0-4aee-ac92-b618ac9ab1f5",
+        "rpType": 1,
+        "type": "VOR",
+        "cip": "../../images/AIXM/vor-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
     },
@@ -12128,6 +12212,27 @@
     {
       "geometry": {
         "coordinates": [
+          37.472972,
+          36.951611
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "GAZIANTEP",
+        "pic": "<b>DESIGNATOR : </b>GAZ<br><b>NAME : </b>GAZIANTEP<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>36°57'06''N  037°28'23''E  ",
+        "kid": "uuid.fcbe1d39-7326-4cc8-9b59-d444c2c54321",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           37.08806,
           37.25944
         ],
@@ -12285,11 +12390,11 @@
         "ip": "../images/aixm/triangleblack.ico",
         "t": 2,
         "hi": "ESENBOGA",
-        "pic": "<b>DESIGNATOR : </b>ESB<br><b>NAME : </b>ESENBOGA<br><b>TYPE : </b>VOR<br><b>POSITION : </b>40°08'48''N  033°00'45''E  ",
-        "kid": "uuid.d4e95bda-4aad-4d1b-9f82-346f80d578cc",
+        "pic": "<b>DESIGNATOR : </b>ESB<br><b>NAME : </b>ESENBOGA<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>40°08'48''N  033°00'45''E  ",
+        "kid": "uuid.de5e9bf4-b4a0-45d8-a82d-c5e4266cb293",
         "rpType": 1,
-        "type": "VOR",
-        "cip": "../../images/AIXM/vor-icon.png",
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -12320,7 +12425,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.0,
         "sa": "",
-        "ea": "55",
+        "ea": "055",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.08dc119b-a2cd-47bc-9a10-f0023a79ceab\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -12336,7 +12441,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "55",
+        "ais_REVERSE_MAGNETIC_TRACK": "055",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ILHAN",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -13609,7 +13714,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 1.5,
         "sa": "",
-        "ea": "71",
+        "ea": "071",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.a05ba128-0342-41c0-a674-bf417b8a4c9b\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -13625,7 +13730,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "71",
+        "ais_REVERSE_MAGNETIC_TRACK": "071",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "RUVOM",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
@@ -13662,7 +13767,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.5,
         "sa": "",
-        "ea": "94",
+        "ea": "094",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.a99743f7-c628-4a13-ac5e-1d793bebb2db\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -13678,7 +13783,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "94",
+        "ais_REVERSE_MAGNETIC_TRACK": "094",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "GAKSU",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -13736,7 +13841,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 3.0,
         "sa": "",
-        "ea": "71",
+        "ea": "071",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.db50c0fe-fd5d-43d2-868b-a5efe9f844c3\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -13752,7 +13857,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "71",
+        "ais_REVERSE_MAGNETIC_TRACK": "071",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ODIRA",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -13810,7 +13915,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.0,
         "sa": "",
-        "ea": "94",
+        "ea": "094",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.291bcdba-5ce8-4766-86a8-65f2f13d0262\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -13826,7 +13931,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "94",
+        "ais_REVERSE_MAGNETIC_TRACK": "094",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "AFYON",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -15948,6 +16053,27 @@
         "rpType": 2,
         "type": "DP",
         "cip": "../images/aixm/trianglewhite.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          41.881972,
+          37.910667
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "SIIRT",
+        "pic": "<b>DESIGNATOR : </b>SRT<br><b>NAME : </b>SIIRT<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>37°54'38''N  041°52'55''E  ",
+        "kid": "uuid.68484c9a-5c60-4f6d-bb9a-652072544d0a",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -18400,7 +18526,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 1.5,
         "sa": "",
-        "ea": "84",
+        "ea": "084",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.01a74140-4c1e-4e2c-a2b5-0eb3282a6837\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -18416,7 +18542,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "84",
+        "ais_REVERSE_MAGNETIC_TRACK": "084",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ERMUP",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
@@ -18474,7 +18600,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.5,
         "sa": "",
-        "ea": "69",
+        "ea": "069",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.192de03f-e48e-44ce-bf4d-5b69bff78d78\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -18490,7 +18616,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "69",
+        "ais_REVERSE_MAGNETIC_TRACK": "069",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "GIPDA",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
@@ -18749,7 +18875,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 1.5,
         "sa": "",
-        "ea": "67",
+        "ea": "067",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.631af14e-6672-4c5d-9205-50a0d9e11de6\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -18765,7 +18891,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "67",
+        "ais_REVERSE_MAGNETIC_TRACK": "067",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ABSAX",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
@@ -19893,6 +20019,27 @@
         "rpType": 2,
         "type": "DP",
         "cip": "../images/aixm/trianglewhite.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.076111,
+          42.023028
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "SINOP",
+        "pic": "<b>DESIGNATOR : </b>SIN<br><b>NAME : </b>SINOP<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>42°01'23''N  035°04'34''E  ",
+        "kid": "uuid.b90d1ba9-2d74-49f7-8e25-bf10a9f561e5",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -21981,11 +22128,11 @@
         "ip": "../images/aixm/triangleblack.ico",
         "t": 2,
         "hi": "ELAZIG",
-        "pic": "<b>DESIGNATOR : </b>EZS<br><b>NAME : </b>ELAZIG<br><b>TYPE : </b>VOR<br><b>POSITION : </b>38°42'30''N  039°13'27''E  ",
-        "kid": "uuid.d22b1228-26a8-4353-a5a4-78cba0de6cf2",
+        "pic": "<b>DESIGNATOR : </b>EZS<br><b>NAME : </b>ELAZIG<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>38°42'30''N  039°13'27''E  ",
+        "kid": "uuid.fa58cc37-e2be-4a95-8b00-f06a83c61b7d",
         "rpType": 1,
-        "type": "VOR",
-        "cip": "../../images/AIXM/vor-icon.png",
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -25979,6 +26126,27 @@
     {
       "geometry": {
         "coordinates": [
+          28.810694,
+          40.961472
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "ISTANBUL",
+        "pic": "<b>DESIGNATOR : </b>IST<br><b>NAME : </b>ISTANBUL<br><b>TYPE : </b>VORTAC<br><b>POSITION : </b>40°57'41''N  028°48'38''E  ",
+        "kid": "uuid.a15d4bec-27bd-41eb-b0b5-313efbd8db4c",
+        "rpType": 1,
+        "type": "VORTAC",
+        "cip": "../../images/AIXM/vortac-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           [
             29.37833,
             39.90667
@@ -26055,7 +26223,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.5,
         "sa": "",
-        "ea": "156",
+        "ea": "155",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.265d949e-9379-4eb6-b172-4ff298f66564\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -26071,7 +26239,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "156",
+        "ais_REVERSE_MAGNETIC_TRACK": "155",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ANTALYA",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -26428,6 +26596,27 @@
         "ais_END_POINT_REPORTING_ATC": "ON_REQUEST",
         "ais_START_POINT_COORDINATES": "38.84222 38.94194",
         "ais_END_POINT_COORDINATES": "39.45278 37.63833"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.224083,
+          38.708278
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "ELAZIG",
+        "pic": "<b>DESIGNATOR : </b>EZS<br><b>NAME : </b>ELAZIG<br><b>TYPE : </b>VOR<br><b>POSITION : </b>38°42'30''N  039°13'27''E  ",
+        "kid": "uuid.d22b1228-26a8-4353-a5a4-78cba0de6cf2",
+        "rpType": 1,
+        "type": "VOR",
+        "cip": "../../images/AIXM/vor-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
     },
@@ -28125,11 +28314,11 @@
         "ip": "../images/aixm/triangleblack.ico",
         "t": 2,
         "hi": "CORLU",
-        "pic": "<b>DESIGNATOR : </b>CRL<br><b>NAME : </b>CORLU<br><b>TYPE : </b>VOR<br><b>POSITION : </b>41°09'03''N  027°56'06''E  ",
-        "kid": "uuid.d944bbc3-fabf-4ec7-a391-ed997dcd8335",
+        "pic": "<b>DESIGNATOR : </b>CRL<br><b>NAME : </b>CORLU<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>41°09'03''N  027°56'06''E  ",
+        "kid": "uuid.a1742562-cef4-4564-86a6-81e55570add2",
         "rpType": 1,
-        "type": "VOR",
-        "cip": "../../images/AIXM/vor-icon.png",
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -30966,27 +31155,6 @@
         "ais_END_POINT_REPORTING_ATC": "ON_REQUEST",
         "ais_START_POINT_COORDINATES": "39.05 28.39806",
         "ais_END_POINT_COORDINATES": "39.29889 28.27667"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          30.794472,
-          36.920806
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "ip": "../images/aixm/triangleblack.ico",
-        "t": 2,
-        "hi": "ANTALYA",
-        "pic": "<b>DESIGNATOR : </b>AYT<br><b>NAME : </b>ANTALYA<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>36°55'15''N  030°47'40''E  ",
-        "kid": "uuid.4e58d61c-7f0f-47d5-a355-48d2c57f7d71",
-        "rpType": 1,
-        "type": "VOR_DME",
-        "cip": "../../images/AIXM/vordme-icon.png",
-        "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
     },
@@ -34369,7 +34537,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
         "sa": "237",
-        "ea": "57",
+        "ea": "057",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.62115e92-af50-4d10-ae8a-6d13a4b23b06\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -34385,7 +34553,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "237",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "57",
+        "ais_REVERSE_MAGNETIC_TRACK": "057",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ARMAM",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -34422,7 +34590,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
         "sa": "237",
-        "ea": "57",
+        "ea": "057",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.62a5c5b6-304f-4f81-8a38-0cfbe92f8f6b\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -34438,7 +34606,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "237",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "57",
+        "ais_REVERSE_MAGNETIC_TRACK": "057",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "NEPNO",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
@@ -34528,7 +34696,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
         "sa": "237",
-        "ea": "57",
+        "ea": "057",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.f6b5f225-5211-4ecb-bc1b-0feedd71c916\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -34544,7 +34712,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "237",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "57",
+        "ais_REVERSE_MAGNETIC_TRACK": "057",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "KAVAK",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -35174,7 +35342,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.0,
         "sa": "",
-        "ea": "82",
+        "ea": "082",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.11d67d0d-2101-4b26-8468-6b99acd99862\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -35190,7 +35358,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "82",
+        "ais_REVERSE_MAGNETIC_TRACK": "082",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "GURBU",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -35248,7 +35416,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.0,
         "sa": "",
-        "ea": "99",
+        "ea": "099",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.e3242293-5476-43c0-987e-3d628e06e928\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -35264,7 +35432,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "99",
+        "ais_REVERSE_MAGNETIC_TRACK": "099",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ESENBOGA",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -39351,27 +39519,6 @@
     {
       "geometry": {
         "coordinates": [
-          28.810694,
-          40.961472
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "ip": "../images/aixm/triangleblack.ico",
-        "t": 2,
-        "hi": "ISTANBUL",
-        "pic": "<b>DESIGNATOR : </b>IST<br><b>NAME : </b>ISTANBUL<br><b>TYPE : </b>VORTAC<br><b>POSITION : </b>40°57'41''N  028°48'38''E  ",
-        "kid": "uuid.a15d4bec-27bd-41eb-b0b5-313efbd8db4c",
-        "rpType": 1,
-        "type": "VORTAC",
-        "cip": "../../images/AIXM/vortac-icon.png",
-        "ais_REPORTING_ATC": "COMPULSORY"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
           [
             27.426167,
             40.951056
@@ -40483,6 +40630,27 @@
     {
       "geometry": {
         "coordinates": [
+          43.0270083,
+          39.6460611
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "AGRI",
+        "pic": "<b>DESIGNATOR : </b>ARI<br><b>NAME : </b>AGRI<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>39°38'46''N  043°01'37''E  ",
+        "kid": "uuid.be80b2fb-f206-44d6-a4a6-de3cbe2b06aa",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           [
             43.0270083,
             39.6460611
@@ -40530,6 +40698,27 @@
         "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
         "ais_START_POINT_COORDINATES": "39.6460611 43.0270083",
         "ais_END_POINT_COORDINATES": "39.81083 42.78306"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          39.795639,
+          40.995278
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "TRABZON",
+        "pic": "<b>DESIGNATOR : </b>TBN<br><b>NAME : </b>TRABZON<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>40°59'43''N  039°47'44''E  ",
+        "kid": "uuid.97601858-1188-455f-b2ea-2934076f189f",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
     },
@@ -41996,6 +42185,27 @@
     {
       "geometry": {
         "coordinates": [
+          32.809889,
+          40.07
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "BAGLUM",
+        "pic": "<b>DESIGNATOR : </b>BAG<br><b>NAME : </b>BAGLUM<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>40°04'12''N  032°48'36''E  ",
+        "kid": "uuid.0890a234-b9a5-4494-aaf6-10de5b057601",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           [
             32.809889,
             40.07
@@ -42297,6 +42507,27 @@
         "ais_END_POINT_REPORTING_ATC": "ON_REQUEST",
         "ais_START_POINT_COORDINATES": "39.37111 32.92167",
         "ais_END_POINT_COORDINATES": "39.47889 32.90472"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          33.291833,
+          36.863028
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "MUT",
+        "pic": "<b>DESIGNATOR : </b>MUT<br><b>NAME : </b>MUT<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>36°51'47''N  033°17'31''E  ",
+        "kid": "uuid.22351574-32cb-42d4-86fd-f1f5d9528255",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
     },
@@ -43434,11 +43665,11 @@
         "ip": "../images/aixm/triangleblack.ico",
         "t": 2,
         "hi": "KULA",
-        "pic": "<b>DESIGNATOR : </b>DEN<br><b>NAME : </b>KULA<br><b>TYPE : </b>VOR<br><b>POSITION : </b>38°34'41''N  028°36'10''E  ",
-        "kid": "uuid.26324217-f597-4a42-a0c1-8249d4cbb46f",
+        "pic": "<b>DESIGNATOR : </b>DEN<br><b>NAME : </b>KULA<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>38°34'41''N  028°36'10''E  ",
+        "kid": "uuid.68c424e1-b37e-48b2-95e6-d0f20556d1dd",
         "rpType": 1,
-        "type": "VOR",
-        "cip": "../../images/AIXM/vor-icon.png",
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -43566,6 +43797,27 @@
         "rpType": 2,
         "type": "DP",
         "cip": "../images/aixm/trianglewhite.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.602694,
+          38.578083
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "KULA",
+        "pic": "<b>DESIGNATOR : </b>DEN<br><b>NAME : </b>KULA<br><b>TYPE : </b>VOR<br><b>POSITION : </b>38°34'41''N  028°36'10''E  ",
+        "kid": "uuid.26324217-f597-4a42-a0c1-8249d4cbb46f",
+        "rpType": 1,
+        "type": "VOR",
+        "cip": "../../images/AIXM/vor-icon.png",
         "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
@@ -48200,8 +48452,8 @@
         "cip": "../../images/aixm/URNAVORH.svg",
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.0,
-        "sa": "134",
-        "ea": "",
+        "sa": "",
+        "ea": "134",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.2b16f53b-9016-40a9-8dbe-3502f6cf2a29\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -48215,9 +48467,9 @@
         "ais_UPPER_LIMIT_REFERENCE": "STD",
         "ais_TRUE_TRACK": "",
         "ais_REVERSE_TRUE_TRACK": "",
-        "ais_MAGNETIC_TRACK": "134",
+        "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "",
+        "ais_REVERSE_MAGNETIC_TRACK": "134",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ENESU",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
@@ -53661,6 +53913,48 @@
     {
       "geometry": {
         "coordinates": [
+          33.104917,
+          40.241861
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "CUBUK",
+        "pic": "<b>DESIGNATOR : </b>BUK<br><b>NAME : </b>CUBUK<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>40°14'31''N  033°06'18''E  ",
+        "kid": "uuid.158c748c-adcb-4982-8e9b-edfd522975fe",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.0285,
+          39.153806
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "GEMEREK",
+        "pic": "<b>DESIGNATOR : </b>GEM<br><b>NAME : </b>GEMEREK<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>39°09'14''N  036°01'43''E  ",
+        "kid": "uuid.9f9eaae6-0486-4758-aa0e-914452a86ea4",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           [
             33.104917,
             40.241861
@@ -54425,7 +54719,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 1.5,
         "sa": "",
-        "ea": "97",
+        "ea": "097",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.2583c59f-95ea-403a-b4aa-2f7f80585c5b\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -54441,7 +54735,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "97",
+        "ais_REVERSE_MAGNETIC_TRACK": "097",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ASMAP",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -54478,7 +54772,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.0,
         "sa": "",
-        "ea": "97",
+        "ea": "097",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.c475750a-3ee0-409f-bbb3-2a97c476a8e0\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -54494,7 +54788,7 @@
         "ais_REVERSE_TRUE_TRACK": "",
         "ais_MAGNETIC_TRACK": "",
         "ais_NAVIGATION_TYPE": "RNAV",
-        "ais_REVERSE_MAGNETIC_TRACK": "97",
+        "ais_REVERSE_MAGNETIC_TRACK": "097",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "ODRUP",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -58260,6 +58554,27 @@
         "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
         "ais_START_POINT_COORDINATES": "38.66167 40.21667",
         "ais_END_POINT_COORDINATES": "38.69389 39.53333"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          43.325167,
+          38.466111
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 2,
+        "hi": "VAN",
+        "pic": "<b>DESIGNATOR : </b>VAN<br><b>NAME : </b>VAN<br><b>TYPE : </b>VOR_DME<br><b>POSITION : </b>38°27'58''N  043°19'31''E  ",
+        "kid": "uuid.8e3e498d-83e5-4b08-ad37-12223f1c5473",
+        "rpType": 1,
+        "type": "VOR_DME",
+        "cip": "../../images/AIXM/vordme-icon.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
       },
       "type": "Feature"
     },

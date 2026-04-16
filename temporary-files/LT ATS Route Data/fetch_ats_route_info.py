@@ -18,11 +18,12 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 
 # ── Configuration ─────────────────────────────────────────────────────────────
+BASE_DIR = Path(__file__).resolve().parent
 JSON_FILES = [
-    Path(r"d:\ibosoft\aeronautical-charting\aeronautical-data\ATS Routes\L Conv\LT\lats.json"),
-    Path(r"d:\ibosoft\aeronautical-charting\aeronautical-data\ATS Routes\L RNAV\LT\lrnav.json"),
-    Path(r"d:\ibosoft\aeronautical-charting\aeronautical-data\ATS Routes\U Conv\LT\uats.json"),
-    Path(r"d:\ibosoft\aeronautical-charting\aeronautical-data\ATS Routes\U RNAV\LT\urnav.json"),
+    BASE_DIR / "Lower" / "lats.json",
+    BASE_DIR / "Lower" / "lrnav.json",
+    BASE_DIR / "Upper" / "uats.json",
+    BASE_DIR / "Upper" / "urnav.json",
 ]
 
 BASE_URL     = "https://ais.dhmi.gov.tr"
