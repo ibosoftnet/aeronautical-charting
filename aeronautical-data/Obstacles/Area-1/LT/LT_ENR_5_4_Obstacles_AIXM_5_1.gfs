@@ -6,7 +6,7 @@
     <GeometryType>1</GeometryType>
     <SRSName>urn:ogc:def:crs:EPSG::4326</SRSName>
     <DatasetSpecificInfo>
-      <FeatureCount>7115</FeatureCount>
+      <FeatureCount>7116</FeatureCount>
       <ExtentXMin>25.96414</ExtentXMin>
       <ExtentXMax>44.68161</ExtentXMax>
       <ExtentYMin>35.37719</ExtentYMin>
