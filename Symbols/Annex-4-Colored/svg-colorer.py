@@ -5,7 +5,7 @@ import re
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # 🔥 Bir üst dizine çık ve SVG klasörüne gir
-SOURCE_FOLDER = os.path.join(CURRENT_DIR, "..", "ICAO Annex 4 SVG Symbols")
+SOURCE_FOLDER = os.path.join(CURRENT_DIR, "..", "ICAO-Annex-4-SVG-Symbols")
 SOURCE_FOLDER = os.path.abspath(SOURCE_FOLDER)
 
 
@@ -73,9 +73,9 @@ if __name__ == "__main__":
 
     # 🔥 BURAYA İSTEDİĞİN KADAR RENK EKLE
     colors = [
-        "#000000",
-        "#5e5e5e",
-        "#41ddf0",
+        "#ff0000",
+        "#00ff00",
+        "#0000ff",
     ]
 
     process_svgs(colors)
