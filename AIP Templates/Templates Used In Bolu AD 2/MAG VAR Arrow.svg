@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="12.664311mm"
+   height="30.185108mm"
+   viewBox="0 0 12.664311 30.185108"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <clipPath
+       id="clip0">
+      <path
+         d="m 997.824,161.672 -7.931,-0.139 -1.101,63.057 7.931,0.138 z"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         id="path1" />
+    </clipPath>
+    <clipPath
+       id="clip1">
+      <path
+         d="m 997.824,161.672 -7.931,-0.139 -1.101,63.057 7.931,0.138 z"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         id="path2" />
+    </clipPath>
+    <clipPath
+       id="clip2">
+      <path
+         d="m 997.824,161.672 -7.931,-0.139 -1.101,63.057 7.931,0.138 z"
+         fill-rule="evenodd"
+         clip-rule="evenodd"
+         id="path3" />
+    </clipPath>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-139.78539,-153.98751)">
+    <g
+       clip-path="url(#clip0)"
+       id="g7"
+       transform="matrix(0.26458333,0,0,0.26458333,-116.09267,117.85058)">
+      <g
+         clip-path="url(#clip1)"
+         id="g6">
+        <g
+           clip-path="url(#clip2)"
+           id="g5">
+          <path
+             d="M 0,0 4.76033,-54.8231"
+             stroke="#373435"
+             stroke-width="0.634711"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-miterlimit="10"
+             fill="none"
+             transform="matrix(-0.999848,-0.0174524,0.0176196,-1.00942,994.841,169.004)"
+             id="path4" />
+          <path
+             d="M 0,0 -1.26946,-5.07784 -2.53892,-9.83831 0.63473,-7.93412 0,0"
+             fill="#373435"
+             transform="matrix(-0.999848,-0.0174524,0.017619,-1.00939,995.285,161.642)"
+             id="path5" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g11"
+       transform="matrix(0.26458333,0,0,0.26458333,-115.8875,117.73958)">
+      <g
+         id="g10">
+        <g
+           id="g9">
+          <path
+             d="M 0,0 V 83.1954"
+             stroke="#373435"
+             stroke-width="0.640581"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             stroke-miterlimit="10"
+             fill="none"
+             transform="matrix(1,0,0,-1,988.34,224.68)"
+             id="path7" />
+          <path
+             d="M 0,0 -1.60145,-5.12465 -3.52319,-9.28842 0,-8.00726 V 0"
+             fill="#373435"
+             transform="matrix(1,0,0,-1,988.66,137)"
+             id="path8" />
+          <path
+             d="M 0,0 1.28116,-5.12465 3.2029,-9.28842 0,-8.00726 V 0"
+             fill="#373435"
+             transform="matrix(1,0,0,-1,988.66,137)"
+             id="path9" />
+        </g>
+      </g>
+    </g>
+    <text
+       font-family="Arial, Arial_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="1.85208px"
+       transform="rotate(-84.000028)"
+       id="text11"
+       x="-159.64708"
+       y="166.12491"
+       style="stroke-width:0.264583">VAR 6.23</text>
+    <text
+       font-family="Aptos, Aptos_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="1.85208px"
+       transform="rotate(-84.000028)"
+       id="text12"
+       x="-151.66663"
+       y="166.11751"
+       style="stroke-width:0.264583">°</text>
+    <text
+       font-family="Arial, Arial_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="1.85208px"
+       transform="rotate(-84.000028)"
+       id="text13"
+       x="-150.6017"
+       y="166.12477"
+       style="stroke-width:0.264583">E</text>
+    <text
+       font-family="Arial, Arial_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="1.85208px"
+       transform="rotate(-84.000028)"
+       id="text14"
+       x="-149.0047"
+       y="166.13197"
+       style="stroke-width:0.264583">–</text>
+    <text
+       font-family="Arial, Arial_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="1.85208px"
+       transform="rotate(-84.000028)"
+       id="text15"
+       x="-147.40984"
+       y="166.11893"
+       style="stroke-width:0.264583">2025</text>
+    <text
+       font-family="Arial, Arial_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="1.85208px"
+       id="text16"
+       x="139.7881"
+       y="179.3875"
+       style="stroke-width:0.264583">ANNUAL RATE</text>
+    <text
+       font-family="Arial, Arial_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="1.85208px"
+       id="text17"
+       x="140.37547"
+       y="181.76875"
+       style="stroke-width:0.264583">OF CHANGE:</text>
+    <text
+       font-family="Arial, Arial_MSFontService, sans-serif"
+       font-weight="400"
+       font-size="1.85208px"
+       id="text18"
+       x="141.20998"
+       y="184.14999"
+       style="stroke-width:0.264583">UNKNOWN</text>
+  </g>
+</svg>

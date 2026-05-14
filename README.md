@@ -11,21 +11,28 @@ Bu proje, bireysel kullanıcıların, ICAO standartları ve SARP'ları doğrultu
 
 ## Dokümantasyon:
 
-Proje henüz erken ssafhada olduğundan dokümantasyon henüz hazırlanmamıştır.
+Proje henüz erken safhada olduğundan dokümantasyon henüz hazırlanmamıştır.
 
 ## Hedeflenen Özellikler:
 
 ### Tamamlanan Hedefler:
 
-* ICAO Annex 4'den çıkarılan SVG semboller ve QGIS kütüphane dosyası (Nokta sembollerinin tamamına yakını kapsanmaktadır, çizgi ve alan sembolojisinde henüz eksiklikler vardır.)
+* ICAO Annex 4'den çıkarılan SVG semboller ve QGIS kütüphane dosyası.
+* Bolu Havaalanı için ilk haritalar hazırlandı. [https://ais.ibosoft.net.tr/aip-ibosoft](https://ais.ibosoft.net.tr/aip-ibosoft)
+* Bolu Havalanı yayınlarında kullanılan bazı AIP AD 2. ve harita şablonları eklendi. Proje dosyaları ve baskı düzenleri yeterince düzenli olmadığı için henüz paylaşılmadı.
 
-### ~~Üzerinde Uğraşılanlar:~~
-* ~~QGIS için şablon dosya.~~
-* ~~ICAO Doc 8126 & 10066 ile uyumlu boş AIP şablonu. (MS Office Word için.)~~
-* ATS hava sahası simgeleri ve etiketleri hazırlanıyor.  
+### Üzerinde uğraşılanlar
+* Minimum irtifa hesaplayıcı yapıldı, testleri sürüyor. (ICAO MSA, AMA; NATO MEF, Emergency Safe Altitude)
+
+---
+
+![](Images%20About%20Project/image-7.png)
+![](Images%20About%20Project/image-9847.png)
+![](Images%20About%20Project/image-5621.png)
+![](Images%20About%20Project/image-3014.png)
 ![](Images%20About%20Project/image-1.png)
 ![](Images%20About%20Project/image.png)
-![](Images%20About%20Project/image-7.png)
+
 
 ### ~~Planlanan Hedefler:~~
 * ~~Eksik Annex 4 sembolojilerinin tamamlanması.~~
