@@ -1586,140 +1586,15 @@
       "properties": {
         "hi": "MANAZ",
         "t": 8,
-        "pic": "<br><b>Position : </b>36°54'53''N  034°24'41''E  <br><b>Description : </b>ADA R264/D38",
+        "pic": "<br><b>Position : </b>36°54'53''N  034°24'41''E  <br><b>Description : </b>",
         "kid": "84",
         "strclr": "#023E9E",
         "fclr": "#023E9E",
-        "lc": "MANAZ\n36°54'53''N  034°24'41''E  \nADA R264/D38",
+        "lc": "MANAZ\n36°54'53''N  034°24'41''E  \n",
         "ip": "../../images/common/vfrpoint.png",
         "cip": "../../images/common/vfrpoint.png",
         "type": "VFR POINT",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=84\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1010
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          35.25,
-          37.1166666666667
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "hi": "SALBAS",
-        "t": 8,
-        "pic": "<br><b>Position : </b>37°07'00''N  035°15'00''E  <br><b>Description : </b>ADA R006/D11",
-        "kid": "85",
-        "strclr": "#023E9E",
-        "fclr": "#023E9E",
-        "lc": "SALBAS\n37°07'00''N  035°15'00''E  \nADA R006/D11",
-        "ip": "../../images/common/vfrpoint.png",
-        "cip": "../../images/common/vfrpoint.png",
-        "type": "VFR POINT",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=85\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1010
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          36.256667,
-          37.0708333333333
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "hi": "OSMANIYE",
-        "t": 8,
-        "pic": "<br><b>Position : </b>37°04'15''N  036°15'24''E  <br><b>Description : </b>ADA R077/D51",
-        "kid": "86",
-        "strclr": "#023E9E",
-        "fclr": "#023E9E",
-        "lc": "OSMANIYE\n37°04'15''N  036°15'24''E  \nADA R077/D51",
-        "ip": "../../images/common/vfrpoint.png",
-        "cip": "../../images/common/vfrpoint.png",
-        "type": "VFR POINT",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=86\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1010
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          35.6666666666667,
-          36.9
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "hi": "GUNDOGAN",
-        "t": 8,
-        "pic": "<br><b>Position : </b>36°54'00''N  035°40'00''E  <br><b>Description : </b>ADA R092/D22",
-        "kid": "87",
-        "strclr": "#023E9E",
-        "fclr": "#023E9E",
-        "lc": "GUNDOGAN\n36°54'00''N  035°40'00''E  \nADA R092/D22",
-        "ip": "../../images/common/vfrpoint.png",
-        "cip": "../../images/common/vfrpoint.png",
-        "type": "VFR POINT",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=87\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1010
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          35.3333333333333,
-          36.848611
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "hi": "DOGANKENT",
-        "t": 8,
-        "pic": "<br><b>Position : </b>36°50'55''N  035°20'00''E  <br><b>Description : </b>ADA R129/D8.1",
-        "kid": "88",
-        "strclr": "#023E9E",
-        "fclr": "#023E9E",
-        "lc": "DOGANKENT\n36°50'55''N  035°20'00''E  \nADA R129/D8.1",
-        "ip": "../../images/common/vfrpoint.png",
-        "cip": "../../images/common/vfrpoint.png",
-        "type": "VFR POINT",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=88\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1010
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          35.2102777777778,
-          36.9405555555556
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "hi": "ADA VOR",
-        "t": 8,
-        "pic": "<br><b>Position : </b>36°56'26''N  035°12'37''E  <br><b>Description : </b>",
-        "kid": "89",
-        "strclr": "#023E9E",
-        "fclr": "#023E9E",
-        "lc": "ADA VOR\n36°56'26''N  035°12'37''E  \n",
-        "ip": "../../images/common/vfrpoint.png",
-        "cip": "../../images/common/vfrpoint.png",
-        "type": "VFR POINT",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=89\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1010
       },
@@ -1736,11 +1611,11 @@
       "properties": {
         "hi": "KEMER",
         "t": 8,
-        "pic": "<br><b>Position : </b>37°36'03''N  034°43'33''E  <br><b>Description : </b>ADA R326/D46",
+        "pic": "<br><b>Position : </b>37°36'03''N  034°43'33''E  <br><b>Description : </b>",
         "kid": "90",
         "strclr": "#023E9E",
         "fclr": "#023E9E",
-        "lc": "KEMER\n37°36'03''N  034°43'33''E  \nADA R326/D46",
+        "lc": "KEMER\n37°36'03''N  034°43'33''E  \n",
         "ip": "../../images/common/vfrpoint.png",
         "cip": "../../images/common/vfrpoint.png",
         "type": "VFR POINT",
@@ -1761,11 +1636,11 @@
       "properties": {
         "hi": "TOROS",
         "t": 8,
-        "pic": "<br><b>Position : </b>37°46'00''N  035°00'00''E  <br><b>Description : </b>ADA R344/D51",
+        "pic": "<br><b>Position : </b>37°46'00''N  035°00'00''E  <br><b>Description : </b>",
         "kid": "91",
         "strclr": "#023E9E",
         "fclr": "#023E9E",
-        "lc": "TOROS\n37°46'00''N  035°00'00''E  \nADA R344/D51",
+        "lc": "TOROS\n37°46'00''N  035°00'00''E  \n",
         "ip": "../../images/common/vfrpoint.png",
         "cip": "../../images/common/vfrpoint.png",
         "type": "VFR POINT",
@@ -1786,11 +1661,11 @@
       "properties": {
         "hi": "OMERLI",
         "t": 8,
-        "pic": "<br><b>Position : </b>37°49'30''N  035°32'00''E  <br><b>Description : </b>ADA R012/D55",
+        "pic": "<br><b>Position : </b>37°49'30''N  035°32'00''E  <br><b>Description : </b>",
         "kid": "92",
         "strclr": "#023E9E",
         "fclr": "#023E9E",
-        "lc": "OMERLI\n37°49'30''N  035°32'00''E  \nADA R012/D55",
+        "lc": "OMERLI\n37°49'30''N  035°32'00''E  \n",
         "ip": "../../images/common/vfrpoint.png",
         "cip": "../../images/common/vfrpoint.png",
         "type": "VFR POINT",
@@ -2670,31 +2545,6 @@
         "cip": "../../images/common/vfrpoint.png",
         "type": "VFR POINT",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=133\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1010
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          35.3327777777778,
-          37.0205555555556
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "hi": "7NM SALBAS",
-        "t": 8,
-        "pic": "<br><b>Position : </b>37°01'14''N  035°19'58''E  <br><b>Description : </b>",
-        "kid": "134",
-        "strclr": "#023E9E",
-        "fclr": "#023E9E",
-        "lc": "7NM SALBAS\n37°01'14''N  035°19'58''E  \n",
-        "ip": "../../images/common/vfrpoint.png",
-        "cip": "../../images/common/vfrpoint.png",
-        "type": "VFR POINT",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=134\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1010
       },
@@ -4036,11 +3886,11 @@
       "properties": {
         "hi": "KEMER",
         "t": 8,
-        "pic": "<br><b>Position : </b>36°35'57''N  030°35'18''E  <br><b>Description : </b>AYT R202/D22",
+        "pic": "<br><b>Position : </b>36°35'57''N  030°35'18''E  <br><b>Description : </b>",
         "kid": "190",
         "strclr": "#023E9E",
         "fclr": "#023E9E",
-        "lc": "KEMER\n36°35'57''N  030°35'18''E  \nAYT R202/D22",
+        "lc": "KEMER\n36°35'57''N  030°35'18''E  \n",
         "ip": "../../images/common/vfrpoint.png",
         "cip": "../../images/common/vfrpoint.png",
         "type": "VFR POINT",
@@ -6178,19 +6028,19 @@
     {
       "geometry": {
         "coordinates": [
-          27.380277777777778,
-          37.971944444444446
+          27.3823,
+          37.9796
         ],
         "type": "Point"
       },
       "properties": {
-        "hi": "KURUDAĞ",
+        "hi": "KUYUMCU",
         "t": 8,
-        "pic": "<br><b>Position : </b>37°58'19''N  027°22'49''E  <br><b>Description : </b>",
+        "pic": "<br><b>Position : </b>37°58'47''N  027°22'56''E  <br><b>Description : </b>",
         "kid": "277",
         "strclr": "#023E9E",
         "fclr": "#023E9E",
-        "lc": "KURUDAĞ\n37°58'19''N  027°22'49''E  \n",
+        "lc": "KUYUMCU\n37°58'47''N  027°22'56''E  \n",
         "ip": "../../images/common/vfrpoint.png",
         "cip": "../../images/common/vfrpoint.png",
         "type": "VFR POINT",
@@ -6320,6 +6170,406 @@
         "cip": "../../images/common/vfrpoint.png",
         "type": "VFR POINT",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=282\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          27.38222222222,
+          37.97972222222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KUYUMCU",
+        "t": 8,
+        "pic": "<br><b>Position : </b>37°58'47''N  027°22'56''E  <br><b>Description : </b>",
+        "kid": "5040",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "KUYUMCU\n37°58'47''N  027°22'56''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5040\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          34.451944444,
+          36.725277777
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "YAPZU",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°43'31''N  034°27'07''E  <br><b>Description : </b>",
+        "kid": "5041",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "YAPZU\n36°43'31''N  034°27'07''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5041\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.479444444,
+          36.951388888
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "MILBA",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°57'05''N  036°28'46''E  <br><b>Description : </b>",
+        "kid": "5042",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "MILBA\n36°57'05''N  036°28'46''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5042\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          34.6563888888,
+          36.8130555555
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "G1",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°48'47''N  034°39'23''E  <br><b>Description : </b>",
+        "kid": "5043",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "G1\n36°48'47''N  034°39'23''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5043\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.2702777777,
+          36.5683333333
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "G2",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°34'06''N  035°16'13''E  <br><b>Description : </b>",
+        "kid": "5044",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "G2\n36°34'06''N  035°16'13''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5044\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.336944444,
+          36.541666666
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "G3",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°32'30''N  035°20'13''E  <br><b>Description : </b>",
+        "kid": "5045",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "G3\n36°32'30''N  035°20'13''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5045\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.6861111111,
+          36.698333333
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "G4",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°41'54''N  035°41'10''E  <br><b>Description : </b>",
+        "kid": "5046",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "G4\n36°41'54''N  035°41'10''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5046\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.2094444444,
+          36.7833333333
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "G5",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°47'00''N  036°12'34''E  <br><b>Description : </b>",
+        "kid": "5047",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "G5\n36°47'00''N  036°12'34''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5047\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.0597222222,
+          37.2638888888
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "K1",
+        "t": 8,
+        "pic": "<br><b>Position : </b>37°15'50''N  035°03'35''E  <br><b>Description : </b>",
+        "kid": "5048",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "K1\n37°15'50''N  035°03'35''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5048\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.32805555555,
+          37.26
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "KILO",
+        "t": 8,
+        "pic": "<br><b>Position : </b>37°15'36''N  035°19'41''E  <br><b>Description : </b>",
+        "kid": "5049",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "KILO\n37°15'36''N  035°19'41''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5049\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.396111111,
+          37.111666666
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "CHARLIE",
+        "t": 8,
+        "pic": "<br><b>Position : </b>37°06'42''N  035°23'46''E  <br><b>Description : </b>",
+        "kid": "5050",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "CHARLIE\n37°06'42''N  035°23'46''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5050\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.603055555555,
+          37.242777777777
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "K2",
+        "t": 8,
+        "pic": "<br><b>Position : </b>37°14'34''N  035°36'11''E  <br><b>Description : </b>",
+        "kid": "5051",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "K2\n37°14'34''N  035°36'11''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5051\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.15361111111,
+          37.3716666666
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "K3",
+        "t": 8,
+        "pic": "<br><b>Position : </b>37°22'18''N  036°09'13''E  <br><b>Description : </b>",
+        "kid": "5052",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "K3\n37°22'18''N  036°09'13''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5052\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          36.309444444444,
+          37.063888888888
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "K4",
+        "t": 8,
+        "pic": "<br><b>Position : </b>37°03'50''N  036°18'34''E  <br><b>Description : </b>",
+        "kid": "5054",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "K4\n37°03'50''N  036°18'34''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5054\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.2666666666666,
+          36.757222222222
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "GOLF",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°45'26''N  035°16'00''E  <br><b>Description : </b>",
+        "kid": "5055",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "GOLF\n36°45'26''N  035°16'00''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5055\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1010
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          35.2008333333333,
+          36.8644444444444
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "hi": "JAKUP",
+        "t": 8,
+        "pic": "<br><b>Position : </b>36°51'52''N  035°12'03''E  <br><b>Description : </b>",
+        "kid": "5056",
+        "strclr": "#023E9E",
+        "fclr": "#023E9E",
+        "lc": "JAKUP\n36°51'52''N  035°12'03''E  \n",
+        "ip": "../../images/common/vfrpoint.png",
+        "cip": "../../images/common/vfrpoint.png",
+        "type": "VFR POINT",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrpointclickedinfo.aspx?id=5056\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1010
       },

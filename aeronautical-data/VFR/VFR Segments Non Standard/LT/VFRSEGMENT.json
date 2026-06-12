@@ -1156,230 +1156,6 @@
       "geometry": {
         "coordinates": [
           [
-            34.4113888888889,
-            36.9147222222222
-          ],
-          [
-            35.25,
-            37.1166666666667
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "WEST",
-        "t": 7,
-        "pic": "<br><b>Route : </b>LTAF/WEST<br><b>Route Segment : </b>WEST<br><b>Start Point : </b>MANAZ<br><b>End Point : </b>SALBAS<br><b>Distance : </b>42 NM<br><b>Calc. Start : </b>69°<br><b>Calc End : </b>249°<br><b>Magnetic Start : </b>69°<br><b>Magnetic End : </b>249°",
-        "kid": 178,
-        "type": "VFR",
-        "strclr": "Blue",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=178\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000,
-        "aip": "../../images/aixm/half_red_arrow.png",
-        "cip": "../../images/aixm/half_red_arrow.png",
-        "sa": "69°",
-        "ea": "249°",
-        "dist": "42 NM"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            36.256667,
-            37.0708333333333
-          ],
-          [
-            35.6666666666667,
-            36.9
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "EAST",
-        "t": 7,
-        "pic": "<br><b>Route : </b>LTAF/EAST<br><b>Route Segment : </b>EAST<br><b>Start Point : </b>OSMANIYE<br><b>End Point : </b>GUNDOGAN<br><b>Distance : </b>30.1 NM<br><b>Calc. Start : </b>246°<br><b>Calc End : </b>66°<br><b>Magnetic Start : </b>246°<br><b>Magnetic End : </b>66°",
-        "kid": 179,
-        "type": "VFR",
-        "strclr": "Blue",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=179\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000,
-        "aip": "../../images/aixm/half_red_arrow.png",
-        "cip": "../../images/aixm/half_red_arrow.png",
-        "sa": "246°",
-        "ea": "66°",
-        "dist": "30.1 NM"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            35.6666666666667,
-            36.9
-          ],
-          [
-            35.3333333333333,
-            36.848611
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "EAST",
-        "t": 7,
-        "pic": "<br><b>Route : </b>LTAF/EAST<br><b>Route Segment : </b>EAST<br><b>Start Point : </b>GUNDOGAN<br><b>End Point : </b>DOGANKENT<br><b>Distance : </b>16.3 NM<br><b>Calc. Start : </b>255°<br><b>Calc End : </b>75°<br><b>Magnetic Start : </b>255°<br><b>Magnetic End : </b>75°",
-        "kid": 180,
-        "type": "VFR",
-        "strclr": "Blue",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=180\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000,
-        "aip": "../../images/aixm/half_red_arrow.png",
-        "cip": "../../images/aixm/half_red_arrow.png",
-        "sa": "255°",
-        "ea": "75°",
-        "dist": "16.3 NM"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            35.3333333333333,
-            36.848611
-          ],
-          [
-            35.2102777777778,
-            36.9405555555556
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "EAST",
-        "t": 7,
-        "pic": "<br><b>Route : </b>LTAF/EAST<br><b>Route Segment : </b>EAST<br><b>Start Point : </b>DOGANKENT<br><b>End Point : </b>ADA VOR<br><b>Distance : </b>8.1 NM<br><b>Calc. Start : </b>309°<br><b>Calc End : </b>129°<br><b>Magnetic Start : </b>309°<br><b>Magnetic End : </b>129°",
-        "kid": 181,
-        "type": "VFR",
-        "strclr": "Blue",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=181\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000,
-        "aip": "../../images/aixm/half_red_arrow.png",
-        "cip": "../../images/aixm/half_red_arrow.png",
-        "sa": "309°",
-        "ea": "129°",
-        "dist": "8.1 NM"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            35.5333333333333,
-            37.825
-          ],
-          [
-            35.25,
-            37.1166666666667
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "NORTH 1",
-        "t": 7,
-        "pic": "<br><b>Route : </b>LTAF/NORTH 1<br><b>Route Segment : </b>NORTH 1<br><b>Start Point : </b>OMERLI<br><b>End Point : </b>SALBAS<br><b>Distance : </b>44.7 NM<br><b>Calc. Start : </b>193°<br><b>Calc End : </b>13°<br><b>Magnetic Start : </b>193°<br><b>Magnetic End : </b>13°",
-        "kid": 182,
-        "type": "VFR",
-        "strclr": "Blue",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=182\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000,
-        "aip": "../../images/aixm/half_red_arrow.png",
-        "cip": "../../images/aixm/half_red_arrow.png",
-        "sa": "193°",
-        "ea": "13°",
-        "dist": "44.7 NM"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            35.0,
-            37.7666666666667
-          ],
-          [
-            35.25,
-            37.1166666666667
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "NORTH 2",
-        "t": 7,
-        "pic": "<br><b>Route : </b>LTAF/NORTH 2<br><b>Route Segment : </b>NORTH 2<br><b>Start Point : </b>TOROS<br><b>End Point : </b>SALBAS<br><b>Distance : </b>40.9 NM<br><b>Calc. Start : </b>158°<br><b>Calc End : </b>338°<br><b>Magnetic Start : </b>158°<br><b>Magnetic End : </b>338°",
-        "kid": 183,
-        "type": "VFR",
-        "strclr": "Blue",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=183\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000,
-        "aip": "../../images/aixm/half_red_arrow.png",
-        "cip": "../../images/aixm/half_red_arrow.png",
-        "sa": "158°",
-        "ea": "338°",
-        "dist": "40.9 NM"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            34.725833,
-            37.600833
-          ],
-          [
-            35.25,
-            37.1166666666667
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "NORTH 3",
-        "t": 7,
-        "pic": "<br><b>Route : </b>LTAF/NORTH 3<br><b>Route Segment : </b>NORTH 3<br><b>Start Point : </b>KEMER<br><b>End Point : </b>SALBAS<br><b>Distance : </b>38.4 NM<br><b>Calc. Start : </b>135°<br><b>Calc End : </b>315°<br><b>Magnetic Start : </b>135°<br><b>Magnetic End : </b>315°",
-        "kid": 184,
-        "type": "VFR",
-        "strclr": "Blue",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=184\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000,
-        "aip": "../../images/aixm/half_red_arrow.png",
-        "cip": "../../images/aixm/half_red_arrow.png",
-        "sa": "135°",
-        "ea": "315°",
-        "dist": "38.4 NM"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
             27.508333,
             40.941667
           ],
@@ -3293,38 +3069,6 @@
         "sa": "80°",
         "ea": "260°",
         "dist": "5 NM"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            35.25,
-            37.1166666666667
-          ],
-          [
-            35.3327777777778,
-            37.0205555555556
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "7NM",
-        "t": 7,
-        "pic": "<br><b>Route : </b>LTAF/SALBAS-7NM<br><b>Route Segment : </b>7NM<br><b>Start Point : </b>SALBAS<br><b>End Point : </b>7NM SALBAS<br><b>Distance : </b>7 NM<br><b>Calc. Start : </b>140°<br><b>Calc End : </b>320°<br><b>Magnetic Start : </b>140°<br><b>Magnetic End : </b>320°",
-        "kid": 273,
-        "type": "VFR",
-        "strclr": "Blue",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=273\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000,
-        "aip": "../../images/aixm/half_red_arrow.png",
-        "cip": "../../images/aixm/half_red_arrow.png",
-        "sa": "140°",
-        "ea": "320°",
-        "dist": "7 NM"
       },
       "type": "Feature"
     },
@@ -6525,6 +6269,262 @@
         "sa": "170°",
         "ea": "350°",
         "dist": "32.3 NM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            36.309444444444,
+            37.063888888888
+          ],
+          [
+            36.15361111111,
+            37.3716666666
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "\"NORTHERN CORRIDOR\"",
+        "t": 7,
+        "pic": "<br><b>Route : </b>LTAF/NORTHERN CORRIDOR<br><b>Route Segment : </b>\"NORTHERN CORRIDOR\"<br><b>Start Point : </b>K4<br><b>End Point : </b>K3<br><b>Distance : </b>0 NM<br><b>Calc. Start : </b>0°<br><b>Calc End : </b>0°<br><b>Magnetic Start : </b>°<br><b>Magnetic End : </b>°",
+        "kid": 5002,
+        "type": "VFR",
+        "strclr": "Blue",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=5002\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "aip": "../../images/aixm/half_red_arrow.png",
+        "cip": "../../images/aixm/half_red_arrow.png",
+        "sa": "0°",
+        "ea": "0°",
+        "dist": "0 NM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            36.15361111111,
+            37.3716666666
+          ],
+          [
+            35.603055555555,
+            37.242777777777
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "\"NORTHERN CORRIDOR\"",
+        "t": 7,
+        "pic": "<br><b>Route : </b>LTAF/NORTHERN CORRIDOR<br><b>Route Segment : </b>\"NORTHERN CORRIDOR\"<br><b>Start Point : </b>K3<br><b>End Point : </b>K2<br><b>Distance : </b>0 NM<br><b>Calc. Start : </b>0°<br><b>Calc End : </b>0°<br><b>Magnetic Start : </b>°<br><b>Magnetic End : </b>°",
+        "kid": 5003,
+        "type": "VFR",
+        "strclr": "Blue",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=5003\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "aip": "../../images/aixm/half_red_arrow.png",
+        "cip": "../../images/aixm/half_red_arrow.png",
+        "sa": "0°",
+        "ea": "0°",
+        "dist": "0 NM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            35.603055555555,
+            37.242777777777
+          ],
+          [
+            35.32805555555,
+            37.26
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "\"NORTHERN CORRIDOR\"",
+        "t": 7,
+        "pic": "<br><b>Route : </b>LTAF/NORTHERN CORRIDOR<br><b>Route Segment : </b>\"NORTHERN CORRIDOR\"<br><b>Start Point : </b>K2<br><b>End Point : </b>KILO<br><b>Distance : </b>0 NM<br><b>Calc. Start : </b>0°<br><b>Calc End : </b>0°<br><b>Magnetic Start : </b>°<br><b>Magnetic End : </b>°",
+        "kid": 5004,
+        "type": "VFR",
+        "strclr": "Blue",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=5004\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "aip": "../../images/aixm/half_red_arrow.png",
+        "cip": "../../images/aixm/half_red_arrow.png",
+        "sa": "0°",
+        "ea": "0°",
+        "dist": "0 NM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            35.32805555555,
+            37.26
+          ],
+          [
+            35.0597222222,
+            37.2638888888
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "\"NORTHERN CORRIDOR\"",
+        "t": 7,
+        "pic": "<br><b>Route : </b>LTAF/NORTHERN CORRIDOR<br><b>Route Segment : </b>\"NORTHERN CORRIDOR\"<br><b>Start Point : </b>KILO<br><b>End Point : </b>K1<br><b>Distance : </b>0 NM<br><b>Calc. Start : </b>0°<br><b>Calc End : </b>0°<br><b>Magnetic Start : </b>°<br><b>Magnetic End : </b>°",
+        "kid": 5005,
+        "type": "VFR",
+        "strclr": "Blue",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=5005\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "aip": "../../images/aixm/half_red_arrow.png",
+        "cip": "../../images/aixm/half_red_arrow.png",
+        "sa": "0°",
+        "ea": "0°",
+        "dist": "0 NM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            34.6563888888,
+            36.8130555555
+          ],
+          [
+            35.2702777777,
+            36.5683333333
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "\"SOUTHERN CORRIDOR\"",
+        "t": 7,
+        "pic": "<br><b>Route : </b>LTAF/SOUTHERN CORRIDOR<br><b>Route Segment : </b>\"SOUTHERN CORRIDOR\"<br><b>Start Point : </b>G1<br><b>End Point : </b>G2<br><b>Distance : </b>0 NM<br><b>Calc. Start : </b>0°<br><b>Calc End : </b>0°<br><b>Magnetic Start : </b>°<br><b>Magnetic End : </b>°",
+        "kid": 5006,
+        "type": "VFR",
+        "strclr": "Blue",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=5006\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "aip": "../../images/aixm/half_red_arrow.png",
+        "cip": "../../images/aixm/half_red_arrow.png",
+        "sa": "0°",
+        "ea": "0°",
+        "dist": "0 NM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            35.2702777777,
+            36.5683333333
+          ],
+          [
+            35.336944444,
+            36.541666666
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "\"SOUTHERN CORRIDOR\"",
+        "t": 7,
+        "pic": "<br><b>Route : </b>LTAF/SOUTHERN CORRIDOR<br><b>Route Segment : </b>\"SOUTHERN CORRIDOR\"<br><b>Start Point : </b>G2<br><b>End Point : </b>G3<br><b>Distance : </b>0 NM<br><b>Calc. Start : </b>0°<br><b>Calc End : </b>0°<br><b>Magnetic Start : </b>°<br><b>Magnetic End : </b>°",
+        "kid": 5007,
+        "type": "VFR",
+        "strclr": "Blue",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=5007\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "aip": "../../images/aixm/half_red_arrow.png",
+        "cip": "../../images/aixm/half_red_arrow.png",
+        "sa": "0°",
+        "ea": "0°",
+        "dist": "0 NM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            35.336944444,
+            36.541666666
+          ],
+          [
+            35.6861111111,
+            36.698333333
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "\"SOUTHERN CORRIDOR\"",
+        "t": 7,
+        "pic": "<br><b>Route : </b>LTAF/SOUTHERN CORRIDOR<br><b>Route Segment : </b>\"SOUTHERN CORRIDOR\"<br><b>Start Point : </b>G3<br><b>End Point : </b>G4<br><b>Distance : </b>0 NM<br><b>Calc. Start : </b>0°<br><b>Calc End : </b>0°<br><b>Magnetic Start : </b>°<br><b>Magnetic End : </b>°",
+        "kid": 5008,
+        "type": "VFR",
+        "strclr": "Blue",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=5008\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "aip": "../../images/aixm/half_red_arrow.png",
+        "cip": "../../images/aixm/half_red_arrow.png",
+        "sa": "0°",
+        "ea": "0°",
+        "dist": "0 NM"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            35.6861111111,
+            36.698333333
+          ],
+          [
+            36.2094444444,
+            36.7833333333
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "\"SOUTHERN CORRIDOR\"",
+        "t": 7,
+        "pic": "<br><b>Route : </b>LTAF/SOUTHERN CORRIDOR<br><b>Route Segment : </b>\"SOUTHERN CORRIDOR\"<br><b>Start Point : </b>G4<br><b>End Point : </b>G5<br><b>Distance : </b>0 NM<br><b>Calc. Start : </b>0°<br><b>Calc End : </b>0°<br><b>Magnetic Start : </b>°<br><b>Magnetic End : </b>°",
+        "kid": 5009,
+        "type": "VFR",
+        "strclr": "Blue",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/vfrrouteclickedinfo.aspx?id=5009\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "aip": "../../images/aixm/half_red_arrow.png",
+        "cip": "../../images/aixm/half_red_arrow.png",
+        "sa": "0°",
+        "ea": "0°",
+        "dist": "0 NM"
       },
       "type": "Feature"
     }
