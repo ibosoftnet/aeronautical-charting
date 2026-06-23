@@ -113,6 +113,17 @@ Bu klasör, Jeppesen sqlite veritabanındaki `boundary` tablosundan üretilmiş 
 
 ---
 
+## FIR dışlama (opsiyonel `fir-exclude.json`)
+
+Bu klasörde `fir-exclude.json` adlı bir GeoJSON FeatureCollection bulunursa (her Feature bir FIR poligonu, örn. LTAA Ankara / LTBB İstanbul), [export_airspaces.py](export_airspaces.py) şu kuralı uygular:
+
+- İsminde **"FREE RT"** geçen hava sahaları her zaman korunur.
+- Diğer tüm hava sahaları için: **merkez noktası (centroid)** bu FIR poligonlarından birinin içinde kalıyorsa, hava sahası export'a hiç eklenmez.
+
+Kasıtlı olarak *intersects* değil *centroid contains* kullanılır — FIR sınırına sadece kenarından değen hava sahaları silinmez. Amaç, bu bölgelerde daha güncel/yetkin AIXM kaynaklı FIR verisiyle çakışan eski Jeppesen kayıtlarını ayıklamak.
+
+Beklenen çıktıya bu sayım eklenir: `Jeppesen: inserted=… skipped=… antimeridian_split=… fir_excluded=…`.
+
 ## Tailored veri (opsiyonel `tailored.geojson`)
 
 Bu klasörde `tailored.geojson` adlı bir GeoJSON dosyası bulunursa, [export_airspaces.py](export_airspaces.py) onu Jeppesen verisinin üzerine merge eder.
@@ -182,4 +193,4 @@ QGIS'te tailored dosyasını üretmenin pratik yolu: yeni bir geçici layer yara
 python "aeronautical-data/Airspaces/Jeppesen/export_airspaces.py"
 ```
 
-Beklenen çıktı: `Jeppesen: inserted=~36622 skipped=…`, ardından (varsa) `Tailored: overrides=…  new=…`.
+Beklenen çıktı: `Jeppesen: inserted=~36622 skipped=… antimeridian_split=… fir_excluded=…`, ardından (varsa) `Tailored: overrides=…  new=…`.

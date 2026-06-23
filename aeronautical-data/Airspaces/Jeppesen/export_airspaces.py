@@ -29,11 +29,14 @@ Antimeridian handling:
 import math, os, sqlite3, struct, json
 from shapely.geometry import Polygon, MultiPolygon
 from shapely.geometry import box as _box
+from shapely.ops import unary_union
+from shapely.prepared import prep
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.normpath(os.path.join(HERE, "..", "..", "Jeppesen Data", "jeppesen.sqlite"))
 DST = os.path.join(HERE, "jeppesen_airspaces.gpkg")
 TAILORED = os.path.join(HERE, "tailored.geojson")
+FIR_EXCLUDE = os.path.join(HERE, "fir-exclude.json")
 
 # Boundary table columns to copy verbatim (geometry handled separately).
 ATTR_COLS = [
@@ -267,6 +270,20 @@ def _make_polygon_from_geojson(geom_gj):
     return poly
 
 
+def load_fir_exclude():
+    """fir-exclude.json -> tek bir prepared (Multi)Polygon, yoksa/boşsa None."""
+    if not os.path.exists(FIR_EXCLUDE):
+        print(f"  no fir-exclude file at {FIR_EXCLUDE} (skipping FIR exclusion)")
+        return None
+    with open(FIR_EXCLUDE, encoding="utf-8") as f:
+        fc = json.load(f)
+    polys = [p for feat in fc.get("features", [])
+             if (p := _make_polygon_from_geojson(feat.get("geometry"))) is not None]
+    if not polys:
+        return None
+    return prep(unary_union(polys))
+
+
 def merge_tailored(gpkg: sqlite3.Connection):
     if not os.path.exists(TAILORED):
         print(f"  no tailored file at {TAILORED} (skipping)")
@@ -359,7 +376,9 @@ def main():
     placeholders = ",".join("?" * (len(ATTR_NAMES) + 1))
     insert_sql = f"INSERT INTO airspaces ({cols_sql}) VALUES ({placeholders})"
 
-    inserted = skipped = antimeridian_count = 0
+    fir_exclude = load_fir_exclude()
+
+    inserted = skipped = antimeridian_count = fir_excluded = 0
     select_sql = "SELECT " + ", ".join(ATTR_NAMES) + ", geometry FROM boundary"
     for row in src.execute(select_sql):
         coords = decode_polygon_blob(row["geometry"])
@@ -369,6 +388,10 @@ def main():
         geom_obj = make_geometry(coords)
         if geom_obj is None or geom_obj.is_empty:
             skipped += 1
+            continue
+        name = row["name"] or ""
+        if fir_exclude is not None and "FREE RT" not in name.upper() and fir_exclude.contains(geom_obj.centroid):
+            fir_excluded += 1
             continue
         if geom_obj.geom_type == "MultiPolygon":
             antimeridian_count += 1
@@ -384,7 +407,7 @@ def main():
         inserted += 1
     gpkg.commit()
     src.close()
-    print(f"  Jeppesen: inserted={inserted}  skipped={skipped}  antimeridian_split={antimeridian_count}")
+    print(f"  Jeppesen: inserted={inserted}  skipped={skipped}  antimeridian_split={antimeridian_count}  fir_excluded={fir_excluded}")
 
     print("Merging tailored.geojson (if present)…")
     n_over, n_new, n_warn = merge_tailored(gpkg)
