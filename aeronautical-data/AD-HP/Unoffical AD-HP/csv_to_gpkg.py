@@ -1,5 +1,6 @@
 import sys
 import os
+import sqlite3
 import pandas as pd
 import geopandas as gpd
 from shapely.geometry import Point
@@ -26,4 +27,12 @@ gdf = gpd.GeoDataFrame(df, geometry=geometry, crs="EPSG:4326")
 
 print(f"Writing: {GPKG_PATH}  ({len(gdf):,} features)")
 gdf.to_file(GPKG_PATH, layer=LAYER_NAME, driver="GPKG")
+
+INDEXED_COLUMNS = ["ident", "icao_code", "gps_code"]
+with sqlite3.connect(GPKG_PATH) as con:
+    for col in INDEXED_COLUMNS:
+        con.execute(f'CREATE INDEX idx_{LAYER_NAME}_{col} ON "{LAYER_NAME}" ({col})')
+    con.commit()
+print(f"Indexed: {', '.join(INDEXED_COLUMNS)}")
+
 print("Done.")
