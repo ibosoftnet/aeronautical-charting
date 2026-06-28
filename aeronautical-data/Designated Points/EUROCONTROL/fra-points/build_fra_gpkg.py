@@ -1,10 +1,12 @@
 """
 EUROCONTROL FRA Points — Excel → GeoPackage
 Koordinatlar DDMMSS formatından ondalık dereceye çevrilir.
+Tüm sütunlara index oluşturur (lat/lon hariç), spatial index korunur.
 """
 
 import os
 import sys
+import sqlite3
 from collections import Counter
 
 import openpyxl
@@ -134,6 +136,45 @@ def main():
     if os.path.exists(OUTPUT_FILE):
         os.remove(OUTPUT_FILE)
     gdf.to_file(OUTPUT_FILE, layer=LAYER_NAME, driver='GPKG')
+
+    # Create indexes on all columns except lat/lon (geometry already has spatial index)
+    print('[4] Indexler oluşturuluyor (lat/lon hariç)...')
+    conn = sqlite3.connect(OUTPUT_FILE)
+    cur = conn.cursor()
+
+    # Sütunları oku
+    cur.execute(f"PRAGMA table_info({LAYER_NAME})")
+    columns = cur.fetchall()
+
+    index_count = 0
+    skip_columns = {'geometry', 'fid', 'lat_dd', 'lon_dd', 'lat_text', 'lon_text'}
+
+    for col in columns:
+        col_name = col[1]
+
+        # lat/lon ve geom sütunlarını atla
+        if col_name in skip_columns:
+            continue
+
+        idx_name = f"idx_fra_points_{col_name}"
+        try:
+            cur.execute(f"CREATE INDEX {idx_name} ON {LAYER_NAME}({col_name})")
+            index_count += 1
+        except sqlite3.OperationalError as e:
+            if "already exists" not in str(e):
+                print(f"  [warn] {col_name}: {e}")
+
+    conn.commit()
+    conn.close()
+    print(f"  ✓ {index_count} index oluşturuldu")
+
+    # Spatial index durumunu kontrol et
+    conn = sqlite3.connect(OUTPUT_FILE)
+    cur = conn.cursor()
+    cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name LIKE 'rtree%'")
+    rtree_tables = cur.fetchall()
+    conn.close()
+    print(f"  ✓ Spatial index: rtree (mevcut, {len(rtree_tables)} tablo)")
 
     size_mb = os.path.getsize(OUTPUT_FILE) / 1024 / 1024
     print()

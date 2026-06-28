@@ -1,6 +1,7 @@
 """
 EAD-SDO AD/HP ARP bölge dosyalarını birleştirir, varsa usage verisiyle
 kod bazında eşleştirir ve QGIS uyumlu spatial GeoPackage üretir.
+Tüm sütunlarda index oluşturur - query performansı için optimize edilmiş.
 """
 
 from __future__ import annotations
@@ -758,6 +759,23 @@ def main():
             write_usage_table(con, usage_rows)
 
     validate_gpkg(OUTPUT_GPKG)
+
+    # Create indexes on all columns for query performance
+    print("\nTüm sütunlara indexler oluşturuluyor…")
+    with sqlite3.connect(OUTPUT_GPKG) as con:
+        cur = con.cursor()
+        index_count = 0
+        for col_name in AIRPORT_FIELD_NAMES:
+            idx_name = f"idx_ad_hp_{col_name}"
+            try:
+                cur.execute(f"CREATE INDEX {idx_name} ON {AIRPORTS_TABLE}({col_name})")
+                index_count += 1
+            except sqlite3.OperationalError as e:
+                if "already exists" not in str(e):
+                    print(f"  [warn] {col_name}: {e}")
+        con.commit()
+        print(f"  ✓ {index_count} index oluşturuldu")
+
     size_mb = OUTPUT_GPKG.stat().st_size / 1024 / 1024
     print(f"\nTamamlandı: {OUTPUT_GPKG.name} ({size_mb:.1f} MB)")
     print(f"Toplam havalimanı/heliport: {len(airport_rows)}")

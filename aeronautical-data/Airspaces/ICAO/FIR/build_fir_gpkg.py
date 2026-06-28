@@ -4,6 +4,7 @@ Export fir-2021-ibosoft-tailored.json -> GeoPackage of FIR polygons.
 Source : aeronautical-data/Airspaces/ICAO/FIR/fir-2021-ibosoft-tailored.json
 Output : aeronautical-data/Airspaces/ICAO/FIR/fir-2021-ibosoft-tailored.gpkg
          Layer `fir` (GEOMETRY, EPSG:4326), RTree spatial index.
+         Indexes on ICAOCODE and FIRname for query performance.
          Most features are POLYGON; some (antimeridian-crossing FIRs) are MULTIPOLYGON.
 """
 import json
@@ -161,6 +162,15 @@ def main():
         )
         inserted += 1
     gpkg.commit()
+
+    # Create indexes for ICAOCODE and FIRname
+    print("Creating indexes...")
+    cur.execute("CREATE INDEX idx_fir_icaocode ON fir(ICAOCODE)")
+    cur.execute("CREATE INDEX idx_fir_firname ON fir(FIRname)")
+    gpkg.commit()
+    print("  ✓ Index on ICAOCODE created")
+    print("  ✓ Index on FIRname created")
+
     gpkg.close()
     print(f"  inserted={inserted}  skipped={skipped}  multipolygon={multipolygon_count}")
     print(f"Done. {DST}  ({os.path.getsize(DST):,} bytes)")

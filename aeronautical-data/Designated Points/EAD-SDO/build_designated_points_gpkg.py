@@ -1,6 +1,7 @@
 """
 EAD-SDO Designated Point (DP) veri dosyalarını (3 regional) birleştirir,
 QGIS uyumlu spatial GeoPackage üretir. Tailored (manuel) veri desteği dahil.
+Tüm sütunlarda index oluşturur (dp_coord hariç) - query performansı için optimize edilmiş.
 """
 
 from __future__ import annotations
@@ -503,6 +504,49 @@ def main():
             if not rows:
                 continue
             write_layer(con, table_name_for(ct), rows, lat_field="lat_dd", lon_field="lon_dd")
+
+    # Create indexes on all columns (except dp_coord)
+    print("\n[7] Indexler oluşturuluyor (dp_coord hariç)...")
+    with sqlite3.connect(OUTPUT_GPKG) as con:
+        cur = con.cursor()
+        total_indexes = 0
+
+        for ct in LAYER_TYPES:
+            table_name = table_name_for(ct)
+
+            # dp_coord tablosunu atla
+            if table_name == "dp_coord":
+                print(f"  {table_name}: SKIPPED")
+                continue
+
+            # Sütunları oku
+            cur.execute(f"PRAGMA table_info({table_name})")
+            columns = cur.fetchall()
+
+            if not columns:
+                continue
+
+            index_count = 0
+            for col in columns:
+                col_name = col[1]
+                # geom ve fid sütunlarını atla (zaten index var)
+                if col_name in ("geom", "fid"):
+                    continue
+
+                idx_name = f"idx_{table_name}_{col_name}"
+                try:
+                    cur.execute(f"CREATE INDEX {idx_name} ON {table_name}({col_name})")
+                    index_count += 1
+                except sqlite3.OperationalError as e:
+                    if "already exists" not in str(e):
+                        print(f"    [warn] {col_name}: {e}")
+
+            if index_count > 0:
+                print(f"  {table_name}: {index_count} index oluşturuldu")
+                total_indexes += index_count
+
+        con.commit()
+        print(f"  Toplam: {total_indexes} index oluşturuldu")
 
     size_mb = OUTPUT_GPKG.stat().st_size / 1024 / 1024
     print("\n" + "=" * 60)

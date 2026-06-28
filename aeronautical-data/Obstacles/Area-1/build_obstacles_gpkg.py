@@ -1,6 +1,7 @@
 """
 AIXM 5.1 VerticalStructure (engel) verilerini Area-1 altindaki tum
 ulke/alan klasorlerinden toplayip tek bir spatial GeoPackage'a yazar.
+Tüm sütunlarda index oluşturur - query performansı için optimize edilmiş.
 """
 
 from __future__ import annotations
@@ -459,10 +460,28 @@ def main() -> None:
         create_base_gpkg(con)
         write_layer(con, TABLE_NAME, all_rows)
 
+    # Create indexes on all columns (except fid and geom)
+    print("[3] Indexler oluşturuluyor…")
+    with sqlite3.connect(OUTPUT_GPKG) as con:
+        cur = con.cursor()
+        index_count = 0
+
+        for col_name, col_type in COLUMNS:
+            idx_name = f"idx_{TABLE_NAME}_{col_name}"
+            try:
+                cur.execute(f"CREATE INDEX {idx_name} ON {TABLE_NAME}({col_name})")
+                index_count += 1
+            except sqlite3.OperationalError as e:
+                if "already exists" not in str(e):
+                    pass  # Hataları sessizce yoksay
+
+        con.commit()
+        print(f"  ✓ {index_count} index oluşturuldu")
+
     size_mb = OUTPUT_GPKG.stat().st_size / 1024 / 1024
     print("\n" + "=" * 60)
     print(f"Tamamlandi: {OUTPUT_GPKG.name} ({size_mb:.1f} MB)")
-    print(f"  Katman: {TABLE_NAME} ({len(all_rows)} kayit, spatial index ile)")
+    print(f"  Katman: {TABLE_NAME} ({len(all_rows)} kayit, spatial index + {index_count} column indexes ile)")
     print("QGIS'te dogrudan acilabilir.")
     print("=" * 60)
 

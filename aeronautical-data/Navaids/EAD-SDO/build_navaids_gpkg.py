@@ -2,6 +2,7 @@
 EAD-SDO Navaid (VOR, DME, TACAN, ILS) veri dosyalarını birleştirir,
 ilgili alt elemanları (DME→VOR, GP→ILS, vb.) eşleştirir ve QGIS uyumlu
 spatial GeoPackage üretir. Tailored (manuel) veri desteği dahil.
+Tüm sütunlarda index oluşturur - query performansı için optimize edilmiş.
 """
 
 from __future__ import annotations
@@ -1194,6 +1195,48 @@ def main():
         write_layer(con, VORTAC_TABLE, vortac_rows, lat_field="vor_lat_dd", lon_field="vor_lon_dd")
         write_layer(con, DME_TABLE, dme_standalone, lat_field="dme_lat_dd", lon_field="dme_lon_dd")
         write_layer(con, TACAN_TABLE, tacan_standalone, lat_field="tacan_lat_dd", lon_field="tacan_lon_dd")
+
+    # Create indexes on all columns for all tables
+    print("[8] Indexler oluşturuluyor…")
+    all_tables = [
+        ILS_LOC_TABLE, ILS_GP_TABLE, ILS_DME_TABLE,
+        VOR_TABLE, VOR_DME_TABLE, VORTAC_TABLE,
+        DME_TABLE, TACAN_TABLE
+    ]
+
+    with sqlite3.connect(OUTPUT_GPKG) as con:
+        cur = con.cursor()
+        total_indexes = 0
+
+        for table_name in all_tables:
+            # Sütunları oku
+            cur.execute(f"PRAGMA table_info({table_name})")
+            columns = cur.fetchall()
+
+            if not columns:
+                continue
+
+            index_count = 0
+            for col in columns:
+                col_name = col[1]
+                # geom ve fid sütunlarını atla (zaten index var)
+                if col_name in ("geom", "fid"):
+                    continue
+
+                idx_name = f"idx_{table_name}_{col_name}"
+                try:
+                    cur.execute(f"CREATE INDEX {idx_name} ON {table_name}({col_name})")
+                    index_count += 1
+                except sqlite3.OperationalError as e:
+                    if "already exists" not in str(e):
+                        pass  # Hataları sessizce yoksay
+
+            if index_count > 0:
+                print(f"  {table_name:<15}: {index_count} index")
+                total_indexes += index_count
+
+        con.commit()
+        print(f"  Toplam: {total_indexes} index oluşturuldu")
 
     size_mb = OUTPUT_GPKG.stat().st_size / 1024 / 1024
     print("\n" + "=" * 60)

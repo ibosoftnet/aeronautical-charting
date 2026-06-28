@@ -4,6 +4,7 @@ Export Jeppesen `boundary` table -> GeoPackage of airspace polygons.
 Source : aeronautical-data/Jeppesen Data/jeppesen.sqlite  (table `boundary`)
 Output : aeronautical-data/Airspaces/Jeppesen/jeppesen_airspaces.gpkg
          Layer `airspaces` (GEOMETRY, EPSG:4326), RTree spatial index.
+         Indexes on all columns for query performance.
          Most features are POLYGON; antimeridian-crossing features become MULTIPOLYGON.
 
 Optional input: tailored.geojson (in this same folder).
@@ -412,6 +413,32 @@ def main():
     print("Merging tailored.geojson (if present)…")
     n_over, n_new, n_warn = merge_tailored(gpkg)
     print(f"  Tailored: overrides={n_over}  new={n_new}  warnings={n_warn}")
+
+    # Create indexes on all columns for query performance
+    print("Creating indexes on all columns…")
+    cur.execute("CREATE INDEX idx_airspaces_source ON airspaces(source)")
+    cur.execute("CREATE INDEX idx_airspaces_boundary_id ON airspaces(boundary_id)")
+    cur.execute("CREATE INDEX idx_airspaces_file_id ON airspaces(file_id)")
+    cur.execute("CREATE INDEX idx_airspaces_type ON airspaces(type)")
+    cur.execute("CREATE INDEX idx_airspaces_name ON airspaces(name)")
+    cur.execute("CREATE INDEX idx_airspaces_description ON airspaces(description)")
+    cur.execute("CREATE INDEX idx_airspaces_restrictive_designation ON airspaces(restrictive_designation)")
+    cur.execute("CREATE INDEX idx_airspaces_restrictive_type ON airspaces(restrictive_type)")
+    cur.execute("CREATE INDEX idx_airspaces_multiple_code ON airspaces(multiple_code)")
+    cur.execute("CREATE INDEX idx_airspaces_time_code ON airspaces(time_code)")
+    cur.execute("CREATE INDEX idx_airspaces_com_type ON airspaces(com_type)")
+    cur.execute("CREATE INDEX idx_airspaces_com_frequency ON airspaces(com_frequency)")
+    cur.execute("CREATE INDEX idx_airspaces_com_name ON airspaces(com_name)")
+    cur.execute("CREATE INDEX idx_airspaces_min_altitude_type ON airspaces(min_altitude_type)")
+    cur.execute("CREATE INDEX idx_airspaces_max_altitude_type ON airspaces(max_altitude_type)")
+    cur.execute("CREATE INDEX idx_airspaces_min_altitude ON airspaces(min_altitude)")
+    cur.execute("CREATE INDEX idx_airspaces_max_altitude ON airspaces(max_altitude)")
+    cur.execute("CREATE INDEX idx_airspaces_max_lonx ON airspaces(max_lonx)")
+    cur.execute("CREATE INDEX idx_airspaces_max_laty ON airspaces(max_laty)")
+    cur.execute("CREATE INDEX idx_airspaces_min_lonx ON airspaces(min_lonx)")
+    cur.execute("CREATE INDEX idx_airspaces_min_laty ON airspaces(min_laty)")
+    gpkg.commit()
+    print("  ✓ 21 indexes created successfully")
 
     print(f"Done. {DST}  ({os.path.getsize(DST):,} bytes)")
     gpkg.close()
