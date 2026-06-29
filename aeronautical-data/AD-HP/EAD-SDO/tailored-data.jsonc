@@ -106,6 +106,52 @@
     // LCIK — Girne/Karter Heliport — EAD-SDO'da yok
     // Kaynak: TRNC AIP AD 2 LCIK
     // ============================================================
+
+
+      // Tailored pist (runway) overrides / ek kayıtlar
+  // ------------------------------------------------------------
+  // Bu dosya `ad_hp_runways` nihai çıktı alan adlarını kullanır.
+  // Grain, gerçek RWY-DIR verisiyle aynıdır: 1 kayıt = 1 pist YÖNÜ
+  // (`ahp_code_id` + `direction_designator`). Pist çiftleri her zaman
+  // 2 yönlü olmak zorunda değildir (tek taraf kullanımlı/yayınlı pistler
+  // de vardır) — bu yüzden otomatik "çifte bölme" YAPILMAZ. İki yönü olan
+  // bir pist için iki ayrı giriş yazmanız gerekir (ortak alanları — uzunluk,
+  // yüzey, PCN vb. — her ikisine de tekrarlayın).
+  //
+  // Buraya eklenen kayıtlar `ahp_code_id` + `direction_designator` ile eşleşir.
+  // Aynı (ahp_code_id, direction_designator) mevcutsa bu kayıt TAM override
+  // sayılır: kaynak XML'den alan mirası yapılmaz, vermediğiniz alanlar boş kalır.
+  //
+  // Gerekli minimum alanlar: `ahp_code_id` + `direction_designator`
+  //
+  // Sık kullanılan temel alanlar:
+  // `rwy_designator` (pist çifti etiketi, örn. "RWY 17/35"),
+  // `true_bearing`, `mag_bearing`,
+  // `info_length`, `info_width`, `info_dim_unit`,
+  // `info_surface_composition`, `info_surface_condition`, `info_surface_preparation`,
+  // `info_pcn_class`, `info_pcn_pavement_type`, `info_pcn_pavement_subgrade`,
+  // `info_pcn_max_tire_pressure_code`, `info_pcn_eval_method`, `info_pcn_note`,
+  // `info_lcn_class`, `info_strip_length`, `info_strip_width`, `info_strip_dim_unit`,
+  // `info_auw_weight`, `info_auw_weight_unit`,
+  // `info_siwl_weight`, `info_siwl_weight_unit`,
+  // `info_siwl_tire_pressure`, `info_siwl_tire_pressure_unit`,
+  // `info_marking_rmk`, `info_profile_rmk`, `info_rmk`, `info_status`,
+  // `dir_dt_wef`, `dir_created_by`, `info_dt_wef`, `info_dt_com`, `info_created_by`
+  //
+  // İsteğe bağlı: `enabled: false` ile bir kaydı geçici olarak devre dışı bırakabilirsiniz.
+  // match_id buraya yazılmaz — script otomatik atar (aynı ahp_code_id'ye sahip
+  // airport kaydıyla aynı değeri paylaşır).
+  //"runways": [
+    // ÖRNEK — LT1401/BOLU için tailored pist (tek yön, sys_rmk'ye göre "Concrete")
+    // {
+    //   "enabled": true,
+    //   "ahp_code_id": "LT1401",
+    //   "direction_designator": "09",
+    //   "rwy_designator": "RWY 09",
+    //   "info_surface_composition": "CONC",
+    //   "info_created_by": "IBOSOFT"
+    // }
+  //]
     {
       "enabled": true,
       "join_key": "LCIK",
@@ -216,116 +262,195 @@
       "usage_purpose": "NS | G | M",
       "usage_status": "CLOSED",
       "usage_org_name": "Ibosoft",
-      "sys_rmk": "Elev 2441 FT (744 M). Geoid undulation -124 FT. Mag var 6.23°E (2025). Surface: Concrete. Traffic: NTL, IFR-VFR, Non-scheduled-General Aviation-Military. Operationally closed but infrastructure available. Fuel: Diesel, gasoline, LPG from nearby gas stations. De-icing: Not available. Hangar: Not available. Repair facilities: Not available. AFS: NIL. Website: ais.ibosoft.net.tr. Refer to AD administrator for further information.",
-      "runways": [
-        {
-          "designator": "06",
-          "true_bearing": 64.62,
-          "mag_bearing": 58.39,
-          "length_m": 1895,
-          "width_m": 45,
-          "pavement_type": "Concrete",
-          "pavement_pcn": null,
-          "pavement_markings": false,
-          "thr_lat_dd": 40.74498,
-          "thr_lon_dd": 31.73804,
-          "thr_elev_m": 744,
-          "thr_elev_ft": 2441,
-          "slope_percent": -0.39,
-          "clearway_length_m": 130,
-          "clearway_width_m": 280,
-          "strip_length_m": 1895,
-          "strip_width_m": 120,
-          "safety_area_length_m": 130,
-          "safety_area_width_m": 120,
-          "tora_m": 1895,
-          "toda_m": 2025,
-          "asda_m": 1895,
-          "lda_m": 1895,
-          "approach_lighting": "NALS",
-          "thr_lighting": null,
-          "rwylgt_center": null,
-          "rwylgt_edge": null,
-          "emas": false,
-          "remarks": "Slope variation: -0.62% (0-976m), +0.07% (976-1281m), -0.17% (1281-1342m), +0.07% (1342-1525m), -0.45% (1525-1895m). Small trees may be present in the area."
-        },
-        {
-          "designator": "24",
-          "true_bearing": 244.62,
-          "mag_bearing": 238.39,
-          "length_m": 1895,
-          "width_m": 45,
-          "pavement_type": "Concrete",
-          "pavement_pcn": null,
-          "pavement_markings": false,
-          "thr_lat_dd": 40.75367,
-          "thr_lon_dd": 31.76509,
-          "thr_elev_m": 737,
-          "thr_elev_ft": 2416,
-          "slope_percent": 0.39,
-          "clearway_length_m": 90,
-          "clearway_width_m": 230,
-          "strip_length_m": 1895,
-          "strip_width_m": 120,
-          "safety_area_length_m": 90,
-          "safety_area_width_m": 120,
-          "tora_m": 1895,
-          "toda_m": 1985,
-          "asda_m": 1895,
-          "lda_m": 1895,
-          "approach_lighting": "NALS",
-          "thr_lighting": null,
-          "rwylgt_center": null,
-          "rwylgt_edge": null,
-          "emas": false,
-          "remarks": "Slope variation: +0.45% (0-370m), -0.07% (370-553m), +0.17% (553-614m), -0.07% (614-919m), +0.62% (919-1895m). Small trees may be present in the area."
-        }
-      ]
+      "sys_rmk": "Elev 2441 FT (744 M). Geoid undulation -124 FT. Mag var 6.23°E (2025). Surface: Concrete. Traffic: NTL, IFR-VFR, Non-scheduled-General Aviation-Military. Operationally closed but infrastructure available. Fuel: Diesel, gasoline, LPG from nearby gas stations. De-icing: Not available. Hangar: Not available. Repair facilities: Not available. AFS: NIL. Website: ais.ibosoft.net.tr. Refer to AD administrator for further information."
     }
   ],
 
-  // Tailored pist (runway) overrides / ek kayıtlar
-  // ------------------------------------------------------------
-  // Bu dosya `ad_hp_runways` nihai çıktı alan adlarını kullanır.
-  // Grain, gerçek RWY-DIR verisiyle aynıdır: 1 kayıt = 1 pist YÖNÜ
-  // (`ahp_code_id` + `direction_designator`). Pist çiftleri her zaman
-  // 2 yönlü olmak zorunda değildir (tek taraf kullanımlı/yayınlı pistler
-  // de vardır) — bu yüzden otomatik "çifte bölme" YAPILMAZ. İki yönü olan
-  // bir pist için iki ayrı giriş yazmanız gerekir (ortak alanları — uzunluk,
-  // yüzey, PCN vb. — her ikisine de tekrarlayın).
-  //
-  // Buraya eklenen kayıtlar `ahp_code_id` + `direction_designator` ile eşleşir.
-  // Aynı (ahp_code_id, direction_designator) mevcutsa bu kayıt TAM override
-  // sayılır: kaynak XML'den alan mirası yapılmaz, vermediğiniz alanlar boş kalır.
-  //
-  // Gerekli minimum alanlar: `ahp_code_id` + `direction_designator`
-  //
-  // Sık kullanılan temel alanlar:
-  // `rwy_designator` (pist çifti etiketi, örn. "RWY 17/35"),
-  // `true_bearing`, `mag_bearing`,
-  // `info_length`, `info_width`, `info_dim_unit`,
-  // `info_surface_composition`, `info_surface_condition`, `info_surface_preparation`,
-  // `info_pcn_class`, `info_pcn_pavement_type`, `info_pcn_pavement_subgrade`,
-  // `info_pcn_max_tire_pressure_code`, `info_pcn_eval_method`, `info_pcn_note`,
-  // `info_lcn_class`, `info_strip_length`, `info_strip_width`, `info_strip_dim_unit`,
-  // `info_auw_weight`, `info_auw_weight_unit`,
-  // `info_siwl_weight`, `info_siwl_weight_unit`,
-  // `info_siwl_tire_pressure`, `info_siwl_tire_pressure_unit`,
-  // `info_marking_rmk`, `info_profile_rmk`, `info_rmk`, `info_status`,
-  // `dir_dt_wef`, `dir_created_by`, `info_dt_wef`, `info_dt_com`, `info_created_by`
-  //
-  // İsteğe bağlı: `enabled: false` ile bir kaydı geçici olarak devre dışı bırakabilirsiniz.
-  // match_id buraya yazılmaz — script otomatik atar (aynı ahp_code_id'ye sahip
-  // airport kaydıyla aynı değeri paylaşır).
+  // ============================================================
+  // LT1401 — BOLU — Tailored Runways
+  // Kaynak: Ibosoft AIP BOLU AD 2.12, 2.13, 2.14
+  // ============================================================
   "runways": [
-    // ÖRNEK — LT1401/BOLU için tailored pist (tek yön, sys_rmk'ye göre "Concrete")
-    // {
-    //   "enabled": true,
-    //   "ahp_code_id": "LT1401",
-    //   "direction_designator": "09",
-    //   "rwy_designator": "RWY 09",
-    //   "info_surface_composition": "CONC",
-    //   "info_created_by": "IBOSOFT"
-    // }
+    {
+      "enabled": true,
+      "ahp_code_id": "LT1401",
+      "direction_designator": "06",
+      "rwy_designator": "RWY-06/24",
+      "true_bearing": "064.62",
+      "mag_bearing": "058.39",
+      "info_length": "1895",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "CONC",
+      "info_pcn_note": "Unknown",
+      "info_strip_length": "1895",
+      "info_strip_width": "120",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope -0.39%. * -0.62% (0-976 m), +0.07% (976-1281 m), -0.17% (1281-1342 m), +0.07% (1342-1525 m), -0.45 % (1525-1895 m)",
+      "info_rmk": "TORA 1895 M, TODA 2025 M, ASDA 1895 M, LDA 1895 M. THR elevation 744 M / 2441 FT. GUND -38 M. THR coordinates 404441 93N 0313829 94E. Clearway 130 x 280 M. RESA 130 x 120 M. Small trees may be present in the area. APCH LGT: NALS."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT1401",
+      "direction_designator": "24",
+      "rwy_designator": "RWY-06/24",
+      "true_bearing": "244.62",
+      "mag_bearing": "238.39",
+      "info_length": "1895",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "CONC",
+      "info_pcn_note": "Unknown",
+      "info_strip_length": "1895",
+      "info_strip_width": "120",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope +0.39%. ** +0.45% (0-370 m), -0.07% (370-553 m), +0.17% (553-614 m), -0.07% (614-919 m), +0.62% (919-1895 m)",
+      "info_rmk": "TORA 1895 M, TODA 1985 M, ASDA 1895 M, LDA 1895 M. THR elevation 737 M / 2416 FT. GUND -38 M. THR coordinates 404508 21N 0313943 02E. Clearway 90 x 230 M. RESA 90 x 120 M. Small trees may be present in the area. APCH LGT: NALS."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LCEN",
+      "direction_designator": "11L",
+      "rwy_designator": "RWY-11L/29R",
+      "true_bearing": "111.69",
+      "mag_bearing": "107.69",
+      "info_length": "2755",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "OTHER",
+      "info_pcn_note": "80 F/C/X/T",
+      "info_strip_length": "2875",
+      "info_strip_width": "300",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.3%",
+      "info_rmk": "TORA 2755 M, TODA 2755 M, ASDA 2815 M, LDA 2755 M. THR elevation 117.9 M / 387 FT. THR coordinates 350935 41N 0332914 84E. SWY 60×45 M (Asphalt). APCH LGT: NIL. THR LGT: Green. VASIS: PAPI (Left) 3.5°. RWY edge LGT: 2755 M, 50 M spacing, Color coded White, LIH. RWY End LGT: Red. CBR can vary within RESA due to meteorological conditions."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LCEN",
+      "direction_designator": "29R",
+      "rwy_designator": "RWY-11L/29R",
+      "true_bearing": "291.70",
+      "mag_bearing": "287.70",
+      "info_length": "2755",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "OTHER",
+      "info_pcn_note": "80 F/C/X/T",
+      "info_strip_length": "2875",
+      "info_strip_width": "300",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.7%",
+      "info_rmk": "TORA 2755 M, TODA 2755 M, ASDA 2815 M, LDA 2755 M. THR elevation 109.9 M / 361 FT. THR coordinates 350902 21N 0333055 95E. SWY 60×45 M (Asphalt). APCH LGT: Precision APP Calvert System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3°. RWY edge LGT: 2755 M, 50 M spacing, Color coded White, LIH. RWY End LGT: Red. CBR can vary within RESA due to meteorological conditions."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LCEN",
+      "direction_designator": "11R",
+      "rwy_designator": "RWY-11R/29L",
+      "true_bearing": "111.69",
+      "mag_bearing": "107.69",
+      "info_length": "3000",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "CONC",
+      "info_pcn_note": "99 R/B/W/T",
+      "info_strip_length": "3120",
+      "info_strip_width": "280",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.6%",
+      "info_rmk": "TORA 3000 M, TODA 3000 M, ASDA 3000 M, LDA 3000 M. THR elevation 116.7 M / 383 FT. GUND 90 FT. THR coordinates 350916 13N 0332951 21E. RESA 240×150 M. APCH LGT: Precision APP Barette System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3.5° 16 FT. RWY edge LGT: 3000 M, 60 M spacing, Color coded White/Yellow, LIH. RWY End LGT: Red."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LCEN",
+      "direction_designator": "29L",
+      "rwy_designator": "RWY-11R/29L",
+      "true_bearing": "291.70",
+      "mag_bearing": "287.70",
+      "info_length": "3000",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "CONC",
+      "info_pcn_note": "99 R/B/W/T",
+      "info_strip_length": "3120",
+      "info_strip_width": "280",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.6%",
+      "info_rmk": "TORA 3000 M, TODA 3000 M, ASDA 3000 M, LDA 3000 M. THR elevation 99.2 M / 325 FT. GUND 90 FT. THR coordinates 350839 99N 0333141 25E. RESA 240×150 M. APCH LGT: Precision APP Barette System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3°. RWY edge LGT: 3000 M, 60 M spacing, Color coded White/Yellow, LIH. RWY End LGT: Red."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LCGK",
+      "direction_designator": "09",
+      "rwy_designator": "RWY-09/27",
+      "true_bearing": "090.67",
+      "mag_bearing": "090.67",
+      "info_length": "2850",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "OTHER",
+      "info_pcn_note": "71 F/C/X/T",
+      "info_strip_length": "3420",
+      "info_strip_width": "300",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.25%",
+      "info_rmk": "TORA 2850 M, TODA 2850 M, ASDA 3135 M, LDA 2850 M. THR elevation 43.5 M / 143 FT. THR coordinates 351410 14N 0334214 89E. SWY 285×45 M (Asphalt). Threshold of RWY 09/27 are 300 M Concrete. APCH LGT: NIL. THR LGT: Green. VASIS: 3° 3 BAR. RWY edge LGT: 2850 M, 25 M spacing, White. RWY End LGT: Red. RWY 09/27 circling guidance light AVBL."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LCGK",
+      "direction_designator": "27",
+      "rwy_designator": "RWY-09/27",
+      "true_bearing": "270.69",
+      "mag_bearing": "270.69",
+      "info_length": "2850",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "OTHER",
+      "info_pcn_note": "71 F/C/X/T",
+      "info_strip_length": "3420",
+      "info_strip_width": "300",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.18%",
+      "info_rmk": "TORA 2850 M, TODA 2850 M, ASDA 3135 M, LDA 2850 M. THR elevation 41.1 M / 135 FT. THR coordinates 351409 04N 0334407 37E. SWY 285×45 M (Asphalt). Threshold of RWY 09/27 are 300 M Concrete. APCH LGT: Precision APP CAT I. THR LGT: Green. VASIS: 3° 3 BAR. RWY edge LGT: 2850 M, 25 M spacing, White. RWY End LGT: Red."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LCIK",
+      "direction_designator": "FATO 16",
+      "rwy_designator": "FATO-16/34",
+      "true_bearing": "016.00",
+      "mag_bearing": "021.00",
+      "info_length": "1090",
+      "info_width": "50",
+      "info_dim_unit": "M",
+      "info_surface_composition": "",
+      "info_pcn_note": "",
+      "info_strip_length": "",
+      "info_strip_width": "",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "",
+      "info_rmk": "TODAH 1090 M, RTODAH 1090 M, LDAH 1090 M. TLOF/FATO elevation 772 FT / 235.30 M. GUND 91 FT. THR/TLOF coordinates 351633N 0331602E. TLOF dimensions 50×50 M Asphalt. Safety area 50×50 M. Aircraft who provide to criteria in Table 3.13 can land and take-off. APCH LGT: NIL. FATO LGT: NIL."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LCIK",
+      "direction_designator": "FATO 34",
+      "rwy_designator": "FATO-16/34",
+      "true_bearing": "340.00",
+      "mag_bearing": "345.00",
+      "info_length": "1090",
+      "info_width": "18",
+      "info_dim_unit": "M",
+      "info_surface_composition": "",
+      "info_pcn_note": "",
+      "info_strip_length": "",
+      "info_strip_width": "",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "",
+      "info_rmk": "TODAH 1090 M, RTODAH 1090 M, LDAH 1090 M. TLOF/FATO elevation 772 FT / 235.30 M. GUND 91 FT. THR/TLOF coordinates 351633N 0331602E. TLOF dimensions 50×50 M Asphalt. Safety area 50×50 M. Aircraft who provide to criteria in Table 3.13 can land and take-off. APCH LGT: NIL. FATO LGT: NIL."
+    }
   ]
+
 }
