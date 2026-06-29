@@ -185,6 +185,38 @@
       "usage_status": "ACTIVE",
       "usage_org_name": "T&T Havalimanı İşletmeciliği İnşaat Sanayi ve Ticaret Şirketi Limited",
       "sys_rmk": "Elev 402 FT. Geoid undulation 90 FT. Mag var 4E (2012). AFS: LCENYDYX. Traffic: INTL-NTL, IFR-VFR, Scheduled-Non-scheduled-Private. Fuel: Jet A1 by tanker, unlimited. Fire: Cat 7 (Cat 8 and 9 on demand); RWY foaming not available. De-icing: not available. Seasonal clearing: not available. AD admin, customs, immigration, health, AIS, ARO, ATS, fueling, handling, security: H24."
+    },
+
+    // ============================================================
+    // BOLU — LT1401 — Tailored Aerodrome
+    // Kaynak: Ibosoft AIP BOLU, 2025
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT1401",
+      "name": "BOLU",
+      "city": "BOLU",
+      "country": "TURKIYE",
+      "code_id": "LT1401",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "AD",
+      "lat_dd": 40.74861,
+      "lon_dd": 31.65167,
+      "lat_text": "404455N",
+      "lon_text": "0313906E",
+      "originator": "Ibosoft",
+      "usage_work_hr": "HO",
+      "usage_work_hr_rmk": "Operating hours to be determined by operator. Refer to AD administrator.",
+      "usage_time_ref": "UTC",
+      "usage_type": "OAT",
+      "usage_rule": "IFR | VFR",
+      "usage_mil": "CIVIL | MIL",
+      "usage_origin": "IBOSOFT",
+      "usage_purpose": "NS | G | M",
+      "usage_status": "CLOSED",
+      "usage_org_name": "Ibosoft",
+      "sys_rmk": "Elev 2441 FT (744 M). Geoid undulation -124 FT. Mag var 6.23°E (2025). Surface: Concrete. Traffic: NTL, IFR-VFR, Non-scheduled-General Aviation-Military. Operationally closed but infrastructure available. Fuel: Diesel, gasoline, LPG from nearby gas stations. De-icing: Not available. Hangar: Not available. Repair facilities: Not available. AFS: NIL. Website: ais.ibosoft.net.tr. Refer to AD administrator for further information."
     }
   ]
 }
