@@ -1086,7 +1086,23 @@ def main():
         if r.get("loc_code_id")
     }
 
-    # LOC → loc_rows (doğrudan)
+    # Build aşamasında tailored GP/DME ile eşleşmeleri tespit et
+    tailored_gp_loc_ids: set[str] = {
+        gp.get("loc_code_id")
+        for gp in tailored_by_type["gp"]
+        if gp.get("loc_code_id")
+    }
+    tailored_dme_loc_ids: set[str] = {
+        dme.get("loc_code_id")
+        for dme in tailored_by_type["dme"]
+        if dme.get("loc_code_id")
+    }
+
+    # LOC → loc_rows (doğrudan) + joined bayraklarını set et
+    for loc_rec in tailored_by_type["loc"]:
+        loc_id = loc_rec.get("loc_code_id")
+        loc_rec["gp_joined"] = 1 if loc_id in tailored_gp_loc_ids else 0
+        loc_rec["dme_joined"] = 1 if loc_id in tailored_dme_loc_ids else 0
     loc_rows.extend(tailored_by_type["loc"])
 
     # GP → karşılık gelen tailored LOC alanlarını merge et, sonra gp_rows'a ekle
@@ -1096,6 +1112,7 @@ def main():
             merged = {**tailored_loc_index[loc_id], **gp_rec}  # GP alanları öncelikli
         else:
             merged = gp_rec
+        merged["gp_joined"] = 1  # ✅ Tailored GP için joined bayrağını set et
         gp_rows.append(merged)
 
     tacan_standalone.extend(tailored_by_type["tacan"])
@@ -1111,6 +1128,7 @@ def main():
         if vor_id:
             t_dme_by_vor[vor_id] = dme_rec
         elif loc_id:
+            dme_rec["dme_joined"] = 1  # ✅ Tailored DME/ILS için joined bayrağını set et
             if loc_id in tailored_loc_index:
                 t_dme_to_ils.append({**tailored_loc_index[loc_id], **dme_rec})
             else:

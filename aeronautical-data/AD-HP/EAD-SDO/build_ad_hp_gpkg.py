@@ -1,12 +1,17 @@
 """
-EAD-SDO AD/HP ARP bölge dosyalarını birleştirir, varsa usage verisiyle
-kod bazında eşleştirir ve QGIS uyumlu spatial GeoPackage üretir.
+EAD-SDO AD/HP ARP bölge dosyalarını ve RWY-DIR/RWY-INFO pist verilerini
+birleştirir, varsa usage verisiyle kod bazında eşleştirir ve QGIS uyumlu
+spatial (ad_hp_airports) + aspatial (ad_hp_runways) GeoPackage katmanları
+üretir. Her iki tabloda da match_id alanı (codeId grubu başına üretilen
+rastgele tamsayı) ile çapraz tablo eşleştirmesi mümkündür — aynı
+havalimanına ait satırlar aynı çalıştırmada aynı match_id'yi paylaşır.
 Tüm sütunlarda index oluşturur - query performansı için optimize edilmiş.
 """
 
 from __future__ import annotations
 
 import json
+import random
 import sqlite3
 import struct
 import sys
@@ -26,6 +31,21 @@ ARP_SOURCES = [
     ("am-pac", BASE_DIR / "arp-am-pac.xml"),
     ("asi-aus", BASE_DIR / "arp-asi-aus.xml"),
     ("eur", BASE_DIR / "arp-eur.xml"),
+]
+
+RUNWAYS_TABLE = "ad_hp_runways"
+
+RWY_DIR_SOURCES = [
+    ("afr", BASE_DIR / "rwy-dir-afr.xml"),
+    ("am-pac", BASE_DIR / "rwy-dir-am.xml"),
+    ("asi-aus", BASE_DIR / "rwy-dir-asi-aus.xml"),
+    ("eur", BASE_DIR / "rwy-dir-eur.xml"),
+]
+RWY_INFO_SOURCES = [
+    ("afr", BASE_DIR / "rwy-info-afr.xml"),
+    ("am-pac", BASE_DIR / "rwy-info-am.xml"),
+    ("asi-aus", BASE_DIR / "rwy-info-asi-aus.xml"),
+    ("eur", BASE_DIR / "rwy-info-eur.xml"),
 ]
 
 SECTION_PREFIXES = {
@@ -49,8 +69,50 @@ AIRPORT_FIELD_NAMES = [
     "usage_comb_til", "usage_type", "usage_rule", "usage_mil", "usage_origin",
     "usage_purpose", "usage_status", "usage_capability", "usage_aircraft_type",
     "usage_engine_no", "usage_engine_type", "usage_org_name", "usage_joined",
+    "match_id",
 ]
 USAGE_VALUE_FIELDS = [name for name in AIRPORT_FIELD_NAMES if name.startswith("usage_") and name != "usage_joined"]
+
+RUNWAY_FIELD_NAMES = [
+    "match_id", "source_region", "source_file",
+    "ahp_code_id", "ahp_code_icao",
+    "rwy_designator", "direction_designator", "true_bearing", "mag_bearing",
+    "dir_dt_wef", "dir_created_by", "dir_mid",
+    "info_joined", "info_designator", "info_length", "info_width", "info_dim_unit",
+    "info_dt_wef", "info_created_by", "info_ahp_code_id", "info_ahp_code_icao",
+    "info_mid", "info_source_file",
+]
+
+MATCH_ID_MIN = 1
+MATCH_ID_MAX = 9_999_999_999
+
+
+def make_match_id_generator():
+    """codeId başına rastgele, çalıştırma-içi tekil bir tamsayı üretir/önbellekler.
+
+    Aynı codeId her çağrıldığında aynı match_id'yi döndürür (bu sayede bir
+    havalimanı ve onun pist kayıtları aynı değeri paylaşır), ama script her
+    çalıştırıldığında baştan rastgele üretilir — kalıcı/deterministik değildir.
+    """
+    assigned: dict[str, int] = {}
+    used_ids: set[int] = set()
+
+    def get_match_id(code: str | float | int | None) -> int | None:
+        if not code:
+            return None
+        key = str(code)
+        if key in assigned:
+            return assigned[key]
+
+        candidate = random.randint(MATCH_ID_MIN, MATCH_ID_MAX)
+        while candidate in used_ids:
+            candidate = random.randint(MATCH_ID_MIN, MATCH_ID_MAX)
+
+        used_ids.add(candidate)
+        assigned[key] = candidate
+        return candidate
+
+    return get_match_id
 
 
 def read_head_text(path: Path, size: int = 256) -> str:
@@ -76,6 +138,27 @@ def normalize_code(value: str | None) -> str | None:
         return None
     text = value.strip().upper()
     return text or None
+
+
+def normalize_designator(value: str | None) -> str | None:
+    if value is None:
+        return None
+    text = value.strip().upper()
+    for token in ("RWY", "-", " ", "/"):
+        text = text.replace(token, "")
+    # NOT: "RWY-04/22" ve "RWY-22/04" farklı normalize edilir (sıra korunur,
+    # sort edilmez). Bölgeler arası designator sırası uyuşmazsa nadir bir
+    # eşleşme kaçırma riski vardır (bkz. README "Bilinen Sınırlamalar").
+    return text or None
+
+
+def to_float(value: str | None) -> float | None:
+    if not value:
+        return None
+    try:
+        return float(value)
+    except ValueError:
+        return None
 
 
 def parse_coord(coord: str | None, is_lat: bool) -> float | None:
@@ -189,6 +272,51 @@ def load_usage_index(xml_path: Path) -> tuple[dict[str, dict[str, str | None]], 
 
     print(f"Usage kaydı: {len(raw_rows)}")
     return usage_by_code, raw_rows
+
+
+def load_rwy_info_index() -> dict[tuple[str, str], dict[str, str | None]]:
+    info_by_key: dict[tuple[str, str], dict[str, str | None]] = {}
+    total = 0
+
+    for _, path in RWY_INFO_SOURCES:
+        valid, reason = looks_like_xml(path)
+        if not valid:
+            print(f"RWY-INFO dosyası atlandı: {path.name} ({reason})")
+            continue
+
+        for _, elem in ET.iterparse(path, events=("end",)):
+            if elem.tag != "Record":
+                continue
+
+            ahp_code_id = normalize_code(elem.findtext("Ahp/codeId"))
+            designator_key = normalize_designator(elem.findtext("txtDesig"))
+            if not ahp_code_id or not designator_key:
+                elem.clear()
+                continue
+
+            row: dict[str, str | None] = {
+                "info_designator": (elem.findtext("txtDesig") or "").strip() or None,
+                "info_length": (elem.findtext("valLen") or "").strip() or None,
+                "info_width": (elem.findtext("valWid") or "").strip() or None,
+                "info_dim_unit": (elem.findtext("uomDimRwy") or "").strip() or None,
+                "info_dt_wef": (elem.findtext("dtWef") or "").strip() or None,
+                "info_created_by": (elem.findtext("OrgCre/txtName") or "").strip() or None,
+                "info_ahp_code_id": ahp_code_id,
+                "info_ahp_code_icao": normalize_code(elem.findtext("Ahp/codeIcao")),
+                "info_mid": (elem.findtext("mid") or "").strip() or None,
+                "info_source_file": path.name,
+            }
+            total += 1
+
+            key = (ahp_code_id, designator_key)
+            if key in info_by_key:
+                info_by_key[key] = merge_rows(info_by_key[key], row)
+            else:
+                info_by_key[key] = row
+            elem.clear()
+
+    print(f"RWY-INFO kaydı: {total}")
+    return info_by_key
 
 
 def build_usage_fields(usage: dict[str, str | None]) -> dict[str, str | int | None]:
@@ -485,6 +613,65 @@ def iter_airport_rows(usage_by_code: dict[str, dict[str, str | None]]):
             print(f"  - {name}: {reason}")
 
 
+def iter_runway_rows(rwy_info_index: dict[tuple[str, str], dict[str, str | None]]):
+    skipped_sources: list[tuple[str, str]] = []
+
+    for region, path in RWY_DIR_SOURCES:
+        valid, reason = looks_like_xml(path)
+        if not valid:
+            skipped_sources.append((path.name, reason or "geçersiz içerik"))
+            continue
+
+        print(f"Kaynak işleniyor: {path.name}")
+        for _, elem in ET.iterparse(path, events=("end",)):
+            if elem.tag != "Record":
+                continue
+
+            ahp_code_id = normalize_code(elem.findtext("Ahp/codeId"))
+            ahp_code_icao = normalize_code(elem.findtext("Ahp/codeIcao"))
+            pair_designator = (elem.findtext("Rwy/txtDesig") or "").strip() or None
+            direction_designator = (elem.findtext("txtDesig") or "").strip() or None
+
+            if not ahp_code_id or not pair_designator:
+                elem.clear()
+                continue
+
+            designator_key = normalize_designator(pair_designator)
+            info = rwy_info_index.get((ahp_code_id, designator_key), {}) if designator_key else {}
+
+            yield {
+                "match_id": None,  # main() içinde get_match_id(ahp_code_id) ile atanır
+                "source_region": region,
+                "source_file": path.name,
+                "ahp_code_id": ahp_code_id,
+                "ahp_code_icao": ahp_code_icao,
+                "rwy_designator": pair_designator,
+                "direction_designator": direction_designator,
+                "true_bearing": to_float(elem.findtext("valTrueBrg")),
+                "mag_bearing": to_float(elem.findtext("valMagBrg")),
+                "dir_dt_wef": (elem.findtext("dtWef") or "").strip() or None,
+                "dir_created_by": (elem.findtext("OrgCre/txtName") or "").strip() or None,
+                "dir_mid": (elem.findtext("mid") or "").strip() or None,
+                "info_joined": 1 if info else 0,
+                "info_designator": info.get("info_designator"),
+                "info_length": to_float(info.get("info_length")),
+                "info_width": to_float(info.get("info_width")),
+                "info_dim_unit": info.get("info_dim_unit"),
+                "info_dt_wef": info.get("info_dt_wef"),
+                "info_created_by": info.get("info_created_by"),
+                "info_ahp_code_id": info.get("info_ahp_code_id"),
+                "info_ahp_code_icao": info.get("info_ahp_code_icao"),
+                "info_mid": info.get("info_mid"),
+                "info_source_file": info.get("info_source_file"),
+            }
+            elem.clear()
+
+    if skipped_sources:
+        print("Atlanan RWY-DIR kaynakları:")
+        for name, reason in skipped_sources:
+            print(f"  - {name}: {reason}")
+
+
 def gpkg_point_blob(lon: float, lat: float, srs_id: int = 4326) -> bytes:
     header = b"GP" + bytes([0, 1]) + struct.pack("<i", srs_id)
     wkb = struct.pack("<BI2d", 1, 1, lon, lat)
@@ -613,7 +800,8 @@ def write_airports_layer(
             usage_engine_no TEXT,
             usage_engine_type TEXT,
             usage_org_name TEXT,
-            usage_joined INTEGER DEFAULT 0
+            usage_joined INTEGER DEFAULT 0,
+            match_id INTEGER
         )
         '''
     )
@@ -671,6 +859,70 @@ def write_airports_layer(
     cur.execute(
         "INSERT OR REPLACE INTO gpkg_ogr_contents (table_name, feature_count) VALUES (?, ?)",
         (AIRPORTS_TABLE, len(batch)),
+    )
+    con.commit()
+
+
+def write_runways_table(con: sqlite3.Connection, rows: list[dict[str, str | float | int | None]]):
+    if not rows:
+        return
+
+    cur = con.cursor()
+    cur.execute(
+        f'''
+        CREATE TABLE "{RUNWAYS_TABLE}" (
+            fid INTEGER PRIMARY KEY AUTOINCREMENT,
+            match_id INTEGER,
+            source_region TEXT,
+            source_file TEXT,
+            ahp_code_id TEXT,
+            ahp_code_icao TEXT,
+            rwy_designator TEXT,
+            direction_designator TEXT,
+            true_bearing REAL,
+            mag_bearing REAL,
+            dir_dt_wef TEXT,
+            dir_created_by TEXT,
+            dir_mid TEXT,
+            info_joined INTEGER DEFAULT 0,
+            info_designator TEXT,
+            info_length REAL,
+            info_width REAL,
+            info_dim_unit TEXT,
+            info_dt_wef TEXT,
+            info_created_by TEXT,
+            info_ahp_code_id TEXT,
+            info_ahp_code_icao TEXT,
+            info_mid TEXT,
+            info_source_file TEXT
+        )
+        '''
+    )
+
+    field_names = RUNWAY_FIELD_NAMES
+    column_sql = ", ".join(field_names)
+    placeholder_sql = ", ".join("?" for _ in field_names)
+    sql = f'INSERT INTO "{RUNWAYS_TABLE}" ({column_sql}) VALUES ({placeholder_sql})'
+    batch = [tuple(row.get(field) for field in field_names) for row in rows]
+    cur.executemany(sql, batch)
+
+    cur.execute(
+        """
+        INSERT OR REPLACE INTO gpkg_contents (
+            table_name, data_type, identifier, description, last_change, srs_id
+        ) VALUES (?, 'aspatial', ?, ?, strftime('%Y-%m-%dT%H:%M:%fZ','now'), NULL)
+        """,
+        (RUNWAYS_TABLE, RUNWAYS_TABLE, 'EAD-SDO runway direction records enriched with paired runway info (length/width)'),
+    )
+    cur.execute(
+        """
+        INSERT OR IGNORE INTO gpkg_extensions (table_name, column_name, extension_name, definition, scope)
+        VALUES (NULL, NULL, 'gdal_aspatial', 'http://gdal.org/geopackage_aspatial.html', 'read-write')
+        """
+    )
+    cur.execute(
+        "INSERT OR REPLACE INTO gpkg_ogr_contents (table_name, feature_count) VALUES (?, ?)",
+        (RUNWAYS_TABLE, len(batch)),
     )
     con.commit()
 
@@ -734,6 +986,15 @@ def validate_gpkg(path: Path):
         print(f"  - {AIRPORTS_TABLE} kayıt sayısı: {airport_count}")
         print(f"  - usage eşleşen kayıt sayısı: {joined_count}")
 
+        table_names = {name for name, _ in contents}
+        if RUNWAYS_TABLE in table_names:
+            runway_count = cur.execute(f'SELECT COUNT(*) FROM "{RUNWAYS_TABLE}"').fetchone()[0]
+            runway_joined = cur.execute(
+                f'SELECT COUNT(*) FROM "{RUNWAYS_TABLE}" WHERE info_joined = 1'
+            ).fetchone()[0]
+            print(f"  - {RUNWAYS_TABLE} kayıt sayısı: {runway_count}")
+            print(f"  - RWY-INFO eşleşen kayıt sayısı: {runway_joined}")
+
 
 def main():
     reconfigure = getattr(sys.stdout, "reconfigure", None)
@@ -748,6 +1009,18 @@ def main():
         print("HATA: Geçerli havalimanı konum kaydı bulunamadı.")
         sys.exit(1)
 
+    rwy_info_index = load_rwy_info_index()
+    runway_rows = list(iter_runway_rows(rwy_info_index))
+
+    # match_id: codeId grubu başına rastgele, çalıştırma-içi tekil tamsayı.
+    # Aynı havalimanına ait airport satırı ve pist satırları aynı değeri
+    # paylaşır; script her çalıştırıldığında baştan üretilir (kalıcı değil).
+    get_match_id = make_match_id_generator()
+    for row in airport_rows:
+        row["match_id"] = get_match_id(row.get("code_id"))
+    for row in runway_rows:
+        row["match_id"] = get_match_id(row.get("ahp_code_id"))
+
     if OUTPUT_GPKG.exists():
         OUTPUT_GPKG.unlink()
         print(f"Mevcut dosya silindi: {OUTPUT_GPKG.name}")
@@ -755,31 +1028,46 @@ def main():
     with sqlite3.connect(OUTPUT_GPKG) as con:
         create_base_gpkg(con)
         write_airports_layer(con, airport_rows)
+        write_runways_table(con, runway_rows)
         if EXPORT_RAW_USAGE_TABLE:
             write_usage_table(con, usage_rows)
 
     validate_gpkg(OUTPUT_GPKG)
 
-    # Create indexes on all columns for query performance
+    # Create indexes on all columns (of both tables) for query performance
     print("\nTüm sütunlara indexler oluşturuluyor…")
     with sqlite3.connect(OUTPUT_GPKG) as con:
         cur = con.cursor()
-        index_count = 0
-        for col_name in AIRPORT_FIELD_NAMES:
-            idx_name = f"idx_ad_hp_{col_name}"
-            try:
-                cur.execute(f"CREATE INDEX {idx_name} ON {AIRPORTS_TABLE}({col_name})")
-                index_count += 1
-            except sqlite3.OperationalError as e:
-                if "already exists" not in str(e):
-                    print(f"  [warn] {col_name}: {e}")
+        total_indexes = 0
+        for table_name in (AIRPORTS_TABLE, RUNWAYS_TABLE):
+            cur.execute(f"PRAGMA table_info({table_name})")
+            columns = cur.fetchall()
+            if not columns:
+                continue
+
+            index_count = 0
+            for col in columns:
+                col_name = col[1]
+                if col_name in ("geom", "fid"):
+                    continue
+                idx_name = f"idx_{table_name}_{col_name}"
+                try:
+                    cur.execute(f"CREATE INDEX {idx_name} ON {table_name}({col_name})")
+                    index_count += 1
+                except sqlite3.OperationalError as e:
+                    if "already exists" not in str(e):
+                        print(f"  [warn] {table_name}.{col_name}: {e}")
+            if index_count:
+                print(f"  {table_name}: {index_count} index oluşturuldu")
+                total_indexes += index_count
         con.commit()
-        print(f"  ✓ {index_count} index oluşturuldu")
+        print(f"  ✓ Toplam {total_indexes} index oluşturuldu")
 
     size_mb = OUTPUT_GPKG.stat().st_size / 1024 / 1024
     print(f"\nTamamlandı: {OUTPUT_GPKG.name} ({size_mb:.1f} MB)")
     print(f"Toplam havalimanı/heliport: {len(airport_rows)}")
-    print("QGIS'te `ad_hp_airports` katmanını doğrudan haritaya ekleyebilirsiniz.")
+    print(f"Toplam pist yönü kaydı: {len(runway_rows)}")
+    print("QGIS'te `ad_hp_airports` ve `ad_hp_runways` katmanlarını doğrudan haritaya ekleyebilirsiniz.")
 
 
 if __name__ == "__main__":
