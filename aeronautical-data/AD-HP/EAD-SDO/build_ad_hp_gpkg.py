@@ -41,11 +41,13 @@ RWY_DIR_SOURCES = [
     ("asi-aus", BASE_DIR / "rwy-dir-asi-aus.xml"),
     ("eur", BASE_DIR / "rwy-dir-eur.xml"),
 ]
+# Eski rwy-info-{afr,am,asi-aus,eur}.xml ile aynı kayıtlar (mid bazında %100
+# örtüşme doğrulandı) ama çok daha fazla sütunla (yüzey, PCN/LCN, strip,
+# AUW/SIWL, marking/remark) export edilmiş; CODE ID ilk harfine göre 26
+# dosyaya bölünmüş. Eski bölge dosyaları artık okunmuyor (diskte kalıyor).
 RWY_INFO_SOURCES = [
-    ("afr", BASE_DIR / "rwy-info-afr.xml"),
-    ("am-pac", BASE_DIR / "rwy-info-am.xml"),
-    ("asi-aus", BASE_DIR / "rwy-info-asi-aus.xml"),
-    ("eur", BASE_DIR / "rwy-info-eur.xml"),
+    (letter, BASE_DIR / f"rwy-ad-hp-{letter}.xml")
+    for letter in "abcdefghijklmnopqrstuvwxyz"
 ]
 
 SECTION_PREFIXES = {
@@ -79,7 +81,17 @@ RUNWAY_FIELD_NAMES = [
     "rwy_designator", "direction_designator", "true_bearing", "mag_bearing",
     "dir_dt_wef", "dir_created_by", "dir_mid",
     "info_joined", "info_designator", "info_length", "info_width", "info_dim_unit",
-    "info_dt_wef", "info_created_by", "info_ahp_code_id", "info_ahp_code_icao",
+    "info_dt_wef", "info_dt_com",
+    "info_surface_composition", "info_surface_condition", "info_surface_preparation",
+    "info_status", "info_marking_rmk", "info_profile_rmk", "info_rmk",
+    "info_pcn_class", "info_pcn_pavement_type", "info_pcn_pavement_subgrade",
+    "info_pcn_max_tire_pressure_code", "info_pcn_eval_method", "info_pcn_note",
+    "info_lcn_class", "info_length_offset",
+    "info_strip_length", "info_strip_width", "info_strip_dim_unit",
+    "info_auw_weight", "info_auw_weight_unit",
+    "info_siwl_weight", "info_siwl_weight_unit",
+    "info_siwl_tire_pressure", "info_siwl_tire_pressure_unit",
+    "info_created_by", "info_ahp_code_id", "info_ahp_code_icao",
     "info_mid", "info_source_file",
 ]
 
@@ -300,6 +312,31 @@ def load_rwy_info_index() -> dict[tuple[str, str], dict[str, str | None]]:
                 "info_width": (elem.findtext("valWid") or "").strip() or None,
                 "info_dim_unit": (elem.findtext("uomDimRwy") or "").strip() or None,
                 "info_dt_wef": (elem.findtext("dtWef") or "").strip() or None,
+                "info_dt_com": (elem.findtext("dtCom") or "").strip() or None,
+                "info_surface_composition": (elem.findtext("codeComposition") or "").strip() or None,
+                "info_surface_condition": (elem.findtext("codeCondSfc") or "").strip() or None,
+                "info_surface_preparation": (elem.findtext("codePreparation") or "").strip() or None,
+                "info_status": (elem.findtext("codeSts") or "").strip() or None,
+                "info_marking_rmk": (elem.findtext("txtMarking") or "").strip() or None,
+                "info_profile_rmk": (elem.findtext("txtProfile") or "").strip() or None,
+                "info_rmk": (elem.findtext("txtRmk") or "").strip() or None,
+                "info_pcn_class": (elem.findtext("valPcnClass") or "").strip() or None,
+                "info_pcn_pavement_type": (elem.findtext("codePcnPavementType") or "").strip() or None,
+                "info_pcn_pavement_subgrade": (elem.findtext("codePcnPavementSubgrade") or "").strip() or None,
+                "info_pcn_max_tire_pressure_code": (elem.findtext("codePcnMaxTirePressure") or "").strip() or None,
+                "info_pcn_eval_method": (elem.findtext("codePcnEvalMethod") or "").strip() or None,
+                "info_pcn_note": (elem.findtext("txtPcnNote") or "").strip() or None,
+                "info_lcn_class": (elem.findtext("valLcnClass") or "").strip() or None,
+                "info_length_offset": (elem.findtext("valLenOffset") or "").strip() or None,
+                "info_strip_length": (elem.findtext("valLenStrip") or "").strip() or None,
+                "info_strip_width": (elem.findtext("valWidStrip") or "").strip() or None,
+                "info_strip_dim_unit": (elem.findtext("uomDimStrip") or "").strip() or None,
+                "info_auw_weight": (elem.findtext("valAuwWeight") or "").strip() or None,
+                "info_auw_weight_unit": (elem.findtext("uomAuwWeight") or "").strip() or None,
+                "info_siwl_weight": (elem.findtext("valSiwlWeight") or "").strip() or None,
+                "info_siwl_weight_unit": (elem.findtext("uomsiwlweight") or "").strip() or None,
+                "info_siwl_tire_pressure": (elem.findtext("valSiwlTirePressure") or "").strip() or None,
+                "info_siwl_tire_pressure_unit": (elem.findtext("uomSiwlTirePressure") or "").strip() or None,
                 "info_created_by": (elem.findtext("OrgCre/txtName") or "").strip() or None,
                 "info_ahp_code_id": ahp_code_id,
                 "info_ahp_code_icao": normalize_code(elem.findtext("Ahp/codeIcao")),
@@ -526,6 +563,130 @@ def apply_tailored_data(
     return [rows_by_key[key] for key in ordered_keys]
 
 
+RUNWAY_REAL_FIELDS = (
+    "true_bearing", "mag_bearing", "info_length", "info_width",
+    "info_pcn_class", "info_lcn_class", "info_length_offset",
+    "info_strip_length", "info_strip_width",
+    "info_auw_weight", "info_siwl_weight", "info_siwl_tire_pressure",
+)
+
+
+def apply_tailored_runway_data(
+    runway_rows: list[dict[str, str | float | int | None]],
+    tailored_path: Path,
+) -> list[dict[str, str | float | int | None]]:
+    if not tailored_path.exists():
+        return runway_rows
+
+    raw_text = tailored_path.read_text(encoding="utf-8").strip()
+    if not raw_text:
+        print(f"Tailored pist dosyası boş: {tailored_path.name}")
+        return runway_rows
+
+    try:
+        payload = json.loads(strip_jsonc_comments(raw_text))
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"Tailored pist verisi parse hatası ({tailored_path.name}): {exc}") from exc
+
+    if isinstance(payload, list):
+        entries = payload
+    elif isinstance(payload, dict):
+        entries = payload.get("runways", [])
+    else:
+        raise RuntimeError("Tailored pist verisi kökü liste veya {'runways': [...]} olmalıdır")
+
+    if not isinstance(entries, list):
+        raise RuntimeError("Tailored pist verisi içindeki 'runways' alanı liste olmalıdır")
+
+    # Grain, gerçek RWY-DIR verisiyle aynı: 1 kayıt = 1 pist YÖNÜ
+    # (ahp_code_id, direction_designator). Pist çiftleri her zaman 2 yönlü
+    # olmak zorunda değildir (tek taraf kullanımlı/yayınlı pistler vardır) —
+    # bu yüzden fanout YAPILMAZ; iki yönü olan bir pist için iki ayrı giriş
+    # yazılması gerekir (ortak alanlar her ikisine de tekrarlanır).
+    rows_by_key: dict[tuple[str, str], dict[str, str | float | int | None]] = {}
+    ordered_keys: list[tuple[str, str]] = []
+
+    for row in runway_rows:
+        code = normalize_code(str(row.get("ahp_code_id") or ""))
+        direction = normalize_code(str(row.get("direction_designator") or ""))
+        if not code or not direction:
+            continue
+        key = (code, direction)
+        rows_by_key[key] = dict(row)
+        ordered_keys.append(key)
+
+    added = 0
+    overridden = 0
+
+    for idx, entry in enumerate(entries, start=1):
+        if not isinstance(entry, dict):
+            print(f"Tailored pist kaydı atlandı (#{idx}): nesne/dict değil")
+            continue
+        if entry.get("enabled", True) is False:
+            continue
+
+        code = normalize_code(str(entry.get("ahp_code_id") or ""))
+        direction = normalize_code(str(entry.get("direction_designator") or ""))
+        if not code or not direction:
+            print(f"Tailored pist kaydı atlandı (#{idx}): ahp_code_id/direction_designator zorunlu")
+            continue
+
+        key = (code, direction)
+        is_override = key in rows_by_key
+
+        # Tailored pist kayıtları da (airport ile aynı mantık) tam override
+        # gibi davranır: vermediğiniz alanlar boş kalır, kaynak XML'den
+        # alan mirası yapılmaz.
+        base: dict[str, str | float | int | None] = {field: None for field in RUNWAY_FIELD_NAMES}
+        base["source_region"] = "tailored"
+        base["source_file"] = tailored_path.name
+        base["ahp_code_id"] = code
+        base["direction_designator"] = direction
+
+        for entry_key, value in entry.items():
+            if entry_key in {"enabled"} or entry_key.startswith("_"):
+                continue
+            if entry_key in RUNWAY_FIELD_NAMES:
+                base[entry_key] = value
+
+        base["ahp_code_id"] = code
+        base["direction_designator"] = direction
+        if base.get("ahp_code_icao"):
+            base["ahp_code_icao"] = normalize_code(str(base["ahp_code_icao"]))
+
+        for real_field in RUNWAY_REAL_FIELDS:
+            if base.get(real_field) not in (None, ""):
+                try:
+                    base[real_field] = float(base[real_field])
+                except (TypeError, ValueError) as exc:
+                    raise RuntimeError(
+                        f"Tailored pist verisi sayısal alan hatası ({code} {direction}.{real_field}): {exc}"
+                    ) from exc
+
+        has_info = any(
+            base.get(field) not in (None, "")
+            for field in RUNWAY_FIELD_NAMES
+            if field.startswith("info_") and field != "info_joined"
+        )
+        base["info_joined"] = 1 if has_info else int(base.get("info_joined") or 0)
+        if not base.get("dir_mid"):
+            base["dir_mid"] = f"TAILORED:{code}:{direction}"
+        if not base.get("info_source_file") and has_info:
+            base["info_source_file"] = tailored_path.name
+
+        rows_by_key[key] = base
+        if key not in ordered_keys:
+            ordered_keys.append(key)
+            added += 1
+        elif is_override:
+            overridden += 1
+
+    if added or overridden:
+        print(f"Tailored pist kaydı işlendi: override={overridden}, yeni={added}")
+
+    return [rows_by_key[key] for key in ordered_keys]
+
+
 def iter_airport_rows(usage_by_code: dict[str, dict[str, str | None]]):
     skipped_sources: list[tuple[str, str]] = []
 
@@ -658,6 +819,31 @@ def iter_runway_rows(rwy_info_index: dict[tuple[str, str], dict[str, str | None]
                 "info_width": to_float(info.get("info_width")),
                 "info_dim_unit": info.get("info_dim_unit"),
                 "info_dt_wef": info.get("info_dt_wef"),
+                "info_dt_com": info.get("info_dt_com"),
+                "info_surface_composition": info.get("info_surface_composition"),
+                "info_surface_condition": info.get("info_surface_condition"),
+                "info_surface_preparation": info.get("info_surface_preparation"),
+                "info_status": info.get("info_status"),
+                "info_marking_rmk": info.get("info_marking_rmk"),
+                "info_profile_rmk": info.get("info_profile_rmk"),
+                "info_rmk": info.get("info_rmk"),
+                "info_pcn_class": to_float(info.get("info_pcn_class")),
+                "info_pcn_pavement_type": info.get("info_pcn_pavement_type"),
+                "info_pcn_pavement_subgrade": info.get("info_pcn_pavement_subgrade"),
+                "info_pcn_max_tire_pressure_code": info.get("info_pcn_max_tire_pressure_code"),
+                "info_pcn_eval_method": info.get("info_pcn_eval_method"),
+                "info_pcn_note": info.get("info_pcn_note"),
+                "info_lcn_class": to_float(info.get("info_lcn_class")),
+                "info_length_offset": to_float(info.get("info_length_offset")),
+                "info_strip_length": to_float(info.get("info_strip_length")),
+                "info_strip_width": to_float(info.get("info_strip_width")),
+                "info_strip_dim_unit": info.get("info_strip_dim_unit"),
+                "info_auw_weight": to_float(info.get("info_auw_weight")),
+                "info_auw_weight_unit": info.get("info_auw_weight_unit"),
+                "info_siwl_weight": to_float(info.get("info_siwl_weight")),
+                "info_siwl_weight_unit": info.get("info_siwl_weight_unit"),
+                "info_siwl_tire_pressure": to_float(info.get("info_siwl_tire_pressure")),
+                "info_siwl_tire_pressure_unit": info.get("info_siwl_tire_pressure_unit"),
                 "info_created_by": info.get("info_created_by"),
                 "info_ahp_code_id": info.get("info_ahp_code_id"),
                 "info_ahp_code_icao": info.get("info_ahp_code_icao"),
@@ -890,6 +1076,31 @@ def write_runways_table(con: sqlite3.Connection, rows: list[dict[str, str | floa
             info_width REAL,
             info_dim_unit TEXT,
             info_dt_wef TEXT,
+            info_dt_com TEXT,
+            info_surface_composition TEXT,
+            info_surface_condition TEXT,
+            info_surface_preparation TEXT,
+            info_status TEXT,
+            info_marking_rmk TEXT,
+            info_profile_rmk TEXT,
+            info_rmk TEXT,
+            info_pcn_class REAL,
+            info_pcn_pavement_type TEXT,
+            info_pcn_pavement_subgrade TEXT,
+            info_pcn_max_tire_pressure_code TEXT,
+            info_pcn_eval_method TEXT,
+            info_pcn_note TEXT,
+            info_lcn_class REAL,
+            info_length_offset REAL,
+            info_strip_length REAL,
+            info_strip_width REAL,
+            info_strip_dim_unit TEXT,
+            info_auw_weight REAL,
+            info_auw_weight_unit TEXT,
+            info_siwl_weight REAL,
+            info_siwl_weight_unit TEXT,
+            info_siwl_tire_pressure REAL,
+            info_siwl_tire_pressure_unit TEXT,
             info_created_by TEXT,
             info_ahp_code_id TEXT,
             info_ahp_code_icao TEXT,
@@ -912,7 +1123,7 @@ def write_runways_table(con: sqlite3.Connection, rows: list[dict[str, str | floa
             table_name, data_type, identifier, description, last_change, srs_id
         ) VALUES (?, 'aspatial', ?, ?, strftime('%Y-%m-%dT%H:%M:%fZ','now'), NULL)
         """,
-        (RUNWAYS_TABLE, RUNWAYS_TABLE, 'EAD-SDO runway direction records enriched with paired runway info (length/width)'),
+        (RUNWAYS_TABLE, RUNWAYS_TABLE, 'EAD-SDO runway direction records enriched with paired runway info (dimensions, surface, PCN/LCN, strip, weight limits)'),
     )
     cur.execute(
         """
@@ -1011,6 +1222,7 @@ def main():
 
     rwy_info_index = load_rwy_info_index()
     runway_rows = list(iter_runway_rows(rwy_info_index))
+    runway_rows = apply_tailored_runway_data(runway_rows, TAILORED_DATA_FILE)
 
     # match_id: codeId grubu başına rastgele, çalıştırma-içi tekil tamsayı.
     # Aynı havalimanına ait airport satırı ve pist satırları aynı değeri
