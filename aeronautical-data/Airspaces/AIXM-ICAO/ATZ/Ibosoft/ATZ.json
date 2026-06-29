@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [31.52917, 40.74917],
+            [31.57778, 40.67417],
+            [31.77133, 40.74806],
+            [31.72583, 40.82306],
+            [31.52917, 40.74917]
+          ]
+        ]
+      },
+      "properties": {
+        "hi": "LT1401",
+        "na": "BOLU ATZ",
+        "type": "CD",
+        "classification": "D",
+        "pic": "<b>NAME : </b>LT1401<br><b>NAME : </b>BOLU ATZ<br><b>UPPER LIMIT : </b>5500<br><b>UPPER LIMIT REF. : </b>MSL<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>SFC"
+      }
+    }
+  ]
+}
