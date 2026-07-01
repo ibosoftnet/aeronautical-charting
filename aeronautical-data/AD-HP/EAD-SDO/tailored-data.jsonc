@@ -165,8 +165,10 @@
       "lon_dd": 33.267222,
       "lat_text": "351633N",
       "lon_text": "0331602E",
+      "usage_work_hr": "HO",
+      "usage_limit": "PERMIT",
       "usage_time_ref": "UTC",
-      "usage_type": "GAT | OAT",
+      "usage_type": "OAT",
       "usage_rule": "IFR | VFR",
       "usage_mil": "CIVIL | MIL",
       "usage_origin": "NTL",
@@ -193,6 +195,7 @@
       "lon_dd": 33.720278,
       "lat_text": "351414N",
       "lon_text": "0334313E",
+      "usage_work_hr": "NOTAM",
       "usage_time_ref": "UTC",
       "usage_type": "GAT | OAT",
       "usage_rule": "IFR | VFR",
@@ -234,8 +237,279 @@
     },
 
     // ============================================================
+    // Samsun/Ondokuz Mayıs (Samsun) — LT5501 / LTFI
+    // Kaynak: AIP TURKEY LTFI AD 2, 02 FEB 17
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LTFI",
+      "name": "ONDOKUZ MAYIS",
+      "city": "SAMSUN",
+      "country": "TURKIYE",
+      "code_id": "LTFI",
+      "code_icao": "LTFI",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 41.513889,
+      "lon_dd": 36.118333,
+      "lat_text": "413050N",
+      "lon_text": "0360706E",
+      "usage_work_hr": "HO",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "VFR",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "P",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "19 mayıs Üniversitesi Ballıca Kampüsü",
+      "sys_rmk": "Elev 1.5 M (5 FT). Geoid undulation 93 FT. Mag var 5.8°E (2015), 0.09° increasing. İstiklal Mahallesi Uzaytem 55420 19 Mayıs / SAMSUN."
+    },
+
+    // ============================================================
+    // Multi Enerji (Tekirdağ) — LT5901
+    // Kaynak: SHGM Hava Kampüsleri Listesi
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT5901",
+      "name": "MULTİ ENERJİ",
+      "city": "TEKİRDAĞ",
+      "country": "TURKIYE",
+      "code_id": "LT5901",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 41.067804,
+      "lon_dd": 27.356210,
+      "lat_text": "410404N",
+      "lon_text": "0272122E",
+      "usage_work_hr": "",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Multi Enerji Müh. İnş. Tıb. Malz. Nak. San. Ve Dış Tic. Ltd. Şti.",
+      "sys_rmk": "Elev 141.5 M (464 FT). Pist 350×20 M, sıkıştırılmış ve düzlenmiş çim. Banarlı Mahallesi, Süleymanpaşa, Tekirdağ."
+    },
+
+    // ============================================================
+    // THK İnönü (Eskişehir) — LT2601
+    // Kaynak: SHGM Hava Kampüsleri Listesi
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT2601",
+      "name": "THK İNÖNÜ HAVACILIK EĞİTİM MERKEZİ",
+      "city": "ESKİŞEHİR",
+      "country": "TURKIYE",
+      "code_id": "LT2601",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 39.821535,
+      "lon_dd": 30.118125,
+      "lat_text": "394918N",
+      "lon_text": "0300705E",
+      "usage_work_hr": "",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Türk Hava Kurumu Genel Başkanlığı",
+      "sys_rmk": "Elev 833.5 M (2734 FT). Pist 1200×50 M, sıkıştırılmış ve düzlenmiş çim. Yenice Mahallesi Türkkuşu Caddesi No:1, İnönü/Eskişehir."
+    },
+
+    // ============================================================
+    // Sivrihisar Havacılık Merkezi (Eskişehir) — LT2602
+    // Kaynak: SHGM Hava Kampüsleri Listesi + SUSHM Necati Artan Airpark Info
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT2602",
+      "name": "SİVRİHİSAR HAVACILIK MERKEZİ",
+      "city": "ESKİŞEHİR",
+      "country": "TURKIYE",
+      "code_id": "LT2602",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "AD",
+      "lat_dd": 39.299722,
+      "lon_dd": 31.493889,
+      "lat_text": "391759N",
+      "lon_text": "0312938E",
+      "usage_work_hr": "H24",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "VFR",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Sivrihisar Havacılık Merkezi - SUSHM Necati Artan Tesisleri",
+      "sys_rmk": "Elev 850 M (2790 FT). Mag var 5.2E (2012), 0.09 increasing. RWY 05/23: 1810×32 M Asphalt, slope 0.5%. Apron: Concrete. TWY: Asphalt 10M width. Traffic: VFR. PCN 43/F/C/X/T, LCN 57. Fuel: Avgas, Jet-A1, Mogas by tanker H24. Fire: 1 vehicle with dry chemical powder. AIS Briefing Office H24. GND: Sivrihisar Artan Tower 131.625 (on demand). APP: Sivrihisar Tower/Eskişehir APP 122.100. Yesilköy Mah., 26600 Sivrihisar/Eskişehir. Location: 20 KM South of Sivrihisar Town."
+    },
+
+    // ============================================================
+    // Bursa Yunuseli (Bursa) — LT1601
+    // Kaynak: SHGM Hava Kampüsleri Listesi
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT1601",
+      "name": "BURSA YUNUSELİ HAVA KAMPÜSÜ",
+      "city": "BURSA",
+      "country": "TURKIYE",
+      "code_id": "LT1601",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 40.233199,
+      "lon_dd": 29.005495,
+      "lat_text": "401400N",
+      "lon_text": "0290020E",
+      "usage_work_hr": "",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Askeri Fabrika ve Tersane İşletme A.Ş",
+      "sys_rmk": "Elev 99 M (325 FT). Pist 1400×30 M, asfalt. Fuat Kuşcuoğlu Cad. Nu:57, Osmangazi/Bursa."
+    },
+
+    // ============================================================
+    // KTO Karatay Üniversitesi (Konya) — LT4201
+    // Kaynak: SHGM Hava Kampüsleri Listesi
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT4201",
+      "name": "KTO KARATAY ÜNİVERSİTESİ",
+      "city": "KONYA",
+      "country": "TURKIYE",
+      "code_id": "LT4201",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 38.083333,
+      "lon_dd": 32.766667,
+      "lat_text": "380500N",
+      "lon_text": "0324600E",
+      "usage_work_hr": "",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "KTO Karatay Üniversitesi",
+      "sys_rmk": "Elev 1005 M (3297 FT). Asfalt pist 1500×30 M ve çim pist 1000×40 M. 1500×15 M taksi yolu. Eğribayat Mahallesi, Selçuklu/Konya."
+    },
+
+    // ============================================================
+    // Pamukova (Sakarya) — LT5401
+    // Kaynak: SHGM Hava Kampüsleri Listesi
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT5401",
+      "name": "PAMUKOVA HAVA KAMPÜSÜ",
+      "city": "SAKARYA",
+      "country": "TURKIYE",
+      "code_id": "LT5401",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 40.487148,
+      "lon_dd": 30.169429,
+      "lat_text": "402916N",
+      "lon_text": "0301010E",
+      "usage_work_hr": "",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "İstanbul Havacılık Kulübü Derneği",
+      "sys_rmk": "Elev 110 M (361 FT). Pist 1065×25 M. FAA, AASHTO ve BZS'ye göre E-8, A-7-5 ve CH. Cihadiye Köyü Kuruluk Mevkii, Pamukova/Sakarya."
+    },
+
+    // ============================================================
+    // Bozcaada (Çanakkale) — LT1701
+    // Kaynak: SHGM Hava Kampüsleri Listesi
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT1701",
+      "name": "BOZCAADA HAVA KAMPÜSÜ",
+      "city": "ÇANAKKALE",
+      "country": "TURKIYE",
+      "code_id": "LT1701",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 39.837917,
+      "lon_dd": 25.994305,
+      "lat_text": "395017N",
+      "lon_text": "0255940E",
+      "usage_work_hr": "HO",
+      "usage_limit": "PERMIT",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Gökdeniz Havacılık ve Yatçılık Turizm LTD. ŞTİ.",
+      "sys_rmk": "Elev 17 M (56 FT). Pist 670×25 M, sıkıştırılmış ve düzlenmiş çim. LT-R42 BOZCAADA tanıtmalı Tahditli Sahasında. Uçuş gerçekleştirilmesi öncesi SHGM Hava Seyrüsefer Daire Başkanlığından izin alınması gerekmektedir. Cumhuriyet Mahallesi Ova Mevkii, Bozcaada/Çanakkale."
+    },
+
+    // ============================================================
+    // Divriği (Sivas) — LT5801
+    // Kaynak: SHGM Hava Kampüsleri Listesi
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT5801",
+      "name": "DİVRİĞİ HAVA KAMPÜSÜ",
+      "city": "SİVAS",
+      "country": "TURKIYE",
+      "code_id": "LT5801",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 39.332097,
+      "lon_dd": 38.092319,
+      "lat_text": "391956N",
+      "lon_text": "0380532E",
+      "usage_work_hr": "",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Divriği Sivil Havacılık ve Turizm Geliştirme LTD.ŞTİ.",
+      "sys_rmk": "Elev 1073 M (3520 FT). Pist 1100×20 M, beton. Turabali Mahallesi Atatürk Caddesi No:573, Divriği/Sivas."
+    },
+
+    // ============================================================
     // BOLU — LT1401 — Tailored Aerodrome
-    // Kaynak: Ibosoft AIP BOLU, 2025
+    // Kaynak: Ibosoft AIP BOLU
     // ============================================================
     {
       "enabled": true,
@@ -263,14 +537,176 @@
       "usage_status": "CLOSED",
       "usage_org_name": "Ibosoft",
       "sys_rmk": "Elev 2441 FT (744 M). Geoid undulation -124 FT. Mag var 6.23°E (2025). Surface: Concrete. Traffic: NTL, IFR-VFR, Non-scheduled-General Aviation-Military. Operationally closed but infrastructure available. Fuel: Diesel, gasoline, LPG from nearby gas stations. De-icing: Not available. Hangar: Not available. Repair facilities: Not available. AFS: NIL. Website: ais.ibosoft.net.tr. Refer to AD administrator for further information."
+    },
+
+    // ============================================================
+    // Karain (Antalya) — LT0701
+    // Kaynak: SHGM Hava Kampüsleri Listesi
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LT0701",
+      "name": "KARAİN HAVACILIK EĞİTİM MERKEZİ",
+      "city": "ANTALYA",
+      "country": "TURKIYE",
+      "code_id": "LT0701",
+      "code_icao": "",
+      "code_iata": "",
+      "code_type": "LS",
+      "lat_dd": 37.097222,
+      "lon_dd": 30.648264,
+      "lat_text": "370550N",
+      "lon_text": "0303854E",
+      "usage_work_hr": "",
+      "usage_time_ref": "UTC",
+      "usage_type": "GAT",
+      "usage_rule": "",
+      "usage_mil": "CIVIL",
+      "usage_origin": "NTL",
+      "usage_purpose": "",
+      "usage_status": "ACTIVE",
+      "usage_org_name": "Türk Hava Kurumu Genel Başkanlığı - THK Karain Havacılık Eğitim Merkezi",
+      "sys_rmk": "Elev 308 M (1011 FT). Antalya-Burdur Karayolu 32. km., Döşemealtı/Antalya."
     }
   ],
 
   // ============================================================
-  // LT1401 — BOLU — Tailored Runways
-  // Kaynak: Ibosoft AIP BOLU AD 2.12, 2.13, 2.14
+  // Hava Kampüsleri — Tailored Runways
+  // Kaynak: SHGM Hava Kampüsleri Listesi
   // ============================================================
   "runways": [
+    {
+      "enabled": true,
+      "ahp_code_id": "LTFI",
+      "direction_designator": "01",
+      "rwy_designator": "RWY-01/19",
+      "true_bearing": "8.91",
+      "info_length": "960",
+      "info_width": "30",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_note": "Unknown",
+      "info_strip_length": "1080",
+      "info_strip_width": "80",
+      "info_strip_dim_unit": "M",
+      "info_auw_weight": "5700",
+      "info_auw_weight_unit": "KG",
+      "info_rmk": "TORA 960 M, TODA 960 M, ASDA 960 M, LDA 960 M. THR elevation 5 FT (1.5 M). GUND 93 FT. THR coordinates 413057.49N 0360715.06E. RESA 80×60 M. Max weight 5700 kg."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LTFI",
+      "direction_designator": "19",
+      "rwy_designator": "RWY-01/19",
+      "true_bearing": "188.92",
+      "info_length": "960",
+      "info_width": "30",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_note": "Unknown",
+      "info_strip_length": "1080",
+      "info_strip_width": "80",
+      "info_strip_dim_unit": "M",
+      "info_auw_weight": "5700",
+      "info_auw_weight_unit": "KG",
+      "info_rmk": "TORA 960 M, TODA 960 M, ASDA 960 M, LDA 960 M. THR elevation 5 FT (1.5 M). GUND 91 FT. THR coordinates 413026.87N 0360708.67E. RESA 90×60 M. Max weight 5700 kg."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT5901",
+      "direction_designator": "RWY",
+      "rwy_designator": "RWY-",
+      "info_length": "350",
+      "info_width": "20",
+      "info_dim_unit": "M",
+      "info_surface_composition": "GRASS",
+      "info_pcn_note": "Unknown",
+      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. THR coordinates: Pist Başı 410405.58N 0272129.61E MSL 146M, Pist Sonu 410402.61N 0272115.10E MSL 137M."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT2601",
+      "direction_designator": "RWY",
+      "rwy_designator": "RWY-",
+      "info_length": "1200",
+      "info_width": "50",
+      "info_dim_unit": "M",
+      "info_surface_composition": "GRASS",
+      "info_pcn_note": "Unknown",
+      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. THR coordinates: Pist Başı 394910.66N 0300725.69E MSL 833M, Pist Sonu 394924.39N 0300644.81E MSL 834M."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT1601",
+      "direction_designator": "RWY",
+      "rwy_designator": "RWY-",
+      "info_length": "1400",
+      "info_width": "30",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_note": "Unknown",
+      "info_rmk": "THR coordinates: Pist Başı 401359.5130N 0285950.2833E MSL 99.851M, Pist Sonu 401359.5205N 0290049.2859E MSL 98.178M."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT4201",
+      "direction_designator": "RWY-1",
+      "rwy_designator": "RWY-1 (ASPH)",
+      "info_length": "1500",
+      "info_width": "30",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_note": "Unknown",
+      "info_rmk": "Asfalt pist. 1500×15 M taksi yolu bulunmaktadır. Pist Orta Noktası: 380500N 0324600E MSL 1005M."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT4201",
+      "direction_designator": "RWY-2",
+      "rwy_designator": "RWY-2 (GRASS)",
+      "info_length": "1000",
+      "info_width": "40",
+      "info_dim_unit": "M",
+      "info_surface_composition": "GRASS",
+      "info_pcn_note": "Unknown",
+      "info_rmk": "Çim pist. Pist Orta Noktası: 380500N 0324600E MSL 1005M."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT5401",
+      "direction_designator": "RWY",
+      "rwy_designator": "RWY-",
+      "info_length": "1065",
+      "info_width": "25",
+      "info_dim_unit": "M",
+      "info_surface_composition": "OTHER",
+      "info_pcn_note": "Unknown",
+      "info_rmk": "FAA, AASHTO ve BZS'ye göre E-8, A-7-5 ve CH olarak tanımlanmıştır. THR coordinates: Pist Başı 402908.13968N 0300948.55748E MSL 110.884M, Pist Sonu 402919.32668N 0301031.33558E MSL 109.886M."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT1701",
+      "direction_designator": "RWY",
+      "rwy_designator": "RWY-",
+      "info_length": "670",
+      "info_width": "25",
+      "info_dim_unit": "M",
+      "info_surface_composition": "GRASS",
+      "info_pcn_note": "Unknown",
+      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. LT-R42 BOZCAADA tanıtmalı Tahditli Sahasında. THR coordinates: Pist Başı 395021N 0255927E MSL 12.192M, Pist Sonu 395012N 0255952E MSL 21.336M."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT5801",
+      "direction_designator": "RWY",
+      "rwy_designator": "RWY-",
+      "info_length": "1100",
+      "info_width": "20",
+      "info_dim_unit": "M",
+      "info_surface_composition": "CONC",
+      "info_pcn_note": "Unknown",
+      "info_rmk": "Beton pist. THR coordinates: Pist Başı 391955.55N 0380532.35E MSL 1073M, Pist Sonu 395012N 0255952E MSL 1072M."
+    },
     {
       "enabled": true,
       "ahp_code_id": "LT1401",
@@ -450,6 +886,80 @@
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "",
       "info_rmk": "TODAH 1090 M, RTODAH 1090 M, LDAH 1090 M. TLOF/FATO elevation 772 FT / 235.30 M. GUND 91 FT. THR/TLOF coordinates 351633N 0331602E. TLOF dimensions 50×50 M Asphalt. Safety area 50×50 M. Aircraft who provide to criteria in Table 3.13 can land and take-off. APCH LGT: NIL. FATO LGT: NIL."
+    },
+
+    // ============================================================
+    // LT0701 — Karain Havacılık Eğitim Merkezi RWY 18/36
+    // ============================================================
+    {
+      "enabled": true,
+      "ahp_code_id": "LT0701",
+      "direction_designator": "18",
+      "rwy_designator": "RWY-18/36",
+      "true_bearing": "180.01",
+      "info_length": "1058",
+      "info_width": "36",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_note": "",
+      "info_auw_weight": "5700",
+      "info_auw_weight_unit": "KG",
+      "info_rmk": "Asfalt k=60 mn/³. GW-GP. CBR 8. Max AUW 5700 kg. THR coordinates (RWY 18) 370550.03N 0303856.75E. THR coordinates (RWY 36) 370559.15N 0303851.89E."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT0701",
+      "direction_designator": "36",
+      "rwy_designator": "RWY-18/36",
+      "true_bearing": "0.01",
+      "info_length": "1058",
+      "info_width": "36",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_note": "",
+      "info_auw_weight": "5700",
+      "info_auw_weight_unit": "KG",
+      "info_rmk": "THK Karain Havacılık Eğitim Merkezi. Asfalt k=60 mn/³. GW-GP. CBR 8. Max AUW 5700 kg. THR coordinates (RWY 18) 370550.03N 0303856.75E. THR coordinates (RWY 36) 370559.15N 0303851.89E."
+    },
+
+    // ============================================================
+    // LT2602 — Sivrihisar Havacılık Merkezi RWY 05/23
+    // ============================================================
+    {
+      "enabled": true,
+      "ahp_code_id": "LT2602",
+      "direction_designator": "05",
+      "rwy_designator": "RWY-05/23",
+      "true_bearing": "051.22",
+      "mag_bearing": "046.02",
+      "info_length": "1810",
+      "info_width": "32",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_note": "43/F/C/X/T",
+      "info_strip_length": "",
+      "info_strip_width": "",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.5%.",
+      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1800 M (10M Disp.THR). THR elev 850 M (2790 FT). THR coordinates 391752.29N 0312926.80E. Windsock beside RWY 05. LCN 57. APCH LGT: NIL. RWY edge LGT: Edge, THR, Centerline marked."
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LT2602",
+      "direction_designator": "23",
+      "rwy_designator": "RWY-05/23",
+      "true_bearing": "231.22",
+      "mag_bearing": "226.02",
+      "info_length": "1810",
+      "info_width": "32",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_note": "43/F/C/X/T",
+      "info_strip_length": "",
+      "info_strip_width": "",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.5%.",
+      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1810 M. THR elev 850 M (2790 FT). THR coordinates 391828.03N 0313024.47E. Windsock beside RWY 23. LCN 57. APCH LGT: NIL. RWY edge LGT: Edge, Centerline, Holding Positions marked."
     }
   ]
 
