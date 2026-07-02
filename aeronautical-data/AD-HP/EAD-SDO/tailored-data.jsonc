@@ -936,12 +936,18 @@
       "info_width": "32",
       "info_dim_unit": "M",
       "info_surface_composition": "ASPH",
+      "info_pcn_class": "43/F/C/X/T",
+      "info_pcn_pavement_type": "FLEXIBLE",
+      "info_pcn_pavement_subgrade": "C",
+      "info_pcn_max_tire_pressure_code": "X",
+      "info_pcn_eval_method": "TECH",
       "info_pcn_note": "43/F/C/X/T",
+      "info_lcn_class": 57,
       "info_strip_length": "",
       "info_strip_width": "",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.5%.",
-      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1800 M (10M Disp.THR). THR elev 850 M (2790 FT). THR coordinates 391752.29N 0312926.80E. Windsock beside RWY 05. LCN 57. APCH LGT: NIL. RWY edge LGT: Edge, THR, Centerline marked."
+      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1800 M (10M Disp.THR). THR elev 850 M (2790 FT). THR coordinates 391752.29N 0312926.80E. Windsock beside RWY 05. APCH LGT: NIL. RWY edge LGT: Edge, THR, Centerline marked."
     },
     {
       "enabled": true,
@@ -954,12 +960,18 @@
       "info_width": "32",
       "info_dim_unit": "M",
       "info_surface_composition": "ASPH",
+      "info_pcn_class": "43/F/C/X/T",
+      "info_pcn_pavement_type": "FLEXIBLE",
+      "info_pcn_pavement_subgrade": "C",
+      "info_pcn_max_tire_pressure_code": "X",
+      "info_pcn_eval_method": "TECH",
       "info_pcn_note": "43/F/C/X/T",
+      "info_lcn_class": 57,
       "info_strip_length": "",
       "info_strip_width": "",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.5%.",
-      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1810 M. THR elev 850 M (2790 FT). THR coordinates 391828.03N 0313024.47E. Windsock beside RWY 23. LCN 57. APCH LGT: NIL. RWY edge LGT: Edge, Centerline, Holding Positions marked."
+      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1810 M. THR elev 850 M (2790 FT). THR coordinates 391828.03N 0313024.47E. Windsock beside RWY 23. APCH LGT: NIL. RWY edge LGT: Edge, Centerline, Holding Positions marked."
     }
   ]
 
