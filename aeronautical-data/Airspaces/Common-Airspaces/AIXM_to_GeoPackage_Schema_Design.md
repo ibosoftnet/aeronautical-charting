@@ -58,8 +58,10 @@ sağlar ve import/export script'lerinde eşlemeyi (mapping) basitleştirir.
 | `lowerLimitReference` | TEXT | `lowerLimitReference` | |
 | `activity` | TEXT | `activation.activity` | tekleştirilmiş |
 | `status` | TEXT | `activation.status` | tekleştirilmiş |
-| `purpose` | TEXT | `annotation.purpose` (`CodeNotePurposeType`) | DESCRIPTION/REMARK/WARNING/DISCLAIMER — AIXM'e birebir |
-| `annotation` | TEXT | `annotation.translatedNote`/`note` (birleşik) | serbest metin |
+| `annotationDescription` | TEXT | `annotation.translatedNote`/`note` (purpose=DESCRIPTION) | serbest metin |
+| `annotationRemark` | TEXT | `annotation.translatedNote`/`note` (purpose=REMARK) | serbest metin |
+| `annotationWarning` | TEXT | `annotation.translatedNote`/`note` (purpose=WARNING) | serbest metin |
+| `annotationDisclaimer` | TEXT | `annotation.translatedNote`/`note` (purpose=DISCLAIMER) | serbest metin |
 | `source` | TEXT | — (AIXM dışı) | jeppesen / tailored / aixm-icao vb. |
 | `dataProvider` | TEXT | — (AIXM dışı) | dhmi vb., opsiyonel |
 
@@ -78,8 +80,7 @@ bulabilmek.
 | `geometryComponent` (çoklu `AirspaceVolume`, `operation`: UNION/SUBTR/INTERS, `operationSequence`) | **Tutulmuyor** — yerine ayrık satırlar | Aggregation mantığı GeoPackage'da modellenmiyor; ayrık/bileşik sahaların parçaları import'ta ayrı airspace kaydına bölünüyor. |
 | `class` (çoklu, yükseklik bantlı `AirspaceLayerClass` + `associatedLevels`) | **Tekleştirildi** → tek `classification` alanı | Çok katmanlı sınıf gereken durumlar da ayrı satırlara bölünecek (aggregation kararıyla aynı mantık). |
 | `activation` (çoklu kayıt: `activity`, `status`, `levels`, `user`, `aircraft`, schedule) | **Tekleştirildi** → tek `activity` + `status` alanı | Zamanlama (schedule), kullanıcı/organizasyon ve uçak detayı bu aşamada gereksiz görüldü; gerekirse ayrı bir Activation/NOTAM modülüyle sonra eklenebilir. |
-| `annotation` (çoklu `Note`: `propertyName`, çok dilli `translatedNote`) | **Tekleştirildi** → tek `annotation` (serbest metin); `propertyName` ve çok dillilik (`translatedNote` çokluğu) tutulmuyor | Sadece **çoklu not kaydı** ve **çok dillilik** flat-table'a sığmayan tekrarlı yapılardı, o yüzden tekleştirildi. |
-| `annotation.purpose` (`CodeNotePurposeType`) | **Tutuluyor** → ayrı `purpose` kolonu (AIXM'e birebir) | `purpose` tek değerli bir enum (`classification`/`activity`/`status` gibi) — flat-table'a sığmaması gibi bir engel yok; önceki sürümde `annotation`/`warning` diye isim-tabanlı örtük ayrıma gidilmişti, bu **gereksiz ve tutarsız bir basitleştirmeydi**, düzeltildi. |
+| `annotation` (çoklu `Note`) + `annotation.purpose` (`CodeNotePurposeType`) | **purpose'a göre 4 serbest metin kolonu**: `annotationDescription`, `annotationRemark`, `annotationWarning`, `annotationDisclaimer` | `purpose` enum'u ayrı bir kolon yerine kolon **adına** gömüldü; böylece aynı saha farklı purpose'lu notları (WARNING + DISCLAIMER + REMARK) aynı anda taşıyabilir. Hâlâ tekleştirilen: aynı purpose'tan birden fazla `Note` (metinler birleştirilir), `propertyName` ve çok dillilik (`translatedNote` çokluğu) tutulmuyor. |
 | `protectedRoute` (Route feature'ına association) | **Tutulmuyor** | Nadir kullanılan, karşılıklı bağımlılık gerektiren bir özellik. |
 | `contributorAirspace` / `dependency` (`AirspaceVolumeDependency`, başka bir Airspace'e geometri bağımlılığı) | **Tutulmuyor** | Aynı gerekçe — nadir, karmaşık ilişkisel bağ. |
 | `centreline`, `width` (koridor şekli — MTR gibi) | **Tutulmuyor** | `horizontalProjection` zaten nihai poligonu içerdiği için koridor iskelet bilgisi (centreline/width) ayrıca gerekmiyor. |

@@ -19,8 +19,10 @@
       "lowerLimitReference": "",
       "activity": "",
       "status": "",
-      "purpose": "",
-      "annotation": "",
+      "annotationDescription": "",
+      "annotationRemark": "",
+      "annotationWarning": "",
+      "annotationDisclaimer": "",
       "add_date": ""
     },
     "geometry": {
@@ -66,8 +68,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "Make circling approach north of aerodrome",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "Make circling approach north of aerodrome",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -388,8 +392,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2023-09-07"
       },
       "geometry": {
@@ -710,8 +716,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2023-11-02"
       },
       "geometry": {
@@ -1032,8 +1040,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2018-08-16"
       },
       "geometry": {
@@ -1454,8 +1464,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2018-08-16"
       },
       "geometry": {
@@ -2304,8 +2316,10 @@
         "lowerLimitReference": "SFC",
         "activity": "RADIOSONDE",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "Radiosonde Observation / Upper Air Balloon Measurements Range of influence usually MAX 150 KG WT 0.8-1.2 KG AVG LEN 30M AVG ROC 1000FT/MIN (Activation: DLY 23:30-02:00 UTC)",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "Radiosonde Observation / Upper Air Balloon Measurements Range of influence usually MAX 150 KG WT 0.8-1.2 KG AVG LEN 30M AVG ROC 1000FT/MIN (Activation: DLY 23:30-02:00 UTC)",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -3778,8 +3792,10 @@
         "lowerLimitReference": "SFC",
         "activity": "PARACHUTE",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "(Activation: Daily SR/SS)",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "(Activation: Daily SR/SS)",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -3828,8 +3844,10 @@
         "lowerLimitReference": "SFC",
         "activity": "PARACHUTE",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "(Activation: Daily SR/SS)",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "(Activation: Daily SR/SS)",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -5302,8 +5320,10 @@
         "lowerLimitReference": "SFC",
         "activity": "PARACHUTE",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "(Activation: Daily SR/SS)",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "(Activation: Daily SR/SS)",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -6776,8 +6796,10 @@
         "lowerLimitReference": "SFC",
         "activity": "PARACHUTE",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "(Activation: Daily SR/SS)",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "(Activation: Daily SR/SS)",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8250,8 +8272,10 @@
         "lowerLimitReference": "MSL",
         "activity": "TRAINING",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "Flight Route to/from LCTTA1:\nT101: 350954N-0332840E\nT102: 351107N-0332901E\nT103: 351111N-0333233E\nT104: 351118N-0333944E\nT105: 350840N-0334422E\nT106: 350845N-0334851E\nT107: 352022N-0335400E\nT108: 352721N-0340704E\n(See ENR 6.1)\n- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "Flight Route to/from LCTTA1:\nT101: 350954N-0332840E\nT102: 351107N-0332901E\nT103: 351111N-0333233E\nT104: 351118N-0333944E\nT105: 350840N-0334422E\nT106: 350845N-0334851E\nT107: 352022N-0335400E\nT108: 352721N-0340704E\n(See ENR 6.1)\n- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8308,8 +8332,10 @@
         "lowerLimitReference": "MSL",
         "activity": "TRAINING",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8358,8 +8384,10 @@
         "lowerLimitReference": "MSL",
         "activity": "TRAINING",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8408,8 +8436,10 @@
         "lowerLimitReference": "MSL",
         "activity": "TRAINING",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8458,8 +8488,10 @@
         "lowerLimitReference": "MSL",
         "activity": "TRAINING",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8508,8 +8540,10 @@
         "lowerLimitReference": "MSL",
         "activity": "TRAINING",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8558,8 +8592,10 @@
         "lowerLimitReference": "MSL",
         "activity": "TRAINING",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8608,8 +8644,10 @@
         "lowerLimitReference": "MSL",
         "activity": "TRAINING",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
         "add_date": "2025-05-15"
       },
       "geometry": {
@@ -8658,8 +8696,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "ATS airspace available H24, ATS unit O/R.",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "ATS airspace available H24, ATS unit O/R.",
         "add_date": "2026-05-14"
       },
       "geometry": {
@@ -8708,8 +8748,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-03-19"
       },
       "geometry": {
@@ -9030,8 +9072,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-03-19"
       },
       "geometry": {
@@ -9352,8 +9396,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-03-19"
       },
       "geometry": {
@@ -9422,8 +9468,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-03-19"
       },
       "geometry": {
@@ -9524,8 +9572,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-03-19"
       },
       "geometry": {
@@ -11436,8 +11486,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-03-19"
       },
       "geometry": {
@@ -15360,8 +15412,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-03-19"
       },
       "geometry": {
@@ -19820,8 +19874,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "Used as Final Approach Directory Sector when landing direction is 18 / Used as DEPARTURE Sector when landing direction is 36",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "Used as Final Approach Directory Sector when landing direction is 18 / Used as DEPARTURE Sector when landing direction is 36",
         "add_date": "2026-03-19"
       },
       "geometry": {
@@ -21302,8 +21358,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "Used as Final Approach Directory Sector when landing direction is 36 and combined with SOUTHEAST LOWER Sector / Used as DEPARTURE Sector when landing direction is 18 and combined with SOUTHEAST LOWER Sector",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "Used as Final Approach Directory Sector when landing direction is 36 and combined with SOUTHEAST LOWER Sector / Used as DEPARTURE Sector when landing direction is 18 and combined with SOUTHEAST LOWER Sector",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -22124,8 +22182,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "REMARK",
-        "annotation": "Used as Final Approach Directory Sector when landing direction is 36 and combined with SOUTHWEST LOWER Sector / Used as DEPARTURE Sector when landing direction is 18 and combined with SOUTHWEST LOWER Sector",
+        "annotationDescription": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
+        "annotationRemark": "Used as Final Approach Directory Sector when landing direction is 36 and combined with SOUTHWEST LOWER Sector / Used as DEPARTURE Sector when landing direction is 18 and combined with SOUTHWEST LOWER Sector",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -22826,8 +22886,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -22952,8 +23014,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -23030,8 +23094,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -23136,8 +23202,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -23266,8 +23334,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -23444,8 +23514,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -23506,8 +23578,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -23568,8 +23642,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -24074,8 +24150,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -26264,8 +26342,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -32460,8 +32540,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -33374,8 +33456,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -36758,8 +36842,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -40814,8 +40900,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -41038,8 +41126,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -53502,8 +53592,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -56386,8 +56478,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -59450,8 +59544,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -67890,8 +67986,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -69050,8 +69148,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -70390,8 +70490,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -73986,8 +74088,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -75568,8 +75672,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -75966,8 +76072,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -78144,8 +78252,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -79870,8 +79980,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -83108,8 +83220,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -87180,8 +87294,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -89072,8 +89188,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -89178,8 +89296,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-08-07"
       },
       "geometry": {
@@ -101642,8 +101762,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -104760,8 +104882,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -108836,8 +108960,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -117276,8 +117402,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -124762,8 +124890,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -130894,8 +131024,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -131016,8 +131148,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -136852,8 +136986,10 @@
         "lowerLimitReference": "MSL",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -141806,8 +141942,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2025-06-12"
       },
       "geometry": {
@@ -141940,8 +142078,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -145778,8 +145918,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -145872,8 +146014,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -145954,8 +146098,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -147204,8 +147350,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -151606,8 +151754,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -151676,8 +151826,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -151862,8 +152014,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -152008,8 +152162,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -152114,8 +152270,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -152204,8 +152362,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -152278,8 +152438,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -154208,8 +154370,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -154294,8 +154458,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -154368,8 +154534,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -154454,8 +154622,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -154544,8 +154714,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -155350,8 +155522,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -155508,8 +155682,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -155570,8 +155746,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -155652,8 +155830,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -159490,8 +159670,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -163328,8 +163510,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -163422,8 +163606,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -163516,8 +163702,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -163598,8 +163786,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -163680,8 +163870,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -164930,8 +165122,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -169332,8 +169526,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -169402,8 +169598,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -169588,8 +169786,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -169734,8 +169934,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -169840,8 +170042,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -169930,8 +170134,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -170004,8 +170210,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -171934,8 +172142,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -172020,8 +172230,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -172106,8 +172318,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -172180,8 +172394,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -172254,8 +172470,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -172340,8 +172558,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -172430,8 +172650,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -173236,8 +173458,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -173394,8 +173618,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -173456,8 +173682,10 @@
         "lowerLimitReference": "SFC",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
@@ -173538,8 +173766,10 @@
         "lowerLimitReference": "STD",
         "activity": "",
         "status": "",
-        "purpose": "",
-        "annotation": "",
+        "annotationDescription": "",
+        "annotationRemark": "",
+        "annotationWarning": "",
+        "annotationDisclaimer": "",
         "add_date": "2026-05-13"
       },
       "geometry": {
