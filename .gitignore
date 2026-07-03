@@ -1,3 +1,8 @@
 aeronautical-data/Jeppesen Data/jeppesen.sqlite
 
 terrain-hydrography-data/contours.gpkg
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo

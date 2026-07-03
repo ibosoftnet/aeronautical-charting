@@ -1,0 +1,18 @@
+{
+  "output": "common_airspaces.gpkg",
+  "sources_enabled": ["lt", "lh", "jeppesen", "tailored"],
+  "lt": {
+    "dir": "data-sources/LT"
+  },
+  "lh": {
+    "file": "data-sources/LH/data.txt"
+  },
+  "jeppesen": {
+    "sqlite": "D:/ibosoft/aeronautical-charting/aeronautical-data/Jeppesen Data/jeppesen.sqlite",
+    "fir_exclude": "data-sources/jeppesen/fir-exclude.json",
+    "fir_exclude_enabled": true
+  },
+  "tailored": {
+    "file": "data-sources/tailored/tailored.json"
+  }
+}
