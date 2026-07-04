@@ -54,7 +54,7 @@
       "type": "Feature",
       "properties": {
         "type": "CTR",
-        "designator": "",
+        "designator": "LCEN",
         "name": "ECN CTR",
         "localType": "",
         "designatorICAO": "",
@@ -378,7 +378,7 @@
       "type": "Feature",
       "properties": {
         "type": "CTR",
-        "designator": "",
+        "designator": "LCGK",
         "name": "GECITKALE CTR",
         "localType": "",
         "designatorICAO": "",
@@ -702,7 +702,7 @@
       "type": "Feature",
       "properties": {
         "type": "CTR",
-        "designator": "",
+        "designator": "LCIK",
         "name": "",
         "localType": "",
         "designatorICAO": "",
