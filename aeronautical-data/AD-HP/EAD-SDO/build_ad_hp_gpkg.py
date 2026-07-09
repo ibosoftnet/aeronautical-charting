@@ -565,7 +565,7 @@ def apply_tailored_data(
 
 RUNWAY_REAL_FIELDS = (
     "true_bearing", "mag_bearing", "info_length", "info_width",
-    "info_pcn_class", "info_lcn_class", "info_length_offset",
+    "info_lcn_class", "info_length_offset",
     "info_strip_length", "info_strip_width",
     "info_auw_weight", "info_siwl_weight", "info_siwl_tire_pressure",
 )
@@ -827,7 +827,7 @@ def iter_runway_rows(rwy_info_index: dict[tuple[str, str], dict[str, str | None]
                 "info_marking_rmk": info.get("info_marking_rmk"),
                 "info_profile_rmk": info.get("info_profile_rmk"),
                 "info_rmk": info.get("info_rmk"),
-                "info_pcn_class": to_float(info.get("info_pcn_class")),
+                "info_pcn_class": info.get("info_pcn_class"),
                 "info_pcn_pavement_type": info.get("info_pcn_pavement_type"),
                 "info_pcn_pavement_subgrade": info.get("info_pcn_pavement_subgrade"),
                 "info_pcn_max_tire_pressure_code": info.get("info_pcn_max_tire_pressure_code"),
@@ -1084,7 +1084,7 @@ def write_runways_table(con: sqlite3.Connection, rows: list[dict[str, str | floa
             info_marking_rmk TEXT,
             info_profile_rmk TEXT,
             info_rmk TEXT,
-            info_pcn_class REAL,
+            info_pcn_class TEXT,
             info_pcn_pavement_type TEXT,
             info_pcn_pavement_subgrade TEXT,
             info_pcn_max_tire_pressure_code TEXT,
