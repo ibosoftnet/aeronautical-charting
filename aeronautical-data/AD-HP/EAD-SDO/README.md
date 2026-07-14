@@ -33,6 +33,11 @@ Bu araç, EAD-SDO (European AIS Data Service - Standardized Data Only) kaynaklar
 | `lat_text`, `lon_text` | Ham koordinat metni (DMS/DDM/DD) |
 | `lat_dd`, `lon_dd` | Ondalık derece (WGS84) |
 | `dt_wef`, `arp_work_hr`, `sys_rmk`, `created_by` | ARP kaydının tarih/çalışma saati/not/oluşturan kurum bilgisi |
+| `field_elevation`, `field_elevation_uom` | Havalimanı elevation'ı (REAL) ve birimi (`FT`/`M`). AIXM 5.1 `fieldElevation`. Kaynak XML'de yok → yalnızca **tailored** girilir |
+| `field_elevation_accuracy`, `field_elevation_accuracy_uom` | Elevation doğruluğu (REAL) ve birimi (`FT`/`M`). AIXM 5.1 `fieldElevationAccuracy` |
+| `vertical_datum` | Düşey datum (ör. `EGM96`). AIXM 5.1 `verticalDatum` |
+| `transition_altitude`, `transition_altitude_uom`, `transition_altitude_nil_reason` | Transition altitude (REAL), birimi (`FT`/`M`) ve değer yoksa nil sebebi. AIXM 5.1 `transitionAltitude` |
+| `transition_level`, `transition_level_uom`, `transition_level_nil_reason` | Transition level (REAL, FL 0–999), birimi (`FL`/`SM`) ve nil sebebi. AIXM 5.1 `transitionLevel`. Dinamik/ATC-türevli olduğundan genelde boş → `nil_reason` ile işaretlenir |
 | `usage_*` (27 sütun) | `ad-hp-usage.xml`'den join edilen kullanım kısıtlaması alanları (limitasyon, çalışma saati, geçerlilik, uçak tipi/motor, vb.) |
 | `usage_joined` | 0/1 — usage eşleşmesi bulundu mu |
 | `match_id` | INTEGER — **Çapraz tablo eşleştirme anahtarı**, rastgele üretilir (bkz. aşağıda) |
@@ -111,7 +116,8 @@ Tek dosya: **`tailored-data.jsonc`** — hem `ad_hp_airports` hem `ad_hp_runways
 
 - `"airports": [...]` — `join_key`/`code_icao`/`code_id` ile eşleşir, `ad_hp_airports` çıktı alan adlarını kullanır.
 - `"runways": [...]` — `ahp_code_id` + `direction_designator` ile eşleşir, `ad_hp_runways` çıktı alan adlarını kullanır. **Grain gerçek RWY-DIR verisiyle aynıdır: 1 kayıt = 1 pist YÖNÜ.** Pist çiftleri her zaman 2 yönlü olmak zorunda değildir (tek taraf kullanımlı/yayınlı pistler de var) — bu yüzden script otomatik "çifte bölme" yapmaz; iki yönü olan bir pist için iki ayrı giriş yazmanız gerekir (ortak alanları — uzunluk, yüzey, PCN vb. — her ikisine de tekrarlayın).
-- Her iki listede de: aynı anahtar mevcutsa kayıt **TAM override** sayılır (kaynak veriden alan mirası yapılmaz, vermediğiniz alanlar boş kalır); anahtar yoksa **yeni kayıt** eklenir; `enabled: false` ile geçici devre dışı bırakılabilir.
+- Her iki listede de: aynı anahtar mevcutsa kayıt varsayılan olarak **TAM override** sayılır (kaynak veriden alan mirası yapılmaz, vermediğiniz alanlar boş kalır); anahtar yoksa **yeni kayıt** eklenir; `enabled: false` ile geçici devre dışı bırakılabilir.
+- **`"override": true` (partial patch)**: bir kayda bu anahtar eklenirse tam override yerine **kısmi güncelleme** yapılır — mevcut kaydın (EAD-SDO veya gerçek veri) tüm alanları korunur, yalnızca bu kayıtta yazdığınız alanlar üzerine yazılır. Bir EAD-SDO meydanına yalnızca `field_elevation`/`transition_altitude` gibi birkaç alan eklemek için idealdir (`name`, `country`, `usage_*` silinmez). ID mevcut değilse uyarı basılır ve normal yeni kayıt olarak işlenir. Hem `airports` hem `runways` için geçerlidir.
 - `match_id` bu dosyada **hiçbir zaman yazılmaz** — script otomatik atar. Aynı `ahp_code_id`/`code_id` değerine sahip airport ve runway tailored kayıtları, gerçek veriden gelen kayıtlarla aynı şekilde otomatik olarak aynı `match_id`'yi paylaşır.
 - Detaylı alan listesi ve örnekler için dosya içi yorumlara bakın.
 

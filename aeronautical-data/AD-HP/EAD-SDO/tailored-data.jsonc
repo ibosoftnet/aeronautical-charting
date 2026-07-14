@@ -15,6 +15,17 @@
   // `name`, `city`, `country`, `code_iata`, `code_type`,
   // `lat_dd`, `lon_dd`, `lat_text`, `lon_text`, `sys_rmk`
   //
+  // Elevation / transition alanları (AIXM 5.1 AirportHeliport; şu an kaynak
+  // XML'de yok, yalnızca tailored olarak girilir):
+  // - `field_elevation` (REAL) + `field_elevation_uom` (`FT`/`M`)
+  // - `field_elevation_accuracy` (REAL) + `field_elevation_accuracy_uom` (`FT`/`M`)
+  // - `vertical_datum` (ör. `EGM96`)
+  // - `transition_altitude` (REAL) + `transition_altitude_uom` (`FT`/`M`)
+  //   + `transition_altitude_nil_reason` (değer yoksa, ör. `unknown`)
+  // - `transition_level` (REAL, FL 0–999) + `transition_level_uom` (`FL`/`SM`)
+  //   + `transition_level_nil_reason` (transition level dinamik/ATC-türevli
+  //     olduğundan çoğu meydanda boş kalır → nil_reason ile işaretlenir)
+  //
   // Kullanılabilen AD-HP usage alanları:
   // `usage_mid`, `usage_dt_wef`, `usage_dt_com`,
   // `usage_limit`, `usage_work_hr`, `usage_work_hr_rmk`,
@@ -31,6 +42,18 @@
   // - Mevcut bir meydanı override ederken koordinatı korumak istemiyorsanız yeni koordinatları açıkça yazın.
   //
   // İsteğe bağlı: `enabled: false` ile bir kaydı geçici olarak devre dışı bırakabilirsiniz.
+  //
+  // OVERRIDE MODU (`"override": true`):
+  // - Bir kayda `"override": true` eklerseniz TAM override değil, PARTIAL PATCH olur:
+  //   ID (join_key/code_icao/code_id) ile mevcut kayıt bulunur, TÜM alanları korunur,
+  //   yalnızca bu kayıtta yazdığınız alanlar üzerine yazılır. Örn. bir EAD-SDO meydanına
+  //   sadece `field_elevation` + `transition_altitude` eklemek için idealdir; `name`,
+  //   `country`, `usage_*` vb. mevcut değerler silinmez.
+  // - `"override": true` ama ID mevcut değilse: uyarı basılır ve kayıt normal YENİ kayıt
+  //   olarak işlenir (yeni kayıt için `lat_dd`/`lon_dd` yine zorunludur).
+  // - `"override"` yoksa/`false` ise: eski davranış (tam replace; yalnızca koordinat korunur).
+  // - Aynı `"override": true` mantığı aşağıdaki `runways` kayıtları için de geçerlidir
+  //   (ID: `ahp_code_id` + `direction_designator`).
   "airports": [
     // ÖRNEK 1 — mevcut bir ICAO kaydını bastırma / override etme
     // {
@@ -165,6 +188,13 @@
       "lon_dd": 33.267222,
       "lat_text": "351633N",
       "lon_text": "0331602E",
+      "field_elevation": 772,
+      "field_elevation_uom": "FT",
+      "vertical_datum": "EGM96",
+      "transition_altitude": 6000,
+      "transition_altitude_uom": "FT",
+      "transition_level": null,
+      "transition_level_nil_reason": "By ATC",
       "usage_work_hr": "HO",
       "usage_limit": "PERMIT",
       "usage_time_ref": "UTC",
@@ -195,6 +225,13 @@
       "lon_dd": 33.720278,
       "lat_text": "351414N",
       "lon_text": "0334313E",
+      "field_elevation": 143,
+      "field_elevation_uom": "FT",
+      "vertical_datum": "EGM96",
+      "transition_altitude": 6000,
+      "transition_altitude_uom": "FT",
+      "transition_level": null,
+      "transition_level_nil_reason": "By ATC",
       "usage_work_hr": "NOTAM",
       "usage_time_ref": "UTC",
       "usage_type": "GAT | OAT",
@@ -224,6 +261,13 @@
       "lon_dd": 33.512778,
       "lat_text": "350858N",
       "lon_text": "0333046E",
+      "field_elevation": 402,
+      "field_elevation_uom": "FT",
+      "vertical_datum": "EGM96",
+      "transition_altitude": 6000,
+      "transition_altitude_uom": "FT",
+      "transition_level": null,
+      "transition_level_nil_reason": "By ATC",
       "usage_work_hr": "H24",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -237,7 +281,7 @@
     },
 
     // ============================================================
-    // Samsun/Ondokuz Mayıs (Samsun) — LT5501 / LTFI
+    // Samsun/Ondokuz Mayıs (Samsun) — LTFI
     // Kaynak: AIP TURKEY LTFI AD 2, 02 FEB 17
     // ============================================================
     {
@@ -254,6 +298,13 @@
       "lon_dd": 36.118333,
       "lat_text": "413050N",
       "lon_text": "0360706E",
+      "field_elevation": 5,
+      "field_elevation_uom": "FT",
+      "vertical_datum": "EGM96",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "HO",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -284,6 +335,12 @@
       "lon_dd": 27.356210,
       "lat_text": "410404N",
       "lon_text": "0272122E",
+      "field_elevation": 479,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -314,6 +371,12 @@
       "lon_dd": 30.118125,
       "lat_text": "394918N",
       "lon_text": "0300705E",
+      "field_elevation": 2736,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -344,6 +407,12 @@
       "lon_dd": 31.493889,
       "lat_text": "391759N",
       "lon_text": "0312938E",
+      "field_elevation": 2789,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "H24",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -374,6 +443,12 @@
       "lon_dd": 29.005495,
       "lat_text": "401400N",
       "lon_text": "0290020E",
+      "field_elevation": 328,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -404,6 +479,12 @@
       "lon_dd": 32.766667,
       "lat_text": "380500N",
       "lon_text": "0324600E",
+      "field_elevation": 3297,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -434,6 +515,12 @@
       "lon_dd": 30.169429,
       "lat_text": "402916N",
       "lon_text": "0301010E",
+      "field_elevation": 364,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -464,6 +551,12 @@
       "lon_dd": 25.994305,
       "lat_text": "395017N",
       "lon_text": "0255940E",
+      "field_elevation": 70,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "HO",
       "usage_limit": "PERMIT",
       "usage_time_ref": "UTC",
@@ -495,6 +588,12 @@
       "lon_dd": 38.092319,
       "lat_text": "391956N",
       "lon_text": "0380532E",
+      "field_elevation": 3520,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -525,6 +624,13 @@
       "lon_dd": 31.65167,
       "lat_text": "404455N",
       "lon_text": "0313906E",
+      "field_elevation": 2441,
+      "field_elevation_uom": "FT",
+      "vertical_datum": "EGM96",
+      "transition_altitude": 12000,
+      "transition_altitude_uom": "FT",
+      "transition_level": null,
+      "transition_level_nil_reason": "By ATC",
       "originator": "Ibosoft",
       "usage_work_hr": "HO",
       "usage_work_hr_rmk": "Operating hours to be determined by operator. Refer to AD administrator.",
@@ -557,6 +663,12 @@
       "lon_dd": 30.648264,
       "lat_text": "370550N",
       "lon_text": "0303854E",
+      "field_elevation": 1010,
+      "field_elevation_uom": "FT",
+      "transition_altitude": null,
+      "transition_altitude_nil_reason": "NIL",
+      "transition_level": null,
+      "transition_level_nil_reason": "NIL",
       "usage_work_hr": "",
       "usage_time_ref": "UTC",
       "usage_type": "GAT",
@@ -567,7 +679,101 @@
       "usage_status": "ACTIVE",
       "usage_org_name": "Türk Hava Kurumu Genel Başkanlığı - THK Karain Havacılık Eğitim Merkezi",
       "sys_rmk": "Elev 308 M (1011 FT). Antalya-Burdur Karayolu 32. km., Döşemealtı/Antalya."
-    }
+    },
+
+    // ============================================================
+    // LT** meydanları — elevation / transition altitude / transition level
+    // OVERRIDE modu: mevcut EAD-SDO kaydına YALNIZCA bu alanlar yazılır
+    // (name/country/usage_* korunur). vertical_datum=EGM96, birim FT.
+    // Kaynak: Jeppesen (altitude + transition_altitude); LTHA–LTHG elev'leri manuel.
+    // Transition level tüm meydanlarda dinamik/ATC → boş + nil_reason.
+    // ============================================================
+    {"override": true, "join_key": "LTAB", "field_elevation": 2691, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAC", "field_elevation": 3158, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAD", "field_elevation": 2653, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAE", "field_elevation": 2767, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAF", "field_elevation": 63, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAG", "field_elevation": 232, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAH", "field_elevation": 3310, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAI", "field_elevation": 177, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAJ", "field_elevation": 2305, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAL", "field_elevation": 3524, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAN", "field_elevation": 3392, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAO", "field_elevation": 3022, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAP", "field_elevation": 1798, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAR", "field_elevation": 5237, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAS", "field_elevation": 44, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAT", "field_elevation": 2837, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAU", "field_elevation": 3463, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAV", "field_elevation": 3185, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAW", "field_elevation": 1859, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAY", "field_elevation": 2797, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTAZ", "field_elevation": 3090, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBA", "field_elevation": 94, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBD", "field_elevation": 104, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBF", "field_elevation": 340, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBG", "field_elevation": 170, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBH", "field_elevation": 30, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBI", "field_elevation": 2581, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBJ", "field_elevation": 410, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBK", "field_elevation": 433, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBL", "field_elevation": 16, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBN", "field_elevation": 3026, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBO", "field_elevation": 2898, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBP", "field_elevation": 43, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBQ", "field_elevation": 188, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBR", "field_elevation": 763, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBS", "field_elevation": 20, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBT", "field_elevation": 265, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBU", "field_elevation": 570, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBV", "field_elevation": 202, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBW", "field_elevation": 61, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBX", "field_elevation": 400, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBY", "field_elevation": 2599, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTBZ", "field_elevation": 3327, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCA", "field_elevation": 2928, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCB", "field_elevation": 11, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCC", "field_elevation": 2260, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCD", "field_elevation": 3791, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCE", "field_elevation": 5765, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCF", "field_elevation": 5889, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCG", "field_elevation": 105, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCI", "field_elevation": 5473, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCJ", "field_elevation": 1831, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCK", "field_elevation": 4157, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCL", "field_elevation": 2000, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCM", "field_elevation": 32, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCN", "field_elevation": 1724, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCO", "field_elevation": 5461, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCP", "field_elevation": 2214, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCR", "field_elevation": 1727, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCS", "field_elevation": 2708, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCT", "field_elevation": 3102, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 19000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCU", "field_elevation": 3492, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCV", "field_elevation": 2041, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTCW", "field_elevation": 6096, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 17000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTDA", "field_elevation": 259, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTDB", "field_elevation": 25, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFA", "field_elevation": 13, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFB", "field_elevation": 10, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFC", "field_elevation": 2835, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFD", "field_elevation": 51, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFE", "field_elevation": 21, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFG", "field_elevation": 126, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFH", "field_elevation": 17, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFJ", "field_elevation": 312, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFK", "field_elevation": 84, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFL", "field_elevation": 143, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
+    {"override": true, "join_key": "LTFM", "field_elevation": 325, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFN", "field_elevation": 2875, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTFO", "field_elevation": 16, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTHA", "field_elevation": 3650, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
+    {"override": true, "join_key": "LTHB", "field_elevation": 2300, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
+    {"override": true, "join_key": "LTHC", "field_elevation": 42.7, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
+    {"override": true, "join_key": "LTHD", "field_elevation": 2194, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
+    {"override": true, "join_key": "LTHE", "field_elevation": 10, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
+    {"override": true, "join_key": "LTHF", "field_elevation": 120, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
+    {"override": true, "join_key": "LTHG", "field_elevation": 110, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"}
   ],
 
   // ============================================================

@@ -64,7 +64,13 @@ AIRPORT_FIELD_NAMES = [
     "source_region", "source_file", "join_key", "mid",
     "code_id", "code_icao", "code_iata", "code_type", "name", "city", "country",
     "datum", "lat_text", "lon_text", "lat_dd", "lon_dd", "dt_wef", "arp_work_hr",
-    "sys_rmk", "created_by", "usage_mid", "usage_dt_wef", "usage_dt_com",
+    "sys_rmk", "created_by",
+    "field_elevation", "field_elevation_uom",
+    "field_elevation_accuracy", "field_elevation_accuracy_uom",
+    "vertical_datum",
+    "transition_altitude", "transition_altitude_uom", "transition_altitude_nil_reason",
+    "transition_level", "transition_level_uom", "transition_level_nil_reason",
+    "usage_mid", "usage_dt_wef", "usage_dt_com",
     "usage_limit", "usage_work_hr", "usage_work_hr_rmk", "usage_time_ref",
     "usage_valid_wef", "usage_valid_til", "usage_day", "usage_day_til",
     "usage_time_wef", "usage_time_til", "usage_event_wef", "usage_event_til",
@@ -492,22 +498,31 @@ def apply_tailored_data(
 
         existing_row = rows_by_key.get(join_key)
         is_override = existing_row is not None
+        override_mode = bool(entry.get("override"))
 
-        # Tailored kayıtlar tam override gibi davranır:
-        # mevcut kayıttan yalnızca geometriyi korumak için koordinatlar ödünç alınır.
-        base: dict[str, str | float | int | None] = {field: None for field in AIRPORT_FIELD_NAMES}
-        base["source_region"] = "tailored"
-        base["source_file"] = tailored_path.name
-        base["join_key"] = join_key
-        base["code_id"] = join_key
-        base["code_icao"] = join_key if len(join_key) == 4 else None
+        base: dict[str, str | float | int | None]
+        if override_mode and existing_row is not None:
+            # Override (partial patch): mevcut kaydın tüm alanları miras alınır
+            # (provenance dahil), yalnızca bu entry'de yazılan alanlar üzerine yazılır.
+            base = dict(existing_row)
+        else:
+            # Varsayılan tam-replace: base tümüyle boş başlar, mevcut kayıttan
+            # yalnızca geometriyi korumak için koordinatlar ödünç alınır.
+            if override_mode and existing_row is None:
+                print(f"Tailored override kaydı (#{idx}): '{join_key}' mevcut değil, yeni kayıt olarak ekleniyor")
+            base = {field: None for field in AIRPORT_FIELD_NAMES}
+            base["source_region"] = "tailored"
+            base["source_file"] = tailored_path.name
+            base["join_key"] = join_key
+            base["code_id"] = join_key
+            base["code_icao"] = join_key if len(join_key) == 4 else None
 
-        if existing_row is not None:
-            for coord_field in ("lat_dd", "lon_dd", "lat_text", "lon_text"):
-                base[coord_field] = existing_row.get(coord_field)
+            if existing_row is not None:
+                for coord_field in ("lat_dd", "lon_dd", "lat_text", "lon_text"):
+                    base[coord_field] = existing_row.get(coord_field)
 
         for key, value in entry.items():
-            if key in {"enabled"} or key.startswith("_"):
+            if key in {"enabled", "override"} or key.startswith("_"):
                 continue
             if key in AIRPORT_FIELD_NAMES or key == "join_key":
                 base[key] = value
@@ -633,18 +648,27 @@ def apply_tailored_runway_data(
 
         key = (code, direction)
         is_override = key in rows_by_key
+        override_mode = bool(entry.get("override"))
+        existing = rows_by_key.get(key)
 
-        # Tailored pist kayıtları da (airport ile aynı mantık) tam override
-        # gibi davranır: vermediğiniz alanlar boş kalır, kaynak XML'den
-        # alan mirası yapılmaz.
-        base: dict[str, str | float | int | None] = {field: None for field in RUNWAY_FIELD_NAMES}
-        base["source_region"] = "tailored"
-        base["source_file"] = tailored_path.name
-        base["ahp_code_id"] = code
-        base["direction_designator"] = direction
+        base: dict[str, str | float | int | None]
+        if override_mode and existing is not None:
+            # Override (partial patch): mevcut pist kaydının tüm alanları miras
+            # alınır, yalnızca bu entry'de yazılan alanlar üzerine yazılır.
+            base = dict(existing)
+        else:
+            # Varsayılan tam-replace: vermediğiniz alanlar boş kalır, kaynak
+            # XML'den alan mirası yapılmaz.
+            if override_mode and existing is None:
+                print(f"Tailored override pist kaydı (#{idx}): '{code} {direction}' mevcut değil, yeni olarak ekleniyor")
+            base = {field: None for field in RUNWAY_FIELD_NAMES}
+            base["source_region"] = "tailored"
+            base["source_file"] = tailored_path.name
+            base["ahp_code_id"] = code
+            base["direction_designator"] = direction
 
         for entry_key, value in entry.items():
-            if entry_key in {"enabled"} or entry_key.startswith("_"):
+            if entry_key in {"enabled", "override"} or entry_key.startswith("_"):
                 continue
             if entry_key in RUNWAY_FIELD_NAMES:
                 base[entry_key] = value
@@ -959,6 +983,17 @@ def write_airports_layer(
             arp_work_hr TEXT,
             sys_rmk TEXT,
             created_by TEXT,
+            field_elevation REAL,
+            field_elevation_uom TEXT,
+            field_elevation_accuracy REAL,
+            field_elevation_accuracy_uom TEXT,
+            vertical_datum TEXT,
+            transition_altitude REAL,
+            transition_altitude_uom TEXT,
+            transition_altitude_nil_reason TEXT,
+            transition_level REAL,
+            transition_level_uom TEXT,
+            transition_level_nil_reason TEXT,
             usage_mid TEXT,
             usage_dt_wef TEXT,
             usage_dt_com TEXT,
