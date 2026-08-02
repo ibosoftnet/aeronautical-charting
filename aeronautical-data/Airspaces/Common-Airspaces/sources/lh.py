@@ -1,7 +1,7 @@
 """
 LH kaynağı — Macaristan TNP formatı (data-sources/LH/data.txt).
 
-source = tailored, dataProvider = soaringweb
+data_provider/data_originator/data_effectivity: data-sources/LH/data.json'dan.
 Kayıtlar INCLUDE=YES ile başlar; alanlar CLASS/TYPE/TITLE/TOPS/BASE/POINT.
 - name           = TITLE
 - classification = CLASS
@@ -16,9 +16,6 @@ from shapely.geometry import Polygon
 from common import schema
 from common.classify import LH_TYPE_MAP, lh_type_from_title, parse_lh_altitude
 from common.geo import parse_dms
-
-SOURCE = "tailored"
-PROVIDER = "soaringweb"
 
 
 def _iter_records(path):
@@ -63,6 +60,7 @@ def _coords(points):
 
 def load(cfg, base):
     path = os.path.join(base, cfg["lh"]["file"])
+    meta = schema.load_source_meta(os.path.dirname(path))
     add_date = schema.file_mtime_str(path)
     for r in _iter_records(path):
         coords = _coords(r.get("points", []))
@@ -91,8 +89,9 @@ def load(cfg, base):
             classification=r.get("CLASS", ""),
             upperLimit=up_v, upperLimitUom=up_u, upperLimitReference=up_r,
             lowerLimit=lo_v, lowerLimitUom=lo_u, lowerLimitReference=lo_r,
-            source=SOURCE,
-            dataProvider=PROVIDER,
+            data_provider=meta["data_provider"],
+            data_originator=meta["data_originator"],
+            data_effectivity=meta["data_effectivity"],
             add_date=add_date,
             geometry=geom,
         )

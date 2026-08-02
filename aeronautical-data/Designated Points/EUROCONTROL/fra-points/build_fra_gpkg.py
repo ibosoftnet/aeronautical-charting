@@ -2,10 +2,15 @@
 EUROCONTROL FRA Points — Excel → GeoPackage
 Koordinatlar DDMMSS formatından ondalık dereceye çevrilir.
 Tüm sütunlara index oluşturur (lat/lon hariç), spatial index korunur.
+
+Provenance: data_provider/data_originator data.json'dan okunur (ikisi de "EUROCONTROL").
+data_effectivity, Excel'in COVER sayfasındaki A4 hücresinden ("Effective Date - " öneki
+atılarak) okunur — her build'de kaynak dosyadaki güncel AIRAC tarihini yansıtır.
 """
 
 import os
 import sys
+import json
 import sqlite3
 from collections import Counter
 
@@ -22,7 +27,29 @@ EXCLUDE_DELETED = True   # True ise Change Record == 'DEL' kayıtlar dahil edilm
 SCRIPT_DIR  = os.path.dirname(os.path.abspath(__file__))
 INPUT_FILE  = os.path.join(SCRIPT_DIR, 'fra-points.xlsx')
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, 'fra-points.gpkg')
+DATA_JSON   = os.path.join(SCRIPT_DIR, 'data.json')
 LAYER_NAME  = 'fra_points'
+EFFECTIVITY_PREFIX = 'Effective Date - '
+
+
+def load_source_meta(path):
+    """data.json'dan data_provider/data_originator oku."""
+    meta = {'data_provider': '', 'data_originator': ''}
+    if os.path.exists(path):
+        with open(path, encoding='utf-8') as f:
+            data = json.load(f)
+        for k in meta:
+            meta[k] = data.get(k, '') or ''
+    return meta
+
+
+def read_effectivity(wb):
+    """COVER sayfası A4 hücresinden ('Effective Date - ' öneki atılarak) tarihi oku."""
+    cover = wb['COVER']
+    raw = clean(cover['A4'].value)
+    if raw.startswith(EFFECTIVITY_PREFIX):
+        raw = raw[len(EFFECTIVITY_PREFIX):]
+    return raw.strip()
 
 
 def parse_ddmmss(val):
@@ -60,9 +87,13 @@ def main():
     print('=' * 60)
     print()
 
+    meta = load_source_meta(DATA_JSON)
+
     print('[1] Excel okunuyor...')
     wb = openpyxl.load_workbook(INPUT_FILE, read_only=True, data_only=True)
     ws = wb.active
+    data_effectivity = read_effectivity(wb)
+    print(f'  data_effectivity: {data_effectivity!r}')
 
     rows_total   = 0
     rows_deleted = 0
@@ -119,6 +150,9 @@ def main():
             'time_availability':  time_avail,
             'loc_indicators':  loc_indicators,
             'remarks':         remarks,
+            'data_provider':   meta['data_provider'],
+            'data_originator': meta['data_originator'],
+            'data_effectivity': data_effectivity,
             'geometry':        Point(lon, lat),
         })
 

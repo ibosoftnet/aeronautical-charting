@@ -33,10 +33,18 @@ Bu araç, EAD-SDO (European AIS Data Service - Standardized Data Only) kaynaklar
 
 ### Metadata Alanları
 - **`datum`**: Coordinate datum (örn. "WGE" = WGS84)
-- **`created_by`**: Creator organization (örn. "AIRWAYS CORPORATION OF NEW ZEALAND LTD")
 - **`dt_wef`**: Date with effect (örn. "27/03/2019")
 - **`mid`**: Unique internal identifier
-- **`source`**: Veri kaynağı ("xml" = EAD-SDO, "tailored" = manuel)
+
+### Provenance Alanları (`data_provider` / `data_originator` / `data_effectivity`)
+
+| Alan | XML (EAD-SDO) kayıtları | Tailored kayıtlar |
+|------|--------------------------|--------------------|
+| `data_provider` | `data.json`'daki `data_provider` (örn. "EUROCONTROL EAD SDO") | Her zaman `"Ibosoft AIS"` (zorlanır) |
+| `data_originator` | Ham kayıttaki `OrgCre/txtName` (örn. "ENAV") | `tailored-designated-points.jsonc`'de kayıt bazında elle girilir (örn. "KKTC SHD", "DHMİ Türkiye") |
+| `data_effectivity` | `data.json`'daki `data_effectivity` (örn. "09 JUL 2026 (AIRAC 2607)") | Kayıt bazında elle girilir, veya dosyanın kökündeki `_effectivity_keys` sözlüğünden bir anahtar (örn. `"eff_trnc"`) verilip otomatik çözümlenir |
+
+Eski `created_by`/`source` sütunları tamamen kaldırıldı, yerine bu üçlü geldi.
 
 ## Suppress/Override Mekanizması
 
@@ -47,15 +55,15 @@ Manuel olarak DP verilerini:
 2. **Ek kayıt** olarak eklemek
 
 Suppress mantığı:
-- **code_id** ve **created_by** IKISI DA girilirse → EAD-SDO'daki matching kaydı siler, yerine tailored giriş eklenir
-- **code_id** veya **created_by** boşsa → Ek kayıt olarak layer'a eklenir, XML verisi dokunulmaz
+- **code_id** ve **data_originator** IKISI DA girilirse → EAD-SDO'daki matching kaydı siler, yerine tailored giriş eklenir
+- **code_id** veya **data_originator** boşsa → Ek kayıt olarak layer'a eklenir, XML verisi dokunulmaz
 
 Örnek:
 ```jsonc
 {
   "suppress": {
     "code_id": "ABMEL",
-    "created_by": "EUROCONTROL"
+    "data_originator": "EUROCONTROL"
   },
   "code_id": "ABMEL",
   "code_type": "ADHP",
@@ -63,10 +71,13 @@ Suppress mantığı:
   "datum": "WGE",
   "lat_dd": 40.1234,
   "lon_dd": 28.5678,
-  "created_by": "EUROCONTROL",
-  "dt_wef": "01/04/2026"
+  "dt_wef": "01/04/2026",
+  "data_originator": "KKTC SHD",
+  "data_effectivity": "eff_trnc"
 }
 ```
+
+Dosyanın kök yapısı `{"_effectivity_keys": {...}, "points": [...]}` şeklindedir; `_effectivity_keys` içinde tanımlı anahtarlar `data_effectivity` alanında kısayol olarak kullanılabilir.
 
 ## Script Kullanımı
 
@@ -97,8 +108,8 @@ python build_designated_points_gpkg.py
 -- Belirli bir code_type'ın tüm DP'leri
 SELECT * FROM designated_points WHERE code_type = 'ADHP'
 
--- Belirli bir organizasyonun DP'leri
-SELECT * FROM designated_points WHERE created_by = 'AIRWAYS CORPORATION OF NEW ZEALAND LTD'
+-- Belirli bir kaynağın DP'leri
+SELECT * FROM designated_points WHERE data_originator = 'AIRWAYS CORPORATION OF NEW ZEALAND LTD'
 
 -- Belirli bir tarihten sonra eklenen DP'ler
 SELECT * FROM designated_points WHERE dt_wef >= '01/01/2020'
@@ -124,6 +135,7 @@ SELECT * FROM designated_points WHERE dt_wef >= '01/01/2020'
 - `dp-ne.xml`: North-East regional DP data (EAD-SDO)
 - `dp-nw.xml`: North-West regional DP data (EAD-SDO)
 - `dp-se.xml`: South-East regional DP data (EAD-SDO)
+- `data.json`: EAD-SDO kaynağı için data_provider/data_effectivity değerleri
 - `tailored-designated-points.jsonc`: Manuel veri override'ları
 
 ## Notlar

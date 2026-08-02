@@ -3,6 +3,16 @@ EAD-SDO Navaid (VOR, DME, TACAN, ILS) veri dosyalarını birleştirir,
 ilgili alt elemanları (DME→VOR, GP→ILS, vb.) eşleştirir ve QGIS uyumlu
 spatial GeoPackage üretir. Tailored (manuel) veri desteği dahil.
 Tüm sütunlarda index oluşturur - query performansı için optimize edilmiş.
+
+Her satırda ortak (prefix'siz) üç provenance sütunu bulunur:
+  - data_provider: veriyi derleyen/sağlayan kurum ("EUROCONTROL EAD SDO" veya
+    "Ibosoft AIS"). XML kökenli satırlar için data.json'dan, tailored satırlar
+    için script tarafından otomatik "Ibosoft AIS" olarak zorlanır.
+  - data_originator: ham kaydın asıl kaynağı (XML'de OrgCre/txtName, tailored'da
+    elle girilir, örn. "KKTC SHD").
+  - data_effectivity: verinin geçerlilik/AIRAC tarihi. Tailored kayıtlarda bu alana
+    tailored-navaids.jsonc'deki "_effectivity_keys" sözlüğünden bir anahtar
+    (örn. "eff_trnc") yazılabilir; build sırasında gerçek tarihle değiştirilir.
 """
 
 from __future__ import annotations
@@ -26,6 +36,8 @@ ILS_LOC_XML = BASE_DIR / "ils-loc.xml"
 ILS_GP_XML = BASE_DIR / "ils-gp.xml"
 TAILORED_JSON = BASE_DIR / "tailored-navaids.jsonc"
 FREQUENCY_PAIRING_CSV = BASE_DIR / "frequency-pairing.csv"
+DATA_JSON = BASE_DIR / "data.json"
+META_KEYS = ("data_provider", "data_effectivity")
 
 # GeoPackage katmanları
 ILS_LOC_TABLE = "ils_loc"
@@ -54,6 +66,18 @@ def looks_like_xml(path: Path) -> tuple[bool, str | None]:
     if not head.startswith("<"):
         return False, head[:80]
     return True, None
+
+
+def load_source_meta(path: Path) -> dict[str, str]:
+    """data.json'dan data_provider/data_effectivity oku (data_originator ham
+    kayıttaki OrgCre/txtName'den ayrı ayrı türetilir, burada değil)."""
+    meta = {k: "" for k in META_KEYS}
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        for k in META_KEYS:
+            meta[k] = data.get(k, "") or ""
+    return meta
 
 
 def normalize_code(value: str | None) -> str | None:
@@ -282,7 +306,6 @@ def load_dme_records(xml_path: Path) -> dict[str, dict[str, Any]]:
             "lon_text": lon_text,
             "lat_dd": lat_dd,
             "lon_dd": lon_dd,
-            "source": "xml",
         }
         elem.clear()
 
@@ -336,7 +359,6 @@ def load_tacan_records(xml_path: Path) -> dict[str, dict[str, Any]]:
             "lon_text": lon_text,
             "lat_dd": lat_dd,
             "lon_dd": lon_dd,
-            "source": "xml",
         }
         elem.clear()
 
@@ -391,7 +413,6 @@ def load_gp_records(xml_path: Path) -> dict[tuple[str, str, str, str], dict[str,
             "emission": (elem.findtext("codeEm") or "").strip() or None,
             "crc": (elem.findtext("valCrc") or "").strip() or None,
             "dt_wef": (elem.findtext("dtWef") or "").strip() or None,
-            "source": "xml",
         }
         elem.clear()
 
@@ -495,7 +516,6 @@ def load_loc_records(
             "lon_text": lon_text,
             "lat_dd": lat_dd,
             "lon_dd": lon_dd,
-            "source": "xml",
         }
         loc_row = prefix_row(loc_base, "loc_")
 
@@ -645,7 +665,6 @@ def load_vor_records(
             "lon_text": lon_text,
             "lat_dd": lat_dd,
             "lon_dd": lon_dd,
-            "source": "xml",
         }
 
         if tacan:
@@ -716,11 +735,17 @@ def load_tailored_data(json_path: Path) -> tuple[dict[str, list[dict[str, Any]]]
             return tailored_by_type, suppress_by_type
 
         payload = json.loads(strip_jsonc_comments(text))
-        if not isinstance(payload, list):
-            print("  Tailored veri kökü dizi olmalıdır")
+        if isinstance(payload, dict):
+            entries = payload.get("navaids", [])
+            eff_keys = payload.get("_effectivity_keys", {}) or {}
+        elif isinstance(payload, list):
+            entries = payload
+            eff_keys = {}
+        else:
+            print("  Tailored veri kökü dizi veya {_effectivity_keys, navaids} objesi olmalıdır")
             return tailored_by_type, suppress_by_type
 
-        for idx, entry in enumerate(payload, start=1):
+        for idx, entry in enumerate(entries, start=1):
             if not isinstance(entry, dict):
                 print(f"  Tailored kayıt atlandı (#{idx}): dict değil")
                 continue
@@ -740,7 +765,12 @@ def load_tailored_data(json_path: Path) -> tuple[dict[str, list[dict[str, Any]]]
 
             # Giriş verisi ekle (meta anahtarları çıkar)
             record = {k: v for k, v in entry.items() if k not in ("suppress", "type")}
-            record["source"] = "tailored"
+
+            # Tailored kayıtların tamamı Ibosoft AIS tarafından derlenir/girilir.
+            record["data_provider"] = "Ibosoft AIS"
+            if record.get("data_effectivity") in eff_keys:
+                record["data_effectivity"] = eff_keys[record["data_effectivity"]]
+
             tailored_by_type[nav_type].append(record)
 
         print(
@@ -773,6 +803,26 @@ def apply_suppress(
             filtered.append(row)
 
     return filtered
+
+
+def finalize_provenance(
+    rows: list[dict[str, Any]],
+    created_by_field: str,
+    meta: dict[str, str],
+) -> list[dict[str, Any]]:
+    """XML kökenli satırlara data_provider/data_originator/data_effectivity ekler ve
+    eski *_created_by / *_source alanlarını temizler. Tailored satırlar (data_provider
+    load_tailored_data içinde zaten set edilmiş) dokunulmadan geçer — çünkü LOC/GP/DME
+    veya VOR/DME/TACAN grupları zaten aynı originator'a göre eşleştiği için
+    created_by_field grup için tek/ortak bir değer taşır."""
+    for row in rows:
+        if "data_provider" not in row:
+            row["data_originator"] = row.get(created_by_field)
+            row["data_provider"] = meta["data_provider"]
+            row["data_effectivity"] = meta["data_effectivity"]
+        for key in [k for k in row if k.endswith("_created_by") or k.endswith("_source") or k == "source"]:
+            del row[key]
+    return rows
 
 
 def get_column_type(col_name: str) -> str:
@@ -1042,6 +1092,8 @@ def main():
     print("EAD-SDO Navaid GeoPackage Oluşturucu")
     print("=" * 60)
 
+    meta = load_source_meta(DATA_JSON)
+
     # Kayıtları oku
     print("\n[1] XML dosyaları okunuyor...")
     dme_records = load_dme_records(DME_XML)
@@ -1149,6 +1201,18 @@ def main():
 
     ils_dme_rows.extend(t_dme_to_ils)
     dme_standalone.extend(t_dme_standalone)
+
+    # Provenance: data_provider/data_originator/data_effectivity uygula,
+    # eski *_created_by / *_source alanlarını temizle
+    print("\n[5.9] Provenance (data_provider/data_originator/data_effectivity) uygulanıyor...")
+    loc_rows = finalize_provenance(loc_rows, "loc_created_by", meta)
+    gp_rows = finalize_provenance(gp_rows, "loc_created_by", meta)
+    ils_dme_rows = finalize_provenance(ils_dme_rows, "loc_created_by", meta)
+    vor_rows = finalize_provenance(vor_rows, "vor_created_by", meta)
+    vor_dme_rows = finalize_provenance(vor_dme_rows, "vor_created_by", meta)
+    vortac_rows = finalize_provenance(vortac_rows, "vor_created_by", meta)
+    dme_standalone = finalize_provenance(dme_standalone, "dme_created_by", meta)
+    tacan_standalone = finalize_provenance(tacan_standalone, "tacan_created_by", meta)
 
     # Frequency pairing yükle
     print("\n[5.5] Frequency pairing yükleniyor...")

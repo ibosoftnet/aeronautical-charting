@@ -1,9 +1,12 @@
 """
 tailored kaynağı — elle tanımlı GeoJSON (data-sources/tailored/tailored.json).
 
-source = tailored, dataProvider = ibosoft
-Her feature.properties ortak şema kolonlarını taşır; geometry GeoJSON
-Polygon/MultiPolygon. Dosya yoksa boş taslak yazılır (ilk çalıştırma).
+data_provider/data_originator/data_effectivity her feature.properties içinde
+elle girilir (kaynak dizinindeki data.json mekanizması burada yok). Dosyanın
+kökündeki "_effectivity_keys" sözlüğü, properties.data_effectivity alanında
+anahtar adı geçen kayıtlar için değeri çözer (AIRAC güncellemesini tek yerden
+yapabilmek için, ör. "eff_lt" -> "09 JUL 2026 (AIRAC 2607)").
+Dosya yoksa boş taslak yazılır (ilk çalıştırma).
 """
 import json
 import os
@@ -11,20 +14,19 @@ import os
 from common import schema
 from common.geo import polygon_from_geojson
 
-SOURCE = "tailored"
-PROVIDER = "ibosoft"
-
-# source/dataProvider modül tarafından yazılır; taslakta gösterilmez.
-_TEMPLATE_PROPS = [n for n in schema.ATTR_NAMES if n not in ("source", "dataProvider")]
+_TEMPLATE_PROPS = list(schema.ATTR_NAMES)
 
 
 def _blank_template():
     return {
         "type": "FeatureCollection",
+        "_effectivity_keys": {},
         "_help": (
             "Elle hava sahası tanımlama. Her feature.properties ortak şema "
-            "kolonlarını içerir (source/dataProvider otomatik: tailored/ibosoft). "
-            "Aşağıdaki _example'ı 'features' listesine kopyalayıp doldurun."
+            "kolonlarını (data_provider/data_originator/data_effectivity dahil) "
+            "içerir. data_effectivity alanına '_effectivity_keys' altındaki bir "
+            "anahtarın adı yazılırsa değeri oradan çözülür. Aşağıdaki _example'ı "
+            "'features' listesine kopyalayıp doldurun."
         ),
         "_example": {
             "type": "Feature",
@@ -51,6 +53,7 @@ def load(cfg, base):
     if fc.get("type") != "FeatureCollection":
         print("    [tailored] geçersiz FeatureCollection, atlanıyor")
         return
+    eff_keys = fc.get("_effectivity_keys", {}) or {}
     for feat in fc.get("features", []):
         geom = polygon_from_geojson(feat.get("geometry"))
         if geom is None:
@@ -60,7 +63,7 @@ def load(cfg, base):
         for n in schema.ATTR_NAMES:
             if props.get(n) is not None:
                 rec[n] = props[n]
-        rec["source"] = SOURCE
-        rec["dataProvider"] = PROVIDER
+        if rec["data_effectivity"] in eff_keys:
+            rec["data_effectivity"] = eff_keys[rec["data_effectivity"]]
         rec["geometry"] = geom
         yield rec

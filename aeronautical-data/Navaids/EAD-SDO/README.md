@@ -89,6 +89,9 @@ Ortak alanlar (prefix yok):
 - `name`: Primary elementin adı (ILS katmanlarında NULL)
 - `channelNo`: Channel numarası (standardize)
 - `frequency`: Frequency değeri (standardize)
+- `data_provider`: Veriyi derleyen/sağlayan kurum (bkz. [Provenance](#provenance-data_provider--data_originator--data_effectivity))
+- `data_originator`: Ham kaydın asıl kaynağı
+- `data_effectivity`: Verinin geçerlilik/AIRAC tarihi
 
 ### `type` Değerleri
 
@@ -147,7 +150,9 @@ Her entry SDO ekipman tipine karşılık gelir. Build script matching engine bun
   "dme_channel": "72X",
   "dme_lat_dd": 40.961472,
   "dme_lon_dd": 28.810694,
-  "dme_created_by": "IBOSOFT"
+  "data_provider": "Ibosoft AIS",
+  "data_originator": "DHMİ Türkiye",
+  "data_effectivity": "eff_lt"
 }
 ```
 
@@ -162,7 +167,9 @@ Her entry SDO ekipman tipine karşılık gelir. Build script matching engine bun
   "vor_freq": "117.0",
   "vor_lat_dd": 35.156667,
   "vor_lon_dd": 33.491389,
-  "vor_created_by": "IBOSOFT"
+  "data_provider": "Ibosoft AIS",
+  "data_originator": "KKTC SHD",
+  "data_effectivity": "eff_trnc"
 },
 {
   "suppress": {},
@@ -172,21 +179,23 @@ Her entry SDO ekipman tipine karşılık gelir. Build script matching engine bun
   "dme_channel": "117X",
   "dme_lat_dd": 35.156667,
   "dme_lon_dd": 33.491389,
-  "dme_created_by": "IBOSOFT"
+  "data_provider": "Ibosoft AIS",
+  "data_originator": "KKTC SHD",
+  "data_effectivity": "eff_trnc"
 }
 ```
 
 ### Örnek — ILS ayrı component'lar (loc + gp + dme)
 
 ```jsonc
-{ "suppress": {}, "type": "loc", "loc_code_id": "IECR", "loc_freq": "108.3", "loc_lat_dd": 35.160556, "loc_lon_dd": 33.485278, "loc_created_by": "IBOSOFT" },
-{ "suppress": {}, "type": "gp",  "loc_code_id": "IECR", "gp_freq": "334.1", "gp_lat_dd": 35.152667, "gp_lon_dd": 33.512861, "gp_slope": 3.0, "gp_created_by": "IBOSOFT" },
-{ "suppress": {}, "type": "dme", "loc_code_id": "IECR", "dme_code_id": "IECR", "dme_channel": "20X", "dme_lat_dd": 35.152667, "dme_lon_dd": 33.512861, "dme_created_by": "IBOSOFT" }
+{ "suppress": {}, "type": "loc", "loc_code_id": "IECR", "loc_freq": "108.3", "loc_lat_dd": 35.160556, "loc_lon_dd": 33.485278, "data_provider": "Ibosoft AIS", "data_originator": "KKTC SHD", "data_effectivity": "eff_trnc" },
+{ "suppress": {}, "type": "gp",  "loc_code_id": "IECR", "gp_freq": "334.1", "gp_lat_dd": 35.152667, "gp_lon_dd": 33.512861, "gp_slope": 3.0, "data_provider": "Ibosoft AIS", "data_originator": "KKTC SHD", "data_effectivity": "eff_trnc" },
+{ "suppress": {}, "type": "dme", "loc_code_id": "IECR", "dme_code_id": "IECR", "dme_channel": "20X", "dme_lat_dd": 35.152667, "dme_lon_dd": 33.512861, "data_provider": "Ibosoft AIS", "data_originator": "KKTC SHD", "data_effectivity": "eff_trnc" }
 ```
 
 ### Field İsimlendirme
 
-Tailored entry'lerde EAD-SDO rows ile aynı prefix'li alan adları kullanılır (`loc_*`, `gp_*`, `dme_*`, `vor_*`, `tacan_*`). `suppress` ve `type` meta anahtarları GeoPackage'a yazılmaz.
+Tailored entry'lerde EAD-SDO rows ile aynı prefix'li alan adları kullanılır (`loc_*`, `gp_*`, `dme_*`, `vor_*`, `tacan_*`). `suppress` ve `type` meta anahtarları GeoPackage'a yazılmaz. `data_provider`/`data_originator`/`data_effectivity` prefix'siz (ortak) yazılır — bkz. [Provenance](#provenance-data_provider--data_originator--data_effectivity).
 
 ## Script Kullanımı
 
@@ -239,6 +248,33 @@ python build_navaids_gpkg.py
 - `ils-gp.xml`: ILS GP (Glide Path) component
 - `frequency-pairing.csv`: DME channel ↔ VHF frequency lookup
 - `tailored-navaids.jsonc`: Manuel veri override'ları
+- `data.json`: XML (EAD-SDO) kökenli satırlar için `data_provider`/`data_effectivity` değerleri
+
+## Provenance (`data_provider` / `data_originator` / `data_effectivity`)
+
+Her 8 katmanda da ortak (prefix'siz) üç sütun bulunur:
+
+| Sütun | Anlamı |
+|-------|--------|
+| `data_provider` | Veriyi derleyen/sağlayan kurum: `"EUROCONTROL EAD SDO"` (XML kökenli) veya `"Ibosoft AIS"` (tailored) |
+| `data_originator` | Ham kaydın asıl kaynağı/otoritesi |
+| `data_effectivity` | Verinin geçerlilik/AIRAC tarihi |
+
+### XML (EAD-SDO) kökenli satırlar
+
+- `data_provider` ve `data_effectivity`, dizindeki `data.json` dosyasından okunur.
+- `data_originator`, ham XML kaydındaki `OrgCre/txtName` alanından alınır. LOC+GP+DME (ILS grubu) veya VOR+DME/VOR+TACAN gibi birleşik satırlarda, tüm bileşenler zaten aynı originator'a göre eşleştiği için (bu eşleşmenin ön koşuludur) tek bir `data_originator` değeri yazılır.
+
+### Tailored (`tailored-navaids.jsonc`) kökenli satırlar
+
+- `data_provider` script tarafından her tailored kayıt için otomatik `"Ibosoft AIS"` olarak zorlanır (JSON'a da açıkça yazılır, script yine de üzerine yazar).
+- `data_originator` ve `data_effectivity` kayda göre elle girilir. Şu an dosyadaki tüm kayıtlar KKTC (TRNC) navaidleri olduğu için `data_originator: "KKTC SHD"`.
+- `data_effectivity` alanına, dosyanın kökündeki `"_effectivity_keys"` sözlüğünden bir anahtar (örn. `"eff_trnc"`, `"eff_lt"`) yazılabilir; build sırasında script bunu sözlükteki gerçek AIRAC tarihiyle değiştirir. Böylece bir AIRAC güncellemesinde tek noktadan (`_effectivity_keys`) değişiklik yeterli olur.
+- Kök yapı: `{"_effectivity_keys": {...}, "navaids": [...]}` (eski düz dizi kökü de geriye dönük desteklenir, ama `_effectivity_keys` çözümlemesi olmadan).
+
+### Eski sütunlar (kaldırıldı)
+
+Önceden her katmanda prefix'li `{tip}_created_by` (örn. `loc_created_by`, `vor_created_by`) ve prefix'li/prefix'siz `source`/`{tip}_source` alanları vardı. Bunlar tamamen kaldırılıp yerine yukarıdaki üçlü konmuştur.
 
 ## Notlar
 

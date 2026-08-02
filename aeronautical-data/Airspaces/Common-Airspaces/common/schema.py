@@ -2,8 +2,10 @@
 Ortak GeoPackage şeması — tablo/rtree kurulumu, kayıt insert, index'ler.
 
 Şema `AIXM_to_GeoPackage_Schema_Design.md`'ye göre. Kolon adları AIXM 5.2
-attribute isimleriyle birebir (AIXM dışı: id, source, dataProvider, add_date).
+attribute isimleriyle birebir (AIXM dışı: id, data_provider, data_originator,
+data_effectivity, add_date).
 """
+import json
 import os
 import sqlite3
 from datetime import datetime
@@ -35,11 +37,30 @@ ATTR_COLS = [
     ("annotationRemark", "TEXT"),
     ("annotationWarning", "TEXT"),
     ("annotationDisclaimer", "TEXT"),
-    ("source", "TEXT"),
-    ("dataProvider", "TEXT"),
+    ("data_provider", "TEXT"),
+    ("data_originator", "TEXT"),
+    ("data_effectivity", "TEXT"),
     ("add_date", "TEXT"),
 ]
 ATTR_NAMES = [c[0] for c in ATTR_COLS]
+
+
+META_KEYS = ("data_provider", "data_originator", "data_effectivity")
+
+
+def load_source_meta(dir_path: str) -> dict:
+    """
+    Kaynak dizinindeki data.json'dan data_provider/data_originator/
+    data_effectivity oku. Dosya yoksa veya alan eksikse boş string.
+    """
+    path = os.path.join(dir_path, "data.json")
+    meta = {k: "" for k in META_KEYS}
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        for k in META_KEYS:
+            meta[k] = data.get(k, "") or ""
+    return meta
 
 
 def file_mtime_str(path: str) -> str:

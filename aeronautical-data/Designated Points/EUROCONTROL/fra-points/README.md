@@ -12,6 +12,7 @@ EUROCONTROL tarafından yayımlanan Free Route Airspace (FRA) nokta verisi.
 | `fra-points.gpkg` | Üretilen GeoPackage (QGIS'te açılabilir) |
 | `build_fra_gpkg.py` | Dönüştürme scripti |
 | `convert_fra.bat` | Çalıştırma batch dosyası |
+| `data.json` | `data_provider`/`data_originator` değerleri ("EUROCONTROL") |
 
 ## Çalıştırma
 
@@ -61,6 +62,9 @@ Koordinatlar DDMMSS formatındadır:
 | `time_availability` | TEXT | Kullanılabilirlik zamanı (ör: H24) |
 | `loc_indicators` | TEXT | FIR/UIR ICAO göstergesi(leri) |
 | `remarks` | TEXT | Açıklamalar |
+| `data_provider` | TEXT | Her zaman "EUROCONTROL" — `data.json`'dan okunur |
+| `data_originator` | TEXT | Her zaman "EUROCONTROL" — `data.json`'dan okunur |
+| `data_effectivity` | TEXT | AIRAC/geçerlilik tarihi (örn. "09 JUL 2026") — Excel'in `COVER` sayfasındaki `A4` hücresinden, "Effective Date - " öneki atılarak her build'de otomatik okunur |
 | `geometry` | Point | WGS84 (EPSG:4326) |
 
 ## Change Record Değerleri

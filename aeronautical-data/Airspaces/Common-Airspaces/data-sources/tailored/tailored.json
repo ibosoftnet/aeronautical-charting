@@ -1,6 +1,10 @@
 {
   "type": "FeatureCollection",
-  "_help": "Elle hava sahası tanımlama. Her feature.properties ortak şema kolonlarını içerir (source/dataProvider otomatik: tailored/ibosoft). Aşağıdaki _example'ı 'features' listesine kopyalayıp doldurun.",
+  "_effectivity_keys": {
+    "eff_trnc": "15 MAY 2025 (AIRAC 2505)",
+    "eff_lt": "09 JUL 2026 (AIRAC 2607)"
+  },
+  "_help": "Elle hava sahası tanımlama. Her feature.properties ortak şema kolonlarını (data_provider/data_originator/data_effectivity dahil) içerir. data_effectivity alanına '_effectivity_keys' altındaki bir anahtarın adı yazılırsa değeri oradan çözülür. Aşağıdaki _example'ı 'features' listesine kopyalayıp doldurun.",
   "_example": {
     "type": "Feature",
     "properties": {
@@ -23,6 +27,9 @@
       "annotationRemark": "",
       "annotationWarning": "",
       "annotationDisclaimer": "",
+      "data_provider": "",
+      "data_originator": "",
+      "data_effectivity": "",
       "add_date": ""
     },
     "geometry": {
@@ -72,7 +79,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "Make circling approach north of aerodrome",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -396,7 +406,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2023-09-07"
+        "add_date": "2023-09-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -720,7 +733,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2023-11-02"
+        "add_date": "2023-11-02",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -1044,7 +1060,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2018-08-16"
+        "add_date": "2018-08-16",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -1468,7 +1487,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2018-08-16"
+        "add_date": "2018-08-16",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -2320,7 +2342,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "Radiosonde Observation / Upper Air Balloon Measurements Range of influence usually MAX 150 KG WT 0.8-1.2 KG AVG LEN 30M AVG ROC 1000FT/MIN (Activation: DLY 23:30-02:00 UTC)",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -3796,7 +3821,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "(Activation: Daily SR/SS)",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -3848,7 +3876,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "(Activation: Daily SR/SS)",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -5324,7 +5355,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "(Activation: Daily SR/SS)",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -6800,7 +6834,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "(Activation: Daily SR/SS)",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8276,7 +8313,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "Flight Route to/from LCTTA1:\nT101: 350954N-0332840E\nT102: 351107N-0332901E\nT103: 351111N-0333233E\nT104: 351118N-0333944E\nT105: 350840N-0334422E\nT106: 350845N-0334851E\nT107: 352022N-0335400E\nT108: 352721N-0340704E\n(See ENR 6.1)\n- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8336,7 +8376,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8388,7 +8431,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8440,7 +8486,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8492,7 +8541,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8544,7 +8596,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8596,7 +8651,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8648,7 +8706,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "- Yol genişliği: 2 NM (merkez hattının 1 NM sağı ve solu) / Width: 2 NM (1 NM left and right side of CL.\n- LCTTA1 çalışma sahasına VFR şartlarda uçulacaktır. / VFR conditions must be followed while flying to LCTTA1 training area.\nHergün / Daily\nSR/SS",
-        "add_date": "2025-05-15"
+        "add_date": "2025-05-15",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "KKTC SHD",
+        "data_effectivity": "eff_trnc"
       },
       "geometry": {
         "type": "Polygon",
@@ -8700,7 +8761,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "ATS airspace available H24, ATS unit O/R.",
-        "add_date": "2026-05-14"
+        "add_date": "2026-05-14",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "Ibosoft AIS",
+        "data_effectivity": "14 MAY 2026 (AIRAC 2605)"
       },
       "geometry": {
         "type": "Polygon",
@@ -8752,7 +8816,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-03-19"
+        "add_date": "2026-03-19",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -8824,7 +8891,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-03-19"
+        "add_date": "2026-03-19",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -8928,7 +8998,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-03-19"
+        "add_date": "2026-03-19",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -10842,7 +10915,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-03-19"
+        "add_date": "2026-03-19",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -14768,7 +14844,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-03-19"
+        "add_date": "2026-03-19",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -19230,7 +19309,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "Used as Final Approach Directory Sector when landing direction is 18 / Used as DEPARTURE Sector when landing direction is 36",
-        "add_date": "2026-03-19"
+        "add_date": "2026-03-19",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -20714,7 +20796,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "Used as Final Approach Directory Sector when landing direction is 36 and combined with SOUTHEAST LOWER Sector / Used as DEPARTURE Sector when landing direction is 18 and combined with SOUTHEAST LOWER Sector",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -21538,7 +21623,10 @@
         "annotationWarning": "",
         "annotationDisclaimer": "",
         "annotationRemark": "Used as Final Approach Directory Sector when landing direction is 36 and combined with SOUTHWEST LOWER Sector / Used as DEPARTURE Sector when landing direction is 18 and combined with SOUTHWEST LOWER Sector",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -22242,7 +22330,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -22370,7 +22461,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -22450,7 +22544,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -22558,7 +22655,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -22690,7 +22790,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -22870,7 +22973,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -22934,7 +23040,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -22998,7 +23107,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -23506,7 +23618,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -25698,7 +25813,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -31896,7 +32014,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -32812,7 +32933,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -36198,7 +36322,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -40256,7 +40383,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -40482,7 +40612,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -52948,7 +53081,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -55834,7 +55970,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -58900,7 +59039,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -67342,7 +67484,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -68504,7 +68649,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -69846,7 +69994,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -73444,7 +73595,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -75028,7 +75182,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -75428,7 +75585,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -77608,7 +77768,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -79336,7 +79499,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -82576,7 +82742,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -86650,7 +86819,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -88544,7 +88716,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -88652,7 +88827,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-08-07"
+        "add_date": "2025-08-07",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -101118,7 +101296,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -104238,7 +104419,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -108316,7 +108500,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -116758,7 +116945,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -124246,7 +124436,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -130380,7 +130573,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -130504,7 +130700,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -136342,7 +136541,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -141298,7 +141500,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2025-06-12"
+        "add_date": "2025-06-12",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "type": "Polygon",
@@ -141434,7 +141639,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -145274,7 +145482,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -145370,7 +145581,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -145454,7 +145668,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -146706,7 +146923,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -151110,7 +151330,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -151182,7 +151405,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -151370,7 +151596,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -151518,7 +151747,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -151626,7 +151858,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -151718,7 +151953,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -151794,7 +152032,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -153726,7 +153967,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -153814,7 +154058,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -153890,7 +154137,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -153978,7 +154228,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -154070,7 +154323,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -154878,7 +155134,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -155038,7 +155297,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -155102,7 +155364,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -155186,7 +155451,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -159026,7 +159294,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -162866,7 +163137,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -162962,7 +163236,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -163058,7 +163335,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -163142,7 +163422,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -163226,7 +163509,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -164478,7 +164764,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -168882,7 +169171,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -168954,7 +169246,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -169142,7 +169437,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -169290,7 +169588,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -169398,7 +169699,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -169490,7 +169794,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -169566,7 +169873,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -171498,7 +171808,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -171586,7 +171899,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -171674,7 +171990,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -171750,7 +172069,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -171826,7 +172148,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -171914,7 +172239,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -172006,7 +172334,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -172814,7 +173145,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -172974,7 +173308,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -173038,7 +173375,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [
@@ -173122,7 +173462,10 @@
         "annotationRemark": "",
         "annotationWarning": "",
         "annotationDisclaimer": "",
-        "add_date": "2026-05-13"
+        "add_date": "2026-05-13",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "eff_lt"
       },
       "geometry": {
         "coordinates": [

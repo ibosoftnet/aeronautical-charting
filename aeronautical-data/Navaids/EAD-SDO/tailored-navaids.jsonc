@@ -3,10 +3,25 @@
  *
  * Bu dosya manuel giriş, değişiklik ve suppress işlemleri için kullanılır.
  *
+ * Kök yapı:
+ *   {
+ *     "_effectivity_keys": { "eff_trnc": "...", "eff_lt": "..." },
+ *     "navaids": [ {...}, {...} ]
+ *   }
+ *
  * Suppress Mantığı:
  *   - ident ve originator IKISI DA girilirse: O type'ın XML'inde matching kaydı siler,
  *     yerine tailored giriş eklenir
  *   - ident veya originator boşsa: Ek kayıt olarak layer'a eklenir, XML verisi dokunulmaz
+ *
+ * Provenance (data_provider / data_originator / data_effectivity):
+ *   - data_provider script tarafından her tailored kayıt için otomatik "Ibosoft AIS"
+ *     olarak zorlanır (aşağıda JSON'a da açıkça yazılır, ama script yine de üzerine yazar).
+ *   - data_originator ve data_effectivity kayda göre elle girilir.
+ *   - data_effectivity alanına _effectivity_keys sözlüğündeki bir anahtar (örn. "eff_trnc")
+ *     yazılırsa, script build sırasında bunu sözlükteki gerçek değerle değiştirir —
+ *     AIRAC güncellemesi tek noktadan yapılabilir.
+ *   - Üç alan her kaydın SONUNA eklenir (araya sıkıştırılmaz).
  *
  * Fields (type'a göre örnek alan adları):
  *
@@ -14,7 +29,7 @@
  *   - code_id, ahp_code_id, ahp_code_icao, rwy_desig, rdn_desig, freq, uom_freq
  *   - mag_brg, true_brg, course_width, back_course, mag_var, mag_var_date
  *   - datum, elev, uom_dist_ver, fir_code_id, lat_dd, lon_dd, lat_text, lon_text
- *   - dt_wef, dt_com, created_by, work_hr, emission, rmk, work_hr_rmk
+ *   - dt_wef, dt_com, work_hr, emission, rmk, work_hr_rmk
  *   Sub-elements:
  *   - gp: {mid, lat_dd, lon_dd, lat_text, lon_text, freq, slope, elev, rdh, uom_rdh, datum, emission, crc, dt_wef}
  *   - dme: {mid, code_id, lat_dd, lon_dd, lat_text, lon_text, channel, ghost_freq, uom_ghost_freq, datum, work_hr, dt_wef}
@@ -22,7 +37,7 @@
  *   type: "vor"
  *   - code_id, name, code_type, freq, uom_freq, north_ref, declination
  *   - mag_var, mag_var_date, emission, datum, crc, elev, uom_dist_ver, elev_accuracy
- *   - geoid_undulation, vert_datum, country, created_by, dt_wef, dt_com, work_hr, rmk
+ *   - geoid_undulation, vert_datum, country, dt_wef, dt_com, work_hr, rmk
  *   - lat_dd, lon_dd, lat_text, lon_text
  *   Sub-elements:
  *   - dme: {mid, code_id, name, lat_dd, lon_dd, lat_text, lon_text, channel, ghost_freq, datum, work_hr, dt_wef}
@@ -35,250 +50,283 @@
  *   type: "vortac"  (TACAN joined VOR — DME alt eleman içermez)
  *   - code_id, name, code_type, freq, uom_freq, north_ref, declination
  *   - mag_var, mag_var_date, emission, datum, crc, elev, uom_dist_ver, elev_accuracy
- *   - geoid_undulation, vert_datum, country, created_by, dt_wef, dt_com, work_hr, rmk
+ *   - geoid_undulation, vert_datum, country, dt_wef, dt_com, work_hr, rmk
  *   - lat_dd, lon_dd, lat_text, lon_text
  *   Sub-elements:
  *   - tacan: {mid, code_id, name, lat_dd, lon_dd, lat_text, lon_text, channel, datum, work_hr, dt_wef}
  *
  *   type: "dme"
  *   - code_id, name, country, channel, ghost_freq, uom_ghost_freq
- *   - vor_code_id, datum, work_hr, created_by, dt_wef
+ *   - vor_code_id, datum, work_hr, dt_wef
  *   - lat_dd, lon_dd, lat_text, lon_text
  *
  *   type: "tacan"
  *   - code_id, name, country, channel, datum, vor_code_id
- *   - vor_lat_text, vor_lon_text, work_hr, created_by, dt_wef
+ *   - vor_lat_text, vor_lon_text, work_hr, dt_wef
  *   - lat_dd, lon_dd, lat_text, lon_text
  */
 
-[
-  // Örnek 1: ILS suppress (EAD-SDO'daki IJKI/EUROCONTROL kaydını sil, yenisini ekle)
-  /*
-  {
-    "suppress": {
-      "ident": "IJKI",
-      "originator": "EUROCONTROL"
+{
+  "_effectivity_keys": {
+    "eff_trnc": "15 MAY 2025 (AIRAC 2505)",
+    "eff_lt": "09 JUL 2026 (AIRAC 2607)"
+  },
+
+  "navaids": [
+    // Örnek 1: ILS suppress (EAD-SDO'daki IJKI/EUROCONTROL kaydını sil, yenisini ekle)
+    /*
+    {
+      "suppress": {
+        "ident": "IJKI",
+        "originator": "EUROCONTROL"
+      },
+      "type": "ils",
+      "code_id": "IJKI",
+      "ahp_code_id": "LTAC",
+      "ahp_code_icao": "LTAC",
+      "freq": "110.50",
+      "mag_brg": "123",
+      "true_brg": "130",
+      "lat_dd": 41.1234,
+      "lon_dd": 28.9876,
+      "dt_wef": "26/03/2026",
+      "gp": {
+        "lat_dd": 41.1250,
+        "lon_dd": 28.9880,
+        "slope": 3.0
+      },
+      "dme": {
+        "channel": "44Y"
+      },
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
-    "type": "ils",
-    "code_id": "IJKI",
-    "ahp_code_id": "LTAC",
-    "ahp_code_icao": "LTAC",
-    "freq": "110.50",
-    "mag_brg": "123",
-    "true_brg": "130",
-    "lat_dd": 41.1234,
-    "lon_dd": 28.9876,
-    "created_by": "EUROCONTROL",
-    "dt_wef": "26/03/2026",
-    "gp": {
-      "lat_dd": 41.1250,
-      "lon_dd": 28.9880,
-      "slope": 3.0
+    */
+
+    // Örnek 2: VOR ek kayıt (suppress boş → sadece ekle)
+    /*
+    {
+      "suppress": {},
+      "type": "vor",
+      "code_id": "XXX",
+      "name": "EXAMPLE VOR",
+      "code_type": "VOR",
+      "freq": "115.00",
+      "country": "TURKEY",
+      "lat_dd": 40.5000,
+      "lon_dd": 29.5000,
+      "dt_wef": "01/04/2026",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "eff_lt"
     },
-    "dme": {
-      "channel": "44Y"
+    */
+
+    // Örnek 3: DME ek kayıt
+    /*
+    {
+      "suppress": {},
+      "type": "dme",
+      "code_id": "XYZ",
+      "channel": "99X",
+      "country": "TURKEY",
+      "lat_dd": 40.6000,
+      "lon_dd": 29.6000,
+      "dt_wef": "01/04/2026",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "eff_lt"
     }
-  },
-  */
+    */
 
-  // Örnek 2: VOR ek kayıt (suppress boş → sadece ekle)
-  /*
-  {
-    "suppress": {},
-    "type": "vor",
-    "code_id": "XXX",
-    "name": "EXAMPLE VOR",
-    "code_type": "VOR",
-    "freq": "115.00",
-    "country": "TURKEY",
-    "lat_dd": 40.5000,
-    "lon_dd": 29.5000,
-    "created_by": "MANUAL",
-    "dt_wef": "01/04/2026"
-  },
-  */
+    // ============================================================
+    // TRNC — LCGK (Gecitkale) navaids — EAD-SDO'da yok
+    // Kaynak: TRNC AIP AD 2 LCGK-7, 07 SEP 23
+    // ============================================================
 
-  // Örnek 3: DME ek kayıt
-  /*
-  {
-    "suppress": {},
-    "type": "dme",
-    "code_id": "XYZ",
-    "channel": "99X",
-    "country": "TURKEY",
-    "lat_dd": 40.6000,
-    "lon_dd": 29.6000,
-    "created_by": "MANUAL",
-    "dt_wef": "01/04/2026"
-  }
-  */
+    // GKE VOR — 114.3 MHz
+    // * GKE VOR/DME unusable: BTN R090-R105 beyond 15 NM; BTN R106-R230 beyond 12 NM; BTN R231-R265 beyond 16 NM
+    {
+      "suppress": {},
+      "type": "vor",
+      "vor_code_id": "GKE",
+      "vor_name": "GECITKALE",
+      "vor_freq": "114.3",
+      "vor_declination": "4",
+      "vor_lat_dd": 35.235278,
+      "vor_lon_dd": 33.763611,
+      "vor_work_hr": "H24",
+      "vor_rmk": "Coverage 200 NM. Unusable: BTN R090-R105 beyond 15 NM; BTN R106-R230 beyond 12 NM; BTN R231-R265 beyond 16 NM",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // ============================================================
-  // TRNC — LCGK (Gecitkale) navaids — EAD-SDO'da yok
-  // Kaynak: TRNC AIP AD 2 LCGK-7, 07 SEP 23
-  // ============================================================
+    // GKE DME — CH90X / Elevation 60 M
+    {
+      "suppress": {},
+      "type": "dme",
+      "vor_code_id": "GKE",
+      "dme_code_id": "GKE",
+      "dme_channel": "90X",
+      "dme_lat_dd": 35.235278,
+      "dme_lon_dd": 33.763611,
+      "dme_elev": 60,
+      "dme_uom_dist_ver": "M",
+      "dme_work_hr": "H24",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // GKE VOR — 114.3 MHz
-  // * GKE VOR/DME unusable: BTN R090-R105 beyond 15 NM; BTN R106-R230 beyond 12 NM; BTN R231-R265 beyond 16 NM
-  {
-    "suppress": {},
-    "type": "vor",
-    "vor_code_id": "GKE",
-    "vor_name": "GECITKALE",
-    "vor_freq": "114.3",
-    "vor_declination": "4",
-    "vor_lat_dd": 35.235278,
-    "vor_lon_dd": 33.763611,
-    "vor_work_hr": "H24",
-    "vor_created_by": "IBOSOFT",
-    "vor_rmk": "Coverage 200 NM. Unusable: BTN R090-R105 beyond 15 NM; BTN R106-R230 beyond 12 NM; BTN R231-R265 beyond 16 NM"
-  },
+    // ============================================================
+    // TRNC — LCEN (Ercan) navaids — EAD-SDO'da yok
+    // Kaynak: TRNC AIP AD 2 LCEN-7, 15 MAY 25
+    // ============================================================
 
-  // GKE DME — CH90X / Elevation 60 M
-  {
-    "suppress": {},
-    "type": "dme",
-    "vor_code_id": "GKE",
-    "dme_code_id": "GKE",
-    "dme_channel": "90X",
-    "dme_lat_dd": 35.235278,
-    "dme_lon_dd": 33.763611,
-    "dme_elev": 60,
-    "dme_uom_dist_ver": "M",
-    "dme_work_hr": "H24",
-    "dme_created_by": "IBOSOFT"
-  },
+    // ECN VOR — 117.0 MHz
+    // ** ECN VOR/DME unusable: BTN R090-R105 beyond 15 NM; BTN R106-R125 beyond 10 NM; BTN R126-R300
+    {
+      "suppress": {},
+      "type": "vor",
+      "vor_code_id": "ECN",
+      "vor_name": "ERCAN",
+      "vor_freq": "117.0",
+      "vor_declination": "4",
+      "vor_lat_dd": 35.156667,
+      "vor_lon_dd": 33.491389,
+      "vor_work_hr": "H24",
+      "vor_rmk": "Coverage 250 NM. Unusable: BTN R090-R105 beyond 15 NM; BTN R106-R125 beyond 10 NM; BTN R126-R300",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // ============================================================
-  // TRNC — LCEN (Ercan) navaids — EAD-SDO'da yok
-  // Kaynak: TRNC AIP AD 2 LCEN-7, 15 MAY 25
-  // ============================================================
+    // ECN DME — CH117X / Elevation 40 M
+    {
+      "suppress": {},
+      "type": "dme",
+      "vor_code_id": "ECN",
+      "dme_code_id": "ECN",
+      "dme_channel": "117X",
+      "dme_lat_dd": 35.156667,
+      "dme_lon_dd": 33.491389,
+      "dme_elev": 40,
+      "dme_uom_dist_ver": "M",
+      "dme_work_hr": "H24",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // ECN VOR — 117.0 MHz
-  // ** ECN VOR/DME unusable: BTN R090-R105 beyond 15 NM; BTN R106-R125 beyond 10 NM; BTN R126-R300
-  {
-    "suppress": {},
-    "type": "vor",
-    "vor_code_id": "ECN",
-    "vor_name": "ERCAN",
-    "vor_freq": "117.0",
-    "vor_declination": "4",
-    "vor_lat_dd": 35.156667,
-    "vor_lon_dd": 33.491389,
-    "vor_work_hr": "H24",
-    "vor_created_by": "IBOSOFT",
-    "vor_rmk": "Coverage 250 NM. Unusable: BTN R090-R105 beyond 15 NM; BTN R106-R125 beyond 10 NM; BTN R126-R300"
-  },
+    // IECR LOC RWY 29R — 108.3 MHz
+    // * Unusable outside 10° left side of LLZ centerline (90 HZ sector II)
+    //   and beyond 11 NM (90 HZ-150 HZ sector I) of LLZ antenna for CAT I operations
+    {
+      "suppress": {},
+      "type": "loc",
+      "loc_code_id": "IECR",
+      "loc_ahp_code_id": "LCEN",
+      "loc_rwy_desig": "RWY-11L/29R",
+      "loc_rdn_desig": "29R",
+      "loc_mag_brg": "288",
+      "loc_true_brg": "292",
+      "loc_freq": "108.3",
+      "loc_lat_dd": 35.160556,
+      "loc_lon_dd": 33.485278,
+      "loc_work_hr": "H24",
+      "loc_rmk": "Unusable outside 10 degrees left side of LLZ centerline (90 HZ sector II) and beyond 11 NM (90 HZ-150 HZ sector I) of LLZ antenna for CAT I operations",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // ECN DME — CH117X / Elevation 40 M
-  {
-    "suppress": {},
-    "type": "dme",
-    "vor_code_id": "ECN",
-    "dme_code_id": "ECN",
-    "dme_channel": "117X",
-    "dme_lat_dd": 35.156667,
-    "dme_lon_dd": 33.491389,
-    "dme_elev": 40,
-    "dme_uom_dist_ver": "M",
-    "dme_work_hr": "H24",
-    "dme_created_by": "IBOSOFT"
-  },
+    // IECR GP RWY 29R — 334.1 MHz / 3° / RDH 55 FT
+    {
+      "suppress": {},
+      "type": "gp",
+      "loc_code_id": "IECR",
+      "gp_freq": "334.1",
+      "gp_lat_dd": 35.152667,
+      "gp_lon_dd": 33.512861,
+      "gp_slope": 3.0,
+      "gp_rdh": 55,
+      "gp_uom_rdh": "FT",
+      "gp_work_hr": "H24",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // IECR LOC RWY 29R — 108.3 MHz
-  // * Unusable outside 10° left side of LLZ centerline (90 HZ sector II)
-  //   and beyond 11 NM (90 HZ-150 HZ sector I) of LLZ antenna for CAT I operations
-  {
-    "suppress": {},
-    "type": "loc",
-    "loc_code_id": "IECR",
-    "loc_ahp_code_id": "LCEN",
-    "loc_rwy_desig": "RWY-11L/29R",
-    "loc_rdn_desig": "29R",
-    "loc_mag_brg": "288",
-    "loc_true_brg": "292",
-    "loc_freq": "108.3",
-    "loc_lat_dd": 35.160556,
-    "loc_lon_dd": 33.485278,
-    "loc_work_hr": "H24",
-    "loc_created_by": "IBOSOFT",
-    "loc_rmk": "Unusable outside 10 degrees left side of LLZ centerline (90 HZ sector II) and beyond 11 NM (90 HZ-150 HZ sector I) of LLZ antenna for CAT I operations"
-  },
+    // IECR DME RWY 29R — CH20X / Elevation 110 M
+    {
+      "suppress": {},
+      "type": "dme",
+      "loc_code_id": "IECR",
+      "dme_code_id": "IECR",
+      "dme_channel": "20X",
+      "dme_lat_dd": 35.152667,
+      "dme_lon_dd": 33.512861,
+      "dme_elev": 110,
+      "dme_uom_dist_ver": "M",
+      "dme_work_hr": "H24",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // IECR GP RWY 29R — 334.1 MHz / 3° / RDH 55 FT
-  {
-    "suppress": {},
-    "type": "gp",
-    "loc_code_id": "IECR",
-    "gp_freq": "334.1",
-    "gp_lat_dd": 35.152667,
-    "gp_lon_dd": 33.512861,
-    "gp_slope": 3.0,
-    "gp_rdh": 55,
-    "gp_uom_rdh": "FT",
-    "gp_work_hr": "H24",
-    "gp_created_by": "IBOSOFT"
-  },
+    // IEKT LOC RWY 29L — 110.7 MHz
+    {
+      "suppress": {},
+      "type": "loc",
+      "loc_code_id": "IEKT",
+      "loc_ahp_code_id": "LCEN",
+      "loc_rwy_desig": "RWY-11R/29L",
+      "loc_rdn_desig": "29L",
+      "loc_mag_brg": "288",
+      "loc_true_brg": "292",
+      "loc_freq": "110.7",
+      "loc_lat_dd": 35.155639,
+      "loc_lon_dd": 33.494056,
+      "loc_work_hr": "H24",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // IECR DME RWY 29R — CH20X / Elevation 110 M
-  {
-    "suppress": {},
-    "type": "dme",
-    "loc_code_id": "IECR",
-    "dme_code_id": "IECR",
-    "dme_channel": "20X",
-    "dme_lat_dd": 35.152667,
-    "dme_lon_dd": 33.512861,
-    "dme_elev": 110,
-    "dme_uom_dist_ver": "M",
-    "dme_work_hr": "H24",
-    "dme_created_by": "IBOSOFT"
-  },
+    // IEKT GP RWY 29L — 330.2 MHz / 3° / RDH 55 FT
+    {
+      "suppress": {},
+      "type": "gp",
+      "loc_code_id": "IEKT",
+      "gp_freq": "330.2",
+      "gp_lat_dd": 35.144361,
+      "gp_lon_dd": 33.524833,
+      "gp_slope": 3.0,
+      "gp_rdh": 55,
+      "gp_uom_rdh": "FT",
+      "gp_work_hr": "H24",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    },
 
-  // IEKT LOC RWY 29L — 110.7 MHz
-  {
-    "suppress": {},
-    "type": "loc",
-    "loc_code_id": "IEKT",
-    "loc_ahp_code_id": "LCEN",
-    "loc_rwy_desig": "RWY-11R/29L",
-    "loc_rdn_desig": "29L",
-    "loc_mag_brg": "288",
-    "loc_true_brg": "292",
-    "loc_freq": "110.7",
-    "loc_lat_dd": 35.155639,
-    "loc_lon_dd": 33.494056,
-    "loc_work_hr": "H24",
-    "loc_created_by": "IBOSOFT"
-  },
-
-  // IEKT GP RWY 29L — 330.2 MHz / 3° / RDH 55 FT
-  {
-    "suppress": {},
-    "type": "gp",
-    "loc_code_id": "IEKT",
-    "gp_freq": "330.2",
-    "gp_lat_dd": 35.144361,
-    "gp_lon_dd": 33.524833,
-    "gp_slope": 3.0,
-    "gp_rdh": 55,
-    "gp_uom_rdh": "FT",
-    "gp_work_hr": "H24",
-    "gp_created_by": "IBOSOFT"
-  },
-
-  // IEKT DME RWY 29L — CH44X / Elevation 100 M
-  {
-    "suppress": {},
-    "type": "dme",
-    "loc_code_id": "IEKT",
-    "dme_code_id": "IEKT",
-    "dme_channel": "44X",
-    "dme_lat_dd": 35.144361,
-    "dme_lon_dd": 33.524833,
-    "dme_elev": 100,
-    "dme_uom_dist_ver": "M",
-    "dme_work_hr": "H24",
-    "dme_created_by": "IBOSOFT"
-  }
-]
+    // IEKT DME RWY 29L — CH44X / Elevation 100 M
+    {
+      "suppress": {},
+      "type": "dme",
+      "loc_code_id": "IEKT",
+      "dme_code_id": "IEKT",
+      "dme_channel": "44X",
+      "dme_lat_dd": 35.144361,
+      "dme_lon_dd": 33.524833,
+      "dme_elev": 100,
+      "dme_uom_dist_ver": "M",
+      "dme_work_hr": "H24",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
+    }
+  ]
+}

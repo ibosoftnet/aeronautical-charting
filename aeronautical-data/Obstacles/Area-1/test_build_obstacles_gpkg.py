@@ -36,6 +36,33 @@ class ToIntTests(unittest.TestCase):
         self.assertIsNone(mod.to_int("not-a-number"))
 
 
+class ToNumTests(unittest.TestCase):
+    def test_integer_text_returns_int(self):
+        self.assertEqual(mod.to_num("827"), 827)
+        self.assertIsInstance(mod.to_num("827"), int)
+
+    def test_decimal_text_is_preserved(self):
+        # LH verisi metre cinsinden ondalikli: int() zorlanirsa deger kaybolur
+        self.assertEqual(mod.to_num("309.6"), 309.6)
+
+    def test_trailing_zero_decimal_returns_int(self):
+        self.assertEqual(mod.to_num("100.0"), 100)
+        self.assertIsInstance(mod.to_num("100.0"), int)
+
+    def test_negative_decimal(self):
+        self.assertEqual(mod.to_num("-12.5"), -12.5)
+
+    def test_none(self):
+        self.assertIsNone(mod.to_num(None))
+
+    def test_invalid(self):
+        self.assertIsNone(mod.to_num("not-a-number"))
+
+    def test_non_numeric_aixm_vertical_codes_are_ignored(self):
+        # ValDistanceVerticalType UNL/GND/FLOOR/CEILING de kabul ediyor
+        self.assertIsNone(mod.to_num("UNL"))
+
+
 class GpkgPointBlobTests(unittest.TestCase):
     def test_header_and_coordinates_roundtrip(self):
         blob = mod.gpkg_point_blob(29.51, 40.74)
@@ -170,13 +197,13 @@ SAMPLE_MULTI_PART = """<?xml version="1.0" encoding="UTF-8"?>
           </aixm:part>
           <aixm:part>
             <aixm:VerticalStructurePart gml:id="gml.id26">
-              <aixm:verticalExtent uom="FT">55</aixm:verticalExtent>
+              <aixm:verticalExtent uom="M">55.5</aixm:verticalExtent>
               <aixm:type>CATENARY</aixm:type>
               <aixm:designator>P2</aixm:designator>
               <aixm:horizontalProjection_location>
                 <aixm:ElevatedPoint gml:id="gml.id27" srsName="urn:ogc:def:crs:EPSG::4326">
                   <gml:pos>41.001 30.001</gml:pos>
-                  <aixm:elevation uom="FT">11</aixm:elevation>
+                  <aixm:elevation uom="M">11.4</aixm:elevation>
                 </aixm:ElevatedPoint>
               </aixm:horizontalProjection_location>
             </aixm:VerticalStructurePart>
@@ -256,6 +283,11 @@ class ExtractPartRowsTests(unittest.TestCase):
         self.assertIsNone(rows[0]["lighted"])
         self.assertEqual(rows[1]["designator"], "P2")
         self.assertIsNone(rows[1]["colour"])
+        # Ondalikli metre degerleri (LH verisi gibi) yuvarlanmadan korunmali
+        self.assertEqual(rows[1]["verticalExtent"], 55.5)
+        self.assertEqual(rows[1]["verticalExtent_uom"], "M")
+        self.assertEqual(rows[1]["elevation"], 11.4)
+        self.assertEqual(rows[1]["elevation_uom"], "M")
 
 
 if __name__ == "__main__":

@@ -46,6 +46,7 @@ ATTR_COLS = [
     ("Shape_Leng", "REAL"),
     ("Shape__Area", "REAL"),
     ("Shape__Length", "REAL"),
+    ("data_provider", "TEXT"),
 ]
 ATTR_NAMES = [c[0] for c in ATTR_COLS]
 

@@ -1,7 +1,7 @@
 """
 Jeppesen kaynağı — jeppesen.sqlite `boundary` tablosu.
 
-source = jeppesen, dataProvider = (boş)
+data_provider/data_originator/data_effectivity: jeppesen.sqlite ile aynı dizindeki data.json'dan.
 - type            = airspace_type(name, ham_type) or 'OTHER'  (öncelik sıralı)
 - classification  = CA->A ... CG->G
 - designator      = restrictive_type-restrictive_designation
@@ -19,9 +19,6 @@ from shapely.prepared import prep
 from common import schema
 from common.classify import airspace_type, jeppesen_classification, normalize_vref
 from common.geo import antimeridian_safe, decode_polygon_blob, polygon_from_geojson
-
-SOURCE = "jeppesen"
-PROVIDER = ""
 
 BCOLS = [
     "type", "name", "restrictive_type", "restrictive_designation",
@@ -67,6 +64,7 @@ def load(cfg, base):
     if jc.get("fir_exclude_enabled", True):
         fir = _load_fir(os.path.join(base, jc["fir_exclude"]))
 
+    meta = schema.load_source_meta(os.path.dirname(jc["sqlite"]))
     add_date = schema.file_mtime_str(jc["sqlite"])
     conn = sqlite3.connect(jc["sqlite"])
     conn.row_factory = sqlite3.Row
@@ -94,8 +92,9 @@ def load(cfg, base):
             designator=_designator(row["restrictive_type"], row["restrictive_designation"]),
             name=name,
             classification=jeppesen_classification(jtype),
-            source=SOURCE,
-            dataProvider=PROVIDER,
+            data_provider=meta["data_provider"],
+            data_originator=meta["data_originator"],
+            data_effectivity=meta["data_effectivity"],
             add_date=add_date,
             geometry=geom,
         )

@@ -2,10 +2,14 @@
 AIXM 5.1 VerticalStructure (engel) verilerini Area-1 altindaki tum
 ulke/alan klasorlerinden toplayip tek bir spatial GeoPackage'a yazar.
 Tüm sütunlarda index oluşturur - query performansı için optimize edilmiş.
+
+Provenance: her ülke klasöründeki data.json'dan data_provider/data_originator/
+data_effectivity okunur ve o ülkenin tüm kayıtlarına uygulanır.
 """
 
 from __future__ import annotations
 
+import json
 import struct
 import sqlite3
 import sys
@@ -32,16 +36,32 @@ COLUMNS: list[tuple[str, str]] = [
     ("type", "TEXT"),
     ("lighted", "TEXT"),
     ("group", "TEXT"),
-    ("verticalExtent", "INTEGER"),
+    ("verticalExtent", "REAL"),
     ("verticalExtent_uom", "TEXT"),
     ("part_type", "TEXT"),
     ("designator", "TEXT"),
-    ("elevation", "INTEGER"),
+    ("elevation", "REAL"),
     ("elevation_uom", "TEXT"),
     ("colour", "TEXT"),
     ("country", "TEXT"),
     ("source_file", "TEXT"),
+    ("data_provider", "TEXT"),
+    ("data_originator", "TEXT"),
+    ("data_effectivity", "TEXT"),
 ]
+
+DEFAULT_META = {"data_provider": "", "data_originator": "", "data_effectivity": ""}
+
+
+def load_source_meta(path: Path) -> dict[str, str]:
+    """Ülke klasöründeki data.json'dan data_provider/data_originator/data_effectivity oku."""
+    meta = dict(DEFAULT_META)
+    if path.exists():
+        with path.open(encoding="utf-8") as f:
+            data = json.load(f)
+        for k in meta:
+            meta[k] = data.get(k, "") or ""
+    return meta
 
 
 def parse_pos(text: str | None) -> tuple[float, float] | None:
@@ -65,6 +85,19 @@ def to_int(text: str | None) -> int | None:
         return int(text)
     except ValueError:
         return None
+
+
+def to_num(text: str | None) -> int | float | None:
+    """Mesafe degerleri icin: AIXM ValDistance/ValDistanceVertical ondalik
+    kabul ediyor (LH verisi metre cinsinden 309.6 gibi), bu yuzden int()
+    zorlanmaz. Tam sayi ise int, degilse float doner."""
+    if text is None:
+        return None
+    try:
+        value = float(text)
+    except ValueError:
+        return None
+    return int(value) if value.is_integer() else value
 
 
 def child_text(elem: ET.Element | None, path: str) -> str | None:
@@ -110,12 +143,14 @@ def iter_structures(xml_path: Path):
 
 
 def extract_part_rows(
-    structure: ET.Element, country: str, source_file: str
+    structure: ET.Element, country: str, source_file: str, meta: dict[str, str] | None = None
 ) -> tuple[list[dict[str, Any]], int]:
     identifier = child_text(structure, f"{GML}identifier")
     time_slice = structure.find(f"{AIXM}timeSlice/{AIXM}VerticalStructureTimeSlice")
     if identifier is None or time_slice is None:
         return [], 0
+
+    meta = meta or DEFAULT_META
 
     common = {
         "identifier": identifier,
@@ -134,6 +169,9 @@ def extract_part_rows(
         "group": child_text(time_slice, f"{AIXM}group"),
         "country": country,
         "source_file": source_file,
+        "data_provider": meta["data_provider"],
+        "data_originator": meta["data_originator"],
+        "data_effectivity": meta["data_effectivity"],
     }
 
     rows: list[dict[str, Any]] = []
@@ -164,7 +202,7 @@ def extract_part_rows(
         row = dict(common)
         row.update(
             {
-                "verticalExtent": to_int(
+                "verticalExtent": to_num(
                     vertical_extent_elem.text if vertical_extent_elem is not None else None
                 ),
                 "verticalExtent_uom": (
@@ -172,7 +210,7 @@ def extract_part_rows(
                 ),
                 "part_type": child_text(part, f"{AIXM}type"),
                 "designator": child_text(part, f"{AIXM}designator"),
-                "elevation": to_int(
+                "elevation": to_num(
                     elevation_elem.text if elevation_elem is not None else None
                 ),
                 "elevation_uom": (
@@ -419,6 +457,7 @@ def main() -> None:
 
     for country_dir in country_dirs:
         country = country_dir.name
+        meta = load_source_meta(country_dir / "data.json")
         for xml_path in find_xml_files(country_dir):
             if not looks_like_aixm(xml_path):
                 print(f"  Atlandi (AIXM degil): {xml_path.relative_to(BASE_DIR)}")
@@ -429,7 +468,7 @@ def main() -> None:
             file_skipped = 0
             for structure in iter_structures(xml_path):
                 file_structures += 1
-                rows, skipped = extract_part_rows(structure, country, xml_path.name)
+                rows, skipped = extract_part_rows(structure, country, xml_path.name, meta)
                 all_rows.extend(rows)
                 file_rows += len(rows)
                 file_skipped += skipped

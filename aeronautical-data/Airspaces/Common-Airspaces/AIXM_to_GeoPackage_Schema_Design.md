@@ -34,10 +34,11 @@ implementasyona geçilmedi).
 
 ## 2. Tablo Şeması: `airspaces`
 
-Kolon adları, AIXM dışı olan birkaç alan (`id`, `source`, `dataProvider`,
-`add_date`) hariç, **AIXM 5.2 attribute isimleriyle birebir aynı** (camelCase)
-kullanılır. Bu, veri sözlüğü ile şema arasında doğrudan izlenebilirlik
-sağlar ve import/export script'lerinde eşlemeyi (mapping) basitleştirir.
+Kolon adları, AIXM dışı olan birkaç alan (`id`, `data_provider`,
+`data_originator`, `data_effectivity`, `add_date`) hariç, **AIXM 5.2 attribute
+isimleriyle birebir aynı** (camelCase) kullanılır. Bu, veri sözlüğü ile şema
+arasında doğrudan izlenebilirlik sağlar ve import/export script'lerinde
+eşlemeyi (mapping) basitleştirir.
 
 | Kolon | Tip (SQLite/GPKG) | AIXM Karşılığı | Not |
 |---|---|---|---|
@@ -62,8 +63,9 @@ sağlar ve import/export script'lerinde eşlemeyi (mapping) basitleştirir.
 | `annotationRemark` | TEXT | `annotation.translatedNote`/`note` (purpose=REMARK) | serbest metin |
 | `annotationWarning` | TEXT | `annotation.translatedNote`/`note` (purpose=WARNING) | serbest metin |
 | `annotationDisclaimer` | TEXT | `annotation.translatedNote`/`note` (purpose=DISCLAIMER) | serbest metin |
-| `source` | TEXT | — (AIXM dışı) | jeppesen / tailored / aixm-icao vb. |
-| `dataProvider` | TEXT | — (AIXM dışı) | dhmi vb., opsiyonel |
+| `data_provider` | TEXT | — (AIXM dışı) | Veriyi sağlayan kurum/kaynak (Jeppesen, Ibosoft AIS, soaringweb.org vb.) |
+| `data_originator` | TEXT | — (AIXM dışı) | Verinin asıl sahibi/yayımcısı (DHMİ Türkiye, KKTC SHD, HungaroControl, SHGM vb.), opsiyonel |
+| `data_effectivity` | TEXT | — (AIXM dışı) | Verinin geçerlilik/AIRAC tarihi, serbest metin (ör. "09 JUL 2026 (AIRAC 2607)") |
 
 ---
 
@@ -87,7 +89,7 @@ bulabilmek.
 | `upperLowerSeparation` | **Tutulmuyor** | Nadir kullanılan, alt/üst hava sahası ayrım bilgisi; ihtiyaç doğarsa eklenir. |
 | `location` (AirspaceVolume için tekil nokta referansı) | **Tutulmuyor** | `geom` zaten tam poligonu sağladığı için ayrı bir nokta referansına gerek yok. |
 | `discreteLevelSeries` (StandardLevelColumn association) | **Tutulmuyor** | Ayrı bir feature'a association; kapsam dışı. |
-| Kaynak/izlenebilirlik (`source`, `dataProvider`) | **AIXM'de karşılığı yok, eklendi** | Merkezi veritabanı birden fazla kaynaktan (Jeppesen, tailored, AIXM-ICAO, DHMI vb.) veri birleştireceği için provenance takibi gerekli görüldü. |
+| Kaynak/izlenebilirlik (`data_provider`, `data_originator`, `data_effectivity`) | **AIXM'de karşılığı yok, eklendi** | Merkezi veritabanı birden fazla kaynaktan (Jeppesen, tailored, DHMI vb.) veri birleştireceği için provenance + geçerlilik tarihi takibi gerekli görüldü. Jeppesen/LH/LT kaynaklarında değer, kaynak dizinindeki `data.json`'dan; tailored'da her kayıt için ayrı ayrı `tailored.json` içinden gelir. |
 | `gml:id` / kaynak sistem ID'si (`sourceId`) | **Tutulmuyor** | Yeniden içe aktarmada eşleştirme/update senaryosu şimdilik planlanmıyor; basit autoincrement `id` yeterli görüldü. |
 
 ---

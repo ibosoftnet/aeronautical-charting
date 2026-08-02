@@ -2,6 +2,15 @@
 EAD-SDO Designated Point (DP) veri dosyalarını (3 regional) birleştirir,
 QGIS uyumlu spatial GeoPackage üretir. Tailored (manuel) veri desteği dahil.
 Tüm sütunlarda index oluşturur (dp_coord hariç) - query performansı için optimize edilmiş.
+
+Provenance: her kayıtta data_provider/data_originator/data_effectivity sütunları bulunur
+(eski created_by/source sütunlarının yerine geçer).
+  - XML (EAD-SDO) kayıtları: data_provider/data_effectivity data.json'dan, data_originator
+    ham kayıttaki OrgCre/txtName'den okunur.
+  - Tailored kayıtlar: data_provider her zaman "Ibosoft AIS"; data_originator ve
+    data_effectivity kayıt bazında tailored-designated-points.jsonc'de girilir.
+    data_effectivity, dosyanın kök objesindeki _effectivity_keys sözlüğü üzerinden bir
+    anahtar (örn. "eff_trnc") olarak da girilebilir, bu durumda gerçek değere çözümlenir.
 """
 
 from __future__ import annotations
@@ -22,6 +31,8 @@ DP_NE_XML = BASE_DIR / "dp-ne.xml"
 DP_NW_XML = BASE_DIR / "dp-nw.xml"
 DP_SE_XML = BASE_DIR / "dp-se.xml"
 TAILORED_JSON = BASE_DIR / "tailored-designated-points.jsonc"
+DATA_JSON = BASE_DIR / "data.json"
+META_KEYS = ("data_provider", "data_effectivity")
 
 # GeoPackage katmanları — code_type'a göre ayrı
 LAYER_TYPES: list[str] = [
@@ -54,6 +65,18 @@ def looks_like_xml(path: Path) -> tuple[bool, str | None]:
     if not head.startswith("<"):
         return False, head[:80]
     return True, None
+
+
+def load_source_meta(path: Path) -> dict[str, str]:
+    """data.json'dan data_provider/data_effectivity oku (data_originator ham
+    kayıttaki OrgCre/txtName'den ayrı ayrı türetilir, burada değil)."""
+    meta = {k: "" for k in META_KEYS}
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        for k in META_KEYS:
+            meta[k] = data.get(k, "") or ""
+    return meta
 
 
 def normalize_code(value: str | None) -> str | None:
@@ -231,7 +254,7 @@ def create_base_gpkg(con: sqlite3.Connection):
     con.commit()
 
 
-def load_dp_records(xml_path: Path) -> list[dict[str, Any]]:
+def load_dp_records(xml_path: Path, meta: dict[str, str]) -> list[dict[str, Any]]:
     """DP XML'i oku"""
     records: list[dict[str, Any]] = []
     valid, reason = looks_like_xml(xml_path)
@@ -267,9 +290,10 @@ def load_dp_records(xml_path: Path) -> list[dict[str, Any]]:
             "lon_text": lon_text,
             "lat_dd": lat_dd,
             "lon_dd": lon_dd,
-            "created_by": originator,
             "dt_wef": (elem.findtext("dtWef") or "").strip() or None,
-            "source": "xml",
+            "data_provider": meta["data_provider"],
+            "data_originator": originator,
+            "data_effectivity": meta["data_effectivity"],
         })
 
         elem.clear()
@@ -278,7 +302,11 @@ def load_dp_records(xml_path: Path) -> list[dict[str, Any]]:
 
 
 def load_tailored_data(json_path: Path) -> tuple[list[dict[str, Any]], set[tuple[str, str]]]:
-    """Tailored veri yükle ve suppress set oluştur"""
+    """Tailored veri yükle ve suppress set oluştur.
+
+    Kök yapı hem eski (bare list) hem yeni ({"_effectivity_keys": {...}, "points": [...]})
+    formatını destekler.
+    """
     tailored: list[dict[str, Any]] = []
     suppress_set: set[tuple[str, str]] = set()
 
@@ -291,23 +319,36 @@ def load_tailored_data(json_path: Path) -> tuple[list[dict[str, Any]], set[tuple
         text_clean = strip_jsonc_comments(text)
         data = json.loads(text_clean)
 
-        if not isinstance(data, list):
+        if isinstance(data, dict):
+            eff_keys = data.get("_effectivity_keys", {}) or {}
+            entries = data.get("points", [])
+        elif isinstance(data, list):
+            eff_keys = {}
+            entries = data
+        else:
             return tailored, suppress_set
 
-        for item in data:
+        if not isinstance(entries, list):
+            return tailored, suppress_set
+
+        for item in entries:
             if not isinstance(item, dict):
                 continue
 
             # Suppress kaydını işle
             suppress = item.get("suppress", {})
-            if isinstance(suppress, dict) and suppress.get("code_id") and suppress.get("created_by"):
+            if isinstance(suppress, dict) and suppress.get("code_id") and suppress.get("data_originator"):
                 code_id = normalize_code(suppress.get("code_id"))
-                created_by = suppress.get("created_by")
-                if code_id and created_by:
-                    suppress_set.add((code_id, created_by))
+                data_originator = suppress.get("data_originator")
+                if code_id and data_originator:
+                    suppress_set.add((code_id, data_originator))
 
             # Tailored kaydını ekle (suppress boş değilse override, boşsa sadece ekle)
             if all(k in item for k in ["code_id"]):
+                data_effectivity = item.get("data_effectivity")
+                if data_effectivity in eff_keys:
+                    data_effectivity = eff_keys[data_effectivity]
+
                 tailored_row = {
                     "mid": item.get("mid"),
                     "code_id": normalize_code(item.get("code_id")),
@@ -316,9 +357,10 @@ def load_tailored_data(json_path: Path) -> tuple[list[dict[str, Any]], set[tuple
                     "datum": item.get("datum"),
                     "lat_dd": item.get("lat_dd"),
                     "lon_dd": item.get("lon_dd"),
-                    "created_by": item.get("created_by"),
                     "dt_wef": item.get("dt_wef"),
-                    "source": "tailored",
+                    "data_provider": "Ibosoft AIS",
+                    "data_originator": item.get("data_originator"),
+                    "data_effectivity": data_effectivity,
                 }
                 tailored.append(tailored_row)
 
@@ -343,8 +385,8 @@ def apply_suppress(
     filtered = []
     for row in rows:
         code_id = normalize_code(row.get("code_id"))
-        created_by = row.get("created_by")
-        if (code_id, created_by) not in suppress_set:
+        data_originator = row.get("data_originator")
+        if (code_id, data_originator) not in suppress_set:
             filtered.append(row)
 
     return filtered
@@ -454,11 +496,13 @@ def main():
     print("EAD-SDO Designated Points GeoPackage Oluşturucu")
     print("=" * 60)
 
+    meta = load_source_meta(DATA_JSON)
+
     # Kayıtları oku (3 regional file)
     print("\n[1] XML dosyaları okunuyor...")
-    dp_ne = load_dp_records(DP_NE_XML)
-    dp_nw = load_dp_records(DP_NW_XML)
-    dp_se = load_dp_records(DP_SE_XML)
+    dp_ne = load_dp_records(DP_NE_XML, meta)
+    dp_nw = load_dp_records(DP_NW_XML, meta)
+    dp_se = load_dp_records(DP_SE_XML, meta)
 
     total_loaded = len(dp_ne) + len(dp_nw) + len(dp_se)
     print(f"  NE: {len(dp_ne)}, NW: {len(dp_nw)}, SE: {len(dp_se)} (Toplam: {total_loaded})")

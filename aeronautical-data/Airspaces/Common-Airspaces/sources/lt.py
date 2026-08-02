@@ -1,7 +1,7 @@
 """
 LT kaynağı — DHMI GeoJSON (data-sources/LT/*.json).
 
-source = tailored, dataProvider = dhmi
+data_provider/data_originator/data_effectivity: data-sources/LT/data.json'dan.
 - type          = dosya adı (TMA.json -> TMA)
 - designator    = property `hi`
 - name          = pic içindeki 2. NAME (açıklayıcı)
@@ -15,15 +15,14 @@ from common import schema
 from common.classify import derive_uom
 from common.geo import parse_pic, polygon_from_geojson
 
-SOURCE = "tailored"
-PROVIDER = "dhmi"
-
 # SECTOR verisi tailored.json'a elle taşındı; LT modülü artık işlemez.
-SKIP_FILES = {"SECTOR"}
+# data: provenance meta (data_provider/data_originator/data_effectivity), feature dosyası değil.
+SKIP_FILES = {"SECTOR", "data"}
 
 
 def load(cfg, base):
     lt_dir = os.path.join(base, cfg["lt"]["dir"])
+    meta = schema.load_source_meta(lt_dir)
     for path in sorted(glob.glob(os.path.join(lt_dir, "*.json"))):
         typ = os.path.splitext(os.path.basename(path))[0]
         if typ in SKIP_FILES:
@@ -53,8 +52,9 @@ def load(cfg, base):
                 lowerLimit=(pic.get("LOWER LIMIT") or [""])[0],
                 lowerLimitUom=derive_uom(lor),
                 lowerLimitReference=lor,
-                source=SOURCE,
-                dataProvider=PROVIDER,
+                data_provider=meta["data_provider"],
+                data_originator=meta["data_originator"],
+                data_effectivity=meta["data_effectivity"],
                 add_date=add_date,
                 geometry=geom,
             )

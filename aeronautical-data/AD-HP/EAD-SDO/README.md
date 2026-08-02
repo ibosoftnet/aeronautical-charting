@@ -20,8 +20,6 @@ Bu araç, EAD-SDO (European AIS Data Service - Standardized Data Only) kaynaklar
 
 | Sütun | Açıklama |
 |---|---|
-| `source_region` | Kaynak bölge: `afr` / `am-pac` / `asi-aus` / `eur` / `tailored` |
-| `source_file` | Kaynak XML dosya adı |
 | `join_key` | `code_icao` varsa o, yoksa `code_id` (usage eşleştirme anahtarı) |
 | `mid` | EAD-SDO kayıt id'si |
 | `code_id` | Aerodrome/Heliport - Identification (ICAO **değil**) |
@@ -32,7 +30,10 @@ Bu araç, EAD-SDO (European AIS Data Service - Standardized Data Only) kaynaklar
 | `datum` | Koordinat datumu (WGE = WGS84) |
 | `lat_text`, `lon_text` | Ham koordinat metni (DMS/DDM/DD) |
 | `lat_dd`, `lon_dd` | Ondalık derece (WGS84) |
-| `dt_wef`, `arp_work_hr`, `sys_rmk`, `created_by` | ARP kaydının tarih/çalışma saati/not/oluşturan kurum bilgisi |
+| `dt_wef`, `arp_work_hr`, `sys_rmk` | ARP kaydının geçerlilik tarihi / çalışma saati / notu |
+| `data_provider` | Veriyi sağlayan/derleyen kurum (EAD-SDO kayıtlarında `data.json`'dan "EUROCONTROL EAD SDO"; tailored kayıtlarda daima "Ibosoft AIS") |
+| `data_originator` | Verinin asıl kaynağı/oluşturanı (EAD-SDO kayıtlarında ham `OrgCre/txtName`; tailored kayıtlarda kayıt başına elle girilir, ör. "DHMİ Türkiye", "KKTC SHD", "SHGM") |
+| `data_effectivity` | Verinin geçerlilik/AIRAC tarihi (EAD-SDO kayıtlarında `data.json`'dan; tailored kayıtlarda kayıt başına elle girilir, `tailored-data.jsonc`'nin `_effectivity_keys` sözlüğündeki bir anahtar adıysa oradan çözülür) |
 | `field_elevation`, `field_elevation_uom` | Havalimanı elevation'ı (REAL) ve birimi (`FT`/`M`). AIXM 5.1 `fieldElevation`. Kaynak XML'de yok → yalnızca **tailored** girilir |
 | `field_elevation_accuracy`, `field_elevation_accuracy_uom` | Elevation doğruluğu (REAL) ve birimi (`FT`/`M`). AIXM 5.1 `fieldElevationAccuracy` |
 | `vertical_datum` | Düşey datum (ör. `EGM96`). AIXM 5.1 `verticalDatum` |
@@ -47,8 +48,6 @@ Bu araç, EAD-SDO (European AIS Data Service - Standardized Data Only) kaynaklar
 | Sütun | Tip | Kaynak | Açıklama |
 |---|---|---|---|
 | `match_id` | INTEGER | rastgele üretilir | **Çapraz tablo eşleştirme anahtarı** |
-| `source_region` | TEXT | — | `afr` / `am-pac` / `asi-aus` / `eur` (RWY-DIR kaynağı) |
-| `source_file` | TEXT | — | RWY-DIR XML dosya adı |
 | `ahp_code_id` | TEXT | RWY-DIR `Ahp/codeId` | Aerodrome/Heliport - Identification (ICAO **değil**) |
 | `ahp_code_icao` | TEXT | RWY-DIR `Ahp/codeIcao` | ICAO kodu (varsa; bazı bölgelerde yok) |
 | `rwy_designator` | TEXT | RWY-DIR `Rwy/txtDesig` | Pist **çifti** designator'ı (örn. "RWY 11/29") |
@@ -56,8 +55,10 @@ Bu araç, EAD-SDO (European AIS Data Service - Standardized Data Only) kaynaklar
 | `true_bearing` | REAL | RWY-DIR `valTrueBrg` | Gerçek (true) bearing, derece |
 | `mag_bearing` | REAL | RWY-DIR `valMagBrg` | Manyetik bearing, derece |
 | `dir_dt_wef` | TEXT | RWY-DIR `dtWef` | RWY-DIR kaydının geçerlilik tarihi |
-| `dir_created_by` | TEXT | RWY-DIR `OrgCre/txtName` | RWY-DIR kaydını oluşturan kurum |
 | `dir_mid` | TEXT | RWY-DIR `mid` | RWY-DIR kayıt id'si |
+| `data_provider` | TEXT | `data.json` / tailored | Veriyi sağlayan/derleyen kurum (EAD-SDO kayıtlarında "EUROCONTROL EAD SDO"; tailored kayıtlarda daima "Ibosoft AIS") |
+| `data_originator` | TEXT | RWY-DIR + RWY-INFO `OrgCre/txtName` / tailored | Verinin asıl kaynağı (EAD-SDO kayıtlarında RWY-DIR ve RWY-INFO'nun `OrgCre/txtName` değerleri birleştirilir; tailored kayıtlarda elle girilir) |
+| `data_effectivity` | TEXT | `data.json` / tailored | Verinin geçerlilik/AIRAC tarihi |
 | `info_joined` | INTEGER | — | 0/1 — RWY-INFO eşleşmesi bulundu mu |
 | `info_designator` | TEXT | RWY-INFO `txtDesig` | RWY-INFO'daki pist çifti designator'ı (ham, eşleşince) |
 | `info_length` | REAL | RWY-INFO `valLen` | Pist uzunluğu (eşleşince; bazı kayıtlarda hiç yok) |
@@ -89,11 +90,9 @@ Bu araç, EAD-SDO (European AIS Data Service - Standardized Data Only) kaynaklar
 | `info_siwl_weight_unit` | TEXT | RWY-INFO `uomsiwlweight` | SIWL ağırlık birimi |
 | `info_siwl_tire_pressure` | REAL | RWY-INFO `valSiwlTirePressure` | SIWL lastik basıncı |
 | `info_siwl_tire_pressure_unit` | TEXT | RWY-INFO `uomSiwlTirePressure` | SIWL basınç birimi |
-| `info_created_by` | TEXT | RWY-INFO `OrgCre/txtName` | RWY-INFO kaydını oluşturan kurum |
 | `info_ahp_code_id` | TEXT | RWY-INFO `Ahp/codeId` | RWY-INFO tarafındaki codeId (doğrulama amaçlı) |
 | `info_ahp_code_icao` | TEXT | RWY-INFO `Ahp/codeIcao` | RWY-INFO tarafındaki ICAO kodu (sıkça boş) |
 | `info_mid` | TEXT | RWY-INFO `mid` | RWY-INFO kayıt id'si |
-| `info_source_file` | TEXT | — | RWY-INFO XML dosya adı (`rwy-ad-hp-{a..z}.xml`) |
 
 ## `match_id` Çapraz Tablo Eşleştirme Sözleşmesi
 
@@ -119,6 +118,8 @@ Tek dosya: **`tailored-data.jsonc`** — hem `ad_hp_airports` hem `ad_hp_runways
 - Her iki listede de: aynı anahtar mevcutsa kayıt varsayılan olarak **TAM override** sayılır (kaynak veriden alan mirası yapılmaz, vermediğiniz alanlar boş kalır); anahtar yoksa **yeni kayıt** eklenir; `enabled: false` ile geçici devre dışı bırakılabilir.
 - **`"override": true` (partial patch)**: bir kayda bu anahtar eklenirse tam override yerine **kısmi güncelleme** yapılır — mevcut kaydın (EAD-SDO veya gerçek veri) tüm alanları korunur, yalnızca bu kayıtta yazdığınız alanlar üzerine yazılır. Bir EAD-SDO meydanına yalnızca `field_elevation`/`transition_altitude` gibi birkaç alan eklemek için idealdir (`name`, `country`, `usage_*` silinmez). ID mevcut değilse uyarı basılır ve normal yeni kayıt olarak işlenir. Hem `airports` hem `runways` için geçerlidir.
 - `match_id` bu dosyada **hiçbir zaman yazılmaz** — script otomatik atar. Aynı `ahp_code_id`/`code_id` değerine sahip airport ve runway tailored kayıtları, gerçek veriden gelen kayıtlarla aynı şekilde otomatik olarak aynı `match_id`'yi paylaşır.
+- `data_provider` bu dosyadaki tüm kayıtlarda (hem tam yeni kayıtlar hem `"override": true` patch'leri) script tarafından **her zaman "Ibosoft AIS" olarak zorlanır** — dosyada yazsanız da script üzerine yazar. `"override": true` patch'lerinde `data_originator`/`data_effectivity` yazılmazsa, mevcut EAD-SDO kaydından miras alınan değerler (ham `OrgCre/txtName` + `data.json`'daki tarih) korunur.
+- `data_originator`/`data_effectivity` tam yeni tailored kayıtlarda **kayıt başına elle girilir** (dosyanın en sonunda `data_provider`'dan hemen sonra). `data_effectivity` alanına dosyanın en üstündeki `"_effectivity_keys"` sözlüğünde tanımlı bir anahtar adı yazılırsa (örn. `"eff_shgm"`), değeri build sırasında oradan çözülür — böylece aynı geçerlilik tarihini paylaşan çok sayıda kayıt, AIRAC güncellemesinde tek yerden değiştirilebilir.
 - Detaylı alan listesi ve örnekler için dosya içi yorumlara bakın.
 
 ## Bilinen Sınırlamalar
@@ -171,6 +172,7 @@ python build_ad_hp_gpkg.py
 
 - `arp-{afr,am-pac,asi-aus,eur}.xml` — ARP (havalimanı/heliport konum) verisi.
 - `ad-hp-usage.xml` — kullanım kısıtlaması verisi.
+- `data.json` — EAD-SDO kaynaklı tüm kayıtlar için ortak `data_provider`/`data_effectivity` (ör. "EUROCONTROL EAD SDO" / AIRAC tarihi); `data_originator` bundan gelmez, ham kayıttaki `OrgCre/txtName`'den türetilir.
 - `tailored-data.jsonc` — manuel override/ek kayıt dosyası, **hem havalimanı hem pist verisi için** (`"airports"` + `"runways"` listeleri; bkz. "Tailored Veri" bölümü ve dosya içi yorumlar).
 - `rwy-dir-{afr,am,asi-aus,eur}.xml` — pist YÖN verisi (bearing). Not: dosya adı bölge etiketi Americas/Pacific için `am`, script içinde `am-pac` olarak etiketlenir (ARP tablosuyla tutarlılık için).
 - `rwy-ad-hp-{a..z}.xml` — pist ÇİFT verisi (boyut, yüzey, PCN/LCN, strip, ağırlık limitleri), `CODE ID` ilk harfine göre 26 dosyaya bölünmüş **aktif RWY-INFO kaynağı**.

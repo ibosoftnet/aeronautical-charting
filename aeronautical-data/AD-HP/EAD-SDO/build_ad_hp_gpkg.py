@@ -6,6 +6,13 @@ spatial (ad_hp_airports) + aspatial (ad_hp_runways) GeoPackage katmanları
 rastgele tamsayı) ile çapraz tablo eşleştirmesi mümkündür — aynı
 havalimanına ait satırlar aynı çalıştırmada aynı match_id'yi paylaşır.
 Tüm sütunlarda index oluşturur - query performansı için optimize edilmiş.
+
+Provenance: her iki tabloda da data_provider/data_originator/data_effectivity
+sütunları vardır. EAD-SDO kaynaklı satırlarda data_provider/data_effectivity
+data.json'dan, data_originator ham kayıttaki OrgCre/txtName'den gelir.
+Tailored (tailored-data.jsonc) kayıtlarında data_provider daima "Ibosoft AIS";
+data_originator/data_effectivity kayıt başına girilir (data_effectivity,
+dosyanın _effectivity_keys sözlüğündeki bir anahtar adıysa oradan çözülür).
 """
 
 from __future__ import annotations
@@ -24,7 +31,22 @@ AIRPORTS_TABLE = "ad_hp_airports"
 USAGE_TABLE = "ad_hp_usage"
 USAGE_XML = BASE_DIR / "ad-hp-usage.xml"
 TAILORED_DATA_FILE = BASE_DIR / "tailored-data.jsonc"
+DATA_JSON = BASE_DIR / "data.json"
 EXPORT_RAW_USAGE_TABLE = False  # False => QGIS'te yalnızca birleşik airport katmanı görünsün
+
+META_KEYS = ("data_provider", "data_effectivity")
+
+
+def load_source_meta(path: Path) -> dict[str, str]:
+    """data.json'dan data_provider/data_effectivity oku (data_originator ham
+    kayıttaki OrgCre/txtName'den ayrı ayrı türetilir, burada değil)."""
+    meta = {k: "" for k in META_KEYS}
+    if path.exists():
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        for k in META_KEYS:
+            meta[k] = data.get(k, "") or ""
+    return meta
 
 ARP_SOURCES = [
     ("afr", BASE_DIR / "arp-afr.xml"),
@@ -61,10 +83,11 @@ SECTION_PREFIXES = {
 ROOT_FIELDS = {"dtWef", "dtCom", "mid"}
 
 AIRPORT_FIELD_NAMES = [
-    "source_region", "source_file", "join_key", "mid",
+    "join_key", "mid",
     "code_id", "code_icao", "code_iata", "code_type", "name", "city", "country",
     "datum", "lat_text", "lon_text", "lat_dd", "lon_dd", "dt_wef", "arp_work_hr",
-    "sys_rmk", "created_by",
+    "sys_rmk",
+    "data_provider", "data_originator", "data_effectivity",
     "field_elevation", "field_elevation_uom",
     "field_elevation_accuracy", "field_elevation_accuracy_uom",
     "vertical_datum",
@@ -82,10 +105,11 @@ AIRPORT_FIELD_NAMES = [
 USAGE_VALUE_FIELDS = [name for name in AIRPORT_FIELD_NAMES if name.startswith("usage_") and name != "usage_joined"]
 
 RUNWAY_FIELD_NAMES = [
-    "match_id", "source_region", "source_file",
+    "match_id",
     "ahp_code_id", "ahp_code_icao",
     "rwy_designator", "direction_designator", "true_bearing", "mag_bearing",
-    "dir_dt_wef", "dir_created_by", "dir_mid",
+    "dir_dt_wef", "dir_mid",
+    "data_provider", "data_originator", "data_effectivity",
     "info_joined", "info_designator", "info_length", "info_width", "info_dim_unit",
     "info_dt_wef", "info_dt_com",
     "info_surface_composition", "info_surface_condition", "info_surface_preparation",
@@ -97,8 +121,8 @@ RUNWAY_FIELD_NAMES = [
     "info_auw_weight", "info_auw_weight_unit",
     "info_siwl_weight", "info_siwl_weight_unit",
     "info_siwl_tire_pressure", "info_siwl_tire_pressure_unit",
-    "info_created_by", "info_ahp_code_id", "info_ahp_code_icao",
-    "info_mid", "info_source_file",
+    "info_ahp_code_id", "info_ahp_code_icao",
+    "info_mid",
 ]
 
 MATCH_ID_MIN = 1
@@ -461,8 +485,10 @@ def apply_tailored_data(
 
     if isinstance(payload, list):
         entries = payload
+        eff_keys: dict[str, str] = {}
     elif isinstance(payload, dict):
         entries = payload.get("airports", [])
+        eff_keys = payload.get("_effectivity_keys", {}) or {}
     else:
         raise RuntimeError("Tailored data kökü liste veya {'airports': [...]} olmalıdır")
 
@@ -511,8 +537,6 @@ def apply_tailored_data(
             if override_mode and existing_row is None:
                 print(f"Tailored override kaydı (#{idx}): '{join_key}' mevcut değil, yeni kayıt olarak ekleniyor")
             base = {field: None for field in AIRPORT_FIELD_NAMES}
-            base["source_region"] = "tailored"
-            base["source_file"] = tailored_path.name
             base["join_key"] = join_key
             base["code_id"] = join_key
             base["code_icao"] = join_key if len(join_key) == 4 else None
@@ -560,10 +584,11 @@ def apply_tailored_data(
         base["usage_joined"] = 1 if has_usage else int(base.get("usage_joined") or 0)
         if not base.get("mid"):
             base["mid"] = f"TAILORED:{resolved_key}"
-        if not base.get("source_region"):
-            base["source_region"] = "tailored"
-        if not base.get("source_file"):
-            base["source_file"] = tailored_path.name
+
+        # Tailored kayıtların tamamı Ibosoft AIS tarafından derlenir/girilir.
+        base["data_provider"] = "Ibosoft AIS"
+        if base.get("data_effectivity") in eff_keys:
+            base["data_effectivity"] = eff_keys[base["data_effectivity"]]
 
         rows_by_key[resolved_key] = base
         if resolved_key not in ordered_keys:
@@ -605,8 +630,10 @@ def apply_tailored_runway_data(
 
     if isinstance(payload, list):
         entries = payload
+        eff_keys: dict[str, str] = {}
     elif isinstance(payload, dict):
         entries = payload.get("runways", [])
+        eff_keys = payload.get("_effectivity_keys", {}) or {}
     else:
         raise RuntimeError("Tailored pist verisi kökü liste veya {'runways': [...]} olmalıdır")
 
@@ -662,8 +689,6 @@ def apply_tailored_runway_data(
             if override_mode and existing is None:
                 print(f"Tailored override pist kaydı (#{idx}): '{code} {direction}' mevcut değil, yeni olarak ekleniyor")
             base = {field: None for field in RUNWAY_FIELD_NAMES}
-            base["source_region"] = "tailored"
-            base["source_file"] = tailored_path.name
             base["ahp_code_id"] = code
             base["direction_designator"] = direction
 
@@ -695,8 +720,11 @@ def apply_tailored_runway_data(
         base["info_joined"] = 1 if has_info else int(base.get("info_joined") or 0)
         if not base.get("dir_mid"):
             base["dir_mid"] = f"TAILORED:{code}:{direction}"
-        if not base.get("info_source_file") and has_info:
-            base["info_source_file"] = tailored_path.name
+
+        # Tailored pist kayıtlarının tamamı Ibosoft AIS tarafından derlenir/girilir.
+        base["data_provider"] = "Ibosoft AIS"
+        if base.get("data_effectivity") in eff_keys:
+            base["data_effectivity"] = eff_keys[base["data_effectivity"]]
 
         rows_by_key[key] = base
         if key not in ordered_keys:
@@ -713,6 +741,7 @@ def apply_tailored_runway_data(
 
 def iter_airport_rows(usage_by_code: dict[str, dict[str, str | None]]):
     skipped_sources: list[tuple[str, str]] = []
+    meta = load_source_meta(DATA_JSON)
 
     for region, path in ARP_SOURCES:
         valid, reason = looks_like_xml(path)
@@ -741,8 +770,6 @@ def iter_airport_rows(usage_by_code: dict[str, dict[str, str | None]]):
             usage = usage_by_code.get(join_key, {})
 
             yield {
-                "source_region": region,
-                "source_file": path.name,
                 "join_key": join_key,
                 "mid": (elem.findtext("mid") or "").strip() or None,
                 "code_id": code_id,
@@ -760,7 +787,9 @@ def iter_airport_rows(usage_by_code: dict[str, dict[str, str | None]]):
                 "dt_wef": (elem.findtext("dtWef") or "").strip() or None,
                 "arp_work_hr": (elem.findtext("codeWorkHr") or "").strip() or None,
                 "sys_rmk": (elem.findtext("sysRmk") or "").strip() or None,
-                "created_by": (elem.findtext("OrgCre/txtName") or "").strip() or None,
+                "data_provider": meta["data_provider"],
+                "data_originator": (elem.findtext("OrgCre/txtName") or "").strip() or None,
+                "data_effectivity": meta["data_effectivity"],
                 "usage_mid": usage.get("mid"),
                 "usage_dt_wef": usage.get("dtWef"),
                 "usage_dt_com": usage.get("dtCom"),
@@ -800,6 +829,7 @@ def iter_airport_rows(usage_by_code: dict[str, dict[str, str | None]]):
 
 def iter_runway_rows(rwy_info_index: dict[tuple[str, str], dict[str, str | None]]):
     skipped_sources: list[tuple[str, str]] = []
+    meta = load_source_meta(DATA_JSON)
 
     for region, path in RWY_DIR_SOURCES:
         valid, reason = looks_like_xml(path)
@@ -824,10 +854,10 @@ def iter_runway_rows(rwy_info_index: dict[tuple[str, str], dict[str, str | None]
             designator_key = normalize_designator(pair_designator)
             info = rwy_info_index.get((ahp_code_id, designator_key), {}) if designator_key else {}
 
+            dir_created_by = (elem.findtext("OrgCre/txtName") or "").strip() or None
+
             yield {
                 "match_id": None,  # main() içinde get_match_id(ahp_code_id) ile atanır
-                "source_region": region,
-                "source_file": path.name,
                 "ahp_code_id": ahp_code_id,
                 "ahp_code_icao": ahp_code_icao,
                 "rwy_designator": pair_designator,
@@ -835,8 +865,10 @@ def iter_runway_rows(rwy_info_index: dict[tuple[str, str], dict[str, str | None]
                 "true_bearing": to_float(elem.findtext("valTrueBrg")),
                 "mag_bearing": to_float(elem.findtext("valMagBrg")),
                 "dir_dt_wef": (elem.findtext("dtWef") or "").strip() or None,
-                "dir_created_by": (elem.findtext("OrgCre/txtName") or "").strip() or None,
                 "dir_mid": (elem.findtext("mid") or "").strip() or None,
+                "data_provider": meta["data_provider"],
+                "data_originator": merge_value(dir_created_by, info.get("info_created_by")),
+                "data_effectivity": meta["data_effectivity"],
                 "info_joined": 1 if info else 0,
                 "info_designator": info.get("info_designator"),
                 "info_length": to_float(info.get("info_length")),
@@ -868,11 +900,9 @@ def iter_runway_rows(rwy_info_index: dict[tuple[str, str], dict[str, str | None]
                 "info_siwl_weight_unit": info.get("info_siwl_weight_unit"),
                 "info_siwl_tire_pressure": to_float(info.get("info_siwl_tire_pressure")),
                 "info_siwl_tire_pressure_unit": info.get("info_siwl_tire_pressure_unit"),
-                "info_created_by": info.get("info_created_by"),
                 "info_ahp_code_id": info.get("info_ahp_code_id"),
                 "info_ahp_code_icao": info.get("info_ahp_code_icao"),
                 "info_mid": info.get("info_mid"),
-                "info_source_file": info.get("info_source_file"),
             }
             elem.clear()
 
@@ -963,8 +993,6 @@ def write_airports_layer(
         CREATE TABLE "{AIRPORTS_TABLE}" (
             fid INTEGER PRIMARY KEY AUTOINCREMENT,
             geom BLOB NOT NULL,
-            source_region TEXT,
-            source_file TEXT,
             join_key TEXT,
             mid TEXT,
             code_id TEXT,
@@ -982,7 +1010,9 @@ def write_airports_layer(
             dt_wef TEXT,
             arp_work_hr TEXT,
             sys_rmk TEXT,
-            created_by TEXT,
+            data_provider TEXT,
+            data_originator TEXT,
+            data_effectivity TEXT,
             field_elevation REAL,
             field_elevation_uom TEXT,
             field_elevation_accuracy REAL,
@@ -1094,8 +1124,6 @@ def write_runways_table(con: sqlite3.Connection, rows: list[dict[str, str | floa
         CREATE TABLE "{RUNWAYS_TABLE}" (
             fid INTEGER PRIMARY KEY AUTOINCREMENT,
             match_id INTEGER,
-            source_region TEXT,
-            source_file TEXT,
             ahp_code_id TEXT,
             ahp_code_icao TEXT,
             rwy_designator TEXT,
@@ -1103,8 +1131,10 @@ def write_runways_table(con: sqlite3.Connection, rows: list[dict[str, str | floa
             true_bearing REAL,
             mag_bearing REAL,
             dir_dt_wef TEXT,
-            dir_created_by TEXT,
             dir_mid TEXT,
+            data_provider TEXT,
+            data_originator TEXT,
+            data_effectivity TEXT,
             info_joined INTEGER DEFAULT 0,
             info_designator TEXT,
             info_length REAL,
@@ -1136,11 +1166,9 @@ def write_runways_table(con: sqlite3.Connection, rows: list[dict[str, str | floa
             info_siwl_weight_unit TEXT,
             info_siwl_tire_pressure REAL,
             info_siwl_tire_pressure_unit TEXT,
-            info_created_by TEXT,
             info_ahp_code_id TEXT,
             info_ahp_code_icao TEXT,
-            info_mid TEXT,
-            info_source_file TEXT
+            info_mid TEXT
         )
         '''
     )

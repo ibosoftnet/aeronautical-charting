@@ -1,4 +1,12 @@
 {
+  // Tailored kayıtların data_effectivity alanına burada tanımlı bir anahtar
+  // adı yazılırsa, değeri build script'i tarafından buradan çözülür — AIRAC
+  // güncellemesi tek yerden yapılabilsin diye (bkz. build_ad_hp_gpkg.py).
+  "_effectivity_keys": {
+    "eff_trnc": "15 MAY 2025 (AIRAC 2505)",
+    "eff_shgm": "21 JAN 2026 (Non-AIRAC)"
+  },
+
   // Tailored airport overrides / ek kayıtlar
   // ------------------------------------------------------------
   // Bu dosya `ad_hp_airports` nihai çıktı alan adlarını kullanır.
@@ -205,7 +213,10 @@
       "usage_purpose": "NS | P",
       "usage_status": "ACTIVE",
       "usage_org_name": "Güvenlik Kuvvetleri Havacılık Birlik Komutanlığı, Dikmen/GİRNE",
-      "sys_rmk": "Elev 772 FT (235.30 M). Geoid undulation 91 FT. Mag var 5.26E (2020), annual change 4.5. AFS: LCIKZTZX. Traffic: NTL, IFR-VFR, Military-Non-scheduled-Private. Authorization from TRNC Security Forces Command required before filing flight plans. IFR traffic approaches LCEN (Ercan), lands at Karter after obtaining VFR. Fuel: JP-8 (limited), 1 truck 20600 L, 1000 L/min. De-icing: NIL. Hangar: 2 semi-closed. Fire: H2; CFR team summer 0500-1400, winter 0600-1500 UTC. Seasonal clearing: NIL. Landing area 50x50 M asphalt; parking 60x100 M concrete; taxiway 22 M concrete, T1-T4. Security: H24. AIS/ARO/MET via LCEN. Customs: not available."
+      "sys_rmk": "Elev 772 FT (235.30 M). Geoid undulation 91 FT. Mag var 5.26E (2020), annual change 4.5. AFS: LCIKZTZX. Traffic: NTL, IFR-VFR, Military-Non-scheduled-Private. Authorization from TRNC Security Forces Command required before filing flight plans. IFR traffic approaches LCEN (Ercan), lands at Karter after obtaining VFR. Fuel: JP-8 (limited), 1 truck 20600 L, 1000 L/min. De-icing: NIL. Hangar: 2 semi-closed. Fire: H2; CFR team summer 0500-1400, winter 0600-1500 UTC. Seasonal clearing: NIL. Landing area 50x50 M asphalt; parking 60x100 M concrete; taxiway 22 M concrete, T1-T4. Security: H24. AIS/ARO/MET via LCEN. Customs: not available.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
 
     // ============================================================
@@ -241,7 +252,10 @@
       "usage_purpose": "NS | P",
       "usage_status": "ACTIVE",
       "usage_org_name": "Civil Aviation Department, Geçitkale Airport G.Mağusa via Mersin 10 TÜRKİYE",
-      "sys_rmk": "Elev 143 FT MSL. Mag var 3.8E (2004), 0.04 increasing. AFS: LCGKYDYX. Traffic: NTL, IFR-VFR, Military-Non-scheduled-Private. Fuel: Piston (100-130), Turbine Jet A1, by tanker unlimited. De-icing: NIL. Fire: Cat 7, RWY foaming not available; rescue when operative as ERCAN. Seasonal clearing: not available; standing water on RWY by NOTAM. AD admin: NOTAM. Customs, immigration, health, AIS, ARO, MET, ATS, fueling, handling, security: during operation."
+      "sys_rmk": "Elev 143 FT MSL. Mag var 3.8E (2004), 0.04 increasing. AFS: LCGKYDYX. Traffic: NTL, IFR-VFR, Military-Non-scheduled-Private. Fuel: Piston (100-130), Turbine Jet A1, by tanker unlimited. De-icing: NIL. Fire: Cat 7, RWY foaming not available; rescue when operative as ERCAN. Seasonal clearing: not available; standing water on RWY by NOTAM. AD admin: NOTAM. Customs, immigration, health, AIS, ARO, MET, ATS, fueling, handling, security: during operation.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
 
     // ============================================================
@@ -277,7 +291,10 @@
       "usage_purpose": "S | NS | P",
       "usage_status": "ACTIVE",
       "usage_org_name": "T&T Havalimanı İşletmeciliği İnşaat Sanayi ve Ticaret Şirketi Limited",
-      "sys_rmk": "Elev 402 FT. Geoid undulation 90 FT. Mag var 4E (2012). AFS: LCENYDYX. Traffic: INTL-NTL, IFR-VFR, Scheduled-Non-scheduled-Private. Fuel: Jet A1 by tanker, unlimited. Fire: Cat 7 (Cat 8 and 9 on demand); RWY foaming not available. De-icing: not available. Seasonal clearing: not available. AD admin, customs, immigration, health, AIS, ARO, ATS, fueling, handling, security: H24."
+      "sys_rmk": "Elev 402 FT. Geoid undulation 90 FT. Mag var 4E (2012). AFS: LCENYDYX. Traffic: INTL-NTL, IFR-VFR, Scheduled-Non-scheduled-Private. Fuel: Jet A1 by tanker, unlimited. Fire: Cat 7 (Cat 8 and 9 on demand); RWY foaming not available. De-icing: not available. Seasonal clearing: not available. AD admin, customs, immigration, health, AIS, ARO, ATS, fueling, handling, security: H24.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
 
     // ============================================================
@@ -314,7 +331,10 @@
       "usage_purpose": "P",
       "usage_status": "ACTIVE",
       "usage_org_name": "19 mayıs Üniversitesi Ballıca Kampüsü",
-      "sys_rmk": "Elev 1.5 M (5 FT). Geoid undulation 93 FT. Mag var 5.8°E (2015), 0.09° increasing. İstiklal Mahallesi Uzaytem 55420 19 Mayıs / SAMSUN."
+      "sys_rmk": "Elev 1.5 M (5 FT). Geoid undulation 93 FT. Mag var 5.8°E (2015), 0.09° increasing. İstiklal Mahallesi Uzaytem 55420 19 Mayıs / SAMSUN.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 FEB 2017 (AIRAC 1702)"
     },
 
     // ============================================================
@@ -350,7 +370,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "Multi Enerji Müh. İnş. Tıb. Malz. Nak. San. Ve Dış Tic. Ltd. Şti.",
-      "sys_rmk": "Elev 141.5 M (464 FT). Pist 350×20 M, sıkıştırılmış ve düzlenmiş çim. Banarlı Mahallesi, Süleymanpaşa, Tekirdağ."
+      "sys_rmk": "Elev 141.5 M (464 FT). Pist 350×20 M, sıkıştırılmış ve düzlenmiş çim. Banarlı Mahallesi, Süleymanpaşa, Tekirdağ.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -386,7 +409,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "Türk Hava Kurumu Genel Başkanlığı",
-      "sys_rmk": "Elev 833.5 M (2734 FT). Pist 1200×50 M, sıkıştırılmış ve düzlenmiş çim. Yenice Mahallesi Türkkuşu Caddesi No:1, İnönü/Eskişehir."
+      "sys_rmk": "Elev 833.5 M (2734 FT). Pist 1200×50 M, sıkıştırılmış ve düzlenmiş çim. Yenice Mahallesi Türkkuşu Caddesi No:1, İnönü/Eskişehir.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -422,7 +448,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "Sivrihisar Havacılık Merkezi - SUSHM Necati Artan Tesisleri",
-      "sys_rmk": "Elev 850 M (2790 FT). Mag var 5.2E (2012), 0.09 increasing. RWY 05/23: 1810×32 M Asphalt, slope 0.5%. Apron: Concrete. TWY: Asphalt 10M width. Traffic: VFR. PCN 43/F/C/X/T, LCN 57. Fuel: Avgas, Jet-A1, Mogas by tanker H24. Fire: 1 vehicle with dry chemical powder. AIS Briefing Office H24. GND: Sivrihisar Artan Tower 131.625 (on demand). APP: Sivrihisar Tower/Eskişehir APP 122.100. Yesilköy Mah., 26600 Sivrihisar/Eskişehir. Location: 20 KM South of Sivrihisar Town."
+      "sys_rmk": "Elev 850 M (2790 FT). Mag var 5.2E (2012), 0.09 increasing. RWY 05/23: 1810×32 M Asphalt, slope 0.5%. Apron: Concrete. TWY: Asphalt 10M width. Traffic: VFR. PCN 43/F/C/X/T, LCN 57. Fuel: Avgas, Jet-A1, Mogas by tanker H24. Fire: 1 vehicle with dry chemical powder. AIS Briefing Office H24. GND: Sivrihisar Artan Tower 131.625 (on demand). APP: Sivrihisar Tower/Eskişehir APP 122.100. Yesilköy Mah., 26600 Sivrihisar/Eskişehir. Location: 20 KM South of Sivrihisar Town.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -458,7 +487,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "Askeri Fabrika ve Tersane İşletme A.Ş",
-      "sys_rmk": "Elev 99 M (325 FT). Pist 1400×30 M, asfalt. Fuat Kuşcuoğlu Cad. Nu:57, Osmangazi/Bursa."
+      "sys_rmk": "Elev 99 M (325 FT). Pist 1400×30 M, asfalt. Fuat Kuşcuoğlu Cad. Nu:57, Osmangazi/Bursa.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -494,7 +526,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "KTO Karatay Üniversitesi",
-      "sys_rmk": "Elev 1005 M (3297 FT). Asfalt pist 1500×30 M ve çim pist 1000×40 M. 1500×15 M taksi yolu. Eğribayat Mahallesi, Selçuklu/Konya."
+      "sys_rmk": "Elev 1005 M (3297 FT). Asfalt pist 1500×30 M ve çim pist 1000×40 M. 1500×15 M taksi yolu. Eğribayat Mahallesi, Selçuklu/Konya.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -530,7 +565,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "İstanbul Havacılık Kulübü Derneği",
-      "sys_rmk": "Elev 110 M (361 FT). Pist 1065×25 M. FAA, AASHTO ve BZS'ye göre E-8, A-7-5 ve CH. Cihadiye Köyü Kuruluk Mevkii, Pamukova/Sakarya."
+      "sys_rmk": "Elev 110 M (361 FT). Pist 1065×25 M. FAA, AASHTO ve BZS'ye göre E-8, A-7-5 ve CH. Cihadiye Köyü Kuruluk Mevkii, Pamukova/Sakarya.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -567,7 +605,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "Gökdeniz Havacılık ve Yatçılık Turizm LTD. ŞTİ.",
-      "sys_rmk": "Elev 17 M (56 FT). Pist 670×25 M, sıkıştırılmış ve düzlenmiş çim. LT-R42 BOZCAADA tanıtmalı Tahditli Sahasında. Uçuş gerçekleştirilmesi öncesi SHGM Hava Seyrüsefer Daire Başkanlığından izin alınması gerekmektedir. Cumhuriyet Mahallesi Ova Mevkii, Bozcaada/Çanakkale."
+      "sys_rmk": "Elev 17 M (56 FT). Pist 670×25 M, sıkıştırılmış ve düzlenmiş çim. LT-R42 BOZCAADA tanıtmalı Tahditli Sahasında. Uçuş gerçekleştirilmesi öncesi SHGM Hava Seyrüsefer Daire Başkanlığından izin alınması gerekmektedir. Cumhuriyet Mahallesi Ova Mevkii, Bozcaada/Çanakkale.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -603,7 +644,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "Divriği Sivil Havacılık ve Turizm Geliştirme LTD.ŞTİ.",
-      "sys_rmk": "Elev 1073 M (3520 FT). Pist 1100×20 M, beton. Turabali Mahallesi Atatürk Caddesi No:573, Divriği/Sivas."
+      "sys_rmk": "Elev 1073 M (3520 FT). Pist 1100×20 M, beton. Turabali Mahallesi Atatürk Caddesi No:573, Divriği/Sivas.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -631,7 +675,6 @@
       "transition_altitude_uom": "FT",
       "transition_level": null,
       "transition_level_nil_reason": "By ATC",
-      "originator": "Ibosoft",
       "usage_work_hr": "HO",
       "usage_work_hr_rmk": "Operating hours to be determined by operator. Refer to AD administrator.",
       "usage_time_ref": "UTC",
@@ -642,7 +685,10 @@
       "usage_purpose": "NS | P",
       "usage_status": "CLOSED",
       "usage_org_name": "Ibosoft",
-      "sys_rmk": "Elev 2441 FT (744 M). Geoid undulation -124 FT. Mag var 6.23°E (2025). Surface: Concrete. Traffic: NTL, IFR-VFR, Non-scheduled-General Aviation-Military. Operationally closed but infrastructure available. Fuel: Diesel, gasoline, LPG from nearby gas stations. De-icing: Not available. Hangar: Not available. Repair facilities: Not available. AFS: NIL. Website: ais.ibosoft.net.tr. Refer to AD administrator for further information."
+      "sys_rmk": "Elev 2441 FT (744 M). Geoid undulation -124 FT. Mag var 6.23°E (2025). Surface: Concrete. Traffic: NTL, IFR-VFR, Non-scheduled-General Aviation-Military. Operationally closed but infrastructure available. Fuel: Diesel, gasoline, LPG from nearby gas stations. De-icing: Not available. Hangar: Not available. Repair facilities: Not available. AFS: NIL. Website: ais.ibosoft.net.tr. Refer to AD administrator for further information.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "Ibosoft AIS",
+      "data_effectivity": "14 MAY 2026 (AIRAC 2605)"
     },
 
     // ============================================================
@@ -678,7 +724,10 @@
       "usage_purpose": "",
       "usage_status": "ACTIVE",
       "usage_org_name": "Türk Hava Kurumu Genel Başkanlığı - THK Karain Havacılık Eğitim Merkezi",
-      "sys_rmk": "Elev 308 M (1011 FT). Antalya-Burdur Karayolu 32. km., Döşemealtı/Antalya."
+      "sys_rmk": "Elev 308 M (1011 FT). Antalya-Burdur Karayolu 32. km., Döşemealtı/Antalya.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -688,92 +737,92 @@
     // Kaynak: Jeppesen (altitude + transition_altitude); LTHA–LTHG elev'leri manuel.
     // Transition level tüm meydanlarda dinamik/ATC → boş + nil_reason.
     // ============================================================
-    {"override": true, "join_key": "LTAB", "field_elevation": 2691, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAC", "field_elevation": 3158, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAD", "field_elevation": 2653, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAE", "field_elevation": 2767, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAF", "field_elevation": 63, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAG", "field_elevation": 232, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAH", "field_elevation": 3310, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAI", "field_elevation": 177, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAJ", "field_elevation": 2305, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAL", "field_elevation": 3524, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAN", "field_elevation": 3392, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAO", "field_elevation": 3022, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAP", "field_elevation": 1798, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAR", "field_elevation": 5237, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAS", "field_elevation": 44, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAT", "field_elevation": 2837, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAU", "field_elevation": 3463, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAV", "field_elevation": 3185, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAW", "field_elevation": 1859, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAY", "field_elevation": 2797, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTAZ", "field_elevation": 3090, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBA", "field_elevation": 94, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBD", "field_elevation": 104, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBF", "field_elevation": 340, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBG", "field_elevation": 170, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBH", "field_elevation": 30, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBI", "field_elevation": 2581, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBJ", "field_elevation": 410, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBK", "field_elevation": 433, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBL", "field_elevation": 16, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBN", "field_elevation": 3026, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBO", "field_elevation": 2898, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBP", "field_elevation": 43, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBQ", "field_elevation": 188, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBR", "field_elevation": 763, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBS", "field_elevation": 20, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBT", "field_elevation": 265, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBU", "field_elevation": 570, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBV", "field_elevation": 202, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBW", "field_elevation": 61, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBX", "field_elevation": 400, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBY", "field_elevation": 2599, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTBZ", "field_elevation": 3327, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCA", "field_elevation": 2928, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCB", "field_elevation": 11, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCC", "field_elevation": 2260, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCD", "field_elevation": 3791, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCE", "field_elevation": 5765, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCF", "field_elevation": 5889, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCG", "field_elevation": 105, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCI", "field_elevation": 5473, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCJ", "field_elevation": 1831, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCK", "field_elevation": 4157, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCL", "field_elevation": 2000, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCM", "field_elevation": 32, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCN", "field_elevation": 1724, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCO", "field_elevation": 5461, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCP", "field_elevation": 2214, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCR", "field_elevation": 1727, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCS", "field_elevation": 2708, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCT", "field_elevation": 3102, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 19000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCU", "field_elevation": 3492, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCV", "field_elevation": 2041, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTCW", "field_elevation": 6096, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 17000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTDA", "field_elevation": 259, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTDB", "field_elevation": 25, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFA", "field_elevation": 13, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFB", "field_elevation": 10, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFC", "field_elevation": 2835, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFD", "field_elevation": 51, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFE", "field_elevation": 21, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFG", "field_elevation": 126, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFH", "field_elevation": 17, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFJ", "field_elevation": 312, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFK", "field_elevation": 84, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFL", "field_elevation": 143, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
-    {"override": true, "join_key": "LTFM", "field_elevation": 325, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFN", "field_elevation": 2875, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTFO", "field_elevation": 16, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTHA", "field_elevation": 3650, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
-    {"override": true, "join_key": "LTHB", "field_elevation": 2300, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
-    {"override": true, "join_key": "LTHC", "field_elevation": 42.7, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
-    {"override": true, "join_key": "LTHD", "field_elevation": 2194, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
-    {"override": true, "join_key": "LTHE", "field_elevation": 10, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL"},
-    {"override": true, "join_key": "LTHF", "field_elevation": 120, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"},
-    {"override": true, "join_key": "LTHG", "field_elevation": 110, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC"}
+    {"override": true, "join_key": "LTAB", "field_elevation": 2691, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAC", "field_elevation": 3158, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAD", "field_elevation": 2653, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAE", "field_elevation": 2767, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAF", "field_elevation": 63, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAG", "field_elevation": 232, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAH", "field_elevation": 3310, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAI", "field_elevation": 177, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAJ", "field_elevation": 2305, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAL", "field_elevation": 3524, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAN", "field_elevation": 3392, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAO", "field_elevation": 3022, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAP", "field_elevation": 1798, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAR", "field_elevation": 5237, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAS", "field_elevation": 44, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAT", "field_elevation": 2837, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAU", "field_elevation": 3463, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAV", "field_elevation": 3185, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAW", "field_elevation": 1859, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAY", "field_elevation": 2797, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTAZ", "field_elevation": 3090, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBA", "field_elevation": 94, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBD", "field_elevation": 104, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBF", "field_elevation": 340, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBG", "field_elevation": 170, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBH", "field_elevation": 30, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBI", "field_elevation": 2581, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBJ", "field_elevation": 410, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBK", "field_elevation": 433, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBL", "field_elevation": 16, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBN", "field_elevation": 3026, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBO", "field_elevation": 2898, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBP", "field_elevation": 43, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBQ", "field_elevation": 188, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBR", "field_elevation": 763, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBS", "field_elevation": 20, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBT", "field_elevation": 265, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBU", "field_elevation": 570, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBV", "field_elevation": 202, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBW", "field_elevation": 61, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBX", "field_elevation": 400, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBY", "field_elevation": 2599, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTBZ", "field_elevation": 3327, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCA", "field_elevation": 2928, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCB", "field_elevation": 11, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCC", "field_elevation": 2260, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCD", "field_elevation": 3791, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCE", "field_elevation": 5765, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCF", "field_elevation": 5889, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCG", "field_elevation": 105, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCI", "field_elevation": 5473, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCJ", "field_elevation": 1831, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCK", "field_elevation": 4157, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCL", "field_elevation": 2000, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCM", "field_elevation": 32, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCN", "field_elevation": 1724, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCO", "field_elevation": 5461, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCP", "field_elevation": 2214, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCR", "field_elevation": 1727, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCS", "field_elevation": 2708, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCT", "field_elevation": 3102, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 19000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCU", "field_elevation": 3492, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCV", "field_elevation": 2041, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTCW", "field_elevation": 6096, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 17000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTDA", "field_elevation": 259, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTDB", "field_elevation": 25, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFA", "field_elevation": 13, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFB", "field_elevation": 10, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFC", "field_elevation": 2835, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFD", "field_elevation": 51, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFE", "field_elevation": 21, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFG", "field_elevation": 126, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFH", "field_elevation": 17, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFJ", "field_elevation": 312, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFK", "field_elevation": 84, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFL", "field_elevation": 143, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFM", "field_elevation": 325, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFN", "field_elevation": 2875, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 12000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTFO", "field_elevation": 16, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 15000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTHA", "field_elevation": 3650, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTHB", "field_elevation": 2300, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTHC", "field_elevation": 42.7, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTHD", "field_elevation": 2194, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTHE", "field_elevation": 10, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": null, "transition_altitude_nil_reason": "NIL", "transition_level": null, "transition_level_nil_reason": "NIL", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTHF", "field_elevation": 120, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"},
+    {"override": true, "join_key": "LTHG", "field_elevation": 110, "field_elevation_uom": "FT", "vertical_datum": "EGM96", "transition_altitude": 10000, "transition_altitude_uom": "FT", "transition_level": null, "transition_level_nil_reason": "By ATC", "data_provider": "Ibosoft AIS"}
   ],
 
   // ============================================================
@@ -797,7 +846,10 @@
       "info_strip_dim_unit": "M",
       "info_auw_weight": "5700",
       "info_auw_weight_unit": "KG",
-      "info_rmk": "TORA 960 M, TODA 960 M, ASDA 960 M, LDA 960 M. THR elevation 5 FT (1.5 M). GUND 93 FT. THR coordinates 413057.49N 0360715.06E. RESA 80×60 M. Max weight 5700 kg."
+      "info_rmk": "TORA 960 M, TODA 960 M, ASDA 960 M, LDA 960 M. THR elevation 5 FT (1.5 M). GUND 93 FT. THR coordinates 413057.49N 0360715.06E. RESA 80×60 M. Max weight 5700 kg.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 FEB 2017 (AIRAC 1702)"
     },
     {
       "enabled": true,
@@ -815,7 +867,10 @@
       "info_strip_dim_unit": "M",
       "info_auw_weight": "5700",
       "info_auw_weight_unit": "KG",
-      "info_rmk": "TORA 960 M, TODA 960 M, ASDA 960 M, LDA 960 M. THR elevation 5 FT (1.5 M). GUND 91 FT. THR coordinates 413026.87N 0360708.67E. RESA 90×60 M. Max weight 5700 kg."
+      "info_rmk": "TORA 960 M, TODA 960 M, ASDA 960 M, LDA 960 M. THR elevation 5 FT (1.5 M). GUND 91 FT. THR coordinates 413026.87N 0360708.67E. RESA 90×60 M. Max weight 5700 kg.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 FEB 2017 (AIRAC 1702)"
     },
     {
       "enabled": true,
@@ -827,7 +882,10 @@
       "info_dim_unit": "M",
       "info_surface_composition": "GRASS",
       "info_pcn_note": "Unknown",
-      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. THR coordinates: Pist Başı 410405.58N 0272129.61E MSL 146M, Pist Sonu 410402.61N 0272115.10E MSL 137M."
+      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. THR coordinates: Pist Başı 410405.58N 0272129.61E MSL 146M, Pist Sonu 410402.61N 0272115.10E MSL 137M.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -839,7 +897,10 @@
       "info_dim_unit": "M",
       "info_surface_composition": "GRASS",
       "info_pcn_note": "Unknown",
-      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. THR coordinates: Pist Başı 394910.66N 0300725.69E MSL 833M, Pist Sonu 394924.39N 0300644.81E MSL 834M."
+      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. THR coordinates: Pist Başı 394910.66N 0300725.69E MSL 833M, Pist Sonu 394924.39N 0300644.81E MSL 834M.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -851,7 +912,10 @@
       "info_dim_unit": "M",
       "info_surface_composition": "ASPH",
       "info_pcn_note": "Unknown",
-      "info_rmk": "THR coordinates: Pist Başı 401359.5130N 0285950.2833E MSL 99.851M, Pist Sonu 401359.5205N 0290049.2859E MSL 98.178M."
+      "info_rmk": "THR coordinates: Pist Başı 401359.5130N 0285950.2833E MSL 99.851M, Pist Sonu 401359.5205N 0290049.2859E MSL 98.178M.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -863,7 +927,10 @@
       "info_dim_unit": "M",
       "info_surface_composition": "ASPH",
       "info_pcn_note": "Unknown",
-      "info_rmk": "Asfalt pist. 1500×15 M taksi yolu bulunmaktadır. Pist Orta Noktası: 380500N 0324600E MSL 1005M."
+      "info_rmk": "Asfalt pist. 1500×15 M taksi yolu bulunmaktadır. Pist Orta Noktası: 380500N 0324600E MSL 1005M.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -875,7 +942,10 @@
       "info_dim_unit": "M",
       "info_surface_composition": "GRASS",
       "info_pcn_note": "Unknown",
-      "info_rmk": "Çim pist. Pist Orta Noktası: 380500N 0324600E MSL 1005M."
+      "info_rmk": "Çim pist. Pist Orta Noktası: 380500N 0324600E MSL 1005M.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -887,7 +957,10 @@
       "info_dim_unit": "M",
       "info_surface_composition": "OTHER",
       "info_pcn_note": "Unknown",
-      "info_rmk": "FAA, AASHTO ve BZS'ye göre E-8, A-7-5 ve CH olarak tanımlanmıştır. THR coordinates: Pist Başı 402908.13968N 0300948.55748E MSL 110.884M, Pist Sonu 402919.32668N 0301031.33558E MSL 109.886M."
+      "info_rmk": "FAA, AASHTO ve BZS'ye göre E-8, A-7-5 ve CH olarak tanımlanmıştır. THR coordinates: Pist Başı 402908.13968N 0300948.55748E MSL 110.884M, Pist Sonu 402919.32668N 0301031.33558E MSL 109.886M.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -899,7 +972,10 @@
       "info_dim_unit": "M",
       "info_surface_composition": "GRASS",
       "info_pcn_note": "Unknown",
-      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. LT-R42 BOZCAADA tanıtmalı Tahditli Sahasında. THR coordinates: Pist Başı 395021N 0255927E MSL 12.192M, Pist Sonu 395012N 0255952E MSL 21.336M."
+      "info_rmk": "Sıkıştırılmış ve düzlenmiş çimpist. LT-R42 BOZCAADA tanıtmalı Tahditli Sahasında. THR coordinates: Pist Başı 395021N 0255927E MSL 12.192M, Pist Sonu 395012N 0255952E MSL 21.336M.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -911,7 +987,10 @@
       "info_dim_unit": "M",
       "info_surface_composition": "CONC",
       "info_pcn_note": "Unknown",
-      "info_rmk": "Beton pist. THR coordinates: Pist Başı 391955.55N 0380532.35E MSL 1073M, Pist Sonu 395012N 0255952E MSL 1072M."
+      "info_rmk": "Beton pist. THR coordinates: Pist Başı 391955.55N 0380532.35E MSL 1073M, Pist Sonu 395012N 0255952E MSL 1072M.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -929,7 +1008,10 @@
       "info_strip_width": "120",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope -0.39%. * -0.62% (0-976 m), +0.07% (976-1281 m), -0.17% (1281-1342 m), +0.07% (1342-1525 m), -0.45 % (1525-1895 m)",
-      "info_rmk": "TORA 1895 M, TODA 2025 M, ASDA 1895 M, LDA 1895 M. THR elevation 744 M / 2441 FT. GUND -38 M. THR coordinates 404441 93N 0313829 94E. Clearway 130 x 280 M. RESA 130 x 120 M. Small trees may be present in the area. APCH LGT: NALS."
+      "info_rmk": "TORA 1895 M, TODA 2025 M, ASDA 1895 M, LDA 1895 M. THR elevation 744 M / 2441 FT. GUND -38 M. THR coordinates 404441 93N 0313829 94E. Clearway 130 x 280 M. RESA 130 x 120 M. Small trees may be present in the area. APCH LGT: NALS.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "Ibosoft AIS",
+      "data_effectivity": "14 MAY 2026 (AIRAC 2605)"
     },
     {
       "enabled": true,
@@ -947,7 +1029,10 @@
       "info_strip_width": "120",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope +0.39%. ** +0.45% (0-370 m), -0.07% (370-553 m), +0.17% (553-614 m), -0.07% (614-919 m), +0.62% (919-1895 m)",
-      "info_rmk": "TORA 1895 M, TODA 1985 M, ASDA 1895 M, LDA 1895 M. THR elevation 737 M / 2416 FT. GUND -38 M. THR coordinates 404508 21N 0313943 02E. Clearway 90 x 230 M. RESA 90 x 120 M. Small trees may be present in the area. APCH LGT: NALS."
+      "info_rmk": "TORA 1895 M, TODA 1985 M, ASDA 1895 M, LDA 1895 M. THR elevation 737 M / 2416 FT. GUND -38 M. THR coordinates 404508 21N 0313943 02E. Clearway 90 x 230 M. RESA 90 x 120 M. Small trees may be present in the area. APCH LGT: NALS.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "Ibosoft AIS",
+      "data_effectivity": "14 MAY 2026 (AIRAC 2605)"
     },
     {
       "enabled": true,
@@ -965,7 +1050,10 @@
       "info_strip_width": "300",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.3%",
-      "info_rmk": "TORA 2755 M, TODA 2755 M, ASDA 2815 M, LDA 2755 M. THR elevation 117.9 M / 387 FT. THR coordinates 350935 41N 0332914 84E. SWY 60×45 M (Asphalt). APCH LGT: NIL. THR LGT: Green. VASIS: PAPI (Left) 3.5°. RWY edge LGT: 2755 M, 50 M spacing, Color coded White, LIH. RWY End LGT: Red. CBR can vary within RESA due to meteorological conditions."
+      "info_rmk": "TORA 2755 M, TODA 2755 M, ASDA 2815 M, LDA 2755 M. THR elevation 117.9 M / 387 FT. THR coordinates 350935 41N 0332914 84E. SWY 60×45 M (Asphalt). APCH LGT: NIL. THR LGT: Green. VASIS: PAPI (Left) 3.5°. RWY edge LGT: 2755 M, 50 M spacing, Color coded White, LIH. RWY End LGT: Red. CBR can vary within RESA due to meteorological conditions.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
     {
       "enabled": true,
@@ -983,7 +1071,10 @@
       "info_strip_width": "300",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.7%",
-      "info_rmk": "TORA 2755 M, TODA 2755 M, ASDA 2815 M, LDA 2755 M. THR elevation 109.9 M / 361 FT. THR coordinates 350902 21N 0333055 95E. SWY 60×45 M (Asphalt). APCH LGT: Precision APP Calvert System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3°. RWY edge LGT: 2755 M, 50 M spacing, Color coded White, LIH. RWY End LGT: Red. CBR can vary within RESA due to meteorological conditions."
+      "info_rmk": "TORA 2755 M, TODA 2755 M, ASDA 2815 M, LDA 2755 M. THR elevation 109.9 M / 361 FT. THR coordinates 350902 21N 0333055 95E. SWY 60×45 M (Asphalt). APCH LGT: Precision APP Calvert System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3°. RWY edge LGT: 2755 M, 50 M spacing, Color coded White, LIH. RWY End LGT: Red. CBR can vary within RESA due to meteorological conditions.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
     {
       "enabled": true,
@@ -1001,7 +1092,10 @@
       "info_strip_width": "280",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.6%",
-      "info_rmk": "TORA 3000 M, TODA 3000 M, ASDA 3000 M, LDA 3000 M. THR elevation 116.7 M / 383 FT. GUND 90 FT. THR coordinates 350916 13N 0332951 21E. RESA 240×150 M. APCH LGT: Precision APP Barette System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3.5° 16 FT. RWY edge LGT: 3000 M, 60 M spacing, Color coded White/Yellow, LIH. RWY End LGT: Red."
+      "info_rmk": "TORA 3000 M, TODA 3000 M, ASDA 3000 M, LDA 3000 M. THR elevation 116.7 M / 383 FT. GUND 90 FT. THR coordinates 350916 13N 0332951 21E. RESA 240×150 M. APCH LGT: Precision APP Barette System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3.5° 16 FT. RWY edge LGT: 3000 M, 60 M spacing, Color coded White/Yellow, LIH. RWY End LGT: Red.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
     {
       "enabled": true,
@@ -1019,7 +1113,10 @@
       "info_strip_width": "280",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.6%",
-      "info_rmk": "TORA 3000 M, TODA 3000 M, ASDA 3000 M, LDA 3000 M. THR elevation 99.2 M / 325 FT. GUND 90 FT. THR coordinates 350839 99N 0333141 25E. RESA 240×150 M. APCH LGT: Precision APP Barette System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3°. RWY edge LGT: 3000 M, 60 M spacing, Color coded White/Yellow, LIH. RWY End LGT: Red."
+      "info_rmk": "TORA 3000 M, TODA 3000 M, ASDA 3000 M, LDA 3000 M. THR elevation 99.2 M / 325 FT. GUND 90 FT. THR coordinates 350839 99N 0333141 25E. RESA 240×150 M. APCH LGT: Precision APP Barette System 900 M CAT I LIH. THR LGT: Green. VASIS: PAPI (Left) 3°. RWY edge LGT: 3000 M, 60 M spacing, Color coded White/Yellow, LIH. RWY End LGT: Red.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
     {
       "enabled": true,
@@ -1037,7 +1134,10 @@
       "info_strip_width": "300",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.25%",
-      "info_rmk": "TORA 2850 M, TODA 2850 M, ASDA 3135 M, LDA 2850 M. THR elevation 43.5 M / 143 FT. THR coordinates 351410 14N 0334214 89E. SWY 285×45 M (Asphalt). Threshold of RWY 09/27 are 300 M Concrete. APCH LGT: NIL. THR LGT: Green. VASIS: 3° 3 BAR. RWY edge LGT: 2850 M, 25 M spacing, White. RWY End LGT: Red. RWY 09/27 circling guidance light AVBL."
+      "info_rmk": "TORA 2850 M, TODA 2850 M, ASDA 3135 M, LDA 2850 M. THR elevation 43.5 M / 143 FT. THR coordinates 351410 14N 0334214 89E. SWY 285×45 M (Asphalt). Threshold of RWY 09/27 are 300 M Concrete. APCH LGT: NIL. THR LGT: Green. VASIS: 3° 3 BAR. RWY edge LGT: 2850 M, 25 M spacing, White. RWY End LGT: Red. RWY 09/27 circling guidance light AVBL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
     {
       "enabled": true,
@@ -1055,7 +1155,10 @@
       "info_strip_width": "300",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.18%",
-      "info_rmk": "TORA 2850 M, TODA 2850 M, ASDA 3135 M, LDA 2850 M. THR elevation 41.1 M / 135 FT. THR coordinates 351409 04N 0334407 37E. SWY 285×45 M (Asphalt). Threshold of RWY 09/27 are 300 M Concrete. APCH LGT: Precision APP CAT I. THR LGT: Green. VASIS: 3° 3 BAR. RWY edge LGT: 2850 M, 25 M spacing, White. RWY End LGT: Red."
+      "info_rmk": "TORA 2850 M, TODA 2850 M, ASDA 3135 M, LDA 2850 M. THR elevation 41.1 M / 135 FT. THR coordinates 351409 04N 0334407 37E. SWY 285×45 M (Asphalt). Threshold of RWY 09/27 are 300 M Concrete. APCH LGT: Precision APP CAT I. THR LGT: Green. VASIS: 3° 3 BAR. RWY edge LGT: 2850 M, 25 M spacing, White. RWY End LGT: Red.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
     {
       "enabled": true,
@@ -1073,7 +1176,10 @@
       "info_strip_width": "",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "",
-      "info_rmk": "TODAH 1090 M, RTODAH 1090 M, LDAH 1090 M. TLOF/FATO elevation 772 FT / 235.30 M. GUND 91 FT. THR/TLOF coordinates 351633N 0331602E. TLOF dimensions 50×50 M Asphalt. Safety area 50×50 M. Aircraft who provide to criteria in Table 3.13 can land and take-off. APCH LGT: NIL. FATO LGT: NIL."
+      "info_rmk": "TODAH 1090 M, RTODAH 1090 M, LDAH 1090 M. TLOF/FATO elevation 772 FT / 235.30 M. GUND 91 FT. THR/TLOF coordinates 351633N 0331602E. TLOF dimensions 50×50 M Asphalt. Safety area 50×50 M. Aircraft who provide to criteria in Table 3.13 can land and take-off. APCH LGT: NIL. FATO LGT: NIL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
     {
       "enabled": true,
@@ -1091,7 +1197,10 @@
       "info_strip_width": "",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "",
-      "info_rmk": "TODAH 1090 M, RTODAH 1090 M, LDAH 1090 M. TLOF/FATO elevation 772 FT / 235.30 M. GUND 91 FT. THR/TLOF coordinates 351633N 0331602E. TLOF dimensions 50×50 M Asphalt. Safety area 50×50 M. Aircraft who provide to criteria in Table 3.13 can land and take-off. APCH LGT: NIL. FATO LGT: NIL."
+      "info_rmk": "TODAH 1090 M, RTODAH 1090 M, LDAH 1090 M. TLOF/FATO elevation 772 FT / 235.30 M. GUND 91 FT. THR/TLOF coordinates 351633N 0331602E. TLOF dimensions 50×50 M Asphalt. Safety area 50×50 M. Aircraft who provide to criteria in Table 3.13 can land and take-off. APCH LGT: NIL. FATO LGT: NIL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "KKTC SHD",
+      "data_effectivity": "eff_trnc"
     },
 
     // ============================================================
@@ -1110,7 +1219,10 @@
       "info_pcn_note": "",
       "info_auw_weight": "5700",
       "info_auw_weight_unit": "KG",
-      "info_rmk": "Asfalt k=60 mn/³. GW-GP. CBR 8. Max AUW 5700 kg. THR coordinates (RWY 18) 370550.03N 0303856.75E. THR coordinates (RWY 36) 370559.15N 0303851.89E."
+      "info_rmk": "Asfalt k=60 mn/³. GW-GP. CBR 8. Max AUW 5700 kg. THR coordinates (RWY 18) 370550.03N 0303856.75E. THR coordinates (RWY 36) 370559.15N 0303851.89E.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -1125,7 +1237,10 @@
       "info_pcn_note": "",
       "info_auw_weight": "5700",
       "info_auw_weight_unit": "KG",
-      "info_rmk": "THK Karain Havacılık Eğitim Merkezi. Asfalt k=60 mn/³. GW-GP. CBR 8. Max AUW 5700 kg. THR coordinates (RWY 18) 370550.03N 0303856.75E. THR coordinates (RWY 36) 370559.15N 0303851.89E."
+      "info_rmk": "THK Karain Havacılık Eğitim Merkezi. Asfalt k=60 mn/³. GW-GP. CBR 8. Max AUW 5700 kg. THR coordinates (RWY 18) 370550.03N 0303856.75E. THR coordinates (RWY 36) 370559.15N 0303851.89E.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
 
     // ============================================================
@@ -1153,7 +1268,10 @@
       "info_strip_width": "",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.5%.",
-      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1800 M (10M Disp.THR). THR elev 850 M (2790 FT). THR coordinates 391752.29N 0312926.80E. Windsock beside RWY 05. APCH LGT: NIL. RWY edge LGT: Edge, THR, Centerline marked."
+      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1800 M (10M Disp.THR). THR elev 850 M (2790 FT). THR coordinates 391752.29N 0312926.80E. Windsock beside RWY 05. APCH LGT: NIL. RWY edge LGT: Edge, THR, Centerline marked.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     },
     {
       "enabled": true,
@@ -1177,7 +1295,10 @@
       "info_strip_width": "",
       "info_strip_dim_unit": "M",
       "info_profile_rmk": "Slope 0.5%.",
-      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1810 M. THR elev 850 M (2790 FT). THR coordinates 391828.03N 0313024.47E. Windsock beside RWY 23. APCH LGT: NIL. RWY edge LGT: Edge, Centerline, Holding Positions marked."
+      "info_rmk": "TORA 1810 M, TODA 1810 M, ASDA 1810 M, LDA 1810 M. THR elev 850 M (2790 FT). THR coordinates 391828.03N 0313024.47E. Windsock beside RWY 23. APCH LGT: NIL. RWY edge LGT: Edge, Centerline, Holding Positions marked.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "SHGM",
+      "data_effectivity": "eff_shgm"
     }
   ]
 
