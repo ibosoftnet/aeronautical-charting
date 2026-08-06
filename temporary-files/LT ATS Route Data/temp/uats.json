@@ -376,7 +376,7 @@
       "properties": {
         "ip": "../images/aixm/trianglewhite.png",
         "t": 3,
-        "hi": "MARTI",
+        "hi": "MARIF",
         "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>39°24'06''N  035°10'58''E  ",
         "kid": "uuid.903c41ec-526d-412d-97bf-ca498fc0e625",
         "rpType": 2,
@@ -1548,13 +1548,33 @@
     {
       "geometry": {
         "coordinates": [
+          30.15472,
+          40.37972
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 3,
+        "hi": "UNWAN",
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>40°22'47''N  030°09'17''E  ",
+        "kid": "uuid.579126b9-b3be-42dd-b7c6-ad3752a88058",
+        "rpType": 2,
+        "type": "DP",
+        "cip": "../images/aixm/trianglewhite.png"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           [
             30.18278,
             40.37667
           ],
           [
-            29.95361,
-            40.40056
+            30.15472,
+            40.37972
           ]
         ],
         "type": "LineString"
@@ -1725,6 +1745,39 @@
         "sa": "273",
         "ea": "091",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.af827f91-9b43-4762-9371-d778affbd7b0\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            30.15472,
+            40.37972
+          ],
+          [
+            29.95361,
+            40.40056
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "UG 8",
+        "t": 1,
+        "pic": "",
+        "kid": "uuid.b872f8fd-dfd0-4936-b67a-78a181da87ca",
+        "strclr": "#FF9900",
+        "ip": "../../images/aixm/UATSTH.svg",
+        "type": "ROUTE",
+        "cip": "../../images/aixm/UATSTH.svg",
+        "ipm": "../../images/aixm/UATSTH.svg",
+        "is": 1.5,
+        "sa": "273",
+        "ea": "091",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.b872f8fd-dfd0-4936-b67a-78a181da87ca\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
       },
@@ -9068,7 +9121,7 @@
         "cip": "../../images/aixm/UATSTH.svg",
         "ipm": "../../images/aixm/UATSTH.svg",
         "is": 1.5,
-        "sa": "301",
+        "sa": "300",
         "ea": "120",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.6696a2e9-5439-4f6e-8237-627a6530a116\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -9141,8 +9194,8 @@
         "cip": "../../images/aixm/UATSTH.svg",
         "ipm": "../../images/aixm/UATSTH.svg",
         "is": 1.5,
-        "sa": "329",
-        "ea": "149",
+        "sa": "327",
+        "ea": "147",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.b032891a-2b7d-4181-b888-0593bbd4de4c\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -9174,8 +9227,8 @@
         "cip": "../../images/aixm/UATSTH.svg",
         "ipm": "../../images/aixm/UATSTH.svg",
         "is": 1.5,
-        "sa": "329",
-        "ea": "149",
+        "sa": "327",
+        "ea": "147",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.ec2766b5-060a-480e-a6c5-af2303226200\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -20568,8 +20621,8 @@
         "cip": "../../images/aixm/UATSTH.svg",
         "ipm": "../../images/aixm/UATSTH.svg",
         "is": 2.5,
-        "sa": "334",
-        "ea": "154",
+        "sa": "332",
+        "ea": "152",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.5a61cec8-f1bb-412d-8ab5-5f76e1ba6dba\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000

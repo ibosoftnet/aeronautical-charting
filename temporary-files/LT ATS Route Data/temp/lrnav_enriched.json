@@ -8128,7 +8128,7 @@
       "properties": {
         "ip": "../images/aixm/triangleblack.ico",
         "t": 3,
-        "hi": "MARTI",
+        "hi": "MARIF",
         "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>39°24'06''N  035°10'58''E  ",
         "kid": "uuid.903c41ec-526d-412d-97bf-ca498fc0e625",
         "rpType": 2,
@@ -8184,7 +8184,7 @@
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
         "ais_START_POINT_NAME": "GEMEREK",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
-        "ais_END_POINT_NAME": "MARTI",
+        "ais_END_POINT_NAME": "MARIF",
         "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
         "ais_START_POINT_COORDINATES": "39.153806 36.0285",
         "ais_END_POINT_COORDINATES": "39.40167 35.18278"
@@ -9535,7 +9535,7 @@
         "ais_NAVIGATION_TYPE": "RNAV",
         "ais_REVERSE_MAGNETIC_TRACK": "105",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "5",
-        "ais_START_POINT_NAME": "MARTI",
+        "ais_START_POINT_NAME": "MARIF",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
         "ais_END_POINT_NAME": "JUPNE",
         "ais_END_POINT_REPORTING_ATC": "ON_REQUEST",

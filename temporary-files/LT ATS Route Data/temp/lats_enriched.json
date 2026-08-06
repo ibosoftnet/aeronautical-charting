@@ -9843,8 +9843,8 @@
         "cip": "../../images/aixm/LATSTH.svg",
         "ipm": "../../images/aixm/LATSTH.svg",
         "is": 2.5,
-        "sa": "334",
-        "ea": "154",
+        "sa": "332",
+        "ea": "152",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.5e9ee4c5-dfbe-413a-953a-64c6835558e0\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -9858,9 +9858,9 @@
         "ais_UPPER_LIMIT_REFERENCE": "STD",
         "ais_TRUE_TRACK": "",
         "ais_REVERSE_TRUE_TRACK": "",
-        "ais_MAGNETIC_TRACK": "334",
+        "ais_MAGNETIC_TRACK": "332",
         "ais_NAVIGATION_TYPE": "CONV",
-        "ais_REVERSE_MAGNETIC_TRACK": "154",
+        "ais_REVERSE_MAGNETIC_TRACK": "152",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
         "ais_START_POINT_NAME": "BURSA/YENISEHIR",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -17202,7 +17202,7 @@
         "cip": "../../images/aixm/LATSTH.svg",
         "ipm": "../../images/aixm/LATSTH.svg",
         "is": 1.5,
-        "sa": "301",
+        "sa": "300",
         "ea": "120",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.499ae514-5764-4b51-bb27-2d73a0519000\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -17217,7 +17217,7 @@
         "ais_UPPER_LIMIT_REFERENCE": "STD",
         "ais_TRUE_TRACK": "",
         "ais_REVERSE_TRUE_TRACK": "",
-        "ais_MAGNETIC_TRACK": "301",
+        "ais_MAGNETIC_TRACK": "300",
         "ais_NAVIGATION_TYPE": "CONV",
         "ais_REVERSE_MAGNETIC_TRACK": "120",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
@@ -17276,13 +17276,13 @@
         "cip": "../../images/aixm/LATSTH.svg",
         "ipm": "../../images/aixm/LATSTH.svg",
         "is": 1.5,
-        "sa": "329",
-        "ea": "149",
+        "sa": "327",
+        "ea": "147",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.83ed6fa7-483a-4e94-a463-160e17a12149\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
         "ais_LEVEL": "LOWER",
-        "ais_LENGTH": "14.7",
+        "ais_LENGTH": "14.6",
         "ais_WIDTH_LEFT": "",
         "ais_WIDTH_RIGHT": "",
         "ais_LOWER_LIMIT": "125",
@@ -17291,9 +17291,9 @@
         "ais_UPPER_LIMIT_REFERENCE": "STD",
         "ais_TRUE_TRACK": "",
         "ais_REVERSE_TRUE_TRACK": "",
-        "ais_MAGNETIC_TRACK": "329",
+        "ais_MAGNETIC_TRACK": "327",
         "ais_NAVIGATION_TYPE": "CONV",
-        "ais_REVERSE_MAGNETIC_TRACK": "149",
+        "ais_REVERSE_MAGNETIC_TRACK": "147",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
         "ais_START_POINT_NAME": "SULTA",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
@@ -17350,8 +17350,8 @@
         "cip": "../../images/aixm/LATSTH.svg",
         "ipm": "../../images/aixm/LATSTH.svg",
         "is": 1.5,
-        "sa": "329",
-        "ea": "149",
+        "sa": "327",
+        "ea": "147",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.989cd72a-83de-4c42-99b0-fd5df58ec552\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000,
@@ -17365,9 +17365,9 @@
         "ais_UPPER_LIMIT_REFERENCE": "STD",
         "ais_TRUE_TRACK": "",
         "ais_REVERSE_TRUE_TRACK": "",
-        "ais_MAGNETIC_TRACK": "329",
+        "ais_MAGNETIC_TRACK": "327",
         "ais_NAVIGATION_TYPE": "CONV",
-        "ais_REVERSE_MAGNETIC_TRACK": "149",
+        "ais_REVERSE_MAGNETIC_TRACK": "147",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
         "ais_START_POINT_NAME": "MISRO",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
@@ -18703,6 +18703,80 @@
     {
       "geometry": {
         "coordinates": [
+          30.15472,
+          40.37972
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 3,
+        "hi": "UNWAN",
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>40°22'47''N  030°09'17''E  ",
+        "kid": "uuid.579126b9-b3be-42dd-b7c6-ad3752a88058",
+        "rpType": 2,
+        "type": "DP",
+        "cip": "../images/aixm/trianglewhite.png",
+        "ais_REPORTING_ATC": "COMPULSORY"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            30.15472,
+            40.37972
+          ],
+          [
+            29.95361,
+            40.40056
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "G 8",
+        "t": 1,
+        "pic": "",
+        "kid": "uuid.2723b114-0b1f-466b-bf0c-f7e02e58e216",
+        "strclr": "#023E9E",
+        "ip": "../../images/aixm/LATSTH.svg",
+        "type": "ROUTE",
+        "cip": "../../images/aixm/LATSTH.svg",
+        "ipm": "../../images/aixm/LATSTH.svg",
+        "is": 1.5,
+        "sa": "273",
+        "ea": "091",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.2723b114-0b1f-466b-bf0c-f7e02e58e216\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000,
+        "ais_LEVEL": "LOWER",
+        "ais_LENGTH": "9.3",
+        "ais_WIDTH_LEFT": "",
+        "ais_WIDTH_RIGHT": "",
+        "ais_LOWER_LIMIT": "085",
+        "ais_LOWER_LIMIT_REFERENCE": "STD",
+        "ais_UPPER_LIMIT": "285",
+        "ais_UPPER_LIMIT_REFERENCE": "STD",
+        "ais_TRUE_TRACK": "",
+        "ais_REVERSE_TRUE_TRACK": "",
+        "ais_MAGNETIC_TRACK": "273",
+        "ais_NAVIGATION_TYPE": "CONV",
+        "ais_REVERSE_MAGNETIC_TRACK": "091",
+        "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
+        "ais_START_POINT_NAME": "UNWAN",
+        "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
+        "ais_END_POINT_NAME": "PIMAV",
+        "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
+        "ais_START_POINT_COORDINATES": "40.37972 30.15472",
+        "ais_END_POINT_COORDINATES": "40.40056 29.95361"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           [
             29.207556,
             40.475028
@@ -19007,7 +19081,7 @@
       "properties": {
         "ip": "../images/aixm/trianglewhite.png",
         "t": 3,
-        "hi": "MARTI",
+        "hi": "MARIF",
         "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>39°24'06''N  035°10'58''E  ",
         "kid": "uuid.903c41ec-526d-412d-97bf-ca498fc0e625",
         "rpType": 2,
@@ -19063,7 +19137,7 @@
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
         "ais_START_POINT_NAME": "GEMEREK",
         "ais_START_POINT_REPORTING_ATC": "COMPULSORY",
-        "ais_END_POINT_NAME": "MARTI",
+        "ais_END_POINT_NAME": "MARIF",
         "ais_END_POINT_REPORTING_ATC": "ON_REQUEST",
         "ais_START_POINT_COORDINATES": "39.153806 36.0285",
         "ais_END_POINT_COORDINATES": "39.40167 35.18278"
@@ -20066,7 +20140,7 @@
         "ais_NAVIGATION_TYPE": "CONV",
         "ais_REVERSE_MAGNETIC_TRACK": "103",
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
-        "ais_START_POINT_NAME": "MARTI",
+        "ais_START_POINT_NAME": "MARIF",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
         "ais_END_POINT_NAME": "GOBIT",
         "ais_END_POINT_REPORTING_ATC": "ON_REQUEST",
@@ -20242,8 +20316,8 @@
             40.37667
           ],
           [
-            29.95361,
-            40.40056
+            30.15472,
+            40.37972
           ]
         ],
         "type": "LineString"
@@ -20265,7 +20339,7 @@
         "ht": true,
         "zi": 1000,
         "ais_LEVEL": "LOWER",
-        "ais_LENGTH": "10.6",
+        "ais_LENGTH": "1.3",
         "ais_WIDTH_LEFT": "",
         "ais_WIDTH_RIGHT": "",
         "ais_LOWER_LIMIT": "085",
@@ -20280,10 +20354,10 @@
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
         "ais_START_POINT_NAME": "EKMEL",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
-        "ais_END_POINT_NAME": "PIMAV",
+        "ais_END_POINT_NAME": "UNWAN",
         "ais_END_POINT_REPORTING_ATC": "COMPULSORY",
         "ais_START_POINT_COORDINATES": "40.37667 30.18278",
-        "ais_END_POINT_COORDINATES": "40.40056 29.95361"
+        "ais_END_POINT_COORDINATES": "40.37972 30.15472"
       },
       "type": "Feature"
     },
@@ -31715,7 +31789,7 @@
         "ais_REQUIRED_NAVIGATION_PERFORMANCE": "",
         "ais_START_POINT_NAME": "ERMOD",
         "ais_START_POINT_REPORTING_ATC": "ON_REQUEST",
-        "ais_END_POINT_NAME": "MARTI",
+        "ais_END_POINT_NAME": "MARIF",
         "ais_END_POINT_REPORTING_ATC": "ON_REQUEST",
         "ais_START_POINT_COORDINATES": "39.22333 35.28",
         "ais_END_POINT_COORDINATES": "39.40167 35.18278"
