@@ -1311,7 +1311,7 @@
       "override": true,
       "ahp_code_id": "LTFM",
       "direction_designator": "09",
-      "rwy_designator": "RWY 09",
+      "rwy_designator": "RWY-09",
       "true_bearing": "89.15",
       "info_length": "2820",
       "info_width": "45",
