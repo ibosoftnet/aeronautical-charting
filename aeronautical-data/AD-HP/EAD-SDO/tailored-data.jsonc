@@ -1299,6 +1299,38 @@
       "data_provider": "Ibosoft AIS",
       "data_originator": "SHGM",
       "data_effectivity": "eff_shgm"
+    },
+
+    // ============================================================
+    // LTFM — İstanbul Havalimanı RWY 09 — EAD-SDO'da yok
+    // (kaynakta yalnızca 16L/34R, 16R/34L, 17L/35R, 17R/35L, 18/36 var)
+    // Karşı yönü (27) yayınlı değil. Kaynak: AIP TÜRKİYE AD 2 LTFM-9, 06 AUG 26
+    // ============================================================
+    {
+      "enabled": true,
+      "override": true,
+      "ahp_code_id": "LTFM",
+      "direction_designator": "09",
+      "rwy_designator": "RWY 09",
+      "true_bearing": "89.15",
+      "info_length": "2820",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "CONC",
+      "info_pcn_class": "125",
+      "info_pcn_pavement_type": "R",
+      "info_pcn_pavement_subgrade": "A",
+      "info_pcn_max_tire_pressure_code": "W",
+      "info_pcn_eval_method": "T",
+      "info_pcn_note": "125 R/A/W/T",
+      "info_strip_length": "2940",
+      "info_strip_width": "150",
+      "info_strip_dim_unit": "M",
+      "info_profile_rmk": "Slope 0.04%.",
+      "info_rmk": "TORA 2820 M, TODA 2820 M, ASDA 2820 M. THR elevation 274 FT. THR coordinates 411513.30N 0284558.68E. RESA 240×150 M. OFZ not available.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "06 AUG 2026 (AIRAC 2608)"
     }
   ]
 
