@@ -55,6 +55,10 @@ ATS_STATUS_COLUMNS = [
     # anlamlidir (kullanici karari, bkz. compute_ats_status).
     "atsStatus_depictionNav",              # CONV / RNAVFlyBy / RNAVFlyOver / OTHER
     "atsStatus_depictionSIGPointBasicFunc",  # NAVAID / VFR_REP / WPT / INT / OTHER
+    # `depictionNav` + `depictionCompulsory` bileskesi. Tek sutunda hem
+    # seyrusefer sinifini hem raporlama zorunlulugunu tasir; QGIS'te tek
+    # kategorize alanindan sembol uretmek icin (kullanici karari).
+    "atsStatus_depictionNavAndREP",        # <depictionNav>_<Comp|NonComp>
 ]
 
 #: `atsStatus_depictionNav` enum'u — seyrusefer gosterim sinifi.
@@ -62,6 +66,12 @@ DEPICTION_NAV = ("CONV", "RNAVFlyBy", "RNAVFlyOver", "OTHER")
 
 #: `atsStatus_depictionSIGPointBasicFunc` enum'u — onemli nokta temel islevi.
 DEPICTION_SIG_POINT = ("NAVAID", "VFR_REP", "WPT", "INT", "OTHER")
+
+#: `atsStatus_depictionNavAndREP` enum'u — `DEPICTION_NAV` degerlerinin
+#: `_Comp` / `_NonComp` sonekiyle carpimi. Elle yazilmaz, turetilir ki
+#: `DEPICTION_NAV` degisince burasi da otomatik guncellensin.
+DEPICTION_NAV_AND_REP = tuple(
+    f"{nav}_{suffix}" for suffix in ("Comp", "NonComp") for nav in DEPICTION_NAV)
 
 #: GeoPackage'da BOOLEAN yoktur; 0/1 INTEGER olarak saklanır (GDAL bunu
 #: mantıksal alan olarak tanır). Sütun adıyla açıkça listelenir — son ek

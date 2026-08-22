@@ -51,7 +51,8 @@ from pyproj import Geod                                    # noqa: E402
 
 GEOD = Geod(ellps="WGS84")
 from merge.provenance import ProvenanceWriter              # noqa: E402
-from gpkg.validation_rules import ATS_STATUS_CONFLICTS   # noqa: E402
+from gpkg.validation_rules import (ATS_STATUS_COMPOSITES,   # noqa: E402
+                                   ATS_STATUS_CONFLICTS)
 
 MESSAGE_ID = "COMMON_ATS_MSG"
 
@@ -696,7 +697,8 @@ _ATS_STATUS_SET = (
     ' "atsStatus_reportingAssociation"=?,'
     ' "atsStatus_depictionCompulsory"=?,'
     ' "atsStatus_depictionNav"=?,'
-    ' "atsStatus_depictionSIGPointBasicFunc"=?')
+    ' "atsStatus_depictionSIGPointBasicFunc"=?,'
+    ' "atsStatus_depictionNavAndREP"=?')
 
 
 def depiction_nav(layer, point_type, nav_types):
@@ -848,27 +850,42 @@ def compute_ats_status(con, log=None):
                 # (COORD/VRP/NAVAID) bagimsiz calisabilirdi, ama bir noktanin
                 # rota gosterim sinifi ancak bir ATS rotasinin parcasiysa
                 # anlamlidir.
-                payload.append((0,) + (None,) * 8 + (row_id,))
+                payload.append((0,) + (None,) * 9 + (row_id,))
                 continue
+
+            kinds = {r["reportingATC"] for r in reports}
+            compulsory = 1 if _REPORT_MAIN in kinds else 0
 
             nav_class = depiction_nav(layer, point_type, nav_types)
             sig_func = depiction_sig_point(
                 layer, point_type, nav_types, all_pbn, nav_class)
+            # Bileske alan: seyrusefer sinifi + raporlama zorunlulugu.
+            nav_and_rep = f"{nav_class}_{'Comp' if compulsory else 'NonComp'}"
 
             # Alanlar arasi tutarlilik: kural listesi tek yerde tutulur
             # (gpkg/validation_rules.ATS_STATUS_CONFLICTS). Bu alanlar satir
             # yazildiktan SONRA UPDATE ile doldugu icin validate_row gormez,
             # denetim burada yapilir.
             secim = {"atsStatus_depictionNav": nav_class,
-                     "atsStatus_depictionSIGPointBasicFunc": sig_func}
+                     "atsStatus_depictionSIGPointBasicFunc": sig_func,
+                     "atsStatus_depictionNavAndREP": nav_and_rep,
+                     "atsStatus_depictionCompulsory": compulsory}
             for a_col, a_val, b_col, b_val, kod in ATS_STATUS_CONFLICTS:
                 if secim.get(a_col) == a_val and secim.get(b_col) == b_val:
                     ihlal += 1
                     if log:
                         log.error("2B", layer, gml_id, a_col,
                                   f"{a_val} + {b_val}", kod)
+            # Uc sutunlu bileske denetimi: bileske alan, iki bileseniyle
+            # birebir uyusmali (bkz. validation_rules.ATS_STATUS_COMPOSITES).
+            for c_col, n_col, f_col, (yes, no), kod in ATS_STATUS_COMPOSITES:
+                beklenen = f"{secim.get(n_col)}_{yes if secim.get(f_col) else no}"
+                if secim.get(c_col) != beklenen:
+                    ihlal += 1
+                    if log:
+                        log.error("2B", layer, gml_id, c_col,
+                                  f"{secim.get(c_col)} != {beklenen}", kod)
 
-            kinds = {r["reportingATC"] for r in reports}
             payload.append((
                 1,
                 1 if "UPPER" in levels else 0,
@@ -877,8 +894,8 @@ def compute_ats_status(con, log=None):
                 1 if any(v == "OTHER" or v.startswith("OTHER:")
                          for v in levels) else 0,
                 json.dumps(reports, ensure_ascii=False) if reports else None,
-                1 if _REPORT_MAIN in kinds else 0,
-                nav_class, sig_func, row_id))
+                compulsory,
+                nav_class, sig_func, nav_and_rep, row_id))
 
         cur.executemany(
             f'UPDATE "{layer}" SET' + _ATS_STATUS_SET + ' WHERE id=?', payload)

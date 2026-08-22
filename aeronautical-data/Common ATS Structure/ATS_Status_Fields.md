@@ -1,6 +1,6 @@
 # `atsStatus_*` Alanları — Noktaların ATS Rota Ağındaki Rolü
 
-`designatedPoints` ve `navaids` katmanlarına eklenen **dokuz türetilmiş** alan.
+`designatedPoints` ve `navaids` katmanlarına eklenen **on türetilmiş** alan.
 Bir noktanın ATS rota ağıyla ilişkisini, ona referans veren `routeSegments`
 satırlarından özetler.
 
@@ -53,7 +53,7 @@ tamamlanmadan hangi noktanın hangi segmente bağlı olduğu bilinemez.
 Nokta en az bir rota segmentinin ucu mu? Her satırda **0 veya 1** doldurulur,
 asla NULL kalmaz.
 
-> **Kapı kuralı:** bu alan `0` ise diğer **sekiz alanın tamamı** `NULL`'dur — `0` veya boş
+> **Kapı kuralı:** bu alan `0` ise diğer **dokuz alanın tamamı** `NULL`'dur — `0` veya boş
 > dize değil. Böylece "rota ağına bağlı değil" ile "bağlı ama o bilgi yok"
 > ayrımı korunur (kullanıcı kararı). Doğrulandı: her iki katmanda da ihlal 0.
 
@@ -154,7 +154,62 @@ Seyrüsefer gösterim sınıfı. **Sıralı** bir karar zinciridir; ilk uyan kaz
 "Bağlı tüm segmentler PBN" sayımında segment kimliği **küme** olarak tutulur —
 bir nokta aynı segmentin hem başı hem sonu olabilir, sayım bozulmasın diye.
 
-### 4.7 Kapı kuralı istisnasızdır
+### 4.7 `atsStatus_depictionNavAndREP` — TEXT (enum)
+
+`depictionNav` ile `depictionCompulsory`'nin **bileşkesi**. Tek sütunda hem
+seyrüsefer sınıfını hem raporlama zorunluluğunu taşır; QGIS'te tek bir
+kategorize alanından sembol üretmek için (kullanıcı kararı).
+
+```
+atsStatus_depictionNavAndREP = <depictionNav> + ("_Comp" | "_NonComp")
+```
+
+Sonek `depictionCompulsory = 1` ise `_Comp`, `0` ise `_NonComp`.
+
+| | `_Comp` | `_NonComp` |
+|---|---|---|
+| `CONV` | `CONV_Comp` | `CONV_NonComp` |
+| `RNAVFlyBy` | `RNAVFlyBy_Comp` | `RNAVFlyBy_NonComp` |
+| `RNAVFlyOver` | `RNAVFlyOver_Comp` | `RNAVFlyOver_NonComp` |
+| `OTHER` | `OTHER_Comp` | `OTHER_NonComp` |
+
+Enum listesi **elle yazılmaz**, `DEPICTION_NAV` × `("Comp","NonComp")`
+çarpımından türetilir (`gpkg/schema.DEPICTION_NAV_AND_REP`) — `depictionNav`
+enum'u değişirse bu liste kendiliğinden güncellenir, iki yerde birbirinden
+kopma riski olmaz.
+
+Kapıya bağlıdır: nokta rota elemanı değilse `NULL`.
+
+### 4.8 Alanlar arası doğrulama
+
+İki tür denetim var; ikisinin de kural listesi `gpkg/validation_rules.py`'de
+**tek yerde** tutulur, `compute_ats_status` oradan okuyup uygular.
+
+**a) Çakışma denetimi** (`ATS_STATUS_CONFLICTS`)
+
+`atsStatus_depictionNav = CONV` ile `atsStatus_depictionSIGPointBasicFunc = WPT`
+**birlikte olamaz** — `WPT` kuralı zaten `CONV` dışlıyor. Yine de savunma
+amaçlı denetlenir. Kod: `depictionNav_CONV_ile_WPT_birlikte_olamaz`.
+
+**b) Bileşke denetimi — üç sütun** (`ATS_STATUS_COMPOSITES`)
+
+`depictionNavAndREP`, iki bileşeniyle birebir uyuşmalıdır:
+
+```
+depictionNavAndREP == depictionNav + ("_Comp" if depictionCompulsory else "_NonComp")
+```
+
+Üç sütun birlikte karşılaştırılır; uyuşmazlık
+`depictionNavAndREP_bilesenleriyle_uyusmuyor` koduyla **error** olarak
+`errored-features.csv`'ye yazılır.
+
+Her iki denetim de `validate_row`'da **değil** `compute_ats_status` içinde
+yapılır: bu alanlar satır yazıldıktan **sonra** `UPDATE` ile doldurulduğu için
+satır doğrulamasının göremeyeceği bir aşamadadırlar.
+
+Ölçüldü: her iki katmanda çakışma **0**, bileşke uyuşmazlığı **0**.
+
+### 4.9 Kapı kuralı istisnasızdır
 
 `depictionNav` ve `depictionSIGPointBasicFunc` de **kapıya bağlıdır**:
 `isElementOfRouteSegment = 0` olan satırlarda diğer alanlar gibi `NULL`
@@ -167,20 +222,6 @@ kararı). Bu yüzden `NAVAID` de "navaids tablosundaki her satır" değil, "rota
 elemanı olan her navaid" anlamına gelir.
 
 Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satır **0**.
-
-### 4.8 Alanlar arası tutarlılık denetimi
-
-`atsStatus_depictionNav = CONV` ile `atsStatus_depictionSIGPointBasicFunc = WPT`
-**birlikte olamaz** — `WPT` kuralı zaten `CONV` dışlıyor. Yine de savunma
-amaçlı denetlenir; ihlal `errored-features.csv`'ye
-`depictionNav_CONV_ile_WPT_birlikte_olamaz` koduyla **error** olarak yazılır.
-
-Kural listesi `gpkg/validation_rules.ATS_STATUS_CONFLICTS`'te tek yerde tutulur.
-Denetim `compute_ats_status` içinde yapılır, `validate_row`'da değil: bu alanlar
-satır yazıldıktan **sonra** `UPDATE` ile doldurulduğu için satır doğrulamasının
-göremeyeceği bir aşamadadırlar.
-
-Ölçüldü: her iki katmanda da çakışma **0**.
 
 ---
 
@@ -211,6 +252,12 @@ göremeyeceği bir aşamadadırlar.
 | | `VFR_REP` | 181 |
 | | `NAVAID` | 0 (DP asla almaz) |
 | | `NULL` (bağlı değil) | 110.890 |
+| `depictionNavAndREP` | `OTHER_NonComp` | 40.540 |
+| | `CONV_Comp` | 267 |
+| | `RNAVFlyBy_Comp` | 181 |
+| | `RNAVFlyBy_NonComp` | 91 |
+| | `CONV_NonComp` | 86 |
+| | `NULL` (bağlı değil) | 110.890 |
 
 ### `navaids` (9.357 satır)
 
@@ -230,6 +277,12 @@ göremeyeceği bir aşamadadırlar.
 | | `RNAVFlyBy` | 12 |
 | | `NULL` (bağlı değil) | 6.061 |
 | `depictionSIGPointBasicFunc` | `NAVAID` | **3.296** (rota elemanı olanlar) |
+| | `NULL` (bağlı değil) | 6.061 |
+| `depictionNavAndREP` | `OTHER_NonComp` | 3.230 |
+| | `CONV_Comp` | 53 |
+| | `RNAVFlyBy_Comp` | 10 |
+| | `RNAVFlyBy_NonComp` | 2 |
+| | `CONV_NonComp` | 1 |
 | | `NULL` (bağlı değil) | 6.061 |
 
 Noktaların çoğunun (110.890) rota ağına bağlı olmaması beklenen sonuçtur —
@@ -297,6 +350,7 @@ WHERE d.atsStatus_reportingAssociation IS NOT NULL;
 | `VRP` → `VFR_REP` | ihlal **0** |
 | `NAVAID` yalnızca navaids'te, rota elemanı olanların hepsinde | ihlal **0** (3.296/3.296) |
 | `CONV` + `WPT` çakışması | **0** |
+| Bileşke uyuşmazlığı (`NavAndREP` ≠ `Nav` + `Compulsory`) | **0** (her iki katman) |
 | Kapı ihlali (`=0` iken `depictionNav`/`SIGPointBasicFunc` dolu) | **0** |
 | Bağlı olup `depictionNav`/`SIGPointBasicFunc` boş kalan | **0** |
 

@@ -90,11 +90,27 @@ _ANGLE = number_rule(-180, 180)
 # DEPICTION_* sabitleriyle ayni olmak zorundadir.
 CODE_DEPICTION_NAV = ("CONV", "RNAVFlyBy", "RNAVFlyOver", "OTHER")
 CODE_DEPICTION_SIG_POINT = ("NAVAID", "VFR_REP", "WPT", "INT", "OTHER")
+CODE_DEPICTION_NAV_AND_REP = tuple(
+    f"{nav}_{suffix}" for suffix in ("Comp", "NonComp")
+    for nav in CODE_DEPICTION_NAV)
 
 #: Alanlar arasi tutarlilik kurali: `depictionNav=CONV` ile
 #: `depictionSIGPointBasicFunc=WPT` BIRLIKTE OLAMAZ. Denetim
 #: `build_common_ats.compute_ats_status` icinde uygulanir — o alanlar satir
 #: yazildiktan SONRA UPDATE ile dolduruldugu icin `validate_row` gormez.
+#: Bileske alan denetimi: `depictionNavAndREP`, iki bileseniyle UC SUTUNLU
+#: bir tutarlilik iliskisi tasir —
+#:     depictionNavAndREP == depictionNav + ("_Comp" | "_NonComp")
+#: sonek `depictionCompulsory` 1 ise `_Comp`, 0 ise `_NonComp` olmalidir.
+#: (bileske_sutun, nav_sutun, bayrak_sutun, (dogru_sonek, yanlis_sonek), kod)
+ATS_STATUS_COMPOSITES = (
+    ("atsStatus_depictionNavAndREP",
+     "atsStatus_depictionNav",
+     "atsStatus_depictionCompulsory",
+     ("Comp", "NonComp"),
+     "depictionNavAndREP_bilesenleriyle_uyusmuyor"),
+)
+
 ATS_STATUS_CONFLICTS = (
     ("atsStatus_depictionNav", "CONV",
      "atsStatus_depictionSIGPointBasicFunc", "WPT",
@@ -106,6 +122,10 @@ RULES: dict[str, dict[str, FieldRule]] = {
         "atsStatus_depictionNav": enum_rule(*CODE_DEPICTION_NAV),
         "atsStatus_depictionSIGPointBasicFunc":
             enum_rule(*CODE_DEPICTION_SIG_POINT),
+        "atsStatus_depictionNavAndREP":
+            enum_rule(*CODE_DEPICTION_NAV_AND_REP),
+        "atsStatus_depictionNavAndREP":
+            enum_rule(*CODE_DEPICTION_NAV_AND_REP),
         "designatedPoints_designator": FieldRule(max_length=5),
         "designatedPoints_type": enum_rule(*CODE_DESIGNATED_POINT),
         "designatedPoints_name": FieldRule(max_length=60),
