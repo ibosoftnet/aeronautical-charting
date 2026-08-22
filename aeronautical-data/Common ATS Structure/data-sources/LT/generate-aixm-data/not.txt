@@ -1,0 +1,23 @@
+HATALI ALANI DUSURULEN KAYITLAR
+Bu kayitlar XML'e eklenmistir, ancak kaynak degeri gecersiz olan
+alan(lar) yazilmamistir. Dogru degerler elle eklenmelidir.
+(Bozuk deger otomatik DUZELTILMEZ - her ay tekrar gelebilir.)
+======================================================================
+
+[1] RouteSegment(VFR) / LT_RS_VFR_0196
+  SEBEP: reverseTrueTrack: 0-360 araligi disinda (14142) -> alan yazilmadi
+  SEBEP: reverseMagneticTrack: 0-360 araligi disinda (14142) -> alan yazilmadi
+  KAYNAK ALANLARI:
+    kid = 659
+    hi = NORTH2
+    route = LTBJ/NORTH2
+    route_segment = NORTH2
+    start_point = GERMENCIK
+    end_point = TORBALI
+    distance = 21.7
+    calc_start = 322
+    calc_end = 14142
+    magnetic_start = 322
+    magnetic_end = 14142
+    start_coord = (27.601667, 37.8733333333333)
+    end_coord = (27.35, 38.175)

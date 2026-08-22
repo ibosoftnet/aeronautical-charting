@@ -1,0 +1,26 @@
+{
+  "_aciklama": "Kaynak grubu -> AIXM feature turu -> attribute = deger. Buradaki degerler kaynaktan gelen degerin yerine yazilir; listede olmayan attribute'lar kaynaktan gelir.",
+  "ats": {
+    "RouteSegment": {
+      "pathType": "GRC"
+    },
+    "Route": {
+      "type": "ATS",
+      "flightRule": "IFR",
+      "designCriteria": "PANS_OPS"
+    }
+  },
+  "vfr": {
+    "DesignatedPoint": {
+      "type": "VRP"
+    },
+    "RouteSegment": {
+      "pathType": "GRC"
+    },
+    "Route": {
+      "type": "OTHER",
+      "flightRule": "VFR",
+      "designCriteria": "OTHER"
+    }
+  }
+}

@@ -73,9 +73,7 @@ if __name__ == "__main__":
 
     # 🔥 BURAYA İSTEDİĞİN KADAR RENK EKLE
     colors = [
-        "#ff0000",
-        "#00ff00",
-        "#0000ff",
+        "#1b2777",
     ]
 
     process_svgs(colors)

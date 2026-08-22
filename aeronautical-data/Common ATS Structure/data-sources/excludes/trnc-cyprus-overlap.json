@@ -1,0 +1,28 @@
+[
+  {
+    "_aciklama": "TRNC verisiyle ayni fiziksel segmenti tarif eden, ana kaynaktaki (EAD-SDO) CYPRUS DEPARTMENT OF CIVIL AVIATION originator'li rota segmentleri. TRNC uluslararasi taninmadigi icin Guney Kibris'in AIP'i bu segmentleri kendi rota agina dahil ediyor; TRNC'nin kendi AIP'inde ayni gercek segment TRNC verisiyle (data-sources/TRNC) temsil ediliyor. Yalnizca HER IKI ucu da TRNC verisinde birebir eslesen segmentler cikarildi -- yalnizca bir ucu eslesen (digeri TRNC disinda kalan, ornegin PEDER->DASNI, BONEK->VADUS, ALSUS->BAPAX->VESAR) kayitlar KASITLI olarak dokunulmadan birakildi (kullanici karari).",
+    "layer": "routeSegments",
+    "match": { "route": "A16", "start": "DASNI", "end": "TOMBI",
+               "originator": "CYPRUS DEPARTMENT OF CIVIL AVIATION" }
+  },
+  {
+    "layer": "routeSegments",
+    "match": { "route": "R19", "start": "VADUS", "end": "DASNI",
+               "originator": "CYPRUS DEPARTMENT OF CIVIL AVIATION" }
+  },
+  {
+    "layer": "routeSegments",
+    "match": { "route": "R19", "start": "DASNI", "end": "EVENO",
+               "originator": "CYPRUS DEPARTMENT OF CIVIL AVIATION" }
+  },
+  {
+    "layer": "routeSegments",
+    "match": { "route": "R78", "start": "NIKAS", "end": "ALSUS",
+               "originator": "CYPRUS DEPARTMENT OF CIVIL AVIATION" }
+  },
+  {
+    "layer": "routeSegments",
+    "match": { "route": "L620", "start": "BALMA", "end": "ALSUS",
+               "originator": "CYPRUS DEPARTMENT OF CIVIL AVIATION" }
+  }
+]

@@ -1,0 +1,97 @@
+SEVERITY | FEATURE | ID | FIELD | VALUE | VIOLATION
+WARNING | Navaid | MEN | designator | MEN | kaynakta_tanimsiz_navaid_stub_uretildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_HOSKOY | name | HOŞKÖY -> HOSKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_SARKOY | name | ŞARKÖY -> SARKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_LAPSEKI | name | LAPSEKİ -> LAPSEKI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_UZUNKOPRU | name | UZUNKÖPRÜ -> UZUNKOPRU | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KIRKLARELI | name | KIRKLARELİ -> KIRKLARELI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_HAMITABAT | name | HAMİTABAT -> HAMITABAT | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_PINARHISAR | name | PINARHİSAR -> PINARHISAR | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_VIZE | name | VİZE -> VIZE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_YENICE_2 | name | YENİCE -> YENICE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_IGNEADA | name | İĞNEADA -> IGNEADA | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KIYIKOY | name | KIYIKÖY -> KIYIKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_YALIKOY | name | YALIKÖY -> YALIKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_CERKEZKOY | name | ÇERKEZKÖY -> CERKEZKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_PINARBASI_2 | name | PINARBAŞI -> PINARBASI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_BIGA_2 | name | BİGA -> BIGA | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_CAVUSLAR | name | ÇAVUŞLAR -> CAVUSLAR | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_ATIKHISAR | name | ATİKHİSAR -> ATIKHISAR | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KUCUKKUYU | name | KÜÇÜKKUYU -> KUCUKKUYU | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_EZINE | name | EZİNE -> EZINE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_HISARKOY | name | HİSARKÖY -> HISARKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_DIKILI | name | DİKİLİ -> DIKILI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_AKCAPINAR | name | AKÇAPINAR -> AKCAPINAR | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_SIVRICE | name | SİVRİCE -> SIVRICE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_SAHIL_2 | name | SAHİL -> SAHIL | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_GOKCEALI | name | GÖKÇEALİ -> GOKCEALI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_INCEGIZ | name | İNCEĞİZ -> INCEGIZ | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_DARULACEZE | name | DARÜLACEZE -> DARULACEZE | ascii_ye_cevrildi
+WARNING | Navaid | AYR | designator | AYR | kaynakta_tanimsiz_navaid_stub_uretildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KARAOZ | name | KARAÖZ -> KARAOZ | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_ORGANIZE | name | ORGANİZE -> ORGANIZE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_SANAYI | name | SANAYİ -> SANAYI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_YENI_ERICE | name | YENİ ERİCE -> YENI ERICE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_BILECIK | name | BİLECİK -> BILECIK | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_BOGAZKOY | name | BOĞAZKÖY -> BOGAZKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_BOZUYUK | name | BOZÜYÜK -> BOZUYUK | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_CERKESLI | name | ÇERKEŞLİ -> CERKESLI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_GEMLIK | name | GEMLİK -> GEMLIK | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_GOLBASI | name | GÖLBAŞI -> GOLBASI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_GOLLUCE | name | GÖLLÜCE -> GOLLUCE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_INEGOL | name | İNEGÖL -> INEGOL | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_IZNIK | name | İZNİK -> IZNIK | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KURSUNLU | name | KURŞUNLU -> KURSUNLU | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_ORHANIYE | name | ORHANİYE -> ORHANIYE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_OSMANELI | name | OSMANELİ -> OSMANELI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_SOLOZ | name | SÖLÖZ -> SOLOZ | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_YAKAKENT_LIMAN | name | YAKAKENT LİMAN -> YAKAKENT LIMAN | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_SERCE | name | SERÇE -> SERCE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_AKGOL | name | AKGÖL -> AKGOL | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_POLIS_OKULU | name | POLİS OKULU -> POLIS OKULU | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KORFEZ | name | KÖRFEZ -> KORFEZ | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_GEDIZ | name | GEDİZ -> GEDIZ | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_GEDIKLER | name | GEDİKLER -> GEDIKLER | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KIZILHISAR | name | KIZILHİSAR -> KIZILHISAR | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KARAAGAC | name | KARAAĞAÇ -> KARAAGAC | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_SIVASLI | name | SİVASLI -> SIVASLI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_CIVRIL | name | ÇİVRİL -> CIVRIL | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_ORTAKOY | name | ORTAKÖY -> ORTAKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KIZILOREN | name | KIZILÖREN -> KIZILOREN | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_AKGUN | name | AKGÜN -> AKGUN | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_DINAR | name | DİNAR -> DINAR | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_GONEN | name | GÖNEN -> GONEN | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_GUMUSGUN | name | GÜMÜŞGÜN -> GUMUSGUN | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_SENIRCE | name | SENİRCE -> SENIRCE | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KULEONU | name | KULEÖNÜ -> KULEONU | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_BUYUKGOKCELI | name | BÜYÜKGÖKÇELİ -> BUYUKGOKCELI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_EGIRDIR | name | EĞİRDİR -> EGIRDIR | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_ILYAS | name | İLYAS -> ILYAS | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_YARIKOY | name | YARIKÖY -> YARIKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_CENDIK | name | CENDİK -> CENDIK | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_BELEVI | name | BELEVİ -> BELEVI | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_YONCAKOY | name | YONCAKÖY -> YONCAKOY | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_CAMLIK | name | ÇAMLIK -> CAMLIK | ascii_ye_cevrildi
+WARNING | DesignatedPoint(VFR) | LT_VRP_KUSADASI | name | KUŞADASI -> KUSADASI | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_BOGAZ | name | BOĞAZ -> BOGAZ | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_BIGA | name | BİGA -> BIGA | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_DARULACEZE | name | DARÜLACEZE -> DARULACEZE | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_DIKILI1 | name | DİKİLİ1 -> DIKILI1 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_DIKILI2 | name | DİKİLİ2 -> DIKILI2 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_EZINE1 | name | EZİNE1 -> EZINE1 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_EZINE2 | name | EZİNE2 -> EZINE2 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_GOKCEALI | name | GÖKÇEALİ -> GOKCEALI | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_HISAR | name | HİSAR -> HISAR | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_KORIDOR1 | name | KORİDOR1 -> KORIDOR1 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_KUCUKCEKMECE | name | KÜÇÜKÇEKMECE -> KUCUKCEKMECE | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_SAHIL | name | SAHİL -> SAHIL | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_SAHIL1 | name | SAHİL1 -> SAHIL1 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_SAHIL2 | name | SAHİL2 -> SAHIL2 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_SAHIL3 | name | SAHİL3 -> SAHIL3 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_SIVRICE1 | name | SİVRİCE1 -> SIVRICE1 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_SIVRICE2 | name | SİVRİCE2 -> SIVRICE2 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_SIVRICE3 | name | SİVRİCE3 -> SIVRICE3 | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_YENIBOSNA | name | YENİBOSNA -> YENIBOSNA | ascii_ye_cevrildi
+WARNING | Route(VFR) | LT_RTE_VFR_INCEGIZ | name | İNCEĞİZ -> INCEGIZ | ascii_ye_cevrildi
+ERROR | RouteSegment(VFR) | LT_RS_VFR_0196 | reverseTrueTrack | - | hatali_alan_dusuruldu
+ERROR | RouteSegment(VFR) | LT_RS_VFR_0196 | reverseMagneticTrack | - | hatali_alan_dusuruldu

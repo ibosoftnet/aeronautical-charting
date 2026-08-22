@@ -1,0 +1,71 @@
+{
+  "_aciklama": "Common builder tarifesi. Ana kaynaklar birleşik AIXM'in gövdesini oluşturur; ek kaynaklar üzerine eklenir ve override_enabled ise ana kaynak kayıtlarının yerine geçer.",
+
+  "_asama1": "run_source_generators açıksa build_common_ats.py, birleştirmeye geçmeden ÖNCE aşağıdaki üretici scriptlerini bu sırayla çalıştırır ve her kaynağın kendi AIXM dosyasını tazeler. Kapalıysa diskte hazır duran AIXM dosyaları kullanılır. script alanı null olan kaynaklar henüz yok — sıradaki yerleri korunsun diye listede duruyorlar.",
+  "run_source_generators": false,
+  "source_generators": [
+    { "name": "jeppesen", "script": "data-sources/Jeppesen/generate-aixm-data/generate_aixm.py", "enabled": true },
+    { "name": "ead_sdo",  "script": "data-sources/EAD-SDO/generate-aixm-data/generate_aixm.py",  "enabled": true },
+    { "name": "lt",       "script": "data-sources/LT/generate-aixm-data/generate_aixm.py",       "enabled": true },
+    { "name": "trnc",     "script": null, "enabled": false, "_durum": "elle duzenleniyor" },
+    { "name": "ibosoft",  "script": null, "enabled": false, "_durum": "henüz yok" },
+    { "name": "tailored", "script": null, "enabled": false, "_durum": "henüz yok" }
+  ],
+
+  "base_sources": [
+    {
+      "name": "ead_sdo",
+      "file": "data-sources/EAD-SDO/ead-sdo-aixm.xml",
+      "data_json": "data-sources/EAD-SDO/data.json",
+      "originators_file": "data-sources/EAD-SDO/ead-sdo-originators.json"
+    },
+    {
+      "name": "jeppesen",
+      "file": "data-sources/Jeppesen/jeppesen-ndb-aixm.xml",
+      "data_json": "data-sources/Jeppesen/data.json"
+    }
+  ],
+
+  "additional_sources": [
+    {
+      "name": "lt",
+      "file": "data-sources/LT/lt-route-data-aixm.xml",
+      "data_json": "data-sources/LT/data.json",
+      "_mod": "İki yön aynı anda geçerlidir, katmana göre ayrışır. prefer_base_on_match_layers'daki katmanlarda ANA KAYNAK kazanır (ek kaynağın kaydı yazılmaz, ona referans veren her şey ana kaynağın UUID'sine yönlendirilir); DİĞER tüm katmanlarda override_enabled geçerlidir (ek kaynak kazanır, ana kaynak kaydı yazılmaz).",
+      "override_enabled": true,
+      "prefer_base_on_match": true,
+      "prefer_base_on_match_layers": ["navaids", "navaidComponents"],
+      "override_base_originator": "DHMI TURKIYE",
+
+      "_yakinlik": "Originator anahtarı tutmadığında devreye girer: hedef kaynak ADIYLA belirtilir, aday aynı tip+designator taşıyanlar arasından mesafeyle ayıklanır. Jeppesen'de originator alanı hiç yok; ayrıca aynı designator birden çok bölgede geçiyor (LU 5 kez), o yüzden ad tek başına yetmez. Eşik içinde birden fazla aday varsa seçim yapılmaz, loglanır. Ölçüldü: 1 NM eşiği 7 mükerrerin tamamını tek adayla çözüyor, en yakın yanlış aday 918,9 NM.",
+      "match_by_proximity_nm": 1.0,
+      "prefer_base_sources": ["jeppesen", "ead_sdo"]
+    },
+    {
+      "name": "trnc",
+      "file": "data-sources/TRNC/trnc-aixm-ats-structure.xml",
+      "data_json": "data-sources/TRNC/data.json",
+      "_mod": "TRNC listede LT'den SONRA geldiği için, designatedPoints'te LT'nin kaydı geçerli kalır: TRNC'de de bulunan bir noktayı TRNC override etmez, LT'ninkine devreder. Karşılaştırma tablosu ana kaynakla sınırlı değildir; kendinden önce okunmuş ek kaynakların yazılacak kayıtlarını da içerir.",
+      "_airac": "TRNC'nin data_effectivity'si bilerek diğer kaynaklardan eskidir (15 MAY 2025 / AIRAC 2505). Kullanıcı teyidi: o tarihten beri KKTC tarafında güncelleme yapılmadı, tarih doğrudur. Birleşik veride TRNC satırları bu çevrimi taşır.",
+      "enabled": true,
+      "override_enabled": true,
+      "prefer_base_on_match": true,
+      "prefer_base_on_match_layers": ["navaids", "navaidComponents", "designatedPoints"],
+      "_yon": "İki yön FARKLI sağlayıcıyı hedefler ve ikisi de çalışır. Önce devretme: nokta LT'de varsa LT'ninki öncelikli, TRNC kaydı yazılmaz. Devretme tutmazsa override: EAD'nin aynı noktayı Cyprus DCA olarak yayımlamış kaydı düşer, TRNC'ninki geçer.",
+      "override_base_originator": "CYPRUS DEPARTMENT OF CIVIL AVIATION",
+      "prefer_base_originator": "DHMI TURKIYE",
+
+      "_yakinlik": "TRNC'de yön terstir: Jeppesen kaydı TRNC'ninkiyle değiştirilir (GKE NDB, 0,000 NM). LT'ye devretme originator anahtarıyla zaten çalışıyor.",
+      "match_by_proximity_nm": 1.0,
+      "override_sources": ["jeppesen"]
+    }
+  ],
+
+  "excludes_dir": "data-sources/excludes",
+  "split_antimeridian": true,
+
+  "merged_aixm": "common-ats-structure-aixm.xml",
+  "merged_provenance": "common-ats-structure-provenance.json",
+  "output_gpkg": "common_ats_structure.gpkg",
+  "error_log": "errored-features.csv"
+}

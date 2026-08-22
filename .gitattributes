@@ -50,3 +50,11 @@ terrain-hydrography-data/osm-geofabrik/cy/*.a* filter=lfs diff=lfs merge=lfs -te
 terrain-hydrography-data/srtm-1arcsec-metre-merged.vrt filter=lfs diff=lfs merge=lfs -text
 terrain-hydrography-data/world-polygon.geojson filter=lfs diff=lfs merge=lfs -text
 terrain-hydrography-data/contours.gpkg filter=lfs diff=lfs merge=lfs -text
+
+# Common ATS Structure — builder ciktilari (100 MB uzeri, her kosuda yeniden uretilir).
+# Dizin adinda bosluk oldugu icin (`Common ATS Structure`) yol tabanli pattern
+# yerine DOSYA ADI pattern'i kullanildi: egik cizgi icermeyen bir pattern her
+# dizin seviyesinde eslesir ve .gitattributes'un bosluk ayrastirmasina takilmaz.
+common_ats_structure.gpkg filter=lfs diff=lfs merge=lfs -text
+common-ats-structure-aixm.xml filter=lfs diff=lfs merge=lfs -text
+ead-sdo-aixm.xml filter=lfs diff=lfs merge=lfs -text
