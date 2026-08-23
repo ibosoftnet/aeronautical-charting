@@ -10,6 +10,7 @@ açıktır.
 
 import re
 from dataclasses import dataclass, field
+from gpkg import schema
 
 OTHER_RE = re.compile(r"^OTHER(:(\w|_){1,58})?$")
 
@@ -117,6 +118,82 @@ ATS_STATUS_CONFLICTS = (
      "depictionNav_CONV_ile_WPT_birlikte_olamaz"),
 )
 
+#: Alt-türe özgü sütunların (`navaidComponents_<AltTür>_<alan>`) kuralları.
+#: Alan adı → kural. `type`, `class` ve `channel` artık AYRI SÜTUNLARDA olduğu
+#: için her alt-tür KENDİ enum'unu alabiliyor — eskiden tek sütunda çakışan üç
+#: enum, çalışma zamanında `equipmentType`'a bakılarak ayrıştırılmak zorundaydı
+#: (`validate.py`), `channel` ise hiç doğrulanamıyordu.
+_EQUIPMENT_FIELD_RULES = {
+    ("VOR", "type"): lambda: enum_rule("VOR", "DVOR", "VOT"),
+    ("DME", "type"): lambda: enum_rule("NARROW", "PRECISION", "WIDE"),
+    ("Azimuth", "type"): lambda: enum_rule("FWD", "BWD"),
+    ("MarkerBeacon", "class"): lambda: enum_rule("FAN", "LOW_PWR_FAN", "Z",
+                                                 "BONES"),
+    ("NDB", "class"): lambda: enum_rule("ENR", "L", "MAR"),
+}
+
+#: Alt-türden bağımsız, alan adına göre geçerli kurallar.
+_EQUIPMENT_COMMON_RULES = {
+    "zeroBearingDirection": lambda: enum_rule(*CODE_NORTH_REFERENCE),
+    "backCourseUsable": lambda: enum_rule(*CODE_ILS_BACK_COURSE),
+    "signalPerformance": lambda: enum_rule(*CODE_SIGNAL_PERFORMANCE),
+    "courseQuality": lambda: enum_rule(*CODE_COURSE_QUALITY),
+    "integrityLevel": lambda: enum_rule(*CODE_INTEGRITY_LEVEL),
+    "doppler": lambda: enum_rule(*CODE_YES_NO),
+    "frequencyUom": lambda: enum_rule(*UOM_FREQUENCY),
+    "tuningFrequencyVHFUom": lambda: enum_rule(*UOM_FREQUENCY),
+    "rdhUom": lambda: enum_rule(*UOM_DISTANCE_VERTICAL),
+    "displaceUom": lambda: enum_rule(*UOM_DISTANCE_VERTICAL),
+    "magneticBearing": lambda: _BEARING,
+    "trueBearing": lambda: _BEARING,
+    "axisBearing": lambda: _BEARING,
+    "declination": lambda: number_rule(-180, 180),
+    "widthCourse": lambda: _ANGLE,
+    "slope": lambda: _ANGLE,
+    "angleNominal": lambda: _ANGLE,
+    "angleMinimum": lambda: _ANGLE,
+    "angleSpan": lambda: _ANGLE,
+    "angleProportionalLeft": lambda: _ANGLE,
+    "angleProportionalRight": lambda: _ANGLE,
+    "angleCoverLeft": lambda: _ANGLE,
+    "angleCoverRight": lambda: _ANGLE,
+}
+
+
+def _navaid_component_rules():
+    """`navaidComponents` kural sözlüğünü ÜRETİR — elle yazılmaz.
+
+    Ortak taban sütunları sabit; alt-tür sütunları
+    `schema.EQUIPMENT_SUBTYPE_FIELDS`'ten türetilir, böylece şema değişince
+    kurallar da kendiliğinden takip eder.
+    """
+    rules = {
+        "navaidComponents_equipmentType": enum_rule(*EQUIPMENT_TYPES,
+                                                    allow_other=False),
+        "navaidComponents_markerPosition": enum_rule(*CODE_POSITION_IN_ILS),
+        "navaidComponents_providesNavigableLocation": enum_rule(*CODE_YES_NO),
+        "navaidComponents_designator": FieldRule(max_length=4),
+        "navaidComponents_name": FieldRule(max_length=60),
+        "navaidComponents_emissionClass": enum_rule(*CODE_RADIO_EMISSION),
+        "navaidComponents_mobile": enum_rule(*CODE_YES_NO),
+        "navaidComponents_flightChecked": enum_rule(*CODE_YES_NO),
+        "navaidComponents_magneticVariation": number_rule(-180, 180),
+        "navaidComponents_locationElevationUom":
+            enum_rule(*UOM_DISTANCE_VERTICAL),
+    }
+    for subtype, fields in schema.EQUIPMENT_SUBTYPE_FIELDS.items():
+        for field in fields:
+            names = [field]
+            if field in schema.EQUIPMENT_VALUE_UOM:
+                names.append(field + "Uom")
+            for name in names:
+                factory = (_EQUIPMENT_FIELD_RULES.get((subtype, name))
+                           or _EQUIPMENT_COMMON_RULES.get(name))
+                if factory:
+                    rules[schema.equipment_column(subtype, name)] = factory()
+    return rules
+
+
 RULES: dict[str, dict[str, FieldRule]] = {
     "designatedPoints": {
         "atsStatus_depictionNav": enum_rule(*CODE_DEPICTION_NAV),
@@ -147,37 +224,7 @@ RULES: dict[str, dict[str, FieldRule]] = {
         "navaids_locationElevationUom": enum_rule(*UOM_DISTANCE_VERTICAL),
         "navaids_locationHorizontalAccuracyUom": enum_rule(*UOM_DISTANCE),
     },
-    "navaidComponents": {
-        "navaidComponents_equipmentType": enum_rule(*EQUIPMENT_TYPES,
-                                                    allow_other=False),
-        "navaidComponents_markerPosition": enum_rule(*CODE_POSITION_IN_ILS),
-        "navaidComponents_providesNavigableLocation": enum_rule(*CODE_YES_NO),
-        "navaidComponents_designator": FieldRule(max_length=4),
-        "navaidComponents_name": FieldRule(max_length=60),
-        "navaidComponents_emissionClass": enum_rule(*CODE_RADIO_EMISSION),
-        "navaidComponents_mobile": enum_rule(*CODE_YES_NO),
-        "navaidComponents_flightChecked": enum_rule(*CODE_YES_NO),
-        "navaidComponents_magneticVariation": number_rule(-180, 180),
-        "navaidComponents_zeroBearingDirection": enum_rule(*CODE_NORTH_REFERENCE),
-        "navaidComponents_backCourseUsable": enum_rule(*CODE_ILS_BACK_COURSE),
-        "navaidComponents_signalPerformance": enum_rule(*CODE_SIGNAL_PERFORMANCE),
-        "navaidComponents_courseQuality": enum_rule(*CODE_COURSE_QUALITY),
-        "navaidComponents_integrityLevel": enum_rule(*CODE_INTEGRITY_LEVEL),
-        "navaidComponents_frequencyUom": enum_rule(*UOM_FREQUENCY),
-        "navaidComponents_tuningFrequencyVHFUom": enum_rule(*UOM_FREQUENCY),
-        "navaidComponents_magneticBearing": _BEARING,
-        "navaidComponents_trueBearing": _BEARING,
-        "navaidComponents_axisBearing": _BEARING,
-        "navaidComponents_declination": number_rule(-180, 180),
-        "navaidComponents_widthCourse": _ANGLE,
-        "navaidComponents_slope": _ANGLE,
-        "navaidComponents_angleNominal": _ANGLE,
-        "navaidComponents_angleMinimum": _ANGLE,
-        "navaidComponents_angleSpan": _ANGLE,
-        "navaidComponents_doppler": enum_rule(*CODE_YES_NO),
-        "navaidComponents_locationElevationUom": enum_rule(*UOM_DISTANCE_VERTICAL),
-        "navaidComponents_rdhUom": enum_rule(*UOM_DISTANCE_VERTICAL),
-    },
+    "navaidComponents": _navaid_component_rules(),
     "routeSegments": {
         "routeSegments_level": enum_rule(*CODE_LEVEL),
         "routeSegments_upperLimitUom": enum_rule(*UOM_DISTANCE_VERTICAL),

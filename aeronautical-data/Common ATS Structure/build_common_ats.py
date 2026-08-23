@@ -50,7 +50,10 @@ from merge.override import (build_override_index,          # noqa: E402
 from pyproj import Geod                                    # noqa: E402
 
 GEOD = Geod(ellps="WGS84")
+from merge.marker_beacon import (MarkerBeaconMatcher,      # noqa: E402
+                                 is_enabled as marker_enabled)
 from merge.provenance import ProvenanceWriter              # noqa: E402
+from gpkg import navaid_labeling                        # noqa: E402
 from gpkg.validation_rules import (ATS_STATUS_COMPOSITES,   # noqa: E402
                                    ATS_STATUS_CONFLICTS)
 
@@ -274,6 +277,18 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
     print(f"  override anahtari: {len(overrides)}")
 
     # -- iptal kuralları --
+    # Marker beacon modulu — okuma sirasinda `jeppesen` ile `excludes` arasinda.
+    # Yalnizca `marker_beacon_matching: true` olan girdi icin kurulur.
+    marker = None
+    for entry in cfg.get("special_sources", []):
+        if marker_enabled(entry):
+            marker = MarkerBeaconMatcher(entry, root, GEOD)
+            marker_meta = load_source_meta(entry, root)
+            print(f"\n[2b] Marker beacon modulu: {marker.name} "
+                  f"({len(marker.markers)} marker, esik "
+                  f"{marker.threshold_nm} NM)")
+            break
+
     excludes = ExcludeRules.load(root / cfg["excludes_dir"], log)
     print(f"\n[3] Iptal kurallari: {len(excludes)}")
 
@@ -364,6 +379,8 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
                 continue
             base_by_key.setdefault(key, info["uuid"])
             dizine_ekle(source["name"], info, fields)
+            if marker is not None:
+                marker.index_target(info, fields)
             if fields.get("layer") == "navaids" and fields.get("designator"):
                 base_navaid_by_designator.setdefault(
                     (fields["designator"], originator), []).append(info["uuid"])
@@ -383,6 +400,10 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
                                 "yakinlik_esiginde_birden_fazla_aday")
             if hit and hit[2]:
                 remap[info["uuid"]] = hit[2]          # ana kaynak → ek kaynak
+    if marker is not None:
+        marker.match(log)
+        print(f"  marker beacon: {marker.summary()}")
+
     print(f"  ana kaynak dogal anahtari: {len(base_by_key)}")
     print(f"  override ile yonlendirilecek: {len(remap)}")
 
@@ -636,6 +657,10 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
                 stats["yakinlikla_override_edildi"] += 1
                 continue
 
+            if marker is not None:
+                stats["marker_bileseni_eklendi"] += marker.inject(
+                    member, info["gml_id"])
+
             emit(member, info, source)
             written += 1
         print(f"  {source['name']:10} yazildi={written:>7} "
@@ -643,6 +668,23 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
         stats["base_yazildi"] += written
         stats["override_ile_atlandi"] += skipped_ovr
         stats["iptal_edildi"] += skipped_exc
+
+    # 5a-son. Eşleşen marker'ların `MarkerBeacon` ekipman feature'ları.
+    # Hedef Navaid'e bileşen zaten enjekte edildi; burada referans verilen
+    # ekipmanın kendisi yazılır (aksi halde xlink kırık kalırdı).
+    if marker is not None and marker.pending:
+        provider = marker_meta.get("data_provider", "")
+        originator = marker_meta.get("data_originator", "")
+        effectivity = marker_meta.get("data_effectivity", "")
+        yazilan = 0
+        for record, member in marker.iter_features(log):
+            writer.write_member(member)
+            prov.add(record["equipment_gml_id"], provider, originator,
+                     effectivity)
+            yazilan += 1
+        stats["yazildi_MarkerBeacon"] += yazilan
+        print(f"  {marker.name:10} yazildi={yazilan:>7} "
+              f"(MarkerBeacon ekipmani)")
 
     # 5b. Ek kaynaklar — `prefer_base_on_match` ile eşleşenler hariç
     for source in (s for s in prepared if not s["is_base"]):
@@ -905,6 +947,33 @@ def compute_ats_status(con, log=None):
     con.commit()
 
 
+def write_associated_components(cur, reverse):
+    """`navaids.associatedComponent_<Tip>` ters bagini doldurur.
+
+    `reverse`: {navaid satır id: {ekipman tipi: [bilesen satır id, …]}}
+
+    Her sutun VIRGULLU LISTE tutar; cogunda tek eleman olur ama bir navaid ayni
+    tipten birden fazla bilesen tasiyabiliyor (olculdu: 31 ILS'te ikiser
+    MarkerBeacon — OUTER + MIDDLE). Bilesen olmayan tip NULL kalir.
+    """
+    from gpkg import schema                 # run_gpkg ile ayni desen
+
+    if not reverse:
+        return
+    columns = [f'"associatedComponent_{k}"=?'
+               for k in schema.EQUIPMENT_SUBTYPE_FIELDS]
+    sql = ('UPDATE "navaids" SET ' + ", ".join(columns) + " WHERE id=?")
+    payload = []
+    for navaid_row_id, by_kind in reverse.items():
+        values = []
+        for kind in schema.EQUIPMENT_SUBTYPE_FIELDS:
+            ids = by_kind.get(kind)
+            values.append(schema.LIST_SEPARATOR.join(str(i) for i in ids)
+                          if ids else None)
+        payload.append(tuple(values) + (navaid_row_id,))
+    cur.executemany(sql, payload)
+
+
 def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
     """Birleşik AIXM + provenance → GeoPackage (saf şema eşlemesi)."""
     from gpkg import mapper, schema
@@ -931,10 +1000,16 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
 
     # uuid → (katman, satır id, designator) — rota uç noktası çözümlemesi için
     resolved: dict[str, tuple] = {}
-    # equipment uuid → (navaid satır id, NavaidComponent elemanı)
-    component_links: dict[str, tuple] = {}
+    # equipment uuid → [(navaid satır id, navaid tipi, NavaidComponent elemanı), …]
+    # LİSTE: bir ekipman birden fazla Navaid tarafından paylaşılabiliyor
+    # (ölçüldü: 275 ekipman 2-7 navaid'e ait). Eski tek-tuple hâli bunlardan
+    # yalnızca sonuncusunu tutuyor, diğer ebeveynleri sessizce kaybediyordu.
+    component_links: dict[str, list] = {}
     # Route uuid → TimeSlice elemanı (segmentlere devredilecek alanlar için)
     routes: dict[str, object] = {}
+    # navaid satır id → {ekipman tipi: [navaidComponents satır id, …]}
+    # `associatedComponent_<Tip>` ters bağını doldurmak için 2. geçişte birikir.
+    reverse: dict[int, dict] = {}
 
     # -- 1. geçiş: designatedPoints, navaids, Route alanları, bileşen bağları --
     print("\n[1] Noktalar ve navaid'ler yaziliyor...")
@@ -971,8 +1046,9 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
                 link = component.find(rdr.A + "theNavaidEquipment")
                 equipment_uuid = rdr.href_of(link)
                 if equipment_uuid:
-                    component_links[equipment_uuid] = (
-                        row_id, copy.deepcopy(component))
+                    component_links.setdefault(equipment_uuid, []).append(
+                        (row_id, row.get("navaids_type"),
+                         copy.deepcopy(component)))
 
         elif kind == "Route":
             routes[uid] = copy.deepcopy(ts)
@@ -994,17 +1070,26 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
         gml_id = rdr.gml_id_of(feature)
         uid = rdr.uuid_of(feature)
         ts = rdr.time_slice(feature)
-        navaid_row_id, component = component_links.get(uid, (None, None))
-        if component is None:
+        links = component_links.get(uid) or []
+        if not links:
             counts["baglanmamis_ekipman"] += 1
             log.warning("2B", "navaidComponents", gml_id, "theNavaidEquipment",
                         "-", "hicbir_navaid_e_bagli_degil")
+        # Bileşen nesnesi ebeveynler arasında aynıdır (aynı ekipmana bağlı
+        # NavaidComponent'ler); alanları ilkinden okunur.
+        component = links[0][2] if links else None
+        parents = [(row_id, navaid_type) for row_id, navaid_type, _ in links]
         row, position = mapper.map_navaid_component(
-            component, ts, kind, navaid_row_id, gml_id, provenance.get(gml_id))
+            component, ts, kind, parents, gml_id, provenance.get(gml_id))
         row = validate_row("navaidComponents", row, log, gml_id)
         geom = schema.point_blob(position[1], position[0]) if position else None
-        schema.insert_row(cur, "navaidComponents", row, geom)
+        component_row_id = schema.insert_row(cur, "navaidComponents", row, geom)
         counts["navaidComponents"] += 1
+        # Ters bağ: her ebeveyn navaid, bu bileşeni kendi tip sütununda listeler.
+        for navaid_row_id, _, _ in links:
+            reverse.setdefault(navaid_row_id, {}).setdefault(
+                kind, []).append(component_row_id)
+    write_associated_components(cur, reverse)
     con.commit()
     print(f"  navaidComponents={counts['navaidComponents']} "
           f"(baglanmamis={counts['baglanmamis_ekipman']})")
@@ -1036,7 +1121,10 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
     print("\n[4] atsStatus_* alanlari turetiliyor...")
     compute_ats_status(con, log)
 
-    print("\n[5] Indexler kuruluyor...")
+    print("\n[5] navaidLabeling_* alanlari turetiliyor...")
+    navaid_labeling.compute(con, log)
+
+    print("\n[6] Indexler kuruluyor...")
     schema.finalize(con)
     con.close()
 

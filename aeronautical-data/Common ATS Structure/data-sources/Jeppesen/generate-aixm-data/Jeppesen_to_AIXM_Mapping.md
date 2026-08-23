@@ -1,4 +1,4 @@
-# Jeppesen (Navigraph) NDB → AIXM 5.2 Eşleme Dokümanı
+# Jeppesen (Navigraph) NDB + Marker Beacon → AIXM 5.2 Eşleme Dokümanı
 
 `generate_aixm.py` tarafından üretilen `../jeppesen-ndb-aixm.xml` dosyasındaki
 her alanın kaynağı, dönüşümü ve gerekçesi.
@@ -62,7 +62,7 @@ Her feature: `message:hasMember` → `aixm:<Feature>` (okunabilir `gml:id`) →
 |---|---|
 | `gml:id` | **`JEPP_` kaynak önekiyle**: `JEPP_NAV_NDB_<ident>_<region>` ve `JEPP_NDBEQ_<ident>_<region>`; çakışmada sıra eki (`_2`). Türetilmiş id'ler (`_TS`, `_TP`, `_EP`, `_NC`, `_NOTE`) öneki miras alır. Mesaj kökü: `JEPP_MSG_NDB` |
 | `gml:identifier` | Deterministik UUID5 (sabit namespace + `JeppesenNdbNavaid:<ident>:<region>:<ndb_id>`). Aynı girdi → aynı UUID |
-| `validTime/beginPosition` | `data.json`'daki `data_effectivity` değerinden (kaynakta per-kayıt tarih yok). Tam tarih yazılıysa doğrudan kullanılır; yalnızca döngü numarası varsa 28 günlük AIRAC takviminden hesaplanır (çapa: AIRAC 2601 = 22 JAN 2026 — projedeki mevcut data.json'lardan doğrulandı: 2607 = 09 JUL 2026, 2608 = 06 AUG 2026, tam 28 gün fark) |
+| `validTime/beginPosition` | **Boş** — `indeterminatePosition="unknown"`. Jeppesen kayıtlarında feature başına yürürlük tarihi **yoktur**; `data.json`'daki AIRAC effectivity **veri setinin** geçerliliğidir, feature'ın kendi yürürlüğü değil (EAD'de her kaydın kendi `dtWef`'i var, burada karşılığı yok). O tarihi buraya yazmak uydurma bir yürürlük iddiası olurdu — kullanıcı kararı. `endPosition` de aynı şekilde belirsizdir |
 | `interpretation` / `sequenceNumber` / `correctionNumber` | `BASELINE` / `1` / `0` |
 
 **Koordinatlar:** sqlite `laty`/`lonx` → `gml:pos` **enlem boylam** sırasında,
@@ -113,7 +113,63 @@ authority, monitoring, availability, annotation) → `frequency, class, emission
 
 ---
 
-## 6. Kullanılmayan / düşürülen kaynak alanları
+## 6. Marker Beacon (`marker` tablosu, 913 kayıt)
+
+### 6.1 Neden AIXM dosyasına yazılmaz
+
+Bir marker beacon **tek başına anlamlı değildir**; ilişkili olduğu LOC/ILS
+navaid'inin `navaidComponent`'i olarak yer almalıdır. Hangi LOC/ILS'e
+bağlanacağı ancak **birleşik** veride bilinebilir — marker Jeppesen'den, hedef
+navaid EAD-SDO'dan gelir.
+
+Bu yüzden bu üretici marker'ı `jeppesen-ndb-aixm.xml`'e **yazmaz**; yalnızca
+kimlikleriyle birlikte `../jeppesen-marker.json` yan dosyasına döker.
+Eşleştirme ve AIXM üretimi common builder'daki `merge/marker_beacon.py`
+modülünde yapılır (config: `special_sources` → `marker_beacon_matching: true`).
+
+Kimlikler (`JEPP_MKR_<ident>_<region>_<position>` ve sabit namespace'li UUID5)
+**burada** atanır — `JEPP_` ad alanı bu üreticinin sorumluluğudur, NDB ile aynı
+desen.
+
+### 6.2 Alan eşlemeleri
+
+| Jeppesen `marker` | AIXM | Gerekçe |
+|---|---|---|
+| `type` | **`NavaidComponent.markerPosition`** | `CodePositionInILSType` enum'u tam olarak `OUTER`/`MIDDLE`/`INNER`/`BACKCOURSE` — kaynak değerleriyle **birebir**. Eşlemeye gerek yok, doğrulama yeterli. **`MarkerBeacon.class` DEĞİL**: o enum `FAN`/`LOW_PWR_FAN`/`Z`/`BONES`, yani enroute marker sinyal biçimleri |
+| `heading` | **`MarkerBeacon.axisBearing`** | XSD: *"The true bearing of the minor axis of the marker beacon"*. Değerin **true** olduğu veriden doğrulandı: `\|mag_var\|>8` olan 3.000 ILS'te pist adına göre true sapması 3,73°, manyetik sapması 13,46° |
+| `altitude` | `location/ElevatedPoint/elevation` uom=`FT` | Birim doğrulandı: Antalya 159–174 (saha 177 ft), Denizli Çardak 2774 (2795 ft), Diyarbakır 2176 (2251 ft). 913 kaydın hiçbirinde boş yok |
+| `laty` / `lonx` | `location/ElevatedPoint/gml:pos` | AIXM/EPSG:4326 sırası: enlem boylam |
+| `ident` | `MarkerBeacon.designator` + eşleştirme anahtarı | EAD'de Localizer/Glidepath ekipmanları da ILS ident'ini taşıyor — tutarlı |
+| `region` | **yazılmaz** | Hedef LOC/ILS'te karşılığı yok (`codeICAOCountry` 550 kaydın 548'inde boş). Ebeveyn ILS zaten konumu/devleti belirliyor |
+| `marker_id`, `file_id` | yazılmaz | UUID türetme anahtarı (`ndb_id` ile aynı desen) |
+| **(kaynakta yok)** | **`MarkerBeacon.frequency` = `75` uom=`MHZ`** | ICAO Annex 10 Cilt I: **bütün** marker beacon'lar 75 MHz'de çalışır. Kaynaktan gelmez, üreticide sabit atanır (`MARKER_FREQUENCY_MHZ`) — kullanıcı kararı |
+
+> **Bu alan önce boş bırakılmıştı.** İlk uygulamada "ICAO standardını yazmak
+> varsayım olur" gerekçesiyle atlanmıştı; kullanıcı kararıyla sabit olarak
+> yazılıyor. Standartla sabitlenmiş tek değer budur — `class` ve
+> `auralMorseCode` hâlâ boş, çünkü onların standart bir karşılığı yok.
+
+**Kaynakta bulunmayan AIXM alanları** (uydurulmaz):
+
+| Alan | Neden boş |
+|---|---|
+| `MarkerBeacon.class` | Kaynakta karşılığı yok. `type` bu alana ait değil (yukarıya bakın) |
+| `auralMorseCode` | Kaynakta yok (nokta/çizgi deseni) |
+
+### 6.3 Eşleştirme sonucu
+
+913 marker'ın **77'si** birleşik veride bir LOC/ILS ile eşleşiyor; kalan 836
+yazılmaz ve `errored-features.csv`'ye `marker_ebeveyn_loc_ils_bulunamadi`
+olarak loglanır (kullanıcı kararı — ayrı `MKR` navaid üretilmez).
+
+Düşük oranın nedeni **coğrafi kapsam**: EAD-SDO'nun ILS raporunda ABD hiç yok
+(FAA kaynaklı LOC/ILS = 0), Jeppesen marker verisi ise ağırlıklı ABD
+(eşleşemeyenlerin 380'i K3–K7 bölgeleri). Türkiye'nin 7 marker'ının **7'si de**
+eşleşiyor. Eşik kısıt değil: 15/25/40 NM → sonuç hep 77.
+
+Ayrıntı: `merge/marker_beacon.py` ve `Common_Builder_Behaviour.md`.
+
+## 7. Kullanılmayan / düşürülen kaynak alanları
 
 | Alan | Neden |
 |---|---|
@@ -127,12 +183,13 @@ authority, monitoring, availability, annotation) → `frequency, class, emission
 
 ---
 
-## 7. Çıktı dosyaları
+## 8. Çıktı dosyaları
 
 | Dosya | İçerik |
 |---|---|
-| `../jeppesen-ndb-aixm.xml` | AIXM 5.2 çıktısı (başında `<!-- Generated by Ibosoft -->`) |
+| `../jeppesen-ndb-aixm.xml` | AIXM 5.2 çıktısı — **yalnızca NDB** (marker buraya girmez) |
 | `../jeppesen-ndb-index.json` | `designator`, `region`, `navaid_uuid`, `equipment_uuid`, `lat`, `lon` — EAD-SDO üreticisinin NDB referans çözümlemesi için |
+| `../jeppesen-marker.json` | Marker beacon yan dosyası (913 kayıt) — `ident`, `region`, `markerPosition`, `axisBearing`, `elevation`, `elevationUom`, `lat`, `lon`, `equipment_gml_id`, `equipment_uuid`. **AIXM dosyasından bağımsızdır**; common builder'ın marker modülü okur (§6) |
 | `../data.json` | `Jeppesen Data\data.json`'ın birebir kopyası — **çıktıdır, elle düzenlenmez** |
 | `errored-features.log` | `SEVERITY \| FEATURE \| ID \| FIELD \| VALUE \| VIOLATION`. Her çalıştırmada sıfırlanır |
 
@@ -141,11 +198,11 @@ Doğrulama: `validate.bat` (veya `py validate_aixm.py`) — `lxml` gerektirir;
 AIXM şeması GML 3.2.1'i uzaktan import ettiği için ilk derleme internet
 gerektirir ve birkaç dakika sürer.
 
-**Son çalıştırma:** 3.073 kayıt okundu, 0 atlandı, `errored-features.log` **0 kayıt**.
+**Son çalıştırma:** `ndb` 3.073 kayıt okundu, 0 atlandı → 6.146 feature; `marker` 913 kayıt okundu, 0 atlandı → yan dosya. `errored-features.log` **0 kayıt**.
 
 ---
 
-## 8. EAD-SDO tarafındaki referans çözümlemesi
+## 9. EAD-SDO tarafındaki referans çözümlemesi
 
 EAD rota kayıtlarındaki `SpnSta`/`SpnEnd` `codeType=NDB` uç noktaları buradaki
 `Navaid` feature'larına `xlink:href="urn:uuid:…"` ile bağlanır.

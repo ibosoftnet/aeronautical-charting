@@ -31,9 +31,9 @@ atlamaktan yeğdir ve yeni bir kaynak geldiğinde şema değişmeden dolar.
 
 | Katman | AIXM Feature | Geometri | Sütun | Satır |
 |---|---|---|---:|---:|
-| `designatedPoints` | `DesignatedPoint` | POINT | 23 | 152.055 |
-| `navaids` | `Navaid` | POINT | 34 | 9.357 |
-| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 61 | 13.285 |
+| `designatedPoints` | `DesignatedPoint` | POINT | 24 | 152.061 |
+| `navaids` | `Navaid` | POINT | 56 | 9.357 |
+| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 98 | 13.362 |
 | `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 82 | 92.976 |
 
 Her katmanda ayrıca `id` (INTEGER PRIMARY KEY AUTOINCREMENT) ve `geom` (BLOB)
@@ -67,6 +67,7 @@ hem segment hem rota bilgisi görünür.
 | Ölçü birimi | `<alan>Uom` → `routeSegments_lengthUom` |
 | Dikey referans | `<alan>Reference` → `routeSegments_upperLimitReference` |
 | `location` alt alanları | `<katman>_location<Alan>` → `navaids_locationElevation` |
+| Ekipman alt-türüne özgü | `navaidComponents_<AltTür>_<alan>` → `navaidComponents_Glidepath_slope` — ortak taban önek almaz (§6.1) |
 | Rota kökenli (Route feature'ından) | `route_<Attr>` → `route_designatorNumber` — **`routeSegments_` DEĞİL**, RouteSegment'in kendi alanlarından ayırt edilsin diye |
 | Uç nokta | `routeSegments_<start\|end><Attr>` → `routeSegments_startFlyOver` |
 
@@ -80,6 +81,8 @@ olmadığı için **önek almazlar** (kullanıcı kararı):
 | Provenance | `data_provider`, `data_originator`, `data_effectivity`, `add_date` |
 | Kimlik | `gmlId` — birleşik AIXM'deki `gml:id` (kaynak önekli, örn. `EAD_DP_…`) |
 | ATS rota durumu (türetilmiş) | `atsStatus_*` — yalnızca `designatedPoints` ve `navaids`'te |
+| Navaid ↔ Component bağı | `associatedComponent_<AltTür>` (navaids), `associatedNavaid` / `associatedNavaidType` (navaidComponents) — virgüllü liste (§6.3) |
+| Harita etiketi (türetilmiş) | `navaidLabeling_*` — yalnızca `navaids` ve `navaidComponents`'te |
 
 Bu istisna dışındaki tüm sütunlar yukarıdaki genel kurala göre katman önekli
 kalır (`designatedPoints_designator`, `navaids_type` gibi).
@@ -88,8 +91,15 @@ kalır (`designatedPoints_designator`, `navaids_type` gibi).
 ondan türetilir. Tam tanımları, kuralları ve ölçülen dağılımları ayrı
 dokümandadır: [`ATS_Status_Fields.md`](ATS_Status_Fields.md).
 
+`navaidLabeling_*` alanları da AIXM'den okunmaz. Bunlar harita etiketinin
+hangi öğeleri göstereceğini navaid **tipine** göre belirler ve eksik
+frekans/kanal bilgisini ICAO eşleştirme tablosundan türetir — AIXM'de frekans
+ve kanal Navaid feature'ında değil bağlı ekipmanda durduğu için `navaids`
+satırları bileşenlerden beslenir. Ayrıntı:
+[`Navaid_Labeling_Fields.md`](Navaid_Labeling_Fields.md).
+
 **Sütun tipi** `gpkg/schema.py:column_type()` ile belirlenir: `*Uom` ve
-`*Reference` her zaman TEXT; `*PointId`/`*navaidId` INTEGER; bilinen sayısal
+`*Reference` her zaman TEXT; `*PointId` INTEGER; bilinen sayısal
 son ekler (`frequency`, `slope`, `angle*`, `length`, `upperLimit` …) REAL; geri
 kalan TEXT.
 
@@ -118,7 +128,7 @@ korunur.
 | `facilityMakeup` | routeSegments start/end | `_startFacilityMakeup`, `_endFacilityMakeup` | Tek JSON, tam iç içe yapıyla (`distanceReference[]`/`angleReference[]` dahil) |
 | `fix` | designatedPoints | `_fix` | Tek JSON, tam iç içe `PointReference` yapısı |
 | `monitoring` | navaidComponents | `_monitoring` | JSON dizisi |
-| `navaidEquipment` | — | Ayrı `navaidComponents` katmanı + FK | Kullanıcı kararı |
+| `navaidEquipment` | — | Ayrı `navaidComponents` katmanı + **çift yönlü** bağ (§6.3) | Kullanıcı kararı |
 
 ### Hem `Route`'ta hem `RouteSegment`'te tanımlı alanlar
 
@@ -167,7 +177,7 @@ Yapının tam tanımı:
 
 ---
 
-## 4. `designatedPoints` (23 sütun)
+## 4. `designatedPoints` (24 sütun)
 
 Kaynak: `DesignatedPointTimeSlice`. Geometri: `location/Point/gml:pos` → POINT.
 
@@ -193,7 +203,7 @@ Kaynak: `DesignatedPointTimeSlice`. Geometri: `location/Point/gml:pos` → POINT
 
 ---
 
-## 5. `navaids` (34 sütun)
+## 5. `navaids` (56 sütun)
 
 Kaynak: `NavaidTimeSlice`. Geometri: `location/ElevatedPoint` (yoksa `Point`) →
 POINT. Rota uç noktaları **bu katmana** çözülür.
@@ -242,7 +252,7 @@ Katmandaki geometrisiz iki satır bunlardır.
 
 ---
 
-## 6. `navaidComponents` (61 sütun)
+## 6. `navaidComponents` (98 sütun)
 
 `NavaidComponent` tek başına anlamı olmayan ince bir Object olduğu için kendi
 alanları ile bağlı `AbstractNavaidEquipment`'ın alanları **tek satırda**
@@ -256,102 +266,136 @@ Navaid.navaidEquipment (0..∞) → NavaidComponent → theNavaidEquipment (xlin
 Her satırın **kendi gerçek konumu** vardır (bir ILS'in LOC/GP/DME'si üç ayrı
 noktadadır). Rota uç noktası çözümlemesinde **kullanılmaz**.
 
-Alt-tür dağılımı (son koşu): DME 4.663 · VOR 3.592 · NDB 3.073 · TACAN 877 ·
-Localizer 548 · Glidepath 522. Alt-türlerin tam öznitelik listeleri:
+Alt-tür dağılımı (son koşu): DME 4.667 · VOR 3.594 · NDB 3.073 · TACAN 877 ·
+Localizer 550 · Glidepath 524 · MarkerBeacon 77. Alt-türlerin tam öznitelik
+listeleri:
 [`docs/aixm-point-types/AIXM_NavaidEquipment_Attributes.md`](docs/aixm-point-types/AIXM_NavaidEquipment_Attributes.md) §2.1-2.11.
 
-### 6.1 Bağ ve tür
+### 6.1 Sütun adlandırması — ortak vs alt-türe özgü
 
-| Sütun | Kaynak | Tip | Dolu |
-|---|---|---|---:|
-| `navaidComponents_navaidId` | üst `navaids.id` (FK) | INTEGER | 100,0% |
-| `navaidComponents_equipmentType` | ekipman feature'ının eleman adı | TEXT | 100,0% |
+| Alan sınıfı | Sütun adı | Örnek |
+|---|---|---|
+| `NavaidComponent`'in kendi alanları | `navaidComponents_<alan>` | `navaidComponents_markerPosition` |
+| Ekipman **ortak tabanı** (`NavaidEquipmentPropertyGroup`) | `navaidComponents_<alan>` | `navaidComponents_designator` |
+| **Alt-türe özgü** her alan | `navaidComponents_<AltTür>_<alan>` | `navaidComponents_Glidepath_slope` |
 
-`equipmentType`, 11 somut alt-türden hangisi olduğunu söyler ve `type`/`class`
-sütunlarının izinli enum'unu belirler.
+Ortak taban 11 alt-türde de **birebir aynıdır**, o yüzden önek almaz:
+`designator`, `name`, `emissionClass`, `mobile`, `magneticVariation`,
+`dateMagneticVariation`, `flightChecked`, `location*` (6 sütun), `monitoring`,
+`availability`.
 
-### 6.2 `NavaidComponent`'in kendi alanları
+**Aynı alan adı birden çok alt-türde geçebilir** — `frequency` altı alt-türde
+(VOR, Localizer, Glidepath, MarkerBeacon, NDB, SDF), `channel` üçünde
+(DME, TACAN, Azimuth), `type` üçünde (VOR, DME, Azimuth). Bunlar AIXM'de ayrı
+elemanlardır ve bir kısmı **farklı enum taşır**. Bu yüzden her alt-tür kendi
+sütununu alır (kullanıcı kararı):
 
-| Sütun | AIXM kaynağı | Tip | Dolu |
-|---|---|---|---:|
-| `navaidComponents_collocationGroup` | `collocationGroup` | TEXT | **0,0%** |
-| `navaidComponents_markerPosition` | `markerPosition` | TEXT | **0,0%** |
-| `navaidComponents_providesNavigableLocation` | `providesNavigableLocation` | TEXT | 70,4% |
+```
+navaidComponents_VOR_frequency        navaidComponents_DME_channel
+navaidComponents_NDB_frequency        navaidComponents_TACAN_channel
+navaidComponents_Localizer_frequency  navaidComponents_Azimuth_channel
+…
+```
 
-### 6.3 Ekipman ortak tabanı
+Tablo bilinçli olarak **seyrektir**: her satırda yalnızca kendi alt-türünün
+sütunları dolar. Karşılığında iki kazanç var:
 
-| Sütun | AIXM kaynağı | Tip | Dolu |
-|---|---|---|---:|
-| `navaidComponents_designator` | `designator` | TEXT | 100,0% |
-| `navaidComponents_name` | `name` | TEXT | 91,1% |
-| `navaidComponents_emissionClass` | `emissionClass` | TEXT | 0,2% |
-| `navaidComponents_mobile` | `mobile` | TEXT | **0,0%** |
-| `navaidComponents_magneticVariation` | `magneticVariation` | REAL | 32,7% |
-| `navaidComponents_dateMagneticVariation` | `dateMagneticVariation` | TEXT | 9,5% |
-| `navaidComponents_flightChecked` | `flightChecked` | TEXT | **0,0%** |
-| `navaidComponents_locationElevation` (+`Uom`) | `location/ElevatedPoint/elevation` | REAL/TEXT | 10,4% |
-| `navaidComponents_locationGeoidUndulation` | `…/geoidUndulation` | REAL | 1,7% |
-| `navaidComponents_locationVerticalDatum` | `…/verticalDatum` | TEXT | 1,2% |
-| `navaidComponents_locationHorizontalAccuracy` (+`Uom`) | `…/horizontalAccuracy` | REAL/TEXT | 0,2% |
-| `navaidComponents_monitoring` | `monitoring` (JSON) | TEXT | **0,0%** |
-| `navaidComponents_availability` | `availability` (JSON) | TEXT | 19,6% |
+- Hangi alanın hangi alt-türe ait olduğu **sütun adından** okunur.
+- Çakışan enum'lar ayrışır. `type` (CodeVORType / CodeDMEType /
+  CodeMLSAzimuthType), `class` (CodeMarkerBeaconSignalType / CodeNDBUsageType)
+  ve `channel` (CodeDMEChannelType / CodeTACANChannelType / CodeMLSChannelType)
+  eskiden tek sütunu paylaşıyordu; doğrulama `equipmentType`'a bakıp doğru
+  enum'u seçmek zorundaydı, `channel` ise hiç doğrulanamıyordu. Artık her sütun
+  kendi kuralını alır (§8).
+
+Sütun listesi **elle yazılmaz**: `gpkg/schema.EQUIPMENT_SUBTYPE_FIELDS`
+sözlüğünden türetilir. Alt-tür → alan eşlemesinin tamamı XSD'den doğrulanmıştır
+(`<group name="<AltTür>PropertyGroup">`).
+
+### 6.2 Alt-türe özgü alanlar
+
+```
+VOR             : type, frequency(+Uom), zeroBearingDirection, declination
+DME             : type, channel, displace(+Uom), tuningFrequencyVHF(+Uom)
+TACAN           : channel, declination, tuningFrequencyVHF(+Uom)
+Localizer       : frequency(+Uom), magneticBearing, trueBearing, declination,
+                  widthCourse, backCourseUsable, signalPerformance,
+                  courseQuality, integrityLevel
+Glidepath       : frequency(+Uom), slope, rdh(+Uom), signalPerformance,
+                  courseQuality, integrityLevel
+MarkerBeacon    : class, frequency(+Uom), axisBearing, auralMorseCode
+NDB             : frequency(+Uom), class, emissionBand
+SDF             : frequency(+Uom), magneticBearing, trueBearing
+Azimuth         : type, channel, trueBearing, magneticBearing,
+                  angleProportionalLeft/Right, angleCoverLeft/Right
+Elevation       : angleNominal, angleMinimum, angleSpan
+DirectionFinder : doppler
+```
+
+`SDF`, `Azimuth`, `Elevation`, `DirectionFinder` sütunları şu an **boştur** —
+kaynaklarda bu alt-türlerden feature yok. Sütunlar kaldırılmaz: veri gelirse
+şema değişmeden dolar.
+
+> **Giderilen sessiz atlama:** `merge/aixm_reader.EQUIPMENT_FEATURES` daha önce
+> yalnızca 7 alt-tür sayıyordu; bu dördü listede olmadığı için
+> `run_gpkg` onları **sessizce atıyordu** — ne bileşen satırı olurdu, ne de
+> birleştirmedeki "düşen navaid'in ekipmanı" mantığı görürdü. Liste 11'e
+> tamamlandı.
+
+### 6.3 Navaid ↔ Component çift yönlü bağ
+
+AIXM'de ilişki `Navaid.navaidEquipment → NavaidComponent → theNavaidEquipment`
+xlink zinciriyle kurulur ve **çok-çoka**dır. GeoPackage'da iki yönden birden
+temsil edilir:
+
+| Katman | Sütun | İçerik |
+|---|---|---|
+| `navaids` | `associatedComponent_<AltTür>` × 11 | O navaid'in ilgili tipteki bileşenlerinin `navaidComponents.id` listesi |
+| `navaidComponents` | `associatedNavaid` | Ebeveyn `navaids.id` listesi |
+| `navaidComponents` | `associatedNavaidType` | Karşılık gelen `navaids_type` listesi, **aynı sırada** |
+
+Üçü de virgülle ayrılmış **liste** tutar ve katman öneki taşımaz.
+
+**Neden liste:**
+
+- Bir navaid aynı tipten birden fazla bileşen taşıyabilir — ölçüldü, **31
+  ILS'te ikişer `MarkerBeacon`** var (OUTER + MIDDLE; veride MIDDLE 43,
+  OUTER 31, INNER 3).
+- Bir ekipman birden fazla navaid tarafından **paylaşılabilir** — ölçüldü,
+  **275 ekipman 2–7 navaid'e ait** (230 DME, 45 TACAN; biri 7 navaid'e).
+
+> **Giderilen veri kaybı:** önceki `navaidComponents_navaidId` tek bir FK'ydı ve
+> paylaşımlı ekipmanın **yalnızca son görülen ebeveynini** kaydediyordu.
+> `EAD_DME_AS_4720672` hem `EAD_NAV_AS_4699536` hem `EAD_NAV_AS_4720669`
+> tarafından kullanılırken tabloda yalnızca ikincisi görünüyordu. Artık
+> `associatedNavaid = "550,2181"`, `associatedNavaidType = "VOR_DME,VOR_DME"`.
+
+Örnek — `IBR` (ILS_DME, navaid id 12):
+
+```
+navaids  id=12  associatedComponent_Localizer    = "24"
+                associatedComponent_Glidepath    = "25"
+                associatedComponent_DME          = "26"
+                associatedComponent_MarkerBeacon = "13290,13291"
+
+navaidComponents id=13290 MarkerBeacon MIDDLE  associatedNavaid="12" Type="ILS_DME"
+                 id=13291 MarkerBeacon OUTER   associatedNavaid="12" Type="ILS_DME"
+```
+
+İki yönün tutarlılığı build sırasında ölçülür: her iki yönde de ihlal **0**,
+`associatedNavaid` ile `associatedNavaidType` uzunluk uyuşmazlığı **0**.
+
+### 6.4 Not ve provenance
+
+`annotationDescription/Remark/Warning/Disclaimer` — hem `AbstractNavaidEquipment`'ın
+hem `NavaidComponent`'in notları aynı 4 sütunda, aralarında boş satır bırakılarak
+birleşir (§3). `data_provider` / `data_originator` / `data_effectivity` /
+`add_date` ve `gmlId` katman öneksizdir. `navaidLabeling_*` sütunları için
+ayrıca bkz. `gpkg/navaid_labeling.py`.
 
 `authority` (`AbstractNavaidEquipment` → Organisation/Authority) **kapsam
 dışıdır** — büyük bir ayrı Feature ağacıdır ve bu projede Organisation
 feature'ları üretilmiyor. Kullanıcı onayıyla dışarıda bırakıldı.
-
-### 6.4 Alt-türe özgü alanlar
-
-Yalnızca eşleşen `equipmentType` için dolar; diğerlerinde NULL kalır.
-
-| Sütun | AIXM kaynağı | Tip | Dolu |
-|---|---|---|---:|
-| `navaidComponents_type` | `type` | TEXT | 27,1% |
-| `navaidComponents_class` | `class` | TEXT | 5,1% |
-| `navaidComponents_frequency` (+`Uom`) | `frequency` | REAL/TEXT | 58,3% |
-| `navaidComponents_channel` | `channel` | TEXT | 41,7% |
-| `navaidComponents_declination` | `declination` | REAL | 0,6% |
-| `navaidComponents_zeroBearingDirection` | `zeroBearingDirection` | TEXT | 27,1% |
-| `navaidComponents_displace` (+`Uom`) | `displace` | REAL/TEXT | **0,0%** |
-| `navaidComponents_tuningFrequencyVHF` (+`Uom`) | `tuningFrequencyVHF` | REAL/TEXT | 41,6% |
-| `navaidComponents_magneticBearing` | `magneticBearing` | REAL | 1,9% |
-| `navaidComponents_trueBearing` | `trueBearing` | REAL | 1,1% |
-| `navaidComponents_widthCourse` | `widthCourse` | REAL | 1,2% |
-| `navaidComponents_backCourseUsable` | `backCourseUsable` | TEXT | 1,1% |
-| `navaidComponents_signalPerformance` | `signalPerformance` | TEXT | **0,0%** |
-| `navaidComponents_courseQuality` | `courseQuality` | TEXT | **0,0%** |
-| `navaidComponents_integrityLevel` | `integrityLevel` | TEXT | **0,0%** |
-| `navaidComponents_slope` | `slope` | REAL | 3,4% |
-| `navaidComponents_rdh` (+`Uom`) | `rdh` | REAL/TEXT | 2,6% |
-| `navaidComponents_axisBearing` | `axisBearing` | REAL | **0,0%** |
-| `navaidComponents_auralMorseCode` | `auralMorseCode` | TEXT | **0,0%** |
-| `navaidComponents_emissionBand` | `emissionBand` | TEXT | **0,0%** |
-| `navaidComponents_angleProportionalLeft/Right` | aynı adlı elemanlar | REAL | **0,0%** |
-| `navaidComponents_angleCoverLeft/Right` | aynı adlı elemanlar | REAL | **0,0%** |
-| `navaidComponents_angleNominal/Minimum/Span` | aynı adlı elemanlar | REAL | **0,0%** |
-| `navaidComponents_doppler` | `doppler` | TEXT | **0,0%** |
-
-`CodeDMEChannelType` (352 değer) ve `CodeMLSChannelType` (200 değer) kapalı
-enum'ları **elle kopyalanmaz**; `channel` sütunu biçim kuralına göre doğrulanır
-(§2.2.1 / §2.9.1).
-
-### 6.5 Not ve provenance
-
-| Sütun | Kaynak | Dolu |
-|---|---|---:|
-| `annotationDescription` | ekipman + bileşen notları (§3) | 76,9% |
-| `annotationRemark` | aynı | 16,7% |
-| `annotationWarning` / `Disclaimer` | aynı | **0,0%** |
-| `data_provider` | provenance | 100,0% |
-| `data_originator` | provenance | 76,9% |
-| `data_effectivity` | provenance | 100,0% |
-| `add_date` | builder çalışma zamanı | 100,0% |
-| `gmlId` | `gml:id` | 100,0% |
-
-`data_originator` %76,9: boş kalan 3.073 satır Jeppesen NDB ekipmanlarıdır
-(§5'teki aynı doğrulanmış yokluk).
-
----
 
 ## 7. `routeSegments` (82 sütun)
 

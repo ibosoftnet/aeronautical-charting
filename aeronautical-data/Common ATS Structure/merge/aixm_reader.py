@@ -30,7 +30,17 @@ HAS_MEMBER = M + "hasMember"
 POINT_FEATURES = {"DesignatedPoint", "Navaid", "Point"}
 
 # AbstractNavaidEquipment'ın bu projede üretilen somut alt-türleri.
-EQUIPMENT_FEATURES = {"VOR", "DME", "TACAN", "Localizer", "Glidepath", "NDB"}
+# `MarkerBeacon` bu kumeye eklenince 2B kendiliginden calisir: `keys.LAYER_OF`
+# bu kumeden turetiliyor, `run_gpkg`'nin navaidComponents gecisi bununla
+# suzuyor, sahipsiz ekipman denetimi de bunu kullaniyor.
+#: AIXM `AbstractNavaidEquipment` ikame grubunun 11 SOMUT alt-turu (XSD'den
+#: dogrulandi). Onceki hali yalnizca 7'sini sayiyordu; `SDF`, `Azimuth`,
+#: `Elevation`, `DirectionFinder` eksikti ve bu turden bir feature gelse
+#: `build_common_ats.run_gpkg` onu SESSIZCE atiyordu — ne bilesen satiri olur,
+#: ne de birlestirmedeki "dusen navaid'in ekipmani" mantigi gorurdu.
+EQUIPMENT_FEATURES = {"VOR", "DME", "TACAN", "Localizer", "Glidepath", "NDB",
+                      "MarkerBeacon", "SDF", "Azimuth", "Elevation",
+                      "DirectionFinder"}
 
 
 def local(tag: str) -> str:

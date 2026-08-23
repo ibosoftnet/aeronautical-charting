@@ -3091,6 +3091,222 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
     </aixm:DesignatedPoint>
   </message:hasMember>
   <message:hasMember>
+    <aixm:DesignatedPoint gml:id="TRNC_DP_A">
+      <gml:identifier codeSpace="urn:uuid:">5C5FB120-F870-5B81-B16B-B3017E24488F</gml:identifier>
+      <aixm:timeSlice>
+        <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_A_TS">
+          <gml:validTime>
+            <gml:TimePeriod gml:id="TRNC_DP_A_TP">
+              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:endPosition indeterminatePosition="unknown" />
+            </gml:TimePeriod>
+          </gml:validTime>
+          <aixm:interpretation>BASELINE</aixm:interpretation>
+          <aixm:sequenceNumber>1</aixm:sequenceNumber>
+          <aixm:correctionNumber>0</aixm:correctionNumber>
+          <aixm:type>VRP</aixm:type>
+          <aixm:name>A</aixm:name>
+          <aixm:location>
+            <aixm:Point gml:id="TRNC_DP_A_P" srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:pos>35.519444 34.109444</gml:pos>
+            </aixm:Point>
+          </aixm:location>
+          <aixm:annotation>
+            <aixm:Note gml:id="TRNC_DP_A_DSC">
+              <aixm:purpose>DESCRIPTION</aixm:purpose>
+              <aixm:translatedNote>
+                <aixm:LinguisticNote gml:id="TRNC_DP_A_DSC_LN">
+                  <aixm:note>Corners of The LCTTA1. REF AIP ENR 6.1</aixm:note>
+                </aixm:LinguisticNote>
+              </aixm:translatedNote>
+            </aixm:Note>
+          </aixm:annotation>
+          <aixm:codeICAOCountry>LC</aixm:codeICAOCountry>
+        </aixm:DesignatedPointTimeSlice>
+      </aixm:timeSlice>
+    </aixm:DesignatedPoint>
+  </message:hasMember>
+  <message:hasMember>
+    <aixm:DesignatedPoint gml:id="TRNC_DP_B">
+      <gml:identifier codeSpace="urn:uuid:">E2413286-4076-5B61-A553-F16236005552</gml:identifier>
+      <aixm:timeSlice>
+        <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_B_TS">
+          <gml:validTime>
+            <gml:TimePeriod gml:id="TRNC_DP_B_TP">
+              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:endPosition indeterminatePosition="unknown" />
+            </gml:TimePeriod>
+          </gml:validTime>
+          <aixm:interpretation>BASELINE</aixm:interpretation>
+          <aixm:sequenceNumber>1</aixm:sequenceNumber>
+          <aixm:correctionNumber>0</aixm:correctionNumber>
+          <aixm:type>VRP</aixm:type>
+          <aixm:name>B</aixm:name>
+          <aixm:location>
+            <aixm:Point gml:id="TRNC_DP_B_P" srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:pos>35.628611 34.354722</gml:pos>
+            </aixm:Point>
+          </aixm:location>
+          <aixm:annotation>
+            <aixm:Note gml:id="TRNC_DP_B_DSC">
+              <aixm:purpose>DESCRIPTION</aixm:purpose>
+              <aixm:translatedNote>
+                <aixm:LinguisticNote gml:id="TRNC_DP_B_DSC_LN">
+                  <aixm:note>Corners of The LCTTA1. REF AIP ENR 6.1</aixm:note>
+                </aixm:LinguisticNote>
+              </aixm:translatedNote>
+            </aixm:Note>
+          </aixm:annotation>
+          <aixm:codeICAOCountry>LC</aixm:codeICAOCountry>
+        </aixm:DesignatedPointTimeSlice>
+      </aixm:timeSlice>
+    </aixm:DesignatedPoint>
+  </message:hasMember>
+  <message:hasMember>
+    <aixm:DesignatedPoint gml:id="TRNC_DP_C">
+      <gml:identifier codeSpace="urn:uuid:">F27CC655-1305-5A47-AEEF-4ABB3D92C7E9</gml:identifier>
+      <aixm:timeSlice>
+        <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_C_TS">
+          <gml:validTime>
+            <gml:TimePeriod gml:id="TRNC_DP_C_TP">
+              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:endPosition indeterminatePosition="unknown" />
+            </gml:TimePeriod>
+          </gml:validTime>
+          <aixm:interpretation>BASELINE</aixm:interpretation>
+          <aixm:sequenceNumber>1</aixm:sequenceNumber>
+          <aixm:correctionNumber>0</aixm:correctionNumber>
+          <aixm:type>VRP</aixm:type>
+          <aixm:name>C</aixm:name>
+          <aixm:location>
+            <aixm:Point gml:id="TRNC_DP_C_P" srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:pos>35.603611 34.366944</gml:pos>
+            </aixm:Point>
+          </aixm:location>
+          <aixm:annotation>
+            <aixm:Note gml:id="TRNC_DP_C_DSC">
+              <aixm:purpose>DESCRIPTION</aixm:purpose>
+              <aixm:translatedNote>
+                <aixm:LinguisticNote gml:id="TRNC_DP_C_DSC_LN">
+                  <aixm:note>Corners of The LCTTA1. REF AIP ENR 6.1</aixm:note>
+                </aixm:LinguisticNote>
+              </aixm:translatedNote>
+            </aixm:Note>
+          </aixm:annotation>
+          <aixm:codeICAOCountry>LC</aixm:codeICAOCountry>
+        </aixm:DesignatedPointTimeSlice>
+      </aixm:timeSlice>
+    </aixm:DesignatedPoint>
+  </message:hasMember>
+  <message:hasMember>
+    <aixm:DesignatedPoint gml:id="TRNC_DP_D">
+      <gml:identifier codeSpace="urn:uuid:">AC26571E-21B0-5958-91A3-5752D6B3FC0D</gml:identifier>
+      <aixm:timeSlice>
+        <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_D_TS">
+          <gml:validTime>
+            <gml:TimePeriod gml:id="TRNC_DP_D_TP">
+              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:endPosition indeterminatePosition="unknown" />
+            </gml:TimePeriod>
+          </gml:validTime>
+          <aixm:interpretation>BASELINE</aixm:interpretation>
+          <aixm:sequenceNumber>1</aixm:sequenceNumber>
+          <aixm:correctionNumber>0</aixm:correctionNumber>
+          <aixm:type>VRP</aixm:type>
+          <aixm:name>D</aixm:name>
+          <aixm:location>
+            <aixm:Point gml:id="TRNC_DP_D_P" srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:pos>35.690833 34.580556</gml:pos>
+            </aixm:Point>
+          </aixm:location>
+          <aixm:annotation>
+            <aixm:Note gml:id="TRNC_DP_D_DSC">
+              <aixm:purpose>DESCRIPTION</aixm:purpose>
+              <aixm:translatedNote>
+                <aixm:LinguisticNote gml:id="TRNC_DP_D_DSC_LN">
+                  <aixm:note>Corners of The LCTTA1. REF AIP ENR 6.1</aixm:note>
+                </aixm:LinguisticNote>
+              </aixm:translatedNote>
+            </aixm:Note>
+          </aixm:annotation>
+          <aixm:codeICAOCountry>LC</aixm:codeICAOCountry>
+        </aixm:DesignatedPointTimeSlice>
+      </aixm:timeSlice>
+    </aixm:DesignatedPoint>
+  </message:hasMember>
+  <message:hasMember>
+    <aixm:DesignatedPoint gml:id="TRNC_DP_E">
+      <gml:identifier codeSpace="urn:uuid:">F337A3DD-B228-5677-87C4-0BFFDD6525A2</gml:identifier>
+      <aixm:timeSlice>
+        <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_E_TS">
+          <gml:validTime>
+            <gml:TimePeriod gml:id="TRNC_DP_E_TP">
+              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:endPosition indeterminatePosition="unknown" />
+            </gml:TimePeriod>
+          </gml:validTime>
+          <aixm:interpretation>BASELINE</aixm:interpretation>
+          <aixm:sequenceNumber>1</aixm:sequenceNumber>
+          <aixm:correctionNumber>0</aixm:correctionNumber>
+          <aixm:type>VRP</aixm:type>
+          <aixm:name>E</aixm:name>
+          <aixm:location>
+            <aixm:Point gml:id="TRNC_DP_E_P" srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:pos>35.640833 34.5925</gml:pos>
+            </aixm:Point>
+          </aixm:location>
+          <aixm:annotation>
+            <aixm:Note gml:id="TRNC_DP_E_DSC">
+              <aixm:purpose>DESCRIPTION</aixm:purpose>
+              <aixm:translatedNote>
+                <aixm:LinguisticNote gml:id="TRNC_DP_E_DSC_LN">
+                  <aixm:note>Corners of The LCTTA1. REF AIP ENR 6.1</aixm:note>
+                </aixm:LinguisticNote>
+              </aixm:translatedNote>
+            </aixm:Note>
+          </aixm:annotation>
+          <aixm:codeICAOCountry>LC</aixm:codeICAOCountry>
+        </aixm:DesignatedPointTimeSlice>
+      </aixm:timeSlice>
+    </aixm:DesignatedPoint>
+  </message:hasMember>
+  <message:hasMember>
+    <aixm:DesignatedPoint gml:id="TRNC_DP_F">
+      <gml:identifier codeSpace="urn:uuid:">FD2CAA3E-4B93-5CBD-8BD0-45879092004B</gml:identifier>
+      <aixm:timeSlice>
+        <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_F_TS">
+          <gml:validTime>
+            <gml:TimePeriod gml:id="TRNC_DP_F_TP">
+              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:endPosition indeterminatePosition="unknown" />
+            </gml:TimePeriod>
+          </gml:validTime>
+          <aixm:interpretation>BASELINE</aixm:interpretation>
+          <aixm:sequenceNumber>1</aixm:sequenceNumber>
+          <aixm:correctionNumber>0</aixm:correctionNumber>
+          <aixm:type>VRP</aixm:type>
+          <aixm:name>F</aixm:name>
+          <aixm:location>
+            <aixm:Point gml:id="TRNC_DP_F_P" srsName="urn:ogc:def:crs:EPSG::4326">
+              <gml:pos>35.394722 34.123333</gml:pos>
+            </aixm:Point>
+          </aixm:location>
+          <aixm:annotation>
+            <aixm:Note gml:id="TRNC_DP_F_DSC">
+              <aixm:purpose>DESCRIPTION</aixm:purpose>
+              <aixm:translatedNote>
+                <aixm:LinguisticNote gml:id="TRNC_DP_F_DSC_LN">
+                  <aixm:note>Corners of The LCTTA1. REF AIP ENR 6.1</aixm:note>
+                </aixm:LinguisticNote>
+              </aixm:translatedNote>
+            </aixm:Note>
+          </aixm:annotation>
+          <aixm:codeICAOCountry>LC</aixm:codeICAOCountry>
+        </aixm:DesignatedPointTimeSlice>
+      </aixm:timeSlice>
+    </aixm:DesignatedPoint>
+  </message:hasMember>
+  <message:hasMember>
     <aixm:Route gml:id="TRNC_RTE_LCTTA1">
       <gml:identifier codeSpace="urn:uuid:">B2510FFB-C975-5571-9700-2C00B692C4BF</gml:identifier>
       <aixm:timeSlice>
@@ -3134,7 +3350,6 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
           <aixm:upperLimitReference>MSL</aixm:upperLimitReference>
           <aixm:lowerLimit uom="FT">3000</aixm:lowerLimit>
           <aixm:lowerLimitReference>MSL</aixm:lowerLimitReference>
-          <aixm:length uom="NM">1.3</aixm:length>
           <aixm:widthLeft uom="NM">1</aixm:widthLeft>
           <aixm:widthRight uom="NM">1</aixm:widthRight>
           <aixm:start>
@@ -3213,7 +3428,6 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
           <aixm:upperLimitReference>MSL</aixm:upperLimitReference>
           <aixm:lowerLimit uom="FT">3000</aixm:lowerLimit>
           <aixm:lowerLimitReference>MSL</aixm:lowerLimitReference>
-          <aixm:length uom="NM">2.9</aixm:length>
           <aixm:widthLeft uom="NM">1</aixm:widthLeft>
           <aixm:widthRight uom="NM">1</aixm:widthRight>
           <aixm:start>
@@ -3292,7 +3506,6 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
           <aixm:upperLimitReference>MSL</aixm:upperLimitReference>
           <aixm:lowerLimit uom="FT">3000</aixm:lowerLimit>
           <aixm:lowerLimitReference>MSL</aixm:lowerLimitReference>
-          <aixm:length uom="NM">5.9</aixm:length>
           <aixm:widthLeft uom="NM">1</aixm:widthLeft>
           <aixm:widthRight uom="NM">1</aixm:widthRight>
           <aixm:start>
@@ -3371,7 +3584,6 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
           <aixm:upperLimitReference>MSL</aixm:upperLimitReference>
           <aixm:lowerLimit uom="FT">3000</aixm:lowerLimit>
           <aixm:lowerLimitReference>MSL</aixm:lowerLimitReference>
-          <aixm:length uom="NM">4.6</aixm:length>
           <aixm:widthLeft uom="NM">1</aixm:widthLeft>
           <aixm:widthRight uom="NM">1</aixm:widthRight>
           <aixm:start>
@@ -3450,7 +3662,6 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
           <aixm:upperLimitReference>MSL</aixm:upperLimitReference>
           <aixm:lowerLimit uom="FT">3000</aixm:lowerLimit>
           <aixm:lowerLimitReference>MSL</aixm:lowerLimitReference>
-          <aixm:length uom="NM">3.7</aixm:length>
           <aixm:widthLeft uom="NM">1</aixm:widthLeft>
           <aixm:widthRight uom="NM">1</aixm:widthRight>
           <aixm:start>
@@ -3529,7 +3740,6 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
           <aixm:upperLimitReference>MSL</aixm:upperLimitReference>
           <aixm:lowerLimit uom="FT">3000</aixm:lowerLimit>
           <aixm:lowerLimitReference>MSL</aixm:lowerLimitReference>
-          <aixm:length uom="NM">12.4</aixm:length>
           <aixm:widthLeft uom="NM">1</aixm:widthLeft>
           <aixm:widthRight uom="NM">1</aixm:widthRight>
           <aixm:start>
@@ -3608,7 +3818,6 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
           <aixm:upperLimitReference>MSL</aixm:upperLimitReference>
           <aixm:lowerLimit uom="FT">3000</aixm:lowerLimit>
           <aixm:lowerLimitReference>MSL</aixm:lowerLimitReference>
-          <aixm:length uom="NM">12.7</aixm:length>
           <aixm:widthLeft uom="NM">1</aixm:widthLeft>
           <aixm:widthRight uom="NM">1</aixm:widthRight>
           <aixm:start>

@@ -8,8 +8,7 @@ Politika (plan kararı):
 Böylece görünür boşluk bırakılır, sessizce bozuk veri yazılmaz.
 """
 
-from .validation_rules import (EQUIPMENT_CLASS_ENUM, EQUIPMENT_TYPE_ENUM,
-                               OTHER_RE, RULES)
+from .validation_rules import OTHER_RE, RULES
 
 
 def _check_enum(value, rule):
@@ -23,8 +22,6 @@ def validate_row(layer: str, row: dict, log, identifier: str) -> dict:
     rules = RULES.get(layer)
     if not rules:
         return row
-
-    equipment_type = row.get("navaidComponents_equipmentType")
 
     for column, rule in rules.items():
         value = row.get(column)
@@ -56,17 +53,8 @@ def validate_row(layer: str, row: dict, log, identifier: str) -> dict:
                         "uzunluk_asildi_kirpildi")
             row[column] = str(value)[:rule.max_length]
 
-    # `type`/`class` sütunları alt-türe göre farklı enum taşır.
-    if layer == "navaidComponents" and equipment_type:
-        for column, table in (("navaidComponents_type", EQUIPMENT_TYPE_ENUM),
-                              ("navaidComponents_class", EQUIPMENT_CLASS_ENUM)):
-            value = row.get(column)
-            allowed = table.get(equipment_type)
-            if value and allowed and str(value) not in allowed \
-                    and not OTHER_RE.match(str(value)):
-                log.error("2B", layer, identifier, column,
-                          f"{value} (equipmentType={equipment_type})",
-                          "enum_disi_deger")
-                row[column] = None
-
+    # NOT: `type`/`class` icin eskiden burada calisma-zamani dallanmasi vardi
+    # (`equipmentType`'a bakip dogru enum'u secmek icin). Artik gerekmiyor:
+    # bu alanlar `navaidComponents_<AltTur>_<alan>` seklinde AYRI SUTUNLARDA
+    # duruyor ve her sutun kendi enum kuralini `RULES` icinden aliyor.
     return row

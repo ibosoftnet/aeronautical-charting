@@ -40,8 +40,8 @@ ham veri ────────────▶ kaynak üreticileri, config'dek
                                              │
                      ┌───────────────────────▼──────────────────────────┐
                      │ AŞAMA 2A — BİRLEŞTİRME                           │
-                     │  ana kaynaklar → iptal → ek kaynaklar (çakışma   │
-                     │  çözümü) → antimeridyen bölme                    │
+                     │  ana kaynaklar → marker beacon → iptal →         │
+                     │  ek kaynaklar (çakışma çözümü) → antimeridyen    │
                      └───────────────────────┬──────────────────────────┘
                                              ▼
                        common-ats-structure-aixm.xml        (geçerli AIXM 5.2)
@@ -152,17 +152,29 @@ UUID düzeyinde sıfır çakışma, ölçüldü).
 1. Kaynak indeksleri kurulur (`uuid → designator/type/kind`) — doğal anahtar
    karşılaştırması için gerekir.
 2. Ek kaynakların doğal anahtarları çıkarılır.
-3. **İptal (exclude)** kuralları yüklenir.
-4. **Ön tarama**: hangi kaydın hangi yöne devredileceği ve `remap` tablosu
-   belirlenir.
-5. Ana kaynaklar yazılır (iptal + çakışma süzgeciyle).
-6. Ek kaynaklar yazılır.
-7. Antimeridyen bölme uygulanır (seçenek açıksa).
+3. **Marker beacon modülü** kurulur (config'de açıksa) — §4.6.
+4. **İptal (exclude)** kuralları yüklenir.
+5. **Ön tarama**: hangi kaydın hangi yöne devredileceği ve `remap` tablosu
+   belirlenir; marker'ların hedef LOC/ILS'leri de burada toplanıp eşleştirilir.
+6. Ana kaynaklar yazılır (iptal + çakışma süzgeciyle; eşleşen marker'ların
+   bileşenleri hedef Navaid'e enjekte edilir).
+7. Eşleşen marker'ların `MarkerBeacon` ekipman feature'ları yazılır.
+8. Ek kaynaklar yazılır.
+9. Antimeridyen bölme uygulanır (seçenek açıksa).
+
+Okuma sırası config'deki yapıyı izler:
+`ead_sdo` → `jeppesen` → **`jeppesen-mkr`** → `excludes`.
 
 Yazım **akış modundadır**: 470 MB'lik kaynak dosyası belleğe alınmaz. Geçen
 feature'lar **birebir kopyalanır** — yeniden serileştirilip öznitelik sırası /
-biçim hatası riskine girilmez. Yalnızca antimeridyen bölmesinde yeni eleman
-üretilir.
+biçim hatası riskine girilmez. Bu kuralın tanımlı **iki istisnası** var:
+
+  * **antimeridyen bölme** — yeni `DesignatedPoint` ve iki yeni `RouteSegment`
+    üretir (§4.8),
+  * **marker beacon enjeksiyonu** — var olan bir LOC/ILS Navaid'ine
+    `navaidEquipment` ekler (§4.6).
+
+İkisi de XSD eleman sırasına uyar; doğrulama bunu yakalar.
 
 ### 4.3 Çakışma çözümü — iki yön, katmana göre
 
@@ -309,14 +321,72 @@ kaynağın kendi originator yazımı ile ana kaynaktaki karşılığı farklı o
 LT'de doğrulandı — kendi `data.json`'ı `"DHMİ Türkiye"` derken EAD tarafındaki
 karşılığı `"DHMI TURKIYE"` yazımıyla geçiyor.
 
-### 4.4 Referans yönlendirmesi (`remap`)
+### 4.5 Referans yönlendirmesi (`remap`)
 
 Bir kayıt düşünce ona referans veren **başka** feature'lar boşta kalır. Bu
 yüzden yazımdan önce bir ön tarama yapılır ve `remap` tablosu kurulur
 (`düşen UUID → yerine geçen UUID`); yazım sırasında her `xlink:href` bu tabloya
 göre çevrilir. Son koşuda 1.374 referans yönlendirildi.
 
-### 4.5 İptal (exclude)
+### 4.6 Marker beacon eşleştirmesi (`special_sources`)
+
+Normal base/additional kaynaklardan farklı, **bu işe özgü** bir adım. Config'de
+`special_sources` altında tanımlanır ve yalnızca `marker_beacon_matching: true`
+olduğunda çalışır:
+
+```jsonc
+"special_sources": [
+  { "name": "jeppesen-mkr",
+    "enabled": true,
+    "marker_beacon_matching": true,
+    "file": "data-sources/Jeppesen/jeppesen-marker.json",
+    "data_json": "data-sources/Jeppesen/data.json",
+    "match_by_proximity_nm": 25.0,
+    "target_navaid_types": ["ILS", "ILS_DME", "LOC", "LOC_DME"] }
+]
+```
+
+**Neden ayrı bir modül.** Bir marker beacon tek başına anlamlı değildir;
+ilişkili olduğu LOC/ILS navaid'inin `navaidComponent`'i olarak yer almalıdır.
+Hangi LOC/ILS'e bağlanacağı ancak **birleşik** veride bilinebilir — marker
+Jeppesen'den, hedef navaid EAD-SDO'dan gelir. Bu yüzden Jeppesen üreticisi
+marker'ı kendi AIXM dosyasına yazmaz, yalnızca kimlikleriyle birlikte
+`jeppesen-marker.json` yan dosyasına döker; eşleştirme ve AIXM üretimi
+`merge/marker_beacon.py`'de yapılır.
+
+**Eşleştirme: designator + yakınlık.** "Ülke kodu" kullanılamıyor — birleşik
+verideki 550 LOC/ILS'in **548'inde `codeICAOCountry` boş** (EAD bu alanı hiç
+doldurmuyor). Yakınlık bu boşluğu kapatıyor ve ölçümle doğrulandı: eşleşen
+mesafeler **1,41–6,89 NM** (medyan 2,62) — outer/middle marker için tam
+beklenen aralık; eşik içinde **birden fazla aday olan hiç yok**; aynı ident'i
+taşıyıp uzakta olan **88 yanlış aday** doğru şekilde eleniyor.
+
+**Eşleşemeyen marker yazılmaz** (kullanıcı kararı), `errored-features.csv`'ye
+`marker_ebeveyn_loc_ils_bulunamadi` olarak loglanır. Ayrı `MKR` navaid
+üretilmez: veride tek bir enroute marker (FAN/Z) yok, 913'ün tamamı ILS
+yaklaşma marker'ı — "enroute" demek uydurma sınıflandırma olurdu.
+
+**Ölçülen sonuç:** 913 marker → **77 eşleşti**, 836 eşleşemedi, belirsiz **0**.
+Düşük oranın nedeni coğrafi kapsam: EAD-SDO'nun ILS raporunda ABD hiç yok
+(FAA kaynaklı LOC/ILS = 0), Jeppesen marker verisi ise ağırlıklı ABD
+(eşleşemeyenlerin 380'i K3–K7 bölgeleri). **Türkiye'nin 7 marker'ının 7'si de
+eşleşiyor.** Eşik kısıt değil — 15/25/40 NM hepsi 77 veriyor.
+
+**XSD sırası korunur.** `navaidEquipment`, `NavaidPropertyGroup` içinde
+`location`'dan **önce** gelmelidir; modül yeni bileşeni, kendisinden sonra
+gelmesi gereken ilk elemanın önüne yerleştirir. Enjeksiyon var olan bir
+feature'ı değiştirdiği için bu, akış yazıcısının "birebir kopyala" kuralına
+tanımlı tek istisnadır.
+
+**`gml:validTime` boştur.** Jeppesen kayıtlarında feature başına yürürlük
+tarihi yok; `data.json`'daki AIRAC effectivity **veri setinin** geçerliliğidir,
+feature'ın kendi yürürlüğü değil. Bu yüzden `beginPosition` ve `endPosition`
+`indeterminatePosition="unknown"` ile yazılır (NDB feature'ları da aynı
+şekilde — kullanıcı kararı).
+
+Alan eşlemeleri: `data-sources/Jeppesen/generate-aixm-data/Jeppesen_to_AIXM_Mapping.md` §6.
+
+### 4.7 İptal (exclude)
 
 `data-sources/excludes/*.json` içindeki kurallara uyan kayıtlar birleşik veriden
 çıkarılır. Kural biçimi jeneriktir, yalnızca rota segmentine özel değildir:
@@ -328,7 +398,7 @@ göre çevrilir. Son koşuda 1.374 referans yönlendirildi.
 Şu an dizin boştur, mekanizma no-op çalışır. Her isabet `errored-features.csv`'ye
 `iptal_kuraliyla_cikarildi` olarak yazılır — sessiz düşürme yoktur.
 
-### 4.6 Antimeridyen bölme (`split_antimeridian`)
+### 4.8 Antimeridyen bölme (`split_antimeridian`)
 
 Antimeridyeni (±180°) aşan her `RouteSegment` kesişim noktasından **iki ayrı
 segmente** bölünür; yoksa web haritalarında segment dünyayı boydan boya kat eder
@@ -367,7 +437,7 @@ rotası; 40–587 NM.
 olamaz. Bu yüzden kesişim noktası `Point` değil `DesignatedPoint` olarak
 üretilir.
 
-### 4.7 Provenance yan dosyası
+### 4.9 Provenance yan dosyası
 
 AIXM'de provenance alanı **yoktur**; birleşik dosyada her feature farklı bir
 kaynaktan geldiği için tek bir `data.json` da yeterli değildir. 2A bu yüzden
@@ -400,9 +470,9 @@ Girdi **yalnızca** 2A çıktısıdır. Dört katman üretilir:
 
 | Katman | Geometri | Sütun |
 |---|---|---:|
-| `designatedPoints` | POINT | 14 |
-| `navaids` | POINT | 25 |
-| `navaidComponents` | POINT | 61 |
+| `designatedPoints` | POINT | 24 |
+| `navaids` | POINT | 45 |
+| `navaidComponents` | POINT | 71 |
 | `routeSegments` | LINESTRING | 82 |
 
 Sütun listeleri ve eşlemeler:
@@ -448,11 +518,35 @@ taşır; doğrulama alt-türe göre yapılır.
 `errored-features.csv` sütunları: `stage, layer, record_identifier, field,
 value, violation, severity`.
 
-### 5.3 Index
+### 5.3 Türetilmiş alanlar
+
+Katmanlar yazıldıktan sonra, index kurulmadan **önce** iki türetme geçişi
+çalışır. İkisinin de AIXM'de karşılığı yoktur; ikisi de kaynak veriyi
+değiştirmez, yalnızca yeni sütun doldurur.
+
+| Adım | Alanlar | Katman | Neyden türetilir |
+|---|---|---|---|
+| `[4]` | `atsStatus_*` (10 sütun) | `designatedPoints`, `navaids` | `routeSegments` — noktanın ATS rota ağındaki rolü |
+| `[5]` | `navaidLabeling_*` (10 sütun) | `navaids`, `navaidComponents` | Tip bazlı geçerlilik tablosu + ICAO frekans/kanal eşleştirmesi |
+
+**Neden index'ten önce:** yeni sütunların B-tree index'i `finalize()` içinde
+kuruluyor; sonra çalışsalardı indekssiz kalırlardı.
+
+`navaidLabeling_*` iki geçişlidir — AIXM'de frekans ve kanal Navaid
+feature'ında değil **bağlı ekipmanda** durur (`NavaidPropertyGroup`'ta ikisi de
+yoktur), oysa harita etiketi navaid düzeyinde çizilir. Bu yüzden önce
+`navaidComponents` çözülür, sonra `navaids` bileşenlerin sonucunu devralır.
+Bir ekipman ya frekans ya kanal taşır; eksik olan
+[`gpkg/frequency-pairing.csv`](gpkg/frequency-pairing.csv)'den türetilir.
+
+Ayrıntılar: [`ATS_Status_Fields.md`](ATS_Status_Fields.md) ve
+[`Navaid_Labeling_Fields.md`](Navaid_Labeling_Fields.md).
+
+### 5.4 Index
 
 `finalize()` üç şey kurar:
 
-1. **Her sütunda B-tree index** — dört katmanda toplam 182 sütun.
+1. **Her sütunda B-tree index** — dört katmanda toplam 222 sütun.
 2. **Mekânsal index (RTree)** — katman başına `rtree_<katman>_geom` sanal
    tablosu, GeoPackage 1.2 Ek F.3'teki altı tetikleyici (insert / update1-4 /
    delete) ve `gpkg_extensions` kaydı (`gpkg_rtree_index`, scope `write-only`).
@@ -472,11 +566,19 @@ QGIS/GDAL sağlar.
 
 | Dosya | Aşama | Son koşu |
 |---|---|---|
-| `data-sources/*/…-aixm.xml` | 1 | EAD 471,7 MB · Jeppesen 9,0 MB · LT 10,0 MB |
-| `common-ats-structure-aixm.xml` | 2A | 482,5 MB · 282.534 feature |
-| `common-ats-structure-provenance.json` | 2A | 282.534 kayıt |
-| `common_ats_structure.gpkg` | 2B | 203,9 MB |
-| `errored-features.csv` | 2A + 2B | 1 kayıt (MEN belirsizliği, §8) |
+| `data-sources/*/…-aixm.xml` | 1 | EAD 472,3 MB · Jeppesen 9,0 MB · LT 10,1 MB |
+| `data-sources/Jeppesen/jeppesen-ndb-index.json` | 1 | 3.073 kayıt — EAD'nin NDB referans çözümlemesi için |
+| `data-sources/Jeppesen/jeppesen-marker.json` | 1 | 913 kayıt — marker yan dosyası, AIXM'den bağımsız (§4.6) |
+| `common-ats-structure-aixm.xml` | 2A | 484,9 MB · 282.522 feature |
+| `common-ats-structure-provenance.json` | 2A | 282.522 kayıt |
+| `common_ats_structure.gpkg` | 2B | 229,4 MB |
+| `errored-features.csv` | 2A + 2B | 877 satır + 9.189 yalnızca-sayaç |
+
+> **Yalnızca-sayaç kayıtlar.** `dme_yuksekligi_kaynakta_yok` (9.189) dosyaya
+> satır yazmaz, sadece sayılır (`log.info_count`) — EAD'nin DME raporunda
+> yükseklik alanı hiç olmadığı için bu boşluk ~9.200 satırı ilgilendiriyor ve
+> dosyayı okunamaz hale getirirdi. Konsoldaki özet **sayaçları** gösterir,
+> dosyadaki satır sayısı ise yalnızca gerçekten yazılan satırları.
 
 > `errored-features.csv` her koşuda **sıfırdan yazılır**. Aşamaları ayrı ayrı
 > çalıştırırsanız (`--merge`, sonra `--gpkg`) ikinci koşu birincinin kayıtlarını
@@ -484,29 +586,34 @@ QGIS/GDAL sağlar.
 
 ### Son koşunun sayıları
 
-**2A:** ana kaynaklardan 278.118 feature yazıldı, ek kaynaklardan 4.310;
-LT lehine düşen ana kaynak kaydı 2.961; EAD lehine yazılmayan LT navaid'i 58;
-yönlendirilen referans 1.374; bölünen segment 53. İptal 0.
+**2A:** ana kaynaklardan 277.952 feature yazıldı, ek kaynaklardan 4.387,
+marker beacon 77; LT lehine düşen ana kaynak kaydı 3.111, TRNC lehine 9;
+EAD/Jeppesen lehine yazılmayan LT navaid'i 64, TRNC kaydı 3; yönlendirilen
+referans 1.581; bölünen segment 53; iptal 5.
 
 **2B:**
 
 | Katman | Satır | Geometrili |
 |---|---:|---:|
-| `designatedPoints` | 152.194 | 152.194 |
-| `navaids` | 9.359 | 9.357 |
-| `navaidComponents` | 13.275 | 13.275 |
-| `routeSegments` | 92.952 | 83.856 |
+| `designatedPoints` | 152.061 | 152.061 |
+| `navaids` | 9.357 | 9.355 |
+| `navaidComponents` | 13.362 | 13.362 |
+| `routeSegments` | 92.976 | 84.252 |
 
-Bağlanmamış navaid bileşeni **0**. Çözülemeyen segment ucu 15.757 (9.096
-segment `NULL` geometri).
+Bağlanmamış navaid bileşeni **0**. Çözülemeyen segment ucu 15.374.
 
 Kaynak dağılımı:
 
-| Katman | EAD-SDO | Jeppesen | LT (Ibosoft AIS) |
+| Katman | EAD-SDO | Jeppesen | Ibosoft AIS (LT + TRNC) |
 |---|---:|---:|---:|
-| `designatedPoints` | 151.318 | — | 876 |
-| `navaids` | 6.277 | 3.073 | 9 |
-| `routeSegments` | 90.077 | — | 2.875 |
+| `designatedPoints` | 151.159 | — | 902 |
+| `navaids` | 6.277 | 3.072 | 8 |
+| `navaidComponents` | 10.202 | 3.149 | 11 |
+| `routeSegments` | 90.072 | — | 2.904 |
+
+> Jeppesen'in `navaidComponents` payı 3.149 = 3.072 NDB + **77 marker beacon**.
+> `navaids` payı 3.072'dir (3.073 değil): `GKE` NDB'si TRNC kaydıyla
+> değiştirildi (§4.4).
 
 ---
 
@@ -514,18 +621,34 @@ Kaynak dağılımı:
 
 | Kontrol | Sonuç |
 |---|---|
-| Birleşik AIXM XSD'ye karşı | **0 hata**, 282.534 feature |
-| `gml:id` tekilliği | 282.534 tekil, çift 0 |
-| UUID tekilliği | 282.534 tekil, çift 0 |
-| `xlink:href` bütünlüğü | 276.946 referans, **kırık 0** |
-| Provenance kapsamı | 282.534 kayıt, eksik anahtar 0, eksik alan 0 |
+| Birleşik AIXM XSD'ye karşı | **0 hata**, 282.522 feature |
+| `gml:id` tekilliği | 282.522 tekil, çift 0 |
+| UUID tekilliği | 282.522 tekil, çift 0 |
+| `xlink:href` bütünlüğü | 277.488 referans, **kırık 0** |
+| Provenance kapsamı | 282.522 kayıt, eksik anahtar 0 |
+| Bağlanmamış navaid bileşeni | **0** |
 | Mekânsal index | 4 RTree tablosu dolu, 24 tetikleyici, 4 `gpkg_extensions` kaydı |
 | Antimeridyen | 53 kesişim noktası + 106 bölünmüş segment, notlar tam metin |
-| `errored-features.csv` | 1 kayıt (MEN belirsizliği) |
+| Marker beacon | 77 eşleşti, belirsiz 0; enjekte edilen bileşenler **XSD sırasına uygun** (doğrulama bunu yakalar) |
+| `errored-features.csv` | **877 satır**: 836 eşleşemeyen marker + 35 etiket türetmesi + 5 iptal + 1 MEN belirsizliği |
 
-Provenance'ta tek boş değer: Jeppesen'in 6.146 feature'ında `data_originator`.
-Jeppesen `data.json`'ında originator alanı yok — doğrulanmış yokluk, sessiz
-düşürme değil.
+**XSD doğrulaması iki riski birden kapatıyor.** Bu koşuda şemaya iki yeni yapı
+girdi ve ikisi de sınandı:
+
+  * **Enjekte edilen `navaidEquipment`** — var olan bir Navaid'in içine
+    eklendiği için eleman sırası bozulabilirdi (`location`'dan önce gelmeli).
+    Yanlış yere eklenseydi şema hata verirdi.
+  * **Boş `beginPosition`** — `indeterminatePosition="unknown"` ile yazılan
+    değersiz `gml:TimePosition`'ın GML'de geçerli olduğu doğrulandı.
+
+Provenance'ta boş `data_originator`: **6.221** feature — Jeppesen'in tamamı
+(3.072 Navaid + 3.072 NDB ekipmanı + 77 MarkerBeacon). Jeppesen
+`data.json`'ında originator alanı yok; doğrulanmış yokluk, sessiz düşürme
+değil.
+
+> Jeppesen NDB sayısı 3.073 değil **3.072**: `GKE` NDB'si TRNC kaydıyla
+> değiştirildi ve ekipmanı da birlikte düştü (§4.4). `navaidComponents`
+> katmanındaki 3.073 NDB satırının biri TRNC'den gelir.
 
 ### Kalan doğrulama işleri
 

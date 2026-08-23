@@ -1,10 +1,12 @@
 r"""Jeppesen (Navigraph) NDB verisini AIXM 5.2 XML'ine dönüştürür.
 
-Girdi : ..\..\..\..\Jeppesen Data\jeppesen.sqlite  (yalnızca `ndb` tablosu)
+Girdi : ..\..\..\..\Jeppesen Data\jeppesen.sqlite  (`ndb` ve `marker` tabloları)
         ..\..\..\..\Jeppesen Data\data.json               (provenance)
-Çıktı : ../jeppesen-ndb-aixm.xml        — AIXM 5.2
+Çıktı : ../jeppesen-ndb-aixm.xml        — AIXM 5.2 (yalnızca NDB)
         ../jeppesen-ndb-index.json      — EAD-SDO üreticisinin referans
                                           çözümlemesi için (ident+region → uuid)
+        ../jeppesen-marker.json         — marker beacon yan dosyası; AIXM
+                                          dosyasından BAĞIMSIZ (aşağıya bakın)
         ../data.json                    — kaynağın yanındaki data.json'ın
                                           birebir kopyası (elle düzenlenmez)
 Log   : errored-features.log            — her çalıştırmada sıfırlanır
@@ -17,6 +19,13 @@ NDB YAZMAZ, yalnızca buradaki NDB'lere xlink ile referans verir.
 Her NDB için iki AIXM feature'ı üretilir (gerçek AIXM yapısı):
   Navaid (type=NDB)  --navaidEquipment--> NavaidComponent --theNavaidEquipment-->
   NDB (AbstractNavaidEquipment somut alt-türü, kendi konumu/frekansı ile)
+
+Marker beacon neden AIXM'e yazılmaz: bir marker tek başına anlamlı değildir,
+ilişkili olduğu LOC/ILS navaid'inin `navaidComponent`'i olarak yer alması
+gerekir. Hangi LOC/ILS'e bağlanacağı ancak BİRLEŞİK veride bilinebilir (hedef
+navaid EAD-SDO'dan gelir). Bu yüzden bu üretici yalnızca marker verisini
+kimlikleriyle birlikte yan dosyaya yazar; eşleştirme ve AIXM üretimi common
+builder'daki `merge/marker_beacon.py` modülünde yapılır.
 
 Tüm alan eşlemeleri ve gerekçeleri Jeppesen_to_AIXM_Mapping.md'de.
 """
@@ -45,6 +54,7 @@ SQLITE_PATH = SOURCE_DIR / "jeppesen.sqlite"
 SOURCE_DATA_JSON = SOURCE_DIR / "data.json"
 OUTPUT_XML = JEPPESEN_DIR / "jeppesen-ndb-aixm.xml"
 OUTPUT_INDEX = JEPPESEN_DIR / "jeppesen-ndb-index.json"
+OUTPUT_MARKER = JEPPESEN_DIR / "jeppesen-marker.json"
 OUTPUT_DATA_JSON = JEPPESEN_DIR / "data.json"
 LOG_PATH = BASE_DIR / "errored-features.log"
 
@@ -151,6 +161,88 @@ def load_ndb_rows() -> list[dict]:
     rows = [dict(r) for r in cur.fetchall()]
     con.close()
     return rows
+
+
+#: AIXM CodePositionInILSType (XSD'den birebir). Jeppesen `marker.type`
+#: degerleri bu enum ile BIREBIR ortusur — eslemeye gerek yok, dogrulama yeter.
+CODE_POSITION_IN_ILS = {"OUTER", "MIDDLE", "INNER", "BACKCOURSE"}
+
+
+def load_marker_rows() -> list[dict]:
+    """`marker` tablosu (913 kayit)."""
+    con = sqlite3.connect(SQLITE_PATH)
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute(
+        "SELECT marker_id, ident, region, type, heading, altitude, lonx, laty "
+        "FROM marker ORDER BY ident, region, type, marker_id"
+    )
+    rows = [dict(r) for r in cur.fetchall()]
+    con.close()
+    return rows
+
+
+#: ICAO Annex 10 Cilt I: butun marker beacon'lar 75 MHz'de calisir.
+#: Kaynakta olmayan ama standartla sabitlenmis tek deger (kullanici karari).
+MARKER_FREQUENCY_MHZ = 75
+
+
+def build_marker_sidecar(ids, log) -> list[dict]:
+    """`marker` tablosu -> yan dosya kayitlari.
+
+    Kimlikler BURADA atanir: `JEPP_` onegi ve sabit namespace'li UUID5 bu
+    ureticinin sorumlulugudur (NDB ile ayni desen). Common builder yalnizca
+    eslestirme yapar, kimlik uretmez.
+
+    Alan eslemeleri (hepsi XSD'den dogrulandi, bkz. Jeppesen_to_AIXM_Mapping.md):
+      type      -> NavaidComponent.markerPosition  (CodePositionInILSType)
+      heading   -> MarkerBeacon.axisBearing        (XSD: "true bearing of the
+                   minor axis"; verinin true oldugu pist adi karsilastirmasiyla
+                   dogrulandi)
+      altitude  -> location/ElevatedPoint/elevation, uom=FT
+      ident     -> MarkerBeacon.designator + eslestirme anahtari
+      (sabit)   -> MarkerBeacon.frequency = 75 MHz
+
+    `frequency` KAYNAKTA YOKTUR; ICAO Annex 10 Cilt I geregi butun marker
+    beacon'lar 75 MHz'de calisir, bu yuzden sabit olarak yazilir (kullanici
+    karari). Ilk uygulamada "varsayim olur" gerekcesiyle bos birakilmisti.
+
+    `gml:validTime/beginPosition` YAZILMAZ: Jeppesen kayitlarinda feature
+    basina yururluk tarihi yoktur (NDB ile ayni gerekce, bkz. aixm_writer).
+    Common builder bu yuzden beginPosition'i belirsiz isaretler.
+    """
+    out = []
+    for row in load_marker_rows():
+        ident = (row["ident"] or "").strip().upper()
+        region = (row["region"] or "").strip().upper()
+        position = (row["type"] or "").strip().upper()
+
+        if not ident or row["laty"] is None or row["lonx"] is None:
+            log.error("MarkerBeacon", row["marker_id"], "ident/laty/lonx",
+                      ident, "zorunlu_alan_eksik")
+            continue
+        if position not in CODE_POSITION_IN_ILS:
+            # Enum disi deger uydurma ile duzeltilmez; kayit atlanir ve loglanir.
+            log.error("MarkerBeacon", row["marker_id"], "type", position,
+                      "codePositionInILS_enum_disi")
+            continue
+
+        key = f"{ident}:{region}:{position}:{row['marker_id']}"
+        out.append({
+            "ident": ident,
+            "region": region,
+            "markerPosition": position,
+            "frequency": MARKER_FREQUENCY_MHZ,
+            "frequencyUom": "MHZ",
+            "axisBearing": row["heading"],
+            "elevation": row["altitude"],
+            "elevationUom": "FT",
+            "lat": row["laty"],
+            "lon": row["lonx"],
+            "equipment_gml_id": ids.make("MKR", f"{ident}_{region}_{position}"),
+            "equipment_uuid": feature_uuid("JeppesenMarkerBeacon", key),
+        })
+    return out
 
 
 def khz(raw_frequency) -> str | None:
@@ -271,13 +363,19 @@ def main():
             "lon": row["lonx"],
         })
 
+    # Marker beacon: AIXM dosyasina GIRMEZ, ayri yan dosyaya yazilir.
+    markers = build_marker_sidecar(ids, log)
+
     builder.write(OUTPUT_XML, HEADER_COMMENT)
     OUTPUT_INDEX.write_text(
         json.dumps(index, ensure_ascii=False, indent=1), encoding="utf-8")
+    OUTPUT_MARKER.write_text(
+        json.dumps(markers, ensure_ascii=False, indent=1), encoding="utf-8")
 
     print("=" * 60)
     print(f"Cikti : {OUTPUT_XML}")
     print(f"Index : {OUTPUT_INDEX}")
+    print(f"Marker: {OUTPUT_MARKER}  ({len(markers)} kayit, AIXM'e yazilmaz)")
     print(f"  ndb tablosu okunan : {len(rows)}")
     print(f"  atlanan (eksik alan): {skipped}")
     print(f"  Navaid (type=NDB)  : {len(index)}")

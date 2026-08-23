@@ -158,7 +158,13 @@ class MessageBuilder:
         vt = ET.SubElement(ts, gml("validTime"))
         tp = sub(vt, gml("TimePeriod"))
         tp.set(q(NS_GML, "id"), gml_id + "_TP")
-        sub(tp, gml("beginPosition"), self.effective_begin)
+        # Jeppesen kayitlarinda feature BASINA yururluk tarihi YOKTUR.
+        # data.json'daki AIRAC effectivity VERI SETININ gecerliligidir,
+        # feature'in kendi yururlugu degil (EAD'de her kaydin kendi `dtWef`i
+        # var, burada karsiligi yok). Bilinmeyen tarih yerine AIRAC tarihini
+        # yazmak uydurma bir yururluk iddiasi olurdu — kullanici karari:
+        # beginPosition bos birakilir, endPosition gibi belirsiz isaretlenir.
+        sub(tp, gml("beginPosition"), None, indeterminatePosition="unknown")
         sub(tp, gml("endPosition"), None, indeterminatePosition="unknown")
 
         sub(ts, aixm("interpretation"), "BASELINE")

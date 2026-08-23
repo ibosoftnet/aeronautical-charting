@@ -13,6 +13,7 @@ import json
 from datetime import datetime, timezone
 
 from merge.aixm_reader import A, G, X, local
+from gpkg import schema
 
 # Tekrarlanan yapıların JSON'a çevrilirken atlanacak alt elemanları yoktur —
 # tüm alt ağaç sözlüğe dönüştürülür (veri kaybı olmaması için).
@@ -212,48 +213,33 @@ def map_navaid(feature, ts, gml_id, prov_entry):
     return row, position
 
 
-#: Alt-türe özgü alanlar — sütun adı → AIXM eleman adı.
-#: `type`/`class` sütunlarının izinli değerleri alt-türe göre değişir.
-_EQUIPMENT_FIELDS = {
-    "type": "type", "class": "class",
-    "channel": "channel", "declination": "declination",
-    "zeroBearingDirection": "zeroBearingDirection",
-    "magneticBearing": "magneticBearing", "trueBearing": "trueBearing",
-    "widthCourse": "widthCourse", "backCourseUsable": "backCourseUsable",
-    "signalPerformance": "signalPerformance", "courseQuality": "courseQuality",
-    "integrityLevel": "integrityLevel", "slope": "slope",
-    "axisBearing": "axisBearing", "auralMorseCode": "auralMorseCode",
-    "emissionBand": "emissionBand",
-    "angleProportionalLeft": "angleProportionalLeft",
-    "angleProportionalRight": "angleProportionalRight",
-    "angleCoverLeft": "angleCoverLeft", "angleCoverRight": "angleCoverRight",
-    "angleNominal": "angleNominal", "angleMinimum": "angleMinimum",
-    "angleSpan": "angleSpan", "doppler": "doppler",
-}
-_EQUIPMENT_VALUE_UOM = ("frequency", "tuningFrequencyVHF", "displace", "rdh")
-
-_NUMERIC_EQUIPMENT = {
-    "declination", "magneticBearing", "trueBearing", "widthCourse", "slope",
-    "axisBearing", "angleProportionalLeft", "angleProportionalRight",
-    "angleCoverLeft", "angleCoverRight", "angleNominal", "angleMinimum",
-    "angleSpan",
-}
-
-
 def map_navaid_component(component, equipment_ts, equipment_type,
-                         navaid_row_id, gml_id, prov_entry):
-    """`NavaidComponent` + bağlı `AbstractNavaidEquipment` → tek satır."""
+                         parents, gml_id, prov_entry):
+    """`NavaidComponent` + bağlı `AbstractNavaidEquipment` → tek satır.
+
+    Alt-türe özgü alanlar `navaidComponents_<AltTür>_<alan>` sütunlarına
+    yazılır; hangi alanların yazılacağı `schema.EQUIPMENT_SUBTYPE_FIELDS`'ten
+    gelir. Bir satırda YALNIZCA kendi alt-türünün sütunları dolar — bilinmeyen
+    bir alt-tür gelirse hiçbir alt-tür sütunu yazılmaz (uydurma eşleme yok).
+
+    `parents`: `[(navaid_row_id, navaid_type), …]` — bir ekipman birden fazla
+    Navaid tarafından paylaşılabildiği için LİSTE. Ölçüldü: 275 ekipman 2-7
+    navaid'e ait. İki sütun aynı sırada hizalı yazılır.
+    """
     row = {"gmlId": gml_id,
-           "navaidComponents_navaidId": navaid_row_id,
            "navaidComponents_equipmentType": equipment_type}
 
-    # NavaidComponent'in kendi alanları
-    row["navaidComponents_collocationGroup"] = text(component, "collocationGroup")
-    row["navaidComponents_markerPosition"] = text(component, "markerPosition")
-    row["navaidComponents_providesNavigableLocation"] = text(
-        component, "providesNavigableLocation")
+    # Ebeveyn bağı — sıralı ve hizalı iki liste.
+    row["associatedNavaid"] = schema.LIST_SEPARATOR.join(
+        str(row_id) for row_id, _ in parents) if parents else None
+    row["associatedNavaidType"] = schema.LIST_SEPARATOR.join(
+        (navaid_type or "") for _, navaid_type in parents) if parents else None
 
-    # Ortak taban
+    # NavaidComponent'in kendi alanları
+    for name in schema.NAVAID_COMPONENT_OWN_FIELDS:
+        row[f"navaidComponents_{name}"] = text(component, name)
+
+    # Ortak taban (11 alt-türde de aynı) — önek almaz.
     for name in ("designator", "name", "emissionClass", "mobile",
                  "dateMagneticVariation", "flightChecked"):
         row[f"navaidComponents_{name}"] = text(equipment_ts, name)
@@ -263,15 +249,17 @@ def map_navaid_component(component, equipment_ts, equipment_type,
     row["navaidComponents_availability"] = json_list(equipment_ts, "availability")
     position = elevated_point(equipment_ts, "navaidComponents", row)
 
-    # Alt-türe özgü
-    for column, name in _EQUIPMENT_FIELDS.items():
-        value = text(equipment_ts, name)
-        row[f"navaidComponents_{column}"] = (
-            number(value) if column in _NUMERIC_EQUIPMENT else value)
-    for name in _EQUIPMENT_VALUE_UOM:
-        value, uom = value_uom(equipment_ts, name)
-        row[f"navaidComponents_{name}"] = number(value)
-        row[f"navaidComponents_{name}Uom"] = uom
+    # Alt-türe özgü — yalnızca bu alt-türün sütunları.
+    for field in schema.EQUIPMENT_SUBTYPE_FIELDS.get(equipment_type, ()):
+        column = schema.equipment_column(equipment_type, field)
+        if field in schema.EQUIPMENT_VALUE_UOM:
+            value, uom = value_uom(equipment_ts, field)
+            row[column] = number(value)
+            row[column + "Uom"] = uom
+        else:
+            value = text(equipment_ts, field)
+            row[column] = (number(value) if field in schema.EQUIPMENT_NUMERIC
+                           else value)
 
     # Hem bileşenin hem ekipmanın notları aynı 4 sütunda birleşir.
     annotations(equipment_ts, row)

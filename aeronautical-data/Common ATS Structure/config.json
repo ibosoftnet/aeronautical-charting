@@ -61,6 +61,21 @@
     }
   ],
 
+  "_ozel_kaynaklar": "Normal base/additional kaynak DEĞİLLERDİR; kendine özgü bir modülle işlenirler. Okuma sırası: ead_sdo → jeppesen → (buradakiler) → excludes.",
+  "special_sources": [
+    {
+      "name": "jeppesen-mkr",
+      "_mod": "Bu işe özgü modülü açan ayar. Jeppesen marker beacon kayıtlarını LOC/ILS navaid'lerine navaidComponent olarak bağlar. Eşleşemeyen marker YAZILMAZ, errored-features.csv'ye loglanır — ayrı MKR navaid üretilmez (veride enroute marker yok, 913'ün tamamı ILS yaklaşma marker'ı).",
+      "_anahtar": "designator + yakınlık. Ülke kodu kullanılamıyor: birleşik verideki 550 LOC/ILS'in 548'inde codeICAOCountry boş. Ölçüldü: eşleşen mesafeler 1,41-6,89 NM (medyan 2,62), eşik içinde çoklu aday 0, aynı ident'i taşıyıp uzakta olan 88 yanlış aday doğru eleniyor.",
+      "enabled": true,
+      "marker_beacon_matching": true,
+      "file": "data-sources/Jeppesen/jeppesen-marker.json",
+      "data_json": "data-sources/Jeppesen/data.json",
+      "match_by_proximity_nm": 25.0,
+      "target_navaid_types": ["ILS", "ILS_DME", "LOC", "LOC_DME"]
+    }
+  ],
+
   "excludes_dir": "data-sources/excludes",
   "split_antimeridian": true,
 

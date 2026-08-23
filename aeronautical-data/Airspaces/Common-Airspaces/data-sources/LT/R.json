@@ -141,6 +141,54 @@
         "coordinates": [
           [
             [
+              28.64806,
+              41.075
+            ],
+            [
+              28.65222,
+              41.0775
+            ],
+            [
+              28.65694,
+              41.07611
+            ],
+            [
+              28.6575,
+              41.07278
+            ],
+            [
+              28.65056,
+              41.06944
+            ],
+            [
+              28.64806,
+              41.075
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "hi": "LTR49",
+        "t": 6,
+        "kid": "uuid.0ca2c40d-264c-4774-9a0d-7379733a64ed",
+        "strclr": "#ED174B",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airspace.aspx?rsid=uuid.0ca2c40d-264c-4774-9a0d-7379733a64ed\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "gt": 1,
+        "na": "R",
+        "type": "Restricted",
+        "cip": "../images/aixm/r_icon.png",
+        "pic": "<table><br><b>TYPE : </b>R<br><b>NAME : </b>LTR49<br><b>NAME : </b>HADIMKOY3<br><b>UPPER LIMIT : </b>3500<br><b>UPPER LIMIT REF. : </b>MSL<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>SFC",
+        "zi": 301
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
               29.78333,
               40.72889
             ],
@@ -176,6 +224,58 @@
         "type": "Restricted",
         "cip": "../images/aixm/r_icon.png",
         "pic": "<table><br><b>TYPE : </b>R<br><b>NAME : </b>LTR25<br><b>NAME : </b>GOLCUK<br><b>UPPER LIMIT : </b>5000<br><b>UPPER LIMIT REF. : </b>MSL<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>SFC",
+        "zi": 301
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              28.59583,
+              41.16833
+            ],
+            [
+              28.60278,
+              41.17028
+            ],
+            [
+              28.60667,
+              41.16667
+            ],
+            [
+              28.60583,
+              41.16528
+            ],
+            [
+              28.59778,
+              41.16306
+            ],
+            [
+              28.59472,
+              41.16639
+            ],
+            [
+              28.59583,
+              41.16833
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "hi": "LTR47",
+        "t": 6,
+        "kid": "uuid.11d00177-4750-45db-aa4b-dedfa8fc45a9",
+        "strclr": "#ED174B",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airspace.aspx?rsid=uuid.11d00177-4750-45db-aa4b-dedfa8fc45a9\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "gt": 1,
+        "na": "R",
+        "type": "Restricted",
+        "cip": "../images/aixm/r_icon.png",
+        "pic": "<table><br><b>TYPE : </b>R<br><b>NAME : </b>LTR47<br><b>NAME : </b>HADIMKOY1<br><b>UPPER LIMIT : </b>3500<br><b>UPPER LIMIT REF. : </b>MSL<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>SFC",
         "zi": 301
       },
       "type": "Feature"
@@ -20904,6 +21004,66 @@
         "type": "Restricted",
         "cip": "../images/aixm/r_icon.png",
         "pic": "<table><br><b>TYPE : </b>R<br><b>NAME : </b>LTR9<br><b>NAME : </b>ANKARA<br><b>UPPER LIMIT : </b>22500<br><b>UPPER LIMIT REF. : </b>MSL<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>SFC",
+        "zi": 301
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
+              28.64194,
+              41.10944
+            ],
+            [
+              28.6475,
+              41.09528
+            ],
+            [
+              28.64611,
+              41.09028
+            ],
+            [
+              28.63889,
+              41.08972
+            ],
+            [
+              28.635,
+              41.09028
+            ],
+            [
+              28.63083,
+              41.09361
+            ],
+            [
+              28.63278,
+              41.10306
+            ],
+            [
+              28.64028,
+              41.10944
+            ],
+            [
+              28.64194,
+              41.10944
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "hi": "LTR48",
+        "t": 6,
+        "kid": "uuid.7e896fbd-95e7-4a69-9e8e-6566871aff8e",
+        "strclr": "#ED174B",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airspace.aspx?rsid=uuid.7e896fbd-95e7-4a69-9e8e-6566871aff8e\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "gt": 1,
+        "na": "R",
+        "type": "Restricted",
+        "cip": "../images/aixm/r_icon.png",
+        "pic": "<table><br><b>TYPE : </b>R<br><b>NAME : </b>LTR48<br><b>NAME : </b>HADIMKOY2<br><b>UPPER LIMIT : </b>3500<br><b>UPPER LIMIT REF. : </b>MSL<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>SFC",
         "zi": 301
       },
       "type": "Feature"

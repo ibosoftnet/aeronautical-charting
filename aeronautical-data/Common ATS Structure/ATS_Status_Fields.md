@@ -17,7 +17,7 @@ QGIS'te "yalnızca rota noktalarını göster" gibi bir filtre iki yolla kurulab
 
 | Yol | Sorun |
 |---|---|
-| **Virtual layer** (`EXISTS (SELECT … FROM routeSegments …)`) | Sonuç katmanının kalıcı **RTree mekânsal indeksi olmaz**; harita her pan/zoom'da 152.055 satırlık alt sorguyu yeniden tarar |
+| **Virtual layer** (`EXISTS (SELECT … FROM routeSegments …)`) | Sonuç katmanının kalıcı **RTree mekânsal indeksi olmaz**; harita her pan/zoom'da 152.061 satırlık alt sorguyu yeniden tarar |
 | **Kalıcı sütun** (bu çözüm) | Aynı fiziksel tablo, aynı `geom`, aynı RTree; sütun ayrıca B-tree index alır. QGIS'in Query Builder'ı filtreyi indekslerle birlikte native uygular |
 
 İkincisi seçildi (kullanıcı kararı). Alanlar QGIS'e özel değildir — ArcGIS,
@@ -227,12 +227,12 @@ Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satı
 
 ## 5. Ölçülen dağılım (son koşu)
 
-### `designatedPoints` (152.055 satır)
+### `designatedPoints` (152.061 satır)
 
 | Alan | Değer | Adet |
 |---|---|---:|
 | `isElementOfRouteSegment` | `1` | **41.165** |
-| | `0` | 110.890 |
+| | `0` | 110.896 |
 | `associatedLevelLower` | `1` | 38.309 |
 | `associatedLevelUpper` | `1` | 6.800 |
 | `associatedLevelBoth` | `1` | 3 |
@@ -245,19 +245,19 @@ Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satı
 | | `CONV` | 353 |
 | | `RNAVFlyBy` | 272 |
 | | `RNAVFlyOver` | 0 (koşulu yok) |
-| | `NULL` (bağlı değil) | 110.890 |
+| | `NULL` (bağlı değil) | 110.896 |
 | `depictionSIGPointBasicFunc` | `OTHER` | 40.396 |
 | | `INT` | 353 |
 | | `WPT` | 235 |
 | | `VFR_REP` | 181 |
 | | `NAVAID` | 0 (DP asla almaz) |
-| | `NULL` (bağlı değil) | 110.890 |
+| | `NULL` (bağlı değil) | 110.896 |
 | `depictionNavAndREP` | `OTHER_NonComp` | 40.540 |
 | | `CONV_Comp` | 267 |
 | | `RNAVFlyBy_Comp` | 181 |
 | | `RNAVFlyBy_NonComp` | 91 |
 | | `CONV_NonComp` | 86 |
-| | `NULL` (bağlı değil) | 110.890 |
+| | `NULL` (bağlı değil) | 110.896 |
 
 ### `navaids` (9.357 satır)
 
@@ -285,7 +285,7 @@ Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satı
 | | `CONV_NonComp` | 1 |
 | | `NULL` (bağlı değil) | 6.061 |
 
-Noktaların çoğunun (110.890) rota ağına bağlı olmaması beklenen sonuçtur —
+Noktaların çoğunun (110.896) rota ağına bağlı olmaması beklenen sonuçtur —
 bunlar ağırlıkla prosedür noktalarıdır (yaklaşma/kalkış fix'leri, `type=OTHER`
 16.912 kayıt) ve bir ATS rotasının ucu değildirler.
 
@@ -344,7 +344,7 @@ WHERE d.atsStatus_reportingAssociation IS NOT NULL;
 | Kapı kuralı ihlali (`=0` iken diğerleri dolu) | **0** (her iki katman) |
 | `isElementOfRouteSegment` NULL kalan satır | **0** |
 | `designatedPoints` bağlı sayısı — bağımsız `EXISTS` sorgusuyla | 41.165 = 41.165 ✅ |
-| Uçtan uca örnek (`ABDIK`, 12 segment) | levels `{UPPER,LOWER}`→`BOTH`, nav `{CONV,PBN}`→RNAV=1/CONV=1, 8 raporlamalı uç — hepsi tabloyla birebir ✅ |
+| Uçtan uca örnek (`ABDIK`, `type=ICAO`, 12 segment) | `Upper=1 Lower=1`, `Compulsory=1`, `Nav=CONV` (bağlı rotalarda CONV var), `SIGFunc=INT` (CONV olduğu için WPT olamaz), `NavAndREP=CONV_Comp` — zincirin tamamı elle yeniden hesaplandı, birebir ✅ |
 | `COORD` → `RNAVFlyBy` + `WPT` (koşulsuz kural) | ihlal **0** |
 | `COORD` → asla `CONV` | ihlal **0** |
 | `VRP` → `VFR_REP` | ihlal **0** |
