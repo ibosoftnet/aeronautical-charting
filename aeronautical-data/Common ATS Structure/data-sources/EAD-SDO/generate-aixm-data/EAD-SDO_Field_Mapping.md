@@ -186,12 +186,98 @@ courseQuality, integrityLevel, touchDownLiftOff, navaidEquipment, location, …`
 |---|---|---|
 | *(eşleştirme sonucu)* | `type` | §4.1 tablosu |
 | `codeId` | `designator` | Birincil bileşenin kodu |
-| `txtName` | `name` | Birincil bileşenin adı |
+| `txtName` | `name` | Birincil bileşenin adı. **ILS ailesinde kaynakta hiç yok** — yerine pist bilgisi yazılır, bkz. **§4.3 (GEÇİCİ)** |
 | *(her eşleşen bileşen)* | `navaidEquipment/NavaidComponent/theNavaidEquipment` | `xlink:href` → ilgili ekipman feature'ı. Birincil bileşende `providesNavigableLocation=YES` |
 | `geoLat`, `geoLong` (birincil) | `location/ElevatedPoint` | VOR grubunda VOR'un, LOC grubunda LOC'un konumu |
 
 `flightChecked`, `purpose`, `signalPerformance`, `courseQuality`,
 `integrityLevel`, `codeICAOCountry` — **kaynakta yok**, yazılmaz.
+
+### 4.3 GEÇİCİ — pist bilgisi `name` alanına yazılıyor
+
+> **Bu bölüm GEÇİCİ bir çözümü anlatır.** Havaalanı ve pist feature'ları
+> (`AirportHeliport`, `RunwayDirection`) bu projede **henüz implemente
+> edilmedi**. Onlar eklendiğinde buradaki çözüm **kaldırılmalı** ve yerine
+> gerçek `Navaid/runwayDirection` association'ı kurulmalıdır.
+
+#### Neden gerekli
+
+AIXM'de ILS'in pist bağı `Navaid/runwayDirection` **association**'ıdır ve ayrı
+bir `RunwayDirection` feature'ına `xlink:href` ile işaret eder. Bu projenin
+katmanlarında o feature üretilmediği için association'ın gösterecek hedefi yok
+— yazılırsa sarkan referans olurdu.
+
+Oysa pist bilgisi kaynakta **%100 dolu**: `ils-loc.xml`'in 548, `ils-gp.xml`'in
+522 kaydının **hepsinde** `Ahp/codeId`, `Ahp/codeIcao`, `Rwy/txtDesig` ve
+`Rdn/txtDesig` var. Buna karşılık ILS ailesinin `name` alanı **tamamen
+boştu**: bu iki raporda `txtName` elemanı **hiç geçmiyor** (0/548, 0/522), oysa
+VOR/DME/NDB'de aynı alan %95-100 dolu.
+
+Bilgi kaybolmasın diye pist, `name` alanına **metin olarak** taşınıyor
+(kullanıcı kararı).
+
+#### Biçim
+
+```
+RWY <Rdn/txtDesig>          →  "RWY 09",  "RWY 36C",  "RWY 04R"
+```
+
+`Rdn/txtDesig` tek pist **yönünü** verir (`04R`); `Rwy/txtDesig` ise fiziksel
+pist **çiftini** (`RWY-04L/22R`). AIXM'in `runwayDirection`'ı yöne karşılık
+geldiği için **`Rdn` kullanılır** — 548/548 kayıtta ikisi zaten farklı.
+
+#### Kapsam ve kaynak
+
+| Hedef | Pist kaynağı | Adet |
+|---|---|---:|
+| `Navaid` — `ILS`, `ILS_DME`, `LOC`, `LOC_DME` | Birincil bileşenin (LOC) `Rdn/txtDesig` | 548 |
+| `Localizer` ekipmanı | Kendi kaydının `Rdn/txtDesig` | 548 |
+| `Glidepath` ekipmanı | **Kendi** kaydının `Rdn/txtDesig` | 522 |
+| `DME` ekipmanı — yalnızca ILS/LOC bileşeni olanlar | **Bağlı LOC'tan devralınır** | 402 |
+
+Glidepath, LOC'un değerini devralmaz, **kendi** kaynak alanını kullanır.
+Ölçüldü: eşleşen 522 çiftin **522'sinde** iki değer aynı — yine de kaynağın
+kendi alanı esas alınır.
+
+DME devralmak zorundadır çünkü `dme.xml`'de pist/havaalanı elemanı **hiç yok**
+(`Rwy`, `Rdn`, `Ahp` üçü de). Standalone DME'ler bu işlemin dışındadır.
+
+#### Mevcut ad EZİLMEZ, sonuna eklenir
+
+ILS/LOC bileşeni 402 DME'nin **396'sı kaynakta kendi `txtName`'ini taşıyor**
+(`BRUSSELS NATIONAL`, `QUEEN ALIA`, `PAPA 16`). Bunları ezmek gerçek kaynak
+verisini silerdi, üstelik iki kayıtta iki kaynak **birbiriyle çelişiyor**:
+`ICV` için LOC'un `Rdn`'si `26` ama DME'nin adı `CRAIOVA DME 27`; `GPR` için
+`29` vs `GYOR 30`.
+
+Bu yüzden ad **ezilmez, sonuna eklenir** (kullanıcı kararı):
+
+```
+"BRUSSELS NATIONAL"  +  "25R"   →  "BRUSSELS NATIONAL RWY 25R"
+""                   +  "25R"   →  "RWY 25R"
+"CRAIOVA DME 27"     +  "26"    →  "CRAIOVA DME 27 RWY 26"   (ikisi de korunur)
+```
+
+**Tekrar koruması:** ad zaten aynı `RWY <yön>` ikilisini taşıyorsa ikinci kez
+yazılmaz — `dme.xml`'de 45 kaydın adında `RWY` **kaynağın kendisinden** geçiyor
+(`ILS/DME NZDN RWY 03`) ve bunların 30'u LOC'unkiyle aynı pisti söylüyor;
+eklemek `... RWY 03 RWY 03` üretirdi. Karşılaştırma **token bazlıdır**, düz
+alt-dize araması değil: `RWY 03`, `RWY 03L` içinde geçmiş sayılmaz. Farklı pist
+söyleyen tek kayıt yok (0/402), yani bastırılan metin her zaman birebir aynı.
+
+Uygulama: [`matching.py`](matching.py) → `runway_name()`, `append_runway_name()`,
+`_has_runway_token()`.
+
+#### Ölçülen sonuç
+
+| Feature | Toplam | `name` dolu | Önceki |
+|---|---:|---:|---:|
+| `Navaid` ILS + ILS_DME + LOC + LOC_DME | 548 | **548** | 0 |
+| `Localizer` | 548 | **548** | 0 |
+| `Glidepath` | 522 | **522** | 0 |
+| `DME` (ILS/LOC bileşeni) | 402 | **402** | 396 |
+
+Çift `RWY` içeren ad: **0**. Standalone DME/VOR/TACAN adları **değişmedi**.
 
 ---
 
@@ -207,7 +293,7 @@ location, authority, monitoring, availability, annotation` — ardından alt-tü
 | EAD | AIXM | Dönüşüm |
 |---|---|---|
 | `codeId` | `designator` | Doğrudan |
-| `txtName` | `name` | Doğrudan |
+| `txtName` | `name` | Doğrudan. Localizer/Glidepath'te kaynakta yok, ILS bileşeni DME'de sonuna pist eklenir — bkz. **§4.3 (GEÇİCİ)** |
 | `codeEm` | `emissionClass` | Doğrudan — kaynak değerleri `A8W`, `A9W` geçerli `CodeRadioEmissionType` üyeleri |
 | `valMagVar` | `magneticVariation` | Sayısal normalize (`+15` → `15`) |
 | `dateMagVar` | `dateMagneticVariation` | Doğrudan — kaynak zaten 4 haneli yıl (`1965`, `2020`), AIXM `DateYearType` deseniyle (`[1-9][0-9]{3}`) birebir |
@@ -272,6 +358,10 @@ Ortak taban + `type, channel, displace, tuningFrequencyVHF`
 
 `type` (NARROW/PRECISION/WIDE), `displace` — **kaynakta yok**.
 
+> ILS/LOC bileşeni olan 402 DME'nin `name` alanının **sonuna** pist bilgisi
+> eklenir (`BRUSSELS NATIONAL RWY 25R`) — mevcut ad ezilmez. Standalone
+> DME'ler etkilenmez. **GEÇİCİ**, bkz. §4.3.
+
 ### 5.5 TACAN (927)
 
 Ortak taban + `channel, declination, tuningFrequencyVHF`
@@ -296,6 +386,10 @@ widthCourse, backCourseUsable, signalPerformance, courseQuality, integrityLevel`
 
 `signalPerformance`, `courseQuality`, `integrityLevel` — **kaynakta yok**.
 
+> `txtName` de **kaynakta yok** (548 kaydın hiçbirinde geçmiyor). `name`
+> alanına kendi `Rdn/txtDesig`'inden `RWY 04R` yazılır — **GEÇİCİ**,
+> bkz. §4.3.
+
 ### 5.7 Glidepath (522)
 
 Ortak taban + `frequency, slope, rdh, signalPerformance, courseQuality,
@@ -306,6 +400,10 @@ integrityLevel`
 | `valFreq` + `uomFreq` | `frequency` | |
 | `valSlope` | `slope` | Sayısal normalize (`003.00` → `3`) |
 | `valRdh` + `uomRdh` | `rdh` | `uom` ∈ {FT, M, FL, SM} |
+
+> `txtName` **kaynakta yok** (522 kaydın hiçbirinde geçmiyor). `name` alanına
+> **kendi** `Rdn/txtDesig`'inden `RWY 04R` yazılır — LOC'un değeri devralınmaz.
+> **GEÇİCİ**, bkz. §4.3.
 
 ---
 
@@ -463,7 +561,8 @@ Bering Boğazı, Aleutlar, Pasifik ekvatoru ve bir kutup rotası — 40-587 NM.
 | `dtCom` | `annotation` (DESCRIPTION) | İşletmeye alınma tarihi; AIXM'de karşılığı yok |
 | `codeWorkHr` | `annotation` + `Timesheet` | → §5.2 |
 | `Org/txtName` (ülke adı) | *(kullanılmıyor)* | Serbest metin ülke **adı** (`ALGERIA`), ICAO Doc 7910 **kodu** değil; `codeICAOCountry`'ye yazmak uydurma olurdu. Ayrıca eşleştirme motorunda bilerek karşılaştırılmıyor (§4) |
-| `Ahp/codeId`, `Ahp/codeIcao`, `Rwy/txtDesig`, `Rdn/txtDesig`, `Ase/firCodeId` | *(kullanılmıyor)* | ILS'in bağlı olduğu havaalanı/pist/FIR referansları. AIXM'de karşılıkları `servedAirport` / `runwayDirection` association'larıdır; bu projenin kapsamındaki 5 katman `AirportHeliport`/`RunwayDirection` feature'larını içermediği için hedef feature yok. Eşleştirme motorunda **anahtar olarak kullanılıyor** (§4) |
+| `Rdn/txtDesig` | → `name` (**GEÇİCİ**) | ILS'in pist yönü. AIXM karşılığı `runwayDirection` association'ıdır ama `RunwayDirection` feature'ı henüz üretilmiyor; bilgi kaybolmasın diye `RWY 04R` biçiminde `name` alanına yazılıyor → **§4.3** |
+| `Ahp/codeId`, `Ahp/codeIcao`, `Rwy/txtDesig`, `Ase/firCodeId` | *(kullanılmıyor)* | ILS'in bağlı olduğu havaalanı/fiziksel pist/FIR referansları. AIXM'de karşılıkları `servedAirport` / `runwayDirection` association'larıdır; bu projenin kapsamındaki 5 katman `AirportHeliport`/`RunwayDirection` feature'larını içermediği için hedef feature yok. `Ahp/codeId` eşleştirme motorunda **anahtar olarak kullanılıyor** (§4) |
 | `mid` | *(kimlik üretiminde)* | UUID5 anahtarı; ayrı alan olarak aktarılmaz |
 | `Vor/codeId` (DME/TACAN) | *(eşleştirmede)* | Motor anahtarı (§4); AIXM'de karşılığı `Navaid` ↔ `NavaidComponent` bağıdır, o da zaten kuruluyor |
 | `Vor/geoLat`, `Vor/geoLong` (TACAN) | *(kullanılmıyor)* | Eşleşilen VOR'un konumu; VOR kendi feature'ında zaten yazılıyor |
@@ -484,6 +583,11 @@ Bering Boğazı, Aleutlar, Pasifik ekvatoru ve bir kutup rotası — 40-587 NM.
    LT/TRNC gibi ek kaynaklar devreye girdiğinde kapanabilir.
 5. **`curveExtent` iki ucu da çözülen segmentlerde üretiliyor**; tek ucu
    çözülemeyen segmentlerde geometri yazılmıyor.
+6. **Havaalanı ve pist feature'ları implemente edilmedi.** `AirportHeliport` ve
+   `RunwayDirection` üretilmediği için `Navaid/runwayDirection` ve
+   `servedAirport` association'ları **yazılamıyor**. Pist bilgisi bu yüzden
+   **GEÇİCİ** olarak `name` alanında metin taşınıyor (§4.3). Bu feature'lar
+   eklendiğinde çözüm kaldırılıp yerine gerçek association kurulmalıdır.
 
 ---
 

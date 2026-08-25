@@ -910,6 +910,7 @@
           <aixm:sequenceNumber>1</aixm:sequenceNumber>
           <aixm:correctionNumber>0</aixm:correctionNumber>
           <aixm:designator>IECR</aixm:designator>
+          <aixm:name>RWY 29R</aixm:name>
           <aixm:location>
             <aixm:ElevatedPoint gml:id="TRNC_LOC_IECR_EP" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:pos>35.160556 33.485278</gml:pos>
@@ -969,6 +970,7 @@
           <aixm:sequenceNumber>1</aixm:sequenceNumber>
           <aixm:correctionNumber>0</aixm:correctionNumber>
           <aixm:designator>IECR</aixm:designator>
+          <aixm:name>RWY 29R</aixm:name>
           <aixm:location>
             <aixm:ElevatedPoint gml:id="TRNC_GP_IECR_EP" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:pos>35.152667 33.512861</gml:pos>
@@ -1018,6 +1020,7 @@
           <aixm:sequenceNumber>1</aixm:sequenceNumber>
           <aixm:correctionNumber>0</aixm:correctionNumber>
           <aixm:designator>IECR</aixm:designator>
+          <aixm:name>RWY 29R</aixm:name>
           <aixm:location>
             <aixm:ElevatedPoint gml:id="TRNC_DME_IECR_EP" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:pos>35.152667 33.512861</gml:pos>
@@ -1110,6 +1113,7 @@
           <aixm:sequenceNumber>1</aixm:sequenceNumber>
           <aixm:correctionNumber>0</aixm:correctionNumber>
           <aixm:designator>IEKT</aixm:designator>
+          <aixm:name>RWY 29L</aixm:name>
           <aixm:location>
             <aixm:ElevatedPoint gml:id="TRNC_LOC_IEKT_EP" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:pos>35.155639 33.494056</gml:pos>
@@ -1159,6 +1163,7 @@
           <aixm:sequenceNumber>1</aixm:sequenceNumber>
           <aixm:correctionNumber>0</aixm:correctionNumber>
           <aixm:designator>IEKT</aixm:designator>
+          <aixm:name>RWY 29L</aixm:name>
           <aixm:location>
             <aixm:ElevatedPoint gml:id="TRNC_GP_IEKT_EP" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:pos>35.144361 33.524833</gml:pos>
@@ -1208,6 +1213,7 @@
           <aixm:sequenceNumber>1</aixm:sequenceNumber>
           <aixm:correctionNumber>0</aixm:correctionNumber>
           <aixm:designator>IEKT</aixm:designator>
+          <aixm:name>RWY 29L</aixm:name>
           <aixm:location>
             <aixm:ElevatedPoint gml:id="TRNC_DME_IEKT_EP" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:pos>35.144361 33.524833</gml:pos>

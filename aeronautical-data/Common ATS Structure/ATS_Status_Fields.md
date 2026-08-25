@@ -1,6 +1,6 @@
 # `atsStatus_*` Alanları — Noktaların ATS Rota Ağındaki Rolü
 
-`designatedPoints` ve `navaids` katmanlarına eklenen **on türetilmiş** alan.
+`designatedPoints` ve `navaids` katmanlarına eklenen **on üç türetilmiş** alan.
 Bir noktanın ATS rota ağıyla ilişkisini, ona referans veren `routeSegments`
 satırlarından özetler.
 
@@ -53,7 +53,7 @@ tamamlanmadan hangi noktanın hangi segmente bağlı olduğu bilinemez.
 Nokta en az bir rota segmentinin ucu mu? Her satırda **0 veya 1** doldurulur,
 asla NULL kalmaz.
 
-> **Kapı kuralı:** bu alan `0` ise diğer **dokuz alanın tamamı** `NULL`'dur — `0` veya boş
+> **Kapı kuralı:** bu alan `0` ise diğer **on iki alanın tamamı** `NULL`'dur — `0` veya boş
 > dize değil. Böylece "rota ağına bağlı değil" ile "bağlı ama o bilgi yok"
 > ayrımı korunur (kullanıcı kararı). Doğrulandı: her iki katmanda da ihlal 0.
 
@@ -90,7 +90,41 @@ alanın olmamasıdır.
 > `associatedLevelOther` tüm satırlarda `0`. Kural yine de enum'un tamamını
 > karşılıyor; veri gelirse çalışır.
 
-### 4.3 `atsStatus_reportingAssociation` — TEXT (JSON)
+### 4.3 Rota tipi bayrakları — BOOLEAN × 3
+
+| Sütun | Anlamı |
+|---|---|
+| `atsStatus_associatedTypeAts` | ilişkili segmentlerden en az biri `route_type = ATS` |
+| `atsStatus_associatedTypeNat` | en az biri `route_type = NAT` |
+| `atsStatus_associatedTypeOther` | en az biri `route_type` = **gerçek** `OTHER` veya `OTHER:<kod>` |
+
+Seviye bayraklarıyla (§4.2) **birebir aynı mantık**: her biri bağımsızdır,
+birbirini dışlamaz, `Other` bir fallback değildir ve `route_type` taşımayan bir
+segment hiçbir bayrağa katkı vermez.
+
+Tek farkı **kaynağı**: `route_type` sütunu RouteSegment'in değil, segmentin
+bağlı olduğu **Route feature'ının** alanıdır (bu yüzden `routeSegments_` değil
+`route_` önekini taşır). AIXM tipi `CodeRouteType`:
+
+| Değer | Anlamı (XSD `CodeRouteBaseType`) |
+|---|---|
+| `ATS` | ICAO Annex 11'de tanımlı ATS rotası |
+| `NAT` | North Atlantic Track (Organized Track System'in parçası) |
+| `OTHER(:(\w|_){1,58})?` | açık liste uzantısı |
+
+**Ölçülen kaynak dağılımı** (92.976 segment): `ATS` = **92.764**,
+`OTHER` = **212**, `NAT` = **0**, boş = **0**.
+
+> Veride `NAT` hiç geçmiyor, bu yüzden `associatedTypeNat` tüm satırlarda `0`.
+> `associatedLevelOther`'da olduğu gibi kural yine de enum'un tamamını
+> karşılıyor; veri gelirse çalışır.
+
+> `OTHER` tipli 212 segment, `level` alanı boş olan **tam olarak aynı** 212
+> segmenttir (ölçüldü, kesişim 212/212). §4.2'de "bağlı ama hiç `level` yok"
+> diye sayılan 181 designatedPoint da bu segmentlerin uçlarıdır — yani o
+> noktalarda dört seviye bayrağı `0` iken `associatedTypeOther` `1` olur.
+
+### 4.4 `atsStatus_reportingAssociation` — TEXT (JSON)
 
 Hangi segmentte hangi raporlama türünün işaretlendiği. Yalnızca raporlama türü
 **dolu olan** uçlar listelenir (boş olanlar listeyi şişirirdi — 90.284 segment
@@ -113,7 +147,7 @@ ucu raporlama taşımıyor).
 sonu olabilir; ayrıca raporlama türü uca göre okunur (nokta segmentin başıysa
 `routeSegments_startReportingATC`, sonuysa `routeSegments_endReportingATC`).
 
-### 4.4 `atsStatus_depictionCompulsory` — BOOLEAN
+### 4.5 `atsStatus_depictionCompulsory` — BOOLEAN
 
 İlişkili segmentlerden **herhangi birinde** raporlama türü `COMPULSORY` mi?
 Kaynak: `routeSegments_startReportingATC` / `_endReportingATC`.
@@ -123,9 +157,9 @@ Kapıya bağlıdır: nokta rota ağına bağlı değilse `NULL`.
 > Önceki sürümlerde bunun yanında `depictionOnRequest` / `depictionNonCompulsory`,
 > `depictionRNAV` / `depictionCONV` / `depictionNonRNAV` bayrakları vardı.
 > Hepsi **kaldırıldı** (kullanıcı kararı); seyrüsefer sınıflandırması artık
-> §4.5'teki `depictionNav` enum'uyla yapılıyor.
+> §4.6'daki `depictionNav` enum'uyla yapılıyor.
 
-### 4.5 `atsStatus_depictionNav` — TEXT (enum)
+### 4.6 `atsStatus_depictionNav` — TEXT (enum)
 
 Seyrüsefer gösterim sınıfı. **Sıralı** bir karar zinciridir; ilk uyan kazanır.
 
@@ -139,7 +173,7 @@ Seyrüsefer gösterim sınıfı. **Sıralı** bir karar zinciridir; ilk uyan kaz
 `CONV`/`TACAN` ve `PBN` değerleri AIXM `CodeNavigationType` enum'undan gelir
 (`routeSegments_aircraftCapability` JSON'undaki `navigationType`).
 
-### 4.6 `atsStatus_depictionSIGPointBasicFunc` — TEXT (enum)
+### 4.7 `atsStatus_depictionSIGPointBasicFunc` — TEXT (enum)
 
 Önemli noktanın temel işlevi. Yine sıralı karar zinciri:
 
@@ -154,7 +188,7 @@ Seyrüsefer gösterim sınıfı. **Sıralı** bir karar zinciridir; ilk uyan kaz
 "Bağlı tüm segmentler PBN" sayımında segment kimliği **küme** olarak tutulur —
 bir nokta aynı segmentin hem başı hem sonu olabilir, sayım bozulmasın diye.
 
-### 4.7 `atsStatus_depictionNavAndREP` — TEXT (enum)
+### 4.8 `atsStatus_depictionNavAndREP` — TEXT (enum)
 
 `depictionNav` ile `depictionCompulsory`'nin **bileşkesi**. Tek sütunda hem
 seyrüsefer sınıfını hem raporlama zorunluluğunu taşır; QGIS'te tek bir
@@ -180,7 +214,7 @@ kopma riski olmaz.
 
 Kapıya bağlıdır: nokta rota elemanı değilse `NULL`.
 
-### 4.8 Alanlar arası doğrulama
+### 4.9 Alanlar arası doğrulama
 
 İki tür denetim var; ikisinin de kural listesi `gpkg/validation_rules.py`'de
 **tek yerde** tutulur, `compute_ats_status` oradan okuyup uygular.
@@ -209,7 +243,7 @@ satır doğrulamasının göremeyeceği bir aşamadadırlar.
 
 Ölçüldü: her iki katmanda çakışma **0**, bileşke uyuşmazlığı **0**.
 
-### 4.9 Kapı kuralı istisnasızdır
+### 4.10 Kapı kuralı istisnasızdır
 
 `depictionNav` ve `depictionSIGPointBasicFunc` de **kapıya bağlıdır**:
 `isElementOfRouteSegment = 0` olan satırlarda diğer alanlar gibi `NULL`
@@ -238,6 +272,9 @@ Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satı
 | `associatedLevelBoth` | `1` | 3 |
 | `associatedLevelOther` | `1` | 0 |
 | — hem Upper hem Lower | | 4.125 |
+| `associatedTypeAts` | `1` | 40.984 |
+| `associatedTypeNat` | `1` | 0 |
+| `associatedTypeOther` | `1` | 181 |
 | — bağlı ama hiç level yok | dördü de `0` | 181 |
 | `reportingAssociation` | dolu | 623 |
 | `depictionCompulsory` | `1` | 448 |
@@ -270,6 +307,9 @@ Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satı
 | `associatedLevelBoth` | `1` | 1 |
 | `associatedLevelOther` | `1` | 0 |
 | — hem Upper hem Lower | | 717 |
+| `associatedTypeAts` | `1` | 3.296 |
+| `associatedTypeNat` | `1` | 0 |
+| `associatedTypeOther` | `1` | 0 |
 | `reportingAssociation` | dolu | 66 |
 | `depictionCompulsory` | `1` | 63 |
 | `depictionNav` | `OTHER` | 3.230 |
@@ -303,6 +343,12 @@ atsStatus_isElementOfRouteSegment = 1
 
 ```sql
 atsStatus_isElementOfRouteSegment = 1 AND atsStatus_depictionCompulsory = 1
+```
+
+**North Atlantic Track noktaları** (veride şu an yok, kural hazır):
+
+```sql
+atsStatus_associatedTypeNat = 1
 ```
 
 **Üst saha RNAV noktaları:**
@@ -345,6 +391,8 @@ WHERE d.atsStatus_reportingAssociation IS NOT NULL;
 | `isElementOfRouteSegment` NULL kalan satır | **0** |
 | `designatedPoints` bağlı sayısı — bağımsız `EXISTS` sorgusuyla | 41.165 = 41.165 ✅ |
 | Uçtan uca örnek (`ABDIK`, `type=ICAO`, 12 segment) | `Upper=1 Lower=1`, `Compulsory=1`, `Nav=CONV` (bağlı rotalarda CONV var), `SIGFunc=INT` (CONV olduğu için WPT olamaz), `NavAndREP=CONV_Comp` — zincirin tamamı elle yeniden hesaplandı, birebir ✅ |
+| `associatedType*` kapı kuralı ihlali | **0** (her iki katman) |
+| `associatedTypeAts` + `associatedTypeOther` toplamı = bağlı nokta sayısı | dP 40.984 + 181 = **41.165** ✅, navaids 3.296 + 0 = **3.296** ✅ |
 | `COORD` → `RNAVFlyBy` + `WPT` (koşulsuz kural) | ihlal **0** |
 | `COORD` → asla `CONV` | ihlal **0** |
 | `VRP` → `VFR_REP` | ihlal **0** |

@@ -47,6 +47,15 @@ ATS_STATUS_COLUMNS = [
     "atsStatus_associatedLevelLower",      # BOOLEAN
     "atsStatus_associatedLevelBoth",       # BOOLEAN
     "atsStatus_associatedLevelOther",      # BOOLEAN — gercek OTHER/OTHER:xxx
+    # CodeRouteType degerleri, uc BAGIMSIZ bayrak olarak: her biri
+    # "iliskili segmentlerden EN AZ BIRI bu tipte bir rotaya ait mi".
+    # Kaynak sutun `route_type` — RouteSegment'in DEGIL, segmentin
+    # bagli oldugu Route feature'inin alanidir. `Other` yalnizca gercek
+    # `OTHER`/`OTHER:xxx` degeri varsa 1 olur; tip tasimayan segment
+    # hicbir bayraga katki vermez.
+    "atsStatus_associatedTypeAts",         # BOOLEAN — route_type = ATS
+    "atsStatus_associatedTypeNat",         # BOOLEAN — route_type = NAT
+    "atsStatus_associatedTypeOther",       # BOOLEAN — gercek OTHER/OTHER:xxx
     "atsStatus_reportingAssociation",      # JSON: [{segmentId, role, reportingATC}]
     "atsStatus_depictionCompulsory",       # BOOLEAN — reportingATC = COMPULSORY
     # Harita gosterimi icin TURETILMIS siniflandirmalar. Diger alanlar gibi
@@ -87,9 +96,6 @@ DEPICTION_NAV_AND_REP = tuple(
 #:
 #: Katman oneki tasimazlar (annotation/provenance/atsStatus ile ayni kural).
 NAVAID_LABELING_COLUMNS = [
-    "navaidLabeling_haveFreq",      # BOOLEAN
-    "navaidLabeling_haveChannel",   # BOOLEAN
-    "navaidLabeling_haveDmeElev",   # BOOLEAN
     "navaidLabeling_name",
     "navaidLabeling_ident",
     "navaidLabeling_freq",          # REAL — NDB kHz, diger her tip MHz
@@ -97,6 +103,9 @@ NAVAID_LABELING_COLUMNS = [
     "navaidLabeling_channel",       # TEXT — "40X", "18Y", MLS icin "500"
     "navaidLabeling_dmeElev",       # REAL
     "navaidLabeling_dmeElevUom",    # kaynaktaki birim (FT/M) korunur
+    # Etiket uretimini QGIS ifadesinden buildera tasiyan iki alan:
+    "navaidLabeling_type",          # kartografik tip kisaltmasi (VOR DME, GP, OM)
+    "navaidLabeling_morseCode",     # ident'in ITU mors karsiligi
 ]
 
 
@@ -199,6 +208,20 @@ ASSOCIATED_COMPONENT_COLUMNS = [
 #: Iki sutun AYNI SIRADA hizalidir: n. id'nin tipi n. tiptir.
 ASSOCIATED_NAVAID_COLUMNS = ["associatedNavaid", "associatedNavaidType"]
 
+#: `navaidSymbology_*` — sembol GEOMETRISI icin turetilmis alanlar.
+#: `navaidLabeling_*`'tan AYRIDIR: o etiket METNI uretir, bu sembolun
+#: cizimini besler. Yalnizca `navaidComponents`'te bulunur; katman oneki
+#: tasimaz (annotation/provenance/atsStatus/navaidLabeling ile ayni kural).
+#:
+#: `GPAssociatedLOCTrueBrg`: Glidepath sembolu haritada bir HUZME olarak
+#: cizilir ve yonu olmalidir, ama `GlidepathPropertyGroup`'ta yon alani
+#: YOKTUR. Yon ayni ILS'in Localizer bileseninde durur; bu sutun o degeri
+#: Glidepath satirina tasir (bkz. gpkg/navaid_symbology.py).
+NAVAID_SYMBOLOGY_COLUMNS = [
+    "navaidSymbology_GPAssociatedLOCTrueBrg",
+]
+
+
 #: Liste tasiyan sutunlarin ayiricisi.
 LIST_SEPARATOR = ","
 
@@ -212,10 +235,10 @@ BOOLEAN_COLUMNS = frozenset([
     "atsStatus_associatedLevelLower",
     "atsStatus_associatedLevelBoth",
     "atsStatus_associatedLevelOther",
+    "atsStatus_associatedTypeAts",
+    "atsStatus_associatedTypeNat",
+    "atsStatus_associatedTypeOther",
     "atsStatus_depictionCompulsory",
-    "navaidLabeling_haveFreq",
-    "navaidLabeling_haveChannel",
-    "navaidLabeling_haveDmeElev",
 ])
 
 
@@ -268,6 +291,7 @@ NAVAID_COMPONENTS = (
     + ANNOTATION_COLUMNS
     + PROVENANCE_COLUMNS
     + NAVAID_LABELING_COLUMNS
+    + NAVAID_SYMBOLOGY_COLUMNS
     + ["gmlId"]
 )
 
@@ -345,6 +369,8 @@ _REAL_SUFFIXES = (
     # navaidLabeling_* — `short` tam esitlikle yakalanir; mevcut "frequency"
     # girdisi "freq" icin eslesmez ("frequency".endswith("freq") yanlistir).
     "freq", "dmeElev",
+    # navaidSymbology_* — mevcut "trueBearing" girdisi bunu yakalamaz.
+    "TrueBrg",
 )
 
 
@@ -560,27 +586,77 @@ def _build_spatial_index(cur, name: str) -> tuple[int, tuple | None]:
     return len(rows), bounds
 
 
-def finalize(con):
+def _build_column_indexes(cur, name: str, columns) -> list[tuple[str, str]]:
+    """Her sütunda B-tree index kurar; kurulamayanların listesini döndürür.
+
+    Hata **yutulmaz**. Eskiden burada `except OperationalError: pass` vardı ve
+    ekrana sütun listesinin uzunluğu basılıyordu — yani bir index kurulamasa
+    bile çıktı "hepsi kuruldu" diyordu. "Her sütunda index olacak" kuralının
+    doğrulanabilir olması için başarısızlık görünür olmalı.
+    """
+    failed = []
+    for column in columns:
+        try:
+            cur.execute(f'CREATE INDEX "idx_{name}_{column}" '
+                        f'ON "{name}"("{column}")')
+        except sqlite3.OperationalError as exc:
+            failed.append((column, str(exc)))
+    return failed
+
+
+def _indexed_columns(cur, name: str) -> set[str]:
+    """Katmanda GERÇEKTEN index'lenmiş sütunların kümesi.
+
+    Niyetten değil **diskteki durumdan** üretilir ve index SAYMAZ, index'in
+    hangi sütunu kapsadığına bakar. Salt sayım kandırılabilir: doğru sayıda
+    ama yanlış sütuna bakan bir index "tamam" görünürdü.
+    """
+    covered = set()
+    for row in cur.execute(f'PRAGMA index_list("{name}")').fetchall():
+        index = row[1]
+        for info in cur.execute(f'PRAGMA index_info("{index}")').fetchall():
+            if info[2] is not None:
+                covered.add(info[2])
+    return covered
+
+
+def finalize(con, log=None):
     """Satır sayaçları, tüm sütun index'leri ve mekânsal (RTree) index."""
     cur = con.cursor()
+    eksik_toplam = 0
     for name in LAYERS:
         cur.execute(f'SELECT COUNT(*) FROM "{name}"')
         cur.execute("UPDATE gpkg_ogr_contents SET feature_count=? WHERE table_name=?",
                     (cur.fetchone()[0], name))
-        for column in LAYERS[name]["columns"]:
-            try:
-                cur.execute(f'CREATE INDEX "idx_{name}_{column}" '
-                            f'ON "{name}"("{column}")')
-            except sqlite3.OperationalError:
-                pass
+        failed = _build_column_indexes(cur, name, LAYERS[name]["columns"])
 
         indexed, bounds = _build_spatial_index(cur, name)
         if bounds:
             cur.execute(
                 "UPDATE gpkg_contents SET min_x=?, max_x=?, min_y=?, max_y=? "
                 "WHERE table_name=?", (*bounds, name))
-        print(f"    {name:18} sutun_index={len(LAYERS[name]['columns']):>3} "
-              f"mekansal_index={indexed}")
+
+        # Rapor NIYETTEN degil, diskteki durumdan uretilir.
+        beklenen = LAYERS[name]["columns"]
+        covered = _indexed_columns(cur, name)
+        indexsiz = [c for c in beklenen if c not in covered]
+        eksik_toplam += len(indexsiz)
+        uyari = "" if not indexsiz else f"  !! {len(indexsiz)} EKSIK"
+        print(f"    {name:18} sutun_index={len(beklenen) - len(indexsiz):>3}"
+              f"/{len(beklenen)}{uyari} mekansal_index={indexed}")
+        for column in indexsiz:
+            print(f"        INDEXSIZ SUTUN: {column}")
+            if log is not None:
+                log.error("2B", name, column, "index", "-", "sutun_indexsiz")
+
+        for column, hata in failed:
+            print(f"        index kurulamadi: {column} -> {hata}")
+            if log is not None:
+                log.error("2B", name, column, "index", hata,
+                          "sutun_indexi_kurulamadi")
+
+    if eksik_toplam:
+        print(f"    UYARI: toplam {eksik_toplam} sutun indexsiz kaldi")
     con.commit()
     cur.execute("ANALYZE")
     con.commit()

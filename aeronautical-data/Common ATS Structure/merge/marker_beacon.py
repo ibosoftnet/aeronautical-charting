@@ -196,9 +196,9 @@ class MarkerBeaconMatcher:
         """Eşleşen her marker için bir `hasMember`/`MarkerBeacon` üretir."""
         for markers in self.pending.values():
             for marker in markers:
-                yield marker, self._build_feature(marker)
+                yield marker, self._build_feature(marker, log)
 
-    def _build_feature(self, marker):
+    def _build_feature(self, marker, log=None):
         gml_id = marker["equipment_gml_id"]
         member = etree.Element(NSMAP and f"{{{NS_MESSAGE}}}hasMember",
                                nsmap=NSMAP)
@@ -219,20 +219,33 @@ class MarkerBeaconMatcher:
         _text(ts, "sequenceNumber", "1")
         _text(ts, "correctionNumber", "0")
 
-        # NavaidEquipmentPropertyGroup: designator … location …
-        _text(ts, "designator", marker["ident"])
-        self._write_location(ts, gml_id, marker)
+        # NavaidEquipmentPropertyGroup: … location …
+        #
+        # `designator` YAZILMAZ: marker'in kendi ident'i yoktur, Jeppesen'deki
+        # deger ebeveyn ILS'in ident'idir ve onu marker'in uzerine yazmak
+        # yanlis olur (kullanici karari). Yan dosyadaki `ident` yalnizca
+        # eslestirme anahtari ve gml:id bileseni olarak kullanilir.
+        self._write_location(ts, gml_id, marker, log)
 
         # MarkerBeaconPropertyGroup XSD sırası:
         #   class → frequency → axisBearing → auralMorseCode
-        # `frequency` kaynakta yoktur, ICAO Annex 10 gereği 75 MHz sabiti
-        # olarak üreticide atanır. `class` ve `auralMorseCode` hâlâ yok ve
-        # uydurulmaz (bkz. Jeppesen_to_AIXM_Mapping.md).
+        # `frequency` (75 MHz sabiti) ve `auralMorseCode` (konuma göre sabit
+        # bipleme deseni) kaynakta yoktur, üreticide atanır. `class` hâlâ yok
+        # ve uydurulmaz (bkz. Jeppesen_to_AIXM_Mapping.md).
         if marker.get("frequency") is not None:
             frequency = _text(ts, "frequency", marker["frequency"])
-            frequency.set("uom", marker.get("frequencyUom") or "MHZ")
+            # Birim VARSAYILMAZ. Yan dosyada yoksa deger birimsiz yazilir ve
+            # loglanir; `uom` XSD'de zorunlu degildir. Deger dusurulmez ki
+            # kaynakta ne varsa gorunsun, ama "MHZ" de uydurulmaz.
+            if marker.get("frequencyUom"):
+                frequency.set("uom", marker["frequencyUom"])
+            elif log is not None:
+                log.warning("2A", "MarkerBeacon", gml_id, "frequency",
+                            marker["frequency"], "birim_kaynakta_yok")
         if marker.get("axisBearing") is not None:
             _text(ts, "axisBearing", marker["axisBearing"])
+        if marker.get("auralMorseCode"):
+            _text(ts, "auralMorseCode", marker["auralMorseCode"])
         return member
 
     @staticmethod
@@ -254,7 +267,7 @@ class MarkerBeaconMatcher:
         end.set("indeterminatePosition", "unknown")
 
     @staticmethod
-    def _write_location(ts, gml_id, marker):
+    def _write_location(ts, gml_id, marker, log=None):
         location = etree.SubElement(ts, A + "location")
         point = etree.SubElement(location, A + "ElevatedPoint")
         point.set(G + "id", gml_id + "_EP")
@@ -263,7 +276,12 @@ class MarkerBeaconMatcher:
         pos.text = f'{marker["lat"]} {marker["lon"]}'
         if marker.get("elevation") is not None:
             elevation = etree.SubElement(point, A + "elevation")
-            elevation.set("uom", marker.get("elevationUom") or "FT")
+            # Birim VARSAYILMAZ (frequency ile ayni gerekce).
+            if marker.get("elevationUom"):
+                elevation.set("uom", marker["elevationUom"])
+            elif log is not None:
+                log.warning("2A", "MarkerBeacon", gml_id, "elevation",
+                            marker["elevation"], "birim_kaynakta_yok")
             elevation.text = str(marker["elevation"])
 
     def summary(self) -> str:

@@ -12,11 +12,18 @@ from .writer import NS_GML, aixm, note, opt, pos, q, sub, xlink_ref, SRS_NAME
 
 
 def write(builder, log, gml_id, feature_uuid, record, *, designator=None,
-          point_type=None, name=None, fixes=None, annotation=None):
+          point_type=None, name=None, fix_groups=None, annotation=None):
     """Tek bir DesignatedPoint feature'ı yazar.
 
-    fixes: [{'navaid_uuid': …, 'navaid_code': …, 'radial': …, 'distance': …}]
-    Birden fazla üçlü varsa tek PointReference içinde role=INTERSECTION.
+    fix_groups: [[{'navaid_uuid': …, 'radial': …, 'distance': …}, …], …]
+    Her iç liste KAYNAKTAKİ BİR konum tarifidir ve kendi `aixm:fix`/
+    `PointReference` nesnesini alır. Tarif içinde tek navaid varsa
+    role=RAD_DME, birden fazla navaid varsa (gerçek kesişim noktası)
+    role=INTERSECTION. Birleştirilmiş noktalarda birden fazla BAĞIMSIZ
+    tarif bulunabildiği için `fix` XSD'de 0..∞'dur (kullanıcı kararı).
+
+    annotation: str veya str listesi. Birden fazla not verilirse her biri
+    ayrı `aixm:annotation` olur (XSD'de 0..∞).
     """
     ts = builder.add_feature("DesignatedPoint", gml_id, feature_uuid)
 
@@ -36,19 +43,38 @@ def write(builder, log, gml_id, feature_uuid, record, *, designator=None,
     point.set("srsName", SRS_NAME)
     pos(point, record["lat"], record["lon"])
 
-    if annotation:
-        note(ts, gml_id + "_NOTE", annotation)
+    _write_notes(ts, gml_id, annotation)
 
     # Kaynağın tamamı DHMİ Türkiye verisidir; ICAO Doc 7910'a göre Türkiye'nin
     # lokasyon göstergesi öneki "LT"dir (LTBA, LTFJ, LTAC …) — kullanıcı kararı.
     sub(ts, aixm("codeICAOCountry"), "LT")
 
-    if fixes:
-        _write_fix(ts, gml_id, fixes)
+    for n, fixes in enumerate(fix_groups or [], 1):
+        if fixes:
+            _write_fix(ts, f"{gml_id}_FIX{n}", fixes)
 
 
-def _write_fix(ts, gml_id, fixes):
-    """fix → PointReference.
+def _write_notes(ts, gml_id, annotation):
+    """annotation str ya da liste olabilir; boş girdiler atlanır.
+
+    Tek not eski `_NOTE` id'sini korur; birden fazlası `_NOTE1`, `_NOTE2` …
+    olur (gml:id belge içinde benzersiz olmak zorundadır).
+    """
+    if not annotation:
+        return
+    texts = [annotation] if isinstance(annotation, str) else list(annotation)
+    texts = [t for t in texts if t]
+    if not texts:
+        return
+    if len(texts) == 1:
+        note(ts, gml_id + "_NOTE", texts[0])
+        return
+    for n, text in enumerate(texts, 1):
+        note(ts, f"{gml_id}_NOTE{n}", text)
+
+
+def _write_fix(ts, fix_id, fixes):
+    """Bir konum tarifi → tek `aixm:fix`/PointReference.
 
     XSD sırası (PointReferencePropertyGroup): role, priorFixTolerance,
     postFixTolerance, fixToleranceArea, annotation, minimumReceptionLimit,
@@ -57,7 +83,7 @@ def _write_fix(ts, gml_id, fixes):
     """
     fix_el = ET.SubElement(ts, aixm("fix"))
     ref = ET.SubElement(fix_el, aixm("PointReference"))
-    ref.set(q(NS_GML, "id"), gml_id + "_FIX")
+    ref.set(q(NS_GML, "id"), fix_id)
 
     # Tek navaid → RAD_DME, birden fazla navaid → INTERSECTION
     role = "RAD_DME" if len(fixes) == 1 else "INTERSECTION"
@@ -67,7 +93,7 @@ def _write_fix(ts, gml_id, fixes):
     for i, fix in enumerate(fixes, 1):
         dist_el = ET.SubElement(ref, aixm("distanceReference"))
         dist = ET.SubElement(dist_el, aixm("Distance"))
-        dist.set(q(NS_GML, "id"), f"{gml_id}_DIST{i}")
+        dist.set(q(NS_GML, "id"), f"{fix_id}_DIST{i}")
         sub(dist, aixm("distance"), fix["distance"], uom="NM")
         sub(dist, aixm("type"), "DME")
         xlink_ref(dist, aixm("pointChoice_navaidSystem"), fix["navaid_uuid"])
@@ -75,10 +101,10 @@ def _write_fix(ts, gml_id, fixes):
     for i, fix in enumerate(fixes, 1):
         ang_el = ET.SubElement(ref, aixm("angleReference"))
         use = ET.SubElement(ang_el, aixm("AngleUse"))
-        use.set(q(NS_GML, "id"), f"{gml_id}_ANGUSE{i}")
+        use.set(q(NS_GML, "id"), f"{fix_id}_ANGUSE{i}")
         angle_el = ET.SubElement(use, aixm("theAngle"))
         angle = ET.SubElement(angle_el, aixm("Angle"))
-        angle.set(q(NS_GML, "id"), f"{gml_id}_ANG{i}")
+        angle.set(q(NS_GML, "id"), f"{fix_id}_ANG{i}")
         sub(angle, aixm("angle"), fix["radial"])
         sub(angle, aixm("angleType"), "RDL")
         sub(angle, aixm("indicationDirection"), "FROM")

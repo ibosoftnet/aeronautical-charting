@@ -471,8 +471,8 @@ Girdi **yalnızca** 2A çıktısıdır. Dört katman üretilir:
 | Katman | Geometri | Sütun |
 |---|---|---:|
 | `designatedPoints` | POINT | 24 |
-| `navaids` | POINT | 45 |
-| `navaidComponents` | POINT | 71 |
+| `navaids` | POINT | 55 |
+| `navaidComponents` | POINT | 98 |
 | `routeSegments` | LINESTRING | 82 |
 
 Sütun listeleri ve eşlemeler:
@@ -526,27 +526,40 @@ değiştirmez, yalnızca yeni sütun doldurur.
 
 | Adım | Alanlar | Katman | Neyden türetilir |
 |---|---|---|---|
-| `[4]` | `atsStatus_*` (10 sütun) | `designatedPoints`, `navaids` | `routeSegments` — noktanın ATS rota ağındaki rolü |
-| `[5]` | `navaidLabeling_*` (10 sütun) | `navaids`, `navaidComponents` | Tip bazlı geçerlilik tablosu + ICAO frekans/kanal eşleştirmesi |
+| `[4]` | `atsStatus_*` (13 sütun) | `designatedPoints`, `navaids` | `routeSegments` — noktanın ATS rota ağındaki rolü |
+| `[5]` | `navaidLabeling_*` (9 sütun) | `navaids`, `navaidComponents` | Tip bazlı geçerlilik kapıları, ICAO frekans/kanal eşleştirmesi ve ITU mors alfabesi |
+| `[6]` | `navaidSymbology_*` (1 sütun) | `navaidComponents` | Glidepath hüzmesinin yönü — kardeş `Localizer`'ın `trueBearing`'i |
 
 **Neden index'ten önce:** yeni sütunların B-tree index'i `finalize()` içinde
 kuruluyor; sonra çalışsalardı indekssiz kalırlardı.
 
-`navaidLabeling_*` iki geçişlidir — AIXM'de frekans ve kanal Navaid
+`navaidLabeling_*` etiket üretimini QGIS ifadelerinden tamamen devralır:
+tip kısaltması (`VOR DME`, `GP`, `OM`) ve ident'in ITU mors karşılığı da
+burada üretilir; QGIS tarafında 20 dallı `CASE` ifadesine gerek kalmaz.
+Mors alfabesi koda gömülü değil, [`gpkg/morse-itu.json`](gpkg/morse-itu.json)
+veri dosyasındadır (ITU-R M.1677-1).
+
+Adım **üç geçişlidir**. Önce `navaidComponents`, sonra `navaids`
+(bileşenlerin çözülmüş değerlerini devralır), en son MLS `Elevation`
+bileşenleri (değerlerini kardeş `Azimuth`'tan alırlar, bu bağ ancak ilk geçiş
+bittiğinde bilinir).
+
+İlk iki geçişin sebebi: AIXM'de frekans ve kanal Navaid
 feature'ında değil **bağlı ekipmanda** durur (`NavaidPropertyGroup`'ta ikisi de
 yoktur), oysa harita etiketi navaid düzeyinde çizilir. Bu yüzden önce
 `navaidComponents` çözülür, sonra `navaids` bileşenlerin sonucunu devralır.
 Bir ekipman ya frekans ya kanal taşır; eksik olan
 [`gpkg/frequency-pairing.csv`](gpkg/frequency-pairing.csv)'den türetilir.
 
-Ayrıntılar: [`ATS_Status_Fields.md`](ATS_Status_Fields.md) ve
-[`Navaid_Labeling_Fields.md`](Navaid_Labeling_Fields.md).
+Ayrıntılar: [`ATS_Status_Fields.md`](ATS_Status_Fields.md),
+[`Navaid_Labeling_Fields.md`](Navaid_Labeling_Fields.md) ve
+[`Navaid_Symbology_Fields.md`](Navaid_Symbology_Fields.md).
 
 ### 5.4 Index
 
 `finalize()` üç şey kurar:
 
-1. **Her sütunda B-tree index** — dört katmanda toplam 222 sütun.
+1. **Her sütunda B-tree index** — dört katmanda toplam 265 sütun.
 2. **Mekânsal index (RTree)** — katman başına `rtree_<katman>_geom` sanal
    tablosu, GeoPackage 1.2 Ek F.3'teki altı tetikleyici (insert / update1-4 /
    delete) ve `gpkg_extensions` kaydı (`gpkg_rtree_index`, scope `write-only`).

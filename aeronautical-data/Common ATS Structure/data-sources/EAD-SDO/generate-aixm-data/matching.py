@@ -48,6 +48,73 @@ def looks_like_xml(path: Path) -> tuple[bool, str | None]:
     return True, None
 
 
+#: GECICI COZUM — pist bilgisi `name` alanina metin olarak yaziliyor.
+#:
+#: AIXM'de ILS'in pist bagi `Navaid/runwayDirection` ASSOCIATION'idir ve ayri
+#: bir `RunwayDirection` feature'ina isaret eder. Bu projenin katmanlarinda
+#: `AirportHeliport`/`RunwayDirection` feature'lari HENUZ URETILMIYOR, yani
+#: association'in gosterecegi hedef yok. Kaynakta %100 dolu olan pist bilgisi
+#: (`Rdn/txtDesig`) tamamen kaybolmasin diye GECICI olarak `name` alanina
+#: tasiniyor (kullanici karari).
+#:
+#: Havaalani/pist feature'lari eklendiginde bu cozum KALDIRILMALI ve yerine
+#: gercek `runwayDirection` association'i kurulmalidir.
+RUNWAY_NAME_PREFIX = "RWY"
+
+
+def runway_name(rdn_desig: str | None) -> str | None:
+    """`"04R"` → `"RWY 04R"`. Bos/None → None.
+
+    `Rdn/txtDesig` TEK pist YONUNU verir (`04R`); `Rwy/txtDesig` ise fiziksel
+    pist CIFTINI (`RWY-04L/22R`). AIXM'in `runwayDirection`'i yone karsilik
+    geldigi icin `Rdn` kullanilir.
+    """
+    text = (rdn_desig or "").strip().upper()
+    return f"{RUNWAY_NAME_PREFIX} {text}" if text else None
+
+
+def append_runway_name(existing: str | None, rdn_desig: str | None) -> str | None:
+    """Mevcut adin SONUNA pist bilgisini ekler; adi EZMEZ.
+
+    Ezmeme karari olculmus bir catismadan dogdu: ILS/LOC bileseni 402 DME'nin
+    396'si kaynakta kendi `txtName`'ini tasiyor (`BRUSSELS NATIONAL`,
+    `QUEEN ALIA`, `PAPA 16` gibi) ve ikisinde pist numarasi bile LOC'unkiyle
+    CELISIYOR (`ICV`: LOC `Rdn`=26, DME adi `CRAIOVA DME 27`). Ustune yazmak
+    gercek kaynak verisini silerdi (kullanici karari).
+
+    Sonuc: `"BRUSSELS NATIONAL"` + `"25R"` → `"BRUSSELS NATIONAL RWY 25R"`.
+    Ad bossa yalnizca `"RWY 25R"`.
+    """
+    rwy = runway_name(rdn_desig)
+    base = (existing or "").strip()
+    if rwy is None:
+        return base or None
+    if not base:
+        return rwy
+    if _has_runway_token(base, rdn_desig):
+        # Ad ZATEN ayni pisti soyluyor — ikinci kez yazmak
+        # "ILS/DME NZDN RWY 03 RWY 03" uretirdi. Olculdu: 402 DME'nin 30'u
+        # boyle; pist bilgisi ADIN ICINDE kaldigi icin hicbir sey kaybolmaz.
+        # FARKLI pist soyleyen tek kayit yok (0/402), yani bastirilan sey her
+        # zaman birebir ayni metin.
+        return base
+    return f"{base} {rwy}"
+
+
+def _has_runway_token(text: str, rdn_desig: str | None) -> bool:
+    """Metin zaten `RWY <rdn>` ikilisini tasiyor mu?
+
+    Token bazli bakilir, duz alt-dize aramasi DEGIL: `"RWY 03"`, `"RWY 03L"`
+    icinde gecmis sayilmamalidir.
+    """
+    rdn = (rdn_desig or "").strip().upper()
+    if not rdn:
+        return False
+    tokens = text.upper().split()
+    return any(a == RUNWAY_NAME_PREFIX and b == rdn
+               for a, b in zip(tokens, tokens[1:]))
+
+
 def normalize_code(value: str | None) -> str | None:
     if value is None:
         return None
@@ -237,6 +304,8 @@ def load_gp_records(xml_path: Path) -> dict[tuple[str, str, str, str], dict[str,
         records[key] = {
             "mid": _text(elem, "mid"),
             "code_id": ilz_code_id,
+            "name": _text(elem, "txtName"),
+            "rdn_desig": _text(elem, "Rdn/txtDesig"),
             "created_by": originator,
             "lat_text": lat_text, "lon_text": lon_text,
             "lat_dd": lat_dd, "lon_dd": lon_dd,
@@ -277,6 +346,8 @@ def load_loc_groups(xml_path: Path, gp_index, dme_records):
     """
     groups: list[dict[str, Any]] = []
     dme_consumed_by_ils: set[str] = set()
+    pistsiz = 0                       # `Rdn/txtDesig` bos gelen LOC sayisi
+    dme_pist_devralan = 0             # pist bilgisi LOC'tan devralan DME
 
     valid, reason = looks_like_xml(xml_path)
     if not valid:
@@ -361,6 +432,30 @@ def load_loc_groups(xml_path: Path, gp_index, dme_records):
         else:
             aixm_type = "LOC"
 
+        # ── GECICI: pist bilgisi `name` alanina yaziliyor ───────────────────
+        # AirportHeliport/RunwayDirection feature'lari henuz uretilmedigi icin
+        # `runwayDirection` association'i kurulamiyor (bkz. runway_name).
+        # Mevcut ad HICBIR ZAMAN ezilmez, sonuna eklenir.
+        if not (loc["rdn_desig"] or "").strip():
+            pistsiz += 1
+        loc["name"] = append_runway_name(loc.get("name"), loc["rdn_desig"])
+
+        if gp:
+            # GP'nin KENDI `Rdn`'si kullanilir, LOC'unki devredilmez. Olculdu:
+            # eslesen 522 ciftin 522'sinde iki deger ayni; yine de kaynagin
+            # kendi alani esas alinir.
+            gp = dict(gp)                      # paylasilan indeks kaydini bozma
+            gp["name"] = append_runway_name(gp.get("name"), gp.get("rdn_desig"))
+
+        if dme:
+            # `dme.xml`'de pist/havaalani elemani YOK (Rwy/Rdn/Ahp hicbiri) —
+            # bu yuzden pist bagli LOC'tan DEVRALINIR. DME'nin kendi
+            # `txtName`'i korunur: "BRUSSELS NATIONAL" + "25R" →
+            # "BRUSSELS NATIONAL RWY 25R".
+            dme = dict(dme)                    # paylasilan kaydi bozma
+            dme["name"] = append_runway_name(dme.get("name"), loc["rdn_desig"])
+            dme_pist_devralan += 1
+
         groups.append({"kind": "LOC", "primary": loc, "gp": gp or None,
                        "dme": dme or None, "aixm_type": aixm_type})
         elem.clear()
@@ -369,6 +464,9 @@ def load_loc_groups(xml_path: Path, gp_index, dme_records):
     matched_dme = sum(1 for g in groups if g["dme"])
     print(f"  ILS-LOC okunan: {len(groups)}, "
           f"GP eşleşmesi: {matched_gp}, DME eşleşmesi: {matched_dme}")
+    print(f"  pist adı (GEÇİCİ) yazılan: LOC={len(groups) - pistsiz}, "
+          f"GP={matched_gp}, DME={dme_pist_devralan}"
+          + (f"  UYARI pist bilgisi OLMAYAN LOC: {pistsiz}" if pistsiz else ""))
     return groups, dme_consumed_by_ils
 
 

@@ -54,6 +54,7 @@ from merge.marker_beacon import (MarkerBeaconMatcher,      # noqa: E402
                                  is_enabled as marker_enabled)
 from merge.provenance import ProvenanceWriter              # noqa: E402
 from gpkg import navaid_labeling                        # noqa: E402
+from gpkg import navaid_symbology                       # noqa: E402
 from gpkg.validation_rules import (ATS_STATUS_COMPOSITES,   # noqa: E402
                                    ATS_STATUS_CONFLICTS)
 
@@ -736,6 +737,9 @@ _ATS_STATUS_SET = (
     ' "atsStatus_associatedLevelLower"=?,'
     ' "atsStatus_associatedLevelBoth"=?,'
     ' "atsStatus_associatedLevelOther"=?,'
+    ' "atsStatus_associatedTypeAts"=?,'
+    ' "atsStatus_associatedTypeNat"=?,'
+    ' "atsStatus_associatedTypeOther"=?,'
     ' "atsStatus_reportingAssociation"=?,'
     ' "atsStatus_depictionCompulsory"=?,'
     ' "atsStatus_depictionNav"=?,'
@@ -822,6 +826,9 @@ def compute_ats_status(con, log=None):
         "iliskili segmentlerden EN AZ BIRI bu seviyede mi". `Both` yalnizca ham
         `level=BOTH` varsa 1 olur, UPPER+LOWER birlesiminden turetilmez;
         `Other` yalnizca gercek `OTHER`/`OTHER:<kod>` varsa 1 olur.
+      * `associatedTypeAts/Nat/Other`: ayni mantik, bu kez bagli ROTANIN tipi
+        icin (`route_type`, AIXM `CodeRouteType`). Yine BAGIMSIZ bayraklardir;
+        `Other` yalnizca gercek `OTHER`/`OTHER:<kod>` varsa 1 olur.
       * `reportingAssociation`: yalnizca raporlama turu isaretlenmis uclar
         listelenir; `role` (START/END) ayri alan olarak tasinir.
       * Tutarlilik denetimi: `depictionNav=CONV` ile
@@ -835,17 +842,18 @@ def compute_ats_status(con, log=None):
         if layer not in acc or row_id is None:
             return None
         return acc[layer].setdefault(row_id, {
-            "levels": set(), "reports": [], "nav": set(),
+            "levels": set(), "types": set(), "reports": [], "nav": set(),
             "segs": set(), "segs_pbn": set()})
 
     cur.execute(
-        'SELECT id, routeSegments_level, routeSegments_aircraftCapability,'
+        'SELECT id, routeSegments_level, route_type,'
+        ' routeSegments_aircraftCapability,'
         ' routeSegments_startPointLayer, routeSegments_startPointId,'
         ' routeSegments_startReportingATC,'
         ' routeSegments_endPointLayer, routeSegments_endPointId,'
         ' routeSegments_endReportingATC'
         ' FROM routeSegments')
-    for (seg_id, level, capability, s_layer, s_id, s_rep,
+    for (seg_id, level, route_type, capability, s_layer, s_id, s_rep,
          e_layer, e_id, e_rep) in cur.fetchall():
         nav_types = set()
         if capability:
@@ -862,6 +870,8 @@ def compute_ats_status(con, log=None):
                 continue
             if level:
                 target["levels"].add(level)
+            if route_type:
+                target["types"].add(route_type)
             target["nav"] |= nav_types
             # Segment kimligi KUME olarak tutulur: bir nokta ayni segmentin hem
             # basi hem sonu olabilir, "tum segmentler PBN mi" sayimi bozulmasin.
@@ -883,6 +893,7 @@ def compute_ats_status(con, log=None):
             if info is not None:
                 bagli += 1
                 levels, nav_types = info["levels"], info["nav"]
+                route_types = info["types"]
                 reports, segs = info["reports"], info["segs"]
                 all_pbn = bool(segs) and segs == info["segs_pbn"]
             else:
@@ -892,7 +903,7 @@ def compute_ats_status(con, log=None):
                 # (COORD/VRP/NAVAID) bagimsiz calisabilirdi, ama bir noktanin
                 # rota gosterim sinifi ancak bir ATS rotasinin parcasiysa
                 # anlamlidir.
-                payload.append((0,) + (None,) * 9 + (row_id,))
+                payload.append((0,) + (None,) * 12 + (row_id,))
                 continue
 
             kinds = {r["reportingATC"] for r in reports}
@@ -935,6 +946,10 @@ def compute_ats_status(con, log=None):
                 1 if "BOTH" in levels else 0,
                 1 if any(v == "OTHER" or v.startswith("OTHER:")
                          for v in levels) else 0,
+                1 if "ATS" in route_types else 0,
+                1 if "NAT" in route_types else 0,
+                1 if any(v == "OTHER" or v.startswith("OTHER:")
+                         for v in route_types) else 0,
                 json.dumps(reports, ensure_ascii=False) if reports else None,
                 compulsory,
                 nav_class, sig_func, nav_and_rep, row_id))
@@ -1124,8 +1139,11 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
     print("\n[5] navaidLabeling_* alanlari turetiliyor...")
     navaid_labeling.compute(con, log)
 
-    print("\n[6] Indexler kuruluyor...")
-    schema.finalize(con)
+    print("\n[6] navaidSymbology_* alanlari turetiliyor...")
+    navaid_symbology.compute(con, log)
+
+    print("\n[7] Indexler kuruluyor...")
+    schema.finalize(con, log)
     con.close()
 
     size_mb = out_path.stat().st_size / 1024 / 1024

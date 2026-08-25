@@ -139,22 +139,50 @@ desen.
 | `heading` | **`MarkerBeacon.axisBearing`** | XSD: *"The true bearing of the minor axis of the marker beacon"*. Değerin **true** olduğu veriden doğrulandı: `\|mag_var\|>8` olan 3.000 ILS'te pist adına göre true sapması 3,73°, manyetik sapması 13,46° |
 | `altitude` | `location/ElevatedPoint/elevation` uom=`FT` | Birim doğrulandı: Antalya 159–174 (saha 177 ft), Denizli Çardak 2774 (2795 ft), Diyarbakır 2176 (2251 ft). 913 kaydın hiçbirinde boş yok |
 | `laty` / `lonx` | `location/ElevatedPoint/gml:pos` | AIXM/EPSG:4326 sırası: enlem boylam |
-| `ident` | `MarkerBeacon.designator` + eşleştirme anahtarı | EAD'de Localizer/Glidepath ekipmanları da ILS ident'ini taşıyor — tutarlı |
+| `ident` | **yazılmaz** — yalnızca eşleştirme anahtarı ve `gml:id` bileşeni | Marker'ın kendi ident'i yoktur; kaynaktaki değer ebeveyn ILS'inkidir ve onu marker'ın üzerine yazmak yanlış olur (kullanıcı kararı) |
 | `region` | **yazılmaz** | Hedef LOC/ILS'te karşılığı yok (`codeICAOCountry` 550 kaydın 548'inde boş). Ebeveyn ILS zaten konumu/devleti belirliyor |
 | `marker_id`, `file_id` | yazılmaz | UUID türetme anahtarı (`ndb_id` ile aynı desen) |
 | **(kaynakta yok)** | **`MarkerBeacon.frequency` = `75` uom=`MHZ`** | ICAO Annex 10 Cilt I: **bütün** marker beacon'lar 75 MHz'de çalışır. Kaynaktan gelmez, üreticide sabit atanır (`MARKER_FREQUENCY_MHZ`) — kullanıcı kararı |
+| `type` (2. kullanım) | **`MarkerBeacon.auralMorseCode`** | Marker harf değil sabit bir bipleme deseni yayınlar; desen konuma göre sabittir (`MARKER_AURAL_MORSE`) — kullanıcı kararı |
 
 > **Bu alan önce boş bırakılmıştı.** İlk uygulamada "ICAO standardını yazmak
 > varsayım olur" gerekçesiyle atlanmıştı; kullanıcı kararıyla sabit olarak
-> yazılıyor. Standartla sabitlenmiş tek değer budur — `class` ve
-> `auralMorseCode` hâlâ boş, çünkü onların standart bir karşılığı yok.
+> yazılıyor. `auralMorseCode` de aynı yolu izledi (aşağıya bakın). Yalnızca
+> `class` boş kalmaya devam ediyor — onun kaynakta da standartta da karşılığı
+> yok.
+
+### Aural mors desenleri
+
+ILS marker'ları **harf yayınlamaz**, konuma özgü sabit bir ses deseni
+yayınlar. Bu yüzden `auralMorseCode` ident'ten türetilmez:
+
+| Konum | Kullanıcının verdiği | AIXM'e yazılan | Kayıt |
+|---|---|---|---:|
+| `INNER` | `......` | `......` | 136 |
+| `MIDDLE` | `._.._.` | `.-..-.` | 310 |
+| `OUTER` | `__` | `--` | 461 |
+| `BACKCOURSE` | — | **yazılmaz** | 6 |
+
+Alt çizgi tire'ye çevrilir: `CodeAuralMorseBaseType` deseni `([\-\.]*)`,
+yalnızca `-` ve `.` kabul eder.
+
+> **MIDDLE deseni ICAO tanımından farklıdır.** Annex 10'a göre MM dönüşümlü
+> nokta-çizgi yayınlar; verilen desen nokta‑çizgi‑nokta‑nokta‑çizgi‑nokta.
+> Soruldu, kullanıcı **"yazdığım gibi"** dedi — bilinçli bir tercihtir,
+> düzeltilmez. OM (sürekli çizgi) ve IM (sürekli nokta) ICAO ile birebir uyar.
+
+**BACKCOURSE için desen verilmedi**, o yüzden alan boş bırakılır (uydurulmaz).
+`BACKCOURSE` ham Jeppesen verisinde birebir öyle geçer — `marker.type`
+sütununun dört değerinden biridir (OUTER 461 / MIDDLE 310 / INNER 136 /
+BACKCOURSE 6) ve bizim tarafımızda hiçbir dönüşüm yoktur. Altı kaydın dördü
+ABD'de (K3–K6), biri Slovenya, biri Ekvador; **hiçbiri** bir LOC/ILS'e
+eşleşmediği için birleşik veriye zaten girmez.
 
 **Kaynakta bulunmayan AIXM alanları** (uydurulmaz):
 
 | Alan | Neden boş |
 |---|---|
 | `MarkerBeacon.class` | Kaynakta karşılığı yok. `type` bu alana ait değil (yukarıya bakın) |
-| `auralMorseCode` | Kaynakta yok (nokta/çizgi deseni) |
 
 ### 6.3 Eşleştirme sonucu
 

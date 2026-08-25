@@ -50,6 +50,8 @@ TimeSlice zorunlu alanları: `gml:validTime` (TimePeriod, `beginPosition` = `../
 | `pic` → `TYPE` | `type` | Doğrudan. Kaynakta tek değer: `ICAO` (geçerli `CodeDesignatedPointType`) |
 | geometry `coordinates` | `location/aixm:Point/gml:pos` | `[lon,lat]` → `lat lon` |
 
+11 ATS noktası ayrıca VFRPOINT'ten devralınan bir `fix`, 15'i ise `annotation` taşır — aynı ad ve konumdaki VFR noktası bu DesignatedPoint'e devredilmiştir (→ §7.3).
+
 ---
 
 ## 4. Navaid (ATS) — 65 kayıt
@@ -137,7 +139,7 @@ Not: `Route` feature'ının **geometrisi yoktur** — geometri `RouteSegment.cur
 
 ---
 
-## 7. DesignatedPoint (VFR) — 263 kayıt
+## 7. DesignatedPoint (VFR) — 263 ham kayıt → 242 feature
 
 | Kaynak (`VFRPOINT.json`) | AIXM | Dönüşüm |
 |---|---|---|
@@ -146,13 +148,15 @@ Not: `Route` feature'ının **geometrisi yoktur** — geometri `RouteSegment.cur
 | geometry `coordinates` | `location/aixm:Point/gml:pos` | `[lon,lat]` → `lat lon` |
 | `pic` → `Description` | `fix/PointReference` | → §7.1 |
 
+263 ham kayıt tekilleştirmeden sonra **242** DesignatedPoint verir: 6 grup kendi içinde birleşir, 15 nokta ATS DesignatedPoint'ine devredilir (→ §7.3).
+
 ### 7.1 `fix` yapısı (radyal + mesafe)
 
 Açıklama deseni: `<NAVAID> R<radyal>/D<mesafe>` (örn. `DAL R270/D22.51`).
 
 | Kaynak parçası | AIXM yolu | Değer |
 |---|---|---|
-| — | `fix/PointReference/role` | Tek navaid → `RAD_DME`; iki navaid → `INTERSECTION` |
+| — | `fix/PointReference/role` | **Bir tarif içinde** tek navaid → `RAD_DME`; iki navaid → `INTERSECTION` |
 | `D22.51` | `distanceReference/Distance/distance` `uom="NM"` | 22.51 |
 | — | `distanceReference/Distance/type` | `DME` |
 | `DAL` | `distanceReference/Distance/pointChoice_navaidSystem` | `xlink:href` → Navaid |
@@ -163,13 +167,101 @@ Açıklama deseni: `<NAVAID> R<radyal>/D<mesafe>` (örn. `DAL R270/D22.51`).
 
 XSD sırası: `distanceReference`, `angleReference`'tan **önce** gelir.
 
-**Ölçüm:** 125 nokta tek referanslı, 2 nokta çift referanslı (`BIG R200/D30.43 EDR R010/D16.72` ve `EDR R291/D33.43 CNK R185/D21.21`), 136 nokta açıklamasız (`fix` yazılmaz — alan 0..∞ olduğu için geçerli).
+**Bir açıklama = bir `aixm:fix`.** `fix` XSD'de 0..∞ olduğu için bir nokta birden fazla BAĞIMSIZ konum tarifi taşıyabilir. Bu ayrım önemlidir:
+
+* Tek açıklamada iki navaid geçiyorsa (`BIG R200/D30.43 EDR R010/D16.72`) bu **tek** bir tariftir — iki radyalin KESİŞTİĞİ nokta. Tek `PointReference`, `role=INTERSECTION`, iki `distanceReference` + iki `angleReference`.
+* Birleştirilen noktalarda ise her kaynak kaydının kendi açıklaması vardır (BAFA: `BDR R312/D21` ve `MEN R165/D49`). Bunlar aynı noktanın **bağımsız** iki tarifidir; **ayrı** `aixm:fix` alırlar, her biri `role=RAD_DME`. `INTERSECTION` yazmak yanlış olurdu — tarifler kesişerek noktayı belirlemiyor.
+
+gml:id şeması: `<nokta_id>_FIX{n}`, altında `_FIX{n}_DIST{i}`, `_FIX{n}_ANGUSE{i}`, `_FIX{n}_ANG{i}`.
+
+**Ölçüm (242 nokta + 11 ATS DP):** 127 `PointReference` — 125'i `RAD_DME`, 2'si `INTERSECTION` (`BIG…EDR` ve `EDR…CNK`). 2 nokta (BAFA, TURGUT) ikişer `fix` taşır; 128 nokta açıklamasızdır. Tekilleştirme öncesi de toplam 127 `PointReference` vardı: hiçbir tarif kaybolmadı, hiçbiri tekrarlanmadı.
 
 ### 7.2 Stub Navaid'ler (2 kayıt)
 
 VFR fix açıklamalarında geçen `MEN` (24 nokta) ve `AYR` (1 nokta) kodları **kaynak dosyaların hiçbirinde tanımlı değildir** — konum, tip ve ad bilgisi yoktur.
 
 Kullanıcı kararı: yalnızca `designator` taşıyan stub `Navaid` feature'ları üretilir. `location` ve `type` **yazılmaz** (uydurma veri girmemek için) ve `annotation` içinde durum açıkça belirtilir. Her ikisi de `errored-features.log`'a kaydedilir.
+
+---
+
+### 7.3 Tekilleştirme: 263 ham kayıt → 242 nokta
+
+DHMİ kaynağında aynı fiziksel nokta birden fazla VFR rota grubunda **ayrı
+kayıt** olarak girilmiştir. Ayrıca bazı VFR noktaları ATS tarafında zaten
+tanımlı bir DesignatedPoint ile aynıdır. İki aşamalı tekilleştirme uygulanır.
+
+**Eşik: 0,1 NM (~185 m).** Aynı ASCII adlı nokta çiftlerinin mesafeleri iki
+kümede toplanır: birleşecek 6 çift 0,000–0,008 NM aralığında, gerçekten farklı
+en yakın çift ise **176 NM** uzakta. 0,01–100 NM arasındaki her eşik aynı 6
+grubu verir; tam eşitlik ise float sapması yüzünden kırılgandır (TEKIRDAG
+çiftinde 0,00002 NM fark var). 0,1–2,0 NM bandındaki aynı adlı çiftler
+birleştirilmez ama `vfr_nokta_yakin_ayni_isim` uyarısı yazılır (bugün 0 kayıt;
+gelecek AIRAC için erken uyarı).
+
+#### Aşama 1 — VFR noktaları kendi aralarında (6 grup)
+
+Ad karşılaştırması **ASCII'ye katlanmış** ad üzerinden yapılır (§10): kaynakta
+hem `BIGA` hem `BİGA` vardır ve AIXM'e ikisi de `BIGA` olarak yazılmaktadır.
+
+| Grup | Birleşen kid | Sonuç |
+|---|---|---|
+| BAFA | 51 + 132 | 2 `fix` (`BDR R312/D21`, `MEN R165/D49`) |
+| TURGUT | 55 + 127 | 2 `fix` (`BDR R062/D19`, `MEN R139/D69`) |
+| TEKIRDAG | 28 + 73 | 1 `fix` (`CRL R233/D23.25`) |
+| BURSA | 40 + 220 | 1 `fix` (`BRY R279/D28`) |
+| BIGA | 30 + 155 (`BİGA`) | 1 `fix`, `annotation` = `BİGA` |
+| KUYUMCU | 277 + 5040 | `fix` yok |
+
+**Kimlik:** kazanan kayıt grubun **en küçük `kid`**'idir; `gml:identifier`
+`feature_uuid("VfrPoint", <kid>)` ile ondan üretilir. Kullanıcı kararı — bu
+sayede birleşmeyen 236 noktanın uuid'i hiç değişmez. Konum da kazanan kaydın
+koordinatıdır (ortalama alınmaz, uydurma koordinat üretilmez).
+
+**Veri kaybı yok:** üyelerin tüm konum tarifleri ayrı `fix` olarak korunur
+(→ §7.1), ASCII dışı özgün yazımları `annotation` olarak eklenir ve her yutulan
+üye `errored-features.log`'a `vfr_nokta_birlestirildi` olarak yazılır.
+Birebir aynı tarif iki kez yazılmaz.
+
+**Düzeltilen hata:** eskiden `vfr_index` aynı anahtarı korumasız üzerine
+yazıyordu; dosyada sonra gelen kayıt indeksi eziyor, ilk kayıt XML'de kalıp hiç
+`xlink:href` almıyordu. Bu yüzden 4 feature erişilemez durumdaydı ve BAFA ile
+TURGUT'un birer konum tarifi hiçbir tüketiciye ulaşmıyordu.
+
+#### Aşama 2 — VFR noktası ↔ ATS DesignatedPoint (15 nokta)
+
+VFR noktasının adı bir ATS DesignatedPoint'in `designator`'ı ile aynı **ve**
+konumu 0,1 NM içindeyse VFR noktası **yazılmaz**; ona bağlanan VFR segment uç
+noktaları doğrudan ATS DesignatedPoint'e bağlanır.
+
+Devredilenler: SOTIV, ALTIN, PETAR, KEKIK, NEXAM, SONUP, SULTA, RIVBU, ERFES,
+ATSAL, BIRPU, MANAZ, KEMER, YAPZU, MILBA. Bunların 11'i bir konum tarifi taşır
+ve tarif DP'ye `fix` olarak eklenir.
+
+| Konu | Karar |
+|---|---|
+| DP'nin `type`'ı | **`ICAO` korunur.** Nokta IFR ATS rotalarında kullanılan ICAO noktasıdır; `VRP`'ye çevrilmez |
+| VFR kökenli olduğu bilgisi | DP'ye `annotation` eklenir: `It is also a VFR point.` |
+| Konum tarifi | DP'ye `fix` olarak taşınır |
+| `name` | Eklenmez — eşleşme koşulu gereği zaten `designator` ile aynıdır |
+
+**Sonuç:** bu 15 nokta artık `type=VRP` olmadığı için ortak üründe
+(`build_common_ats.py` → `depiction_sig_point`) `VFR_REP` yerine `WPT`/`INT`
+sınıfını alır. Bilgi kaybolmaz — annotation'da durur — ama sembolojiyi
+etkiler; kullanıcı kararıdır.
+
+**Ad tutup konum tutmayan hâller birleştirilmez:** ASKER (473 NM), SERCE
+(391 NM), KEMER (208 NM), ORMAN (202 NM) — `vfr_nokta_dp_adi_ayni_konum_farkli`
+uyarısı yazılır. KEMER'in iki VFR noktası vardır: `kid 90` ATS DP ile aynı
+konumdadır ve devredilir, `kid 190` (Antalya) ayrı VFR noktası olarak kalır.
+
+#### Uç nokta indeksi
+
+Segment uç noktaları kaynaktaki **ham** ad ve koordinatla arandığı için
+`vfr_index` 263 ham kaydın tamamının anahtarını taşır; değeri nihai uuid'dir
+(kazanan VFR noktası ya da devralan ATS DesignatedPoint). Böylece
+`_normalize_vfr_segment` ve `route_segment.py` hiç değişmeden çalışır.
+Doğrulandı: 410/410 uç nokta çözülüyor ve hepsi tekilleştirme öncesiyle **aynı
+fiziksel konuma** bağlanıyor.
 
 ---
 
@@ -194,9 +286,11 @@ Doğrulandı: `Calc` ve `Magnetic` değerleri hiçbir kayıtta gerçek anlamda f
 
 ### 8.1 VFR uç nokta çözümü
 
-VFRPOINT'te aynı isimli farklı konumlu noktalar vardır (`KEMER` iki farklı konumda, `KILO` iki farklı konumda), bu yüzden eşleme **isim + koordinat** anahtarıyla yapılır.
+VFRPOINT'te aynı isimli farklı konumlu noktalar vardır (`KEMER`, `KILO`, `SANAYI`, `SAHIL`, `YENICE`, `PINARBASI` — en yakını 176 NM uzakta), bu yüzden eşleme **isim + koordinat** anahtarıyla yapılır.
 
-**Ölçüm:** 205/205 segmentin her iki ucu da çözüldü (410 uç nokta, 0 hata).
+Tekilleştirme (→ §7.3) bu mekanizmayı değiştirmez: indeks yutulan kayıtların anahtarlarını da taşır, yalnızca nihai uuid'e bakar. Uç nokta `pointChoice_fixDesignatedPoint` olarak yazılır — hedef ister VFR noktası ister ATS DesignatedPoint olsun, ikisi de `DesignatedPoint`'tir.
+
+**Ölçüm:** 205/205 segmentin her iki ucu da çözüldü (410 uç nokta, 0 hata); tekilleştirme sonrası da 410/410 ve hepsi öncekiyle aynı fiziksel konumda.
 
 ---
 
@@ -227,7 +321,7 @@ DHMİ VFR nokta ve rota adlarında Türkçe karakter bulunur (ATS tarafında hi�
 Not alanı yalnızca özgün yazımı taşır, açıklama metni içermez.
 Örnek: `name` = `HOSKOY`, `annotation/Note/translatedNote/LinguisticNote/note` = `HOŞKÖY`
 
-Her dönüşüm `errored-features.log`'a `ascii_ye_cevrildi` olarak kaydedilir.
+Her dönüşüm `errored-features.log`'a `ascii_ye_cevrildi` olarak kaydedilir — tekilleştirmede **yutulan üyeler için de** yazılır (92 kayıt korunur), böylece kaynaktaki her Türkçe yazım hem logda hem `annotation`'da görünür.
 
 ---
 
@@ -271,6 +365,8 @@ Bunlar DHMİ portalının harita çizim/görsel alanlarıdır; AIXM karşılıkl
 3. **Kaynakta hep boş alanlar:** ATS segmentlerinde `TRUE_TRACK`, `REVERSE_TRUE_TRACK`, `WIDTH_LEFT`, `WIDTH_RIGHT` 2670/2670 kayıtta boştur; ilgili AIXM elementleri yazılmaz.
 4. **Bozuk kaynak değeri:** `RS_VFR_0196` (kid 659, `LTBJ/NORTH2`, GERMENCIK→TORBALI) segmentinde `Calc End` ve `Magnetic End` değerleri `14142°` gelmektedir (kerteriz 0-360 olmalıdır). Kullanıcı kararı: **otomatik düzeltilmez** (her ay tekrar gelebilir) — yalnızca hatalı alan yazılmaz, kayıt XML'de kalır ve `not.txt`'ye tüm kaynak alanlarıyla kaydedilir.
 5. **`codeICAOCountry`** hiçbir feature'da yazılmaz — kaynakta ICAO Doc 7910 ülke kodu bulunmamaktadır.
+6. **Devredilen VFR noktalarının sembolojisi:** ATS DesignatedPoint'ine devredilen 15 nokta `type=ICAO` kaldığı için ortak üründe `VFR_REP` sınıfını almaz (→ §7.3, Aşama 2). VFR raporlama noktası oldukları bilgisi yalnızca `annotation`'da durur.
+7. **Tekilleştirme kimliği `kid`'e bağlıdır:** birleşen grubun uuid'i en küçük `kid`'den üretilir. DHMİ gelecek bir AIRAC'ta o `kid`'i düşürüp diğerini korursa noktanın uuid'i değişir.
 
 ---
 

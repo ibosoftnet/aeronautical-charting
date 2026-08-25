@@ -32,7 +32,7 @@ atlamaktan yeğdir ve yeni bir kaynak geldiğinde şema değişmeden dolar.
 | Katman | AIXM Feature | Geometri | Sütun | Satır |
 |---|---|---|---:|---:|
 | `designatedPoints` | `DesignatedPoint` | POINT | 24 | 152.061 |
-| `navaids` | `Navaid` | POINT | 56 | 9.357 |
+| `navaids` | `Navaid` | POINT | 55 | 9.357 |
 | `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 98 | 13.362 |
 | `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 82 | 92.976 |
 
@@ -83,6 +83,7 @@ olmadığı için **önek almazlar** (kullanıcı kararı):
 | ATS rota durumu (türetilmiş) | `atsStatus_*` — yalnızca `designatedPoints` ve `navaids`'te |
 | Navaid ↔ Component bağı | `associatedComponent_<AltTür>` (navaids), `associatedNavaid` / `associatedNavaidType` (navaidComponents) — virgüllü liste (§6.3) |
 | Harita etiketi (türetilmiş) | `navaidLabeling_*` — yalnızca `navaids` ve `navaidComponents`'te |
+| Sembol geometrisi (türetilmiş) | `navaidSymbology_*` — yalnızca `navaidComponents`'te |
 
 Bu istisna dışındaki tüm sütunlar yukarıdaki genel kurala göre katman önekli
 kalır (`designatedPoints_designator`, `navaids_type` gibi).
@@ -97,6 +98,11 @@ frekans/kanal bilgisini ICAO eşleştirme tablosundan türetir — AIXM'de freka
 ve kanal Navaid feature'ında değil bağlı ekipmanda durduğu için `navaids`
 satırları bileşenlerden beslenir. Ayrıntı:
 [`Navaid_Labeling_Fields.md`](Navaid_Labeling_Fields.md).
+
+`navaidSymbology_*` ise etiket metnini değil sembolün **çizimini** besler.
+Tek alanı `GPAssociatedLOCTrueBrg`: Glidepath hüzmesinin yönü AIXM'de
+`Glidepath`'te değil kardeş `Localizer`'da durur, bu sütun onu taşır.
+Ayrıntı: [`Navaid_Symbology_Fields.md`](Navaid_Symbology_Fields.md).
 
 **Sütun tipi** `gpkg/schema.py:column_type()` ile belirlenir: `*Uom` ve
 `*Reference` her zaman TEXT; `*PointId` INTEGER; bilinen sayısal
@@ -177,7 +183,7 @@ Yapının tam tanımı:
 
 ---
 
-## 4. `designatedPoints` (24 sütun)
+## 4. `designatedPoints` (27 sütun)
 
 Kaynak: `DesignatedPointTimeSlice`. Geometri: `location/Point/gml:pos` → POINT.
 
@@ -203,7 +209,7 @@ Kaynak: `DesignatedPointTimeSlice`. Geometri: `location/Point/gml:pos` → POINT
 
 ---
 
-## 5. `navaids` (56 sütun)
+## 5. `navaids` (58 sütun)
 
 Kaynak: `NavaidTimeSlice`. Geometri: `location/ElevatedPoint` (yoksa `Point`) →
 POINT. Rota uç noktaları **bu katmana** çözülür.
@@ -212,7 +218,7 @@ POINT. Rota uç noktaları **bu katmana** çözülür.
 |---|---|---|---:|
 | `navaids_type` | `type` | TEXT | 100,0% |
 | `navaids_designator` | `designator` | TEXT | 100,0% |
-| `navaids_name` | `name` | TEXT | 93,1% |
+| `navaids_name` | `name` | TEXT | 98,9% |
 | `navaids_flightChecked` | `flightChecked` | TEXT | **0,0%** |
 | `navaids_purpose` | `purpose` | TEXT | **0,0%** |
 | `navaids_signalPerformance` | `signalPerformance` | TEXT | **0,0%** |
@@ -249,6 +255,20 @@ Katmandaki geometrisiz iki satır bunlardır.
   `tipsiz_navaid_birden_fazla_ana_kaynak_adayi` olarak durur.
 - **`AYR`**: EAD'de bu designator'la hiç navaid yok, devredilecek bir ana kaynak
   kaydı yok. Kullanıcı kararı: NULL geometriyle katmanda kalsın.
+
+---
+
+> **GEÇİCİ — ILS ailesinde `name` pist bilgisi taşır.** `ILS`, `ILS_DME`,
+> `LOC`, `LOC_DME` navaid'lerinde ve `Localizer`/`Glidepath` bileşenlerinde
+> kaynakta `name` **hiç yok**; yerine `RWY 04R` biçiminde pist yönü yazılıyor.
+> ILS bileşeni DME'lerde mevcut adın **sonuna** ekleniyor
+> (`BRUSSELS NATIONAL RWY 25R`), ad ezilmiyor.
+>
+> Sebep: AIXM'de bunun doğru yeri `Navaid/runwayDirection` association'ıdır ama
+> `AirportHeliport` ve `RunwayDirection` feature'ları bu projede **henüz
+> implemente edilmedi**, yani association'ın hedefi yok. O feature'lar
+> eklendiğinde bu çözüm **kaldırılmalıdır**. Ayrıntı:
+> [`EAD-SDO_Field_Mapping.md` §4.3](data-sources/EAD-SDO/generate-aixm-data/EAD-SDO_Field_Mapping.md).
 
 ---
 

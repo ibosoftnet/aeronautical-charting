@@ -182,6 +182,22 @@ def load_marker_rows() -> list[dict]:
     return rows
 
 
+#: ILS marker'lari harf DEGIL sabit bir bipleme deseni yayinlar; bu yuzden
+#: `auralMorseCode` ident'ten TURETILMEZ, konuma gore sabittir.
+#:
+#: BACKCOURSE icin desen verilmedi -> alan yazilmaz (uydurulmaz). Kaynakta
+#: 6 BACKCOURSE kaydi var ve hicbiri bir LOC/ILS'e eslesmiyor.
+#:
+#: NOT: MIDDLE deseni ICAO Annex 10'un tanimindan farklidir (standart MM
+#: donusumlu nokta-cizgi yayinlar). Kullanici bilerek bu deseni secti:
+#: soruldu, "yazdigim gibi" dendi. Duzeltilmeyecek.
+MARKER_AURAL_MORSE = {
+    "INNER":  "......",     # surekli nokta
+    "MIDDLE": ".-..-.",     # kullanici deseni (`._.._.`)
+    "OUTER":  "--",         # surekli cizgi
+}
+
+
 #: ICAO Annex 10 Cilt I: butun marker beacon'lar 75 MHz'de calisir.
 #: Kaynakta olmayan ama standartla sabitlenmis tek deger (kullanici karari).
 MARKER_FREQUENCY_MHZ = 75
@@ -200,7 +216,10 @@ def build_marker_sidecar(ids, log) -> list[dict]:
                    minor axis"; verinin true oldugu pist adi karsilastirmasiyla
                    dogrulandi)
       altitude  -> location/ElevatedPoint/elevation, uom=FT
-      ident     -> MarkerBeacon.designator + eslestirme anahtari
+      ident     -> YALNIZCA eslestirme anahtari ve gml:id bileseni.
+                   `MarkerBeacon.designator` olarak YAZILMAZ: marker'in kendi
+                   ident'i yoktur, kaynaktaki deger ebeveyn ILS'inkidir.
+      type      -> MarkerBeacon.auralMorseCode (konuma gore sabit desen)
       (sabit)   -> MarkerBeacon.frequency = 75 MHz
 
     `frequency` KAYNAKTA YOKTUR; ICAO Annex 10 Cilt I geregi butun marker
@@ -232,6 +251,7 @@ def build_marker_sidecar(ids, log) -> list[dict]:
             "ident": ident,
             "region": region,
             "markerPosition": position,
+            "auralMorseCode": MARKER_AURAL_MORSE.get(position),
             "frequency": MARKER_FREQUENCY_MHZ,
             "frequencyUom": "MHZ",
             "axisBearing": row["heading"],

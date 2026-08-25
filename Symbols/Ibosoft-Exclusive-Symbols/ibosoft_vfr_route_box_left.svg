@@ -45,13 +45,13 @@
      style="fill:#006900;fill-opacity:1;stroke:#ffff00;stroke-opacity:1">
     <path
        id="path141"
-       d="m 692.13294,435.53957 8.08,-5.12 h 12.56 v 9.92 h -12.56 z"
+       d="m 692.13294,435.53957 8.08,-5.12 h 16.16 v 9.92 h -16.16 z"
        style="fill:#006900;stroke:#ffff00;stroke-width:0.205333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1;fill-opacity:1"
        sodipodi:nodetypes="cccccc" />
   </g>
   <path
      style="fill:#006900;fill-opacity:1;stroke:#ffff00;stroke-width:0.00907906;stroke-opacity:1"
-     d="m 4.14266,2.66267 -4.04,2.56 c 2.4035959,1.427563 5.6776648,3.370316 8.08,4.8 3.973713,8.3e-4 8.586288,-7.9e-4 12.56,0 v -9.92 l -12.56,0 z"
+     d="m 4.14266,2.66267 -4.04,2.56 c 2.4035959,1.427563 5.6776648,3.370316 8.08,4.8 h 16.16 v -9.92 h -16.16 z"
      id="path1"
      sodipodi:nodetypes="ccccccc" />
 </svg>
