@@ -63,3 +63,4 @@ extension noktası, boş/soyut tanımlı).
 - [aixm-point-types/AIXM_DesignatedPoint_Attributes.md](aixm-point-types/AIXM_DesignatedPoint_Attributes.md) — `DesignatedPoint.annotation`
 - [aixm-point-types/AIXM_Navaid_Attributes.md](aixm-point-types/AIXM_Navaid_Attributes.md) — `Navaid.annotation`, `NavaidComponent.annotation`, `ElevatedPoint.annotation`
 - [aixm-point-types/AIXM_Point_Attributes.md](aixm-point-types/AIXM_Point_Attributes.md) — `Point.annotation`
+- [AIXM_ChangeOverPoint_Attributes.md](AIXM_ChangeOverPoint_Attributes.md) — `ChangeOverPoint.annotation`, `RoutePortion.annotation`

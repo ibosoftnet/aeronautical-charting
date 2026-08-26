@@ -86,6 +86,9 @@ bahsedildiğini netleştirmek için `RoutePortion.start_*` / `intermediatePoint_
 `end_*` üçlüsüyle birlikte kullanılır. `RoutePortion.referencedRoute` alanı da hangi
 Route'a ait olduğunu belirtir.
 
+`RoutePortion`'ı somut olarak kullanan bir feature örneği (VOR değişim noktası) için
+bkz. [`AIXM_ChangeOverPoint_Attributes.md`](./AIXM_ChangeOverPoint_Attributes.md).
+
 ---
 
 ## 5. VFR/IFR ayrımı — ayrı bir şema değil, kod değeri
@@ -132,3 +135,4 @@ Zincir, bir segmentin `end`'i ile bir sonrakinin `start`'ının aynı gerçek no
 - [`AIXM_Route_Attributes.md`](./AIXM_Route_Attributes.md) — Route feature'ının tam öznitelik listesi
 - [`AIXM_RouteSegment_Attributes.md`](./AIXM_RouteSegment_Attributes.md) — RouteSegment feature'ının tam öznitelik listesi
 - [`AIXM_RoutePoint_DataTypes.md`](./AIXM_RoutePoint_DataTypes.md) — start/end noktalarında kullanılan veri tipleri (EnRouteSegmentPoint, DesignatedPoint, Navaid...)
+- [`AIXM_ChangeOverPoint_Attributes.md`](./AIXM_ChangeOverPoint_Attributes.md) — ChangeOverPoint (COP) feature'ı ve RoutePortion'ın somut kullanımı
