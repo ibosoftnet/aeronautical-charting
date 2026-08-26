@@ -670,6 +670,7 @@
           <aixm:sequenceNumber>1</aixm:sequenceNumber>
           <aixm:correctionNumber>0</aixm:correctionNumber>
           <aixm:designator>GKE</aixm:designator>
+          <aixm:name>GECITKALE</aixm:name>
           <aixm:location>
             <aixm:ElevatedPoint gml:id="TRNC_NDB_GKE_EP" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:pos>35.231667 33.743056</gml:pos>
@@ -729,6 +730,7 @@
           <aixm:correctionNumber>0</aixm:correctionNumber>
           <aixm:type>NDB</aixm:type>
           <aixm:designator>GKE</aixm:designator>
+          <aixm:name>GECITKALE</aixm:name>
           <aixm:purpose>TERMINAL</aixm:purpose>
           <aixm:navaidEquipment>
             <aixm:NavaidComponent gml:id="TRNC_NAV_GKE_NDB_NC1">

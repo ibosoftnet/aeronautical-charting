@@ -31,10 +31,10 @@ atlamaktan yeğdir ve yeni bir kaynak geldiğinde şema değişmeden dolar.
 
 | Katman | AIXM Feature | Geometri | Sütun | Satır |
 |---|---|---|---:|---:|
-| `designatedPoints` | `DesignatedPoint` | POINT | 24 | 152.061 |
-| `navaids` | `Navaid` | POINT | 55 | 9.357 |
-| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 98 | 13.362 |
-| `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 82 | 92.976 |
+| `designatedPoints` | `DesignatedPoint` | POINT | 28 | 152.040 |
+| `navaids` | `Navaid` | POINT | 59 | 9.357 |
+| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 99 | 13.362 |
+| `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 83 | 92.976 |
 
 Her katmanda ayrıca `id` (INTEGER PRIMARY KEY AUTOINCREMENT) ve `geom` (BLOB)
 bulunur; yukarıdaki sütun sayıları bu ikisini içermez.
@@ -79,7 +79,7 @@ olmadığı için **önek almazlar** (kullanıcı kararı):
 |---|---|
 | `annotation` (4 purpose) | `annotationDescription`, `annotationRemark`, `annotationWarning`, `annotationDisclaimer` |
 | Provenance | `data_provider`, `data_originator`, `data_effectivity`, `add_date` |
-| Kimlik | `gmlId` — birleşik AIXM'deki `gml:id` (kaynak önekli, örn. `EAD_DP_…`) |
+| Kimlik | `aixm_gml_id`, `aixm_uuid` — her katmanın son iki sütunu (aşağıda) |
 | ATS rota durumu (türetilmiş) | `atsStatus_*` — yalnızca `designatedPoints` ve `navaids`'te |
 | Navaid ↔ Component bağı | `associatedComponent_<AltTür>` (navaids), `associatedNavaid` / `associatedNavaidType` (navaidComponents) — virgüllü liste (§6.3) |
 | Harita etiketi (türetilmiş) | `navaidLabeling_*` — yalnızca `navaids` ve `navaidComponents`'te |
@@ -87,6 +87,32 @@ olmadığı için **önek almazlar** (kullanıcı kararı):
 
 Bu istisna dışındaki tüm sütunlar yukarıdaki genel kurala göre katman önekli
 kalır (`designatedPoints_designator`, `navaids_type` gibi).
+
+### Kimlik sütunları
+
+Her katman kaynak AIXM feature'ının **iki** kimliğini de taşır (kullanıcı
+kararı). İkisi farklı şeydir ve biri diğerinin yerini tutmaz:
+
+| Sütun | AIXM karşılığı | Kapsam |
+|---|---|---|
+| `aixm_gml_id` | `gml:id` | **Belge içi.** Birleşik AIXM dosyasında benzersizdir, kaynak önekini taşır (`EAD_DP_…`, `LT_VRP_BAFA`, `JEPP_NAV_…`) ve hangi kaynaktan geldiğini okunur biçimde gösterir. Belge yeniden üretildiğinde değişebilir |
+| `aixm_uuid` | `gml:identifier` (`codeSpace="urn:uuid:"`) | **Belgeden bağımsız, kalıcı kimlik.** AIXM içindeki tüm çapraz referanslar (`xlink:href="urn:uuid:…"`) buna bakar; kaynak üreticileri onu girdi anahtarından deterministik olarak üretir, yani aynı nokta her AIRAC'ta aynı uuid'i alır |
+
+Değerler `merge/aixm_reader.py`'deki `gml_id_of()` ve `uuid_of()` ile okunur;
+`uuid_of()` değeri BÜYÜK HARFE çevirir.
+
+İki tabloda kimlik, satırı oluşturan **iki** AIXM nesnesinden yalnızca birine
+aittir:
+
+* **`navaidComponents`** — kimlik, bağlı `AbstractNavaidEquipment`
+  **feature**'ınındır. Satıra alanlarını veren `NavaidComponent` AIXM'de bir
+  *Object*'tir, Feature değildir: yalnızca `gml:id` taşır, `gml:identifier`'ı
+  yoktur (doğrulandı). Bir ekipman birden fazla Navaid tarafından
+  paylaşılabildiği için ebeveyn bağı ayrıca `associatedNavaid` sütunundadır.
+* **`routeSegments`** — kimlik, `RouteSegment` feature'ınındır. `route_*`
+  sütunlarını besleyen `Route` feature'ının kendi `gml:id`/`gml:identifier`
+  değeri **taşınmaz**; Route ayrı bir katman olmadığı için (§1.2) bağlantı
+  `route_designator*` alanları üzerinden kurulur.
 
 `atsStatus_*` alanları AIXM'den okunmaz; `routeSegments` yazıldıktan sonra
 ondan türetilir. Tam tanımları, kuralları ve ölçülen dağılımları ayrı
@@ -202,7 +228,8 @@ Kaynak: `DesignatedPointTimeSlice`. Geometri: `location/Point/gml:pos` → POINT
 | `data_originator` | provenance yan dosyası | TEXT | 100,0% |
 | `data_effectivity` | provenance yan dosyası | TEXT | 100,0% |
 | `add_date` | builder çalışma zamanı (UTC ISO-8601) | TEXT | 100,0% |
-| `gmlId` | `gml:id` | TEXT | 100,0% |
+| `aixm_gml_id` | `gml:id` | TEXT | 100,0% |
+| `aixm_uuid` | `gml:identifier` | TEXT | 100,0% |
 
 `type` %100 doludur çünkü AIXM'de zorunludur; EAD `WPT` kayıtlarında
 `ICAO`/`COORD`/`OTHER` gibi değerler taşır, antimeridyen noktalarında `OTHER`.
@@ -237,7 +264,8 @@ POINT. Rota uç noktaları **bu katmana** çözülür.
 | `data_originator` | provenance | TEXT | 67,2% |
 | `data_effectivity` | provenance | TEXT | 100,0% |
 | `add_date` | builder çalışma zamanı | TEXT | 100,0% |
-| `gmlId` | `gml:id` | TEXT | 100,0% |
+| `aixm_gml_id` | `gml:id` | TEXT | 100,0% |
+| `aixm_uuid` | `gml:identifier` | TEXT | 100,0% |
 
 **`data_originator` neden %67,2:** boş kalan 3.073 satır Jeppesen NDB
 navaid'leridir. Jeppesen'in `data.json`'ında originator alanı yok — doğrulanmış
@@ -410,7 +438,7 @@ navaidComponents id=13290 MarkerBeacon MIDDLE  associatedNavaid="12" Type="ILS_D
 `annotationDescription/Remark/Warning/Disclaimer` — hem `AbstractNavaidEquipment`'ın
 hem `NavaidComponent`'in notları aynı 4 sütunda, aralarında boş satır bırakılarak
 birleşir (§3). `data_provider` / `data_originator` / `data_effectivity` /
-`add_date` ve `gmlId` katman öneksizdir. `navaidLabeling_*` sütunları için
+`add_date`, `aixm_gml_id` ve `aixm_uuid` katman öneksizdir (kimlik ekipman feature'ınındır, bkz. §2). `navaidLabeling_*` sütunları için
 ayrıca bkz. `gpkg/navaid_labeling.py`.
 
 `authority` (`AbstractNavaidEquipment` → Organisation/Authority) **kapsam
@@ -516,7 +544,7 @@ yazılır.
 `annotationDescription/Remark/Warning/Disclaimer` — `Remark` 128
 satırda dolu (106 antimeridyen segmenti + 22 LT VFR segmenti, notu bağlı
 `Route`'tan gelir), diğer üçü 0. `_data_provider` / `_data_originator` /
-`_data_effectivity` (hepsi 100,0%), `_add_date`, `_gmlId`.
+`_data_effectivity` (hepsi 100,0%), `_add_date`, ayrica katman öneksiz `aixm_gml_id` ve `aixm_uuid` (RouteSegment feature'ının kimliği; Route'unki taşınmaz, bkz. §2).
 
 Antimeridyen bölmesinden gelen 106 segmentin `annotationRemark`'ı tam olarak şu
 metni taşır (segmentin kendi notlarıyla `" | "`, `Route`'unkilerle boş satır
@@ -555,7 +583,7 @@ value, violation, severity`.
 
 `gpkg/schema.py:finalize()`:
 
-1. **Her sütunda B-tree index** — dört katmanda 182 sütun.
+1. **Her sütunda B-tree index** — dört katmanda 269 sütun.
 2. **Mekânsal index (RTree)** — katman başına `rtree_<katman>_geom` sanal
    tablosu, GeoPackage 1.2 Ek F.3'teki altı tetikleyici (insert, update1-4,
    delete) ve `gpkg_extensions` kaydı (`gpkg_rtree_index`, scope `write-only`).
@@ -601,6 +629,6 @@ korunur. Alan bazında birleştirme yapılmaz.
 
 ## 12. Karar bekleyen konu
 
-Yok. Şemadaki 182 sütunun tamamının AIXM karşılığı kurulu ve çalışır durumda;
+Yok. Şemadaki 269 sütunun tamamının AIXM karşılığı kurulu ve çalışır durumda;
 `%0,0` görünen sütunlar kaynakların o alanı sağlamamasındandır (§ girişteki
 açıklama), eşleme eksikliği değildir.

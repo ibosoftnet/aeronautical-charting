@@ -885,7 +885,7 @@ def compute_ats_status(con, log=None):
     ihlal = 0
     for layer, rows in acc.items():
         type_col = f"{layer}_type"
-        cur.execute(f'SELECT id, "{type_col}", gmlId FROM "{layer}"')
+        cur.execute(f'SELECT id, "{type_col}", aixm_gml_id FROM "{layer}"')
         payload = []
         bagli = 0
         for row_id, point_type, gml_id in cur.fetchall():
@@ -1039,7 +1039,8 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
         entry = provenance.get(gml_id)
 
         if kind == "DesignatedPoint":
-            row, position = mapper.map_designated_point(feature, ts, gml_id, entry)
+            row, position = mapper.map_designated_point(
+                feature, ts, gml_id, uid, entry)
             row = validate_row("designatedPoints", row, log, gml_id)
             geom = schema.point_blob(position[1], position[0]) if position else None
             row_id = schema.insert_row(cur, "designatedPoints", row, geom)
@@ -1048,7 +1049,7 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
             counts["designatedPoints"] += 1
 
         elif kind == "Navaid":
-            row, position = mapper.map_navaid(feature, ts, gml_id, entry)
+            row, position = mapper.map_navaid(feature, ts, gml_id, uid, entry)
             row = validate_row("navaids", row, log, gml_id)
             geom = schema.point_blob(position[1], position[0]) if position else None
             row_id = schema.insert_row(cur, "navaids", row, geom)
@@ -1095,7 +1096,8 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
         component = links[0][2] if links else None
         parents = [(row_id, navaid_type) for row_id, navaid_type, _ in links]
         row, position = mapper.map_navaid_component(
-            component, ts, kind, parents, gml_id, provenance.get(gml_id))
+            component, ts, kind, parents, gml_id, uid,
+            provenance.get(gml_id))
         row = validate_row("navaidComponents", row, log, gml_id)
         geom = schema.point_blob(position[1], position[0]) if position else None
         component_row_id = schema.insert_row(cur, "navaidComponents", row, geom)
@@ -1117,10 +1119,11 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
         if feature is None or rdr.local(feature.tag) != "RouteSegment":
             continue
         gml_id = rdr.gml_id_of(feature)
+        uid = rdr.uuid_of(feature)
         ts = rdr.time_slice(feature)
         route_uuid = rdr.href_of(ts.find(rdr.A + "routeFormed"))
         row, positions = mapper.map_route_segment(
-            feature, ts, gml_id, provenance.get(gml_id),
+            feature, ts, gml_id, uid, provenance.get(gml_id),
             routes.get(route_uuid or ""), resolved.get)
         row = validate_row("routeSegments", row, log, gml_id)
         for side in ("start", "end"):

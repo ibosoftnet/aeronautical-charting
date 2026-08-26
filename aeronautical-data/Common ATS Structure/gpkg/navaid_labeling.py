@@ -395,7 +395,7 @@ def compute(con, log=None, csv_path=None):
         # indirgenirse bir marker'in class'i locator sanilabilir.
         f' {_quoted(schema.equipment_column("NDB", "class"))},'
         f' {_quoted(schema.equipment_column("MarkerBeacon", "auralMorseCode"))},'
-        ' gmlId FROM navaidComponents')
+        ' aixm_gml_id FROM navaidComponents')
 
     payload, by_navaid = [], {}
     for (row_id, navaid_ids, kind, designator, name, frequency, frequency_uom,
@@ -533,7 +533,8 @@ def compute(con, log=None, csv_path=None):
     counts["mls_elevation"] = _resolve_mls_elevation(cur, by_navaid, pairing, note)
 
     # ── B geçişi: navaids (bileşenlerin çözülmüş değerlerini devralır) ──────
-    cur.execute('SELECT id, navaids_type, navaids_designator, navaids_name, gmlId'
+    cur.execute('SELECT id, navaids_type, navaids_designator, navaids_name,'
+            ' aixm_gml_id'
                 ' FROM navaids')
 
     payload = []
@@ -663,7 +664,7 @@ def _resolve_mls_elevation(cur, by_navaid, pairing, note):
     Kardeş bağı ancak A geçişi bitip `by_navaid` tamamlandığında bilinebildiği
     için ayrı bir geçiş gerekir.
     """
-    cur.execute('SELECT id, associatedNavaid, gmlId FROM navaidComponents'
+    cur.execute('SELECT id, associatedNavaid, aixm_gml_id FROM navaidComponents'
                 ' WHERE navaidComponents_equipmentType = ?', ("Elevation",))
     rows = cur.fetchall()
     if not rows:

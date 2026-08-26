@@ -188,8 +188,8 @@ def provenance(row, entry):
 
 # ── Katman eşleyicileri ─────────────────────────────────────────────────────
 
-def map_designated_point(feature, ts, gml_id, prov_entry):
-    row = {"gmlId": gml_id}
+def map_designated_point(feature, ts, gml_id, aixm_uuid, prov_entry):
+    row = {"aixm_gml_id": gml_id, "aixm_uuid": aixm_uuid}
     row["designatedPoints_designator"] = text(ts, "designator")
     row["designatedPoints_type"] = text(ts, "type")
     row["designatedPoints_name"] = text(ts, "name")
@@ -200,8 +200,8 @@ def map_designated_point(feature, ts, gml_id, prov_entry):
     return row, plain_point(ts)
 
 
-def map_navaid(feature, ts, gml_id, prov_entry):
-    row = {"gmlId": gml_id}
+def map_navaid(feature, ts, gml_id, aixm_uuid, prov_entry):
+    row = {"aixm_gml_id": gml_id, "aixm_uuid": aixm_uuid}
     for name in ("type", "designator", "name", "flightChecked", "purpose",
                  "signalPerformance", "courseQuality", "integrityLevel",
                  "codeICAOCountry"):
@@ -214,7 +214,7 @@ def map_navaid(feature, ts, gml_id, prov_entry):
 
 
 def map_navaid_component(component, equipment_ts, equipment_type,
-                         parents, gml_id, prov_entry):
+                         parents, gml_id, aixm_uuid, prov_entry):
     """`NavaidComponent` + bağlı `AbstractNavaidEquipment` → tek satır.
 
     Alt-türe özgü alanlar `navaidComponents_<AltTür>_<alan>` sütunlarına
@@ -226,7 +226,10 @@ def map_navaid_component(component, equipment_ts, equipment_type,
     Navaid tarafından paylaşılabildiği için LİSTE. Ölçüldü: 275 ekipman 2-7
     navaid'e ait. İki sütun aynı sırada hizalı yazılır.
     """
-    row = {"gmlId": gml_id,
+    # Kimlik, bağlı `AbstractNavaidEquipment` FEATURE'ının kimliğidir.
+    # `NavaidComponent` nesnesinin kendi `gml:identifier`'ı yoktur
+    # (yalnızca `gml:id` taşır) — AIXM'de Object'tir, Feature değil.
+    row = {"aixm_gml_id": gml_id, "aixm_uuid": aixm_uuid,
            "navaidComponents_equipmentType": equipment_type}
 
     # Ebeveyn bağı — sıralı ve hizalı iki liste.
@@ -283,9 +286,14 @@ _ROUTE_FIELDS = ("designatorPrefix", "designatorSecondLetter",
                  "militaryUse", "militaryTrainingType")
 
 
-def map_route_segment(feature, ts, gml_id, prov_entry, route_ts, resolve):
-    """RouteSegment → satır. `resolve(uuid)` → (layer, row_id, designator)."""
-    row = {"gmlId": gml_id}
+def map_route_segment(feature, ts, gml_id, aixm_uuid, prov_entry, route_ts,
+                      resolve):
+    """RouteSegment → satır. `resolve(uuid)` → (layer, row_id, designator).
+
+    Kimlik sütunları RouteSegment feature'ınındır; `route_*` sütunlarını
+    besleyen Route feature'ının kendi kimliği ayrıca taşınmaz.
+    """
+    row = {"aixm_gml_id": gml_id, "aixm_uuid": aixm_uuid}
 
     for name in _SEGMENT_SIMPLE:
         row[f"routeSegments_{name}"] = text(ts, name)

@@ -49,7 +49,7 @@ def compute(con, log=None):
 
     # ── 1. ebeveyn navaid → Localizer trueBearing haritası ──────────────────
     cur.execute(
-        f'SELECT associatedNavaid, "{_BEARING_COLUMN}", gmlId'
+        f'SELECT associatedNavaid, "{_BEARING_COLUMN}", aixm_gml_id'
         ' FROM navaidComponents WHERE navaidComponents_equipmentType = ?',
         (_SOURCE_KIND,))
     by_navaid, cakisma = {}, 0

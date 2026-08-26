@@ -5,8 +5,9 @@ Sütun adlandırma (plan kararı):
   * ölçü birimi → `<alan>Uom`, dikey referans → `<alan>Reference`
   * `annotation` → 4 sabit sütun (purpose değerlerine göre), katman ÖNEKİSİZ
   * provenance (`data_provider`/`data_originator`/`data_effectivity`/`add_date`)
-    ve `gmlId` de katman ÖNEKİSİZ — bu alanlar her katmanda birebir aynı yapıyı
-    taşır, tabloya özgü bir anlamları yoktur (kullanıcı kararı)
+    ve kimlik (`aixm_gml_id`/`aixm_uuid`) de katman ÖNEKİSİZ — bu alanlar her
+    katmanda birebir aynı yapıyı taşır, tabloya özgü bir anlamları yoktur
+    (kullanıcı kararı)
 
 `points` katmanı YOKTUR: AIXM `Point` bağımsız bir feature değildir
 (`gml:Point` substitution group'unda, `AbstractAIXMFeature` değil), bu yüzden
@@ -28,6 +29,14 @@ ANNOTATION_PURPOSES = ("Description", "Remark", "Warning", "Disclaimer")
 ANNOTATION_COLUMNS = [f"annotation{p}" for p in ANNOTATION_PURPOSES]
 PROVENANCE_COLUMNS = ["data_provider", "data_originator",
                       "data_effectivity", "add_date"]
+
+#: Kaynak AIXM feature'ının kimliği — her katmanda son iki sütun.
+#: `aixm_gml_id`  : birleşik AIXM'deki `gml:id` (kaynak önekli, belge içi)
+#: `aixm_uuid`    : `gml:identifier` (`codeSpace="urn:uuid:"`) — belgeden
+#:                  bağımsız, kalıcı kimlik. AIXM içindeki tüm
+#:                  `xlink:href="urn:uuid:…"` referansları buna bakar,
+#:                  bu yüzden GeoPackage tarafında da taşınması gerekir.
+IDENTITY_COLUMNS = ["aixm_gml_id", "aixm_uuid"]
 
 #: `atsStatus_*` — noktanın ATS rota ağındaki rolünün TÜRETİLMİŞ özeti.
 #: Yalnızca nokta katmanlarında (`designatedPoints`, `navaids`) bulunur;
@@ -250,7 +259,7 @@ DESIGNATED_POINTS = (
     + ANNOTATION_COLUMNS
     + PROVENANCE_COLUMNS
     + ATS_STATUS_COLUMNS
-    + ["gmlId"]
+    + IDENTITY_COLUMNS
 )
 
 # ── navaids ─────────────────────────────────────────────────────────────────
@@ -269,7 +278,7 @@ NAVAIDS = (
     + ATS_STATUS_COLUMNS
     + NAVAID_LABELING_COLUMNS
     + ASSOCIATED_COMPONENT_COLUMNS
-    + ["gmlId"]
+    + IDENTITY_COLUMNS
 )
 
 # ── navaidComponents ────────────────────────────────────────────────────────
@@ -292,7 +301,7 @@ NAVAID_COMPONENTS = (
     + PROVENANCE_COLUMNS
     + NAVAID_LABELING_COLUMNS
     + NAVAID_SYMBOLOGY_COLUMNS
-    + ["gmlId"]
+    + IDENTITY_COLUMNS
 )
 
 # ── routeSegments ───────────────────────────────────────────────────────────
@@ -345,7 +354,7 @@ ROUTE_SEGMENTS = (
        "route_militaryTrainingType"]
     + ANNOTATION_COLUMNS
     + PROVENANCE_COLUMNS
-    + ["gmlId"]
+    + IDENTITY_COLUMNS
 )
 
 LAYERS = {
