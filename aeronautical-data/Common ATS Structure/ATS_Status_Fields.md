@@ -17,7 +17,7 @@ QGIS'te "yalnızca rota noktalarını göster" gibi bir filtre iki yolla kurulab
 
 | Yol | Sorun |
 |---|---|
-| **Virtual layer** (`EXISTS (SELECT … FROM routeSegments …)`) | Sonuç katmanının kalıcı **RTree mekânsal indeksi olmaz**; harita her pan/zoom'da 152.061 satırlık alt sorguyu yeniden tarar |
+| **Virtual layer** (`EXISTS (SELECT … FROM routeSegments …)`) | Sonuç katmanının kalıcı **RTree mekânsal indeksi olmaz**; harita her pan/zoom'da 152.040 satırlık alt sorguyu yeniden tarar |
 | **Kalıcı sütun** (bu çözüm) | Aynı fiziksel tablo, aynı `geom`, aynı RTree; sütun ayrıca B-tree index alır. QGIS'in Query Builder'ı filtreyi indekslerle birlikte native uygular |
 
 İkincisi seçildi (kullanıcı kararı). Alanlar QGIS'e özel değildir — ArcGIS,
@@ -162,12 +162,15 @@ Kapıya bağlıdır: nokta rota ağına bağlı değilse `NULL`.
 ### 4.6 `atsStatus_depictionNav` — TEXT (enum)
 
 Seyrüsefer gösterim sınıfı. **Sıralı** bir karar zinciridir; ilk uyan kazanır.
+Değerlendirme sırası kullanıcı kararıyla **3-2-1-4**'tür — yani PBN sınıfı
+klasik sınıfı **yener**: hem `PBN` hem `CONV`/`TACAN` rotaya bağlı bir nokta
+`RNAVFlyBy` alır.
 
 | Sıra | Değer | Koşul |
 |---|---|---|
-| 1 | `CONV` | Bağlı ATS rotalarından biri `CONV` veya `TACAN`. **Ancak `type=COORD` olan DesignatedPoint `CONV` OLAMAZ** — koordinattan türetilmiş nokta klasik seyrüsefer yardımcısıyla tanımlanmaz. Navaid'de bu istisna yoktur. |
+| 3 | `RNAVFlyOver` | **Şu an hiçbir koşula bağlanmadı.** Fly-over / fly-by ayrımını verecek kaynak alanı henüz yok; ileride kullanılacak. Uydurma sınıflandırma yapılmadığı için bilerek üretilmiyor. Zincirin başında olması bugün bir şey değiştirmez. |
 | 2 | `RNAVFlyBy` | `type=COORD` DesignatedPoint **koşulsuz**; ayrıca DP/Navaid'de bağlı rotalardan biri `PBN` ise |
-| 3 | `RNAVFlyOver` | **Şu an hiçbir koşula bağlanmadı.** Fly-over / fly-by ayrımını verecek kaynak alanı henüz yok; ileride kullanılacak. Uydurma sınıflandırma yapılmadığı için bilerek üretilmiyor. |
+| 1 | `CONV` | Bağlı ATS rotalarından biri `CONV` veya `TACAN`. `type=COORD` olan DesignatedPoint `CONV` OLAMAZ — koordinattan türetilmiş nokta klasik seyrüsefer yardımcısıyla tanımlanmaz; bu kural yeni sırada **kendiliğinden** sağlanır, çünkü `COORD` bir üstteki adımda dönüyor. Navaid'de bu istisna zaten yoktu. |
 | 4 | `OTHER` | Son fallback |
 
 `CONV`/`TACAN` ve `PBN` değerleri AIXM `CodeNavigationType` enum'undan gelir
@@ -182,7 +185,7 @@ Seyrüsefer gösterim sınıfı. **Sıralı** bir karar zinciridir; ilk uyan kaz
 | 1 | `NAVAID` | Rota elemanı olan **her** navaid. DesignatedPoint asla almaz. |
 | 2 | `VFR_REP` | DesignatedPoint `type=VRP` ise |
 | 3 | `WPT` | `depictionNav` **`CONV` DEĞİLSE** ve (`type=COORD` koşulsuz **veya** bağlı **tüm** rota segmentleri `PBN` ise) |
-| 4 | `INT` | `type=BRG_DIST` ise, **veya** bağlı rotalardan biri `CONV`/`TACAN` ise |
+| 4 | `INT` | Bağlı rotalardan biri `CONV`/`TACAN` ise. (`type=BRG_DIST` koşulu kullanıcı kararıyla **kaldırıldı**: noktanın tipi kesişim olup olmadığını belirlemez — bunu bağlı rotanın seyrüsefer tipi belirler. Veride `BRG_DIST` tipli nokta zaten yok, ölçüldü: 0 kayıt.) |
 | 5 | `OTHER` | DesignatedPoint için son fallback |
 
 "Bağlı tüm segmentler PBN" sayımında segment kimliği **küme** olarak tutulur —
@@ -261,12 +264,12 @@ Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satı
 
 ## 5. Ölçülen dağılım (son koşu)
 
-### `designatedPoints` (152.061 satır)
+### `designatedPoints` (152.040 satır)
 
 | Alan | Değer | Adet |
 |---|---|---:|
-| `isElementOfRouteSegment` | `1` | **41.165** |
-| | `0` | 110.896 |
+| `isElementOfRouteSegment` | `1` | **41.154** |
+| | `0` | 110.886 |
 | `associatedLevelLower` | `1` | 38.309 |
 | `associatedLevelUpper` | `1` | 6.800 |
 | `associatedLevelBoth` | `1` | 3 |
@@ -274,27 +277,45 @@ Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satı
 | — hem Upper hem Lower | | 4.125 |
 | `associatedTypeAts` | `1` | 40.984 |
 | `associatedTypeNat` | `1` | 0 |
-| `associatedTypeOther` | `1` | 181 |
-| — bağlı ama hiç level yok | dördü de `0` | 181 |
+| `associatedTypeOther` | `1` | 180 |
+| — bağlı ama hiç level yok | dördü de `0` | 170 |
 | `reportingAssociation` | dolu | 623 |
 | `depictionCompulsory` | `1` | 448 |
-| `depictionNav` | `OTHER` | 40.540 |
-| | `CONV` | 353 |
-| | `RNAVFlyBy` | 272 |
+| `depictionNav` | `OTHER` | 40.529 |
+| | `RNAVFlyBy` | 561 |
+| | `CONV` | 64 |
 | | `RNAVFlyOver` | 0 (koşulu yok) |
-| | `NULL` (bağlı değil) | 110.896 |
-| `depictionSIGPointBasicFunc` | `OTHER` | 40.396 |
+| | `NULL` (bağlı değil) | 110.886 |
+| `depictionSIGPointBasicFunc` | `OTHER` | 40.399 |
 | | `INT` | 353 |
-| | `WPT` | 235 |
-| | `VFR_REP` | 181 |
+| | `WPT` | 232 |
+| | `VFR_REP` | 170 |
 | | `NAVAID` | 0 (DP asla almaz) |
-| | `NULL` (bağlı değil) | 110.896 |
-| `depictionNavAndREP` | `OTHER_NonComp` | 40.540 |
-| | `CONV_Comp` | 267 |
-| | `RNAVFlyBy_Comp` | 181 |
-| | `RNAVFlyBy_NonComp` | 91 |
-| | `CONV_NonComp` | 86 |
-| | `NULL` (bağlı değil) | 110.896 |
+| | `NULL` (bağlı değil) | 110.886 |
+| `depictionNavAndREP` | `OTHER_NonComp` | 40.529 |
+| | `RNAVFlyBy_Comp` | 403 |
+| | `RNAVFlyBy_NonComp` | 158 |
+| | `CONV_Comp` | 45 |
+| | `CONV_NonComp` | 19 |
+| | `NULL` (bağlı değil) | 110.886 |
+
+**3-2-1-4 sırasının etkisi (ölçüldü).** Sıra değişikliğinden önce/sonra, aynı
+veri üzerinde:
+
+| | Önce (1-2-3-4) | Sonra (3-2-1-4) |
+|---|---:|---:|
+| `designatedPoints` `CONV` | 353 | **64** (−289) |
+| `designatedPoints` `RNAVFlyBy` | 272 | **561** (+289) |
+| `navaids` `CONV` | 54 | **10** (−44) |
+| `navaids` `RNAVFlyBy` | 12 | **56** (+44) |
+
+Yani 333 nokta hem `PBN` hem `CONV`/`TACAN` rotaya bağlıymış; eski sırada
+`CONV`, yeni sırada `RNAVFlyBy` alıyorlar. `depictionSIGPointBasicFunc`
+dağılımı bundan **etkilenmedi** (§4.7'deki `WPT` koşulu `depictionNav != CONV`
+arıyor; bu 333 nokta zaten `all_pbn` olmadığı için `WPT` almıyor, `INT`
+koşulundan geçiyor). `INT` sayısı da 353'te sabit kaldı — `BRG_DIST`
+koşulunun kaldırılması hiçbir satırı etkilemedi, çünkü veride `BRG_DIST`
+tipli nokta yok.
 
 ### `navaids` (9.357 satır)
 
@@ -313,19 +334,19 @@ Doğrulandı: her iki katmanda kapı ihlali **0**, bağlı olup boş kalan satı
 | `reportingAssociation` | dolu | 66 |
 | `depictionCompulsory` | `1` | 63 |
 | `depictionNav` | `OTHER` | 3.230 |
-| | `CONV` | 54 |
-| | `RNAVFlyBy` | 12 |
+| | `RNAVFlyBy` | 56 |
+| | `CONV` | 10 |
 | | `NULL` (bağlı değil) | 6.061 |
 | `depictionSIGPointBasicFunc` | `NAVAID` | **3.296** (rota elemanı olanlar) |
 | | `NULL` (bağlı değil) | 6.061 |
 | `depictionNavAndREP` | `OTHER_NonComp` | 3.230 |
-| | `CONV_Comp` | 53 |
-| | `RNAVFlyBy_Comp` | 10 |
-| | `RNAVFlyBy_NonComp` | 2 |
-| | `CONV_NonComp` | 1 |
+| | `RNAVFlyBy_Comp` | 53 |
+| | `CONV_Comp` | 10 |
+| | `RNAVFlyBy_NonComp` | 3 |
+| | `CONV_NonComp` | 0 |
 | | `NULL` (bağlı değil) | 6.061 |
 
-Noktaların çoğunun (110.896) rota ağına bağlı olmaması beklenen sonuçtur —
+Noktaların çoğunun (110.886) rota ağına bağlı olmaması beklenen sonuçtur —
 bunlar ağırlıkla prosedür noktalarıdır (yaklaşma/kalkış fix'leri, `type=OTHER`
 16.912 kayıt) ve bir ATS rotasının ucu değildirler.
 
@@ -389,12 +410,12 @@ WHERE d.atsStatus_reportingAssociation IS NOT NULL;
 |---|---|
 | Kapı kuralı ihlali (`=0` iken diğerleri dolu) | **0** (her iki katman) |
 | `isElementOfRouteSegment` NULL kalan satır | **0** |
-| `designatedPoints` bağlı sayısı — bağımsız `EXISTS` sorgusuyla | 41.165 = 41.165 ✅ |
-| Uçtan uca örnek (`ABDIK`, `type=ICAO`, 12 segment) | `Upper=1 Lower=1`, `Compulsory=1`, `Nav=CONV` (bağlı rotalarda CONV var), `SIGFunc=INT` (CONV olduğu için WPT olamaz), `NavAndREP=CONV_Comp` — zincirin tamamı elle yeniden hesaplandı, birebir ✅ |
+| `designatedPoints` bağlı sayısı — bağımsız `EXISTS` sorgusuyla | 41.154 = 41.154 ✅ |
+| Uçtan uca örnek (`ABDIK`, `type=ICAO`, 12 segment) | `Upper=1 Lower=1`, `Compulsory=1`, `Nav=RNAVFlyBy` (bağlı rotalarda hem PBN hem CONV var; **3-2-1-4 sırasında PBN yener**), `SIGFunc=INT` (`all_pbn` değil, `COORD` değil → `WPT` olamaz; CONV/TACAN bağlı olduğu için `INT`), `NavAndREP=RNAVFlyBy_Comp` — zincirin tamamı elle yeniden hesaplandı, birebir ✅ |
 | `associatedType*` kapı kuralı ihlali | **0** (her iki katman) |
-| `associatedTypeAts` + `associatedTypeOther` toplamı = bağlı nokta sayısı | dP 40.984 + 181 = **41.165** ✅, navaids 3.296 + 0 = **3.296** ✅ |
+| `associatedTypeAts` / `associatedTypeOther` kapsaması | dP 40.984 + 180 = 41.164, bağlı 41.154 — **10 noktada ikisi de `1`**, çünkü bu noktalar hem IFR ATS rotasında hem VFR rotasında (`Route type=OTHER`) yer alıyor. Bunlar LT'de ATS DesignatedPoint'ine devredilen VFR noktalarıdır (ALTIN, ATSAL, BIRPU, ERFES, KEKIK, NEXAM, PETAR, RIVBU, SONUP, SOTIV) — beklenen sonuç ✅. navaids 3.296 + 0 = **3.296** ✅ |
 | `COORD` → `RNAVFlyBy` + `WPT` (koşulsuz kural) | ihlal **0** |
-| `COORD` → asla `CONV` | ihlal **0** |
+| `COORD` → asla `CONV` | ihlal **0** (3-2-1-4 sırasında kendiliğinden: `COORD` bir üst adımda `RNAVFlyBy` dönüyor) |
 | `VRP` → `VFR_REP` | ihlal **0** |
 | `NAVAID` yalnızca navaids'te, rota elemanı olanların hepsinde | ihlal **0** (3.296/3.296) |
 | `CONV` + `WPT` çakışması | **0** |

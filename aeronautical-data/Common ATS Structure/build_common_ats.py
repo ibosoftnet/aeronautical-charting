@@ -750,27 +750,31 @@ _ATS_STATUS_SET = (
 def depiction_nav(layer, point_type, nav_types):
     """`atsStatus_depictionNav` — seyrusefer gosterim sinifi (kullanici kurallari).
 
-    SIRALI karar zinciri:
+    SIRALI karar zinciri. Sira kullanici karariyla 3-2-1-4'tur: PBN sinifi
+    klasik sinifi YENER — hem PBN hem CONV/TACAN rotaya bagli bir nokta
+    `RNAVFlyBy` alir.
 
-      1. CONV        — bagli ATS rotalarindan biri `CONV` veya `TACAN` ise.
-                       ANCAK `type=COORD` olan DesignatedPoint CONV OLAMAZ:
-                       koordinattan turetilmis nokta klasik seyrusefer
-                       yardimcisiyla tanimlanmaz. Navaid'de bu istisna yoktur.
-      2. RNAVFlyBy   — `type=COORD` DesignatedPoint KOSULSUZ; ayrica DP/Navaid'de
-                       bagli rotalardan biri `PBN` ise.
       3. RNAVFlyOver — su an bir kosula BAGLANMADI: fly-over / fly-by ayrimini
                        verecek kaynak alani henuz yok. Ileride kullanilacak;
                        uydurma siniflandirma yapilmaz, bilerek uretilmiyor.
+                       Zincirin basinda olmasi bugun bir sey degistirmez.
+      2. RNAVFlyBy   — `type=COORD` DesignatedPoint KOSULSUZ; ayrica DP/Navaid'de
+                       bagli rotalardan biri `PBN` ise.
+      1. CONV        — bagli ATS rotalarindan biri `CONV` veya `TACAN` ise.
+                       `type=COORD` olan DesignatedPoint CONV OLAMAZ
+                       (koordinattan turetilmis nokta klasik seyrusefer
+                       yardimcisiyla tanimlanmaz); bu kural yeni sirada zaten
+                       kendiliginden saglanir — COORD 2. adimda donuyor.
       4. OTHER       — son fallback.
     """
     is_coord = layer == "designatedPoints" and point_type == "COORD"
 
-    if not is_coord and (nav_types & _NAV_CONVENTIONAL):
-        return "CONV"
     if is_coord:
         return "RNAVFlyBy"
     if _NAV_PBN in nav_types:
         return "RNAVFlyBy"
+    if nav_types & _NAV_CONVENTIONAL:
+        return "CONV"
     return "OTHER"
 
 
@@ -781,7 +785,10 @@ def depiction_sig_point(layer, point_type, nav_types, all_pbn, nav_class):
       * VFR_REP — DesignatedPoint `type=VRP` ise.
       * WPT     — `depictionNav` CONV DEGILSE ve (`type=COORD` kosulsuz, ya da
                   bagli TUM rota segmentleri PBN ise).
-      * INT     — `type=BRG_DIST` ise, ya da bagli rotalardan biri CONV/TACAN ise.
+      * INT     — bagli rotalardan biri CONV/TACAN ise. (`type=BRG_DIST`
+                  kosulu kullanici karariyla KALDIRILDI: nokta tipinin
+                  kendisi kesisim olup olmadigini belirlemez, bunu bagli
+                  rotanin seyrusefer tipi belirler.)
       * OTHER   — DesignatedPoint icin son fallback.
     """
     if layer == "navaids":
@@ -795,8 +802,6 @@ def depiction_sig_point(layer, point_type, nav_types, all_pbn, nav_class):
         if all_pbn:
             return "WPT"
 
-    if point_type == "BRG_DIST":
-        return "INT"
     if nav_types & _NAV_CONVENTIONAL:
         return "INT"
     return "OTHER"
