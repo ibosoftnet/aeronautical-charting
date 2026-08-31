@@ -219,14 +219,25 @@ ASSOCIATED_NAVAID_COLUMNS = ["associatedNavaid", "associatedNavaidType"]
 
 #: `navaidSymbology_*` — sembol GEOMETRISI icin turetilmis alanlar.
 #: `navaidLabeling_*`'tan AYRIDIR: o etiket METNI uretir, bu sembolun
-#: cizimini besler. Yalnizca `navaidComponents`'te bulunur; katman oneki
-#: tasimaz (annotation/provenance/atsStatus/navaidLabeling ile ayni kural).
+#: cizimini besler. Katman oneki tasimaz (annotation/provenance/atsStatus/
+#: navaidLabeling ile ayni kural).
 #:
+#: `declination`: pusula gulu (compass rose) sembolunun DONDURME ACISI.
+#: Yalnizca VOR/TACAN bilesenlerinin AIXM'de kendi `declination` alani
+#: vardir (bkz. EQUIPMENT_SUBTYPE_FIELDS); deger o bilesenin KENDI
+#: sutunundan devralinir. `navaids` duzeyinde yalnizca VOR/VOR_DME/TACAN/
+#: VORTAC turlerinde doldurulur, digerlerinde NULL kalir (kullanici karari).
+#: Hem `navaids` hem `navaidComponents`'te bulunur (bkz. gpkg/navaid_symbology.py).
+NAVAID_SYMBOLOGY_COLUMNS = [
+    "navaidSymbology_declination",
+]
+
 #: `GPAssociatedLOCTrueBrg`: Glidepath sembolu haritada bir HUZME olarak
 #: cizilir ve yonu olmalidir, ama `GlidepathPropertyGroup`'ta yon alani
 #: YOKTUR. Yon ayni ILS'in Localizer bileseninde durur; bu sutun o degeri
-#: Glidepath satirina tasir (bkz. gpkg/navaid_symbology.py).
-NAVAID_SYMBOLOGY_COLUMNS = [
+#: Glidepath satirina tasir (bkz. gpkg/navaid_symbology.py). Yalnizca
+#: `navaidComponents`'te anlamlidir (Glidepath ancak bilesen duzeyinde var).
+NAVAID_SYMBOLOGY_COMPONENT_ONLY_COLUMNS = [
     "navaidSymbology_GPAssociatedLOCTrueBrg",
 ]
 
@@ -277,6 +288,7 @@ NAVAIDS = (
     + PROVENANCE_COLUMNS
     + ATS_STATUS_COLUMNS
     + NAVAID_LABELING_COLUMNS
+    + NAVAID_SYMBOLOGY_COLUMNS
     + ASSOCIATED_COMPONENT_COLUMNS
     + IDENTITY_COLUMNS
 )
@@ -301,6 +313,7 @@ NAVAID_COMPONENTS = (
     + PROVENANCE_COLUMNS
     + NAVAID_LABELING_COLUMNS
     + NAVAID_SYMBOLOGY_COLUMNS
+    + NAVAID_SYMBOLOGY_COMPONENT_ONLY_COLUMNS
     + IDENTITY_COLUMNS
 )
 

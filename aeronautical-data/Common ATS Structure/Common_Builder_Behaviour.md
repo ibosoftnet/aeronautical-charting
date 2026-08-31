@@ -528,7 +528,7 @@ değiştirmez, yalnızca yeni sütun doldurur.
 |---|---|---|---|
 | `[4]` | `atsStatus_*` (13 sütun) | `designatedPoints`, `navaids` | `routeSegments` — noktanın ATS rota ağındaki rolü |
 | `[5]` | `navaidLabeling_*` (9 sütun) | `navaids`, `navaidComponents` | Tip bazlı geçerlilik kapıları, ICAO frekans/kanal eşleştirmesi ve ITU mors alfabesi |
-| `[6]` | `navaidSymbology_*` (1 sütun) | `navaidComponents` | Glidepath hüzmesinin yönü — kardeş `Localizer`'ın `trueBearing`'i |
+| `[6]` | `navaidSymbology_*` (2 sütun) | `declination`: `navaids`+`navaidComponents`; `GPAssociatedLOCTrueBrg`: `navaidComponents` | `declination`: VOR/TACAN bileşeninin kendi AIXM `declination`'ı (pusula gülü dönüşü); `GPAssociatedLOCTrueBrg`: Glidepath hüzmesinin yönü — kardeş `Localizer`'ın `trueBearing`'i |
 
 **Neden index'ten önce:** yeni sütunların B-tree index'i `finalize()` içinde
 kuruluyor; sonra çalışsalardı indekssiz kalırlardı.

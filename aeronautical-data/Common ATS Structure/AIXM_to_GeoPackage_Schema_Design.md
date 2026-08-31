@@ -32,8 +32,8 @@ atlamaktan yeğdir ve yeni bir kaynak geldiğinde şema değişmeden dolar.
 | Katman | AIXM Feature | Geometri | Sütun | Satır |
 |---|---|---|---:|---:|
 | `designatedPoints` | `DesignatedPoint` | POINT | 28 | 152.040 |
-| `navaids` | `Navaid` | POINT | 59 | 9.357 |
-| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 99 | 13.362 |
+| `navaids` | `Navaid` | POINT | 60 | 9.357 |
+| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 100 | 13.362 |
 | `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 83 | 92.976 |
 
 Her katmanda ayrıca `id` (INTEGER PRIMARY KEY AUTOINCREMENT) ve `geom` (BLOB)
@@ -83,7 +83,7 @@ olmadığı için **önek almazlar** (kullanıcı kararı):
 | ATS rota durumu (türetilmiş) | `atsStatus_*` — yalnızca `designatedPoints` ve `navaids`'te |
 | Navaid ↔ Component bağı | `associatedComponent_<AltTür>` (navaids), `associatedNavaid` / `associatedNavaidType` (navaidComponents) — virgüllü liste (§6.3) |
 | Harita etiketi (türetilmiş) | `navaidLabeling_*` — yalnızca `navaids` ve `navaidComponents`'te |
-| Sembol geometrisi (türetilmiş) | `navaidSymbology_*` — yalnızca `navaidComponents`'te |
+| Sembol geometrisi (türetilmiş) | `navaidSymbology_*` — `declination` hem `navaids` hem `navaidComponents`'te, `GPAssociatedLOCTrueBrg` yalnızca `navaidComponents`'te |
 
 Bu istisna dışındaki tüm sütunlar yukarıdaki genel kurala göre katman önekli
 kalır (`designatedPoints_designator`, `navaids_type` gibi).
@@ -125,10 +125,13 @@ ve kanal Navaid feature'ında değil bağlı ekipmanda durduğu için `navaids`
 satırları bileşenlerden beslenir. Ayrıntı:
 [`Navaid_Labeling_Fields.md`](Navaid_Labeling_Fields.md).
 
-`navaidSymbology_*` ise etiket metnini değil sembolün **çizimini** besler.
-Tek alanı `GPAssociatedLOCTrueBrg`: Glidepath hüzmesinin yönü AIXM'de
-`Glidepath`'te değil kardeş `Localizer`'da durur, bu sütun onu taşır.
-Ayrıntı: [`Navaid_Symbology_Fields.md`](Navaid_Symbology_Fields.md).
+`navaidSymbology_*` ise etiket metnini değil sembolün **çizimini** besler. İki
+alanı var: `GPAssociatedLOCTrueBrg` (yalnızca `navaidComponents`) — Glidepath
+hüzmesinin yönü AIXM'de `Glidepath`'te değil kardeş `Localizer`'da durur, bu
+sütun onu taşır; `declination` (`navaids` ve `navaidComponents`) — pusula gülü
+sembolünün döndürme açısı, VOR/TACAN bileşeninin kendi AIXM `declination`
+alanından, yalnızca VOR/VOR_DME/TACAN/VORTAC navaid türlerinde. Ayrıntı:
+[`Navaid_Symbology_Fields.md`](Navaid_Symbology_Fields.md).
 
 **Sütun tipi** `gpkg/schema.py:column_type()` ile belirlenir: `*Uom` ve
 `*Reference` her zaman TEXT; `*PointId` INTEGER; bilinen sayısal
@@ -583,7 +586,7 @@ value, violation, severity`.
 
 `gpkg/schema.py:finalize()`:
 
-1. **Her sütunda B-tree index** — dört katmanda 269 sütun.
+1. **Her sütunda B-tree index** — dört katmanda 271 sütun.
 2. **Mekânsal index (RTree)** — katman başına `rtree_<katman>_geom` sanal
    tablosu, GeoPackage 1.2 Ek F.3'teki altı tetikleyici (insert, update1-4,
    delete) ve `gpkg_extensions` kaydı (`gpkg_rtree_index`, scope `write-only`).
@@ -629,6 +632,6 @@ korunur. Alan bazında birleştirme yapılmaz.
 
 ## 12. Karar bekleyen konu
 
-Yok. Şemadaki 269 sütunun tamamının AIXM karşılığı kurulu ve çalışır durumda;
+Yok. Şemadaki 271 sütunun tamamının AIXM karşılığı kurulu ve çalışır durumda;
 `%0,0` görünen sütunlar kaynakların o alanı sağlamamasındandır (§ girişteki
 açıklama), eşleme eksikliği değildir.

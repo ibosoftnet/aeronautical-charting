@@ -1,7 +1,7 @@
 # `navaidSymbology_*` alanları
 
-`navaidComponents` katmanındaki **türetilmiş** sembol alanları.
-Üreten kod: [`gpkg/navaid_symbology.py`](gpkg/navaid_symbology.py).
+`navaids` ve `navaidComponents` katmanlarındaki **türetilmiş** sembol
+alanları. Üreten kod: [`gpkg/navaid_symbology.py`](gpkg/navaid_symbology.py).
 
 ---
 
@@ -18,19 +18,96 @@ ikisi de katman öneki taşımaz, ikisi de `schema.finalize`'dan önce çalış�
 | Adım | Alan ailesi | Katman |
 |---|---|---|
 | `[5]` | `navaidLabeling_*` | `navaids`, `navaidComponents` |
-| `[6]` | **`navaidSymbology_*`** | yalnızca `navaidComponents` |
+| `[6]` | **`navaidSymbology_*`** | `declination`: ikisi de; `GPAssociatedLOCTrueBrg`: yalnızca `navaidComponents` |
 
 ---
 
 ## 2. Sütunlar
 
-| Sütun | Tip | Geçerli olduğu ekipman |
-|---|---|---|
-| `navaidSymbology_GPAssociatedLOCTrueBrg` | REAL | yalnızca `Glidepath` |
+| Sütun | Tip | Katman | Geçerli olduğu tür |
+|---|---|---|---|
+| `navaidSymbology_declination` | REAL | `navaids`, `navaidComponents` | `navaids`: `VOR`/`VOR_DME`/`TACAN`/`VORTAC`; `navaidComponents`: `VOR`/`TACAN` |
+| `navaidSymbology_GPAssociatedLOCTrueBrg` | REAL | `navaidComponents` | yalnızca `Glidepath` |
 
 ---
 
-## 3. `GPAssociatedLOCTrueBrg`
+## 3. `declination`
+
+### Neden gerekli
+
+Harita sembolünde bir VOR/TACAN istasyonu **pusula gülü** olarak çizilir ve bu
+gülün kuzey referansı istasyonun kendi beyan ettiği manyetik sapmaya
+(`declination`) göre döndürülmelidir. Değer AIXM'de zaten `VORPropertyGroup`
+ve `TACANPropertyGroup`'ta vardır (`ValMagneticVariationType`, -180/+180°);
+yeni bir hesap değil, doğrudan bir **devir**dir — ama iki katmana da
+taşınması ve navaid düzeyinde hangi bileşenden geleceğinin (`VOR_DME`,
+`VORTAC` gibi bileşik tiplerde) belirlenmesi gerekir.
+
+### Nasıl bulunur
+
+* **`navaidComponents`** — birebir kopya: satır `VOR` ise
+  `navaidComponents_VOR_declination`, `TACAN` ise
+  `navaidComponents_TACAN_declination`. Başka hiçbir alt-türe (`Localizer`
+  dahil — AIXM'de onun da `declination`'ı var ama pusula gülü kapsamında
+  DEĞİL, kullanıcı kararı) dokunulmaz.
+* **`navaids`** — yalnızca `VOR`, `VOR_DME`, `TACAN`, `VORTAC` türlerinde
+  doldurulur (kullanıcı kararı); kaynak bileşen türe göre değişir:
+
+  | `navaids_type` | Kaynak bileşen |
+  |---|---|
+  | `VOR` | `VOR` |
+  | `VOR_DME` | `VOR` — `DME`'nin AIXM'de `declination` alanı yok |
+  | `TACAN` | `TACAN` |
+  | `VORTAC` | `VOR` **varsa** o, yoksa `TACAN` (kullanıcı kararı, 2026-08-31) |
+
+  `VORTAC`, AIXM'de birbirinden bağımsız bir `VOR` bileşeni **ve** bir
+  `TACAN` bileşeni ile modellenir (iki ayrı `navaidComponents` satırı).
+  İkisinin de kendi `declination`'ı raporlanabildiği için sıra gerekiyordu;
+  bugünkü veride TACAN bileşeninin `declination`'ı hiç dolu değil
+  (0/13.362), bu yüzden kural şu an fiilen her zaman VOR'a düşüyor — ama
+  kural gelecekteki veri için de geçerli kalsın diye VOR öncelikli yazıldı.
+
+### Ölçülen doluluk (son koşu)
+
+| | Adet |
+|---|---:|
+| `navaidComponents` (`VOR`+`TACAN` satırı) | 3.594 + 877 = 4.471 |
+| Kaynakta `declination` dolu → **`navaidComponents` sütunu dolu** | **86** (hepsi `VOR`; `TACAN`'da 0) |
+| `navaids` (`VOR`/`VOR_DME`/`TACAN`/`VORTAC`) | 277+2.800+409+518 = 4.004 |
+| **sütunu dolu** | **86** |
+| Beklenen bileşen navaid'e hiç bağlı değil (`declination_bileseni_yok`) | **1** — `LT_NAV_KAM` (`VOR_DME`), zaten `navaidLabeling_*`'ta da bileşensiz görünüyor |
+| Bileşen var ama kaynakta `declination` raporlanmamış (`declination_kaynakta_yok`) | 3.917 |
+
+> **Çoğu ülke bu alanı raporlamıyor; bu bir hata değildir** (`GPAssociatedLOCTrueBrg`
+> ile aynı durum). Eksik satırlar `errored-features.csv`'ye yazılmaz, yalnızca
+> sayılır.
+
+### İzinsiz fallback kurulmadı
+
+`navaidComponents_VOR_magneticVariation` (istasyonun genel manyetik varyasyonu,
+`EQUIPMENT_COMMON_FIELDS`'te ayrı bir alan) `declination`'ın yerine
+**kullanılmaz** — ikisi AIXM'de farklı alanlardır ve farklı anlam taşır
+(`declination` istasyonun *beyan ettiği* sapma ile gerçek sapma arasındaki
+fark; `magneticVariation` konumun genel manyetik varyasyonudur). Yalnızca
+`VORTAC`'ta VOR↔TACAN arası sıralama kullanıcı kararıyla kuruldu, başka hiçbir
+alt-türe genişletilmedi.
+
+### Doğrulama
+
+Son koşuda ölçüldü:
+
+| Kontrol | Sonuç |
+|---|---|
+| Değer dolu | 86, hem `navaids` hem `navaidComponents`'te |
+| Değer aralığı | -23,0 – 20,0 |
+| `VOR`/`VOR_DME`/`TACAN`/`VORTAC` dışında `navaids` değeri | **0** |
+| `VOR`/`TACAN` dışında `navaidComponents` değeri | **0** |
+| `navaidComponents` değeri kendi alt-tür sütunuyla uyuşmayan satır | **0** |
+| Örnek çapraz kontrol (`EAD_NAV_YFB_4699784`, VOR) | AIXM `declination=-22` → sütun `-22.0` ✓ |
+
+---
+
+## 4. `GPAssociatedLOCTrueBrg`
 
 ### Neden gerekli
 
@@ -94,7 +171,25 @@ Son koşuda ölçüldü:
 
 ---
 
-## 4. QGIS kullanımı
+## 5. QGIS kullanımı
+
+### Pusula gülü (VOR/TACAN)
+
+`navaids` katmanında bir VOR/TACAN sembolünü döndürmek için, sembol
+katmanının **Rotation** alanına:
+
+```sql
+"navaidSymbology_declination"
+```
+
+`navaidComponents` katmanında aynı şey, bileşen türü filtresiyle:
+
+```sql
+"navaidComponents_equipmentType" IN ('VOR', 'TACAN')
+  AND "navaidSymbology_declination" IS NOT NULL
+```
+
+### Glidepath hüzmesi
 
 Glidepath sembolünü hüzme yönüne döndürmek için, sembol katmanının
 **Rotation** alanına:
@@ -120,7 +215,7 @@ tanımlanabilir:
 
 ---
 
-## 5. İlgili dokümanlar
+## 6. İlgili dokümanlar
 
 * [`Navaid_Labeling_Fields.md`](Navaid_Labeling_Fields.md) — etiket metni
   üreten kardeş aile
