@@ -1,13 +1,44 @@
 # Havacılık Haritası Üretimi İçin Kaynaklar ve QGIS Şablonu
 
-![](Images%20About%20Project/Example-2.png)
+![](Images%20About%20Project/image-7.png)
 
+## Amaç / Purpose
 
-## Duyuru: Proje aşamaları değiştirilmiştir. İlk öncelikle Ibosoft AIS web haritası için bazı gerekliliklerin hazırlanması planlanmaktadır. Sonrasında bazı hesaplama araçlarının hazırlanmasının ardından kağıt harita üretimi için şablonlar hazırlanacaktır.
+**TR:**  
+* Bu projenin amacı, bireysel kullanıcıların ICAO standartları ve Standartları ve Tavsiye Edilen Uygulamaları (SARPs) doğrultusunda, hobi amaçlı kendi havacılık haritalarını hazırlayabilmesini sağlamaktır.
+* Proje, aynı zamanda Ibosoft AIS etkileşimli haritasının temelini oluşturmaktadır.
 
-## Amaç:
+**EN:**  
+* The aim of this project is to allow individual users to create their own aeronautical charts for hobby purposes, in accordance with ICAO Standards and Recommended Practices (SARPs).
+* The project also forms the foundation of the Ibosoft AIS interactive map.
 
-Bu proje, bireysel kullanıcıların, ICAO standartları ve SARP'ları doğrultusunda hobi amaçlı kendi havacılık haritalarını hazırlayabilmesini amaçlamaktadır.
+https://ais.ibosoft.net.tr
+
+## Duyuru / Announcement
+
+**TR:**  
+Proje aşamaları değiştirilmiştir. İlk olarak Ibosoft AIS web haritası için gerekli bileşenlerin hazırlanması planlanmaktadır. Sonrasında bazı hesaplama araçlarının geliştirilmesinin ardından, kağıt harita üretimi için şablonlar hazırlanacaktır.
+
+**EN:**  
+The project roadmap has been revised. The initial focus will be on preparing the components required for the Ibosoft AIS web map. After developing some calculation tools, templates for producing paper charts will be prepared.
+
+## Duyuru 2 / Announcement 2
+
+**TR:**
+
+* Web haritası (Kağıt ARC/ENC hazırlamak için de kullanılabilir) büyük ölçüde tamamlanmıştır.
+* Şu anki uğraşı ortak AIXM veritabanı hazırlamak ve projeyi onunla uyumlu hale getirmeye çalışıyorum.
+* Kağıt harita üretimi için şablonları, örnek LT1401 - Bolu Havaalanı projemi henüz paylaşıma hazır hale getiremediğim için eksik olarak paylaştım, ileride tam proje dosyasını eklemeyi düşünüyorum.
+* Dokümantasyon olmadığı için üzgünüm ne yazık ki henüz hazırlamaya vaktim olmadı.
+
+**EN:**
+
+* The web map (which can also be used to prepare paper ARC/ENC charts) is largely complete.
+* I am currently working on preparing a common AIXM database and trying to make the project compatible with it.
+* I have shared the templates for paper chart production, but the example LT1401 - Bolu Airport project is incomplete because I have not yet been able to prepare it for release. I plan to add the complete project files in the future.
+* I apologize for the lack of documentation. Unfortunately, I have not yet had time to prepare it.
+
+-----
 
 ## Dokümantasyon:
 
@@ -26,7 +57,7 @@ Proje henüz erken safhada olduğundan dokümantasyon henüz hazırlanmamıştı
 
 ---
 
-![](Images%20About%20Project/image-7.png)
+![](Images%20About%20Project/Example-2.png)
 ![](Images%20About%20Project/image-9847.png)
 ![](Images%20About%20Project/image-5621.png)
 ![](Images%20About%20Project/image-3014.png)
