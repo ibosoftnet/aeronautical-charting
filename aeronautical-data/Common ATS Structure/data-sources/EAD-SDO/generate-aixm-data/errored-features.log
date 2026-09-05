@@ -356,6 +356,7 @@ WARNING | RouteSegment | EAD_RS_010709 | WPT | GERAM | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_010729 | WPT | APRAS | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_010740 | WPT | BOLUM | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_010820 | VOR/DME | JSV | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_011327 | segment | MT->NAGON (1002 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_011462 | VOR/DME | TGV | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_011463 | VOR/DME | TGV | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_011475 | segment | RBV->ESVIR (7134 NM) | en_iyi_cift_esigi_asti_cozulmedi
@@ -9845,6 +9846,8 @@ WARNING | RouteSegment | EAD_RS_048109 | segment | PN1->VICKY (5330 NM) | en_iyi
 WARNING | RouteSegment | EAD_RS_048184 | segment | IDLOX->IS (4600 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_048434 | segment | ATIVA->OLMAN (3698 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_048621 | segment | IS->RAJ (4562 NM) | en_iyi_cift_esigi_asti_cozulmedi
+WARNING | RouteSegment | EAD_RS_050193 | segment | IGPOP->TK (2592 NM) | en_iyi_cift_esigi_asti_cozulmedi
+WARNING | RouteSegment | EAD_RS_050194 | segment | TK->KADAV (2576 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_051055 | segment | BARVO->GT (1412 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_051056 | segment | GT->GITOK (1297 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_051324 | NDB | QP | uc_nokta_cozulemedi
@@ -9895,6 +9898,12 @@ WARNING | RouteSegment | EAD_RS_058042 | WPT | CUFFY | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058385 | WPT | BISOX | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058417 | NDB | AUB | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058418 | NDB | AUB | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_058419 | NDB | OSE | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_058420 | NDB | OSE | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_058421 | segment | BIBNE->SMA (5312 NM) | en_iyi_cift_esigi_asti_cozulmedi
+WARNING | RouteSegment | EAD_RS_058422 | NDB | FDV | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_058423 | NDB | FDV | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_058423 | NDB | HHM | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058438 | WPT | AGPOM | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058485 | WPT | PASSA | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058492 | WPT | BOILS | uc_nokta_cozulemedi
@@ -9903,15 +9912,17 @@ WARNING | RouteSegment | EAD_RS_058504 | WPT | TENOR | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058508 | WPT | RAMIZ | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058545 | WPT | OBKAD | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058566 | WPT | LOKOS | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_058686 | segment | LESAD->SMA (5413 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_058687 | VORTAC | MCG | uc_nokta_cozulemedi
-WARNING | RouteSegment | EAD_RS_058687 | NDB | SMA | birden_fazla_aday_ayiklanamadi
 WARNING | RouteSegment | EAD_RS_058819 | NDB | ACE | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058831 | NDB | AUB | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_058849 | NDB | FDV | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058870 | WPT | DUNEY | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_058955 | WPT | AROTO | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_059118 | WPT | ELLMS | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_059161 | WPT | REVRO | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_059169 | WPT | TUNBA | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_059174 | segment | ANESE->SMA (5297 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_059248 | WPT | SIPOX | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_059302 | NDB | AUB | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_059303 | NDB | AUB | uc_nokta_cozulemedi
@@ -10041,6 +10052,7 @@ WARNING | RouteSegment | EAD_RS_066166 | VOR/DME | BRW | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_066366 | VOR/DME | BRW | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_066456 | VOR/DME | GKN | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_066457 | VOR/DME | GKN | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_067198 | NDB | FDV | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_067573 | NDB | AUB | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_067574 | NDB | AUB | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_067577 | NDB | ACE | uc_nokta_cozulemedi
@@ -10199,12 +10211,14 @@ WARNING | RouteSegment | EAD_RS_079001 | VOR/DME | BRW | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079189 | VOR/DME | GKN | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079190 | VOR/DME | GKN | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079211 | VORTAC | BZA | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_079246 | segment | SMA->AGEPE (5294 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_079359 | VOR/DME | JST | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079379 | VORTAC | FBC | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079429 | VORTAC | MCG | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079430 | VORTAC | MCG | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079440 | VOR/DME | GKN | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079441 | VOR/DME | GKN | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_079622 | segment | MEVIC->SMA (5345 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_079635 | VORTAC | MCG | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079701 | VORTAC | VHP | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_079702 | VORTAC | VHP | uc_nokta_cozulemedi
@@ -10332,6 +10346,7 @@ WARNING | RouteSegment | EAD_RS_085021 | segment | MUNDA->MTI (6391 NM) | en_iyi
 WARNING | RouteSegment | EAD_RS_085431 | VOR/DME | NF | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_085493 | WPT | BOMTI | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_085519 | VORTAC | NKW | uc_nokta_cozulemedi
+WARNING | RouteSegment | EAD_RS_085709 | segment | MT->NAGON (1002 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_085844 | WPT | TOMIK | uc_nokta_cozulemedi
 WARNING | RouteSegment | EAD_RS_085931 | segment | IDUBO->RM (5961 NM) | en_iyi_cift_esigi_asti_cozulmedi
 WARNING | RouteSegment | EAD_RS_085974 | VOR/DME | TGV | uc_nokta_cozulemedi

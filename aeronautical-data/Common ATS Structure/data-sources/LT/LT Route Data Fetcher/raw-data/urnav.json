@@ -1047,7 +1047,7 @@
         "ipm": "../../images/aixm/URNAVOH.svg",
         "is": 2.5,
         "sa": "",
-        "ea": "1",
+        "ea": "001",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.08a18d15-19a6-488a-9dc6-33126e1ef3fb\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -6404,8 +6404,8 @@
     {
       "geometry": {
         "coordinates": [
-          37.4312444,
-          39.8328556
+          37.43139,
+          39.83278
         ],
         "type": "Point"
       },
@@ -6413,7 +6413,7 @@
         "ip": "../images/aixm/trianglewhite.png",
         "t": 3,
         "hi": "OTSOV",
-        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>39°49'58''N  037°25'52''E  ",
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>39°49'58''N  037°25'53''E  ",
         "kid": "uuid.cfbbc42e-8fa2-4d98-8bf4-c4f03a8adafa",
         "rpType": 2,
         "type": "DP",
@@ -6425,8 +6425,8 @@
       "geometry": {
         "coordinates": [
           [
-            37.4312444,
-            39.8328556
+            37.43139,
+            39.83278
           ],
           [
             36.893417,
@@ -7050,7 +7050,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
         "sa": "264",
-        "ea": "83",
+        "ea": "083",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.7542b49f-827c-4188-8ca0-b5f8bc036872\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -7335,7 +7335,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
         "sa": "264",
-        "ea": "83",
+        "ea": "083",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.8c8de08e-477a-4772-a506-ae537a37d4b6\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -7760,8 +7760,8 @@
             39.87361
           ],
           [
-            37.4312444,
-            39.8328556
+            37.43139,
+            39.83278
           ]
         ],
         "type": "LineString"
@@ -13915,7 +13915,7 @@
       "geometry": {
         "coordinates": [
           32.06917,
-          41.13278
+          41.1325
         ],
         "type": "Point"
       },
@@ -13923,7 +13923,7 @@
         "ip": "../images/aixm/trianglewhite.png",
         "t": 3,
         "hi": "LETBU",
-        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>41°07'58''N  032°04'09''E  ",
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>41°07'57''N  032°04'09''E  ",
         "kid": "uuid.735fa380-57bf-424b-9a31-a9ad6b6add00",
         "rpType": 2,
         "type": "DP",
@@ -13956,7 +13956,7 @@
         "coordinates": [
           [
             32.06917,
-            41.13278
+            41.1325
           ],
           [
             30.76,
@@ -14079,7 +14079,7 @@
           ],
           [
             32.06917,
-            41.13278
+            41.1325
           ]
         ],
         "type": "LineString"
@@ -17132,6 +17132,112 @@
     {
       "geometry": {
         "coordinates": [
+          28.3375,
+          41.9875
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 3,
+        "hi": "IBLAL",
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>41°59'15''N  028°20'15''E  ",
+        "kid": "uuid.ee252eaf-93da-4446-b00a-00a85c8bd902",
+        "rpType": 2,
+        "type": "DP",
+        "cip": "../images/aixm/trianglewhite.png"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            28.40444,
+            41.49361
+          ],
+          [
+            28.3375,
+            41.9875
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "UT 777",
+        "t": 1,
+        "pic": "",
+        "kid": "uuid.ad614354-61ec-4338-ac26-cc7c67328ea0",
+        "strclr": "#2E8400",
+        "ip": "../../images/aixm/URNAVOH.svg",
+        "type": "ROUTE",
+        "cip": "../../images/aixm/URNAVOH.svg",
+        "ipm": "../../images/aixm/URNAVORH.svg",
+        "is": 1.5,
+        "sa": "348",
+        "ea": "",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.ad614354-61ec-4338-ac26-cc7c67328ea0\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          28.35778,
+          41.28639
+        ],
+        "type": "Point"
+      },
+      "properties": {
+        "ip": "../images/aixm/triangleblack.ico",
+        "t": 3,
+        "hi": "FENER",
+        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>41°17'11''N  028°21'28''E  ",
+        "kid": "uuid.fdf25ec1-018d-4be5-b8ae-ebfb6951e9a0",
+        "rpType": 2,
+        "type": "DP",
+        "cip": "../images/aixm/trianglewhite.png"
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            28.35778,
+            41.28639
+          ],
+          [
+            28.40444,
+            41.49361
+          ]
+        ],
+        "type": "LineString"
+      },
+      "properties": {
+        "hi": "UT 777",
+        "t": 1,
+        "pic": "",
+        "kid": "uuid.ba52b92b-a961-447c-8d1b-05379219fe99",
+        "strclr": "#2E8400",
+        "ip": "../../images/aixm/URNAVOH.svg",
+        "type": "ROUTE",
+        "cip": "../../images/aixm/URNAVOH.svg",
+        "ipm": "../../images/aixm/URNAVORH.svg",
+        "is": 1.5,
+        "sa": "004",
+        "ea": "",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.ba52b92b-a961-447c-8d1b-05379219fe99\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "zi": 1000
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
           37.61806,
           41.18694
         ],
@@ -17374,7 +17480,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 2.0,
         "sa": "272",
-        "ea": "90",
+        "ea": "090",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.5396b036-6fe5-4b2c-ad80-514ec56a0ec4\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -17619,7 +17725,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 2.0,
         "sa": "272",
-        "ea": "90",
+        "ea": "090",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.c2166791-1736-4ce8-95fb-864c0eef213b\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -18035,8 +18141,8 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 2.5,
-        "sa": "049",
-        "ea": "229",
+        "sa": "048",
+        "ea": "228",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.20ee4b1c-ba01-40eb-9687-1f70ad19a7fd\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -18068,8 +18174,8 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "049",
-        "ea": "229",
+        "sa": "048",
+        "ea": "228",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.437cd4f3-5b23-43e1-9ef3-d62fde1d5542\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -20830,7 +20936,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
         "sa": "270",
-        "ea": "90",
+        "ea": "090",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.af48789d-dedf-4256-b379-ee157cbb3045\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -21398,7 +21504,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "61",
+        "sa": "061",
         "ea": "243",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.71f023c3-e05c-4140-916b-4000b7d8d060\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -21451,7 +21557,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 2.0,
-        "sa": "18",
+        "sa": "018",
         "ea": "198",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.7268eaaf-b692-4057-b28f-994314c4d4f2\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -21504,7 +21610,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 2.0,
-        "sa": "18",
+        "sa": "018",
         "ea": "198",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.757355fc-e903-4124-8a45-5d60b0758226\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -21537,7 +21643,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "61",
+        "sa": "061",
         "ea": "243",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.a40face4-eb46-47af-83ac-2e519450f672\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -22629,7 +22735,7 @@
         "coordinates": [
           [
             32.06917,
-            41.13278
+            41.1325
           ],
           [
             31.58583,
@@ -22719,7 +22825,7 @@
           ],
           [
             32.06917,
-            41.13278
+            41.1325
           ]
         ],
         "type": "LineString"
@@ -26448,7 +26554,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 2.5,
-        "sa": "75",
+        "sa": "075",
         "ea": "255",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.818f0559-8867-485d-8c91-627510a7bec8\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -26663,112 +26769,6 @@
         "sa": "",
         "ea": "122",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.e936d458-653e-4453-b10a-28063ec6289d\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          28.3375,
-          41.9875
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "ip": "../images/aixm/triangleblack.ico",
-        "t": 3,
-        "hi": "IBLAL",
-        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>41°59'15''N  028°20'15''E  ",
-        "kid": "uuid.ee252eaf-93da-4446-b00a-00a85c8bd902",
-        "rpType": 2,
-        "type": "DP",
-        "cip": "../images/aixm/trianglewhite.png"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            28.40444,
-            41.49361
-          ],
-          [
-            28.3375,
-            41.9875
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "UP 777",
-        "t": 1,
-        "pic": "",
-        "kid": "uuid.5b6a7a5f-6bc0-4173-aafe-0dfd67f2ce3a",
-        "strclr": "#2E8400",
-        "ip": "../../images/aixm/URNAVOH.svg",
-        "type": "ROUTE",
-        "cip": "../../images/aixm/URNAVOH.svg",
-        "ipm": "../../images/aixm/URNAVORH.svg",
-        "is": 1.5,
-        "sa": "348",
-        "ea": "",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.5b6a7a5f-6bc0-4173-aafe-0dfd67f2ce3a\"  allowTransparency=\"true\"></iframe>",
-        "ht": true,
-        "zi": 1000
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          28.35778,
-          41.28639
-        ],
-        "type": "Point"
-      },
-      "properties": {
-        "ip": "../images/aixm/triangleblack.ico",
-        "t": 3,
-        "hi": "FENER",
-        "pic": "<br><b>TYPE : </b>ICAO<br><b>GML POS : </b>41°17'11''N  028°21'28''E  ",
-        "kid": "uuid.fdf25ec1-018d-4be5-b8ae-ebfb6951e9a0",
-        "rpType": 2,
-        "type": "DP",
-        "cip": "../images/aixm/trianglewhite.png"
-      },
-      "type": "Feature"
-    },
-    {
-      "geometry": {
-        "coordinates": [
-          [
-            28.35778,
-            41.28639
-          ],
-          [
-            28.40444,
-            41.49361
-          ]
-        ],
-        "type": "LineString"
-      },
-      "properties": {
-        "hi": "UP 777",
-        "t": 1,
-        "pic": "",
-        "kid": "uuid.bc3d316e-ff93-4868-b0f5-c6c892fcff6f",
-        "strclr": "#2E8400",
-        "ip": "../../images/aixm/URNAVOH.svg",
-        "type": "ROUTE",
-        "cip": "../../images/aixm/URNAVOH.svg",
-        "ipm": "../../images/aixm/URNAVORH.svg",
-        "is": 1.5,
-        "sa": "004",
-        "ea": "",
-        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.bc3d316e-ff93-4868-b0f5-c6c892fcff6f\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
       },
@@ -27758,7 +27758,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "94",
+        "sa": "094",
         "ea": "274",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.2d15971f-5425-41b2-a2b8-b0eee22f32d4\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -28539,7 +28539,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "52",
+        "sa": "052",
         "ea": "232",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.80979753-43d7-4974-844e-ce8d7f2aaf17\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -28573,7 +28573,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
         "sa": "274",
-        "ea": "94",
+        "ea": "094",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.91219d10-b197-4a82-9006-0bc3ad25fcd8\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -28639,7 +28639,7 @@
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
         "sa": "276",
-        "ea": "96",
+        "ea": "096",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.f29d317d-0490-4ef1-bb10-ec35763d3b29\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
         "zi": 1000
@@ -30887,7 +30887,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "32",
+        "sa": "032",
         "ea": "212",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.39b1c538-0ba1-44b1-96fb-d7ac72e64764\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -30953,7 +30953,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 2.0,
-        "sa": "32",
+        "sa": "032",
         "ea": "212",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.6cd9845b-1c08-4ad7-980e-a2e20cdd4cde\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -32752,7 +32752,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "76",
+        "sa": "076",
         "ea": "257",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.4701200a-97e9-4756-b640-0968eda72d43\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -33235,7 +33235,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 2.5,
-        "sa": "63",
+        "sa": "063",
         "ea": "244",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.ce571d2b-1f27-4f73-a03b-2720e3fe173d\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -34808,7 +34808,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "31",
+        "sa": "031",
         "ea": "211",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.0ad8b0c0-cd30-4bca-8fd6-4a05f3a17acc\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -41197,7 +41197,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "27",
+        "sa": "027",
         "ea": "207",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.5b900350-bfd7-4750-85fd-4f12f067f78f\"  allowTransparency=\"true\"></iframe>",
         "ht": true,
@@ -41263,7 +41263,7 @@
         "cip": "../../images/aixm/URNAVTH.svg",
         "ipm": "../../images/aixm/URNAVTH.svg",
         "is": 1.5,
-        "sa": "45",
+        "sa": "045",
         "ea": "226",
         "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/routesegmentclickedinfo.aspx?rsid=uuid.dfa1fa5f-8bca-4b73-9556-a91c8ca6713a\"  allowTransparency=\"true\"></iframe>",
         "ht": true,

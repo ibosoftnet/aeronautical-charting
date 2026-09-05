@@ -46,7 +46,7 @@ from aixm_writer import (  # noqa: E402
 
 JEPPESEN_DIR = BASE_DIR.parent
 SOURCE_DIR = Path(
-    r"D:\ibosoft\aeronautical-charting\aeronautical-data\Jeppesen Data"
+    r"..\..\..\..\Jeppesen Data"
 )
 SQLITE_PATH = SOURCE_DIR / "jeppesen.sqlite"
 # Provenance bilgisi kaynağın yanındaki data.json'dan okunur ve buraya

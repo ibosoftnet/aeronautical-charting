@@ -21013,6 +21013,46 @@
         "coordinates": [
           [
             [
+              32.5775,
+              40.06417
+            ],
+            [
+              32.58333,
+              40.06139
+            ],
+            [
+              32.57306,
+              40.04917
+            ],
+            [
+              32.5775,
+              40.06417
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "properties": {
+        "hi": "LTR50",
+        "t": 6,
+        "kid": "uuid.7d3c33d0-cf9e-4f9f-8aaa-5caff59a0c62",
+        "strclr": "#ED174B",
+        "cil": "<iframe class=\"iframeClickedInfo\" src=\"ClickedInfo/airspace.aspx?rsid=uuid.7d3c33d0-cf9e-4f9f-8aaa-5caff59a0c62\"  allowTransparency=\"true\"></iframe>",
+        "ht": true,
+        "gt": 1,
+        "na": "R",
+        "type": "Restricted",
+        "cip": "../images/aixm/r_icon.png",
+        "pic": "<table><br><b>TYPE : </b>R<br><b>NAME : </b>LTR50<br><b>NAME : </b>BMC OTOMOTIV<br><b>UPPER LIMIT : </b>5500<br><b>UPPER LIMIT REF. : </b>MSL<br><b>LOWER LIMIT : </b>0<br><b>LOWER LIMIT REF. : </b>SFC",
+        "zi": 301
+      },
+      "type": "Feature"
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            [
               28.64194,
               41.10944
             ],
