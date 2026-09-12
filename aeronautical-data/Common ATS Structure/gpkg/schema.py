@@ -288,6 +288,16 @@ ROUTE_INHERITED_COLUMNS = [
     "route_designatorSecondLetter",
     "route_designatorNumber",
     "route_multipleIdentifier",
+    # Route'un adi. `routeSegments`'takiyle BIREBIR ayni ad, boylece iki
+    # katmanda ayni QGIS ifadesi calisir.
+    "route_name",
+    #
+    # `designatorSuffix` BILEREK YOK. Gerekce yapisal: AIXM'de bu alan
+    # `Route`'un degil `RouteSegment`'in oznitelligidir, dolayisiyla
+    # "Route'tan devralinan" bu ailenin uyesi olamaz. Ayrica COP bir
+    # `RoutePortion`'a (segment ARALIGINA) baglidir ve aralikta yer alan
+    # segmentler farkli suffix degerleri tasiyabilir - tek sutuna
+    # indirgenemez (kullanici karari).
 ]
 
 ASSOCIATED_ROUTE_COLUMNS = ["associatedRoute_uuid"] + ROUTE_INHERITED_COLUMNS

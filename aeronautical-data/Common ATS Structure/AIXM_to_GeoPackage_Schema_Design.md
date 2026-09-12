@@ -35,7 +35,7 @@ atlamaktan yeğdir ve yeni bir kaynak geldiğinde şema değişmeden dolar.
 | `navaids` | `Navaid` | POINT | 60 | 9.338 |
 | `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 100 | 13.343 |
 | `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 83 | 92.959 |
-| `changeOverPoints` | `ChangeOverPoint` (+ `RoutePortion`) | LINESTRING | 51 | 100 |
+| `changeOverPoints` | `ChangeOverPoint` (+ `RoutePortion`) | LINESTRING | 52 | 100 |
 
 Her katmanda ayrıca `id` (INTEGER PRIMARY KEY AUTOINCREMENT) ve `geom` (BLOB)
 bulunur; yukarıdaki sütun sayıları bu ikisini içermez.
@@ -123,11 +123,37 @@ AIXM ile GeoPackage arasında doğrudan eşleştirme yapılamıyordu.
 
 | Aile | Ne tutar | `changeOverPoints`'teki sütunlar |
 |---|---|---|
-| `route_*` | Route'tan **devralınan** öznitelikler | `route_designatorPrefix`, `route_designatorSecondLetter`, `route_designatorNumber`, `route_multipleIdentifier` |
+| `route_*` | Route'tan **devralınan** öznitelikler | `route_designatorPrefix`, `route_designatorSecondLetter`, `route_designatorNumber`, `route_multipleIdentifier`, `route_name` |
 | `associatedRoute_uuid` | **İlişkinin kendisi** — Route'un kimliği | tek sütun |
 
 `route_*` adları `routeSegments` katmanındakilerle **birebir aynıdır**, böylece
 iki katman aynı dili konuşur ve aynı QGIS ifadesi ikisinde de çalışır.
+
+> `route_name` kullanıcı isteğiyle sonradan eklendi: COP satırı bağlı rotanın
+> kimliğini taşıyordu ama **adını** taşımıyordu. `routeSegments`'te bulunan
+> diğer beş `route_*` alanı (`locationDesignator`, `type`, `flightRule`,
+> `internationalUse`, `militaryUse`, `militaryTrainingType`) COP'a **bilerek
+> taşınmadı** — kullanıcı kararı, kapsam yalnızca `name` ile sınırlı tutuldu.
+
+#### `designatorSuffix` neden COP'ta yok
+
+Rota kodunun son eki (`UW 12`**`G`**'deki `G`) `routeSegments` katmanında
+`routeSegments_designatorSuffix` olarak bulunur, `changeOverPoints`'te
+bulunmaz. Gerekçe **yapısaldır**, bugünkü verinin doluluğuyla ilgili değildir:
+
+1. **Yanlış feature düzeyi.** AIXM'de `designatorSuffix`, `Route`'un değil
+   **`RouteSegment`'in** özniteliğidir. Bu yüzden "Route'tan devralınan"
+   `route_*` ailesinin üyesi olamaz — oraya konsaydı ad, alanın hangi
+   feature'dan geldiği konusunda yanıltıcı olurdu.
+2. **Aralık içinde tek değer değildir.** COP tek bir segmente değil bir
+   `RoutePortion`'a, yani bir segment **aralığına** bağlıdır. Aralıkta yer alan
+   segmentler birbirinden farklı suffix değerleri taşıyabilir; tek bir sütuna
+   indirgemek hangi segmentin hangi suffix'i taşıdığını gizlerdi.
+
+Taşınması gerekirse doğru yer `route_*` ailesi değil, segment listesiyle
+**aynı sırada** giden virgüllü bir `associatedRouteSegment_*` sütunu olurdu
+(`associatedRouteSegment_id` / `_uuid` ikilisinin üçüncü üyesi). Bugün böyle
+bir sütun açılmadı — kullanıcı kararı.
 Kimlik ayrı durur çünkü `routeSegments`'te öyle bir sütun yoktur — orada Route'un
 kimliği taşınmaz, COP'ta ise gerekir. `route_uuid` gibi bir ad kullanılmaz:
 hiçbir katmanda `<katman>_uuid` biçiminde sütun yoktur, satırın kendi kimliği

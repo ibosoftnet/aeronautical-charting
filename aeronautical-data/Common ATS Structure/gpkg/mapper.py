@@ -393,12 +393,21 @@ def map_route_segment(feature, ts, gml_id, aixm_uuid, prov_entry, route_ts,
 
 # ── changeOverPoints ────────────────────────────────────────────────────────
 
-#: `route_*` sütunlarını besleyen Route alanları — yalnızca rota KİMLİĞİ
-#: (kullanıcı kararı). `routeSegments`'in devraldığı `name`/`type`/`flightRule`
-#: gibi alanlar COP'a taşınmaz. Adlandırma `routeSegments`'teki `route_*`
-#: ailesiyle aynıdır; ilişkinin kendisi ayrı durur (`associatedRoute_uuid`).
+#: `route_*` sütunlarını besleyen Route alanları: rota kimliği + `name`
+#: (kullanıcı kararı). `routeSegments`'in devraldığı `type`/`flightRule`/
+#: `locationDesignator` gibi alanlar COP'a taşınmaz. Adlandırma
+#: `routeSegments`'teki `route_*` ailesiyle aynıdır; ilişkinin kendisi ayrı
+#: durur (`associatedRoute_uuid`).
+#:
+#: `designatorSuffix` BU LİSTEDE YOKTUR ve COP'a hiç taşınmaz. Sebep yapısaldır,
+#: veriyle ilgili değil: AIXM'de `designatorSuffix` `Route`'un değil
+#: **`RouteSegment`'in** özniteliğidir. COP ise tek bir segmente değil bir
+#: `RoutePortion`'a — yani bir segment ARALIĞINA — bağlıdır ve aralıktaki
+#: segmentler birbirinden farklı suffix değerleri taşıyabilir. Tek bir sütuna
+#: indirgemek bu farkı gizler, hangi segmentin hangi suffix'i taşıdığı
+#: kaybolurdu; bu yüzden bilerek atlandı (kullanıcı kararı).
 _COP_ROUTE_FIELDS = ("designatorPrefix", "designatorSecondLetter",
-                     "designatorNumber", "multipleIdentifier")
+                     "designatorNumber", "multipleIdentifier", "name")
 
 
 def _reference(row, prefix, holder, resolve, with_details):
