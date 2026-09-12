@@ -1,0 +1,26 @@
+[
+  {
+    "_aciklama": "Bulgaristan AIP'sinde (ENR 3.3, P727 RNAV 5) IBLAX noktasi kaldirilmis; P727 zinciri artik FENER -> REZOV -> UVUDA seklinde. EAD-SDO bu degisikligi de ALMAMIS ve hala IBLAX'i tasiyor (bulatsa-baklo-efcom.json ile ayni kok neden: Bulgaristan EAD kaydini guncellememis). Bu dort kural eskimis kayitlari cikarir. FENER -> REZOV zaten LT kaynaginda mevcut (LT_RS_1078 ve UP727 icin LT_RS_2349), bu yuzden yerine yalnizca eksik halka REZOV -> UVUDA eklenir (data-sources/tailored-LB). IBLAX'a referans veren feature sayisi olculdu: TAM OLARAK 3, ucu de asagida iptal ediliyor -- iptal kurali remap girdisi uretmedigi icin bu kontrol sart (bkz. Common_Builder_Behaviour.md 4.7).",
+    "layer": "designatedPoints",
+    "match": { "designator": "IBLAX", "type": "ICAO",
+               "originator": "BULATSA-BULGARIAN AIR TRAFFIC SERVICES AUTHORITY" }
+  },
+  {
+    "_aciklama": "EAD_RS_039396. Originator DIKKAT: bu segment EAD'de DHMI TURKIYE adina kayitli (Turkiye tarafi), BULATSA degil.",
+    "layer": "routeSegments",
+    "match": { "route": "P727", "start": "FENER", "end": "IBLAX",
+               "originator": "DHMI TURKIYE" }
+  },
+  {
+    "_aciklama": "EAD_RS_039397.",
+    "layer": "routeSegments",
+    "match": { "route": "P727", "start": "IBLAX", "end": "UVUDA",
+               "originator": "BULATSA-BULGARIAN AIR TRAFFIC SERVICES AUTHORITY" }
+  },
+  {
+    "_aciklama": "EAD_RS_002841. UST hava sahasi rotasi (UP727). Karsiligi olan UP727 FENER -> REZOV de LT kaynaginda zaten var (LT_RS_2349); UP727 Bulgaristan'a girmedigi icin bu yonde yeni segment eklenmez.",
+    "layer": "routeSegments",
+    "match": { "route": "UP727", "start": "FENER", "end": "IBLAX",
+               "originator": "DHMI TURKIYE" }
+  }
+]

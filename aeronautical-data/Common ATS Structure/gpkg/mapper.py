@@ -359,7 +359,9 @@ def map_route_segment(feature, ts, gml_id, aixm_uuid, prov_entry, route_ts,
                 if href and href.startswith("urn:uuid:"):
                     hit = resolve(href[len("urn:uuid:"):].upper())
                     if hit:
-                        layer, row_id, designator = hit
+                        # `resolved` 5 alan taşır (ad/tip `changeOverPoints`
+                        # için eklendi); segment ilk üçünü kullanır.
+                        layer, row_id, designator = hit[:3]
                         row[f"{prefix}PointLayer"] = layer
                         row[f"{prefix}PointId"] = row_id
                         row[f"{prefix}PointDesignator"] = designator
@@ -387,3 +389,134 @@ def map_route_segment(feature, ts, gml_id, aixm_uuid, prov_entry, route_ts,
         if len(nums) >= 4 and len(nums) % 2 == 0:
             positions = list(zip(nums[0::2], nums[1::2]))
     return row, positions
+
+
+# ── changeOverPoints ────────────────────────────────────────────────────────
+
+#: `route_*` sütunlarını besleyen Route alanları — yalnızca rota KİMLİĞİ
+#: (kullanıcı kararı). `routeSegments`'in devraldığı `name`/`type`/`flightRule`
+#: gibi alanlar COP'a taşınmaz. Adlandırma `routeSegments`'teki `route_*`
+#: ailesiyle aynıdır; ilişkinin kendisi ayrı durur (`associatedRoute_uuid`).
+_COP_ROUTE_FIELDS = ("designatorPrefix", "designatorSecondLetter",
+                     "designatorNumber", "multipleIdentifier")
+
+
+def _reference(row, prefix, holder, resolve, with_details):
+    """`RoutePortion`'daki bir choice referansını sütunlara çözer.
+
+    `holder`: içinde `xlink:href` taşıyan eleman (`start_navaidSystem` gibi).
+    `with_details`: ad/tip sütunları da doldurulsun mu (uç noktalarda evet).
+
+    Hedef bulunamazsa sütunlar boş kalır — uydurma yapılmaz.
+    """
+    if holder is None:
+        return
+    href = holder.get(X + "href")
+    if not href or not href.startswith("urn:uuid:"):
+        return
+    uuid_value = href[len("urn:uuid:"):].strip().upper()
+    # Uuid HER ZAMAN yazılır: hedef bu GeoPackage'da bir satıra çözülemese
+    # bile (örneğin pist noktası gibi katmanı olmayan bir tip) referansın
+    # kendisi kaybolmamalı.
+    row[f"{prefix}Uuid"] = uuid_value
+
+    hit = resolve(uuid_value)
+    if not hit:
+        return
+    layer, row_id, designator, name, type_ = hit
+    row[f"{prefix}Layer"] = layer
+    row[f"{prefix}Id"] = row_id
+    row[f"{prefix}Designator"] = designator
+    if with_details:
+        row[f"{prefix}Name"] = name
+        row[f"{prefix}Type"] = type_
+
+
+def map_change_over_point(feature, ts, gml_id, aixm_uuid, prov_entry, route_ts,
+                          resolve, portion):
+    """ChangeOverPoint → satır + geometri koordinatları.
+
+    `resolve(uuid)` → `(layer, row_id, designator, name, type)`
+    `portion`       : `gpkg.route_portion.Portion` ya da None
+
+    Geometri COP'un kendi konumu DEĞİL, geçerli olduğu rota aralığının
+    çizgisidir (bkz. modül `gpkg/route_portion.py`). `portion` None ise satır
+    yine yazılır, geometri boş kalır — çağıran taraf loglar.
+    """
+    row = {"aixm_gml_id": gml_id, "aixm_uuid": aixm_uuid}
+
+    value, uom = value_uom(ts, "distance")
+    row["changeOverPoints_distance"] = number(value)
+    row["changeOverPoints_distanceUom"] = uom
+
+    # İkinci mesafe çekirdek AIXM'de yoktur; bu projenin extension'ından gelir
+    # (bkz. schemas/ibosoftais-extension.xsd).
+    for ext in ts.findall(A + "extension"):
+        for child in ext.iter():
+            if local(child.tag) == "distanceFromEnd":
+                row["changeOverPoints_distanceFromEnd"] = number(
+                    child.text.strip() if child.text else None)
+                row["changeOverPoints_distanceFromEndUom"] = child.get("uom")
+                break
+
+    # COP'un KENDİ konumu (opsiyonel, bu kaynakta hiç yok). İki yüzü ayrı
+    # taşınır: ham koordinat ve çözülmüş referans. Koordinat referanstan
+    # TÜRETİLMEZ — yalnızca AIXM'de gerçekten yazılmışsa dolar.
+    for child in ts:
+        name = local(child.tag)
+        if not name.startswith("location_"):
+            continue
+        if name == "location_position":
+            pos = child.find(".//" + G + "pos")
+            if pos is not None and pos.text:
+                parts = pos.text.split()
+                if len(parts) >= 2:
+                    row["changeOverPoints_locationLatitude"] = number(parts[0])
+                    row["changeOverPoints_locationLongitude"] = number(parts[1])
+        else:
+            _reference(row, "changeOverPoints_location", child, resolve, False)
+        break
+
+    portion_el = ts.find(A + "applicableRoutePortion")
+    portion_el = (portion_el.find(A + "RoutePortion")
+                  if portion_el is not None else None)
+    if portion_el is not None:
+        for child in portion_el:
+            name = local(child.tag)
+            if name.startswith("start_"):
+                _reference(row, "changeOverPoints_startPoint", child,
+                           resolve, True)
+            elif name.startswith("end_"):
+                _reference(row, "changeOverPoints_endPoint", child,
+                           resolve, True)
+            elif name.startswith("intermediatePoint_"):
+                _reference(row, "changeOverPoints_intermediatePoint", child,
+                           resolve, False)
+            elif name == "referencedRoute":
+                href = child.get(X + "href")
+                if href and href.startswith("urn:uuid:"):
+                    row["associatedRoute_uuid"] = \
+                        href[len("urn:uuid:"):].strip().upper()
+
+    for name in _COP_ROUTE_FIELDS:
+        row[f"route_{name}"] = text(route_ts, name)
+
+    if portion is not None:
+        row["associatedRouteSegment_id"] = schema.LIST_SEPARATOR.join(
+            str(i) for i in portion.row_ids)
+        row["associatedRouteSegment_uuid"] = schema.LIST_SEPARATOR.join(
+            portion.uuids)
+        # QGIS sembolü ÇİZGİ BOYUNCA yüzdeyle kaydırır; payda bu yüzden
+        # çizginin kendi uzunluğudur, yayımlanan mesafelerin toplamı değil.
+        distance = row["changeOverPoints_distance"]
+        if distance is not None and portion.length_nm > 0:
+            row["copSymbology_offsetPercent"] = round(
+                float(distance) / portion.length_nm * 100.0, 6)
+
+    # COP'un kendi notları, ardından bağlı Route'un notları (routeSegments ile
+    # aynı desen — ikisi de aynı 4 purpose sütununda birleşir).
+    annotations(ts, row)
+    annotations(route_ts, row)
+    provenance(row, prov_entry)
+
+    return row, (portion.coords if portion is not None else None)

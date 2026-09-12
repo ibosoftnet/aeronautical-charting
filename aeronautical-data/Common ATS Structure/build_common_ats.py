@@ -574,6 +574,14 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
     prov = ProvenanceWriter(prov_path)
     stats = Counter()
 
+    # ChangeOverPoint referans denetimi. COP, referansları iç içe bir AIXM
+    # *Object* (`RoutePortion`) içinde duran ILK feature'dır; doğruluğu tamamen
+    # `apply_remap`'in derinlikten bağımsız olmasına dayanır. Bu iki yapı o
+    # örtük sözleşmeyi ölçülebilir kılar: yazılan her UUID toplanır, COP'un
+    # referansları yazım bitince onunla uzlaştırılır.
+    written_uuids: set[str] = set()
+    cop_refs: list[tuple[str, str, str]] = []   # (cop_gml_id, alan, hedef_uuid)
+
     def apply_remap(member):
         """Override edilmiş hedeflere giden referansları yenisine yönlendirir."""
         if not remap:
@@ -590,6 +598,15 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
     def emit(member, info, source):
         """Bir feature'ı (gerekiyorsa antimeridyen bölmesiyle) yazar."""
         apply_remap(member)
+
+        # Referanslar apply_remap'ten SONRA okunur — denetlenen şey kaynak
+        # dosyadaki değil, birleşik dosyaya GERÇEKTEN yazılan hedeftir.
+        if info["kind"] == "ChangeOverPoint":
+            refs = rdr.route_portion_refs(rdr.time_slice(rdr.feature_of(member)))
+            for alan in ("start_uuid", "route_uuid", "end_uuid"):
+                if refs.get(alan):
+                    cop_refs.append((info["gml_id"], alan, refs[alan]))
+
         meta = source["meta"]
         originator = source["originators"].get(
             info["gml_id"], meta.get("data_originator", ""))
@@ -608,12 +625,19 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
             for piece in pieces:
                 piece_feature = rdr.feature_of(piece)
                 writer.write_member(piece)
+                # Bölünen parçalar TÜRETİLMİŞ uuid alır (antimeridian.py);
+                # dosyaya giren kimlik parçanın kendisininkidir.
+                piece_uuid = rdr.uuid_of(piece_feature)
+                if piece_uuid:
+                    written_uuids.add(piece_uuid)
                 prov.add(rdr.gml_id_of(piece_feature),
                          meta.get("data_provider", ""), originator,
                          meta.get("data_effectivity", ""))
                 stats[f'yazildi_{rdr.local(piece_feature.tag)}'] += 1
         else:
             writer.write_member(member)
+            if info["uuid"]:
+                written_uuids.add(info["uuid"])
             prov.add(info["gml_id"], meta.get("data_provider", ""), originator,
                      meta.get("data_effectivity", ""))
             stats[f'yazildi_{info["kind"]}'] += 1
@@ -706,6 +730,25 @@ def run_merge(cfg: dict, root: Path, log: BuildLog) -> dict:
         stats["ek_yazildi"] += written
         stats["ana_kaynak_kazandi"] += skipped
 
+    # -- ChangeOverPoint referans bütünlüğü --
+    # Düşen bir hedefe giden referans normalde `remap` ile kazanana yönlenir.
+    # Tek istisna iptal (exclude) kuralıdır: o yol `remap` girdisi ÜRETMEZ,
+    # hedefin UUID'si dosyadan yok olur ve referans boşta kalır. Böyle bir
+    # durumda COP **yazılmaya devam eder** (kullanıcı kararı: kayıt düşürülmez,
+    # boşluk görünür kılınır) ve kırık referans loglanır.
+    if cop_refs:
+        kirik = 0
+        for cop_gml_id, alan, hedef in cop_refs:
+            if hedef in written_uuids:
+                continue
+            kirik += 1
+            log.error("2A", "changeOverPoints", cop_gml_id, alan, hedef,
+                      "cop_referansi_birlesik_dosyada_yok")
+        stats["cop_referansi_denetlendi"] = len(cop_refs)
+        stats["cop_referansi_kirik"] = kirik
+        print(f"  {'ChangeOverPoint referansi':10} denetlendi={len(cop_refs)} "
+              f"kirik={kirik}")
+
     writer.close()
     prov.close()
 
@@ -745,6 +788,51 @@ _ATS_STATUS_SET = (
     ' "atsStatus_depictionNav"=?,'
     ' "atsStatus_depictionSIGPointBasicFunc"=?,'
     ' "atsStatus_depictionNavAndREP"=?')
+
+
+#: COP icin yalnizca ORTAK yedili guncellenir (bkz. schema
+#: ATS_STATUS_ASSOCIATED_COLUMNS) — kapi alani ve `depiction*` ailesi COP'ta yok.
+_ATS_STATUS_ASSOCIATED_SET = (
+    ' "atsStatus_associatedLevelUpper"=?,'
+    ' "atsStatus_associatedLevelLower"=?,'
+    ' "atsStatus_associatedLevelBoth"=?,'
+    ' "atsStatus_associatedLevelOther"=?,'
+    ' "atsStatus_associatedTypeAts"=?,'
+    ' "atsStatus_associatedTypeNat"=?,'
+    ' "atsStatus_associatedTypeOther"=?')
+
+
+def _gercek_other(degerler):
+    """AIXM'de `OTHER` ya da `OTHER:<kod>` olan gercek bir deger var mi.
+
+    Eksik/bos deger buraya KATKI VERMEZ — `Other` bayragi bir fallback
+    degildir (kullanici karari).
+    """
+    return any(v == "OTHER" or v.startswith("OTHER:") for v in degerler)
+
+
+def associated_flags(levels, route_types):
+    """`atsStatus_associated*` yedilisi: (Upper, Lower, Both, Other,
+    Ats, Nat, TypeOther).
+
+    Her biri BAGIMSIZ bir bayraktir — "iliskili segmentlerden EN AZ BIRI bu
+    seviyede/tipte mi". `Both` yalnizca ham `level=BOTH` varsa 1 olur,
+    UPPER+LOWER birlesiminden TURETILMEZ.
+
+    Uc katman da bunu kullanir; yalnizca `levels`/`route_types` kumelerinin
+    NEREDEN toplandigi degisir:
+      * `designatedPoints`/`navaids` — noktanin uc oldugu segmentler
+      * `changeOverPoints`           — COP'un ARALIGINDAKI segmentler
+    """
+    return (
+        1 if "UPPER" in levels else 0,
+        1 if "LOWER" in levels else 0,
+        1 if "BOTH" in levels else 0,
+        1 if _gercek_other(levels) else 0,
+        1 if "ATS" in route_types else 0,
+        1 if "NAT" in route_types else 0,
+        1 if _gercek_other(route_types) else 0,
+    )
 
 
 def depiction_nav(layer, point_type, nav_types):
@@ -946,15 +1034,7 @@ def compute_ats_status(con, log=None):
 
             payload.append((
                 1,
-                1 if "UPPER" in levels else 0,
-                1 if "LOWER" in levels else 0,
-                1 if "BOTH" in levels else 0,
-                1 if any(v == "OTHER" or v.startswith("OTHER:")
-                         for v in levels) else 0,
-                1 if "ATS" in route_types else 0,
-                1 if "NAT" in route_types else 0,
-                1 if any(v == "OTHER" or v.startswith("OTHER:")
-                         for v in route_types) else 0,
+                *associated_flags(levels, route_types),
                 json.dumps(reports, ensure_ascii=False) if reports else None,
                 compulsory,
                 nav_class, sig_func, nav_and_rep, row_id))
@@ -994,9 +1074,73 @@ def write_associated_components(cur, reverse):
     cur.executemany(sql, payload)
 
 
+def compute_cop_ats_status(con, log=None):
+    """`changeOverPoints` icin `atsStatus_associated*` yedilisini turetir.
+
+    Kaynak, COP'un ARALIGINDAKI segmentlerdir — `associatedRouteSegment_id`
+    sutunundaki gpkg satir id'leri (kullanici karari). Bagli Route'un TAMAMI
+    kullanilmaz: COP'un cizgisi rotanin yalnizca bir parcasidir, bayraklar da
+    o parcayi tarif etmelidir; aksi halde satirin bayraklariyla geometrisi
+    uyusmazdi.
+
+    KAPI: aralik kurulamamissa (liste bos ya da hicbir id cozulemiyorsa) yedi
+    alan da NULL kalir — `0` DEGIL. `designatedPoints`/`navaids`'teki
+    "bagli degil" ile "bagli ama bilgi yok" ayrimiyla birebir ayni
+    (kullanici karari). Bu satirlar sessizce gecilmez, loglanir.
+
+    `routeSegments` ve `changeOverPoints` yazildiktan SONRA calisir.
+    """
+    from gpkg import schema                 # run_gpkg ile ayni desen
+
+    cur = con.cursor()
+    cur.execute('SELECT id, routeSegments_level, route_type FROM routeSegments')
+    segment = {sid: (level, rtype) for sid, level, rtype in cur.fetchall()}
+
+    cur.execute('SELECT id, associatedRouteSegment_id, aixm_gml_id'
+                ' FROM changeOverPoints')
+    payload = []
+    araliksiz = 0
+    for row_id, seg_ids, gml_id in cur.fetchall():
+        levels, route_types = set(), set()
+        for parca in (seg_ids or "").split(schema.LIST_SEPARATOR):
+            parca = parca.strip()
+            if not parca:
+                continue
+            try:
+                bilgi = segment.get(int(parca))
+            except ValueError:
+                bilgi = None
+            if bilgi is None:
+                continue
+            level, rtype = bilgi
+            if level:
+                levels.add(level)
+            if rtype:
+                route_types.add(rtype)
+
+        if not levels and not route_types:
+            # Aralik yok ya da cozulemedi: yedi alan da NULL.
+            araliksiz += 1
+            if log:
+                log.error("2B", "changeOverPoints", gml_id,
+                          "associatedRouteSegment_id", str(seg_ids),
+                          "cop_ats_status_aralik_yok")
+            payload.append((None,) * 7 + (row_id,))
+            continue
+
+        payload.append(associated_flags(levels, route_types) + (row_id,))
+
+    cur.executemany('UPDATE "changeOverPoints" SET'
+                    + _ATS_STATUS_ASSOCIATED_SET + ' WHERE id=?', payload)
+    con.commit()
+    print(f"  {'changeOverPoints':18} satir={len(payload)} "
+          f"aralik ile iliskili={len(payload) - araliksiz}")
+    return {"satir": len(payload), "araliksiz": araliksiz}
+
+
 def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
     """Birleşik AIXM + provenance → GeoPackage (saf şema eşlemesi)."""
-    from gpkg import mapper, schema
+    from gpkg import mapper, route_portion, schema
     from gpkg.validate import validate_row
 
     merged_path = root / cfg["merged_aixm"]
@@ -1030,6 +1174,13 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
     # navaid satır id → {ekipman tipi: [navaidComponents satır id, …]}
     # `associatedComponent_<Tip>` ters bağını doldurmak için 2. geçişte birikir.
     reverse: dict[int, dict] = {}
+    # ChangeOverPoint'ler 1. geçişte toplanır, 4. geçişte yazılır (geometrileri
+    # segmentlerden kurulduğu için). `cop_route_uuids`, 3. geçişte hangi
+    # rotaların segment topolojisinin saklanacağını belirler — böylece 93.000
+    # segmentin tamamı değil, yalnızca COP'lu rotalarınki bellekte tutulur.
+    cops: list[dict] = []
+    cop_route_uuids: set[str] = set()
+    cop_segments: dict[str, list] = {}
 
     # -- 1. geçiş: designatedPoints, navaids, Route alanları, bileşen bağları --
     print("\n[1] Noktalar ve navaid'ler yaziliyor...")
@@ -1050,7 +1201,9 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
             geom = schema.point_blob(position[1], position[0]) if position else None
             row_id = schema.insert_row(cur, "designatedPoints", row, geom)
             resolved[uid] = ("designatedPoints", row_id,
-                             row.get("designatedPoints_designator"))
+                             row.get("designatedPoints_designator"),
+                             row.get("designatedPoints_name"),
+                             row.get("designatedPoints_type"))
             counts["designatedPoints"] += 1
 
         elif kind == "Navaid":
@@ -1058,7 +1211,8 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
             row = validate_row("navaids", row, log, gml_id)
             geom = schema.point_blob(position[1], position[0]) if position else None
             row_id = schema.insert_row(cur, "navaids", row, geom)
-            resolved[uid] = ("navaids", row_id, row.get("navaids_designator"))
+            resolved[uid] = ("navaids", row_id, row.get("navaids_designator"),
+                             row.get("navaids_name"), row.get("navaids_type"))
             counts["navaids"] += 1
             for holder in ts.findall(rdr.A + "navaidEquipment"):
                 component = holder.find(rdr.A + "NavaidComponent")
@@ -1073,6 +1227,17 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
 
         elif kind == "Route":
             routes[uid] = copy.deepcopy(ts)
+
+        elif kind == "ChangeOverPoint":
+            # COP satırları 4. geçişte yazılır: geometrisi rota aralığının
+            # çizgisidir ve o çizgi ancak segmentler (3. geçiş) okunduktan
+            # sonra kurulabilir. Ayrı bir dosya geçişine gerek yok — feature
+            # burada zaten elimizde.
+            refs = rdr.route_portion_refs(ts)
+            cops.append({"gml_id": gml_id, "uuid": uid, "entry": entry,
+                         "ts": copy.deepcopy(ts), "refs": refs})
+            if refs["route_uuid"]:
+                cop_route_uuids.add(refs["route_uuid"])
 
     con.commit()
     print(f"  designatedPoints={counts['designatedPoints']} "
@@ -1135,14 +1300,65 @@ def run_gpkg(cfg: dict, root: Path, log: BuildLog) -> dict:
             if row.get(f"routeSegments_{side}PointId") is None:
                 unresolved += 1
         geom = schema.linestring_blob(positions) if positions else None
-        schema.insert_row(cur, "routeSegments", row, geom)
+        segment_row_id = schema.insert_row(cur, "routeSegments", row, geom)
         counts["routeSegments"] += 1
+
+        # COP'u olan rotaların segment topolojisi saklanır (4. geçiş için).
+        if route_uuid in cop_route_uuids:
+            start_uuid, _ = rdr.endpoint_ref(ts, "start")
+            end_uuid, _ = rdr.endpoint_ref(ts, "end")
+            cop_segments.setdefault(route_uuid, []).append({
+                "start_uuid": start_uuid, "end_uuid": end_uuid,
+                "positions": positions, "row_id": segment_row_id,
+                "uuid": uid,
+            })
     con.commit()
     print(f"  routeSegments={counts['routeSegments']} "
           f"(cozulmemis uc nokta={unresolved})")
 
+    # -- 4. geçiş: changeOverPoints --
+    # Geometri COP'un kendi konumu DEĞİL, geçerli olduğu rota aralığının
+    # çizgisidir ve `RoutePortion.start` ucundan başlar (yön kritik).
+    if cops:
+        print("\n[4] Change over point'ler yaziliyor...")
+        geometrili = belirsiz = cozulemedi = 0
+        for cop in cops:
+            refs = cop["refs"]
+            portion = None
+            try:
+                portion = route_portion.build(
+                    cop_segments.get(refs["route_uuid"] or "", []),
+                    refs["start_uuid"], refs["end_uuid"],
+                    refs.get("intermediate_uuid"))
+            except route_portion.Ambiguous as exc:
+                # Rota dallanıyor ve ara nokta verilmemiş: SEÇİM YAPILMAZ.
+                # Yanlış kolu çizmek sessiz bir veri hatası olurdu.
+                belirsiz += 1
+                log.error("2B", "changeOverPoints", cop["gml_id"], "geometry",
+                          str(exc), "cop_rota_araliginda_birden_fazla_yol")
+            row, coords = mapper.map_change_over_point(
+                None, cop["ts"], cop["gml_id"], cop["uuid"], cop["entry"],
+                routes.get(refs["route_uuid"] or ""), resolved.get, portion)
+            row = validate_row("changeOverPoints", row, log, cop["gml_id"])
+            if coords:
+                geometrili += 1
+            elif portion is None:
+                # Zincir hiç kurulamadı. Kayıt YİNE yazılır, geometri boş
+                # kalır — görünür boşluk bırakılır (§5.1 emsali).
+                cozulemedi += 1
+                log.error("2B", "changeOverPoints", cop["gml_id"], "geometry",
+                          refs["route_uuid"], "cop_rota_araligi_cozulemedi")
+            geom = schema.linestring_blob(coords) if coords else None
+            schema.insert_row(cur, "changeOverPoints", row, geom)
+            counts["changeOverPoints"] += 1
+        con.commit()
+        print(f"  changeOverPoints={counts['changeOverPoints']} "
+              f"(geometrili={geometrili}, birden fazla yol={belirsiz}, "
+              f"cozulemedi={cozulemedi})")
+
     print("\n[4] atsStatus_* alanlari turetiliyor...")
     compute_ats_status(con, log)
+    compute_cop_ats_status(con, log)
 
     print("\n[5] navaidLabeling_* alanlari turetiliyor...")
     navaid_labeling.compute(con, log)

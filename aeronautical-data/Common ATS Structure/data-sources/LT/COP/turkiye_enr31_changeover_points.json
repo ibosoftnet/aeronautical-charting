@@ -1,0 +1,173 @@
+{
+  "source": "AIP TURKIYE ENR 3.1 - Conventional Navigation Routes (Lower: ENR 3.1.1, Upper: ENR 3.1.2)",
+  "source_file": "ENR-3-1 Conventional navigation routes (1).pdf",
+  "extracted_note": "Her kayit bir 'Change over point BTN' (COP) satirini temsil eder. Bir ATS yolunda birden fazla COP olabilir. Bu belgede rastlanan tum COP'larda her iki nokta icin de mesafe verilmis; vor_1_mesafe_nm veya vor_2_mesafe_nm bos (null) olabilir (belgede boyle bir durum yoktu ama alan yapisi buna izin verir).",
+  "changeover_points": [
+    { "ilişkili_ats_yolu": "A4",   "vor_1": "BUK", "vor_1_mesafe_nm": 80,  "vor_2": "SIV", "vor_2_mesafe_nm": 97 },
+    { "ilişkili_ats_yolu": "A4",   "vor_1": "ERZ", "vor_1_mesafe_nm": 65,  "vor_2": "VAN", "vor_2_mesafe_nm": 68 },
+
+    { "ilişkili_ats_yolu": "A16",  "vor_1": "KFK", "vor_1_mesafe_nm": 55,  "vor_2": "AYT", "vor_2_mesafe_nm": 59 },
+
+    { "ilişkili_ats_yolu": "A28",  "vor_1": "INB", "vor_1_mesafe_nm": 55,  "vor_2": "BAG", "vor_2_mesafe_nm": 65 },
+    { "ilişkili_ats_yolu": "A28",  "vor_1": "BAG", "vor_1_mesafe_nm": 92,  "vor_2": "MUT", "vor_2_mesafe_nm": 102 },
+
+    { "ilişkili_ats_yolu": "A285", "vor_1": "MUT", "vor_1_mesafe_nm": 94,  "vor_2": "GEM", "vor_2_mesafe_nm": 94 },
+    { "ilişkili_ats_yolu": "A285", "vor_1": "GEM", "vor_1_mesafe_nm": 28,  "vor_2": "SIV", "vor_2_mesafe_nm": 27 },
+
+    { "ilişkili_ats_yolu": "B36",  "vor_1": "GEM", "vor_1_mesafe_nm": 74,  "vor_2": "GAZ", "vor_2_mesafe_nm": 75 },
+
+    { "ilişkili_ats_yolu": "B111", "vor_1": "TBN", "vor_1_mesafe_nm": 90,  "vor_2": "KAR", "vor_2_mesafe_nm": 63 },
+
+    { "ilişkili_ats_yolu": "B545", "vor_1": "KFK", "vor_1_mesafe_nm": 91,  "vor_2": "MUT", "vor_2_mesafe_nm": 84 },
+
+    { "ilişkili_ats_yolu": "G8",   "vor_1": "YAA", "vor_1_mesafe_nm": 72,  "vor_2": "BAG", "vor_2_mesafe_nm": 95 },
+    { "ilişkili_ats_yolu": "G8",   "vor_1": "BAG", "vor_1_mesafe_nm": 109, "vor_2": "GEM", "vor_2_mesafe_nm": 50 },
+    { "ilişkili_ats_yolu": "G8",   "vor_1": "GEM", "vor_1_mesafe_nm": 75,  "vor_2": "EZS", "vor_2_mesafe_nm": 76 },
+    { "ilişkili_ats_yolu": "G8",   "vor_1": "EZS", "vor_1_mesafe_nm": 67,  "vor_2": "SRT", "vor_2_mesafe_nm": 67 },
+
+    { "ilişkili_ats_yolu": "G12",  "vor_1": "EKI", "vor_1_mesafe_nm": 43,  "vor_2": "YAA", "vor_2_mesafe_nm": 43 },
+
+    { "ilişkili_ats_yolu": "G80",  "vor_1": "EKI", "vor_1_mesafe_nm": 20,  "vor_2": "BIG", "vor_2_mesafe_nm": 20 },
+    { "ilişkili_ats_yolu": "G80",  "vor_1": "BIG", "vor_1_mesafe_nm": 49,  "vor_2": "IMR", "vor_2_mesafe_nm": 70 },
+
+    { "ilişkili_ats_yolu": "G81",  "vor_1": "EZS", "vor_1_mesafe_nm": 96,  "vor_2": "VAN", "vor_2_mesafe_nm": 97 },
+
+    { "ilişkili_ats_yolu": "R32",  "vor_1": "KFK", "vor_1_mesafe_nm": 40,  "vor_2": "HAY", "vor_2_mesafe_nm": 59 },
+
+    { "ilişkili_ats_yolu": "R55",  "vor_1": "AYT", "vor_1_mesafe_nm": 60,  "vor_2": "MUT", "vor_2_mesafe_nm": 60 },
+
+    { "ilişkili_ats_yolu": "W27",  "vor_1": "ERZ", "vor_1_mesafe_nm": 47,  "vor_2": "KAR", "vor_2_mesafe_nm": 47 },
+
+    { "ilişkili_ats_yolu": "W71",  "vor_1": "BUK", "vor_1_mesafe_nm": 114, "vor_2": "CRM", "vor_2_mesafe_nm": 54 },
+    { "ilişkili_ats_yolu": "W71",  "vor_1": "CRM", "vor_1_mesafe_nm": 90,  "vor_2": "TBN", "vor_2_mesafe_nm": 58 },
+    { "ilişkili_ats_yolu": "W71",  "vor_1": "TBN", "vor_1_mesafe_nm": 45,  "vor_2": "ERZ", "vor_2_mesafe_nm": 45 },
+    { "ilişkili_ats_yolu": "W71",  "vor_1": "ERZ", "vor_1_mesafe_nm": 33,  "vor_2": "MUS", "vor_2_mesafe_nm": 42 },
+
+    { "ilişkili_ats_yolu": "W72",  "vor_1": "CRM", "vor_1_mesafe_nm": 45,  "vor_2": "SIV", "vor_2_mesafe_nm": 45 },
+
+    { "ilişkili_ats_yolu": "W73",  "vor_1": "GEM", "vor_1_mesafe_nm": 66,  "vor_2": "ERH", "vor_2_mesafe_nm": 40 },
+    { "ilişkili_ats_yolu": "W73",  "vor_1": "ERH", "vor_1_mesafe_nm": 40,  "vor_2": "DYB", "vor_2_mesafe_nm": 65 },
+    { "ilişkili_ats_yolu": "W73",  "vor_1": "DYB", "vor_1_mesafe_nm": 46,  "vor_2": "MUS", "vor_2_mesafe_nm": 40 },
+
+    { "ilişkili_ats_yolu": "W74",  "vor_1": "MUT", "vor_1_mesafe_nm": 48,  "vor_2": "ADA", "vor_2_mesafe_nm": 46 },
+    { "ilişkili_ats_yolu": "W74",  "vor_1": "ADA", "vor_1_mesafe_nm": 50,  "vor_2": "GAZ", "vor_2_mesafe_nm": 58 },
+
+    { "ilişkili_ats_yolu": "W75",  "vor_1": "BAG", "vor_1_mesafe_nm": 119, "vor_2": "ADA", "vor_2_mesafe_nm": 100 },
+
+    { "ilişkili_ats_yolu": "W77",  "vor_1": "BAG", "vor_1_mesafe_nm": 121, "vor_2": "AYT", "vor_2_mesafe_nm": 90 },
+
+    { "ilişkili_ats_yolu": "W88",  "vor_1": "ERN", "vor_1_mesafe_nm": 20,  "vor_2": "EZS", "vor_2_mesafe_nm": 42 },
+    { "ilişkili_ats_yolu": "W88",  "vor_1": "EZS", "vor_1_mesafe_nm": 41,  "vor_2": "GAP", "vor_2_mesafe_nm": 35 },
+
+    { "ilişkili_ats_yolu": "W91",  "vor_1": "IST", "vor_1_mesafe_nm": 150, "vor_2": "CRD", "vor_2_mesafe_nm": 45 },
+
+    { "ilişkili_ats_yolu": "W92",  "vor_1": "BIG", "vor_1_mesafe_nm": 25,  "vor_2": "CNK", "vor_2_mesafe_nm": 19 },
+
+    { "ilişkili_ats_yolu": "W94",  "vor_1": "ARI", "vor_1_mesafe_nm": 40,  "vor_2": "ERZ", "vor_2_mesafe_nm": 46 },
+
+    { "ilişkili_ats_yolu": "W159", "vor_1": "ARI", "vor_1_mesafe_nm": 19,  "vor_2": "GDR", "vor_2_mesafe_nm": 25 },
+
+    { "ilişkili_ats_yolu": "W701", "vor_1": "ERZ", "vor_1_mesafe_nm": 59,  "vor_2": "EZS", "vor_2_mesafe_nm": 60 },
+    { "ilişkili_ats_yolu": "W701", "vor_1": "EZS", "vor_1_mesafe_nm": 80,  "vor_2": "GAZ", "vor_2_mesafe_nm": 54 },
+
+    { "ilişkili_ats_yolu": "W702", "vor_1": "INB", "vor_1_mesafe_nm": 54,  "vor_2": "BKZ", "vor_2_mesafe_nm": 157 },
+
+    { "ilişkili_ats_yolu": "W710", "vor_1": "SIV", "vor_1_mesafe_nm": 63,  "vor_2": "EZS", "vor_2_mesafe_nm": 63 },
+
+    { "ilişkili_ats_yolu": "W715", "vor_1": "BKZ", "vor_1_mesafe_nm": 28,  "vor_2": "BRY", "vor_2_mesafe_nm": 28 },
+
+    { "ilişkili_ats_yolu": "W716", "vor_1": "GAZ", "vor_1_mesafe_nm": 40,  "vor_2": "GAP", "vor_2_mesafe_nm": 35 },
+    { "ilişkili_ats_yolu": "W716", "vor_1": "GAP", "vor_1_mesafe_nm": 35,  "vor_2": "DYB", "vor_2_mesafe_nm": 32 },
+
+    { "ilişkili_ats_yolu": "W717", "vor_1": "ADA", "vor_1_mesafe_nm": 48,  "vor_2": "HTY", "vor_2_mesafe_nm": 15 },
+
+    { "ilişkili_ats_yolu": "UA4",   "vor_1": "BUK", "vor_1_mesafe_nm": 80,  "vor_2": "SIV", "vor_2_mesafe_nm": 97 },
+    { "ilişkili_ats_yolu": "UA4",   "vor_1": "ERZ", "vor_1_mesafe_nm": 65,  "vor_2": "VAN", "vor_2_mesafe_nm": 68 },
+
+    { "ilişkili_ats_yolu": "UA16",  "vor_1": "KFK", "vor_1_mesafe_nm": 55,  "vor_2": "AYT", "vor_2_mesafe_nm": 59 },
+
+    { "ilişkili_ats_yolu": "UA28",  "vor_1": "INB", "vor_1_mesafe_nm": 55,  "vor_2": "BAG", "vor_2_mesafe_nm": 65 },
+    { "ilişkili_ats_yolu": "UA28",  "vor_1": "BAG", "vor_1_mesafe_nm": 92,  "vor_2": "MUT", "vor_2_mesafe_nm": 102 },
+
+    { "ilişkili_ats_yolu": "UA285", "vor_1": "MUT", "vor_1_mesafe_nm": 94,  "vor_2": "GEM", "vor_2_mesafe_nm": 94 },
+    { "ilişkili_ats_yolu": "UA285", "vor_1": "GEM", "vor_1_mesafe_nm": 28,  "vor_2": "SIV", "vor_2_mesafe_nm": 27 },
+
+    { "ilişkili_ats_yolu": "UB36",  "vor_1": "GEM", "vor_1_mesafe_nm": 74,  "vor_2": "GAZ", "vor_2_mesafe_nm": 75 },
+
+    { "ilişkili_ats_yolu": "UB111", "vor_1": "TBN", "vor_1_mesafe_nm": 90,  "vor_2": "KAR", "vor_2_mesafe_nm": 63 },
+
+    { "ilişkili_ats_yolu": "UB545", "vor_1": "KFK", "vor_1_mesafe_nm": 91,  "vor_2": "MUT", "vor_2_mesafe_nm": 84 },
+
+    { "ilişkili_ats_yolu": "UG8",   "vor_1": "YAA", "vor_1_mesafe_nm": 72,  "vor_2": "BAG", "vor_2_mesafe_nm": 95 },
+    { "ilişkili_ats_yolu": "UG8",   "vor_1": "BAG", "vor_1_mesafe_nm": 109, "vor_2": "GEM", "vor_2_mesafe_nm": 50 },
+    { "ilişkili_ats_yolu": "UG8",   "vor_1": "GEM", "vor_1_mesafe_nm": 75,  "vor_2": "EZS", "vor_2_mesafe_nm": 76 },
+    { "ilişkili_ats_yolu": "UG8",   "vor_1": "EZS", "vor_1_mesafe_nm": 67,  "vor_2": "SRT", "vor_2_mesafe_nm": 67 },
+
+    { "ilişkili_ats_yolu": "UG12",  "vor_1": "EKI", "vor_1_mesafe_nm": 43,  "vor_2": "YAA", "vor_2_mesafe_nm": 43 },
+
+    { "ilişkili_ats_yolu": "UG80",  "vor_1": "EKI", "vor_1_mesafe_nm": 20,  "vor_2": "BIG", "vor_2_mesafe_nm": 20 },
+    { "ilişkili_ats_yolu": "UG80",  "vor_1": "BIG", "vor_1_mesafe_nm": 49,  "vor_2": "IMR", "vor_2_mesafe_nm": 70 },
+
+    { "ilişkili_ats_yolu": "UG81",  "vor_1": "EZS", "vor_1_mesafe_nm": 96,  "vor_2": "VAN", "vor_2_mesafe_nm": 97 },
+
+    { "ilişkili_ats_yolu": "UR32",  "vor_1": "KFK", "vor_1_mesafe_nm": 40,  "vor_2": "HAY", "vor_2_mesafe_nm": 59 },
+
+    { "ilişkili_ats_yolu": "UR55",  "vor_1": "AYT", "vor_1_mesafe_nm": 60,  "vor_2": "MUT", "vor_2_mesafe_nm": 60 },
+
+    { "ilişkili_ats_yolu": "UW27",  "vor_1": "ERZ", "vor_1_mesafe_nm": 47,  "vor_2": "KAR", "vor_2_mesafe_nm": 47 },
+
+    { "ilişkili_ats_yolu": "UW71",  "vor_1": "BUK", "vor_1_mesafe_nm": 114, "vor_2": "CRM", "vor_2_mesafe_nm": 54 },
+    { "ilişkili_ats_yolu": "UW71",  "vor_1": "CRM", "vor_1_mesafe_nm": 90,  "vor_2": "TBN", "vor_2_mesafe_nm": 58 },
+    { "ilişkili_ats_yolu": "UW71",  "vor_1": "TBN", "vor_1_mesafe_nm": 45,  "vor_2": "ERZ", "vor_2_mesafe_nm": 45 },
+    { "ilişkili_ats_yolu": "UW71",  "vor_1": "ERZ", "vor_1_mesafe_nm": 33,  "vor_2": "MUS", "vor_2_mesafe_nm": 42 },
+
+    { "ilişkili_ats_yolu": "UW72",  "vor_1": "CRM", "vor_1_mesafe_nm": 45,  "vor_2": "SIV", "vor_2_mesafe_nm": 45 },
+
+    { "ilişkili_ats_yolu": "UW73",  "vor_1": "GEM", "vor_1_mesafe_nm": 66,  "vor_2": "ERH", "vor_2_mesafe_nm": 40 },
+    { "ilişkili_ats_yolu": "UW73",  "vor_1": "ERH", "vor_1_mesafe_nm": 40,  "vor_2": "DYB", "vor_2_mesafe_nm": 65 },
+    { "ilişkili_ats_yolu": "UW73",  "vor_1": "DYB", "vor_1_mesafe_nm": 46,  "vor_2": "MUS", "vor_2_mesafe_nm": 40 },
+
+    { "ilişkili_ats_yolu": "UW74",  "vor_1": "MUT", "vor_1_mesafe_nm": 48,  "vor_2": "ADA", "vor_2_mesafe_nm": 46 },
+    { "ilişkili_ats_yolu": "UW74",  "vor_1": "ADA", "vor_1_mesafe_nm": 50,  "vor_2": "GAZ", "vor_2_mesafe_nm": 58 },
+
+    { "ilişkili_ats_yolu": "UW75",  "vor_1": "BAG", "vor_1_mesafe_nm": 119, "vor_2": "ADA", "vor_2_mesafe_nm": 100 },
+
+    { "ilişkili_ats_yolu": "UW77",  "vor_1": "BAG", "vor_1_mesafe_nm": 121, "vor_2": "AYT", "vor_2_mesafe_nm": 90 },
+
+    { "ilişkili_ats_yolu": "UW88",  "vor_1": "TBN", "vor_1_mesafe_nm": 36,  "vor_2": "ERN", "vor_2_mesafe_nm": 42 },
+    { "ilişkili_ats_yolu": "UW88",  "vor_1": "ERN", "vor_1_mesafe_nm": 20,  "vor_2": "EZS", "vor_2_mesafe_nm": 42 },
+    { "ilişkili_ats_yolu": "UW88",  "vor_1": "EZS", "vor_1_mesafe_nm": 41,  "vor_2": "GAP", "vor_2_mesafe_nm": 35 },
+
+    { "ilişkili_ats_yolu": "UW91",  "vor_1": "IST", "vor_1_mesafe_nm": 150, "vor_2": "CRD", "vor_2_mesafe_nm": 45 },
+
+    { "ilişkili_ats_yolu": "UW92",  "vor_1": "BIG", "vor_1_mesafe_nm": 25,  "vor_2": "CNK", "vor_2_mesafe_nm": 19 },
+
+    { "ilişkili_ats_yolu": "UW94",  "vor_1": "ARI", "vor_1_mesafe_nm": 40,  "vor_2": "ERZ", "vor_2_mesafe_nm": 46 },
+
+    { "ilişkili_ats_yolu": "UW104", "vor_1": "EZS", "vor_1_mesafe_nm": 34,  "vor_2": "DYB", "vor_2_mesafe_nm": 34 },
+
+    { "ilişkili_ats_yolu": "UW159", "vor_1": "ARI", "vor_1_mesafe_nm": 19,  "vor_2": "GDR", "vor_2_mesafe_nm": 25 },
+
+    { "ilişkili_ats_yolu": "UW701", "vor_1": "ERZ", "vor_1_mesafe_nm": 59,  "vor_2": "EZS", "vor_2_mesafe_nm": 60 },
+    { "ilişkili_ats_yolu": "UW701", "vor_1": "EZS", "vor_1_mesafe_nm": 80,  "vor_2": "GAZ", "vor_2_mesafe_nm": 54 },
+
+    { "ilişkili_ats_yolu": "UW702", "vor_1": "INB", "vor_1_mesafe_nm": 54,  "vor_2": "BKZ", "vor_2_mesafe_nm": 157 },
+
+    { "ilişkili_ats_yolu": "UW703", "vor_1": "INB", "vor_1_mesafe_nm": 100, "vor_2": "GEM", "vor_2_mesafe_nm": 98 },
+
+    { "ilişkili_ats_yolu": "UW704", "vor_1": "CRM", "vor_1_mesafe_nm": 110, "vor_2": "ERZ", "vor_2_mesafe_nm": 116 },
+
+    { "ilişkili_ats_yolu": "UW705", "vor_1": "HAY", "vor_1_mesafe_nm": 80,  "vor_2": "GEM", "vor_2_mesafe_nm": 84 },
+
+    { "ilişkili_ats_yolu": "UW706", "vor_1": "TBN", "vor_1_mesafe_nm": 75,  "vor_2": "SIV", "vor_2_mesafe_nm": 76 },
+
+    { "ilişkili_ats_yolu": "UW710", "vor_1": "SIV", "vor_1_mesafe_nm": 63,  "vor_2": "EZS", "vor_2_mesafe_nm": 63 },
+
+    { "ilişkili_ats_yolu": "UW715", "vor_1": "BKZ", "vor_1_mesafe_nm": 28,  "vor_2": "BRY", "vor_2_mesafe_nm": 28 },
+
+    { "ilişkili_ats_yolu": "UW716", "vor_1": "GAZ", "vor_1_mesafe_nm": 40,  "vor_2": "GAP", "vor_2_mesafe_nm": 35 },
+    { "ilişkili_ats_yolu": "UW716", "vor_1": "GAP", "vor_1_mesafe_nm": 35,  "vor_2": "DYB", "vor_2_mesafe_nm": 32 },
+
+    { "ilişkili_ats_yolu": "UW717", "vor_1": "ADA", "vor_1_mesafe_nm": 48,  "vor_2": "HTY", "vor_2_mesafe_nm": 15 }
+  ]
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ibosoft AIS - AIXM 5.2 extension semasi
+
+  AIXM'in RESMI genisletme mekanizmasini kullanir: her feature'in TimeSlice'inda
+  bulunan `aixm:extension` elemani, `aixm:AbstractExtension` ikame grubundaki bir
+  eleman bekler ve her feature icin ayri bir soyut baslik tanimlidir (AIXM 5.2'de
+  284 adet). Burada o basliklardan birine somut bir eleman tanimlanir.
+
+  Ayrinti ve gerekce:
+    docs/AIXM_ChangeOverPoint_Attributes.md  §5 (genisletme noktasi) ve §7 (karar)
+  Resmi kilavuz:
+    temporary-files/Scheme and Data AIXM 5.1/
+      aixm_application_schema_generation_1.0 (1).pdf  -> Bolum 2
+
+  NOT: `aixm` namespace'i schemaLocation'SIZ import edilir. Gercek dosya konumunu
+  dogrulayici saglar (bkz. EAD-SDO/generate-aixm-data/validate_aixm.py); boylece
+  makineye ozgu mutlak yol bu dosyaya sizmaz.
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:aixm="http://www.aixm.aero/schema/5.2"
+        xmlns:ibosoftais="https://cdn.ibosoft.net.tr/aviation-data/schema/aixm/5.2/extension"
+        targetNamespace="https://cdn.ibosoft.net.tr/aviation-data/schema/aixm/5.2/extension"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        version="1.0">
+
+   <import namespace="http://www.aixm.aero/schema/5.2"/>
+
+   <!--=================================================================-->
+   <!-- ChangeOverPoint                                                 -->
+   <!--=================================================================-->
+   <element name="ChangeOverPointExtension"
+            type="ibosoftais:ChangeOverPointExtensionType"
+            substitutionGroup="aixm:AbstractChangeOverPointExtension">
+      <annotation>
+         <documentation>Ibosoft AIS extension for ChangeOverPoint: carries the
+            distance measured from the END of the applicable route portion,
+            which core AIXM 5.2 cannot express.</documentation>
+      </annotation>
+   </element>
+
+   <complexType name="ChangeOverPointExtensionType">
+      <complexContent>
+         <!-- AbstractExtensionType -> AbstractAIXMObjectType: gml:id zorunlu,
+              gml:identifier opsiyonel. Alanlarimiz onlardan SONRA gelir. -->
+         <extension base="aixm:AbstractExtensionType">
+            <sequence>
+               <element name="distanceFromEnd" nillable="true" minOccurs="0"
+                        maxOccurs="1" type="aixm:ValDistanceType">
+                  <annotation>
+                     <documentation>The distance from the END of the route portion
+                        to the position of the change over point.
+
+                        Core AIXM's `distance` is defined as the distance from the
+                        START of the route portion and is single-valued, so the
+                        complementary distance has no core field. Charts normally
+                        show the DME distance for BOTH navaids of a change over
+                        point, hence this extension.
+
+                        Same data type as core `distance` (aixm:ValDistanceType),
+                        so `uom` and `nilReason` behave identically.</documentation>
+                  </annotation>
+               </element>
+            </sequence>
+         </extension>
+      </complexContent>
+   </complexType>
+
+</schema>

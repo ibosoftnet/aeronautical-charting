@@ -1,0 +1,18 @@
+[
+  {
+    "_aciklama": "KULAR (ICAO DP, DHMI TURKIYE) ve ona bagli TUM rota segmentleri iptal edilir. Kayitlarin tamami EAD-SDO'dan (ana kaynak) gelir, bu yuzden iptal mekanizmasi dogrudan uygulanabilir. OLCULDU: KULAR'a referans veren feature sayisi TAM OLARAK 18 ve 18'inin hepsi asagidaki iki segment kuraliyla cikariliyor -- iptal kurali remap girdisi uretmedigi icin bu kontrol sart (bkz. Common_Builder_Behaviour.md 4.7).",
+    "layer": "designatedPoints",
+    "match": { "designator": "KULAR", "type": "ICAO",
+               "originator": "DHMI TURKIYE" }
+  },
+  {
+    "_aciklama": "KULAR'dan BASLAYAN segmentler. Iptal eslesmesi KISMIDIR (merge/exclude.py: yalnizca `match` icindeki alanlar karsilastirilir), bu yuzden rota rota yazmak gerekmez. Beklenen isabet: 8 (L854, N131, T44, T54, UL854, UN131, UT44, UT54). `originator` kisiti bilinclidir: baska bir ulke ayni adli bir nokta yayimlarsa yanlislikla silinmesin.",
+    "layer": "routeSegments",
+    "match": { "start": "KULAR", "originator": "DHMI TURKIYE" }
+  },
+  {
+    "_aciklama": "KULAR'da BITEN segmentler. Beklenen isabet: 10 (L854, N131, T39, T44, T54, UL854, UN131, UT39, UT44, UT54).",
+    "layer": "routeSegments",
+    "match": { "end": "KULAR", "originator": "DHMI TURKIYE" }
+  }
+]

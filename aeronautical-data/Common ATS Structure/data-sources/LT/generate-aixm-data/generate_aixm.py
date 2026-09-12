@@ -20,12 +20,13 @@ sys.path.insert(0, str(BASE_DIR))
 import mapping
 from ids import IdRegistry, feature_uuid
 from logger import ErrorLog, NotesFile
-from sources import ats, vfr
-from aixm import designated_point, navaid, route, route_segment
+from sources import ats, cop, vfr
+from aixm import change_over_point, designated_point, navaid, route, route_segment
 from aixm.writer import MessageBuilder
 
 LT_DIR = BASE_DIR.parent
 RAW_DIR = LT_DIR / "LT Route Data Fetcher" / "raw-data"
+COP_PATH = LT_DIR / "COP" / "turkiye_enr31_changeover_points.json"
 OUTPUT = LT_DIR / "lt-route-data-aixm.xml"
 LOG_PATH = BASE_DIR / "errored-features.log"
 NOTES_PATH = BASE_DIR / "not.txt"
@@ -192,6 +193,13 @@ def main():
                             overrides=overrides["ats"]["RouteSegment"])
     counts["RouteSegment (ATS)"] = len(segments)
 
+    # ── 3b. Change over point'ler (COP) ─────────────────────────────────────
+    # COP, iki VOR arasındaki rota aralığında radyal değişim noktasıdır ve
+    # `RoutePortion` ile ATS rotasına bağlanır — dolayısıyla ATS rotaları
+    # yazıldıktan SONRA gelir (route_uuids burada hazır).
+    counts["ChangeOverPoint"] = _write_change_over_points(
+        builder, log, ids, route_uuids, navaid_index)
+
     # ── 4. VFR rotaları ve segmentleri ──────────────────────────────────────
     vfr_segments = vfr.load_segments(RAW_DIR, log)
 
@@ -239,6 +247,61 @@ def main():
 
 
 # ── Yardımcılar ─────────────────────────────────────────────────────────────
+
+def _route_code(designator):
+    """Rota kodunu eşleme için normalize eder: "A 4" ve "A4" → "A4".
+
+    Ham rota verisi kodu BOŞLUKLU yazıyor ("A 4"), COP kaynağı boşluksuz
+    ("A4"). Normalize edilmiş kodlarda çakışma olmadığı ölçüldü (453 ham
+    kodun tamamı benzersiz kalıyor), dolayısıyla eşleme tek anlamlıdır.
+    """
+    return "".join((designator or "").split()).upper()
+
+
+def _write_change_over_points(builder, log, ids, route_uuids, navaid_index):
+    """COP kayıtlarını ChangeOverPoint feature'ı olarak yazar.
+
+    Rota ve iki VOR'un üçü birden çözülemezse feature YAZILMAZ ve hata
+    loglanır — yarım bir COP (rota aralığı belirsiz) yanıltıcı olurdu.
+    """
+    records = cop.load(COP_PATH, log)
+    by_code = {_route_code(designator): uid
+               for designator, uid in route_uuids.items()}
+
+    written = 0
+    for rec in records:
+        key = f"{rec['route']}_{rec['vor_1']}_{rec['vor_2']}"
+        gml_id = ids.make("COP", key)
+
+        route_uuid = by_code.get(_route_code(rec["route"]))
+        if route_uuid is None:
+            log.error("ChangeOverPoint", gml_id, "route", rec["route"],
+                      "cop_rotasi_bulunamadi")
+            continue
+
+        # VOR'lar navaid indeksinde DESIGNATOR ile aranır ("#" öneki, fix
+        # çözümüyle aynı anahtar alanı).
+        navaid_uuids = []
+        for side in ("vor_1", "vor_2"):
+            hit = navaid_index.get("#" + rec[side])
+            if hit is None:
+                log.error("ChangeOverPoint", gml_id, side, rec[side],
+                          "cop_vor_bulunamadi")
+            navaid_uuids.append(hit[0] if hit else None)
+        if None in navaid_uuids:
+            continue
+
+        change_over_point.write(
+            builder, log, gml_id, feature_uuid("ChangeOverPoint", key),
+            distance=rec["distance_1"],
+            start_navaid_uuid=navaid_uuids[0],
+            route_uuid=route_uuid,
+            end_navaid_uuid=navaid_uuids[1],
+            distance_from_end=rec["distance_2"],
+        )
+        written += 1
+    return written
+
 
 def _key(lon, lat):
     return (round(float(lon), 5), round(float(lat), 5))

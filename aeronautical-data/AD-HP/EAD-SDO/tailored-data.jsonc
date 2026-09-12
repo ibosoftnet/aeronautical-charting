@@ -731,6 +731,58 @@
     },
 
     // ============================================================
+    // Samsun — LTAQ (kapalı)
+    // Kaynak: DHMİ Türkiye
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LTAQ",
+      "name": "SAMSUN",
+      "city": "SAMSUN",
+      "country": "TURKIYE",
+      "code_id": "LTAQ",
+      "code_icao": "LTAQ",
+      "code_iata": "",
+      "code_type": "AD",
+      "lat_dd": 41.278645,
+      "lon_dd": 36.305181,
+      "lat_text": "411643N",
+      "lon_text": "0361819E",
+      "usage_mil": "CIVIL",
+      "usage_status": "CLOSED",
+      "sys_rmk": "No AFTN connection.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "09 SEP 2026 (AIRAC 2609)"
+    },
+
+    // ============================================================
+    // Şanlıurfa — LTCH (kapalı)
+    // Kaynak: DHMİ Türkiye
+    // ============================================================
+    {
+      "enabled": true,
+      "join_key": "LTCH",
+      "name": "SANLIURFA",
+      "city": "SANLIURFA",
+      "country": "TURKIYE",
+      "code_id": "LTCH",
+      "code_icao": "LTCH",
+      "code_iata": "SFQ",
+      "code_type": "AD",
+      "lat_dd": 37.094300,
+      "lon_dd": 38.847100,
+      "lat_text": "370539N",
+      "lon_text": "0385050E",
+      "usage_mil": "CIVIL",
+      "usage_status": "CLOSED",
+      "sys_rmk": "No AFTN connection.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "09 SEP 2026 (AIRAC 2609)"
+    },
+
+    // ============================================================
     // LT** meydanları — elevation / transition altitude / transition level
     // OVERRIDE modu: mevcut EAD-SDO kaydına YALNIZCA bu alanlar yazılır
     // (name/country/usage_* korunur). vertical_datum=EGM96, birim FT.
@@ -872,6 +924,155 @@
       "data_originator": "DHMİ Türkiye",
       "data_effectivity": "02 FEB 2017 (AIRAC 1702)"
     },
+    // ============================================================
+    // Ankara Esenboğa — LTAC
+    // Kaynak: AIP TURKEY LTAC AD 2.12 (RWY PHYSICAL CHARACTERISTICS,
+    // 07 AUG 25) + AD 2.13 (DECLARED DISTANCES, 07 AUG 25). AD 2.14
+    // (APCH/RWY LIGHTING, 02 OCT 25) 03L/21R/03C/21C için eklendi;
+    // 03R/21L için AD 2.14 kaynağı kırpılmış geldi, eklenmedi.
+    // Intersection take-off mesafeleri (AD 2.13'teki kısaltılmış
+    // TORA/TODA/ASDA satırları) modellenmedi, sadece tam uzunluk
+    // (LDA'lı) satırlar girildi.
+    // ============================================================
+    {
+      "enabled": true,
+      "ahp_code_id": "LTAC",
+      "direction_designator": "03L",
+      "rwy_designator": "RWY-03L/21R",
+      "true_bearing": "36.19",
+      "info_length": "3391",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_class": 139,
+      "info_pcn_pavement_type": "F",
+      "info_pcn_pavement_subgrade": "A",
+      "info_pcn_max_tire_pressure_code": "W",
+      "info_pcn_eval_method": "T",
+      "info_strip_length": "3876",
+      "info_strip_width": "280",
+      "info_strip_dim_unit": "M",
+      "info_rmk": "PCR 1250 F/A/W/T. SWY 60x45 M, PCN 60 F/A/W/T. First 350 M of asphalt-coated area at the beginning of RWY 03L complies with RWY criteria and may be used with associated TWYs. Slope 0.2% RWY, 0.1% SWY. RESA 108x90 M. Arresting system: not available. OFZ: available. THR coordinates 400704.07N 0325901.27E. THR elevation 946.2 M (3104 FT), TDZ elevation 948.0 M (3110 FT), GUND 120 FT. TORA 3391 M, TODA 3391 M, ASDA 3451 M, LDA 3391 M. APCH LGT: Precision APP Barette System CAT II, 750 M (of which 450 M flashing) LIH. THR LGT color Green. PAPI 3° (left), MEHT 59 FT. TDZ LGT 900 M. RWY centerline LGT 3391 M, 15 M spacing, color coded White/Red, LIH. RWY edge LGT 3391 M, 60 M spacing, color coded White/Yellow, LIH. RWY end LGT Red. SWY LGT 60 M Red. Caution: Ankara-Çubuk Road crosses the strip starting from the last 120 M point; strip width decreases to 90 M there. Remarks: NIL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 OCT 2025 (AIRAC 2510)"
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LTAC",
+      "direction_designator": "21R",
+      "rwy_designator": "RWY-03L/21R",
+      "true_bearing": "216.19",
+      "info_length": "3391",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_class": 139,
+      "info_pcn_pavement_type": "F",
+      "info_pcn_pavement_subgrade": "A",
+      "info_pcn_max_tire_pressure_code": "W",
+      "info_pcn_eval_method": "T",
+      "info_strip_length": "3876",
+      "info_strip_width": "280",
+      "info_strip_dim_unit": "M",
+      "info_rmk": "PCR 1250 F/A/W/T. SWY 305x45 M. Slope 0.2% RWY. RESA 90x90 M. Arresting system: not available. OFZ: available. THR coordinates 400832.81N 0330025.84E. THR elevation 952.3 M (3124 FT), TDZ elevation 952.0 M (3123 FT), GUND 120 FT. TORA 3391 M, TODA 3391 M, ASDA 3696 M, LDA 3391 M. Caution: last 15 M within RESA of 21R has an elevation difference due to intersection with Aerodrome Perimeter Road. APCH LGT: Precision APP Barette System CAT II, 900 M (of which 600 M flashing) LIH. THR LGT color Green. PAPI 3° (left), MEHT 60 FT. TDZ LGT 900 M. RWY centerline LGT 3391 M, 15 M spacing, color coded White/Red, LIH. RWY edge LGT 3391 M, 60 M spacing, color coded White/Yellow, LIH. RWY end LGT Red. SWY LGT: not available. Caution: Ankara-Çubuk Road crosses the strip starting from the last 120 M point; strip width decreases to 90 M there. Remarks: NIL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 OCT 2025 (AIRAC 2510)"
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LTAC",
+      "direction_designator": "03C",
+      "rwy_designator": "RWY-03C/21C",
+      "true_bearing": "36.19",
+      "info_length": "3752",
+      "info_width": "60",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_class": 139,
+      "info_pcn_pavement_type": "F",
+      "info_pcn_pavement_subgrade": "A",
+      "info_pcn_max_tire_pressure_code": "W",
+      "info_pcn_eval_method": "T",
+      "info_strip_length": "3992",
+      "info_strip_width": "280",
+      "info_strip_dim_unit": "M",
+      "info_rmk": "PCR 1054 F/A/W/T. SWY 60x60 M, PCN 45 F/C/W/T. Slope 0.2% RWY, 0.02% SWY. RESA 180x120 M. Arresting system: not available. OFZ: available. THR coordinates 400650.61N 0325859.44E. THR elevation 944.7 M (3099 FT), TDZ elevation 949.0 M (3113 FT), GUND 120 FT. TORA 3752 M, TODA 3752 M, ASDA 3812 M, LDA 3752 M. APCH LGT: Precision APP Barette System CAT III, 900 M (of which 600 M flashing) LIH. THR LGT color Green. PAPI 3° (left), MEHT 60 FT. TDZ LGT 900 M. RWY centerline LGT 3752 M, 15 M spacing, color coded White/Red, LIH. RWY edge LGT 3752 M, 60 M spacing, color coded White/Yellow, LIH. RWY end LGT Red. SWY LGT 60 M Red. Caution: Ankara-Çubuk Road crosses the strip starting from the last 120 M point; strip width decreases to 90 M there. Remarks: NIL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 OCT 2025 (AIRAC 2510)"
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LTAC",
+      "direction_designator": "21C",
+      "rwy_designator": "RWY-03C/21C",
+      "true_bearing": "216.19",
+      "info_length": "3752",
+      "info_width": "60",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_class": 139,
+      "info_pcn_pavement_type": "F",
+      "info_pcn_pavement_subgrade": "A",
+      "info_pcn_max_tire_pressure_code": "W",
+      "info_pcn_eval_method": "T",
+      "info_strip_length": "3992",
+      "info_strip_width": "280",
+      "info_strip_dim_unit": "M",
+      "info_rmk": "PCR 1054 F/A/W/T. SWY 60x60 M, PCN 60 F/B/W/T. Slope 0.2% RWY. RESA 180x120 M. Arresting system: not available. OFZ: available. THR coordinates 400828.79N 0330032.99E. THR elevation 953.1 M (3126 FT), TDZ elevation 954.0 M (3130 FT), GUND 120 FT. TORA 3752 M, TODA 3752 M, ASDA 3812 M, LDA 3752 M. APCH LGT: Precision APP Barette System CAT II, 900 M (of which 600 M flashing) LIH. THR LGT color Green. PAPI 3° (left), MEHT 66 FT. TDZ LGT 900 M. RWY centerline LGT 3752 M, 15 M spacing, color coded White/Red, LIH. RWY edge LGT 3752 M, 60 M spacing, color coded White/Yellow, LIH. RWY end LGT Red. Caution: Ankara-Çubuk Road crosses the strip starting from the last 120 M point; strip width decreases to 90 M there. Remarks: NIL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 OCT 2025 (AIRAC 2510)"
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LTAC",
+      "direction_designator": "03R",
+      "rwy_designator": "RWY-03R/21L",
+      "true_bearing": "36.19",
+      "info_length": "3750",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_class": 139,
+      "info_pcn_pavement_type": "F",
+      "info_pcn_pavement_subgrade": "A",
+      "info_pcn_max_tire_pressure_code": "W",
+      "info_pcn_eval_method": "T",
+      "info_strip_length": "3870",
+      "info_strip_width": "280",
+      "info_strip_dim_unit": "M",
+      "info_rmk": "PCR 1510 F/A/W/T. No SWY. Slope 0.56% RWY. RESA 240x150 M. Arresting system: not available. OFZ: available. THR coordinates 400601.27N 0325923.06E. THR elevation 941.3 M (3088 FT), TDZ elevation 948.2 M (3110 FT), GUND 120 FT. TORA 3750 M, TODA 3750 M, ASDA 3750 M, LDA 3750 M. Caution: Ankara-Çubuk Road crosses the strip starting from the last 120 M point; strip width decreases to 90 M there. Remarks: NIL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 OCT 2025 (AIRAC 2510)"
+    },
+    {
+      "enabled": true,
+      "ahp_code_id": "LTAC",
+      "direction_designator": "21L",
+      "rwy_designator": "RWY-03R/21L",
+      "true_bearing": "216.19",
+      "info_length": "3750",
+      "info_width": "45",
+      "info_dim_unit": "M",
+      "info_surface_composition": "ASPH",
+      "info_pcn_class": 139,
+      "info_pcn_pavement_type": "F",
+      "info_pcn_pavement_subgrade": "A",
+      "info_pcn_max_tire_pressure_code": "W",
+      "info_pcn_eval_method": "T",
+      "info_strip_length": "3870",
+      "info_strip_width": "280",
+      "info_strip_dim_unit": "M",
+      "info_rmk": "PCR 1510 F/A/W/T. No SWY. Slope 0.56% RWY. RESA 240x150 M. Arresting system: not available. OFZ: available. THR coordinates 400739.40N 0330056.57E. THR elevation 962.5 M (3158 FT), TDZ elevation 962.4 M (3157 FT), GUND 120 FT. TORA 3750 M, TODA 3750 M, ASDA 3750 M, LDA 3750 M. Caution: Ankara-Çubuk Road crosses the strip starting from the last 120 M point; strip width decreases to 90 M there. Remarks: NIL.",
+      "data_provider": "Ibosoft AIS",
+      "data_originator": "DHMİ Türkiye",
+      "data_effectivity": "02 OCT 2025 (AIRAC 2510)"
+    },
+
     {
       "enabled": true,
       "ahp_code_id": "LT5901",

@@ -8,6 +8,7 @@
     { "name": "ead_sdo",  "script": "data-sources/EAD-SDO/generate-aixm-data/generate_aixm.py",  "enabled": true },
     { "name": "lt",       "script": "data-sources/LT/generate-aixm-data/generate_aixm.py",       "enabled": true },
     { "name": "trnc",     "script": null, "enabled": false, "_durum": "elle duzenleniyor" },
+    { "name": "tailored-lb", "script": null, "enabled": false, "_durum": "elle duzenleniyor" },
     { "name": "ibosoft",  "script": null, "enabled": false, "_durum": "henüz yok" },
     { "name": "tailored", "script": null, "enabled": false, "_durum": "henüz yok" }
   ],
@@ -58,6 +59,14 @@
       "_yakinlik": "TRNC'de yön terstir: Jeppesen kaydı TRNC'ninkiyle değiştirilir (GKE NDB, 0,000 NM). LT'ye devretme originator anahtarıyla zaten çalışıyor.",
       "match_by_proximity_nm": 1.0,
       "override_sources": ["jeppesen"]
+    },
+    {
+      "name": "tailored-lb",
+      "file": "data-sources/tailored-LB/tailored-lb-aixm.xml",
+      "data_json": "data-sources/tailored-LB/data.json",
+      "_neden": "Bulgaristan AIP'sindeki (ENR 3.3, AIRAC 2606) BAKLO→EFCOM değişikliğini EAD-SDO almamış. Eskimiş EAD kayıtları data-sources/excludes/bulatsa-baklo-efcom.json ile çıkarılıyor, yerlerine geçenler bu elle yazılmış kaynaktan geliyor. TRNC ile aynı desen: üretici scripti yok.",
+      "_cakisma": "Çakışma ayarı YOK ve gerekmiyor: eklenen 8 feature'ın hiçbirinin karşılığı birleşik veride bulunmuyor (EFCOM/MYNDA hiç yok, 5 segmentin hiçbiri yok, T264'ün Bulgar Route'u yok). Doğal anahtar eşleşmesi oluşmadığı için yön ayarı anlamsız olurdu.",
+      "enabled": true
     }
   ],
 

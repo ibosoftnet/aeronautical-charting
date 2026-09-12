@@ -32,7 +32,8 @@ Bu kural yalnızca planlama için değil, uygulamanın tamamı için geçerlidir
                      ┌──────────────── AŞAMA 1 (seçenek) ────────────────┐
 ham veri ────────────▶ kaynak üreticileri, config'deki SIRAYLA           │
 (sqlite, EAD XML,    │   1 jeppesen   2 ead_sdo   3 lt                  │
- LT raw, …)          │   4 trnc  5 ibosoft  6 tailored  (henüz yok)     │
+ LT raw, …)          │   4 trnc  5 tailored-lb  (elle yazılır)          │
+                     │   6 ibosoft  7 tailored  (henüz yok)             │
                      └───────────────────────┬──────────────────────────┘
                                              ▼
                        kaynak başına kendi başına geçerli AIXM 5.2 dosyası
@@ -97,7 +98,8 @@ dosyalar kullanılır (varsayılan: kapalı — EAD üreticisi uzun sürer).
   { "name": "jeppesen", "script": "data-sources/Jeppesen/generate-aixm-data/generate_aixm.py", "enabled": true },
   { "name": "ead_sdo",  "script": "data-sources/EAD-SDO/generate-aixm-data/generate_aixm.py",  "enabled": true },
   { "name": "lt",       "script": "data-sources/LT/generate-aixm-data/generate_aixm.py",       "enabled": true },
-  { "name": "trnc",     "script": null, "enabled": false, "_durum": "henüz yok — kaynak veri gelmedi" },
+  { "name": "trnc",        "script": null, "enabled": false, "_durum": "elle duzenleniyor" },
+  { "name": "tailored-lb", "script": null, "enabled": false, "_durum": "elle duzenleniyor" },
   { "name": "ibosoft",  "script": null, "enabled": false, "_durum": "henüz yok" },
   { "name": "tailored", "script": null, "enabled": false, "_durum": "henüz yok" }
 ]
@@ -129,6 +131,14 @@ birleşik dosyada karışma imkânsızdır. UUID'ler sabit namespace'li
 (`6f1c3b52-9d4a-5e77-b8c1-2a0e94f7d310`) deterministik UUID5'tir: aynı girdi
 her koşuda aynı kimlikleri üretir.
 
+> **Bir kaynak dosyası, çekirdek AIXM'de karşılığı olmayan alan taşıyabilir.**
+> LT'nin `ChangeOverPoint`'leri, AIXM'in resmi genişletme mekanizmasıyla
+> (`aixm:extension` → `aixm:AbstractExtension` ikame grubu) `ibosoftais`
+> önekli bir alan taşır. Böyle bir dosya **yalnızca** stok AIXM setiyle
+> doğrulanırsa "geçersiz" görünür; doğrulayıcı `schemas/ibosoftais-extension.xsd`
+> dosyasını da derlemeye katar. Birleştirme tarafında özel bir iş yoktur:
+> namespace bildirimi parça kopyalanırken korunur.
+
 ---
 
 ## 4. AŞAMA 2A — Birleştirme
@@ -138,7 +148,14 @@ her koşuda aynı kimlikleri üretir.
 | Rol | Kaynak | Anlamı |
 |---|---|---|
 | **Ana kaynak** (`base_sources`) | `ead_sdo`, `jeppesen` | Birleşik veri setinin gövdesi |
-| **Ek kaynak** (`additional_sources`) | `lt`, `trnc` | Üzerine eklenir, çakışmada kurallara göre çözülür |
+| **Ek kaynak** (`additional_sources`) | `lt`, `trnc`, `tailored-lb` | Üzerine eklenir, çakışmada kurallara göre çözülür |
+
+`tailored-lb` bunların en sadesi: **hiçbir çakışma ayarı taşımaz**
+(`override_enabled` vb. yok). Bulgaristan AIP'sindeki BAKLO→EFCOM
+değişikliğini EAD-SDO almadığı için elle yazılmış bir düzeltme kaynağıdır;
+eklediği 8 feature'ın hiçbirinin birleşik veride karşılığı yoktur, dolayısıyla
+doğal anahtar eşleşmesi hiç oluşmaz. Eskimiş EAD kayıtları ayrı bir **iptal
+dosyasıyla** çıkarılır (§4.7). Ayrıntı: `data-sources/tailored-LB/README.md`.
 
 Jeppesen'in ana kaynak olması teknik zorunluluktur: EAD segmentleri Jeppesen
 NDB feature'larına `xlink` verir; Jeppesen isteğe bağlı olsaydı o referanslar
@@ -186,7 +203,16 @@ yapılır, UUID eşitliğiyle değil:
 | `DesignatedPoint` | designator + originator |
 | `Navaid` | type + designator + originator |
 | `RouteSegment` | rota kimliği + start/end designator + originator |
+| `ChangeOverPoint` | rota kimliği + **sırasız** uç çifti + originator |
 | `Route` | — (doğal anahtar tanımlı değil, eşleştirmeye girmez) |
+
+> **`ChangeOverPoint`'in uç çifti neden sırasız?** İki VOR arasındaki geçiş
+> noktası fizikî olarak **tektir**; bir kaynak onu `BUK→SIV`, diğeri `SIV→BUK`
+> yönünde yazmış olabilir (mesafeler de buna göre yer değiştirir). Uçlar
+> sıralanarak anahtara girdiği için bu iki kayıt **aynı** COP olarak eşleşir.
+> `RouteSegment`'te sıra korunur, çünkü orada yön kaydın kendi anlamının
+> parçasıdır. COP'un referansları gömülü `RoutePortion` nesnesinin içindedir
+> (bkz. [`docs/AIXM_ChangeOverPoint_Attributes.md`](docs/AIXM_ChangeOverPoint_Attributes.md) §0).
 
 Bir ek kaynak için **iki yön aynı anda** geçerli olabilir ve **katmana göre**
 ayrışır:
@@ -326,7 +352,19 @@ karşılığı `"DHMI TURKIYE"` yazımıyla geçiyor.
 Bir kayıt düşünce ona referans veren **başka** feature'lar boşta kalır. Bu
 yüzden yazımdan önce bir ön tarama yapılır ve `remap` tablosu kurulur
 (`düşen UUID → yerine geçen UUID`); yazım sırasında her `xlink:href` bu tabloya
-göre çevrilir. Son koşuda 1.374 referans yönlendirildi.
+göre çevrilir.
+
+**Yönlendirme derinlikten bağımsızdır.** Çevrim, yazılan `hasMember`
+parçasının **bütün** alt elemanlarını gezer (`member.iter()`) ve `urn:uuid:`
+ile başlayan her `xlink:href`'i tablodan geçirir — eleman adına göre bir beyaz
+liste **yoktur**. Bu, referansları doğrudan TimeSlice altında durmayan
+feature'lar için belirleyicidir: `ChangeOverPoint`'in üç referansı gömülü bir
+`RoutePortion` **nesnesinin** içindedir ve hiçbir ek kod olmadan yönlendirilir.
+
+> **`remap` girdisi ÜRETMEYEN tek düşme yolu iptal (exclude) kuralıdır**
+> (§4.7). Override, devretme ve yakınlık yollarının üçü de girdi üretir.
+> İptal edilen kaydın UUID'si dosyadan yok olur ve ona giden referans boşta
+> kalır — bu yüzden COP referansları yazımdan sonra ayrıca denetlenir (§4.10).
 
 ### 4.6 Marker beacon eşleştirmesi (`special_sources`)
 
@@ -395,8 +433,56 @@ Alan eşlemeleri: `data-sources/Jeppesen/generate-aixm-data/Jeppesen_to_AIXM_Map
 { "layer": "designatedPoints", "match": { "designator": "XXXXX" } }
 ```
 
-Şu an dizin boştur, mekanizma no-op çalışır. Her isabet `errored-features.csv`'ye
-`iptal_kuraliyla_cikarildi` olarak yazılır — sessiz düşürme yoktur.
+Her isabet `errored-features.csv`'ye `iptal_kuraliyla_cikarildi` olarak yazılır —
+sessiz düşürme yoktur.
+
+Dört dosya var, toplam **16 kural / 32 isabet**:
+
+| Dosya | Kural | İsabet | Neden |
+|---|---|---:|---|
+| `trnc-cyprus-overlap.json` | 5 | 5 | Kıbrıs DCA kayıtlarının TRNC ile örtüşen segmentleri |
+| `bulatsa-baklo-efcom.json` | 4 | 4 | Bulgaristan AIP'sinde (ENR 3.3, AIRAC 2606) kaldırılan `BAKLO` ve ona bağlı üç segment; yerlerine geçenler `tailored-lb` kaynağından gelir (§4.1) |
+| `bulatsa-p727-iblax-rezov.json` | 4 | 4 | Aynı AIP'de kaldırılan `IBLAX`; P727 zinciri `FENER → REZOV → UVUDA` oldu |
+| `lt-kular.json` | 3 | 19 | `KULAR` (DHMİ) ve ona bağlı **18** segment |
+
+> **Kural sayısı ≠ isabet sayısı.** `matches()` **kısmi** eşleşme yapar —
+> yalnızca `match` içinde yazılı alanlar karşılaştırılır
+> (`merge/exclude.py:71`). `lt-kular.json` bunu kullanır: tek bir
+> `{"start": "KULAR", "originator": "DHMI TURKIYE"}` kuralı 8 segmenti,
+> `end` karşılığı 10 segmenti yakalar. Rota rota yazmak gerekmez, ama kuralın
+> ne kadarını süpürdüğü **önceden ölçülmelidir**.
+
+> **Bilinen boşluk — iptal, `remap` girdisi üretmez.** Override/devretme/yakınlık
+> yolları düşen kaydın UUID'sini kazanana bağlar; iptal kuralı bağlamaz, kaydın
+> UUID'si dosyadan yok olur. Referans **verilen** bir katmanı hedefleyen kural,
+> geride kırık `xlink` bırakabilir.
+>
+> Üç `designatedPoints` kuralı bu boşluğu **fiilen sınadı**. Her biri için
+> kural yazılmadan önce referans sayımı yapıldı:
+>
+> | Nokta | Referans veren | Aynı kural kümesiyle iptal edilen |
+> |---|---:|---:|
+> | `BAKLO` | 3 | 3 |
+> | `IBLAX` | 3 | 3 |
+> | `KULAR` | **18** | **18** |
+>
+> Üçünde de referans veren her şey aynı anda düştüğü için geride boşluk
+> kalmadı. Koşu sonrası bağımsız tarama bunu doğruladı: birleşik dosyadaki
+> 277.694 `xlink`'in hedefi de mevcut, kırık **0**.
+>
+> **Referanslanabilir bir katmanda (`designatedPoints`, `navaids`, `routes`,
+> navaid ekipmanı) iptal kuralı yazan herkes aynı sayımı önce yapmalıdır.**
+> Üreteç bu kontrolü kendiliğinden yapmaz; yalnızca COP referansları §4.10'daki
+> denetimle otomatik görünür olur.
+
+> **Yan etki — segmentsiz kalan Route'lar.** Bir noktayı çıkarmak, ona bağlı
+> tüm segmentleri de çıkardığı için bazı Route feature'ları segmentsiz kalır:
+> `KULAR` iptali 6 rotayı (`L854`, `T39`, `T44`, `UL854`, `UT39`, `UT44`)
+> tamamen boşalttı, `IBLAX` iptali `EAD_RTE_UP727_EUR`'u. Bu bir hata değil —
+> veride bu iptallerden **önce de** 312 segmentsiz Route vardı (EAD'de yaygın
+> bir durum) ve Route'un kendisi geçerli bir feature olarak kalır. Ama
+> `N131`, `T54`, `UN131`, `UT54` gibi kısmen boşalan rotalarda zincir
+> **ortadan kopar**; bu, iptali isteyenin bilerek kabul ettiği sonuçtur.
 
 ### 4.8 Antimeridyen bölme (`split_antimeridian`)
 
@@ -462,11 +548,48 @@ kaynaktan geldiği için tek bir `data.json` da yeterli değildir. 2A bu yüzden
 Antimeridyen bölmesiyle üretilen feature'lar, türetildikleri orijinal segmentin
 provenance kaydını aynen devralır.
 
+### 4.10 ChangeOverPoint
+
+COP (`aixm:ChangeOverPoint`) şu an yalnızca **LT** kaynağından gelir (ölçüldü:
+EAD-SDO 0, Jeppesen 0, TRNC 0). Buna rağmen diğer katmanlarla **aynı** çakışma
+makinesine bağlıdır; `changeOverPoints` bir katman adıdır, dolayısıyla davranış
+config'den ayarlanır:
+
+| Durum | Bugünkü sonuç | Nasıl değiştirilir |
+|---|---|---|
+| Ek kaynak ile base kaynak aynı COP'u yayımlarsa | **Ek kaynak kazanır** (`override_enabled: true`, `changeOverPoints` prefer-base listesinde değil) | LT'nin `prefer_base_on_match_layers` listesine `"changeOverPoints"` eklenirse base kazanır |
+| İptal kuralı | Kural `"layer": "changeOverPoints"` ile yazılabilir | — |
+
+> `changeOverPoints`'in GeoPackage karşılığı **yoktur** (Aşama 2B henüz
+> planlanmadı). Bu bir tutarsızlık değil: `routes` da aynı durumda — katman adı
+> çakışma çözümünün dilidir, GeoPackage şemasına verilmiş bir söz değildir.
+
+**Referans denetimi.** COP, referansları doğrudan TimeSlice altında değil gömülü
+bir `RoutePortion` **nesnesinin** içinde duran ilk feature'dır; doğruluğu
+tamamen yönlendirmenin derinlikten bağımsız olmasına dayanır (§4.5). Bu örtük
+sözleşmeyi ölçülebilir kılmak için yazım bittiğinde her COP'un üç referansı
+(`start_*`, `referencedRoute`, `end_*`) birleşik dosyaya gerçekten yazılmış
+UUID'lerle uzlaştırılır:
+
+- Çözülemeyen referans → `cop_referansi_birlesik_dosyada_yok` (severity `error`)
+- **COP yine yazılır** — kayıt düşürülmez, boşluk görünür kılınır (§1'deki
+  bağlayıcı kural ve §5.1'deki çözülemeyen uç nokta emsaliyle aynı çizgi)
+- Sayaçlar: `cop_referansi_denetlendi`, `cop_referansi_kirik`
+
+Ayrıntı ve AIXM gerekçeleri:
+[`docs/AIXM_ChangeOverPoint_Attributes.md`](docs/AIXM_ChangeOverPoint_Attributes.md).
+
 ---
 
 ## 5. AŞAMA 2B — GeoPackage
 
 Girdi **yalnızca** 2A çıktısıdır. Dört katman üretilir:
+
+> **`changeOverPoints` beşinci katmandır ve geometrisi ÇİZGİDİR.** COP bir
+> noktadır ama koordinatı AIXM'de yazılmaz (AIP yayımlamıyor); bu yüzden katman,
+> COP'un geçerli olduğu **rota aralığını** çizgi olarak taşır ve çizgi
+> `RoutePortion.start` ucundan başlar. QGIS sembolü bu çizgi boyunca
+> `copSymbology_offsetPercent` kadar kaydırır. Ayrıntı: §5.5.
 
 | Katman | Geometri | Sütun |
 |---|---|---:|
@@ -559,7 +682,7 @@ Ayrıntılar: [`ATS_Status_Fields.md`](ATS_Status_Fields.md),
 
 `finalize()` üç şey kurar:
 
-1. **Her sütunda B-tree index** — dört katmanda toplam 265 sütun.
+1. **Her sütunda B-tree index** — beş katmanda toplam 315 sütun.
 2. **Mekânsal index (RTree)** — katman başına `rtree_<katman>_geom` sanal
    tablosu, GeoPackage 1.2 Ek F.3'teki altı tetikleyici (insert / update1-4 /
    delete) ve `gpkg_extensions` kaydı (`gpkg_rtree_index`, scope `write-only`).
@@ -573,6 +696,38 @@ fonksiyonlara başvurur; düz SQLite'ta tanımsız olmaları sorun değildir ç�
 tetikleyici gövdesi yalnızca çalıştırıldığında çözülür, bu fonksiyonları
 QGIS/GDAL sağlar.
 
+### 5.5 `changeOverPoints` — rota aralığı çizgisi
+
+COP'un GeoPackage geometrisi **kendi konumu değildir**: AIP, COP'un
+koordinatını yayımlamıyor (bkz.
+[`docs/AIXM_ChangeOverPoint_Attributes.md`](docs/AIXM_ChangeOverPoint_Attributes.md)
+§7.2). Katman, COP'un geçerli olduğu **rota aralığını** çizgi olarak taşır;
+sembol bu çizgi boyunca kaydırılarak yerine konur.
+
+Çizgi, `gpkg/route_portion.py` tarafından kurulur:
+
+1. Bağlı Route'un segmentlerinden komşuluk grafiği (her segment iki yönde de
+   gezilebilir).
+2. `intermediatePoint` **varsa** yol onun üzerinden geçer (`start→ara` +
+   `ara→end`); yoksa `start→end` en kısa zincir aranır.
+3. Her segment gerekiyorsa **ters çevrilerek** eklenir — çizgi `start` ucundan
+   başlamak zorundadır, yoksa sembol yanlış uçtan ölçülür. (Ölçüldü: örnek bir
+   COP'ta zincirdeki 7 segmentin tamamı kaynakta ters yöndeydi.)
+4. Uzunluk `pyproj.Geod(ellps="WGS84")` ile ölçülür ve
+   `copSymbology_offsetPercent = distance / uzunluk × 100` hesaplanır.
+
+**Belirsizlik sessizce çözülmez.** Rota dallanıyor ve ara nokta verilmemişse —
+yani aynı uzunlukta birden fazla yol varsa — **seçim yapılmaz**: satır yazılır,
+geometri `NULL` kalır, `cop_rota_araliginda_birden_fazla_yol` loglanır. Zincir
+hiç kurulamazsa `cop_rota_araligi_cozulemedi`. İkisinde de kayıt düşürülmez
+(§5.1 emsali).
+
+Bu geçiş 3. geçişten (`routeSegments`) **sonra** çalışır: çizgi ancak segment
+geometrileri okunduktan sonra kurulabilir. Bellek için yalnızca COP'u olan
+rotaların (67) segment topolojisi saklanır, 93.000 segmentin tamamı değil.
+
+**Son koşu:** 100 COP, **100'ü geometrili**; birden fazla yol 0, çözülemeyen 0.
+
 ---
 
 ## 6. Üretilen dosyalar
@@ -582,10 +737,10 @@ QGIS/GDAL sağlar.
 | `data-sources/*/…-aixm.xml` | 1 | EAD 472,3 MB · Jeppesen 9,0 MB · LT 10,1 MB |
 | `data-sources/Jeppesen/jeppesen-ndb-index.json` | 1 | 3.073 kayıt — EAD'nin NDB referans çözümlemesi için |
 | `data-sources/Jeppesen/jeppesen-marker.json` | 1 | 913 kayıt — marker yan dosyası, AIXM'den bağımsız (§4.6) |
-| `common-ats-structure-aixm.xml` | 2A | 484,9 MB · 282.522 feature |
-| `common-ats-structure-provenance.json` | 2A | 282.522 kayıt |
-| `common_ats_structure.gpkg` | 2B | 229,4 MB |
-| `errored-features.csv` | 2A + 2B | 877 satır + 9.189 yalnızca-sayaç |
+| `common-ats-structure-aixm.xml` | 2A | 485,3 MB · 282.549 feature |
+| `common-ats-structure-provenance.json` | 2A | 282.549 kayıt |
+| `common_ats_structure.gpkg` | 2B | 261,0 MB |
+| `errored-features.csv` | 2A + 2B | 14.394 kayıt (tek koşu; 9.189'u yalnızca-sayaç) |
 
 > **Yalnızca-sayaç kayıtlar.** `dme_yuksekligi_kaynakta_yok` (9.189) dosyaya
 > satır yazmaz, sadece sayılır (`log.info_count`) — EAD'nin DME raporunda
@@ -599,34 +754,59 @@ QGIS/GDAL sağlar.
 
 ### Son koşunun sayıları
 
-**2A:** ana kaynaklardan 277.952 feature yazıldı, ek kaynaklardan 4.387,
-marker beacon 77; LT lehine düşen ana kaynak kaydı 3.111, TRNC lehine 9;
-EAD/Jeppesen lehine yazılmayan LT navaid'i 64, TRNC kaydı 3; yönlendirilen
-referans 1.581; bölünen segment 53; iptal 5.
+**2A:** toplam **282.549** feature; marker beacon 77; LT lehine düşen ana kaynak
+kaydı 3.111, TRNC lehine 9; EAD/Jeppesen lehine yazılmayan LT navaid'i 64,
+TRNC kaydı 3; bölünen segment 53; **iptal 32**.
+
+Feature tipine göre: `DesignatedPoint` 152.042 · `RouteSegment` 92.959 ·
+`Route` 14.767 · `Navaid` 9.338 · `DME` 4.667 · `VOR` 3.594 · `NDB` 3.054 ·
+`TACAN` 877 · `Localizer` 550 · `Glidepath` 524 · **`ChangeOverPoint` 100** ·
+`MarkerBeacon` 77.
+
+COP referans denetimi (§4.10): **300 referans denetlendi, kırık 0**.
 
 **2B:**
 
 | Katman | Satır | Geometrili |
 |---|---:|---:|
-| `designatedPoints` | 152.061 | 152.061 |
-| `navaids` | 9.357 | 9.355 |
-| `navaidComponents` | 13.362 | 13.362 |
-| `routeSegments` | 92.976 | 84.252 |
+| `designatedPoints` | 152.042 | 152.042 |
+| `navaids` | 9.338 | 9.336 |
+| `navaidComponents` | 13.343 | 13.343 |
+| `routeSegments` | 92.959 | 84.220 |
+| `changeOverPoints` | 100 | 100 |
 
-Bağlanmamış navaid bileşeni **0**. Çözülemeyen segment ucu 15.374.
+Bağlanmamış navaid bileşeni **0**.
 
-Kaynak dağılımı:
+Kaynak dağılımı (`data_provider` / `data_originator`'a göre sayıldı):
 
-| Katman | EAD-SDO | Jeppesen | Ibosoft AIS (LT + TRNC) |
-|---|---:|---:|---:|
-| `designatedPoints` | 151.159 | — | 902 |
-| `navaids` | 6.277 | 3.072 | 8 |
-| `navaidComponents` | 10.202 | 3.149 | 11 |
-| `routeSegments` | 90.072 | — | 2.904 |
+| Katman | EAD-SDO | Jeppesen | Ibosoft AIS / DHMİ | Ibosoft AIS / KKTC SHD | Ibosoft AIS / BULATSA |
+|---|---:|---:|---:|---:|---:|
+| `designatedPoints` | 151.159 | — | 855 | 26 | **2** |
+| `navaids` | 6.277 | 3.053 | 3 | 5 | — |
+| `navaidComponents` | 10.202 | 3.130 | — | 11 | — |
+| `routeSegments` | 90.048 | — | 2.876 | 29 | **6** |
+| `changeOverPoints` | — | — | 100 | — | — |
 
-> Jeppesen'in `navaidComponents` payı 3.149 = 3.072 NDB + **77 marker beacon**.
-> `navaids` payı 3.072'dir (3.073 değil): `GKE` NDB'si TRNC kaydıyla
+> Jeppesen'in `navaidComponents` payı 3.130 = 3.053 NDB + **77 marker beacon**.
+> `navaids` payı 3.053'tür (3.054 değil): `GKE` NDB'si TRNC kaydıyla
 > değiştirildi (§4.4).
+
+> `BULATSA` originator'ı yalnızca `tailored-lb` kaynağından gelir (§4.1) —
+> `data_provider` yine `Ibosoft AIS`'tir, çünkü kaydı biz yazdık; originator
+> verinin sahibi otoriteyi gösterir.
+
+**İlk kez dolan sütunlar.** `tailored-lb` ile birlikte iki GeoPackage sütunu
+bu korpusta ilk kez değer aldı — ölçüldü, TLB dışı satır sayısı **0**:
+
+| Sütun | Dolu satır | Not |
+|---|---:|---|
+| `routeSegments_airspaceClass` | 6 | Hepsi `tailored-lb` |
+| `routeSegments_aircraftCapability` içinde `navigationAccuracy` | 6 | Hepsi `tailored-lb`; sütunun kendisi 2.698 satırda dolu, ama `navigationAccuracy` anahtarı yalnızca bu 6'sında var |
+
+`routeSegments_availability` ise ilk kez **değil**: 12 satırda dolu, 7'si
+`KKTC SHD`, 5'i `tailored-lb`. `tailored-lb`'nin 6 segmentinden biri
+(`P727 REZOV→UVUDA`) AIP'ye göre PERM olduğu için `availability` taşımaz —
+kural §4.1'deki kaynağın README'sinde.
 
 ---
 
@@ -634,11 +814,12 @@ Kaynak dağılımı:
 
 | Kontrol | Sonuç |
 |---|---|
-| Birleşik AIXM XSD'ye karşı | **0 hata**, 282.522 feature |
-| `gml:id` tekilliği | 282.522 tekil, çift 0 |
-| UUID tekilliği | 282.522 tekil, çift 0 |
-| `xlink:href` bütünlüğü | 277.488 referans, **kırık 0** |
-| Provenance kapsamı | 282.522 kayıt, eksik anahtar 0 |
+| Birleşik AIXM XSD'ye karşı | **0 hata**, 282.549 feature (stok AIXM 5.2 seti **+** `schemas/ibosoftais-extension.xsd`) |
+| `gml:id` tekilliği | 1.630.350 tekil (feature + iç nesneler), çift **0** |
+| UUID tekilliği | 282.549 tekil, çift **0** |
+| `xlink:href` bütünlüğü | 277.694 referans, **kırık 0** |
+| COP `RoutePortion` referansı | 300 referans (200 `Navaid` + 100 `Route`), **kırık 0** |
+| Provenance kapsamı | 282.549 kayıt, eksik anahtar 0 |
 | Bağlanmamış navaid bileşeni | **0** |
 | Mekânsal index | 4 RTree tablosu dolu, 24 tetikleyici, 4 `gpkg_extensions` kaydı |
 | Antimeridyen | 53 kesişim noktası + 106 bölünmüş segment, notlar tam metin |

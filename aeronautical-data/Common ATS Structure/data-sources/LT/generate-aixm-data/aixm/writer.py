@@ -12,10 +12,26 @@ NS_AIXM = "http://www.aixm.aero/schema/5.2"
 NS_GML = "http://www.opengis.net/gml/3.2"
 NS_XLINK = "http://www.w3.org/1999/xlink"
 
+#: Bu projenin KENDİ AIXM extension namespace'i — `aixm:extension` altında
+#: yazdığımız, çekirdek AIXM'de karşılığı olmayan alanlar buraya aittir
+#: (şu an: ChangeOverPoint'in ikinci mesafesi, bkz. aixm/change_over_point.py).
+#:
+#: Namespace URI bir ADRES DEĞİL, kimliktir: XML ayrıştırıcıları onu hiçbir
+#: zaman indirmez ve bir dosyanın yayımlanmış olması gerekmez (AIXM'in kendi
+#: `http://www.aixm.aero/schema/5.2` namespace'i gibi). Değer, şema ileride
+#: dışarıya açılırsa konulacağı yere göre seçilmiştir (kullanıcı kararı).
+#:
+#: DİKKAT: namespace karşılaştırması birebir DİZGİ karşılaştırmasıdır —
+#: `http`/`https` farkı veya sondaki `/` ayrı namespace sayılır. Bu yüzden
+#: değer yalnızca burada tanımlanır, hiçbir yerde elle tekrar yazılmaz.
+NS_IBOSOFTAIS = ("https://cdn.ibosoft.net.tr/aviation-data"
+                 "/schema/aixm/5.2/extension")
+
 SRS_NAME = "urn:ogc:def:crs:EPSG::4326"
 
 for prefix, uri in (("message", NS_MESSAGE), ("aixm", NS_AIXM),
-                    ("gml", NS_GML), ("xlink", NS_XLINK)):
+                    ("gml", NS_GML), ("xlink", NS_XLINK),
+                    ("ibosoftais", NS_IBOSOFTAIS)):
     ET.register_namespace(prefix, uri)
 
 
@@ -29,6 +45,11 @@ def aixm(tag):
 
 def gml(tag):
     return q(NS_GML, tag)
+
+
+def ibosoftais(tag):
+    """Bu projenin kendi extension namespace'indeki eleman adı."""
+    return q(NS_IBOSOFTAIS, tag)
 
 
 def sub(parent, tag, text=None, **attrs):

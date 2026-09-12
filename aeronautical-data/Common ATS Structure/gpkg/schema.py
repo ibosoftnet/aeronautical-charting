@@ -46,8 +46,16 @@ IDENTITY_COLUMNS = ["aixm_gml_id", "aixm_uuid"]
 #: "yalnızca rota noktaları" gibi filtreleri sanal katman kurmadan, mevcut
 #: RTree/B-tree indekslerini bozmadan yapabilmek.
 #: Katman öneki taşımazlar (annotation/provenance ile aynı kural).
-ATS_STATUS_COLUMNS = [
-    "atsStatus_isElementOfRouteSegment",   # BOOLEAN — kapı alanı
+#:
+#: Aile İKİYE ayrılır (emsal: `NAVAID_SYMBOLOGY_COLUMNS` /
+#: `NAVAID_SYMBOLOGY_COMPONENT_ONLY_COLUMNS`):
+#:   * `ATS_STATUS_ASSOCIATED_COLUMNS` — `designatedPoints`, `navaids` VE
+#:     `changeOverPoints`'te ortak yedili (kullanıcı kararı).
+#:   * Geri kalanı yalnızca NOKTA katmanlarında. `isElementOfRouteSegment`
+#:     COP'ta anlamsız olurdu (COP tanımı gereği bir rota aralığına bağlıdır,
+#:     kapı hep 1 olurdu); `reportingAssociation` ve `depiction*` ailesi ise
+#:     NOKTA sembolü seçmek içindir — COP'un sembolü `copSymbology_*`'tan gelir.
+ATS_STATUS_ASSOCIATED_COLUMNS = [
     # CodeLevelType degerleri, dort BAGIMSIZ bayrak olarak: her biri
     # "iliskili segmentlerden EN AZ BIRI bu seviyede mi". Birbirlerini
     # dislamazlar. `Other` yalnizca gercek `OTHER`/`OTHER:xxx` degeri varsa
@@ -65,6 +73,12 @@ ATS_STATUS_COLUMNS = [
     "atsStatus_associatedTypeAts",         # BOOLEAN — route_type = ATS
     "atsStatus_associatedTypeNat",         # BOOLEAN — route_type = NAT
     "atsStatus_associatedTypeOther",       # BOOLEAN — gercek OTHER/OTHER:xxx
+]
+
+#: Tam aile — sutun SIRASI degismedi: kapi alani basta, ortak yedili ortada.
+ATS_STATUS_COLUMNS = [
+    "atsStatus_isElementOfRouteSegment",   # BOOLEAN — kapı alanı
+] + ATS_STATUS_ASSOCIATED_COLUMNS + [
     "atsStatus_reportingAssociation",      # JSON: [{segmentId, role, reportingATC}]
     "atsStatus_depictionCompulsory",       # BOOLEAN — reportingATC = COMPULSORY
     # Harita gosterimi icin TURETILMIS siniflandirmalar. Diger alanlar gibi
@@ -242,6 +256,61 @@ NAVAID_SYMBOLOGY_COMPONENT_ONLY_COLUMNS = [
 ]
 
 
+#: `changeOverPoints` — COP'un AIXM referanslarinin COZULMUS hali.
+#: Dort referans var: `RoutePortion`'in start/end/intermediatePoint'i ve
+#: COP'un kendi `location`'i. Hepsi ayni dort temel alani tasir; UC NOKTALAR
+#: ayrica ad ve tip alir (kullanici karari).
+#:
+#: `Layer` hedefin hangi gpkg katmaninda oldugunu soyler (`navaids` /
+#: `designatedPoints`) — satir id'si tek basina belirsiz olurdu, hangi tabloya
+#: join edilecegi bilinmeli. `routeSegments_startPoint*` ile ayni desen.
+#:
+#: `Uuid` semada YENI bir bilgi: bugune kadar iliskiler yalnizca gpkg satir
+#: id'si olarak tutuluyordu. Kural: `…Id` = gpkg satir id, `…Uuid` = AIXM
+#: `gml:identifier` (kullanici karari, AIXM<->gpkg eslestirmesi icin).
+_COP_REFERENCE_FIELDS = ["Layer", "Id", "Uuid", "Designator"]
+_COP_ENDPOINT_FIELDS = _COP_REFERENCE_FIELDS + ["Name", "Type"]
+
+#: Bagli Route. IKI aileye ayrilir (kullanici karari):
+#:
+#:  * `route_*`            — Route'tan DEVRALINAN oznitelikler. `routeSegments`
+#:                           katmanindaki `route_*` ailesiyle ayni ad ve ayni
+#:                           anlam, boylece iki katman ayni dili konusur.
+#:  * `associatedRoute_uuid` — ILISKININ kendisi, yani Route'un kimligi.
+#:                           `routeSegments`'te boyle bir sutun yoktur; COP'ta
+#:                           kimlik gerektigi icin semanin iliski ailesi olan
+#:                           `associated…` altinda durur.
+#:
+#: `route_uuid` gibi bir ad kullanilmaz — hicbir katmanda `<katman>_uuid`
+#: biciminde sutun yok, satirin kendi kimligi her yerde `aixm_uuid`.
+ROUTE_INHERITED_COLUMNS = [
+    "route_designatorPrefix",
+    "route_designatorSecondLetter",
+    "route_designatorNumber",
+    "route_multipleIdentifier",
+]
+
+ASSOCIATED_ROUTE_COLUMNS = ["associatedRoute_uuid"] + ROUTE_INHERITED_COLUMNS
+
+#: Rota araligini olusturan segmentler. AIXM'de COP'un boyle bir alani YOKTUR —
+#: rota grafigi yurunerek turetilir (bkz. gpkg/route_portion.py). Ikisi de
+#: virgullu liste ve AYNI SIRADA: zincirin start->end sirasi.
+ASSOCIATED_ROUTE_SEGMENT_COLUMNS = [
+    "associatedRouteSegment_id",      # gpkg satir id'leri
+    "associatedRouteSegment_uuid",    # AIXM uuid'leri
+]
+
+#: `copSymbology_*` — COP sembolunun cizime hazir hali.
+#: QGIS sembolu CIZGI BOYUNCA bir yuzdeyle kaydirdigi icin payda cizginin
+#: kendi uzunlugudur; `distanceFromEnd` bu hesaba GIRMEZ.
+#: Cizgi uzunlugu ve segment sayisi ayri sutun olarak yazilmaz: birincisini
+#: QGIS `length($geometry)` ile, ikincisini `associatedRouteSegment_id`
+#: listesinin eleman sayisiyla zaten hesaplar (kullanici karari).
+COP_SYMBOLOGY_COLUMNS = [
+    "copSymbology_offsetPercent",
+]
+
+
 #: Liste tasiyan sutunlarin ayiricisi.
 LIST_SEPARATOR = ","
 
@@ -370,11 +439,44 @@ ROUTE_SEGMENTS = (
     + IDENTITY_COLUMNS
 )
 
+# ── changeOverPoints ────────────────────────────────────────────────────────
+# COP'un geometrisi KENDI KONUMU DEGILDIR: AIP, COP'un koordinatini
+# yayimlamiyor (bkz. docs/AIXM_ChangeOverPoint_Attributes.md §7.2). Onun
+# yerine COP'un gecerli oldugu ROTA ARALIGI cizgi olarak yazilir ve cizgi
+# `RoutePortion.start` ucundan baslar; QGIS sembolu bu cizgi boyunca
+# `copSymbology_offsetPercent` kadar kaydirarak dogru yere koyar.
+# Yon kritiktir: ters yonde bir cizgi sembolu yanlis uctan olcer.
+CHANGE_OVER_POINTS = (
+    ["changeOverPoints_distance", "changeOverPoints_distanceUom",
+     "changeOverPoints_distanceFromEnd", "changeOverPoints_distanceFromEndUom"]
+    + [f"changeOverPoints_startPoint{f}" for f in _COP_ENDPOINT_FIELDS]
+    + [f"changeOverPoints_endPoint{f}" for f in _COP_ENDPOINT_FIELDS]
+    + [f"changeOverPoints_intermediatePoint{f}" for f in _COP_REFERENCE_FIELDS]
+    # `location`'in iki yuzu ayri tasinir: ham koordinat (`location_position`
+    # verildiyse) ve cozulmus referans (`location_navaidSystem` vb.).
+    # Koordinat referanstan TURETILMEZ — yalnizca AIXM'de yazilmissa dolar.
+    + ["changeOverPoints_locationLatitude", "changeOverPoints_locationLongitude"]
+    + [f"changeOverPoints_location{f}" for f in _COP_REFERENCE_FIELDS]
+    + ASSOCIATED_ROUTE_COLUMNS
+    + ASSOCIATED_ROUTE_SEGMENT_COLUMNS
+    + COP_SYMBOLOGY_COLUMNS
+    + ANNOTATION_COLUMNS
+    + PROVENANCE_COLUMNS
+    # Nokta katmanlariyla ORTAK yedili (kullanici karari): COP cizgisini
+    # seviye/tip ile filtrelemek icin. Kaynak, COP'un ARALIGINDAKI
+    # segmentlerdir (`associatedRouteSegment_id`), bagli Route'un tamami
+    # DEGIL — boylece bayraklar satirin kendi geometrisini tarif eder.
+    + ATS_STATUS_ASSOCIATED_COLUMNS
+    + IDENTITY_COLUMNS
+)
+
 LAYERS = {
     "designatedPoints": {"columns": DESIGNATED_POINTS, "geometry": "POINT"},
     "navaids": {"columns": NAVAIDS, "geometry": "POINT"},
     "navaidComponents": {"columns": NAVAID_COMPONENTS, "geometry": "POINT"},
     "routeSegments": {"columns": ROUTE_SEGMENTS, "geometry": "LINESTRING"},
+    "changeOverPoints": {"columns": CHANGE_OVER_POINTS,
+                         "geometry": "LINESTRING"},
 }
 
 # Sayısal olarak saklanacak sütunlar (diğerleri TEXT).
@@ -393,6 +495,11 @@ _REAL_SUFFIXES = (
     "freq", "dmeElev",
     # navaidSymbology_* — mevcut "trueBearing" girdisi bunu yakalamaz.
     "TrueBrg",
+    # changeOverPoints_* — COP mesafeleri ve konumu. `distanceFromEnd` ayrica
+    # yazilir: "distanceFromEnd".endswith("distance") YANLIS'tir.
+    "distance", "distanceFromEnd", "Latitude", "Longitude",
+    # copSymbology_offsetPercent
+    "Percent",
 )
 
 
@@ -401,7 +508,11 @@ def column_type(name: str) -> str:
         return "BOOLEAN"                  # SQLite'ta 0/1 INTEGER olarak saklanır
     if name.endswith("Uom") or name.endswith("Reference"):
         return "TEXT"
-    if name.endswith("PointId") or name.endswith("navaidId"):
+    # Cozulmus referansin gpkg satir id'si. `…PointId` yerine genel `…Id`:
+    # COP'ta `locationId` gibi "Point" icermeyen adlar da var. Kucuk harfli
+    # `_id` (ornegin `associatedRouteSegment_id`) BU KURALA GIRMEZ — o bir
+    # virgullu LISTE'dir ve TEXT kalmalidir.
+    if name.endswith("Id") or name.endswith("navaidId"):
         return "INTEGER"
     short = name.split("_", 1)[-1]
     for suffix in _REAL_SUFFIXES:

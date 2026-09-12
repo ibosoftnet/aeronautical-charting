@@ -6,7 +6,11 @@
 `D:\Belgeler\Havacılık Kütüphanesi\Charts, Guides, Regulations\Other Documents\Aeronautical Information Exchange Model (AIXM)\Scheme and Data AIXM 5.2\aixm_5_2_0_xsd\`
 Namespace'ler: `message` = `http://www.aixm.aero/schema/5.2/message`, `aixm` = `http://www.aixm.aero/schema/5.2`, `gml` = `http://www.opengis.net/gml/3.2`, `xlink` = `http://www.w3.org/1999/xlink`.
 
-**Doğrulama durumu:** üretilen XML, yukarıdaki şema setine karşı **geçerli** (0 hata).
+**Doğrulama durumu:** üretilen XML **geçerli** — `GECERLI 0 hata (4448 feature)`.
+Derlenen şema = stok AIXM 5.2 seti **+** `schemas/ibosoftais-extension.xsd`
+(çıktı `ibosoftais:*` alanları taşıdığı için; → §6.1.2). Yalnız stok setle
+doğrulanırsa tek hata olarak `ChangeOverPointExtension: This element is not
+expected` verir — ölçüldü.
 
 ---
 
@@ -18,10 +22,11 @@ Namespace'ler: `message` = `http://www.aixm.aero/schema/5.2/message`, `aixm` = `
 | `lats_info.json`, `lrnav_info.json`, `uats_info.json`, `urnav_info.json` | Segment ek bilgileri (kid → alan sözlüğü) | `RouteSegment`, `Route` |
 | `VFRPOINT.json` | VFR raporlama noktaları | `DesignatedPoint` (type=VRP), `Navaid` (stub) |
 | `VFRSEGMENT.json` | VFR rota segmentleri | `RouteSegment`, `Route` |
+| `../COP/turkiye_enr31_changeover_points.json` | Change over point'ler (AIP ENR 3.1'den, portal dışı kaynak) | `ChangeOverPoint` |
 
 ATS noktaları 4 dosyada tekrarlanır; `kid` ile tekilleştirilir. Doğrulandı: aynı `kid` her dosyada aynı isim, tip ve koordinatı taşıyor (0 çakışma).
 
-**Üretilen feature sayıları:** 613 DesignatedPoint (ATS) · 263 DesignatedPoint (VFR) · 65 Navaid · 2 Navaid (stub) · 453 Route (ATS) · 97 Route (VFR) · 2670 RouteSegment (ATS) · 205 RouteSegment (VFR) = **4368**
+**Üretilen feature sayıları:** 613 DesignatedPoint (ATS) · 242 DesignatedPoint (VFR) · 65 Navaid · 2 Navaid (stub) · 453 Route (ATS) · 97 Route (VFR) · 2671 RouteSegment (ATS) · 205 RouteSegment (VFR) · 100 ChangeOverPoint = **4448**
 
 ---
 
@@ -136,6 +141,48 @@ Segmentlerin `ROUTE_DESIGNATOR` değerlerinden türetilir (benzersiz kod başın
 **Ölçüm:** 453/453 rota kodu desene uyuyor (0 hata). `ROUTE_DESIGNATOR`, fetcher tarafından sayfadaki `<span class="routeName">` içeriğinden alınır; 2670/2670 segmentte doludur ve geojson'daki `hi` ile 2670/2670 birebir uyuşur (çapraz doğrulandı).
 
 Not: `Route` feature'ının **geometrisi yoktur** — geometri `RouteSegment.curveExtent` üzerindedir. `Route` kendi segmentlerini de listelemez; bağ tek yönlüdür (`RouteSegment.routeFormed` → `Route`).
+
+### 6.1 ChangeOverPoint (COP) — 100 kayıt
+
+Kaynak: `../COP/turkiye_enr31_changeover_points.json` — AIP TÜRKİYE **ENR 3.1** tablolarındaki "Change over point BTN" satırları. Diğer bölümlerden farklı olarak bu veri DHMİ AIS portalından değil, **AIP PDF'inden** çıkarılmıştır.
+
+| Kaynak | AIXM | Dönüşüm |
+|---|---|---|
+| `vor_1_mesafe_nm` | `distance` (`uom="NM"`) | `RoutePortion.start`'tan ölçülen çekirdek mesafe |
+| `vor_1` | `applicableRoutePortion/RoutePortion/start_navaidSystem` | Navaid `designator`'ıyla çözülür → `xlink:href="urn:uuid:…"` |
+| `ilişkili_ats_yolu` | `applicableRoutePortion/RoutePortion/referencedRoute` | Rota kodu normalize edilerek eşlenir → §6.1.1 |
+| `vor_2` | `applicableRoutePortion/RoutePortion/end_navaidSystem` | Navaid `designator`'ıyla çözülür |
+| `vor_2_mesafe_nm` | `extension/ibosoftais:ChangeOverPointExtension/ibosoftais:distanceFromEnd` | **Çekirdek AIXM'de karşılığı yok** → §6.1.2 |
+| — | `location_*` | **Yazılmaz** — AIP, COP'un koordinatını yayımlamıyor |
+
+`gml:id` = `LT_COP_<rota>_<vor1>_<vor2>`; `(rota, vor_1, vor_2)` üçlüsünün 100/100 benzersiz olduğu ölçüldü. UUID deterministik (`feature_uuid("ChangeOverPoint", key)`).
+
+**Ölçüm:** 100/100 kayıt yazıldı — 67/67 rota ve 35/35 VOR çözüldü, çözülemeyen referans **0**.
+
+#### 6.1.1 Rota kodu normalizasyonu
+
+COP kaynağı rota kodunu **boşluksuz** veriyor (`A4`), ham rota verisi ise **boşluklu** (`A 4`). Eşleme, iki taraftan da boşluklar silinip büyük harfe çevrilerek yapılır. 453 ham kodun normalize hâlinde **çakışma olmadığı** ölçüldü, dolayısıyla eşleme tek anlamlıdır.
+
+#### 6.1.2 İkinci mesafe neden extension'da
+
+Çekirdek AIXM 5.2'de `ChangeOverPoint.distance` **tekildir** ve tanımı gereği yalnızca `RoutePortion.start`'tan ölçülür; `applicableRoutePortion` da tekildir (XSD'den doğrulandı). Oysa haritada COP sembolünde **her iki VOR'un da** DME değeri gösterilir.
+
+İkinci mesafe bu yüzden AIXM'in kendi resmi genişletme mekanizmasıyla taşınır:
+
+```xml
+<aixm:extension>
+  <ibosoftais:ChangeOverPointExtension gml:id="LT_COP_A4_BUK_SIV_EXT">
+    <ibosoftais:distanceFromEnd uom="NM">97</ibosoftais:distanceFromEnd>
+  </ibosoftais:ChangeOverPointExtension>
+</aixm:extension>
+```
+
+* Namespace: `https://cdn.ibosoft.net.tr/aviation-data/schema/aixm/5.2/extension`, önek `ibosoftais` — **proje düzeyi** (kaynak düzeyi değil), tek yerde tanımlı: `aixm/writer.py:NS_IBOSOFTAIS`
+* Şema: `Common ATS Structure/schemas/ibosoftais-extension.xsd`
+* Alan tipi `aixm:ValDistanceType` — çekirdek `distance` ile birebir aynı (kendi sayı tipimiz uydurulmadı)
+* Doğrulama: `validate_aixm.py` stok AIXM setiyle bu şemayı **birlikte** derler; extension şeması olmadan dosya "geçersiz" görünür (ölçüldü)
+
+Gerekçelerin tamamı ve değerlendirilen alternatifler: [`docs/AIXM_ChangeOverPoint_Attributes.md`](../../../docs/AIXM_ChangeOverPoint_Attributes.md) §7.
 
 ---
 
@@ -367,6 +414,9 @@ Bunlar DHMİ portalının harita çizim/görsel alanlarıdır; AIXM karşılıkl
 5. **`codeICAOCountry`** hiçbir feature'da yazılmaz — kaynakta ICAO Doc 7910 ülke kodu bulunmamaktadır.
 6. **Devredilen VFR noktalarının sembolojisi:** ATS DesignatedPoint'ine devredilen 15 nokta `type=ICAO` kaldığı için ortak üründe `VFR_REP` sınıfını almaz (→ §7.3, Aşama 2). VFR raporlama noktası oldukları bilgisi yalnızca `annotation`'da durur.
 7. **Tekilleştirme kimliği `kid`'e bağlıdır:** birleşen grubun uuid'i en küçük `kid`'den üretilir. DHMİ gelecek bir AIRAC'ta o `kid`'i düşürüp diğerini korursa noktanın uuid'i değişir.
+8. **COP kaynağı elle çıkarılmıştır:** `turkiye_enr31_changeover_points.json`, portal API'sinden değil AIP ENR 3.1 PDF'inden üretilmiştir; diğer kaynaklar gibi otomatik tazelenmez, AIRAC değişiminde elle güncellenmesi gerekir (→ §6.1).
+9. **COP'un konumu yazılmaz:** AIP yalnızca iki VOR'a olan DME mesafelerini yayımlıyor, koordinat vermiyor; `location_*` bilinçli olarak boş bırakılır. Haritada nokta sembolü gerekirse konum `distance` + rota geometrisinden **türetilmelidir** (→ §6.1).
+10. **COP dosyası kendi şemasıyla doğrulanır:** `ibosoftais:distanceFromEnd` alanı çekirdek AIXM'de tanımlı olmadığı için, çıktı yalnızca stok AIXM setiyle doğrulanırsa "geçersiz" görünür (ölçüldü). `validate_aixm.py` bu yüzden `schemas/ibosoftais-extension.xsd`'yi de derler (→ §6.1.2).
 
 ---
 
@@ -375,5 +425,6 @@ Bunlar DHMİ portalının harita çizim/görsel alanlarıdır; AIXM karşılıkl
 | Dosya | İçerik |
 |---|---|
 | `../lt-route-data-aixm.xml` | AIXM 5.2 çıktısı (başında `<!-- Generated by Ibosoft -->`) |
+| `../../../schemas/ibosoftais-extension.xsd` | Bu projenin AIXM extension şeması — çıktıdaki `ibosoftais:*` alanları burada tanımlıdır (→ §6.1.2). Doğrulamada stok AIXM setiyle birlikte derlenir |
 | `errored-features.log` | `SEVERITY \| FEATURE \| ID \| FIELD \| VALUE \| VIOLATION`. Her çalıştırmada sıfırlanır |
 | `not.txt` | Hatalı alanı düşürülen kayıtlar, tüm kaynak alanlarıyla — doğru değer elle eklenmelidir. Her çalıştırmada sıfırlanır |

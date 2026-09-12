@@ -135,6 +135,56 @@ def endpoint_ref(ts, side: str):
     return None, None
 
 
+def route_portion_refs(ts):
+    """ChangeOverPoint'in `RoutePortion` referansları → dict.
+
+    Döner: `{"start_uuid", "start_tag", "end_uuid", "end_tag", "route_uuid"}`.
+
+    `RoutePortion` bir AIXM **Object**'tir (Feature değil) ve `ChangeOverPoint`'in
+    TimeSlice'ı içine gömülüdür; bu yüzden referanslar `endpoint_ref`'in baktığı
+    yerden bir seviye daha derindedir:
+
+        ChangeOverPointTimeSlice
+          └─ applicableRoutePortion
+               └─ RoutePortion
+                    ├─ start_*          (6 seçenekli choice)
+                    ├─ referencedRoute
+                    └─ end_*            (6 seçenekli choice)
+
+    Uç noktalar `start_navaidSystem`, `start_fixDesignatedPoint`, … olabildiği
+    için eleman adı SABİT DEĞİLDİR; bu yüzden tam ada değil `start_`/`end_`
+    ÖNEKİNE bakılır — choice'ın hangi dalı kullanılmış olursa olsun çalışır.
+    `tag` alanı hangi dalın kullanıldığını taşır (`endpoint_ref` ile aynı desen).
+    """
+    out = {"start_uuid": None, "start_tag": None,
+           "end_uuid": None, "end_tag": None, "route_uuid": None,
+           "intermediate_uuid": None, "intermediate_tag": None}
+    if ts is None:
+        return out
+    portion = ts.find(A + "applicableRoutePortion")
+    portion = portion.find(A + "RoutePortion") if portion is not None else None
+    if portion is None:
+        return out
+
+    for child in portion:
+        name = local(child.tag)
+        uid = href_of(child)
+        if uid is None:
+            continue
+        if name == "referencedRoute":
+            out["route_uuid"] = uid
+        elif name.startswith("start_"):
+            out["start_uuid"], out["start_tag"] = uid, name
+        elif name.startswith("end_"):
+            out["end_uuid"], out["end_tag"] = uid, name
+        elif name.startswith("intermediatePoint_"):
+            # Doğal anahtara GİRMEZ (kimliğin parçası değil), ama 2B'de
+            # geometri kurulurken ŞARTTIR: rota dallanıyorsa yolun hangi
+            # koldan geçtiğini yalnızca bu alan söyler.
+            out["intermediate_uuid"], out["intermediate_tag"] = uid, name
+    return out
+
+
 def curve_positions(ts):
     """RouteSegment'in `curveExtent` posList'i → [(lat, lon), …] veya None."""
     pl = ts.find(".//" + G + "posList") if ts is not None else None
@@ -188,5 +238,10 @@ def describe(feature) -> dict:
             "route_uuid": href_of(ts.find(A + "routeFormed")) if ts is not None else None,
             "positions": curve_positions(ts),
         })
+
+    elif kind == "ChangeOverPoint":
+        # Referanslar gömülü `RoutePortion` nesnesinin içindedir — bkz.
+        # `route_portion_refs`. Doğal anahtar bunlardan türetilir (keys.py).
+        info.update(route_portion_refs(ts))
 
     return info

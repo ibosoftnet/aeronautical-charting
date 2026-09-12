@@ -1,0 +1,23 @@
+[
+  {
+    "_aciklama": "Bulgaristan AIP'sinde (ENR 3.3, AIRAC 2606 / 14 MAY 2026) BAKLO noktasi kaldirilip yerine EFCOM getirilmis. EAD-SDO bu degisikligi ALMAMIS: EAD kaydi 03 SEP 2026 (AIRAC 2609) tarihli olmasina ragmen hala BAKLO'yu ve ona bagli uc segmenti tasiyor (kullanici teyidi: Bulgaristan EAD'yi guncellememis). Bu dort kural eskimis kayitlari cikarir; yerlerine gecenler data-sources/tailored-LB kaynagindan gelir. BAKLO'ya referans veren segment sayisi olculdu: TAM OLARAK 3, ucu de asagida iptal ediliyor. Dolayisiyla noktanin cikarilmasi geride kirik referans birakmaz -- iptal kurali remap girdisi uretmedigi icin bu kontrol sart.",
+    "layer": "designatedPoints",
+    "match": { "designator": "BAKLO", "type": "ICAO",
+               "originator": "BULATSA-BULGARIAN AIR TRAFFIC SERVICES AUTHORITY" }
+  },
+  {
+    "layer": "routeSegments",
+    "match": { "route": "N618", "start": "VADEN", "end": "BAKLO",
+               "originator": "BULATSA-BULGARIAN AIR TRAFFIC SERVICES AUTHORITY" }
+  },
+  {
+    "layer": "routeSegments",
+    "match": { "route": "N618", "start": "BAKLO", "end": "GOL",
+               "originator": "BULATSA-BULGARIAN AIR TRAFFIC SERVICES AUTHORITY" }
+  },
+  {
+    "layer": "routeSegments",
+    "match": { "route": "T889", "start": "BAKLO", "end": "DEDIN",
+               "originator": "BULATSA-BULGARIAN AIR TRAFFIC SERVICES AUTHORITY" }
+  }
+]

@@ -6,3 +6,6 @@ terrain-hydrography-data/contours.gpkg
 __pycache__/
 *.py[cod]
 *.pyo
+
+# graphify
+graphify-out/

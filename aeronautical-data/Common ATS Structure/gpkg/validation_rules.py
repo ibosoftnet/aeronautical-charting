@@ -195,6 +195,18 @@ def _navaid_component_rules():
 
 
 RULES: dict[str, dict[str, FieldRule]] = {
+    "changeOverPoints": {
+        # `ValDistanceType` >= 0; ust sinir yok — rota araligi cok uzun olabilir.
+        "changeOverPoints_distance": number_rule(0, None),
+        "changeOverPoints_distanceUom": enum_rule(*UOM_DISTANCE),
+        "changeOverPoints_distanceFromEnd": number_rule(0, None),
+        "changeOverPoints_distanceFromEndUom": enum_rule(*UOM_DISTANCE),
+        "changeOverPoints_locationLatitude": number_rule(-90, 90),
+        "changeOverPoints_locationLongitude": number_rule(-180, 180),
+        # Cizgi boyunca kaydirma orani. Araligin disina cikmasi, yayimlanan
+        # mesafenin cizgi uzunlugunu asmasi demektir — gorunur olmali.
+        "copSymbology_offsetPercent": number_rule(0, 100),
+    },
     "designatedPoints": {
         "atsStatus_depictionNav": enum_rule(*CODE_DEPICTION_NAV),
         "atsStatus_depictionSIGPointBasicFunc":

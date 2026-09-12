@@ -31,13 +31,30 @@ atlamaktan yeğdir ve yeni bir kaynak geldiğinde şema değişmeden dolar.
 
 | Katman | AIXM Feature | Geometri | Sütun | Satır |
 |---|---|---|---:|---:|
-| `designatedPoints` | `DesignatedPoint` | POINT | 28 | 152.040 |
-| `navaids` | `Navaid` | POINT | 60 | 9.357 |
-| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 100 | 13.362 |
-| `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 83 | 92.976 |
+| `designatedPoints` | `DesignatedPoint` | POINT | 28 | 152.042 |
+| `navaids` | `Navaid` | POINT | 60 | 9.338 |
+| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 100 | 13.343 |
+| `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 83 | 92.959 |
+| `changeOverPoints` | `ChangeOverPoint` (+ `RoutePortion`) | LINESTRING | 51 | 100 |
 
 Her katmanda ayrıca `id` (INTEGER PRIMARY KEY AUTOINCREMENT) ve `geom` (BLOB)
 bulunur; yukarıdaki sütun sayıları bu ikisini içermez.
+
+### 1.0 `changeOverPoints` geometrisi neden çizgi
+
+`ChangeOverPoint` bir **noktadır**, ama koordinatı AIXM'de yazılmaz: AIP
+TÜRKİYE ENR 3.1 yalnızca iki VOR'a olan DME mesafelerini yayımlıyor, konum
+vermiyor (bkz. [`docs/AIXM_ChangeOverPoint_Attributes.md`](docs/AIXM_ChangeOverPoint_Attributes.md)
+§7.2). Koordinatı hesaplayıp AIXM'e yazmak veri uydurmak olurdu.
+
+Bunun yerine katman, COP'un **geçerli olduğu rota aralığını** (`RoutePortion`:
+start → end) çizgi olarak taşır ve çizgi **start ucundan başlar**. QGIS sembolü
+bu çizgi boyunca `copSymbology_offsetPercent` kadar kaydırarak yerine koyar —
+nokta konumu böylece veri uydurmadan, yayımlanan mesafeden türetilmiş olur.
+
+Yön kritiktir: ters yönde bir çizgi sembolü yanlış uçtan ölçer. Ölçüldü — 100
+COP'un tamamında çizgi doğru uçta başlıyor, ve örnek bir COP'ta zincirdeki
+7 segmentin **tamamı** kaynakta ters yönde kayıtlıydı.
 
 ### 1.1 `points` katmanı neden yok
 
@@ -51,7 +68,7 @@ iptal edildi. Antimeridyen kesişim noktaları bu yüzden `Point` değil
 
 ### 1.2 `Route` neden ayrı katman değil
 
-`Route` feature'ı birleşik AIXM'de vardır (14.754 kayıt) ama ayrı katmana
+`Route` feature'ı birleşik AIXM'de vardır (14.767 kayıt) ama ayrı katmana
 yazılmaz: rota düzeyindeki öznitelikler `routeSegments` katmanına
 `route_*` önekiyle devredilir (RouteSegment'in kendi alanlarından bilinçli
 olarak farklı bir önek — ikisi ayrı feature'dır), böylece QGIS'te tek tabloda
@@ -80,10 +97,51 @@ olmadığı için **önek almazlar** (kullanıcı kararı):
 | `annotation` (4 purpose) | `annotationDescription`, `annotationRemark`, `annotationWarning`, `annotationDisclaimer` |
 | Provenance | `data_provider`, `data_originator`, `data_effectivity`, `add_date` |
 | Kimlik | `aixm_gml_id`, `aixm_uuid` — her katmanın son iki sütunu (aşağıda) |
-| ATS rota durumu (türetilmiş) | `atsStatus_*` — yalnızca `designatedPoints` ve `navaids`'te |
+| ATS rota durumu (türetilmiş) | `atsStatus_*` — 13 sütunun tamamı `designatedPoints` ve `navaids`'te; `associatedLevel*`/`associatedType*` yedilisi **`changeOverPoints`'te de** (orada COP'un aralığındaki segmentlerden türetilir) |
 | Navaid ↔ Component bağı | `associatedComponent_<AltTür>` (navaids), `associatedNavaid` / `associatedNavaidType` (navaidComponents) — virgüllü liste (§6.3) |
 | Harita etiketi (türetilmiş) | `navaidLabeling_*` — yalnızca `navaids` ve `navaidComponents`'te |
 | Sembol geometrisi (türetilmiş) | `navaidSymbology_*` — `declination` hem `navaids` hem `navaidComponents`'te, `GPAssociatedLOCTrueBrg` yalnızca `navaidComponents`'te |
+| Route'tan devralınan | `route_*` — `routeSegments` **ve** `changeOverPoints`'te, aynı adlarla (§2.1) |
+| İlişkili Route / segmentler | `associatedRoute_uuid`, `associatedRouteSegment_*` — yalnızca `changeOverPoints`'te (§2.1) |
+| COP sembolü (türetilmiş) | `copSymbology_*` — yalnızca `changeOverPoints`'te |
+
+### 2.1 İlişki sütunları: `…Id` / `…Uuid` / `associated…`
+
+Şemada bir satırın **başka bir elemanla** ilişkisi üç biçimde durur:
+
+| Biçim | Ne tutar | Örnek |
+|---|---|---|
+| `…Id` | Hedefin **GeoPackage satır id'si** | `routeSegments_startPointId`, `changeOverPoints_endPointId` |
+| `…Uuid` | Hedefin **AIXM `gml:identifier`'ı** | `changeOverPoints_startPointUuid` |
+| `associated…` | Hedefi bir katman **olmayan** ya da AIXM'de karşılığı olmayan bağ | `associatedNavaid`, `associatedRoute_uuid`, `associatedRouteSegment_id` |
+
+`…Uuid` ailesi `changeOverPoints` ile geldi (kullanıcı kararı): ondan önce
+çapraz referanslar **yalnızca** satır id'si olarak tutuluyordu ve birleşik
+AIXM ile GeoPackage arasında doğrudan eşleştirme yapılamıyordu.
+
+**Bağlı Route iki aileye ayrılır** (kullanıcı kararı):
+
+| Aile | Ne tutar | `changeOverPoints`'teki sütunlar |
+|---|---|---|
+| `route_*` | Route'tan **devralınan** öznitelikler | `route_designatorPrefix`, `route_designatorSecondLetter`, `route_designatorNumber`, `route_multipleIdentifier` |
+| `associatedRoute_uuid` | **İlişkinin kendisi** — Route'un kimliği | tek sütun |
+
+`route_*` adları `routeSegments` katmanındakilerle **birebir aynıdır**, böylece
+iki katman aynı dili konuşur ve aynı QGIS ifadesi ikisinde de çalışır.
+Kimlik ayrı durur çünkü `routeSegments`'te öyle bir sütun yoktur — orada Route'un
+kimliği taşınmaz, COP'ta ise gerekir. `route_uuid` gibi bir ad kullanılmaz:
+hiçbir katmanda `<katman>_uuid` biçiminde sütun yoktur, satırın kendi kimliği
+her yerde `aixm_uuid`'dir.
+
+`associatedRouteSegment_id` / `_uuid` ikilisi AIXM'de **yoktur**: COP'un
+çizgisini oluşturan segmentler rota grafiği yürünerek türetilir
+(`gpkg/route_portion.py`). İkisi de virgüllü liste, **aynı sırada** ve sıra
+anlamlıdır (start→end).
+
+> **Proje çapında bir boşluk:** `Val*Type`'ların `@accuracy` niteliği hiçbir
+> katmanda taşınmaz — `gpkg/mapper.py:value_uom()` yalnızca değer ve `uom`
+> okur. Şemadaki `locationHorizontalAccuracy` sütunları bununla ilgisizdir, o
+> ayrı bir AIXM alanıdır. COP'ta da tutarlılık için açılmadı.
 
 Bu istisna dışındaki tüm sütunlar yukarıdaki genel kurala göre katman önekli
 kalır (`designatedPoints_designator`, `navaids_type` gibi).
@@ -175,7 +233,7 @@ katmanı ikisini birden temsil ettiği için her biri ayrı ele alınır:
 |---|---|---|
 | `aircraftCapability` | Segmentin kendi değeri varsa **o**; yoksa bağlı `Route`'unki alınır | Kullanıcı kararı. Önceden yalnızca segmente bakılıyordu; Route düzeyinde tanımlı 11 kayıt sessizce düşüyordu |
 | `annotation` | **İkisi de** alınır, araya boş satır konarak birleşir | Notlar birbirini dışlamaz; aşağıdaki bölüm |
-| `availability` | Yalnızca segmentinki | Ölçüldü: `Route.availability` hiçbir kayıtta yok (0), `RouteSegment` 7. Fallback eklenmedi — gereksiz |
+| `availability` | Yalnızca segmentinki | Ölçüldü: `Route.availability` hiçbir kayıtta yok (0), `RouteSegment` 12 (7 `KKTC SHD` + 5 `tailored-lb`). Fallback eklenmedi — gereksiz |
 | `extension` | Eşlenmez | Soyut uzatma noktası, somut içeriği yok |
 
 `designCriteria` de aynı desende çalışır (segment → Route), ancak o alan
@@ -474,11 +532,18 @@ Geometri: `curveExtent`'in `gml:posList`'i → LINESTRING.
 | `routeSegments_minimumCrossingAtEnd` (+`Uom`, +`Reference`) | aynı ad | REAL/TEXT | **0,0%** |
 | `routeSegments_maximumCrossingAtEnd` (+`Uom`, +`Reference`) | aynı ad | REAL/TEXT | **0,0%** |
 | `routeSegments_designatorSuffix` | `designatorSuffix` | TEXT | **0,0%** |
-| `routeSegments_availability` | `availability` (JSON) | TEXT | **0,0%** |
+| `routeSegments_availability` | `availability` (JSON) | TEXT | 0,01% (12 satır) |
 | `routeSegments_cardinalDirectionLeft` / `Right` | aynı adlar | TEXT | **0,0%** |
 | `routeSegments_aircraftCapability` | `aircraftCapability` (JSON) | TEXT | 2,9% |
-| `routeSegments_airspaceClass` | `airspaceClass` (JSON) | TEXT | **0,0%** |
+| `routeSegments_airspaceClass` | `airspaceClass` (JSON) | TEXT | 0,006% (6 satır) |
 | `routeSegments_designCriteria` | `designCriteria/name` (virgüllü) | TEXT | 3,1% |
+
+> **`airspaceClass` ve `navigationAccuracy` ilk kez `tailored-lb` ile doldu.**
+> İkisi de bu korpusta daha önce hiçbir kaynakta yoktu (ölçüldü: TLB dışı satır
+> **0**). `routeSegments_aircraftCapability` sütunu 2.698 satırda doluydu ama
+> içindeki `navigationAccuracy` anahtarı yalnızca bu 6 satırda var.
+> `availability` ise ilk kez değil — 12 satırın 7'si `KKTC SHD`'den geliyor.
+> Üçü de şemada zaten tanımlıydı, kod değişikliği gerekmedi.
 
 `designCriteria` segmentte yoksa bağlı `Route`'un `designCriteria`'sına düşülür —
 bu **bilinçli bir devralmadır**, fallback zinciri değil: AIXM'de tasarım ölçütü
@@ -586,7 +651,7 @@ value, violation, severity`.
 
 `gpkg/schema.py:finalize()`:
 
-1. **Her sütunda B-tree index** — dört katmanda 271 sütun.
+1. **Her sütunda B-tree index** — beş katmanda 315 sütun.
 2. **Mekânsal index (RTree)** — katman başına `rtree_<katman>_geom` sanal
    tablosu, GeoPackage 1.2 Ek F.3'teki altı tetikleyici (insert, update1-4,
    delete) ve `gpkg_extensions` kaydı (`gpkg_rtree_index`, scope `write-only`).
@@ -632,6 +697,6 @@ korunur. Alan bazında birleştirme yapılmaz.
 
 ## 12. Karar bekleyen konu
 
-Yok. Şemadaki 271 sütunun tamamının AIXM karşılığı kurulu ve çalışır durumda;
+Yok. Şemadaki 315 sütunun tamamının AIXM karşılığı kurulu ve çalışır durumda;
 `%0,0` görünen sütunlar kaynakların o alanı sağlamamasındandır (§ girişteki
 açıklama), eşleme eksikliği değildir.

@@ -12,12 +12,23 @@ uç noktaların **designator**'ları üzerinden yapılır; bunun için kaynağı
 
 from .aixm_reader import EQUIPMENT_FEATURES, POINT_FEATURES
 
-# Feature adı → GeoPackage katman adı (yalnızca katmana giden feature'lar).
+# Feature adı → katman adı. Katman adı, çakışma çözümünün ortak dilidir:
+# `config.json`'daki `prefer_base_on_match_layers`, iptal kurallarının `layer`
+# alanı ve `override.prefers_base()` hep bu adı konuşur.
+#
+# Not: buradaki her ad bir GeoPackage katmanına karşılık GELMEK ZORUNDA DEĞİLDİR
+# — `routes` de burada vardır ama GeoPackage'da `routes` katmanı yoktur.
 LAYER_OF = {
     "DesignatedPoint": "designatedPoints",
     "Navaid": "navaids",
     "RouteSegment": "routeSegments",
     "Route": "routes",
+    # COP, kaynaklar arası çakışmaya GİREBİLEN bir feature'dır: aynı fiziksel
+    # geçiş noktasını iki kaynak da yayımlayabilir. Bugün yalnızca LT üretiyor
+    # (ölçüldü: EAD-SDO 0, Jeppesen 0, TRNC 0), ama katman adı burada tanımlı
+    # olduğu için davranış config'den ayarlanabilir — diğer katmanlarla aynı
+    # şekilde (kullanıcı kararı).
+    "ChangeOverPoint": "changeOverPoints",
 }
 for _name in EQUIPMENT_FEATURES:
     LAYER_OF[_name] = "navaidComponents"
@@ -57,6 +68,18 @@ def natural_fields(info: dict, originator: str | None, index: dict) -> dict:
         fields["start"] = start.get("designator")
         fields["end"] = end.get("designator")
 
+    elif kind == "ChangeOverPoint":
+        # RouteSegment ile aynı desen: referanslar UUID, karşılaştırma
+        # designator üzerinden. Uçlar Navaid ya da DesignatedPoint olabilir;
+        # `index` ikisini de taşır (`POINT_FEATURES`).
+        route = index.get(info.get("route_uuid") or "", {})
+        start = index.get(info.get("start_uuid") or "", {})
+        end = index.get(info.get("end_uuid") or "", {})
+        fields["route"] = route.get("designator")
+        fields["routeLocationDesignator"] = route.get("location_designator")
+        fields["start"] = start.get("designator")
+        fields["end"] = end.get("designator")
+
     return fields
 
 
@@ -67,6 +90,7 @@ def override_key(fields: dict):
       * RouteSegment  → rota kimliği + start/end kombinasyonu + originator
       * DesignatedPoint → designator + originator
       * Navaid        → type + ident + originator
+      * ChangeOverPoint → rota kimliği + SIRASIZ uç çifti + originator
     `navaidComponents` ve `Route` override edilmez (ek kaynaklarda ekipman
     ayrıntısı yok; Route'lar segmentleriyle birlikte gelir).
     """
@@ -78,6 +102,16 @@ def override_key(fields: dict):
             return None          # uç noktası çözülmemiş segment eşleştirilemez
         return ("routeSegments", fields.get("route"),
                 fields["start"], fields["end"], originator)
+
+    if layer == "changeOverPoints":
+        if not (fields.get("start") and fields.get("end")):
+            return None          # ucu çözülmemiş COP eşleştirilemez
+        # Uç çifti SIRALANIR (kullanıcı kararı): iki VOR arasında geçiş noktası
+        # fizikî olarak tektir; bir kaynak BUK→SIV, diğeri SIV→BUK yazmışsa
+        # bunlar AYNI noktadır ve eşleşmelidir. RouteSegment'te sıra korunur
+        # çünkü orada yön kaydın kendi anlamının parçasıdır — COP'ta değildir.
+        return ("changeOverPoints", fields.get("route"),
+                *sorted((fields["start"], fields["end"])), originator)
 
     if layer == "designatedPoints":
         if not fields.get("designator"):

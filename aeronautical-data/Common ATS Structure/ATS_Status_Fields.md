@@ -25,14 +25,50 @@ QGIS'te "yalnızca rota noktalarını göster" gibi bir filtre iki yolla kurulab
 
 ## 2. Kapsam
 
-| Katman | `atsStatus_*` var mı | Gerekçe |
+Aile **ikiye ayrılır** (kullanıcı kararı) — emsal: `NAVAID_SYMBOLOGY_COLUMNS` /
+`NAVAID_SYMBOLOGY_COMPONENT_ONLY_COLUMNS` ikilisi:
+
+| Alt aile | Sütun | Nerede |
 |---|---|---|
-| `designatedPoints` | ✅ | Rota segmenti ucu olarak çözümlenir |
-| `navaids` | ✅ | Rota segmenti ucu olarak çözümlenir (14.214 start + 13.892 end referansı) |
+| **Ortak yedili** (`ATS_STATUS_ASSOCIATED_COLUMNS`) | `associatedLevelUpper/Lower/Both/Other`, `associatedTypeAts/Nat/Other` | `designatedPoints`, `navaids`, **`changeOverPoints`** |
+| Nokta'ya özel | `isElementOfRouteSegment`, `reportingAssociation`, `depictionCompulsory`, `depictionNav`, `depictionSIGPointBasicFunc`, `depictionNavAndREP` | yalnızca `designatedPoints`, `navaids` |
+
+| Katman | Hangi alanlar | Gerekçe |
+|---|---|---|
+| `designatedPoints` | ✅ 13'ü de | Rota segmenti ucu olarak çözümlenir |
+| `navaids` | ✅ 13'ü de | Rota segmenti ucu olarak çözümlenir (14.214 start + 13.892 end referansı) |
+| `changeOverPoints` | ✅ **yalnızca ortak yedili** | COP çizgisini seviye/tip ile filtrelemek için (§2.1) |
 | `navaidComponents` | ❌ | Rota ucu olarak **hiç çözümlenmez** — fiziksel ekipmandır, orada anlamsız olurdu |
 | `routeSegments` | ❌ | Kaynağın kendisi |
 
 Sütunlar **katman öneki taşımaz** (`annotation`/provenance ile aynı kural).
+
+### 2.1 `changeOverPoints`'te kapsam ve kapı
+
+**Kaynak, COP'un ARALIĞINDAKİ segmentlerdir** (`associatedRouteSegment_id`
+sütunundaki gpkg satır id'leri), bağlı Route'un tamamı değil. Gerekçe: COP'un
+çizgisi rotanın yalnızca bir parçasıdır; bayraklar da o parçayı tarif etmelidir,
+aksi halde satırın bayraklarıyla geometrisi uyuşmazdı.
+
+**Kapı:** aralık kurulamamışsa yedi alan da `NULL` kalır — `0` değil. Nokta
+katmanlarındaki "bağlı değil ≠ bağlı ama bilgi yok" ayrımıyla birebir aynı.
+Bu satırlar sessizce geçilmez, `errored-features.csv`'ye
+`cop_ats_status_aralik_yok` olarak yazılır.
+
+Diğer altı alan COP'a **girmez**: `isElementOfRouteSegment` anlamsız olurdu
+(COP tanımı gereği bir rota aralığına bağlıdır, kapı hep 1 olurdu),
+`reportingAssociation` ve `depiction*` ailesi ise *nokta sembolü* seçmek
+içindir — COP'un sembolü `copSymbology_*` ailesinden gelir.
+
+**Ölçülen dağılım** (100 COP): `associatedLevelLower` **47**,
+`associatedLevelUpper` **53**, `associatedTypeAts` **100**;
+`LevelBoth` / `LevelOther` / `TypeNat` / `TypeOther` **0**; aralığı çözülemeyen
+satır **0**. Bugünkü veride hiçbir COP aralığı karışık seviyeli segment
+içermiyor, bu yüzden `Lower + Upper = 100` tam olarak tutuyor.
+
+> Türetme kodu üç katmanda **ortaktır**: `build_common_ats.associated_flags()`.
+> Nokta katmanları `compute_ats_status()`, COP `compute_cop_ats_status()`
+> üzerinden çağırır; yalnızca kümelerin nereden toplandığı değişir.
 
 ## 3. AIXM'de karşılığı yoktur
 

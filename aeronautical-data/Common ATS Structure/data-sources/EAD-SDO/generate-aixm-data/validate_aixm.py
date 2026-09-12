@@ -33,6 +33,53 @@ XSD = Path(
 )
 HAS_MEMBER = "{http://www.aixm.aero/schema/5.2/message}hasMember"
 
+#: Bu projenin kendi AIXM extension şeması. AIXM'in resmi genişletme
+#: mekanizmasıyla (`aixm:AbstractExtension` ikame grubu) yazdığımız alanlar
+#: burada tanımlıdır; şema DERLEMEYE KATILMAZSA bu alanları taşıyan dosyalar
+#: "geçersiz" görünür — çünkü stok AIXM seti bizim elemanımızı tanımaz.
+#: Dosya yoksa doğrulama eskisi gibi yalnız stok AIXM setiyle yapılır.
+EXTENSION_XSD = (BASE_DIR.parent.parent.parent
+                 / "schemas" / "ibosoftais-extension.xsd")
+
+#: Hem AIXM setini hem extension şemasını tek derlemede toplayan sarmalayıcı.
+#: Kendi targetNamespace'i yoktur — yalnızca iki şemayı aynı küme içine alır
+#: (XSD "schema assembly" deseni). Extension şeması `aixm` namespace'ini
+#: schemaLocation'sız import ettiği için asıl AIXM dosyasını buradaki import
+#: sağlar; böylece makineye özgü mutlak yol tek yerde (bu dosyada) kalır.
+_WRAPPER = """<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://www.aixm.aero/schema/5.2/message"
+          schemaLocation="{message}"/>
+  <import namespace="http://www.aixm.aero/schema/5.2"
+          schemaLocation="{aixm}"/>
+  <import namespace="{ext_ns}" schemaLocation="{ext}"/>
+</schema>
+"""
+
+EXTENSION_NS = ("https://cdn.ibosoft.net.tr/aviation-data"
+                "/schema/aixm/5.2/extension")
+
+
+def _load_schema():
+    """Doğrulama şemasını derler.
+
+    Extension şeması varsa stok AIXM setiyle BİRLİKTE derlenir; yoksa
+    yalnızca stok set kullanılır (eski davranış birebir korunur).
+    """
+    if not EXTENSION_XSD.exists():
+        print(f"UYARI: extension semasi yok, yalnizca stok AIXM seti "
+              f"derlenecek:\n  {EXTENSION_XSD}")
+        return etree.XMLSchema(etree.parse(str(XSD)))
+
+    wrapper = _WRAPPER.format(
+        message=XSD.as_uri(),
+        aixm=(XSD.parent.parent / "AIXM_Features.xsd").as_uri(),
+        ext_ns=EXTENSION_NS,
+        ext=EXTENSION_XSD.as_uri(),
+    )
+    print(f"  + extension semasi: {EXTENSION_XSD.name}", flush=True)
+    return etree.XMLSchema(etree.fromstring(wrapper.encode("utf-8")))
+
 
 def main(targets):
     if not XSD.exists():
@@ -42,7 +89,7 @@ def main(targets):
     t0 = time.time()
     print("Sema derleniyor (GML 3.2.1 uzaktan indiriliyor, birkac dakika)...",
           flush=True)
-    schema = etree.XMLSchema(etree.parse(str(XSD)))
+    schema = _load_schema()
     print(f"Sema hazir ({time.time() - t0:.0f} sn)\n", flush=True)
 
     failed = 0
