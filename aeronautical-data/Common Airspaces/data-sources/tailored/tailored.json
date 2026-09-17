@@ -112281,6 +112281,116 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "RAS",
+        "designator": "LTB7",
+        "name": "DOGUBAYAZIT",
+        "localType": "BALLOON FLIGHT AREA",
+        "designatorICAO": "NO",
+        "controlType": "CIVIL",
+        "classification": "",
+        "upperLimit": "10000",
+        "upperLimitUom": "FT",
+        "upperLimitReference": "MSL",
+        "lowerLimit": "0",
+        "lowerLimitUom": "FT",
+        "lowerLimitReference": "SFC",
+        "activity": "BALLOON",
+        "status": "AVBL_FOR_ACTIVATION",
+        "annotationDescription": "",
+        "annotationRemark": "-Türkiye AIP'si VFR ucus kurallarina ve AIP hükümlerine uyulacaktır. / Türkiye AIP VFR flight rules and AIP regulations shall be complied with.\n-Dikkat edilmesi gereken şartlar:\na. Görerek şartlarda ve özellikle alçak irtifada uçan TSK helikopterleri ile daha yüksek irtifalarda gözetleme görevi icra eden İnsansız Hava Araçları tarafından bölgenin sıklıkla kullanıldığı/The region is frequently used by Turkish Armed Forces helicopters flying under visual flight rules, particularly at low altitudes, as well as by unmanned aerial vehicles conducting surveillance missions at higher altitudes,\nb. Bölgenin sınıra yakın olması sebebiyle bölgedeki hudut birliklerinin faaliyetleri ve bulut altı İHA uçuşları planlamaları dikkate alınarak, belirli bir zaman diliminde sınırlı tutulmak suretiyle uçuşların yapılması, bölgede hava sahasını kullanan unsurlar ile koordinasyon yapılması gerekliliği / Given the region's proximity to the border, flights shall be conducted within a specific time frame and limited in scope, taking into account the activities of border units in the region and the flight plans for sub-cloud UAVs, and coordination must be maintained with entities using the airspace in the region,\nc. Bölgedeki askerî faaliyetlere öncelik verilmesi ve ihtiyaç hâlinde faaliyetlerin iptal edilmesi/geçici durdurulmasına ihtiyaç olduğu/ There is a need to prioritize military activities in the region and, if necessary, to cancel or temporarily suspend such activities,\nd. Faaliyetler öncesinde aşağıda iletişim numaraları verilen Hv.K.K.lığı bağlısı birlikler ve bölgedeki diğer askerî birlikler ile kurulacak koordine sonucuna göre planlama yapılmasının gerektiği/ Planning shall be carried out in accordance with the results of the coordination to be established with the units under the command of the Air Force Command—whose contact numbers are provided below—and other military units in the region prior to the activities,\n-İletişim Noktaları / Contact: Erzurum Hv.Rd.Mvz.K.lığı (0-442-263-3143/3144/3145 / Dahili 4121/4122/4123/4124), Birleştirilmiş Hava Harekât Merkezi (BHHM)/JFAC K.lığı-Eskişehir (0-222-324-33-92).\n-NOTAM ile aktif edilir. / Actived by NOTAM.",
+        "annotationWarning": "",
+        "annotationDisclaimer": "REF AIRAC AIP SUP 05/26",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "06 AUG 2026 (AIRAC 2608)",
+        "add_date": "2026-09-17"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              44.14,
+              39.579167
+            ],
+            [
+              44.139444,
+              39.664167
+            ],
+            [
+              43.834167,
+              39.661944
+            ],
+            [
+              43.833889,
+              39.582222
+            ],
+            [
+              44.14,
+              39.579167
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "type": "RAS",
+        "designator": "LTB9",
+        "name": "SEYDIKEMER",
+        "localType": "BALLOON FLIGHT AREA",
+        "designatorICAO": "NO",
+        "controlType": "CIVIL",
+        "classification": "",
+        "upperLimit": "6000",
+        "upperLimitUom": "FT",
+        "upperLimitReference": "MSL",
+        "lowerLimit": "0",
+        "lowerLimitUom": "FT",
+        "lowerLimitReference": "SFC",
+        "activity": "BALLOON",
+        "status": "AVBL_FOR_ACTIVATION",
+        "annotationDescription": "",
+        "annotationRemark": "-Türkiye AIP'si VFR ucus kurallarina ve AIP hükümlerine uyulacaktır. / Türkiye AIP VFR flight rules and AIP regulations shall be complied with.\n-Dikkat edilmesi gereken şartlar: Askeri çalışma sahaları ile aynı bölgede yer alması nedeniyle görevler esnasında zaman zaman alçak irtifa ucuşlarının yapıldığı, bölgedeki askeri faaliyetlere öncelik verilmesi ve ihtiyaç halinde faaliyetlerin iptal edilmesi/geçici durdurulmasına ihtiyaç olduğu./ Because it is located in the same area as military training areas, low-altitude flights are occasionally conducted during operations, there is a need to prioritize military activities in the region and, if necessary, to cancel or temporarily suspend such activities.\n-İletişim Noktaları / Contact: 0532 314 66 77 / momentumhavacilik@gmail.com\n-NOTAM ile aktif edilir. / Actived by NOTAM.",
+        "annotationWarning": "",
+        "annotationDisclaimer": "REF AIP SUP 06/26",
+        "data_provider": "Ibosoft AIS",
+        "data_originator": "DHMİ Türkiye",
+        "data_effectivity": "03 SEP 2026 (AIRAC 2609)",
+        "add_date": "2026-09-17"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              29.326667,
+              36.600833
+            ],
+            [
+              29.443611,
+              36.5925
+            ],
+            [
+              29.443333,
+              36.491111
+            ],
+            [
+              29.269444,
+              36.460278
+            ],
+            [
+              29.326667,
+              36.600833
+            ]
+          ]
+        ]
+      }
     }
   ]
 }
