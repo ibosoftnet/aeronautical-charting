@@ -3,7 +3,7 @@
   // adı yazılırsa, değeri build script'i tarafından buradan çözülür — AIRAC
   // güncellemesi tek yerden yapılabilsin diye (bkz. build_ad_hp_gpkg.py).
   "_effectivity_keys": {
-    "eff_trnc": "15 MAY 2025 (AIRAC 2505)",
+    "eff_trnc": "06 AUG 2026 (AIRAC 2608)",
     "eff_shgm": "21 JAN 2026 (Non-AIRAC)"
   },
 
@@ -188,8 +188,8 @@
       "join_key": "LCIK",
       "name": "KARTER HELIPORT",
       "city": "GİRNE",
-      "country": "NORTHERN CYPRUS",
-      "code_icao": "LCIK",
+      "country": "Turkish Republic of Northern Cyprus",
+      "code_icao": "",
       "code_iata": "",
       "code_type": "HP",
       "lat_dd": 35.275833,
@@ -228,8 +228,8 @@
       "join_key": "LCGK",
       "name": "GEÇİTKALE",
       "city": "GAZİMAĞUSA",
-      "country": "NORTHERN CYPRUS",
-      "code_icao": "LCGK",
+      "country": "Turkish Republic of Northern Cyprus",
+      "code_icao": "",
       "code_iata": "GEC",
       "code_type": "AH",
       "lat_dd": 35.237222,
@@ -267,8 +267,8 @@
       "join_key": "LCEN",
       "name": "ERCAN",
       "city": "LEFKOŞA",
-      "country": "NORTHERN CYPRUS",
-      "code_icao": "LCEN",
+      "country": "Turkish Republic of Northern Cyprus",
+      "code_icao": "",
       "code_iata": "ECN",
       "code_type": "AD",
       "lat_dd": 35.149444,

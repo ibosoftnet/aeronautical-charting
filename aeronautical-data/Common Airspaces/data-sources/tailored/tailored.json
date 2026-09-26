@@ -1,8 +1,8 @@
 {
   "type": "FeatureCollection",
   "_effectivity_keys": {
-    "eff_trnc": "15 MAY 2025 (AIRAC 2505)",
-    "eff_lt": "06 AUG 2026 (AIRAC 2608)"
+    "eff_trnc": "06 AUG 2026 (AIRAC 2608)",
+    "eff_lt": "03 SEP 2026 (AIRAC 2609)"
   },
   "_help": "Elle hava sahası tanımlama. Her feature.properties ortak şema kolonlarını (data_provider/data_originator/data_effectivity dahil) içerir. data_effectivity alanına '_effectivity_keys' altındaki bir anahtarın adı yazılırsa değeri oradan çözülür. Aşağıdaki _example'ı 'features' listesine kopyalayıp doldurun.",
   "_example": {

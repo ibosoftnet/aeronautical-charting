@@ -13,7 +13,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_ALSUS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_ALSUS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -24,7 +24,7 @@
           <aixm:type>ICAO</aixm:type>
           <aixm:location>
             <aixm:Point gml:id="TRNC_DP_ALSUS_P" srsName="urn:ogc:def:crs:EPSG::4326">
-              <gml:pos>35.035 34.6275</gml:pos>
+              <gml:pos>35.035 34.656667</gml:pos>
             </aixm:Point>
           </aixm:location>
           <aixm:codeICAOCountry>LC</aixm:codeICAOCountry>
@@ -39,7 +39,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_BALMA_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_BALMA_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -75,7 +75,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_BARIS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_BARIS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -111,7 +111,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_DASNI_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_DASNI_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -137,7 +137,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_DOREN_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_DOREN_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -173,7 +173,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_EVENO_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_EVENO_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -209,7 +209,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_GIRNE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_GIRNE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -235,7 +235,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_LEFKE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_LEFKE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -271,7 +271,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_MEDIT_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_MEDIT_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -307,7 +307,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_MURAT_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_MURAT_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -343,7 +343,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_NIKAS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_NIKAS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -354,7 +354,7 @@
           <aixm:type>ICAO</aixm:type>
           <aixm:location>
             <aixm:Point gml:id="TRNC_DP_NIKAS_P" srsName="urn:ogc:def:crs:EPSG::4326">
-              <gml:pos>35.191944 35.716389</gml:pos>
+              <gml:pos>35.193333 35.716667</gml:pos>
             </aixm:Point>
           </aixm:location>
           <aixm:annotation>
@@ -379,7 +379,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_SAHIL_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_SAHIL_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -415,7 +415,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_TOMBI_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_TOMBI_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -451,7 +451,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_VADUS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_VADUS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -477,7 +477,7 @@
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_VESAR_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_VESAR_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -513,7 +513,7 @@
         <aixm:VORTimeSlice gml:id="TRNC_VOR_GKE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_VOR_GKE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -574,7 +574,7 @@
         <aixm:DMETimeSlice gml:id="TRNC_DME_GKE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DME_GKE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -623,7 +623,7 @@
         <aixm:NavaidTimeSlice gml:id="TRNC_NAV_GKE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_NAV_GKE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -662,7 +662,7 @@
         <aixm:NDBTimeSlice gml:id="TRNC_NDB_GKE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_NDB_GKE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -721,7 +721,7 @@
         <aixm:NavaidTimeSlice gml:id="TRNC_NAV_GKE_NDB_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_NAV_GKE_NDB_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -755,7 +755,7 @@
         <aixm:VORTimeSlice gml:id="TRNC_VOR_ECN_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_VOR_ECN_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -816,7 +816,7 @@
         <aixm:DMETimeSlice gml:id="TRNC_DME_ECN_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DME_ECN_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -865,7 +865,7 @@
         <aixm:NavaidTimeSlice gml:id="TRNC_NAV_ECN_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_NAV_ECN_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -904,7 +904,7 @@
         <aixm:LocalizerTimeSlice gml:id="TRNC_LOC_IECR_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_LOC_IECR_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -964,7 +964,7 @@
         <aixm:GlidepathTimeSlice gml:id="TRNC_GP_IECR_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_GP_IECR_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1014,7 +1014,7 @@
         <aixm:DMETimeSlice gml:id="TRNC_DME_IECR_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DME_IECR_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1064,7 +1064,7 @@
         <aixm:NavaidTimeSlice gml:id="TRNC_NAV_IECR_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_NAV_IECR_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1107,7 +1107,7 @@
         <aixm:LocalizerTimeSlice gml:id="TRNC_LOC_IEKT_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_LOC_IEKT_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1157,7 +1157,7 @@
         <aixm:GlidepathTimeSlice gml:id="TRNC_GP_IEKT_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_GP_IEKT_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1207,7 +1207,7 @@
         <aixm:DMETimeSlice gml:id="TRNC_DME_IEKT_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DME_IEKT_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1257,7 +1257,7 @@
         <aixm:NavaidTimeSlice gml:id="TRNC_NAV_IEKT_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_NAV_IEKT_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1300,7 +1300,7 @@
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_A16_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_A16_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1332,7 +1332,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_A16_TOMBI_DASNI_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_A16_TOMBI_DASNI_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1346,7 +1346,7 @@
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>175</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>355</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">26</aixm:length>
+          <aixm:length uom="NM">25.4</aixm:length>
           <aixm:widthLeft uom="NM">5</aixm:widthLeft>
           <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
@@ -1382,7 +1382,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_A16_DASNI_MEDIT_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_A16_DASNI_MEDIT_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1432,7 +1432,7 @@
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_A28_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_A28_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1448,7 +1448,8 @@
               <aixm:purpose>REMARK</aixm:purpose>
               <aixm:translatedNote>
                 <aixm:LinguisticNote gml:id="TRNC_RTE_A28_RMK_LN">
-                  <aixm:note>(1) Kontrollü Hava Yolu / Controlled AWY.
+                  <aixm:note>1) Kontrollü Hava Yolu
+Controlled AWY.
 (2) Only available for traffic departure/destination to ERCAN airport.</aixm:note>
                 </aixm:LinguisticNote>
               </aixm:translatedNote>
@@ -1475,7 +1476,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_A28_DOREN_GIRNE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_A28_DOREN_GIRNE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1525,7 +1526,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_A28_GIRNE_ECN_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_A28_GIRNE_ECN_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1575,7 +1576,7 @@
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_B545_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_B545_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1607,7 +1608,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_B545_VESAR_ALSUS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_B545_VESAR_ALSUS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1621,7 +1622,7 @@
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>146</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>326</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">61</aixm:length>
+          <aixm:length uom="NM">61.4</aixm:length>
           <aixm:widthLeft uom="NM">5</aixm:widthLeft>
           <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
@@ -1635,7 +1636,7 @@
             <aixm:Curve gml:id="TRNC_RS_B545_VESAR_ALSUS_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.915556 34.016111 35.035 34.6275</gml:posList>
+                  <gml:posList>35.915556 34.016111 35.035 34.656667</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -1657,7 +1658,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_B545_ALSUS_BALMA_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_B545_ALSUS_BALMA_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1671,7 +1672,7 @@
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>146</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>326</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">39</aixm:length>
+          <aixm:length uom="NM">38</aixm:length>
           <aixm:widthLeft uom="NM">5</aixm:widthLeft>
           <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
@@ -1685,7 +1686,7 @@
             <aixm:Curve gml:id="TRNC_RS_B545_ALSUS_BALMA_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.035 34.6275 34.483333 35.05</gml:posList>
+                  <gml:posList>35.035 34.656667 34.483333 35.05</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -1707,7 +1708,7 @@
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_R18_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_R18_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1739,7 +1740,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_R18_ALSUS_SAHIL_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_R18_ALSUS_SAHIL_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1753,7 +1754,7 @@
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>199</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>19</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">20</aixm:length>
+          <aixm:length uom="NM">20.8</aixm:length>
           <aixm:widthLeft uom="NM">5</aixm:widthLeft>
           <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
@@ -1767,7 +1768,7 @@
             <aixm:Curve gml:id="TRNC_RS_R18_ALSUS_SAHIL_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.035 34.6275 34.722222 34.474722</gml:posList>
+                  <gml:posList>35.035 34.656667 34.722222 34.474722</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -1789,7 +1790,7 @@
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_R19_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_R19_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1821,7 +1822,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_R19_EVENO_DASNI_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_R19_EVENO_DASNI_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1835,7 +1836,7 @@
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>105</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>285</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">43</aixm:length>
+          <aixm:length uom="NM">43.6</aixm:length>
           <aixm:widthLeft uom="NM">5</aixm:widthLeft>
           <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
@@ -1871,7 +1872,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_R19_DASNI_VADUS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_R19_DASNI_VADUS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1921,7 +1922,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_R19_VADUS_LEFKE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_R19_VADUS_LEFKE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -1935,7 +1936,7 @@
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>105</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>285</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">36.9</aixm:length>
+          <aixm:length uom="NM">36.6</aixm:length>
           <aixm:widthLeft uom="NM">5</aixm:widthLeft>
           <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
@@ -1971,7 +1972,7 @@
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_R78_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_R78_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2003,7 +2004,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_R78_MURAT_ALSUS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_R78_MURAT_ALSUS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2017,7 +2018,7 @@
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>76</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>256</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">24</aixm:length>
+          <aixm:length uom="NM">25.6</aixm:length>
           <aixm:widthLeft uom="NM">5</aixm:widthLeft>
           <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
@@ -2031,7 +2032,7 @@
             <aixm:Curve gml:id="TRNC_RS_R78_MURAT_ALSUS_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>34.941111 34.149722 35.035 34.6275</gml:posList>
+                  <gml:posList>34.941111 34.149722 35.035 34.656667</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -2053,7 +2054,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_R78_ALSUS_NIKAS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_R78_ALSUS_NIKAS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2067,7 +2068,7 @@
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>76</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>256</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">54</aixm:length>
+          <aixm:length uom="NM">53</aixm:length>
           <aixm:widthLeft uom="NM">5</aixm:widthLeft>
           <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
@@ -2081,7 +2082,7 @@
             <aixm:Curve gml:id="TRNC_RS_R78_ALSUS_NIKAS_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.035 34.6275 35.191944 35.716389</gml:posList>
+                  <gml:posList>35.035 34.656667 35.193333 35.716667</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -2103,7 +2104,7 @@
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_R655_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_R655_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2135,7 +2136,7 @@
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_R655_BARIS_BALMA_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_R655_BARIS_BALMA_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2185,7 +2186,7 @@
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_L620_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_L620_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2229,7 +2230,7 @@ Unidirectional eastbound</aixm:note>
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_L620_VESAR_ALSUS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_L620_VESAR_ALSUS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2243,9 +2244,7 @@ Unidirectional eastbound</aixm:note>
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>146</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>326</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">61</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
+          <aixm:length uom="NM">61.4</aixm:length>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_L620_VESAR_ALSUS_START">
               <aixm:reportingATC>COMPULSORY</aixm:reportingATC>
@@ -2257,7 +2256,7 @@ Unidirectional eastbound</aixm:note>
             <aixm:Curve gml:id="TRNC_RS_L620_VESAR_ALSUS_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.915556 34.016111 35.035 34.6275</gml:posList>
+                  <gml:posList>35.915556 34.016111 35.035 34.656667</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -2279,7 +2278,7 @@ Unidirectional eastbound</aixm:note>
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_L620_ALSUS_BALMA_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_L620_ALSUS_BALMA_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2293,9 +2292,7 @@ Unidirectional eastbound</aixm:note>
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>146</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>326</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">39</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
+          <aixm:length uom="NM">38</aixm:length>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_L620_ALSUS_BALMA_START">
               <aixm:reportingATC>COMPULSORY</aixm:reportingATC>
@@ -2307,7 +2304,7 @@ Unidirectional eastbound</aixm:note>
             <aixm:Curve gml:id="TRNC_RS_L620_ALSUS_BALMA_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.035 34.6275 34.483333 35.05</gml:posList>
+                  <gml:posList>35.035 34.656667 34.483333 35.05</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -2329,7 +2326,7 @@ Unidirectional eastbound</aixm:note>
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_UL619_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_UL619_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2363,7 +2360,7 @@ Unidirectional eastbound</aixm:note>
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_UL619_VESAR_NIKAS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_UL619_VESAR_NIKAS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2378,8 +2375,6 @@ Unidirectional eastbound</aixm:note>
           <aixm:magneticTrack>115</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>295</aixm:reverseMagneticTrack>
           <aixm:length uom="NM">94</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_UL619_VESAR_NIKAS_START">
               <aixm:reportingATC>COMPULSORY</aixm:reportingATC>
@@ -2391,7 +2386,7 @@ Unidirectional eastbound</aixm:note>
             <aixm:Curve gml:id="TRNC_RS_UL619_VESAR_NIKAS_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.915556 34.016111 35.191944 35.716389</gml:posList>
+                  <gml:posList>35.915556 34.016111 35.193333 35.716667</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -2407,9 +2402,9 @@ Unidirectional eastbound</aixm:note>
               <aixm:purpose>REMARK</aixm:purpose>
               <aixm:translatedNote>
                 <aixm:LinguisticNote gml:id="TRNC_RS_UL619_VESAR_NIKAS_RMK_LN">
-                  <aixm:note>(1) BTN FL 285 - FL 460 NIKAS - VESAR arası batı yönlü olacak şekilde tek yönlü kullanılacaktır.
-BTN FL 285 - FL 460 unidirectional westbound from NIKAS - VESAR.
--BTN VESAR-MUT unidirectional westbound</aixm:note>
+                  <aixm:note>- BTN FL285 - FL460 NIKAS - VESAR arası batı yönlü olacak şekilde tek yönlü kullanılacaktır.
+BTN FL285 - FL460 unidirectional westbound from NIKAS - VESAR.
+- BTN VESAR-MUT unidirectional westbound</aixm:note>
                 </aixm:LinguisticNote>
               </aixm:translatedNote>
             </aixm:Note>
@@ -2425,7 +2420,7 @@ BTN FL 285 - FL 460 unidirectional westbound from NIKAS - VESAR.
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_UL620_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_UL620_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2459,7 +2454,7 @@ BTN FL 285 - FL 460 unidirectional westbound from NIKAS - VESAR.
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_UL620_VESAR_ALSUS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_UL620_VESAR_ALSUS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2473,9 +2468,7 @@ BTN FL 285 - FL 460 unidirectional westbound from NIKAS - VESAR.
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>146</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>326</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">61</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
+          <aixm:length uom="NM">61.4</aixm:length>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_UL620_VESAR_ALSUS_START">
               <aixm:reportingATC>COMPULSORY</aixm:reportingATC>
@@ -2487,7 +2480,7 @@ BTN FL 285 - FL 460 unidirectional westbound from NIKAS - VESAR.
             <aixm:Curve gml:id="TRNC_RS_UL620_VESAR_ALSUS_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.915556 34.016111 35.035 34.6275</gml:posList>
+                  <gml:posList>35.915556 34.016111 35.035 34.656667</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -2503,9 +2496,9 @@ BTN FL 285 - FL 460 unidirectional westbound from NIKAS - VESAR.
               <aixm:purpose>REMARK</aixm:purpose>
               <aixm:translatedNote>
                 <aixm:LinguisticNote gml:id="TRNC_RS_UL620_VESAR_ALSUS_RMK_LN">
-                  <aixm:note>(2) BTN FL 285 - FL 460 VESAR - BALMA arası doğu yönlü olacak şekilde tek yönlü kullanılacaktır.
-BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
--BTN MUT-VESAR unidirectional eastbound</aixm:note>
+                  <aixm:note>- BTN FL285 - FL460 VESAR - BALMA arası doğu yönlü olacak şekilde tek yönlü kullanılacaktır.
+BTN FL285 - FL460 unidirectional eastbound from VESAR - BALMA.
+- BTN MUT-VESAR Unidirectional eastbound</aixm:note>
                 </aixm:LinguisticNote>
               </aixm:translatedNote>
             </aixm:Note>
@@ -2521,7 +2514,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_UL620_ALSUS_BALMA_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_UL620_ALSUS_BALMA_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2535,9 +2528,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>146</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>326</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">39</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
+          <aixm:length uom="NM">38</aixm:length>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_UL620_ALSUS_BALMA_START">
               <aixm:reportingATC>COMPULSORY</aixm:reportingATC>
@@ -2549,7 +2540,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
             <aixm:Curve gml:id="TRNC_RS_UL620_ALSUS_BALMA_C" srsName="urn:ogc:def:crs:EPSG::4326">
               <gml:segments>
                 <gml:GeodesicString interpolation="geodesic">
-                  <gml:posList>35.035 34.6275 34.483333 35.05</gml:posList>
+                  <gml:posList>35.035 34.656667 34.483333 35.05</gml:posList>
                 </gml:GeodesicString>
               </gml:segments>
             </aixm:Curve>
@@ -2565,9 +2556,9 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
               <aixm:purpose>REMARK</aixm:purpose>
               <aixm:translatedNote>
                 <aixm:LinguisticNote gml:id="TRNC_RS_UL620_ALSUS_BALMA_RMK_LN">
-                  <aixm:note>(2) BTN FL 285 - FL 460 VESAR - BALMA arası doğu yönlü olacak şekilde tek yönlü kullanılacaktır.
-BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
--BTN MUT-VESAR unidirectional eastbound</aixm:note>
+                  <aixm:note>- BTN FL285 - FL460 VESAR - BALMA arası doğu yönlü olacak şekilde tek yönlü kullanılacaktır.
+BTN FL285 - FL460 unidirectional eastbound from VESAR - BALMA.
+- BTN MUT-VESAR Unidirectional eastbound</aixm:note>
                 </aixm:LinguisticNote>
               </aixm:translatedNote>
             </aixm:Note>
@@ -2583,7 +2574,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_UM601_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_UM601_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2617,7 +2608,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_UM601_EVENO_DASNI_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_UM601_EVENO_DASNI_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2631,9 +2622,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>105</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>285</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">43</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
+          <aixm:length uom="NM">43.6</aixm:length>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_UM601_EVENO_DASNI_START">
               <aixm:reportingATC>COMPULSORY</aixm:reportingATC>
@@ -2667,7 +2656,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_UM601_DASNI_VADUS_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_UM601_DASNI_VADUS_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2682,8 +2671,6 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
           <aixm:magneticTrack>105</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>285</aixm:reverseMagneticTrack>
           <aixm:length uom="NM">62.1</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_UM601_DASNI_VADUS_START">
               <aixm:reportingATC>COMPULSORY</aixm:reportingATC>
@@ -2717,7 +2704,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_UM601_VADUS_LEFKE_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_UM601_VADUS_LEFKE_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2731,9 +2718,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
           <aixm:lowerLimitReference>STD</aixm:lowerLimitReference>
           <aixm:magneticTrack>105</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>285</aixm:reverseMagneticTrack>
-          <aixm:length uom="NM">36.9</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
+          <aixm:length uom="NM">36.6</aixm:length>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_UM601_VADUS_LEFKE_START">
               <aixm:reportingATC>ON_REQUEST</aixm:reportingATC>
@@ -2767,7 +2752,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_UM601_BARIS_BALMA_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_UM601_BARIS_BALMA_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2782,8 +2767,6 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
           <aixm:magneticTrack>106</aixm:magneticTrack>
           <aixm:reverseMagneticTrack>286</aixm:reverseMagneticTrack>
           <aixm:length uom="NM">21</aixm:length>
-          <aixm:widthLeft uom="NM">5</aixm:widthLeft>
-          <aixm:widthRight uom="NM">5</aixm:widthRight>
           <aixm:start>
             <aixm:EnRouteSegmentPoint gml:id="TRNC_RS_UM601_BARIS_BALMA_START">
               <aixm:reportingATC>COMPULSORY</aixm:reportingATC>
@@ -2817,7 +2800,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_T101_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_T101_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2853,7 +2836,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_T102_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_T102_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2889,7 +2872,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_T103_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_T103_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2925,7 +2908,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_T104_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_T104_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2961,7 +2944,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_T105_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_T105_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -2997,7 +2980,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_T106_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_T106_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3033,7 +3016,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_T107_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_T107_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3069,7 +3052,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_T108_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_T108_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3105,7 +3088,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_A_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_A_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3141,7 +3124,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_B_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_B_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3177,7 +3160,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_C_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_C_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3213,7 +3196,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_D_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_D_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3249,7 +3232,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_E_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_E_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3285,7 +3268,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:DesignatedPointTimeSlice gml:id="TRNC_DP_F_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_DP_F_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3321,7 +3304,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:RouteTimeSlice gml:id="TRNC_RTE_LCTTA1_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RTE_LCTTA1_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3347,7 +3330,7 @@ BTN FL 285 - FL 460 unidirectional eastbound from VESAR - BALMA.
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_LCTTA1_T101_T102_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_LCTTA1_T101_T102_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3425,7 +3408,7 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_LCTTA1_T102_T103_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_LCTTA1_T102_T103_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3503,7 +3486,7 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_LCTTA1_T103_T104_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_LCTTA1_T103_T104_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3581,7 +3564,7 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_LCTTA1_T104_T105_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_LCTTA1_T104_T105_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3659,7 +3642,7 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_LCTTA1_T105_T106_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_LCTTA1_T105_T106_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3737,7 +3720,7 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_LCTTA1_T106_T107_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_LCTTA1_T106_T107_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
@@ -3815,7 +3798,7 @@ VFR conditions must be followed while flying to LCTTA1 training area.</aixm:note
         <aixm:RouteSegmentTimeSlice gml:id="TRNC_RS_LCTTA1_T107_T108_TS">
           <gml:validTime>
             <gml:TimePeriod gml:id="TRNC_RS_LCTTA1_T107_T108_TP">
-              <gml:beginPosition indeterminatePosition="unknown" />
+              <gml:beginPosition>2026-08-06T00:00:00Z</gml:beginPosition>
               <gml:endPosition indeterminatePosition="unknown" />
             </gml:TimePeriod>
           </gml:validTime>
