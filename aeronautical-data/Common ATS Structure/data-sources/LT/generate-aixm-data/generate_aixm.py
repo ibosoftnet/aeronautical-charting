@@ -1,6 +1,6 @@
 """LT rota verisini AIXM 5.2 XML'ine dönüştüren ana script.
 
-Girdi : ../LT Route Data Fetcher/raw-data/  (6 ham geojson + 4 *_info.json)
+Girdi : ../raw-data/  (6 ham geojson + 4 *_info.json; navdata-data-downloaders/lt-dhmi indirir)
 Çıktı : ../lt-route-data-aixm.xml
 Log   : errored-features.log (her çalıştırmada sıfırlanır)
 
@@ -25,7 +25,7 @@ from aixm import change_over_point, designated_point, navaid, route, route_segme
 from aixm.writer import MessageBuilder
 
 LT_DIR = BASE_DIR.parent
-RAW_DIR = LT_DIR / "LT Route Data Fetcher" / "raw-data"
+RAW_DIR = LT_DIR / "raw-data"
 COP_PATH = LT_DIR / "COP" / "turkiye_enr31_changeover_points.json"
 OUTPUT = LT_DIR / "lt-route-data-aixm.xml"
 LOG_PATH = BASE_DIR / "errored-features.log"

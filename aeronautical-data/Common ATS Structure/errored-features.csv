@@ -423,6 +423,8 @@ stage,layer,record_identifier,field,value,violation,severity
 2A,navaidComponents,JEPP_MKR_IMDT_K6_OUTER,ident,IMDT/K6,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IMEB_K7_OUTER,ident,IMEB/K7,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IMED_K5_INNER,ident,IMED/K5,marker_ebeveyn_loc_ils_bulunamadi,warning
+2A,navaidComponents,JEPP_MKR_IMEN_LT_MIDDLE,ident,IMEN (2 aday 25.0 NM icinde),marker_yakinlik_esiginde_birden_fazla_aday,warning
+2A,navaidComponents,JEPP_MKR_IMEN_LT_OUTER,ident,IMEN (2 aday 25.0 NM icinde),marker_yakinlik_esiginde_birden_fazla_aday,warning
 2A,navaidComponents,JEPP_MKR_IMFD_K5_OUTER,ident,IMFD/K5,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IMFE_K4_OUTER,ident,IMFE/K4,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IMGE_ED_MIDDLE,ident,IMGE/ED,marker_ebeveyn_loc_ils_bulunamadi,warning
