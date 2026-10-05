@@ -55,6 +55,8 @@ stage,layer,record_identifier,field,value,violation,severity
 2A,navaidComponents,JEPP_MKR_IATD_K5_INNER,ident,IATD/K5,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IATD_K5_OUTER,ident,IATD/K5,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IAUG_K6_OUTER,ident,IAUG/K6,marker_ebeveyn_loc_ils_bulunamadi,warning
+2A,navaidComponents,JEPP_MKR_IAV_UG_MIDDLE,ident,IAV/UG,marker_ebeveyn_loc_ils_bulunamadi,warning
+2A,navaidComponents,JEPP_MKR_IAV_UG_OUTER,ident,IAV/UG,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IAWO_K1_OUTER,ident,IAWO/K1,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IAYS_K7_OUTER,ident,IAYS/K7,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IAZ_UL_MIDDLE,ident,IAZ/UL,marker_ebeveyn_loc_ils_bulunamadi,warning
@@ -356,6 +358,7 @@ stage,layer,record_identifier,field,value,violation,severity
 2A,navaidComponents,JEPP_MKR_IKM_UL_OUTER,ident,IKM/UL,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IKMA_RK_INNER,ident,IKMA/RK,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IKN_RJ_INNER,ident,IKN/RJ,marker_ebeveyn_loc_ils_bulunamadi,warning
+2A,navaidComponents,JEPP_MKR_IKOM_LT_MIDDLE,ident,IKOM/LT,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IKPG_WA_MIDDLE,ident,IKPG/WA,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IKPS_VT_MIDDLE,ident,IKPS/VT,marker_ebeveyn_loc_ils_bulunamadi,warning
 2A,navaidComponents,JEPP_MKR_IKPS_VT_OUTER,ident,IKPS/VT,marker_ebeveyn_loc_ils_bulunamadi,warning

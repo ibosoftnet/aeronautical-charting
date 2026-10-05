@@ -432,7 +432,7 @@
   "lat": -7.94170278,
   "lon": 112.71740833,
   "equipment_gml_id": "JEPP_MKR_IABD_WA_INNER",
-  "equipment_uuid": "2F566F24-F984-5579-9BB4-C2272C8F43E0"
+  "equipment_uuid": "75F42439-71A2-55F4-B2A6-F5EC489FBB5A"
  },
  {
   "ident": "IABR",
@@ -507,7 +507,7 @@
   "lat": 55.98055556,
   "lon": 37.45897222,
   "equipment_gml_id": "JEPP_MKR_IAD_UU_MIDDLE",
-  "equipment_uuid": "3AB51BF6-A078-5E44-8F74-9C8F9C52D5AD"
+  "equipment_uuid": "6C9CB587-5A68-512E-A3F6-CDF8BDDEB2E0"
  },
  {
   "ident": "IAD",
@@ -522,7 +522,7 @@
   "lat": 55.98638889,
   "lon": 37.49997222,
   "equipment_gml_id": "JEPP_MKR_IAD_UU_OUTER",
-  "equipment_uuid": "3FED9C86-BF6D-5506-AFC0-8AF6DAFE3B43"
+  "equipment_uuid": "1B5CE43D-B2BC-5E4E-9E1E-21A0F9621371"
  },
  {
   "ident": "IAEG",
@@ -717,7 +717,7 @@
   "lat": 61.34394444,
   "lon": 73.44705556,
   "equipment_gml_id": "JEPP_MKR_IAM_US_MIDDLE",
-  "equipment_uuid": "A7D40055-81F5-56C8-B0B0-3166D5AD963A"
+  "equipment_uuid": "1CE8F8B2-314F-5EBA-BFAB-6F6A19122ED3"
  },
  {
   "ident": "IAM",
@@ -732,7 +732,7 @@
   "lat": 61.34416667,
   "lon": 73.50488889,
   "equipment_gml_id": "JEPP_MKR_IAM_US_OUTER",
-  "equipment_uuid": "B026AEE1-51D0-57B8-8470-1AA9385821C1"
+  "equipment_uuid": "7C40CC81-9FBB-5992-8410-B899980DFD53"
  },
  {
   "ident": "IAMA",
@@ -897,7 +897,7 @@
   "lat": -23.79555556,
   "lon": 133.88305556,
   "equipment_gml_id": "JEPP_MKR_IAS_YM_MIDDLE",
-  "equipment_uuid": "C69826B2-30B3-549D-8BCA-283A8793CB9F"
+  "equipment_uuid": "2CB5FDE1-0506-56F5-A860-C73207B70E7E"
  },
  {
   "ident": "IAS",
@@ -912,7 +912,7 @@
   "lat": -23.76722222,
   "lon": 133.83055556,
   "equipment_gml_id": "JEPP_MKR_IAS_YM_OUTER",
-  "equipment_uuid": "3CFD0211-7C0B-5D81-A5E8-5DD3AFD0A576"
+  "equipment_uuid": "45E9C0A5-F9E9-5CAF-8ACC-2DFF484FDD03"
  },
  {
   "ident": "IATD",
@@ -945,21 +945,6 @@
   "equipment_uuid": "4ED3A303-A61B-52B0-8835-BF7E6B681F7A"
  },
  {
-  "ident": "IATY",
-  "region": "LT",
-  "markerPosition": "MIDDLE",
-  "auralMorseCode": ".-..-.",
-  "frequency": 75,
-  "frequencyUom": "MHZ",
-  "axisBearing": 186.256,
-  "elevation": 172,
-  "elevationUom": "FT",
-  "lat": 36.92458333,
-  "lon": 30.79625,
-  "equipment_gml_id": "JEPP_MKR_IATY_LT_MIDDLE",
-  "equipment_uuid": "64C57EEA-E408-5E0F-AE36-B4A1230447DD"
- },
- {
   "ident": "IAUG",
   "region": "K6",
   "markerPosition": "OUTER",
@@ -973,6 +958,36 @@
   "lon": -69.86066667,
   "equipment_gml_id": "JEPP_MKR_IAUG_K6_OUTER",
   "equipment_uuid": "808A443E-2742-5FD4-9564-546B59618224"
+ },
+ {
+  "ident": "IAV",
+  "region": "UG",
+  "markerPosition": "MIDDLE",
+  "auralMorseCode": ".-..-.",
+  "frequency": 75,
+  "frequencyUom": "MHZ",
+  "axisBearing": 302.115,
+  "elevation": 52,
+  "elevationUom": "FT",
+  "lat": 42.84012222,
+  "lon": 41.15040278,
+  "equipment_gml_id": "JEPP_MKR_IAV_UG_MIDDLE",
+  "equipment_uuid": "EF64E475-310F-5AC5-8F1C-CF51D1C44F1E"
+ },
+ {
+  "ident": "IAV",
+  "region": "UG",
+  "markerPosition": "OUTER",
+  "auralMorseCode": "--",
+  "frequency": 75,
+  "frequencyUom": "MHZ",
+  "axisBearing": 302.115,
+  "elevation": 52,
+  "elevationUom": "FT",
+  "lat": 42.82598611,
+  "lon": 41.18109167,
+  "equipment_gml_id": "JEPP_MKR_IAV_UG_OUTER",
+  "equipment_uuid": "72388D40-DFDC-55F6-9C78-7412262ADCA9"
  },
  {
   "ident": "IAWO",
@@ -1032,7 +1047,7 @@
   "lat": 64.60227778,
   "lon": 40.67311111,
   "equipment_gml_id": "JEPP_MKR_IAZ_UL_MIDDLE",
-  "equipment_uuid": "DFF0AEAA-FE2F-5B8E-8D78-6C829162F68F"
+  "equipment_uuid": "FA6CDA3B-8919-5C49-9AB7-6DF6EF6F260B"
  },
  {
   "ident": "IAZ",
@@ -1047,7 +1062,7 @@
   "lat": 64.60677778,
   "lon": 40.58461111,
   "equipment_gml_id": "JEPP_MKR_IAZ_UL_OUTER",
-  "equipment_uuid": "27D25E52-3323-580A-9459-B9F083B76F37"
+  "equipment_uuid": "FAA69FBA-C180-5529-B1F8-94A5E1920E10"
  },
  {
   "ident": "IAZO",
@@ -1092,7 +1107,7 @@
   "lat": 5.54830556,
   "lon": 95.41525,
   "equipment_gml_id": "JEPP_MKR_IBAC_WI_MIDDLE",
-  "equipment_uuid": "D25B1C43-52FF-5592-91AE-F102F973870F"
+  "equipment_uuid": "D5784360-88EC-5461-9FD9-87889A470FBC"
  },
  {
   "ident": "IBAK",
@@ -1167,7 +1182,7 @@
   "lat": 61.02327778,
   "lon": 69.04488889,
   "equipment_gml_id": "JEPP_MKR_IBD_US_MIDDLE",
-  "equipment_uuid": "3FBA98CC-DDCE-55E1-8D0D-998CB022A790"
+  "equipment_uuid": "DA9DA3B1-9099-5063-B95A-7746439092BE"
  },
  {
   "ident": "IBD",
@@ -1182,7 +1197,7 @@
   "lat": 61.01658333,
   "lon": 68.989,
   "equipment_gml_id": "JEPP_MKR_IBD_US_OUTER",
-  "equipment_uuid": "321A4AC5-A9BA-5B56-8F2C-CB22B9745A7B"
+  "equipment_uuid": "DB797920-701A-5CC7-9379-D6E886F05E06"
  },
  {
   "ident": "IBDA",
@@ -1212,7 +1227,7 @@
   "lat": -3.43830556,
   "lon": 114.74055556,
   "equipment_gml_id": "JEPP_MKR_IBDM_WA_MIDDLE",
-  "equipment_uuid": "9E3955A9-1E68-56E6-94FB-7FAD9B0DB99A"
+  "equipment_uuid": "FD2362E2-9495-5ED5-98FB-EAEA97E7665F"
  },
  {
   "ident": "IBDM",
@@ -1227,7 +1242,7 @@
   "lat": -3.42836111,
   "lon": 114.68725,
   "equipment_gml_id": "JEPP_MKR_IBDM_WA_OUTER",
-  "equipment_uuid": "CB8ED9AF-4A3E-50CF-B1D2-0FC6937CAFBC"
+  "equipment_uuid": "9CE9C12E-9920-5477-B4B9-E383820FCBF6"
  },
  {
   "ident": "IBFD",
@@ -1302,7 +1317,7 @@
   "lat": 50.36888889,
   "lon": 30.90713889,
   "equipment_gml_id": "JEPP_MKR_IBI_UK_MIDDLE",
-  "equipment_uuid": "8033040C-C5B4-5987-909B-A2616E0EC581"
+  "equipment_uuid": "ADC6501A-2625-53EB-88C2-DEC55ADF048B"
  },
  {
   "ident": "IBI",
@@ -1317,7 +1332,7 @@
   "lat": 50.39744444,
   "lon": 30.90911111,
   "equipment_gml_id": "JEPP_MKR_IBI_UK_OUTER",
-  "equipment_uuid": "0781BCD1-E4C7-54A9-B25F-720F07B8462E"
+  "equipment_uuid": "8EEDFAAC-8DDB-5ED9-A966-FA184EF1AA39"
  },
  {
   "ident": "IBIK",
@@ -1332,7 +1347,7 @@
   "lat": -1.18222222,
   "lon": 136.08544444,
   "equipment_gml_id": "JEPP_MKR_IBIK_WA_MIDDLE",
-  "equipment_uuid": "9E161AAA-6DD8-5242-9EC9-F3A60366F109"
+  "equipment_uuid": "14C22582-D2C9-59DB-AE19-513E235E09B0"
  },
  {
   "ident": "IBK",
@@ -1347,7 +1362,7 @@
   "lat": 56.16333333,
   "lon": 92.53380556,
   "equipment_gml_id": "JEPP_MKR_IBK_UN_MIDDLE",
-  "equipment_uuid": "F47BC190-F274-5F28-B451-444F94831316"
+  "equipment_uuid": "F4885E6D-F6F0-55B5-9ED3-6E39E92486C3"
  },
  {
   "ident": "IBK",
@@ -1362,7 +1377,7 @@
   "lat": 56.15155556,
   "lon": 92.58402778,
   "equipment_gml_id": "JEPP_MKR_IBK_UN_OUTER",
-  "equipment_uuid": "2D0EC9DC-193A-5B0F-9E43-2CF94402A73A"
+  "equipment_uuid": "E4129076-12A5-5295-9F19-894537CC6F75"
  },
  {
   "ident": "IBKL",
@@ -1377,7 +1392,7 @@
   "lat": -3.851,
   "lon": 102.32536111,
   "equipment_gml_id": "JEPP_MKR_IBKL_WI_MIDDLE",
-  "equipment_uuid": "76EAFB55-160B-5583-B4AF-003B8E0B49D0"
+  "equipment_uuid": "1EB318AC-5C3E-50D3-B143-34DB7882669B"
  },
  {
   "ident": "IBKX",
@@ -1497,7 +1512,7 @@
   "lat": -1.26058333,
   "lon": 116.91280556,
   "equipment_gml_id": "JEPP_MKR_IBPN_WA_MIDDLE",
-  "equipment_uuid": "3E6A6C98-AE6F-5F54-BEE5-2310C5F6BAD0"
+  "equipment_uuid": "46D2CB49-7121-5FCC-817B-CAD1FD9CB5A2"
  },
  {
   "ident": "IBPT",
@@ -1647,7 +1662,7 @@
   "lat": 56.36038889,
   "lon": 101.73794444,
   "equipment_gml_id": "JEPP_MKR_IBS_UI_MIDDLE",
-  "equipment_uuid": "AE504C3F-814A-5AA9-95AC-DD1EA208AC51"
+  "equipment_uuid": "FBD2082A-BC95-5128-95F3-3285BAC378C4"
  },
  {
   "ident": "IBS",
@@ -1662,7 +1677,7 @@
   "lat": 56.35022222,
   "lon": 101.77758333,
   "equipment_gml_id": "JEPP_MKR_IBS_UI_OUTER",
-  "equipment_uuid": "975023F0-73A1-58A8-8560-028EDC73ACC6"
+  "equipment_uuid": "6E9091A6-D99E-591B-B614-A83297C233F0"
  },
  {
   "ident": "IBTL",
@@ -1692,7 +1707,7 @@
   "lat": 1.10025,
   "lon": 104.10052778,
   "equipment_gml_id": "JEPP_MKR_IBTM_WI_MIDDLE",
-  "equipment_uuid": "08BEFD45-B14D-5B18-812B-BA28329FC04F"
+  "equipment_uuid": "A0F07AAF-A000-538C-A562-A579DDDF6B2C"
  },
  {
   "ident": "IBTR",
@@ -1812,7 +1827,7 @@
   "lat": 55.97841667,
   "lon": 37.46163889,
   "equipment_gml_id": "JEPP_MKR_IBW_UU_MIDDLE",
-  "equipment_uuid": "DF25838D-D545-5816-A191-0DF38A3A47A3"
+  "equipment_uuid": "F8FB6EFD-C18F-5230-9E26-88D134ADF6CF"
  },
  {
   "ident": "IBW",
@@ -1827,7 +1842,7 @@
   "lat": 55.98505556,
   "lon": 37.50661111,
   "equipment_gml_id": "JEPP_MKR_IBW_UU_OUTER",
-  "equipment_uuid": "641D1F2F-95D5-5374-9912-5AC9CABB7965"
+  "equipment_uuid": "BB14DDDA-0FCE-5108-AC26-070024E58ACE"
  },
  {
   "ident": "IBWD",
@@ -1902,7 +1917,7 @@
   "lat": 52.09961111,
   "lon": 23.92786111,
   "equipment_gml_id": "JEPP_MKR_IBY_UM_MIDDLE",
-  "equipment_uuid": "48C4CF93-C678-505B-969D-4B74DA8192D2"
+  "equipment_uuid": "AD0A4938-ECB9-5B18-ADA2-94F197BA5867"
  },
  {
   "ident": "IBY",
@@ -1917,7 +1932,7 @@
   "lat": 52.08969444,
   "lon": 23.96408333,
   "equipment_gml_id": "JEPP_MKR_IBY_UM_OUTER",
-  "equipment_uuid": "4FEBD6C0-8462-529F-8FC6-75A39255FB1D"
+  "equipment_uuid": "95F50254-25E3-5B78-B7EA-B8BD8982248B"
  },
  {
   "ident": "IBZU",
@@ -2007,7 +2022,7 @@
   "lat": 1.37006667,
   "lon": 104.00246389,
   "equipment_gml_id": "JEPP_MKR_ICC_WS_MIDDLE",
-  "equipment_uuid": "B4F3EDDD-004E-59DE-ADEB-FC446BC92C34"
+  "equipment_uuid": "E5A157F2-1413-526D-A64C-50B3E392D665"
  },
  {
   "ident": "ICE",
@@ -2022,7 +2037,7 @@
   "lat": 1.32075556,
   "lon": 103.98144167,
   "equipment_gml_id": "JEPP_MKR_ICE_WS_MIDDLE",
-  "equipment_uuid": "77748B5C-978D-5970-A327-A3BB95B56D05"
+  "equipment_uuid": "8EE1E210-7658-5DD7-85E4-A0535C2BE124"
  },
  {
   "ident": "ICEW",
@@ -2052,7 +2067,7 @@
   "lat": 37.96652778,
   "lon": 69.79719444,
   "equipment_gml_id": "JEPP_MKR_ICG_UT_MIDDLE",
-  "equipment_uuid": "3EED3864-529A-5BA5-916A-441C47806513"
+  "equipment_uuid": "B98AEF8A-E404-58C0-AB84-56B1B3A8D629"
  },
  {
   "ident": "ICG",
@@ -2067,7 +2082,7 @@
   "lat": 37.94225,
   "lon": 69.78852778,
   "equipment_gml_id": "JEPP_MKR_ICG_UT_OUTER",
-  "equipment_uuid": "D6904983-EF53-5C6F-BEA8-F0CA9EEDBE5E"
+  "equipment_uuid": "9E235EC5-526C-5EA9-B7BD-5A4661D7A08B"
  },
  {
   "ident": "ICG",
@@ -2082,7 +2097,7 @@
   "lat": 39.10246667,
   "lon": 117.35973056,
   "equipment_gml_id": "JEPP_MKR_ICG_ZB_MIDDLE",
-  "equipment_uuid": "CF06E833-8EA0-561D-8D6C-DA7443EEFDD8"
+  "equipment_uuid": "19190B3E-BF03-5CF0-9A7F-EC1147BB334D"
  },
  {
   "ident": "ICG",
@@ -2097,7 +2112,7 @@
   "lat": 39.04825833,
   "lon": 117.39362778,
   "equipment_gml_id": "JEPP_MKR_ICG_ZB_OUTER",
-  "equipment_uuid": "F531DF0D-5816-52DD-A5FE-7906C0F39F3F"
+  "equipment_uuid": "930AC0A0-850D-53B0-B477-7F64276B607F"
  },
  {
   "ident": "ICGF",
@@ -2157,7 +2172,7 @@
   "lat": 1.38541944,
   "lon": 103.99284444,
   "equipment_gml_id": "JEPP_MKR_ICH_WS_MIDDLE",
-  "equipment_uuid": "093E07EC-13EC-59AD-ABAB-2F44C7EA1911"
+  "equipment_uuid": "DABFD826-E13B-5462-A5CD-D367852B5D44"
  },
  {
   "ident": "ICHA",
@@ -2367,7 +2382,7 @@
   "lat": 48.27586111,
   "lon": 25.96791667,
   "equipment_gml_id": "JEPP_MKR_ICN_UK_MIDDLE",
-  "equipment_uuid": "21E09AE1-F847-592B-B36E-236124B3316D"
+  "equipment_uuid": "7C40B67C-FD77-573D-8539-8C7CFE96DEDE"
  },
  {
   "ident": "ICN",
@@ -2382,7 +2397,7 @@
   "lat": 48.29875,
   "lon": 25.94966667,
   "equipment_gml_id": "JEPP_MKR_ICN_UK_OUTER",
-  "equipment_uuid": "F9F4AE1D-7AB8-53A8-81E2-75EE9CD32F64"
+  "equipment_uuid": "71BF5145-ABF8-555A-A8F5-F4595310D6A6"
  },
  {
   "ident": "ICNA",
@@ -2457,7 +2472,7 @@
   "lat": 48.24116667,
   "lon": 25.99377778,
   "equipment_gml_id": "JEPP_MKR_ICR_UK_MIDDLE",
-  "equipment_uuid": "D4214197-249C-51F5-A4BF-6AE0F0F2C140"
+  "equipment_uuid": "5DA61B4E-25F8-58DA-918C-A46773A85D86"
  },
  {
   "ident": "ICR",
@@ -2472,7 +2487,7 @@
   "lat": 48.21269444,
   "lon": 26.0155,
   "equipment_gml_id": "JEPP_MKR_ICR_UK_OUTER",
-  "equipment_uuid": "5F5986A1-C0A0-5803-95B1-AC9B00920C10"
+  "equipment_uuid": "81D3BE0E-147D-5598-A9CA-926449C00610"
  },
  {
   "ident": "ICR",
@@ -2487,7 +2502,7 @@
   "lat": 56.09669444,
   "lon": 47.38230556,
   "equipment_gml_id": "JEPP_MKR_ICR_UW_MIDDLE",
-  "equipment_uuid": "B32B684F-9A8E-51ED-B89E-732A668DD429"
+  "equipment_uuid": "C7E36A40-F83D-5A4D-87F7-768A5DAE8ABA"
  },
  {
   "ident": "ICR",
@@ -2502,7 +2517,7 @@
   "lat": 56.10472222,
   "lon": 47.42513889,
   "equipment_gml_id": "JEPP_MKR_ICR_UW_OUTER",
-  "equipment_uuid": "82772C41-31FB-54FE-9D6A-C7394D676226"
+  "equipment_uuid": "8889EC58-B4CC-5CB8-A34D-BADB9E47B1D4"
  },
  {
   "ident": "ICRD",
@@ -2622,7 +2637,7 @@
   "lat": 1.34098333,
   "lon": 103.97407778,
   "equipment_gml_id": "JEPP_MKR_ICW_WS_MIDDLE",
-  "equipment_uuid": "6624F59F-D98E-5938-9502-E63E1FE7EA14"
+  "equipment_uuid": "9D3962EE-75EE-52EF-9422-3B90784D9C62"
  },
  {
   "ident": "ICWA",
@@ -2652,7 +2667,7 @@
   "lat": 1.31433333,
   "lon": 103.99645,
   "equipment_gml_id": "JEPP_MKR_ICX_WS_MIDDLE",
-  "equipment_uuid": "739D8686-BA31-52F7-B91D-1BAC3D12CD85"
+  "equipment_uuid": "F7E39729-2969-5549-B553-7D042E92141D"
  },
  {
   "ident": "ICXO",
@@ -2682,7 +2697,7 @@
   "lat": 1.36371389,
   "lon": 104.017375,
   "equipment_gml_id": "JEPP_MKR_ICZ_WS_MIDDLE",
-  "equipment_uuid": "9EE6E29A-E35A-553C-A497-AD6B331CEABF"
+  "equipment_uuid": "568197CB-89D1-57E4-95A9-488AC5F95149"
  },
  {
   "ident": "IDA",
@@ -2802,7 +2817,7 @@
   "lat": 3.65655556,
   "lon": 98.88888889,
   "equipment_gml_id": "JEPP_MKR_IDEL_WI_MIDDLE",
-  "equipment_uuid": "2BE02AA6-D5BE-5E50-B698-FEAED0FDE2BB"
+  "equipment_uuid": "95C65BE3-83F2-53A4-A63F-ED765C70F2E6"
  },
  {
   "ident": "IDES",
@@ -2817,7 +2832,7 @@
   "lat": 3.61913889,
   "lon": 98.85166667,
   "equipment_gml_id": "JEPP_MKR_IDES_WI_MIDDLE",
-  "equipment_uuid": "6C9C1BFD-D7B9-590E-9145-605B67E5C53F"
+  "equipment_uuid": "D078D81D-33B0-5CDB-B304-B8634B83EEDC"
  },
  {
   "ident": "IDF",
@@ -2937,7 +2952,7 @@
   "lat": 48.35722222,
   "lon": 35.06916667,
   "equipment_gml_id": "JEPP_MKR_IDP_UK_MIDDLE",
-  "equipment_uuid": "D9F16505-C6FC-5588-B04A-29051F4EAED5"
+  "equipment_uuid": "E51B9C54-EE42-5886-92E7-D635B2E17B22"
  },
  {
   "ident": "IDP",
@@ -2952,7 +2967,7 @@
   "lat": 48.35713889,
   "lon": 35.02633333,
   "equipment_gml_id": "JEPP_MKR_IDP_UK_OUTER",
-  "equipment_uuid": "F6A0B11C-5B59-5943-9CFC-0548EA7864D3"
+  "equipment_uuid": "DECA6D27-3777-5108-A926-0B6518493BA1"
  },
  {
   "ident": "IDPP",
@@ -2997,7 +3012,7 @@
   "lat": 48.35722222,
   "lon": 35.13344444,
   "equipment_gml_id": "JEPP_MKR_IDR_UK_MIDDLE",
-  "equipment_uuid": "385F52AF-EA51-53DB-ABDB-714C99A2B308"
+  "equipment_uuid": "8D9134AF-3D12-5D67-AD6C-B84A9EC222F3"
  },
  {
   "ident": "IDR",
@@ -3012,7 +3027,7 @@
   "lat": 48.35744444,
   "lon": 35.17491667,
   "equipment_gml_id": "JEPP_MKR_IDR_UK_OUTER",
-  "equipment_uuid": "84341A60-A195-58D0-AE2D-6CABA61B1CF8"
+  "equipment_uuid": "DA0F7900-519C-5968-9A1C-647CAEB05CB6"
  },
  {
   "ident": "IDRT",
@@ -3507,7 +3522,7 @@
   "lat": 38.54375,
   "lon": 68.79508333,
   "equipment_gml_id": "JEPP_MKR_IFN_UT_MIDDLE",
-  "equipment_uuid": "44922A4A-4D82-5C21-B67E-175F28D01502"
+  "equipment_uuid": "B9FE6087-70C9-5DA2-BE04-FA8B7E816EFA"
  },
  {
   "ident": "IFN",
@@ -3522,7 +3537,7 @@
   "lat": 38.54394444,
   "lon": 68.75433333,
   "equipment_gml_id": "JEPP_MKR_IFN_UT_OUTER",
-  "equipment_uuid": "882AB51A-9211-540F-A15D-23BC2F7980B3"
+  "equipment_uuid": "39CC06E8-98D0-550B-9B3B-D1AE6754B652"
  },
  {
   "ident": "IFOD",
@@ -3867,7 +3882,7 @@
   "lat": 53.86361111,
   "lon": 28.05869444,
   "equipment_gml_id": "JEPP_MKR_IGH_UM_MIDDLE",
-  "equipment_uuid": "591023EF-2AD4-5104-B849-D4165F9B8523"
+  "equipment_uuid": "C1DFBA45-D6F4-575E-B37B-6A6F46DBEBEE"
  },
  {
   "ident": "IGH",
@@ -3882,7 +3897,7 @@
   "lat": 53.84363889,
   "lon": 28.08894444,
   "equipment_gml_id": "JEPP_MKR_IGH_UM_OUTER",
-  "equipment_uuid": "8FC587DC-5D1A-5897-AD48-67C0C65449D7"
+  "equipment_uuid": "A59C0768-0434-5390-8B99-1AE92F06BC60"
  },
  {
   "ident": "IGHI",
@@ -3912,7 +3927,7 @@
   "lat": 61.34372222,
   "lon": 73.35683333,
   "equipment_gml_id": "JEPP_MKR_IGK_US_MIDDLE",
-  "equipment_uuid": "4EEDC8DC-F007-54CF-9F00-C19B8139DC1B"
+  "equipment_uuid": "F22D0C10-745B-526B-8ED3-1587FF332B17"
  },
  {
   "ident": "IGK",
@@ -3927,7 +3942,7 @@
   "lat": 61.34394444,
   "lon": 73.29880556,
   "equipment_gml_id": "JEPP_MKR_IGK_US_OUTER",
-  "equipment_uuid": "19AC1C3E-53BC-558D-A011-66D6DD5450D3"
+  "equipment_uuid": "33C21244-4CBB-5AFD-A1DF-E9CA56DC2484"
  },
  {
   "ident": "IGKJ",
@@ -4002,7 +4017,7 @@
   "lat": 52.53458333,
   "lon": 30.98405556,
   "equipment_gml_id": "JEPP_MKR_IGM_UM_MIDDLE",
-  "equipment_uuid": "34A8947B-3659-5A06-95C8-C02526370AF3"
+  "equipment_uuid": "9D5C0228-4DF2-59E4-97EB-DDD83CDC290F"
  },
  {
   "ident": "IGM",
@@ -4017,7 +4032,7 @@
   "lat": 52.5435,
   "lon": 30.94516667,
   "equipment_gml_id": "JEPP_MKR_IGM_UM_OUTER",
-  "equipment_uuid": "CC50943A-90A0-5F45-A52A-0271F4B08AE0"
+  "equipment_uuid": "F7E8DCC9-8759-5AC3-A4C8-020557C515E2"
  },
  {
   "ident": "IGMU",
@@ -4062,7 +4077,7 @@
   "lat": 50.58111111,
   "lon": 30.20805556,
   "equipment_gml_id": "JEPP_MKR_IGO_UK_MIDDLE",
-  "equipment_uuid": "7270FE91-C3CF-505C-A9A0-9EE0BA4F257F"
+  "equipment_uuid": "7123ACC9-E56E-50BE-AD7C-0033F0FC067B"
  },
  {
   "ident": "IGO",
@@ -4077,7 +4092,7 @@
   "lat": 50.55805556,
   "lon": 30.225,
   "equipment_gml_id": "JEPP_MKR_IGO_UK_OUTER",
-  "equipment_uuid": "FEAC1DD5-5ABD-5B4E-B4D3-0EB26C36A8DC"
+  "equipment_uuid": "A9C93A36-CE9E-5CE8-9AC3-831679AC2E84"
  },
  {
   "ident": "IGPT",
@@ -4167,7 +4182,7 @@
   "lat": 55.5835,
   "lon": 37.22547222,
   "equipment_gml_id": "JEPP_MKR_IGT_UU_MIDDLE",
-  "equipment_uuid": "77DFEFEE-1EF2-5AEE-9FA4-AF855264057A"
+  "equipment_uuid": "91059BE6-3AB0-5218-A82D-C067360DE594"
  },
  {
   "ident": "IGTR",
@@ -4227,7 +4242,7 @@
   "lat": 46.28558333,
   "lon": 47.97861111,
   "equipment_gml_id": "JEPP_MKR_IGV_UR_MIDDLE",
-  "equipment_uuid": "A13F487F-116D-52D9-83DD-C41B0D2729B7"
+  "equipment_uuid": "48C12785-6E5E-58F9-B515-CF9033CE4E63"
  },
  {
   "ident": "IGVK",
@@ -4377,7 +4392,7 @@
   "lat": -6.25813889,
   "lon": 106.90991667,
   "equipment_gml_id": "JEPP_MKR_IHAL_WI_MIDDLE",
-  "equipment_uuid": "8F6CFFD5-9E88-51CE-8E6A-AB1FAE1CEC82"
+  "equipment_uuid": "FF78BFB9-FAAE-546F-A6CC-C917D90EDDC2"
  },
  {
   "ident": "IHAW",
@@ -4422,7 +4437,7 @@
   "lat": 40.20891667,
   "lon": 69.63511111,
   "equipment_gml_id": "JEPP_MKR_IHD_UT_OUTER",
-  "equipment_uuid": "BC58B106-92CE-5EA9-9A29-53B11798CB3D"
+  "equipment_uuid": "99CAA144-1871-595D-A45E-F115A14F2E5F"
  },
  {
   "ident": "IHE",
@@ -4437,7 +4452,7 @@
   "lat": 46.65916667,
   "lon": 32.49027778,
   "equipment_gml_id": "JEPP_MKR_IHE_UK_MIDDLE",
-  "equipment_uuid": "7F7FD3E0-3DEC-54C8-961D-172E8DE5E4FD"
+  "equipment_uuid": "18844409-D438-5E40-B80F-7460D33AFD95"
  },
  {
   "ident": "IHE",
@@ -4452,7 +4467,7 @@
   "lat": 46.6375,
   "lon": 32.47055556,
   "equipment_gml_id": "JEPP_MKR_IHE_UK_OUTER",
-  "equipment_uuid": "1D78DF44-45A2-51A7-8E8F-0514C30EEAAB"
+  "equipment_uuid": "6976FCE5-E5C2-5A59-BC06-4B00BA3FFA4F"
  },
  {
   "ident": "IHFW",
@@ -4812,7 +4827,7 @@
   "lat": 40.21772222,
   "lon": 69.71975,
   "equipment_gml_id": "JEPP_MKR_IHV_UT_MIDDLE",
-  "equipment_uuid": "E73B2F77-8705-5025-AC62-6B0A75E0B88D"
+  "equipment_uuid": "B8D92A05-0149-59CB-806C-2EBEFEC83337"
  },
  {
   "ident": "IHV",
@@ -4827,7 +4842,7 @@
   "lat": 40.22188889,
   "lon": 69.75530556,
   "equipment_gml_id": "JEPP_MKR_IHV_UT_OUTER",
-  "equipment_uuid": "C9D39B53-98A3-5C29-B1C2-3A332C4598C1"
+  "equipment_uuid": "324E780B-E562-570D-8202-E6814E3238E1"
  },
  {
   "ident": "IHVD",
@@ -5397,7 +5412,7 @@
   "lat": 60.93191667,
   "lon": 76.4495,
   "equipment_gml_id": "JEPP_MKR_IJH_US_MIDDLE",
-  "equipment_uuid": "20E535F2-94FD-5AEA-9BD3-E394F0052B9C"
+  "equipment_uuid": "9BB135C5-46E7-5766-BE41-85C85354F35D"
  },
  {
   "ident": "IJH",
@@ -5412,7 +5427,7 @@
   "lat": 60.91244444,
   "lon": 76.41313889,
   "equipment_gml_id": "JEPP_MKR_IJH_US_OUTER",
-  "equipment_uuid": "55409F72-36BE-50FC-A430-6008FB7F77D8"
+  "equipment_uuid": "D6AA39CB-69C9-5D9F-BCBC-4FF230D1477A"
  },
  {
   "ident": "IJHF",
@@ -5487,7 +5502,7 @@
   "lat": -1.653,
   "lon": 103.66277778,
   "equipment_gml_id": "JEPP_MKR_IJMB_WI_MIDDLE",
-  "equipment_uuid": "B1970BE1-9D1D-5EAB-8D96-D5F4A0FA0235"
+  "equipment_uuid": "5127001A-ED08-5A10-8AF2-B409DF80179C"
  },
  {
   "ident": "IJNK",
@@ -5517,7 +5532,7 @@
   "lat": -7.78894444,
   "lon": 110.41161111,
   "equipment_gml_id": "JEPP_MKR_IJOG_WA_MIDDLE",
-  "equipment_uuid": "786FC58C-5905-5EC8-959D-101C07F1FB3C"
+  "equipment_uuid": "D6961E84-3442-52D6-8DD8-ABC4498A679D"
  },
  {
   "ident": "IJOU",
@@ -5547,7 +5562,7 @@
   "lat": 38.822975,
   "lon": 65.76552778,
   "equipment_gml_id": "JEPP_MKR_IJP_UZ_MIDDLE",
-  "equipment_uuid": "EFA4E2E7-8827-5BD4-8800-0B3B8E51FF55"
+  "equipment_uuid": "5518D554-8F6B-5D34-8889-8C47F0A54317"
  },
  {
   "ident": "IJP",
@@ -5562,7 +5577,7 @@
   "lat": 38.84880556,
   "lon": 65.75622222,
   "equipment_gml_id": "JEPP_MKR_IJP_UZ_OUTER",
-  "equipment_uuid": "C53124E7-ECC8-5B82-A7C8-44855E7CC517"
+  "equipment_uuid": "8CA33549-CE06-56D3-9D00-51FFD0310AE4"
  },
  {
   "ident": "IJS",
@@ -5577,7 +5592,7 @@
   "lat": 39.14627778,
   "lon": 117.332625,
   "equipment_gml_id": "JEPP_MKR_IJS_ZB_MIDDLE",
-  "equipment_uuid": "FF2A8752-D6C3-59A6-9B1B-10034FD28F5A"
+  "equipment_uuid": "BEC21AF6-7A65-5EC4-9D22-67F7BF478CCB"
  },
  {
   "ident": "IJS",
@@ -5592,7 +5607,7 @@
   "lat": 39.17381667,
   "lon": 117.31540833,
   "equipment_gml_id": "JEPP_MKR_IJS_ZB_OUTER",
-  "equipment_uuid": "0BC3DEE2-43CB-597F-9919-2F36C4246C00"
+  "equipment_uuid": "A988D57A-9EF7-58F7-A64D-A9A276F29C8E"
  },
  {
   "ident": "IJVH",
@@ -5712,7 +5727,7 @@
   "lat": 50.36266667,
   "lon": 30.88236111,
   "equipment_gml_id": "JEPP_MKR_IKB_UK_MIDDLE",
-  "equipment_uuid": "622573DC-44E3-500B-A743-6D9C551741C9"
+  "equipment_uuid": "2F3B2FE7-F58E-5AAC-B9A8-4CD556D4E3B1"
  },
  {
   "ident": "IKB",
@@ -5727,7 +5742,7 @@
   "lat": 50.38638889,
   "lon": 30.88408333,
   "equipment_gml_id": "JEPP_MKR_IKB_UK_OUTER",
-  "equipment_uuid": "2B9EB43A-4BFB-5142-AEF7-61432B7B273A"
+  "equipment_uuid": "C7161C8F-1D3A-5EBA-A85B-3CA3D345BE3A"
  },
  {
   "ident": "IKBE",
@@ -5817,7 +5832,7 @@
   "lat": 50.31166667,
   "lon": 30.87866667,
   "equipment_gml_id": "JEPP_MKR_IKE_UK_MIDDLE",
-  "equipment_uuid": "CCF60DF3-1516-50D4-B3D6-173158037D04"
+  "equipment_uuid": "9ABFD728-56B1-5A7A-81B4-161507299E83"
  },
  {
   "ident": "IKE",
@@ -5832,7 +5847,7 @@
   "lat": 50.28286111,
   "lon": 30.87658333,
   "equipment_gml_id": "JEPP_MKR_IKE_UK_OUTER",
-  "equipment_uuid": "BC31E707-FBF7-5022-810F-B3B1053B9CBE"
+  "equipment_uuid": "934CF820-1744-5AF6-915C-58808BF49FD0"
  },
  {
   "ident": "IKES",
@@ -5877,7 +5892,7 @@
   "lat": 62.21108333,
   "lon": 74.54141667,
   "equipment_gml_id": "JEPP_MKR_IKG_US_MIDDLE",
-  "equipment_uuid": "A86C2095-665A-5008-A6B6-ABBA920D2228"
+  "equipment_uuid": "68C573EB-7666-515C-BE4C-D515D9B7417E"
  },
  {
   "ident": "IKG",
@@ -5892,7 +5907,7 @@
   "lat": 62.24675,
   "lon": 74.55480556,
   "equipment_gml_id": "JEPP_MKR_IKG_US_OUTER",
-  "equipment_uuid": "B6BFE5A9-F5D7-5AFA-9CAC-D8109567CFB4"
+  "equipment_uuid": "117A5764-085D-57C7-8834-18B2D005FAA2"
  },
  {
   "ident": "IKHE",
@@ -5982,7 +5997,7 @@
   "lat": 64.59775,
   "lon": 40.76608333,
   "equipment_gml_id": "JEPP_MKR_IKM_UL_MIDDLE",
-  "equipment_uuid": "EC18E69A-EBC9-5F57-AECD-08DF9DC06651"
+  "equipment_uuid": "41F22B67-08AC-5C25-9D3C-6970B67ADD24"
  },
  {
   "ident": "IKM",
@@ -5997,7 +6012,7 @@
   "lat": 64.59461111,
   "lon": 40.83327778,
   "equipment_gml_id": "JEPP_MKR_IKM_UL_OUTER",
-  "equipment_uuid": "93E65ED5-AFD4-5B72-856D-595E4126363F"
+  "equipment_uuid": "0A03E5A8-4C59-5060-B879-B52D6BBD2873"
  },
  {
   "ident": "IKMA",
@@ -6030,6 +6045,21 @@
   "equipment_uuid": "B853AEA7-CC83-57A7-8FF2-B748664E1162"
  },
  {
+  "ident": "IKOM",
+  "region": "LT",
+  "markerPosition": "MIDDLE",
+  "auralMorseCode": ".-..-.",
+  "frequency": 75,
+  "frequencyUom": "MHZ",
+  "axisBearing": 186.256,
+  "elevation": 172,
+  "elevationUom": "FT",
+  "lat": 36.92458333,
+  "lon": 30.79625,
+  "equipment_gml_id": "JEPP_MKR_IKOM_LT_MIDDLE",
+  "equipment_uuid": "40FD146A-5112-5782-AF3F-E2AA1433DB96"
+ },
+ {
   "ident": "IKPG",
   "region": "WA",
   "markerPosition": "MIDDLE",
@@ -6042,7 +6072,7 @@
   "lat": -10.16672222,
   "lon": 123.69147222,
   "equipment_gml_id": "JEPP_MKR_IKPG_WA_MIDDLE",
-  "equipment_uuid": "25BDBD0B-C02B-54C6-AED6-E0D2AC1CB1CC"
+  "equipment_uuid": "C5DFACED-846F-594B-A2C3-3A49297823BF"
  },
  {
   "ident": "IKPS",
@@ -6057,7 +6087,7 @@
   "lat": 14.12118611,
   "lon": 99.92840278,
   "equipment_gml_id": "JEPP_MKR_IKPS_VT_MIDDLE",
-  "equipment_uuid": "0A06A9F6-E74D-5256-BAA7-A7D88449208E"
+  "equipment_uuid": "68B6BCF9-C17E-5CAA-88B7-84F3AC407E22"
  },
  {
   "ident": "IKPS",
@@ -6072,7 +6102,7 @@
   "lat": 14.17039722,
   "lon": 99.95680556,
   "equipment_gml_id": "JEPP_MKR_IKPS_VT_OUTER",
-  "equipment_uuid": "CA9165C2-E0E5-58FD-9EF6-6A5544B50431"
+  "equipment_uuid": "7EC1DAAA-6CBB-5780-96D7-F84C45B5B3CF"
  },
  {
   "ident": "IKR",
@@ -6117,7 +6147,7 @@
   "lat": 54.90152778,
   "lon": 20.63680556,
   "equipment_gml_id": "JEPP_MKR_IKR_UM_MIDDLE",
-  "equipment_uuid": "7F26BDCC-8640-55C2-A8B1-4E83273ED77F"
+  "equipment_uuid": "223D5543-78EB-5F71-89F9-A51D5A85B4B4"
  },
  {
   "ident": "IKR",
@@ -6132,7 +6162,7 @@
   "lat": 54.91452778,
   "lon": 20.68711111,
   "equipment_gml_id": "JEPP_MKR_IKR_UM_OUTER",
-  "equipment_uuid": "38CD879F-81FE-5380-8F14-D440720A5ABB"
+  "equipment_uuid": "52919C3B-95AD-543E-90BA-559BA56904D2"
  },
  {
   "ident": "IKS",
@@ -6147,7 +6177,7 @@
   "lat": 55.30016667,
   "lon": 61.54419444,
   "equipment_gml_id": "JEPP_MKR_IKS_US_MIDDLE",
-  "equipment_uuid": "8741A83C-D1DA-594E-ACE5-EF3191D70450"
+  "equipment_uuid": "4AA024F3-AE61-51DA-A0AF-31448AE06B63"
  },
  {
   "ident": "IKS",
@@ -6162,7 +6192,7 @@
   "lat": 55.29425,
   "lon": 61.58705556,
   "equipment_gml_id": "JEPP_MKR_IKS_US_OUTER",
-  "equipment_uuid": "9FEA989B-D1EE-5F28-A7E3-9EA12721026D"
+  "equipment_uuid": "9DCEAB5A-F12B-565B-9107-32F83B5A4AF5"
  },
  {
   "ident": "IKT",
@@ -6177,7 +6207,7 @@
   "lat": 45.11477778,
   "lon": 42.14363889,
   "equipment_gml_id": "JEPP_MKR_IKT_UR_MIDDLE",
-  "equipment_uuid": "13DE925C-C52C-5DDE-A966-4146BACB597B"
+  "equipment_uuid": "064DCAA0-DB3B-5774-BA5A-DC5C1DB7E2EE"
  },
  {
   "ident": "IKT",
@@ -6192,7 +6222,7 @@
   "lat": 45.12155556,
   "lon": 42.18063889,
   "equipment_gml_id": "JEPP_MKR_IKT_UR_OUTER",
-  "equipment_uuid": "2BC78283-331E-5779-BC6B-9277A36E8FE8"
+  "equipment_uuid": "50875BDC-C140-52B0-B7AA-3E62B4B9A1C2"
  },
  {
   "ident": "IKU",
@@ -6237,7 +6267,7 @@
   "lat": 56.08375,
   "lon": 47.31175,
   "equipment_gml_id": "JEPP_MKR_ILA_UW_MIDDLE",
-  "equipment_uuid": "B553DEB4-6CE1-5EE9-A793-E64CCC403FBF"
+  "equipment_uuid": "AD27DA97-B4AD-579B-9D03-187D67EEDF09"
  },
  {
   "ident": "ILA",
@@ -6252,7 +6282,7 @@
   "lat": 56.07380556,
   "lon": 47.25686111,
   "equipment_gml_id": "JEPP_MKR_ILA_UW_OUTER",
-  "equipment_uuid": "A0C7C56A-13FD-50F6-9EED-B527009FA8E7"
+  "equipment_uuid": "78AE5944-C9F9-5766-970C-01C43C29D1BD"
  },
  {
   "ident": "ILAF",
@@ -6312,7 +6342,7 @@
   "lat": 55.31125,
   "lon": 61.46494444,
   "equipment_gml_id": "JEPP_MKR_ILB_US_MIDDLE",
-  "equipment_uuid": "0D28DA89-CD72-5CBA-9FE4-5F5668C1FF50"
+  "equipment_uuid": "92BBC599-3AB1-5805-9F28-70C5434B8600"
  },
  {
   "ident": "ILB",
@@ -6327,7 +6357,7 @@
   "lat": 55.31744444,
   "lon": 61.42,
   "equipment_gml_id": "JEPP_MKR_ILB_US_OUTER",
-  "equipment_uuid": "7A8B2E39-732A-5766-985F-428A63DE8BC1"
+  "equipment_uuid": "04FC42F2-E1F3-54AF-93CF-C4FE8A2996DF"
  },
  {
   "ident": "ILBB",
@@ -6387,7 +6417,7 @@
   "lat": 50.62583333,
   "lon": 30.17472222,
   "equipment_gml_id": "JEPP_MKR_ILC_UK_MIDDLE",
-  "equipment_uuid": "00C45461-1A90-5805-A2DB-79049407327B"
+  "equipment_uuid": "582516D0-D7BB-5111-8A90-DA03ABF35960"
  },
  {
   "ident": "ILC",
@@ -6402,7 +6432,7 @@
   "lat": 50.65083333,
   "lon": 30.15583333,
   "equipment_gml_id": "JEPP_MKR_ILC_UK_OUTER",
-  "equipment_uuid": "A6CD7D5C-60F6-5939-BE04-29B9FB23720C"
+  "equipment_uuid": "1D68FD29-FDD2-5662-AD1D-79CF3475E318"
  },
  {
   "ident": "ILCK",
@@ -6597,7 +6627,7 @@
   "lat": 45.55373611,
   "lon": 126.16725833,
   "equipment_gml_id": "JEPP_MKR_ILL_ZY_OUTER",
-  "equipment_uuid": "5A75A782-7BAC-53F3-AD8F-5DB208A83684"
+  "equipment_uuid": "4CD53E30-1CBC-54B5-9FB3-99E3E6D7EFD6"
  },
  {
   "ident": "ILLG",
@@ -6672,7 +6702,7 @@
   "lat": -8.74344444,
   "lon": 116.25813889,
   "equipment_gml_id": "JEPP_MKR_ILMB_WA_MIDDLE",
-  "equipment_uuid": "8F5D43D4-0EB2-5BD5-A2EE-257D374B5C5A"
+  "equipment_uuid": "2DB847D9-4D6E-5446-93A6-F8CBE2AFF81B"
  },
  {
   "ident": "ILNT",
@@ -6717,7 +6747,7 @@
   "lat": 14.86194444,
   "lon": 100.65008333,
   "equipment_gml_id": "JEPP_MKR_ILOB_VT_MIDDLE",
-  "equipment_uuid": "3DAEA5EB-8E3C-510A-86BC-B392A207AC25"
+  "equipment_uuid": "6CA99575-CE4A-5597-8FC6-2A4DBBE17295"
  },
  {
   "ident": "ILOW",
@@ -6972,7 +7002,7 @@
   "lat": -5.05980556,
   "lon": 119.56275,
   "equipment_gml_id": "JEPP_MKR_IMAK_WA_MIDDLE",
-  "equipment_uuid": "D0041917-C9EA-5E1E-B71D-EBEA0CCE305B"
+  "equipment_uuid": "3590B935-B728-55AA-BE0C-B7CCE8E5C635"
  },
  {
   "ident": "IMAY",
@@ -7347,7 +7377,7 @@
   "lat": -0.80608333,
   "lon": 100.28969444,
   "equipment_gml_id": "JEPP_MKR_IMKB_WI_MIDDLE",
-  "equipment_uuid": "1F392CDD-6BD7-51DE-B035-9FF805014232"
+  "equipment_uuid": "6CBBAB47-F5D4-5CAB-8D7C-BA0EB90E1922"
  },
  {
   "ident": "IMKE",
@@ -7482,7 +7512,7 @@
   "lat": 55.96763889,
   "lon": 37.37258333,
   "equipment_gml_id": "JEPP_MKR_IMR_UU_MIDDLE",
-  "equipment_uuid": "E1D790A8-2B72-57EF-8F42-AE25B333D80B"
+  "equipment_uuid": "96D8613D-08E7-574A-9AB6-AA7E5406A819"
  },
  {
   "ident": "IMR",
@@ -7497,7 +7527,7 @@
   "lat": 55.95961111,
   "lon": 37.32275,
   "equipment_gml_id": "JEPP_MKR_IMR_UU_OUTER",
-  "equipment_uuid": "26DF21C6-A818-5BF8-B03C-6531ACB243FF"
+  "equipment_uuid": "D95D0ED9-B439-5139-B482-FDFBEBFE338F"
  },
  {
   "ident": "IMS",
@@ -7617,7 +7647,7 @@
   "lat": 52.51908333,
   "lon": 31.05102778,
   "equipment_gml_id": "JEPP_MKR_IMV_UM_MIDDLE",
-  "equipment_uuid": "A1D35B20-213B-5C63-8FB5-C03CC028CF0B"
+  "equipment_uuid": "3CC97D8F-C3D6-59D8-8127-20FD323E6307"
  },
  {
   "ident": "IMV",
@@ -7632,7 +7662,7 @@
   "lat": 52.51230556,
   "lon": 31.08005556,
   "equipment_gml_id": "JEPP_MKR_IMV_UM_OUTER",
-  "equipment_uuid": "1B65408E-A5ED-560A-AD15-1E0F5CD49A6D"
+  "equipment_uuid": "9F7AEED4-3AEF-5C87-BF4B-5AA4A9D97344"
  },
  {
   "ident": "IMWA",
@@ -7752,7 +7782,7 @@
   "lat": 41.65055556,
   "lon": 44.97455556,
   "equipment_gml_id": "JEPP_MKR_INA_UG_MIDDLE",
-  "equipment_uuid": "D12B2A25-0C38-57D4-BFFF-5E7A75AC9F55"
+  "equipment_uuid": "8852E26D-F622-511A-B256-F56596FED0FB"
  },
  {
   "ident": "INA",
@@ -7767,7 +7797,7 @@
   "lat": 41.63269444,
   "lon": 44.99708333,
   "equipment_gml_id": "JEPP_MKR_INA_UG_OUTER",
-  "equipment_uuid": "CC8A893B-93E9-59FB-9EEA-930EE80082A5"
+  "equipment_uuid": "58C7D017-5323-54DC-8ABE-36EFF059F26E"
  },
  {
   "ident": "INAT",
@@ -7797,7 +7827,7 @@
   "lat": 55.28411111,
   "lon": 86.141,
   "equipment_gml_id": "JEPP_MKR_INC_UN_MIDDLE",
-  "equipment_uuid": "11DF6139-CD0B-5CA9-AF47-A3CA5D68B517"
+  "equipment_uuid": "12A48367-5FF9-51E8-B936-3945C921AC86"
  },
  {
   "ident": "INC",
@@ -7812,7 +7842,7 @@
   "lat": 55.29980556,
   "lon": 86.17838889,
   "equipment_gml_id": "JEPP_MKR_INC_UN_OUTER",
-  "equipment_uuid": "FFFC766A-8DC6-50FD-93F0-26DB3B1673AF"
+  "equipment_uuid": "DCE01F53-1A86-579C-9F90-941402DB1B46"
  },
  {
   "ident": "INF",
@@ -7827,7 +7857,7 @@
   "lat": 43.52158333,
   "lon": 43.65944444,
   "equipment_gml_id": "JEPP_MKR_INF_UR_MIDDLE",
-  "equipment_uuid": "77CC284C-CBB6-51E7-B3AE-4FFE0B0EF660"
+  "equipment_uuid": "A59DD21C-7016-5705-BA7F-616A224E697A"
  },
  {
   "ident": "INF",
@@ -7842,7 +7872,7 @@
   "lat": 43.53358333,
   "lon": 43.69219444,
   "equipment_gml_id": "JEPP_MKR_INF_UR_OUTER",
-  "equipment_uuid": "E918FD51-3D5D-571B-B90E-B10928CD48D6"
+  "equipment_uuid": "534D3A6B-9854-589C-AC24-F710D81E37B9"
  },
  {
   "ident": "INIW",
@@ -7887,7 +7917,7 @@
   "lat": 55.57838889,
   "lon": 52.11863889,
   "equipment_gml_id": "JEPP_MKR_INK_UW_MIDDLE",
-  "equipment_uuid": "D073B521-F2DD-5853-B2BB-C52C7D757AEA"
+  "equipment_uuid": "67663298-0450-51ED-A3AC-D0BCB7E0BCCA"
  },
  {
   "ident": "INK",
@@ -7902,7 +7932,7 @@
   "lat": 55.59802778,
   "lon": 52.15619444,
   "equipment_gml_id": "JEPP_MKR_INK_UW_OUTER",
-  "equipment_uuid": "45C4FE5F-D966-5F0C-AE49-FE643678D4C0"
+  "equipment_uuid": "912E1677-130D-54FE-BDA7-3B836EBB4824"
  },
  {
   "ident": "INL",
@@ -7917,7 +7947,7 @@
   "lat": 55.96502778,
   "lon": 37.37255556,
   "equipment_gml_id": "JEPP_MKR_INL_UU_MIDDLE",
-  "equipment_uuid": "2796ED1D-7E1C-5715-B854-0575C95EEAE5"
+  "equipment_uuid": "06294C0B-AAA4-5DF8-8F6D-ECB49AD612CD"
  },
  {
   "ident": "INL",
@@ -7932,7 +7962,7 @@
   "lat": 55.95830556,
   "lon": 37.32758333,
   "equipment_gml_id": "JEPP_MKR_INL_UU_OUTER",
-  "equipment_uuid": "185144CA-A667-5F5E-A85B-5540A5CFCF4C"
+  "equipment_uuid": "A719FE5D-73A6-5EB6-A9B8-16B3900F580C"
  },
  {
   "ident": "INLL",
@@ -7977,7 +8007,7 @@
   "lat": 50.31569444,
   "lon": 30.90311111,
   "equipment_gml_id": "JEPP_MKR_INO_UK_MIDDLE",
-  "equipment_uuid": "0ABD789C-E422-5025-8730-1493EE39D848"
+  "equipment_uuid": "33199BE4-9A63-5F9A-9A14-A9C855E327B6"
  },
  {
   "ident": "INO",
@@ -7992,7 +8022,7 @@
   "lat": 50.28747222,
   "lon": 30.90105556,
   "equipment_gml_id": "JEPP_MKR_INO_UK_OUTER",
-  "equipment_uuid": "0AF774CC-6BD3-52DC-AEAC-AA1CE273CD79"
+  "equipment_uuid": "24BFD812-0D5D-5949-8E38-298875B94C2B"
  },
  {
   "ident": "INOW",
@@ -8097,7 +8127,7 @@
   "lat": 53.1955,
   "lon": 34.18075,
   "equipment_gml_id": "JEPP_MKR_INU_UU_MIDDLE",
-  "equipment_uuid": "F96F4770-B0BF-5CD6-8EE3-692103EA6DFF"
+  "equipment_uuid": "4CACA9DE-7EB2-55D3-8AFB-6A8DEC764549"
  },
  {
   "ident": "INU",
@@ -8112,7 +8142,7 @@
   "lat": 53.16922222,
   "lon": 34.18641667,
   "equipment_gml_id": "JEPP_MKR_INU_UU_OUTER",
-  "equipment_uuid": "9F55958A-C59D-5D0B-9EA4-91F9D91093BD"
+  "equipment_uuid": "7205594F-0A87-573E-9C21-A33515AD34AC"
  },
  {
   "ident": "INU",
@@ -8127,7 +8157,7 @@
   "lat": 41.56594444,
   "lon": 60.66266667,
   "equipment_gml_id": "JEPP_MKR_INU_UZ_MIDDLE",
-  "equipment_uuid": "D742B5FC-2960-5D07-BD8F-AFF936384D38"
+  "equipment_uuid": "673F92D5-8056-5350-A151-B72482E5641D"
  },
  {
   "ident": "INU",
@@ -8142,7 +8172,7 @@
   "lat": 41.54516667,
   "lon": 60.68622222,
   "equipment_gml_id": "JEPP_MKR_INU_UZ_OUTER",
-  "equipment_uuid": "25B35F30-CA4F-5086-AEE8-3D0644FE1421"
+  "equipment_uuid": "AC309560-9349-54FF-8FB5-91A07FC37C39"
  },
  {
   "ident": "INV",
@@ -8187,7 +8217,7 @@
   "lat": 60.96794444,
   "lon": 76.51688889,
   "equipment_gml_id": "JEPP_MKR_INZ_US_MIDDLE",
-  "equipment_uuid": "7E90BE62-6E1D-5659-B656-C34A24B59055"
+  "equipment_uuid": "1CE1E1B4-DDEE-5F85-9440-5309ED80003A"
  },
  {
   "ident": "INZ",
@@ -8202,7 +8232,7 @@
   "lat": 60.98652778,
   "lon": 76.55208333,
   "equipment_gml_id": "JEPP_MKR_INZ_US_OUTER",
-  "equipment_uuid": "FEFED5F9-A58D-55CC-84C1-E15E03BFC8A9"
+  "equipment_uuid": "AB17A839-A60D-5EE1-B5A9-29253C259F1E"
  },
  {
   "ident": "IOAJ",
@@ -8232,7 +8262,7 @@
   "lat": 55.60147222,
   "lon": 37.3055,
   "equipment_gml_id": "JEPP_MKR_IOB_UU_MIDDLE",
-  "equipment_uuid": "3EE56A31-EA17-5317-886C-8AE7AF05CAD5"
+  "equipment_uuid": "EB3065D2-EDEF-5B07-8ACD-9899769DB97A"
  },
  {
   "ident": "IOCZ",
@@ -8271,7 +8301,7 @@
   "auralMorseCode": "......",
   "frequency": 75,
   "frequencyUom": "MHZ",
-  "axisBearing": 135.126,
+  "axisBearing": 135.106,
   "elevation": 34,
   "elevationUom": "FT",
   "lat": 37.57047222,
@@ -8352,7 +8382,7 @@
   "lat": 62.17138889,
   "lon": 74.52652778,
   "equipment_gml_id": "JEPP_MKR_IOL_US_MIDDLE",
-  "equipment_uuid": "16063561-5D42-5416-AC14-8F37045FF923"
+  "equipment_uuid": "634FFA16-B2C1-59F6-A04D-8B6BAA0691DC"
  },
  {
   "ident": "IOL",
@@ -8367,7 +8397,7 @@
   "lat": 62.14577778,
   "lon": 74.51797222,
   "equipment_gml_id": "JEPP_MKR_IOL_US_OUTER",
-  "equipment_uuid": "35AC5AD0-CBC7-55E5-AFF5-861578849445"
+  "equipment_uuid": "0522920D-42CE-5DCE-82CA-26A06738E0D7"
  },
  {
   "ident": "IOLE",
@@ -8457,7 +8487,7 @@
   "lat": 45.10402778,
   "lon": 42.08430556,
   "equipment_gml_id": "JEPP_MKR_IOP_UR_MIDDLE",
-  "equipment_uuid": "8422B965-0BAD-5C3A-A78A-4D3DBAA67A34"
+  "equipment_uuid": "D0981154-5AB9-5BB8-BD3C-8D38A584BCD4"
  },
  {
   "ident": "IOP",
@@ -8472,7 +8502,7 @@
   "lat": 45.09766667,
   "lon": 42.04866667,
   "equipment_gml_id": "JEPP_MKR_IOP_UR_OUTER",
-  "equipment_uuid": "D86CFD9C-D2BD-5E23-9070-5581E5760687"
+  "equipment_uuid": "A6CEE7BE-9319-592C-8917-5AA4DCBDC615"
  },
  {
   "ident": "IOQV",
@@ -8502,7 +8532,7 @@
   "lat": 51.07775,
   "lon": 58.63094444,
   "equipment_gml_id": "JEPP_MKR_IOR_UW_MIDDLE",
-  "equipment_uuid": "839E4890-AB70-5350-B683-738AB240D6F8"
+  "equipment_uuid": "DFD94278-815D-5AA3-A361-412A6167CB75"
  },
  {
   "ident": "IOR",
@@ -8517,7 +8547,7 @@
   "lat": 51.08333333,
   "lon": 58.66875,
   "equipment_gml_id": "JEPP_MKR_IOR_UW_OUTER",
-  "equipment_uuid": "3EDCA93B-7C21-5435-A939-D181E503E063"
+  "equipment_uuid": "25CBAA19-9107-5B3F-85BF-3A4F54EB92EE"
  },
  {
   "ident": "IOS",
@@ -8847,7 +8877,7 @@
   "lat": 68.79888889,
   "lon": 32.71958333,
   "equipment_gml_id": "JEPP_MKR_IPF_UL_MIDDLE",
-  "equipment_uuid": "79767DDB-0ADE-5C24-B2B2-F964F2C4CEC6"
+  "equipment_uuid": "5D50FA68-2977-54EA-88E4-3525C529BE5E"
  },
  {
   "ident": "IPF",
@@ -8862,7 +8892,7 @@
   "lat": 68.82369444,
   "lon": 32.67361111,
   "equipment_gml_id": "JEPP_MKR_IPF_UL_OUTER",
-  "equipment_uuid": "0EF31AC9-FEEE-5326-84AC-31B9428D2EAC"
+  "equipment_uuid": "C53B93BA-B6F9-5232-B9CC-441E3457BC87"
  },
  {
   "ident": "IPGV",
@@ -9042,7 +9072,7 @@
   "lat": -2.71666667,
   "lon": 111.686,
   "equipment_gml_id": "JEPP_MKR_IPKN_WA_MIDDLE",
-  "equipment_uuid": "74C71CCD-9171-5066-A6F0-A50E70C6DE03"
+  "equipment_uuid": "AA104FD3-D038-56F7-B0E4-67A6EF8E6B28"
  },
  {
   "ident": "IPKQ",
@@ -9072,7 +9102,7 @@
   "lat": 8.11525,
   "lon": 98.33744444,
   "equipment_gml_id": "JEPP_MKR_IPKT_VT_MIDDLE",
-  "equipment_uuid": "38F8E889-F33A-5F54-95DB-456CF12D8A49"
+  "equipment_uuid": "997F7AE4-2A53-55DF-90EF-05AFB140A713"
  },
  {
   "ident": "IPKU",
@@ -9117,7 +9147,7 @@
   "lat": -2.90661111,
   "lon": 104.71877778,
   "equipment_gml_id": "JEPP_MKR_IPLB_WI_MIDDLE",
-  "equipment_uuid": "450CD5A6-55AA-5A85-8ED7-8043AE9CA32E"
+  "equipment_uuid": "5D550CE6-2CC4-57CF-B3A0-5D43515C30BD"
  },
  {
   "ident": "IPLM",
@@ -9132,7 +9162,7 @@
   "lat": -2.88927778,
   "lon": 104.6785,
   "equipment_gml_id": "JEPP_MKR_IPLM_WI_MIDDLE",
-  "equipment_uuid": "081F731E-2A63-5B99-9D74-18C381FD769E"
+  "equipment_uuid": "0779AD69-EA6A-5AF5-B4EF-CE29EAF48A57"
  },
  {
   "ident": "IPLQ",
@@ -9192,7 +9222,7 @@
   "lat": -0.13330556,
   "lon": 109.39686111,
   "equipment_gml_id": "JEPP_MKR_IPNK_WI_MIDDLE",
-  "equipment_uuid": "4E8F4085-94B5-5E44-AB77-58D4C9D40256"
+  "equipment_uuid": "29ABDF72-8C72-5412-BD75-264379778D5A"
  },
  {
   "ident": "IPNK",
@@ -9207,7 +9237,7 @@
   "lat": -0.07786111,
   "lon": 109.37488889,
   "equipment_gml_id": "JEPP_MKR_IPNK_WI_OUTER",
-  "equipment_uuid": "BECF60FD-255E-5F08-A7DD-EB020E908CA9"
+  "equipment_uuid": "CC503B75-4366-556A-989E-6F6872A5363B"
  },
  {
   "ident": "IPO",
@@ -9672,7 +9702,7 @@
   "lat": 48.02452778,
   "lon": 33.20527778,
   "equipment_gml_id": "JEPP_MKR_IRO_UK_MIDDLE",
-  "equipment_uuid": "4D1043E8-ACE8-5BB4-B4DF-915599B073F4"
+  "equipment_uuid": "1AD39973-FDAA-503B-800B-466BAD022B8E"
  },
  {
   "ident": "IRO",
@@ -9687,7 +9717,7 @@
   "lat": 47.99319444,
   "lon": 33.20111111,
   "equipment_gml_id": "JEPP_MKR_IRO_UK_OUTER",
-  "equipment_uuid": "4101DA14-FF1E-59AE-85EE-8172A8C6D808"
+  "equipment_uuid": "D18212E9-89B9-58F1-A9FE-F798422636BC"
  },
  {
   "ident": "IRO",
@@ -9702,7 +9732,7 @@
   "lat": 55.00855556,
   "lon": 82.60644444,
   "equipment_gml_id": "JEPP_MKR_IRO_UN_MIDDLE",
-  "equipment_uuid": "8DE10C75-DD19-512B-A203-0A4B8445433F"
+  "equipment_uuid": "FCEC6349-F242-54B0-8AC6-38BB10225BD4"
  },
  {
   "ident": "IRO",
@@ -9717,7 +9747,7 @@
   "lat": 55.00419444,
   "lon": 82.56013889,
   "equipment_gml_id": "JEPP_MKR_IRO_UN_OUTER",
-  "equipment_uuid": "88DA2610-B911-5EB9-810D-EBDB07B977B9"
+  "equipment_uuid": "6171A375-3B88-5F02-82AA-E6C3C3680C05"
  },
  {
   "ident": "IROA",
@@ -9837,7 +9867,7 @@
   "lat": 40.97574444,
   "lon": 71.592725,
   "equipment_gml_id": "JEPP_MKR_ISA_UZ_MIDDLE",
-  "equipment_uuid": "423004F0-4C02-5B3E-A5F8-8E0FEABF94DC"
+  "equipment_uuid": "58C151B0-9696-5F3B-96C4-2D7B0533C7CF"
  },
  {
   "ident": "ISA",
@@ -9852,7 +9882,7 @@
   "lat": 40.96839167,
   "lon": 71.62121389,
   "equipment_gml_id": "JEPP_MKR_ISA_UZ_OUTER",
-  "equipment_uuid": "5A15D80A-843A-5389-AB49-F69402BD7B9C"
+  "equipment_uuid": "F0C1A0FF-E5D8-52FE-8FA9-D13B21E51032"
  },
  {
   "ident": "ISAJ",
@@ -9951,7 +9981,7 @@
   "auralMorseCode": "......",
   "frequency": 75,
   "frequencyUom": "MHZ",
-  "axisBearing": 135.127,
+  "axisBearing": 135.131,
   "elevation": 38,
   "elevationUom": "FT",
   "lat": 37.57275,
@@ -10101,7 +10131,7 @@
   "auralMorseCode": "......",
   "frequency": 75,
   "frequencyUom": "MHZ",
-  "axisBearing": 315.145,
+  "axisBearing": 315.149,
   "elevation": 42,
   "elevationUom": "FT",
   "lat": 37.54569444,
@@ -10182,7 +10212,7 @@
   "lat": -7.5107,
   "lon": 110.78100278,
   "equipment_gml_id": "JEPP_MKR_ISLO_WA_MIDDLE",
-  "equipment_uuid": "4EF0B028-1E28-5174-B27E-7E6C8611AFDA"
+  "equipment_uuid": "8DED2C22-CB88-57CC-89FD-313B6EBBCDF2"
  },
  {
   "ident": "ISLO",
@@ -10197,7 +10227,7 @@
   "lat": -7.49333333,
   "lon": 110.85833333,
   "equipment_gml_id": "JEPP_MKR_ISLO_WA_OUTER",
-  "equipment_uuid": "1A35C04D-9246-579B-A1AA-B0FE7941985E"
+  "equipment_uuid": "FEE6E161-963F-5C6C-BB2E-F0E51ACFE2FC"
  },
  {
   "ident": "ISM",
@@ -10707,7 +10737,7 @@
   "lat": 15.29992222,
   "lon": 100.29638056,
   "equipment_gml_id": "JEPP_MKR_ITKL_VT_MIDDLE",
-  "equipment_uuid": "345F67E7-5250-5EC2-94FA-EDA69E981FDF"
+  "equipment_uuid": "32F59D4C-DBE7-5052-A3C9-E5097C47C04A"
  },
  {
   "ident": "ITLE",
@@ -10782,7 +10812,7 @@
   "lat": -4.519,
   "lon": 136.87025,
   "equipment_gml_id": "JEPP_MKR_ITMK_WA_MIDDLE",
-  "equipment_uuid": "0C23AF20-53C9-5DBD-AAB5-C19688CE6680"
+  "equipment_uuid": "86E08AD2-F0CD-5158-9005-D28889336282"
  },
  {
   "ident": "ITOC",
@@ -10887,7 +10917,7 @@
   "lat": -2.76511111,
   "lon": 107.75591667,
   "equipment_gml_id": "JEPP_MKR_ITPN_WI_MIDDLE",
-  "equipment_uuid": "370DB10A-9ED7-58DD-A701-08BAA6FE66F7"
+  "equipment_uuid": "4BCDB39A-2293-5F34-B5B8-1F2EC949B848"
  },
  {
   "ident": "ITRI",
@@ -11022,7 +11052,7 @@
   "lat": -31.091,
   "lon": 150.86194444,
   "equipment_gml_id": "JEPP_MKR_ITW_YB_MIDDLE",
-  "equipment_uuid": "04084AB4-654F-5C3E-A7B5-8E30DCC7C0DB"
+  "equipment_uuid": "CA217591-FE19-518F-BBBD-A39FFDEBDBC8"
  },
  {
   "ident": "ITW",
@@ -11037,7 +11067,7 @@
   "lat": -31.14575,
   "lon": 150.93058333,
   "equipment_gml_id": "JEPP_MKR_ITW_YB_OUTER",
-  "equipment_uuid": "1D95FFEC-EF49-5796-B1F8-45B8D3A7DC62"
+  "equipment_uuid": "3ECF08B9-DD3B-5F10-8701-D5513D03C722"
  },
  {
   "ident": "ITWF",
@@ -11202,7 +11232,7 @@
   "lat": 53.97163889,
   "lon": 30.06827778,
   "equipment_gml_id": "JEPP_MKR_IUF_UM_MIDDLE",
-  "equipment_uuid": "DA998D4C-C449-5B56-9539-E69471CBEA81"
+  "equipment_uuid": "BDE0D3F5-CD84-5574-AC6C-20B678294380"
  },
  {
   "ident": "IUF",
@@ -11217,7 +11247,7 @@
   "lat": 53.98772222,
   "lon": 30.04275,
   "equipment_gml_id": "JEPP_MKR_IUF_UM_OUTER",
-  "equipment_uuid": "3B789C6B-F943-5B77-8C8B-C528B7FDC867"
+  "equipment_uuid": "2062B85D-2382-5566-8DE0-502C31BBF1BD"
  },
  {
   "ident": "IUGN",
@@ -11247,7 +11277,7 @@
   "lat": 39.75291667,
   "lon": 64.47708333,
   "equipment_gml_id": "JEPP_MKR_IUH_UZ_MIDDLE",
-  "equipment_uuid": "EB668949-5E4B-5D76-9E79-A4534A852AA9"
+  "equipment_uuid": "D2D53306-3EAA-501B-A16D-0687C57A7D1C"
  },
  {
   "ident": "IUH",
@@ -11262,7 +11292,7 @@
   "lat": 39.729,
   "lon": 64.47158333,
   "equipment_gml_id": "JEPP_MKR_IUH_UZ_OUTER",
-  "equipment_uuid": "9744AB63-654A-5959-9518-B9D98CD3EABE"
+  "equipment_uuid": "42886C92-3376-5C35-A104-7C37C470067C"
  },
  {
   "ident": "IUIN",
@@ -11292,7 +11322,7 @@
   "lat": -5.1005,
   "lon": 119.53930556,
   "equipment_gml_id": "JEPP_MKR_IUJP_WA_MIDDLE",
-  "equipment_uuid": "97BF1B06-F51D-5D18-A488-3953B9FB1D67"
+  "equipment_uuid": "4B785255-AFD2-5AB4-8B3A-9546D64CEA1A"
  },
  {
   "ident": "IUL",
@@ -11307,7 +11337,7 @@
   "lat": 54.37502778,
   "lon": 48.77566667,
   "equipment_gml_id": "JEPP_MKR_IUL_UW_MIDDLE",
-  "equipment_uuid": "B31971AA-40D6-5A6A-8D82-DACDE17E67E3"
+  "equipment_uuid": "30ADED13-1E2F-5347-9C4A-EE204CDCE505"
  },
  {
   "ident": "IUL",
@@ -11322,7 +11352,7 @@
   "lat": 54.35177778,
   "lon": 48.75213889,
   "equipment_gml_id": "JEPP_MKR_IUL_UW_OUTER",
-  "equipment_uuid": "FC0919AC-23EA-50C3-A6A2-0D83B72C486B"
+  "equipment_uuid": "E2B9DF18-7D69-5A37-8B75-74EAB928E377"
  },
  {
   "ident": "IUPE",
@@ -11352,7 +11382,7 @@
   "lat": -5.04819444,
   "lon": 119.53841667,
   "equipment_gml_id": "JEPP_MKR_IUPG_WA_MIDDLE",
-  "equipment_uuid": "56B031A2-47ED-5843-99B5-617BB1A129DD"
+  "equipment_uuid": "4695FE17-5047-5091-8C71-7194DF351E7E"
  },
  {
   "ident": "IUQU",
@@ -11382,7 +11412,7 @@
   "lat": 55.13552778,
   "lon": 30.38025,
   "equipment_gml_id": "JEPP_MKR_IUU_UM_MIDDLE",
-  "equipment_uuid": "F1109DB3-11C4-57A7-AC80-466802C6AC5A"
+  "equipment_uuid": "ED4022F3-8970-5087-BE49-167E2CD1CB2B"
  },
  {
   "ident": "IUU",
@@ -11397,7 +11427,7 @@
   "lat": 55.14963889,
   "lon": 30.42711111,
   "equipment_gml_id": "JEPP_MKR_IUU_UM_OUTER",
-  "equipment_uuid": "7B9692FE-3B3D-5606-A099-29C47643305C"
+  "equipment_uuid": "1E74FE39-1E35-504C-B9D7-BDE6084208D7"
  },
  {
   "ident": "IUUR",
@@ -11592,7 +11622,7 @@
   "lat": 41.68288889,
   "lon": 44.93369444,
   "equipment_gml_id": "JEPP_MKR_IVP_UG_MIDDLE",
-  "equipment_uuid": "62FF34D6-21F4-54C9-9B7E-9A4B11287D0B"
+  "equipment_uuid": "1D0D8B9B-A551-5D2B-B71B-3CACBE377EC3"
  },
  {
   "ident": "IVP",
@@ -11607,7 +11637,7 @@
   "lat": 41.71305556,
   "lon": 44.89561111,
   "equipment_gml_id": "JEPP_MKR_IVP_UG_OUTER",
-  "equipment_uuid": "BCD663C7-1D28-581F-ACE9-B82AE8DD6941"
+  "equipment_uuid": "F5F67CF5-7DDD-544F-93FC-8F384ED18762"
  },
  {
   "ident": "IVPZ",
@@ -11697,7 +11727,7 @@
   "lat": 53.90180556,
   "lon": 28.002,
   "equipment_gml_id": "JEPP_MKR_IVX_UM_MIDDLE",
-  "equipment_uuid": "2F949F42-950D-5A31-BF8D-FAEE7E9205E4"
+  "equipment_uuid": "61AB58F4-7D91-5DE7-80C7-D8452E923D1F"
  },
  {
   "ident": "IVX",
@@ -11712,7 +11742,7 @@
   "lat": 53.92161111,
   "lon": 27.97258333,
   "equipment_gml_id": "JEPP_MKR_IVX_UM_OUTER",
-  "equipment_uuid": "98C566DE-E2FA-500B-A875-266AE4E06CCD"
+  "equipment_uuid": "78F4F509-2437-5D3E-9F7B-B506578AE84C"
  },
  {
   "ident": "IVYN",
@@ -11787,7 +11817,7 @@
   "lat": 55.57872222,
   "lon": 37.25163889,
   "equipment_gml_id": "JEPP_MKR_IWM_UU_MIDDLE",
-  "equipment_uuid": "065BD199-DE64-5A35-8402-FBEE27493C83"
+  "equipment_uuid": "CE64F4EB-815C-5BF1-934F-5CA87789C09D"
  },
  {
   "ident": "IWN",
@@ -11832,7 +11862,7 @@
   "lat": 49.22786111,
   "lon": 28.63447222,
   "equipment_gml_id": "JEPP_MKR_IWN_UK_MIDDLE",
-  "equipment_uuid": "944E9467-FE2B-5A0E-BEBE-C1C723D6D8E7"
+  "equipment_uuid": "4FAC1CB5-10CF-514A-8DA2-74A7A242FAA9"
  },
  {
   "ident": "IWN",
@@ -11847,7 +11877,7 @@
   "lat": 49.20605556,
   "lon": 28.66416667,
   "equipment_gml_id": "JEPP_MKR_IWN_UK_OUTER",
-  "equipment_uuid": "3A88675F-BED8-52A2-8ACF-E4B3BD06E1DF"
+  "equipment_uuid": "63158639-D237-5D1A-8A56-8AB679460994"
  },
  {
   "ident": "IWN",
@@ -11862,7 +11892,7 @@
   "lat": 54.42802778,
   "lon": 48.83066667,
   "equipment_gml_id": "JEPP_MKR_IWN_UW_MIDDLE",
-  "equipment_uuid": "0B985316-9B6C-582C-8F38-D7B66F298F34"
+  "equipment_uuid": "0CE9C83D-17C8-55FF-96C4-96E1615B6A57"
  },
  {
   "ident": "IWN",
@@ -11877,7 +11907,7 @@
   "lat": 54.45297222,
   "lon": 48.85722222,
   "equipment_gml_id": "JEPP_MKR_IWN_UW_OUTER",
-  "equipment_uuid": "483D8FD7-AA03-578B-82C6-F29549907854"
+  "equipment_uuid": "CCA22607-B6AC-541C-AEA3-566A46E95B74"
  },
  {
   "ident": "IWW",
@@ -11892,7 +11922,7 @@
   "lat": 28.26769722,
   "lon": 113.21506944,
   "equipment_gml_id": "JEPP_MKR_IWW_ZG_OUTER",
-  "equipment_uuid": "DD26810A-0A49-5569-8747-C248660216D7"
+  "equipment_uuid": "7A7958C5-AE35-5175-86BD-BB1E1870823C"
  },
  {
   "ident": "IXUU",
@@ -12072,7 +12102,7 @@
   "lat": 61.03388889,
   "lon": 69.12869444,
   "equipment_gml_id": "JEPP_MKR_IZJ_US_MIDDLE",
-  "equipment_uuid": "C9ED23DC-52A8-5992-9297-6D602D13AD64"
+  "equipment_uuid": "0E5E82C9-CF0F-5261-A91C-10F6549311E9"
  },
  {
   "ident": "IZJ",
@@ -12087,7 +12117,7 @@
   "lat": 61.041,
   "lon": 69.18630556,
   "equipment_gml_id": "JEPP_MKR_IZJ_US_OUTER",
-  "equipment_uuid": "7C88889D-B13D-5776-8BC0-C4E42C5BC48A"
+  "equipment_uuid": "01333134-AC7E-534C-89E9-BF0A14756D18"
  },
  {
   "ident": "IZR",
@@ -12102,7 +12132,7 @@
   "lat": 42.46905556,
   "lon": 59.63566667,
   "equipment_gml_id": "JEPP_MKR_IZR_UZ_MIDDLE",
-  "equipment_uuid": "C9A93823-365B-515A-8CDB-EA3AF1095FA4"
+  "equipment_uuid": "B30C6D99-F86E-5140-B474-228BDA2A7062"
  },
  {
   "ident": "IZR",
@@ -12117,7 +12147,7 @@
   "lat": 42.44627778,
   "lon": 59.65036111,
   "equipment_gml_id": "JEPP_MKR_IZR_UZ_OUTER",
-  "equipment_uuid": "A4938E50-D6A3-5CE7-BA89-CCDA403FB771"
+  "equipment_uuid": "5869020A-3504-5F58-B4E8-7BA7CA81E95A"
  },
  {
   "ident": "IZU",
@@ -12132,7 +12162,7 @@
   "lat": 40.38003889,
   "lon": 71.74631389,
   "equipment_gml_id": "JEPP_MKR_IZU_UZ_MIDDLE",
-  "equipment_uuid": "07A32252-8504-5502-A577-C320415781A4"
+  "equipment_uuid": "211793D0-D58B-5167-8948-C9CC634A9332"
  },
  {
   "ident": "IZU",
@@ -12147,7 +12177,7 @@
   "lat": 40.41167778,
   "lon": 71.74866111,
   "equipment_gml_id": "JEPP_MKR_IZU_UZ_OUTER",
-  "equipment_uuid": "CB6A9686-D9F3-5275-9D64-1CC64DE1E099"
+  "equipment_uuid": "1F4F5FFC-0C06-543C-9480-E454B733E3B5"
  },
  {
   "ident": "KD",
@@ -12612,7 +12642,7 @@
   "lat": 22.32994444,
   "lon": 114.16850833,
   "equipment_gml_id": "JEPP_MKR_MM13_VH_MIDDLE",
-  "equipment_uuid": "252B4830-32BB-5998-83D5-8611B81EF9EA"
+  "equipment_uuid": "9513C331-1DD4-5763-B0E5-19F52DCA96AF"
  },
  {
   "ident": "MM31",
@@ -12627,7 +12657,7 @@
   "lat": 22.28456667,
   "lon": 114.238275,
   "equipment_gml_id": "JEPP_MKR_MM31_VH_MIDDLE",
-  "equipment_uuid": "8FB928D9-C005-588F-99B9-862CE72195D2"
+  "equipment_uuid": "1BF385EC-E19C-5A5D-A4F0-B2EC16115285"
  },
  {
   "ident": "MOH",
@@ -12732,7 +12762,7 @@
   "lat": 21.22793056,
   "lon": 105.78305,
   "equipment_gml_id": "JEPP_MKR_NB_VV_MIDDLE",
-  "equipment_uuid": "EECE93BE-F9B4-573B-9021-3EC3381E1EEE"
+  "equipment_uuid": "0D672EA7-DDB7-5DCC-9FDD-8F02A99E2087"
  },
  {
   "ident": "NB",
@@ -12747,7 +12777,7 @@
   "lat": 21.23880833,
   "lon": 105.74570833,
   "equipment_gml_id": "JEPP_MKR_NB_VV_OUTER",
-  "equipment_uuid": "CDBE42AF-F083-53A5-A388-98F7F0D7278F"
+  "equipment_uuid": "8BDA3C50-640F-5F15-8EB3-58238A7D7351"
  },
  {
   "ident": "NKM",
@@ -12912,7 +12942,7 @@
   "lat": 22.32683611,
   "lon": 114.09240278,
   "equipment_gml_id": "JEPP_MKR_OM13_VH_OUTER",
-  "equipment_uuid": "86E16D9A-9AE1-589C-BD6A-FBF136D10A80"
+  "equipment_uuid": "D72E6B60-1B90-58A3-9386-83D362358B05"
  },
  {
   "ident": "OM31",
@@ -12927,7 +12957,7 @@
   "lat": 22.23797222,
   "lon": 114.28878889,
   "equipment_gml_id": "JEPP_MKR_OM31_VH_OUTER",
-  "equipment_uuid": "2451031D-19C0-5253-BB00-2256AEED816F"
+  "equipment_uuid": "A067EE53-E040-50EE-94B2-E646B8E9D660"
  },
  {
   "ident": "ORG",
