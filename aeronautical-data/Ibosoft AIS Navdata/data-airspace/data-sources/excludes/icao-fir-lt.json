@@ -1,0 +1,12 @@
+[
+  {
+    "_aciklama": "ANKARA FIR (LTAA) ICAO FIR verisinden cikarilir: bu FIR tailored-LT kaynaginda AIP TURKIYE bilgileriyle (dikey sinirlar, sinif, remark'lar) elle tutulur; geometri ICAO verisindekiyle ayni (kullanici karari).",
+    "layer": "airspaces",
+    "match": { "provider": "ICAO GIS", "type": "FIR", "designator": "LTAA" }
+  },
+  {
+    "_aciklama": "ISTANBUL FIR (LTBB) — ayni gerekce.",
+    "layer": "airspaces",
+    "match": { "provider": "ICAO GIS", "type": "FIR", "designator": "LTBB" }
+  }
+]

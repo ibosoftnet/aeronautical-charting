@@ -1,0 +1,33 @@
+{
+  "_aciklama": "Common Airspaces birlestirici tarifesi. Ana kaynaklar birlesik AIXM'in govdesini olusturur; ek kaynaklar uzerine eklenir. Provenance her feature'in kendi AIXM extension kutusundadir (ibosoftais:AirspaceDataProvenance); birlestirici data.json okumaz.",
+
+  "_asama1": "run_source_generators aciksa (ya da --sources verilirse) asagidaki ureticiler bu sirayla calistirilir ve her kaynagin AIXM dosyasi tazelenir. Bir uretici hata verirse zincir durur.",
+  "run_source_generators": true,
+  "_elle": "TRNC ve tailored-LT kaynaklarinin ureticisi YOKTUR: AIXM dosyalari (data-sources/TRNC, data-sources/tailored-LT) elle duzenlenir.",
+  "source_generators": [
+    { "name": "jeppesen",     "script": "data-sources/Jeppesen/generate-aixm-data/generate_aixm.py" },
+    { "name": "icao-fir-uir", "script": "data-sources/ICAO-FIR-UIR/generate-aixm-data/generate_aixm.py" },
+    { "name": "lt",           "script": "data-sources/LT/generate-aixm-data/generate_aixm.py" },
+    { "name": "lh",           "script": "data-sources/LH/generate-aixm-data/generate_aixm.py" },
+    { "name": "ibosoft",      "script": "data-sources/ibosoft/generate-aixm-data/generate_aixm.py" }
+  ],
+
+  "base_sources": [
+    { "name": "jeppesen",     "file": "data-sources/Jeppesen/jeppesen-airspace-aixm.xml" },
+    { "name": "icao-fir-uir", "file": "data-sources/ICAO-FIR-UIR/icao-fir-uir-airspace-aixm.xml" }
+  ],
+
+  "_ek_kaynaklar": "Override mekanizmasi desteklenir (override_enabled: true + override_base_originator: ana kaynakta aranacak originator yazimi; anahtar type + designator + originator). Kullanici karari: mevcut kaynaklarin hepsi YALNIZCA EKLEME modundadir; cakisan Jeppesen sahalari alan-ici iptal kurallariyla duser (data-sources/excludes).",
+  "additional_sources": [
+    { "name": "lt",          "file": "data-sources/LT/lt-airspace-aixm.xml",                   "override_enabled": false },
+    { "name": "lh",          "file": "data-sources/LH/lh-airspace-aixm.xml",                   "override_enabled": false },
+    { "name": "trnc",        "file": "data-sources/TRNC/trnc-airspace-aixm.xml",               "override_enabled": false },
+    { "name": "tailored-lt", "file": "data-sources/tailored-LT/tailored-lt-airspace-aixm.xml", "override_enabled": false },
+    { "name": "ibosoft",     "file": "data-sources/ibosoft/ibosoft-airspace-aixm.xml",         "override_enabled": false }
+  ],
+
+  "excludes_dir": "data-sources/excludes",
+  "merged_aixm": "navdata/ibosoft-ais-navdata-airspaces-aixm.xml",
+  "output_gpkg": "navdata/ibosoft-ais-navdata-airspaces.gpkg",
+  "error_log": "logs/errored-features.csv"
+}

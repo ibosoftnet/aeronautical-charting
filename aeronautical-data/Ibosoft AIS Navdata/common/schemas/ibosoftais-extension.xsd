@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Ibosoft AIS - AIXM 5.2 Extension Schema
+  Version: 1.0.0
+
+  This schema extends AIXM 5.2 through the standard AIXM extension mechanism:
+  every AIXM TimeSlice may carry one or more aixm:extension elements, each
+  holding an element from the substitution group of the feature-specific
+  abstract extension head (aixm:Abstract<Feature>Extension). The elements
+  declared here are members of those substitution groups.
+
+  Contents:
+    1. Data provenance  - <Feature>DataProvenance (one element per feature type)
+    2. ChangeOverPoint  - ChangeOverPointExtension
+    3. Airspace         - AirspaceExtension
+
+  The AIXM 5.2 namespace is imported without a schemaLocation; the location of
+  the AIXM 5.2 schema set must be supplied by the validating application.
+
+  Reference: AIXM 5.2 schema set (aixm.aero) and "AIXM Application Schema
+  Generation", which defines the AIXM extension mechanism.
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:aixm="http://www.aixm.aero/schema/5.2"
+        xmlns:ibosoftais="https://cdn.ibosoft.net.tr/aviation-data/schema/aixm/5.2/extension"
+        targetNamespace="https://cdn.ibosoft.net.tr/aviation-data/schema/aixm/5.2/extension"
+        elementFormDefault="qualified"
+        attributeFormDefault="unqualified"
+        version="1.0.0">
+
+   <annotation>
+      <documentation>Ibosoft AIS extension to AIXM 5.2, version 1.0.0.</documentation>
+   </annotation>
+
+   <import namespace="http://www.aixm.aero/schema/5.2"/>
+
+   <!--=================================================================-->
+   <!-- 1. Data provenance                                              -->
+   <!--                                                                -->
+   <!-- The content model (DataProvenanceType) is identical for all     -->
+   <!-- feature types. A separate element is declared per feature type  -->
+   <!-- because, in XML Schema 1.0, an element can belong to only one   -->
+   <!-- substitution group.                                             -->
+   <!--=================================================================-->
+
+   <simpleType name="DataTextType">
+      <annotation>
+         <documentation>Non-empty free text.</documentation>
+      </annotation>
+      <restriction base="string">
+         <minLength value="1"/>
+      </restriction>
+   </simpleType>
+
+   <complexType name="DataProvenanceType">
+      <annotation>
+         <documentation>Provenance of the data from which the feature was
+            produced: who supplied it, which authority published it and the
+            effectivity of the source data set.</documentation>
+      </annotation>
+      <complexContent>
+         <extension base="aixm:AbstractExtensionType">
+            <sequence>
+               <element name="dataProvider" type="ibosoftais:DataTextType">
+                  <annotation>
+                     <documentation>The organisation or service that supplied the
+                        data set from which the feature was produced (e.g.
+                        "EUROCONTROL EAD SDO").</documentation>
+                  </annotation>
+               </element>
+               <element name="dataOriginator" type="ibosoftais:DataTextType"
+                        minOccurs="0">
+                  <annotation>
+                     <documentation>The authority that originally published the
+                        feature (e.g. a national AIS provider). Omitted when the
+                        source does not state it.</documentation>
+                  </annotation>
+               </element>
+               <element name="dataEffectivity" type="ibosoftais:DataTextType">
+                  <annotation>
+                     <documentation>The effectivity of the source data set, as free
+                        text (e.g. "01 OCT 2026 (AIRAC 2610)"). This is the validity
+                        of the data set, not of the feature itself; the feature's
+                        own validity is expressed by gml:validTime.</documentation>
+                  </annotation>
+               </element>
+            </sequence>
+         </extension>
+      </complexContent>
+   </complexType>
+
+   <element name="DesignatedPointDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractDesignatedPointExtension"/>
+
+   <element name="NavaidDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractNavaidExtension"/>
+
+   <element name="VORDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractVORExtension"/>
+
+   <element name="DMEDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractDMEExtension"/>
+
+   <element name="TACANDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractTACANExtension"/>
+
+   <element name="NDBDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractNDBExtension"/>
+
+   <element name="LocalizerDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractLocalizerExtension"/>
+
+   <element name="GlidepathDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractGlidepathExtension"/>
+
+   <element name="MarkerBeaconDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractMarkerBeaconExtension"/>
+
+   <element name="SDFDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractSDFExtension"/>
+
+   <element name="AzimuthDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractAzimuthExtension"/>
+
+   <element name="ElevationDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractElevationExtension"/>
+
+   <element name="DirectionFinderDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractDirectionFinderExtension"/>
+
+   <element name="RouteDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractRouteExtension"/>
+
+   <element name="RouteSegmentDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractRouteSegmentExtension"/>
+
+   <element name="ChangeOverPointDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractChangeOverPointExtension"/>
+
+   <element name="AirspaceDataProvenance" type="ibosoftais:DataProvenanceType"
+            substitutionGroup="aixm:AbstractAirspaceExtension"/>
+
+   <!--=================================================================-->
+   <!-- 2. ChangeOverPoint                                              -->
+   <!--=================================================================-->
+   <element name="ChangeOverPointExtension"
+            type="ibosoftais:ChangeOverPointExtensionType"
+            substitutionGroup="aixm:AbstractChangeOverPointExtension">
+      <annotation>
+         <documentation>Extension for ChangeOverPoint: the distance measured from
+            the end of the applicable route portion, which core AIXM 5.2 cannot
+            express.</documentation>
+      </annotation>
+   </element>
+
+   <complexType name="ChangeOverPointExtensionType">
+      <complexContent>
+         <extension base="aixm:AbstractExtensionType">
+            <sequence>
+               <element name="distanceFromEnd" nillable="true" minOccurs="0"
+                        maxOccurs="1" type="aixm:ValDistanceType">
+                  <annotation>
+                     <documentation>The distance from the END of the route portion
+                        to the position of the change over point.
+
+                        The core AIXM property `distance` is measured from the START
+                        of the route portion and is single-valued, so the
+                        complementary distance has no core property. Aeronautical
+                        charts normally show the distance to both navaids of a
+                        change over point.
+
+                        Same data type as the core `distance` (aixm:ValDistanceType);
+                        `uom` and `nilReason` behave identically.</documentation>
+                  </annotation>
+               </element>
+            </sequence>
+         </extension>
+      </complexContent>
+   </complexType>
+
+   <!--=================================================================-->
+   <!-- 3. Airspace                                                     -->
+   <!--=================================================================-->
+   <element name="AirspaceExtension" type="ibosoftais:AirspaceExtensionType"
+            substitutionGroup="aixm:AbstractAirspaceExtension">
+      <annotation>
+         <documentation>Extension for Airspace: ICAO regional affiliation of the
+            airspace, for which core AIXM 5.2 has no property. Intended for
+            FIR and UIR features.</documentation>
+      </annotation>
+   </element>
+
+   <complexType name="AirspaceExtensionType">
+      <complexContent>
+         <extension base="aixm:AbstractExtensionType">
+            <sequence>
+               <element name="regionIcao" type="ibosoftais:DataTextType" minOccurs="0">
+                  <annotation>
+                     <documentation>The ICAO air navigation region to which the
+                        airspace belongs (e.g. AFI, EUR, MID, NAM, NAT), as defined in
+                        ICAO Doc 8144, Directives to Regional Air Navigation Meetings
+                        and Rules of Procedure for their Conduct. The value is given
+                        as published by the data source.</documentation>
+                  </annotation>
+               </element>
+               <element name="regionSupProc" type="ibosoftais:DataTextType" minOccurs="0">
+                  <annotation>
+                     <documentation>The region of ICAO Doc 7030, Regional
+                        Supplementary Procedures, whose procedures apply in the
+                        airspace (e.g. AFI, EUR, MID/ASIA, NAM, NAT, PAC). The
+                        value is given as published by the data source.</documentation>
+                  </annotation>
+               </element>
+            </sequence>
+         </extension>
+      </complexContent>
+   </complexType>
+
+</schema>

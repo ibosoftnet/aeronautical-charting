@@ -1,0 +1,6 @@
+severity	feature	ident	field	value	violation
+warning	Airspace	LH_AS_0040	classification	GSEC	aixm_listesinde_yok_other_ile_yazildi -> OTHER:GSEC
+warning	Airspace	LH_AS_0044	classification	GSEC	aixm_listesinde_yok_other_ile_yazildi -> OTHER:GSEC
+warning	Airspace	LH_AS_0060	classification	GSEC	aixm_listesinde_yok_other_ile_yazildi -> OTHER:GSEC
+warning	Airspace	LH_AS_0114	classification	GSEC	aixm_listesinde_yok_other_ile_yazildi -> OTHER:GSEC
+warning	Airspace	LH_AS_0125	classification	GSEC	aixm_listesinde_yok_other_ile_yazildi -> OTHER:GSEC
