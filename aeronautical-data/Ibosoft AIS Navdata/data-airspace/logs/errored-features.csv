@@ -198,6 +198,7 @@ stage,layer,record_identifier,field,value,violation,severity
 2A,airspaces,JEPP_AS_8454,-,jeppesen-lt.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_8455,-,jeppesen-lt.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_8513,-,jeppesen-lh.json,iptal_kuraliyla_cikarildi,warning
+2A,airspaces,JEPP_AS_23775,-,jeppesen-p-cyprus.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_26513,-,jeppesen-lh.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_26514,-,jeppesen-lh.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_26515,-,jeppesen-lh.json,iptal_kuraliyla_cikarildi,warning
@@ -332,6 +333,7 @@ stage,layer,record_identifier,field,value,violation,severity
 2A,airspaces,JEPP_AS_26683,-,jeppesen-lh.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_26684,-,jeppesen-lh.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_26685,-,jeppesen-lh.json,iptal_kuraliyla_cikarildi,warning
+2A,airspaces,JEPP_AS_28317,-,jeppesen-p-gaza.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_29425,-,jeppesen-lt.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_29426,-,jeppesen-lt.json,iptal_kuraliyla_cikarildi,warning
 2A,airspaces,JEPP_AS_29427,-,jeppesen-lt.json,iptal_kuraliyla_cikarildi,warning

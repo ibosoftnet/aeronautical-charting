@@ -78,7 +78,8 @@ eklenir.
 | ATS MarkerBeacon (birleştiricide üretilir) | marker kaynağının `data.json`'ı | aynı (boş → yazılmaz) |
 | ATS antimeridyen ara noktası | bölünen segmentin kutusu | aynı |
 | Airspace Jeppesen, LT, LH, ICAO-FIR-UIR | `data.json` | `data.json` (Jeppesen ve ICAO-FIR-UIR'de yok → yazılmaz) |
-| Airspace TRNC, tailored-LT, ibosoft | kayıt başına GeoJSON özelliklerinden | aynı |
+| Airspace TRNC, tailored-LT, tailored-LC | dosyanın içinde (elle) | dosyanın içinde |
+| Airspace ibosoft | kayıt başına GeoJSON özelliklerinden | aynı |
 
 **Kim okur.** Birleştiriciler (iptal/override doğal alanı `originator`) ve
 GeoPackage (`data_provider`, `data_originator`, `data_effectivity` sütunları).

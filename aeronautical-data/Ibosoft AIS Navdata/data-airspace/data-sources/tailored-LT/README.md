@@ -33,4 +33,4 @@ py ../../../common/data_build_common/validate_aixm.py tailored-lt-airspace-aixm.
   `(2)` / `(3)` doğrudur).
 - `regionIcao`/`regionSupProc` = `EUR` (ICAO verisindeki değer).
 - Provenance: Ibosoft AIS / DHMİ Türkiye / `06 AUG 2026 (AIRAC 2608)`.
-- UUID: uuid5(`TailoredLtAirspace:FIR:<designator>`); `gml:id` `TLT_AS_FIR_<designator>`.
+- UUID: uuid5(`TailoredLtAirspace:FIR:<designator>`); `gml:id` `TAIL_LT_AS_FIR_<designator>`.

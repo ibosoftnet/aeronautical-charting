@@ -40,9 +40,9 @@ için bu yol kullanılabiliyor.
 
 | Feature | gml:id |
 |---|---|
-| DesignatedPoint | `TLB_DP_EFCOM`, `TLB_DP_MYNDA` |
-| Route | `TLB_RTE_T264` |
-| RouteSegment | `TLB_RS_N618_VADEN_EFCOM`, `TLB_RS_N618_EFCOM_GOL`, `TLB_RS_T889_EFCOM_DEDIN`, `TLB_RS_T264_TUDBU_MYNDA`, `TLB_RS_T264_MYNDA_UTEKA`, `TLB_RS_P727_REZOV_UVUDA` |
+| DesignatedPoint | `TAIL_LB_DP_EFCOM`, `TAIL_LB_DP_MYNDA` |
+| Route | `TAIL_LB_RTE_T264` |
+| RouteSegment | `TAIL_LB_RS_N618_VADEN_EFCOM`, `TAIL_LB_RS_N618_EFCOM_GOL`, `TAIL_LB_RS_T889_EFCOM_DEDIN`, `TAIL_LB_RS_T264_TUDBU_MYNDA`, `TAIL_LB_RS_T264_MYNDA_UTEKA`, `TAIL_LB_RS_P727_REZOV_UVUDA` |
 
 ### P727 neden tek segment?
 
@@ -72,7 +72,7 @@ Türkiye-içi, Pasifik ve LT'nin kendi kaydı — bu yüzden burada tanımlandı
 > Miras doğrulandı: birleşik GeoPackage'ta N618 segmentleri
 > `route_locationDesignator = EUR`, T889 segmenti `LT-LB` taşıyor — yani
 > `routeFormed` referansları EAD'nin doğru Route'larına çözülüyor.
-> `TLB_RTE_T264`'ün `locationDesignator`'ı **boştur**: AIP ENR 3.3 tablosu bu
+> `TAIL_LB_RTE_T264`'ün `locationDesignator`'ı **boştur**: AIP ENR 3.3 tablosu bu
 > alanı yayımlamıyor, uydurulmadı.
 
 ## Bu kaynağın veriye kattığı ilkler

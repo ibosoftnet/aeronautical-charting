@@ -1,0 +1,12 @@
+[
+  {
+    "_aciklama": "Kibris uzerindeki Jeppesen P 1 sahasi (ad yok, GND-UNL) cikarilir: yerine tailored-LC kaynagindaki LCP1 gelir (AIP Cyprus ENR 5.1 + AIP Turkiye SUP 09/25 uyarisi). Jeppesen'de P/1 designator'li 72 saha oldugu icin kural, merkezi Kibris kutusu icinde kalanla sinirlanir.",
+    "layer": "airspaces",
+    "match": {
+      "provider": "Jeppesen",
+      "type": "P",
+      "designator": "1"
+    },
+    "within": "p-cyprus.geojson"
+  }
+]

@@ -158,5 +158,6 @@ GeoPackage'ta `activation` tek bir sütuna indirgenmez: tamamı (seviyeler,
 kullanıcı, uçak, çizelge, notlar dahil) `airspaces_activation` sütununda JSON
 dizisi olarak durur; `class` da `airspaces_class` sütununda JSON'dur
 (bkz. [`../AIXM_to_GeoPackage_Schema_Design.md`](../AIXM_to_GeoPackage_Schema_Design.md)).
-Bugünkü kaynaklardan yalnızca elle tutulan TRNC / tailored-LT kayıtları
-`activity`/`status` taşır (24 saha); hiçbir kaynak çizelge vermiyor.
+Bugünkü kaynaklardan yalnızca elle tutulan TRNC / tailored-LT / tailored-LC kayıtları
+`activity`/`status` taşır; çizelge (`timeInterval`) yalnız tailored-LC LCP1'de
+var (H24: `ANY` 00:00–24:00 UTC).

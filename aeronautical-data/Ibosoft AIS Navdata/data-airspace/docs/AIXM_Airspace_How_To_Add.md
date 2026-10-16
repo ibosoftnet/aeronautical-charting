@@ -5,7 +5,7 @@ eklerken izlenecek sırayı, gereken veri setini ve XSD'den geçen XML
 iskeletlerini verir. Model: [`AIXM_Airspace_Model_Overview.md`](AIXM_Airspace_Model_Overview.md),
 tüm alanlar: [`AIXM_Airspace_Attributes.md`](AIXM_Airspace_Attributes.md).
 
-> Bu projede `data-sources/TRNC` ve `data-sources/tailored-LT` kaynaklarının
+> Bu projede `data-sources/TRNC`, `data-sources/tailored-LT` ve `data-sources/tailored-LC` kaynaklarının
 > AIXM dosyaları **doğrudan elle düzenlenir** (JSON/üretici yok); bu doküman
 > onları düzenlerken ve yeni üretici yazarken uyulacak kuralları anlatır.
 > `ibosoft` kaynağı GeoJSON'dan üretilir (`data-airspace/tailored_geojson.py`).

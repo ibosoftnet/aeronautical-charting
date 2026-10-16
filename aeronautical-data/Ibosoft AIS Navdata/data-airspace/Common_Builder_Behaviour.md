@@ -19,7 +19,7 @@ airspace'e özgü olanları anlatır.
                      ┌──────────────── AŞAMA 1 ────────────────────────┐
 ham veri ────────────▶ üreticiler, config SIRASIYLA:                   │
                      │  jeppesen · icao-fir-uir · lt · lh · ibosoft    │
-                     │  (trnc, tailored-lt: AIXM elle düzenlenir)      │
+                     │  (trnc, tailored-lt, tailored-lc: AIXM elle)    │
                      └───────────────────────┬─────────────────────────┘
                                              ▼
                  data-sources/<kaynak>/<kaynak>-airspace-aixm.xml (XSD-geçerli)
@@ -61,6 +61,7 @@ aşamaları ayrı ayrı çalıştırır. `config.json`'da `run_source_generators
 | ek | `lh` | `data.txt` (TNP) + `data.json` | `lh-airspace-aixm.xml` | uuid5(`LhAirspace:<sıra>:<başlık>`) |
 | ek | `trnc` | — (AIXM elle düzenlenir) | `trnc-airspace-aixm.xml` | dosyadaki `gml:identifier` |
 | ek | `tailored-lt` | — (AIXM elle düzenlenir) | `tailored-lt-airspace-aixm.xml` | dosyadaki `gml:identifier` |
+| ek | `tailored-lc` | — (AIXM elle düzenlenir) | `tailored-lc-airspace-aixm.xml` | dosyadaki `gml:identifier` |
 | ek | `ibosoft` | `ibosoft-airspace.json` (elle) | `ibosoft-airspace-aixm.xml` | dosyadaki `aixm_uuid` |
 
 Airspace feature'ını yazan kod tektir: `airspace_aixm.py` (yedi üretici de
@@ -81,7 +82,8 @@ originator'a göre üç kaynağa ayrıldı: TRNC (KKTC SHD, 11), tailored-LT
 tekil değil (4 KKTC paraşüt sahası aynı tip+ad taşıyor), bu yüzden her kayda
 bir kez **sabit UUID** atandı; mevcut kayıtta değiştirilmez.
 
-- **TRNC ve tailored-LT:** JSON ve üretici **yok** (kullanıcı kararı). Bir kez
+- **TRNC, tailored-LT ve tailored-LC:** JSON ve üretici **yok** (kullanıcı kararı;
+  tailored-LC baştan elle yazıldı — AIP Cyprus LCP1). Bir kez
   üretilen AIXM dosyaları artık kaynağın kendisidir ve **elle düzenlenir**
   (ATS'deki TRNC / tailored-LB ile aynı düzen). Kurallar:
   [`docs/AIXM_Airspace_How_To_Add.md`](docs/AIXM_Airspace_How_To_Add.md) ve
@@ -99,7 +101,7 @@ bir kez **sabit UUID** atandı; mevcut kayıtta değiştirilmez.
 2. **İptal kuralları** yüklenir (`data-sources/excludes/`).
 3. **Ana kaynaklar** (jeppesen, icao-fir-uir) sırayla yazılır; her feature için
    önce iptal, sonra override kontrolü.
-4. **Ek kaynaklar** (lt, lh, trnc, tailored-lt, ibosoft) olduğu gibi eklenir.
+4. **Ek kaynaklar** (lt, lh, trnc, tailored-lt, tailored-lc, ibosoft) olduğu gibi eklenir.
 5. **Halka yönü** — yazılan HER feature'ın (ana ve ek) yüzey halkaları
    GeoJSON **RFC 7946 §3.1.6** kuralına getirilir: dış halka saat yönünün
    tersi, delikler saat yönü (kullanıcı kararı). Yön harita düzleminde

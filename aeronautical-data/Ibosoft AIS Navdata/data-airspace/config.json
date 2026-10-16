@@ -3,7 +3,7 @@
 
   "_asama1": "run_source_generators aciksa (ya da --sources verilirse) asagidaki ureticiler bu sirayla calistirilir ve her kaynagin AIXM dosyasi tazelenir. Bir uretici hata verirse zincir durur.",
   "run_source_generators": true,
-  "_elle": "TRNC ve tailored-LT kaynaklarinin ureticisi YOKTUR: AIXM dosyalari (data-sources/TRNC, data-sources/tailored-LT) elle duzenlenir.",
+  "_elle": "TRNC, tailored-LT ve tailored-LC kaynaklarinin ureticisi YOKTUR: AIXM dosyalari (data-sources/TRNC, data-sources/tailored-LT, data-sources/tailored-LC) elle duzenlenir.",
   "source_generators": [
     { "name": "jeppesen",     "script": "data-sources/Jeppesen/generate-aixm-data/generate_aixm.py" },
     { "name": "icao-fir-uir", "script": "data-sources/ICAO-FIR-UIR/generate-aixm-data/generate_aixm.py" },
@@ -23,6 +23,7 @@
     { "name": "lh",          "file": "data-sources/LH/lh-airspace-aixm.xml",                   "override_enabled": false },
     { "name": "trnc",        "file": "data-sources/TRNC/trnc-airspace-aixm.xml",               "override_enabled": false },
     { "name": "tailored-lt", "file": "data-sources/tailored-LT/tailored-lt-airspace-aixm.xml", "override_enabled": false },
+    { "name": "tailored-lc", "file": "data-sources/tailored-LC/tailored-lc-airspace-aixm.xml", "override_enabled": false },
     { "name": "ibosoft",     "file": "data-sources/ibosoft/ibosoft-airspace-aixm.xml",         "override_enabled": false }
   ],
 

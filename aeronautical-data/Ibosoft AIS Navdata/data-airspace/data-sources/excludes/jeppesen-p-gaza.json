@@ -1,0 +1,12 @@
+[
+  {
+    "_aciklama": "Gazze uzerindeki Jeppesen P 19 sahasi (ad yok, GND-99900 FT AMSL) cikarilir (kullanici karari). Jeppesen'de P/19 designator'li 12 saha oldugu icin kural, merkezi Gazze kutusu icinde kalanla sinirlanir.",
+    "layer": "airspaces",
+    "match": {
+      "provider": "Jeppesen",
+      "type": "P",
+      "designator": "19"
+    },
+    "within": "p-gaza.geojson"
+  }
+]

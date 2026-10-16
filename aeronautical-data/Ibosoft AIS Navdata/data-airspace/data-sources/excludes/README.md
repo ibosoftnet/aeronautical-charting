@@ -9,6 +9,8 @@ ek kaynaklar iptal edilmez.
 | `jeppesen-lt.json` | `lt-fir.geojson` — ANKARA (LTAA) + İSTANBUL (LTBB) FIR | `provider = Jeppesen`, merkez poligon içinde, adında `FREE RT` geçen hariç | 490 (+1 istisna) |
 | `icao-fir-lt.json` | — | `provider = ICAO GIS`, `type = FIR`, `designator` = `LTAA` / `LTBB`. Bu iki FIR `tailored-LT` kaynağında AIP bilgileriyle elle tutulur (aynı geometri) | 2 (beklenen) |
 | `jeppesen-lh.json` | `lh-fir.geojson` — BUDAPEST (LHCC) FIR | `provider = Jeppesen`, merkez poligon içinde, adında `FREE RT` geçen hariç | 162 (+1 istisna) |
+| `jeppesen-p-gaza.json` | `p-gaza.geojson` — Gazze kutusu (34.10–34.70 E × 31.10–31.70 N) | `provider = Jeppesen`, `type = P`, `designator = 19`, merkez kutu içinde (Jeppesen'de P/19 12 saha var, kutu yalnız Gazze'dekini seçer) | 1 (beklenen) |
+| `jeppesen-p-cyprus.json` | `p-cyprus.geojson` — Kıbrıs kutusu (32.00–34.90 E × 34.30–36.00 N) | `provider = Jeppesen`, `type = P`, `designator = 1`, merkez kutu içinde (P/1 72 saha). Yerine `tailored-LC` kaynağındaki LCP1 gelir | 1 (beklenen) |
 
 ## Köken
 
