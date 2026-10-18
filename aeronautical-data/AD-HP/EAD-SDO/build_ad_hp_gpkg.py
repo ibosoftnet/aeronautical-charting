@@ -1111,7 +1111,80 @@ def write_airports_layer(
         "INSERT OR REPLACE INTO gpkg_ogr_contents (table_name, feature_count) VALUES (?, ?)",
         (AIRPORTS_TABLE, len(batch)),
     )
+    build_spatial_index(cur, AIRPORTS_TABLE)
     con.commit()
+
+
+# GeoPackage 1.2 Ek F.3 — RTree index tetikleyicileri (Ibosoft AIS Navdata
+# `common/data_build_common/gpkg_writer.py` ile aynı kalıp; birincil anahtar
+# burada `fid`). `ST_*` fonksiyonları QGIS/GDAL tarafından sağlanır; düz
+# SQLite'ta tanımsız olmaları sorun değildir çünkü tetikleyici gövdesi yalnızca
+# çalıştırıldığında çözülür.
+_RTREE_TRIGGERS = """
+CREATE TRIGGER "rtree_{t}_geom_insert" AFTER INSERT ON "{t}"
+  WHEN (NEW."geom" NOT NULL AND NOT ST_IsEmpty(NEW."geom"))
+BEGIN
+  INSERT OR REPLACE INTO "rtree_{t}_geom" VALUES (NEW."fid",
+    ST_MinX(NEW."geom"), ST_MaxX(NEW."geom"),
+    ST_MinY(NEW."geom"), ST_MaxY(NEW."geom"));
+END;
+CREATE TRIGGER "rtree_{t}_geom_update1" AFTER UPDATE OF "geom" ON "{t}"
+  WHEN OLD."fid" = NEW."fid"
+   AND (NEW."geom" NOTNULL AND NOT ST_IsEmpty(NEW."geom"))
+BEGIN
+  INSERT OR REPLACE INTO "rtree_{t}_geom" VALUES (NEW."fid",
+    ST_MinX(NEW."geom"), ST_MaxX(NEW."geom"),
+    ST_MinY(NEW."geom"), ST_MaxY(NEW."geom"));
+END;
+CREATE TRIGGER "rtree_{t}_geom_update2" AFTER UPDATE OF "geom" ON "{t}"
+  WHEN OLD."fid" = NEW."fid"
+   AND (NEW."geom" ISNULL OR ST_IsEmpty(NEW."geom"))
+BEGIN
+  DELETE FROM "rtree_{t}_geom" WHERE id = OLD."fid";
+END;
+CREATE TRIGGER "rtree_{t}_geom_update3" AFTER UPDATE ON "{t}"
+  WHEN OLD."fid" != NEW."fid"
+   AND (NEW."geom" NOTNULL AND NOT ST_IsEmpty(NEW."geom"))
+BEGIN
+  DELETE FROM "rtree_{t}_geom" WHERE id = OLD."fid";
+  INSERT OR REPLACE INTO "rtree_{t}_geom" VALUES (NEW."fid",
+    ST_MinX(NEW."geom"), ST_MaxX(NEW."geom"),
+    ST_MinY(NEW."geom"), ST_MaxY(NEW."geom"));
+END;
+CREATE TRIGGER "rtree_{t}_geom_update4" AFTER UPDATE ON "{t}"
+  WHEN OLD."fid" != NEW."fid"
+   AND (NEW."geom" ISNULL OR ST_IsEmpty(NEW."geom"))
+BEGIN
+  DELETE FROM "rtree_{t}_geom" WHERE id IN (OLD."fid", NEW."fid");
+END;
+CREATE TRIGGER "rtree_{t}_geom_delete" AFTER DELETE ON "{t}"
+  WHEN OLD."geom" NOT NULL
+BEGIN
+  DELETE FROM "rtree_{t}_geom" WHERE id = OLD."fid";
+END;
+"""
+
+
+def build_spatial_index(cur: sqlite3.Cursor, table: str):
+    """POINT katmanı için RTree sanal tablosunu kurar, geometri blob'larından
+    doldurur (nokta → kutu = nokta), tetikleyicileri ve `gpkg_extensions`
+    kaydını ekler."""
+    cur.execute(f'CREATE VIRTUAL TABLE "rtree_{table}_geom" '
+                f'USING rtree(id, minx, maxx, miny, maxy)')
+    entries = []
+    for fid, blob in cur.execute(f'SELECT fid, geom FROM "{table}"').fetchall():
+        # gpkg_point_blob: 8 bayt başlık (zarfsız) + WKB (1 bayt sıra, 4 bayt tip, 2 double)
+        lon, lat = struct.unpack_from("<2d", blob, 8 + 5)
+        entries.append((fid, lon, lon, lat, lat))
+    cur.executemany(f'INSERT INTO "rtree_{table}_geom" VALUES (?, ?, ?, ?, ?)', entries)
+    cur.executescript(_RTREE_TRIGGERS.format(t=table))
+    cur.execute(
+        """
+        INSERT OR REPLACE INTO gpkg_extensions (table_name, column_name, extension_name, definition, scope)
+        VALUES (?, 'geom', 'gpkg_rtree_index', 'http://www.geopackage.org/spec120/#extension_rtree', 'write-only')
+        """,
+        (table,),
+    )
 
 
 def write_runways_table(con: sqlite3.Connection, rows: list[dict[str, str | float | int | None]]):

@@ -167,6 +167,7 @@ python build_ad_hp_gpkg.py
 
 ### Index Stratejisi
 - Her iki tabloda da, `geom`/`fid` hariç **tüm sütunlarda** index oluşturulur (`PRAGMA table_info` ile sütunlar dinamik keşfedilip `idx_{tablo}_{sütun}` adıyla index açılır) — havalimanı ve pist verisi farklı yerlerden zaman zaman arandığı için.
+- `ad_hp_airports` için GeoPackage **R-Tree** mekânsal index'i (`rtree_ad_hp_airports_geom` + GeoPackage 1.2 Ek F.3 tetikleyicileri + `gpkg_extensions` kaydı) oluşturulur; Ibosoft AIS Navdata'daki ATS/Airspace GeoPackage'larıyla aynı kalıp. `ad_hp_runways` geometrisiz olduğu için R-Tree'si yoktur.
 
 ## Veri Kaynakları
 
