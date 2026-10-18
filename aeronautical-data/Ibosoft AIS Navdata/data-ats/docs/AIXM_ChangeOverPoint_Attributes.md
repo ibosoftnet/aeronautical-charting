@@ -460,7 +460,8 @@ yazım sonrası ayrı bir denetim üç referansı da birleşik dosyayla uzlaşt�
 `changeOverPoints`, GeoPackage'ın **beşinci katmanıdır** (44 sütun, 100 satır).
 Tam sütun listesi ve adlandırma kuralları:
 [`AIXM_to_GeoPackage_Schema_Design.md`](../AIXM_to_GeoPackage_Schema_Design.md)
-§1.0 ve §2.1.
+(`changeOverPoints` bölümü); gerekçeler eski numaralarla
+[`AIXM_to_GeoPackage_Schema_Design-extras.md`](../AIXM_to_GeoPackage_Schema_Design-extras.md) §1.0 ve §2.1.
 
 **Geometri çizgidir, nokta değil.** COP bir noktadır ama koordinatı yazılmaz
 (§7.2); bu yüzden katman COP'un geçerli olduğu **rota aralığını** taşır ve

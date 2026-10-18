@@ -40,9 +40,9 @@ GeoPackage QGIS'te açıksa dosya kilitli olur; önce kapatın.
 | Ortak paket, iptal kuralı biçimi | [`common/README.md`](common/README.md) |
 | AIXM extension şeması (provenance kutusu, COP, Airspace) | [`common/docs/Ibosoft_AIS_Extension.md`](common/docs/Ibosoft_AIS_Extension.md) |
 | İki projenin ortak kullandığı AIXM yapıları | [`common/docs/`](common/docs/) |
-| ATS builder davranışı / GeoPackage şeması | [`data-ats/Common_Builder_Behaviour.md`](data-ats/Common_Builder_Behaviour.md), [`data-ats/AIXM_to_GeoPackage_Schema_Design.md`](data-ats/AIXM_to_GeoPackage_Schema_Design.md) |
+| ATS builder davranışı / GeoPackage şeması | [`data-ats/Common_Builder_Behaviour.md`](data-ats/Common_Builder_Behaviour.md), [`data-ats/AIXM_to_GeoPackage_Schema_Design.md`](data-ats/AIXM_to_GeoPackage_Schema_Design.md) (İngilizce, Developer Portal kopyası; builder/ölçüm ayrıntıları `…-extras.md`) |
 | ATS AIXM kılavuzları | [`data-ats/docs/`](data-ats/docs/) |
-| Airspace builder davranışı / GeoPackage şeması | [`data-airspace/Common_Builder_Behaviour.md`](data-airspace/Common_Builder_Behaviour.md), [`data-airspace/AIXM_to_GeoPackage_Schema_Design.md`](data-airspace/AIXM_to_GeoPackage_Schema_Design.md) |
+| Airspace builder davranışı / GeoPackage şeması | [`data-airspace/Common_Builder_Behaviour.md`](data-airspace/Common_Builder_Behaviour.md), [`data-airspace/AIXM_to_GeoPackage_Schema_Design.md`](data-airspace/AIXM_to_GeoPackage_Schema_Design.md) (İngilizce, Developer Portal kopyası; builder/ölçüm ayrıntıları `…-extras.md`) |
 | Airspace AIXM kılavuzu | [`data-airspace/docs/`](data-airspace/docs/) |
 | Ham veri → AIXM eşlemeleri | her projede `data-sources/<kaynak>/generate-aixm-data/*_Mapping.md` |
 

@@ -1,772 +1,552 @@
-# AIXM → GeoPackage Şema Tasarımı
+# ATS Data AIXM Mapping
 
-Bu doküman **2B aşamasının tam eşleme tablosudur**: `navdata/ibosoft-ais-navdata-ats-aixm.xml`
-içindeki hangi AIXM öğesinin hangi GeoPackage sütununa gittiğini, hangi
-özniteliğin kaynakta bulunmadığını ve hangi kararların gerekçesini listeler.
+> **Base endpoint:** none\
+> **Reference documents:** AIXM 5.2 schema set (aixm.aero) · ICAO Doc 10066 PANS-AIM, Ed. 1, Amend. 3 (28/11/24) · ITU-R M.1677-1 International Morse code\
+> **Attribution:** show `{{BRAND_AIS}}` wherever this data is displayed\
+> **Data sources:** none\
+> **Last updated:** 18 OCT 2026
 
-- Builder'ın davranışı (aşamalar, çakışma çözümü, antimeridyen, provenance):
-  [`Common_Builder_Behaviour.md`](Common_Builder_Behaviour.md)
-- AIXM öznitelik referansları: ATS'ye özgü olanlar [`docs/`](docs/) altında
-  (özellikle [`docs/aixm-point-types/`](docs/aixm-point-types/)); iki projenin
-  ortak kullandığı yapılar [`../common/docs/`](../common/docs/) altında —
-  [`AIXM_Annotation_Attributes.md`](../common/docs/AIXM_Annotation_Attributes.md)
-  ve extension şeması [`Ibosoft_AIS_Extension.md`](../common/docs/Ibosoft_AIS_Extension.md)
-- Ham veri → AIXM eşlemeleri: `data-sources/*/generate-aixm-data/*_Mapping.md`
+How the ATS data in AIXM maps to the columns of the ATS GeoPackage. Every AIXM property of the mapped features has a column; a column can be empty when no source provides that property. Derived columns (map labelling, symbology, route network status) have no AIXM counterpart and are described in their own sections.
 
-## Bağlayıcı kural
-
-> **Hiçbir AIXM özniteliği sessizce atlanamaz.** Her öznitelik ya bir sütuna
-> eşlenir, ya "kaynakta yok" olarak (ham veriye bakılarak doğrulanmış şekilde)
-> işaretlenir. Bir şeyi "kapsam dışı" ilan etmek tek başına verilecek bir karar
-> değildir — bulgusu ve gerekçesiyle kullanıcıya getirilip onaylanır.
-> **Uydurma eşleme/açıklama yok.** Bilinmeyen her şey sorulur.
-
-Bu dokümandaki **"dolu"** yüzdeleri son koşudan ölçülmüştür
-(`COUNT(NULLIF(sütun,''))` — boş dize dolu sayılmaz). `%0,0` bir sütun
-"kaynakta yok" demektir: eşleme kurulmuştur ve çalışır, kaynaklar o alanı
-sağlamıyor. Bu sütunlar **kaldırılmaz** — görünür boşluk bırakmak, sessizce
-atlamaktan yeğdir ve yeni bir kaynak geldiğinde şema değişmeden dolar.
+For the extension elements (`ibosoftais:*`) see [AIXM Schema Extension](aixm-schema-annex.md); for coding rules (provenance, antimeridian, geometry) see [Data Coding Policies](data-coding-policies.md).
 
 ---
 
-## 1. Katmanlar
+## Layers
 
-| Katman | AIXM Feature | Geometri | Sütun | Satır |
-|---|---|---|---:|---:|
-| `designatedPoints` | `DesignatedPoint` | POINT | 38 | 152.043 |
-| `navaids` | `Navaid` | POINT | 70 | 9.348 |
-| `navaidComponents` | `NavaidComponent` + `AbstractNavaidEquipment` | POINT | 110 | 13.341 |
-| `routeSegments` | `RouteSegment` (+ `Route`) | LINESTRING | 93 | 92.959 |
-| `changeOverPoints` | `ChangeOverPoint` (+ `RoutePortion`) | LINESTRING | 62 | 100 |
+| Layer | AIXM feature | Geometry |
+|---|---|---|
+| `designatedPoints` | `DesignatedPoint` | POINT |
+| `navaids` | `Navaid` | POINT |
+| `navaidComponents` | `NavaidComponent` + the linked navaid equipment (`VOR`, `DME`, `TACAN`, `NDB`, `Localizer`, `Glidepath`, `MarkerBeacon`, `SDF`, `Azimuth`, `Elevation`, `DirectionFinder`) | POINT |
+| `routeSegments` | `RouteSegment` (+ its `Route`) | LINESTRING |
+| `changeOverPoints` | `ChangeOverPoint` (+ its `RoutePortion`) | LINESTRING |
 
-Her katmanda ayrıca `id` (INTEGER PRIMARY KEY AUTOINCREMENT) ve `geom` (BLOB)
-bulunur; yukarıdaki sütun sayıları bu ikisini içermez.
+Every layer also has `id` (INTEGER primary key) and `geom`. Coordinates are WGS 84 (EPSG:4326).
 
-### 1.0 `changeOverPoints` geometrisi neden çizgi
+**Why there is no `Route` layer.** The attributes of a `Route` are carried on each of its segments in the `route_*` columns of `routeSegments` (and partly of `changeOverPoints`), so one table shows both segment and route information.
 
-`ChangeOverPoint` bir **noktadır**, ama koordinatı AIXM'de yazılmaz: AIP
-TÜRKİYE ENR 3.1 yalnızca iki VOR'a olan DME mesafelerini yayımlıyor, konum
-vermiyor (bkz. [`docs/AIXM_ChangeOverPoint_Attributes.md`](docs/AIXM_ChangeOverPoint_Attributes.md)
-§7.2). Koordinatı hesaplayıp AIXM'e yazmak veri uydurmak olurdu.
+**Why there is no `points` layer.** `aixm:Point` is not an AIXM feature (it has no identifier or TimeSlice of its own); it is embedded in the feature that uses it. Points that must exist on their own, such as the antimeridian crossing points, are coded as `DesignatedPoint` (`type = OTHER`).
 
-Bunun yerine katman, COP'un **geçerli olduğu rota aralığını** (`RoutePortion`:
-start → end) çizgi olarak taşır ve çizgi **start ucundan başlar**. QGIS sembolü
-bu çizgi boyunca `copSymbology_offsetPercent` kadar kaydırarak yerine koyar —
-nokta konumu böylece veri uydurmadan, yayımlanan mesafeden türetilmiş olur.
-
-Yön kritiktir: ters yönde bir çizgi sembolü yanlış uçtan ölçer. Ölçüldü — 100
-COP'un tamamında çizgi doğru uçta başlıyor, ve örnek bir COP'ta zincirdeki
-7 segmentin **tamamı** kaynakta ters yönde kayıtlıydı.
-
-### 1.1 `points` katmanı neden yok
-
-`aixm:Point`, `gml:Point` ikame grubundadır — `AbstractAIXMFeature` **değildir**,
-dolayısıyla `message:hasMember` olamaz ve kendi `gml:id`/`timeSlice`'ı yoktur.
-`PointPropertyType`, `aixm:Point`'i **değer olarak gömer** (`DesignatedPoint` ve
-`Navaid`'in aksine — onlar boş xlink association type'larıdır). Ayrı bir feature
-olmadığı için ayrı bir katman da kurulamaz; kullanıcı kararıyla `points` katmanı
-iptal edildi. Antimeridyen kesişim noktaları bu yüzden `Point` değil
-`DesignatedPoint` (`type = OTHER`) olarak üretilir.
-
-### 1.2 `Route` neden ayrı katman değil
-
-`Route` feature'ı birleşik AIXM'de vardır (14.767 kayıt) ama ayrı katmana
-yazılmaz: rota düzeyindeki öznitelikler `routeSegments` katmanına
-`route_*` önekiyle devredilir (RouteSegment'in kendi alanlarından bilinçli
-olarak farklı bir önek — ikisi ayrı feature'dır), böylece QGIS'te tek tabloda
-hem segment hem rota bilgisi görünür.
+**Why `changeOverPoints` is a line.** A change-over point is a point, but AIP ENR 3 publishes only its distances from the navaids at the two ends, not its coordinates. Calculating coordinates would add data the source does not give. The layer therefore carries the **route portion** the COP applies to as a line that **starts at the start point** of the portion; `copSymbology_offsetPercent` places the COP symbol along that line.
 
 ---
 
-## 2. Adlandırma kuralları
+## Naming rules
 
-| Kural | Örnek |
+| Rule | Pattern | Example |
+|---|---|---|
+| Column | `<layer>_<AIXM property, camelCase>` | `navaids_type` |
+| Unit of measurement | `<field>Uom` | `routeSegments_lengthUom` |
+| Vertical reference | `<field>Reference` | `routeSegments_upperLimitReference` |
+| Sub-fields of `location` | `<layer>_location<Field>` | `navaids_locationElevation` |
+| Equipment-specific field | `navaidComponents_<Equipment>_<field>` | `navaidComponents_Glidepath_slope` |
+| Field inherited from `Route` | `route_<field>` | `route_designatorNumber` |
+| Segment end point | `routeSegments_<start\|end><Field>` | `routeSegments_startFlyOver` |
+
+**Columns without layer prefix.** Families that have the same structure in every layer carry no layer prefix:
+
+| Family | Columns | Layers |
+|---|---|---|
+| Annotation | `annotationDescription`, `annotationRemark`, `annotationWarning`, `annotationDisclaimer` | all |
+| Provenance | `data_provider`, `data_originator`, `data_effectivity` | all |
+| AIXM identity and base | `aixm_gml_id`, `aixm_uuid` and 11 TimeSlice/feature base columns | all |
+| Route network status (derived) | `atsStatus_*` | `designatedPoints`, `navaids`; 7 of them also in `changeOverPoints` |
+| Navaid ↔ component link | `associatedComponent_<Equipment>`, `associatedNavaid`, `associatedNavaidType` | `navaids`, `navaidComponents` |
+| Map label (derived) | `navaidLabeling_*` | `navaids`, `navaidComponents` |
+| Symbol geometry (derived) | `navaidSymbology_*` | `navaids`, `navaidComponents` |
+| Route of a COP | `associatedRoute_uuid`, `associatedRouteSegment_*` | `changeOverPoints` |
+| COP symbol (derived) | `copSymbology_*` | `changeOverPoints` |
+
+**Column types.**
+
+| Type | Columns |
 |---|---|
-| Sütun adı | `<katman>_<AIXM öznitelik adı, camelCase>` → `navaids_type` |
-| Ölçü birimi | `<alan>Uom` → `routeSegments_lengthUom` |
-| Dikey referans | `<alan>Reference` → `routeSegments_upperLimitReference` |
-| `location` alt alanları | `<katman>_location<Alan>` → `navaids_locationElevation` |
-| Ekipman alt-türüne özgü | `navaidComponents_<AltTür>_<alan>` → `navaidComponents_Glidepath_slope` — ortak taban önek almaz (§6.1) |
-| Rota kökenli (Route feature'ından) | `route_<Attr>` → `route_designatorNumber` — **`routeSegments_` DEĞİL**, RouteSegment'in kendi alanlarından ayırt edilsin diye |
-| Uç nokta | `routeSegments_<start\|end><Attr>` → `routeSegments_startFlyOver` |
+| TEXT | `*Uom`, `*Reference`, codes, names, JSON, comma-separated lists |
+| INTEGER | resolved row ids (`…Id`), `aixm_sequenceNumber`, `aixm_correctionNumber` |
+| REAL | numeric values (frequency, slope, angles, length, limits, elevation …) |
+| BOOLEAN | `atsStatus_*` flags (stored as 0/1) |
 
-**İstisna — katman önekisiz sütunlar.** `annotation`, provenance ve `aixm_*`
-alanları her katmanda birebir aynı yapıyı taşır; tabloya özgü bir anlamları
-olmadığı için **önek almazlar** (kullanıcı kararı). Bu üç ailenin tanımı ve
-eşlemesi iki projede ortaktır: `common/data_build_common/aixm_fields.py`.
-
-| Alan | Sütun |
-|---|---|
-| `annotation` (4 purpose) | `annotationDescription`, `annotationRemark`, `annotationWarning`, `annotationDisclaimer` |
-| Provenance | `data_provider`, `data_originator`, `data_effectivity` — feature'ın kendi `ibosoftais:<F>DataProvenance` extension kutusundan (§2.2) |
-| AIXM kimlik + taban | `aixm_gml_id`, `aixm_uuid` ve 11 TimeSlice/feature taban sütunu — her katmanın son 13 sütunu (§2.2, aşağıda) |
-| ATS rota durumu (türetilmiş) | `atsStatus_*` — 13 sütunun tamamı `designatedPoints` ve `navaids`'te; `associatedLevel*`/`associatedType*` yedilisi **`changeOverPoints`'te de** (orada COP'un aralığındaki segmentlerden türetilir) |
-| Navaid ↔ Component bağı | `associatedComponent_<AltTür>` (navaids), `associatedNavaid` / `associatedNavaidType` (navaidComponents) — virgüllü liste (§6.3) |
-| Harita etiketi (türetilmiş) | `navaidLabeling_*` — yalnızca `navaids` ve `navaidComponents`'te |
-| Sembol geometrisi (türetilmiş) | `navaidSymbology_*` — `declination` hem `navaids` hem `navaidComponents`'te, `GPAssociatedLOCTrueBrg` yalnızca `navaidComponents`'te |
-| Route'tan devralınan | `route_*` — `routeSegments` **ve** `changeOverPoints`'te, aynı adlarla (§2.1) |
-| İlişkili Route / segmentler | `associatedRoute_uuid`, `associatedRouteSegment_*` — yalnızca `changeOverPoints`'te (§2.1) |
-| COP sembolü (türetilmiş) | `copSymbology_*` — yalnızca `changeOverPoints`'te |
-
-### 2.1 İlişki sütunları: `…Id` / `…Uuid` / `associated…`
-
-Şemada bir satırın **başka bir elemanla** ilişkisi üç biçimde durur:
-
-| Biçim | Ne tutar | Örnek |
-|---|---|---|
-| `…Id` | Hedefin **GeoPackage satır id'si** | `routeSegments_startPointId`, `changeOverPoints_endPointId` |
-| `…Uuid` | Hedefin **AIXM `gml:identifier`'ı** | `changeOverPoints_startPointUuid` |
-| `associated…` | Hedefi bir katman **olmayan** ya da AIXM'de karşılığı olmayan bağ | `associatedNavaid`, `associatedRoute_uuid`, `associatedRouteSegment_id` |
-
-`…Uuid` ailesi `changeOverPoints` ile geldi (kullanıcı kararı): ondan önce
-çapraz referanslar **yalnızca** satır id'si olarak tutuluyordu ve birleşik
-AIXM ile GeoPackage arasında doğrudan eşleştirme yapılamıyordu.
-
-**Bağlı Route iki aileye ayrılır** (kullanıcı kararı):
-
-| Aile | Ne tutar | `changeOverPoints`'teki sütunlar |
-|---|---|---|
-| `route_*` | Route'tan **devralınan** öznitelikler | `route_designatorPrefix`, `route_designatorSecondLetter`, `route_designatorNumber`, `route_multipleIdentifier`, `route_name` |
-| `associatedRoute_uuid` | **İlişkinin kendisi** — Route'un kimliği | tek sütun |
-
-`route_*` adları `routeSegments` katmanındakilerle **birebir aynıdır**, böylece
-iki katman aynı dili konuşur ve aynı QGIS ifadesi ikisinde de çalışır.
-
-> `route_name` kullanıcı isteğiyle sonradan eklendi: COP satırı bağlı rotanın
-> kimliğini taşıyordu ama **adını** taşımıyordu. `routeSegments`'te bulunan
-> diğer beş `route_*` alanı (`locationDesignator`, `type`, `flightRule`,
-> `internationalUse`, `militaryUse`, `militaryTrainingType`) COP'a **bilerek
-> taşınmadı** — kullanıcı kararı, kapsam yalnızca `name` ile sınırlı tutuldu.
-
-#### `designatorSuffix` neden COP'ta yok
-
-Rota kodunun son eki (`UW 12`**`G`**'deki `G`) `routeSegments` katmanında
-`routeSegments_designatorSuffix` olarak bulunur, `changeOverPoints`'te
-bulunmaz. Gerekçe **yapısaldır**, bugünkü verinin doluluğuyla ilgili değildir:
-
-1. **Yanlış feature düzeyi.** AIXM'de `designatorSuffix`, `Route`'un değil
-   **`RouteSegment`'in** özniteliğidir. Bu yüzden "Route'tan devralınan"
-   `route_*` ailesinin üyesi olamaz — oraya konsaydı ad, alanın hangi
-   feature'dan geldiği konusunda yanıltıcı olurdu.
-2. **Aralık içinde tek değer değildir.** COP tek bir segmente değil bir
-   `RoutePortion`'a, yani bir segment **aralığına** bağlıdır. Aralıkta yer alan
-   segmentler birbirinden farklı suffix değerleri taşıyabilir; tek bir sütuna
-   indirgemek hangi segmentin hangi suffix'i taşıdığını gizlerdi.
-
-Taşınması gerekirse doğru yer `route_*` ailesi değil, segment listesiyle
-**aynı sırada** giden virgüllü bir `associatedRouteSegment_*` sütunu olurdu
-(`associatedRouteSegment_id` / `_uuid` ikilisinin üçüncü üyesi). Bugün böyle
-bir sütun açılmadı — kullanıcı kararı.
-Kimlik ayrı durur çünkü `routeSegments`'te öyle bir sütun yoktur — orada Route'un
-kimliği taşınmaz, COP'ta ise gerekir. `route_uuid` gibi bir ad kullanılmaz:
-hiçbir katmanda `<katman>_uuid` biçiminde sütun yoktur, satırın kendi kimliği
-her yerde `aixm_uuid`'dir.
-
-`associatedRouteSegment_id` / `_uuid` ikilisi AIXM'de **yoktur**: COP'un
-çizgisini oluşturan segmentler rota grafiği yürünerek türetilir
-(`gpkg/route_portion.py`). İkisi de virgüllü liste, **aynı sırada** ve sıra
-anlamlıdır (start→end).
-
-> **Proje çapında bir boşluk:** `Val*Type`'ların `@accuracy` niteliği hiçbir
-> katmanda taşınmaz — `gpkg/mapper.py:value_uom()` yalnızca değer ve `uom`
-> okur. Şemadaki `locationHorizontalAccuracy` sütunları bununla ilgisizdir, o
-> ayrı bir AIXM alanıdır. COP'ta da tutarlılık için açılmadı.
-
-Bu istisna dışındaki tüm sütunlar yukarıdaki genel kurala göre katman önekli
-kalır (`designatedPoints_designator`, `navaids_type` gibi).
-
-### 2.2 Provenance ve AIXM taban sütunları (`data_*`, `aixm_*`)
-
-**Provenance.** AIXM'de veri sağlayıcısı / yayımcı / veri seti geçerliliği
-alanı yoktur. Her üretici bu üç değeri yazdığı HER feature'ın TimeSlice'ına
-ayrı bir `aixm:extension` içinde `ibosoftais:<F>DataProvenance` kutusu olarak
-yazar (şema: `common/schemas/ibosoftais-extension.xsd`, açıklama:
-[`Ibosoft_AIS_Extension.md`](../common/docs/Ibosoft_AIS_Extension.md)). 2B
-değerleri doğrudan kutudan okur; ayrı bir yan dosya yoktur.
-
-| Sütun | Kutudaki eleman | Not |
-|---|---|---|
-| `data_provider` | `dataProvider` (zorunlu) | |
-| `data_originator` | `dataOriginator` (opsiyonel) | Kaynak vermiyorsa eleman yazılmaz → **NULL** (eski yan dosya düzeninde `""` idi). Jeppesen'de böyle. |
-| `data_effectivity` | `dataEffectivity` (zorunlu) | Veri setinin geçerliliği; feature'ın kendi yürürlüğü `aixm_validTime*`'dadır |
-
-Kutusu olmayan feature hata sayılır, build durur (varsayılan değer atanmaz).
-Eski `add_date` sütunu (GeoPackage'ın üretildiği an; veriyle ilgisi yoktu)
-**kaldırıldı** (kullanıcı kararı).
-
-**AIXM taban sütunları.** Her AIXM feature'ının `AbstractAIXMFeature*` ve
-TimeSlice'ının `AbstractAIXMTimeSlice*` tiplerinden gelen alanları
-(`AIXM_AbstractGML_ObjectTypes.xsd`). Her katmanda kimlik sütunlarının ardından
-gelir (kullanıcı kararı: iki projede de sütun). Zaman alanlarında metin yoksa
-GML'in `indeterminatePosition` değeri (`unknown`, …) aynı sütuna yazılır.
-
-| Sütun | AIXM | Dolu (5 katmanda) |
-|---|---|---|
-| `aixm_validTimeBegin` / `…End` | `gml:validTime` (`TimePeriod` begin/end; `TimeInstant` ise yalnız begin) | 100,0% |
-| `aixm_interpretation` | `interpretation` | 100,0% (hepsi `BASELINE`) |
-| `aixm_sequenceNumber` / `aixm_correctionNumber` | aynı adlı alanlar (INTEGER) | 100,0% |
-| `aixm_featureLifetimeBegin` / `…End` | `featureLifetime` | **0,0%** |
-| `aixm_timeSliceMetadata` | `timeSliceMetadata` (JSON) | **0,0%** |
-| `aixm_featureMetadata` | `featureMetadata` (JSON) | **0,0%** |
-| `aixm_description` | `gml:description` | **0,0%** |
-| `aixm_name` | `gml:name` 0..∞ (JSON dizisi) | **0,0%** |
-
-`gml:boundedBy` sütuna eşlenmez: değeri `geom`'dan türetilir (zarf), ayrı
-bir bilgi taşımaz ve kaynaklar yazmıyor.
-
-### Kimlik sütunları
-
-Her katman kaynak AIXM feature'ının **iki** kimliğini de taşır (kullanıcı
-kararı). İkisi farklı şeydir ve biri diğerinin yerini tutmaz:
-
-| Sütun | AIXM karşılığı | Kapsam |
-|---|---|---|
-| `aixm_gml_id` | `gml:id` | **Belge içi.** Birleşik AIXM dosyasında benzersizdir, kaynak önekini taşır (`EAD_DP_…`, `LT_VRP_BAFA`, `JEPP_NAV_…`) ve hangi kaynaktan geldiğini okunur biçimde gösterir. Belge yeniden üretildiğinde değişebilir |
-| `aixm_uuid` | `gml:identifier` (`codeSpace="urn:uuid:"`) | **Belgeden bağımsız, kalıcı kimlik.** AIXM içindeki tüm çapraz referanslar (`xlink:href="urn:uuid:…"`) buna bakar; kaynak üreticileri onu girdi anahtarından deterministik olarak üretir, yani aynı nokta her AIRAC'ta aynı uuid'i alır |
-
-Değerler `common/data_build_common/aixm_reader.py`'deki `gml_id_of()` ve `uuid_of()` ile okunur;
-`uuid_of()` değeri BÜYÜK HARFE çevirir.
-
-İki tabloda kimlik, satırı oluşturan **iki** AIXM nesnesinden yalnızca birine
-aittir:
-
-* **`navaidComponents`** — kimlik, bağlı `AbstractNavaidEquipment`
-  **feature**'ınındır. Satıra alanlarını veren `NavaidComponent` AIXM'de bir
-  *Object*'tir, Feature değildir: yalnızca `gml:id` taşır, `gml:identifier`'ı
-  yoktur (doğrulandı). Bir ekipman birden fazla Navaid tarafından
-  paylaşılabildiği için ebeveyn bağı ayrıca `associatedNavaid` sütunundadır.
-* **`routeSegments`** — kimlik, `RouteSegment` feature'ınındır. `route_*`
-  sütunlarını besleyen `Route` feature'ının kendi `gml:id`/`gml:identifier`
-  değeri **taşınmaz**; Route ayrı bir katman olmadığı için (§1.2) bağlantı
-  `route_designator*` alanları üzerinden kurulur.
-
-`atsStatus_*` alanları AIXM'den okunmaz; `routeSegments` yazıldıktan sonra
-ondan türetilir. Tam tanımları, kuralları ve ölçülen dağılımları ayrı
-dokümandadır: [`ATS_Status_Fields.md`](ATS_Status_Fields.md).
-
-`navaidLabeling_*` alanları da AIXM'den okunmaz. Bunlar harita etiketinin
-hangi öğeleri göstereceğini navaid **tipine** göre belirler ve eksik
-frekans/kanal bilgisini ICAO eşleştirme tablosundan türetir — AIXM'de frekans
-ve kanal Navaid feature'ında değil bağlı ekipmanda durduğu için `navaids`
-satırları bileşenlerden beslenir. Ayrıntı:
-[`Navaid_Labeling_Fields.md`](Navaid_Labeling_Fields.md).
-
-`navaidSymbology_*` ise etiket metnini değil sembolün **çizimini** besler. İki
-alanı var: `GPAssociatedLOCTrueBrg` (yalnızca `navaidComponents`) — Glidepath
-hüzmesinin yönü AIXM'de `Glidepath`'te değil kardeş `Localizer`'da durur, bu
-sütun onu taşır; `declination` (`navaids` ve `navaidComponents`) — pusula gülü
-sembolünün döndürme açısı, VOR/TACAN bileşeninin kendi AIXM `declination`
-alanından, yalnızca VOR/VOR_DME/TACAN/VORTAC navaid türlerinde. Ayrıntı:
-[`Navaid_Symbology_Fields.md`](Navaid_Symbology_Fields.md).
-
-**Sütun tipi** `gpkg/schema.py:column_type()` ile belirlenir: `*Uom` ve
-`*Reference` her zaman TEXT; `*PointId` INTEGER; bilinen sayısal
-son ekler (`frequency`, `slope`, `angle*`, `length`, `upperLimit` …) REAL; geri
-kalan TEXT.
-
-> **Neden dikey limitler REAL:** `upperLimit`/`lowerLimit` gibi alanlar AIXM'de
-> `UNL`, `GND` gibi metin değerler de alabilir. Sütun REAL olduğu için bu özel
-> değerler sayıya çevrilemez ve `NULL` kalır; ayrımı `*Reference` sütunu taşır.
-> Ölçüldü: `upperLimit` %50,6, `lowerLimit` %46,9 dolu.
+Vertical limits of route segments are REAL: text values such as `UNL` or `GND` cannot be stored as numbers and stay NULL; use the `*Reference` column to tell them apart.
 
 ---
 
-## 3. Tekrarlanan (0..∞) yapılar
+## Common columns
 
-Kullanıcı kararıyla, tekrarlanan yapılar TEXT sütunda **JSON** olarak saklanır.
-`element_to_dict()` alt ağacın **tamamını** sözlüğe çevirir — hiçbir alt alan
-atılmaz; yalnızca `gml:id` gibi teknik nitelikler dışarıda kalır. `xlink:href`
-taşıyan eleman `{"href": "<uuid>"}` olur, `uom` niteliği `{"uom": …}` olarak
-korunur.
+### Relation columns
 
-| AIXM alanı | Katman | Sütun | Karar |
+| Form | Holds | Example |
+|---|---|---|
+| `…Id` | **GeoPackage row id** of the target | `routeSegments_startPointId` |
+| `…Uuid` | **AIXM `gml:identifier`** of the target | `changeOverPoints_startPointUuid` |
+| `…Layer` | Layer of the target (`navaids` or `designatedPoints`) | `routeSegments_startPointLayer` |
+| `associated…` | A link to something that is not a layer, or that has no AIXM counterpart | `associatedNavaid`, `associatedRoute_uuid` |
+
+Lists (`associated…`) are comma-separated and their order is meaningful where stated.
+
+### Identity
+
+| Column | AIXM | Meaning |
+|---|---|---|
+| `aixm_gml_id` | `gml:id` | Identifier inside the AIXM file. It shows the source in readable form but may change when the file is produced again |
+| `aixm_uuid` | `gml:identifier` (`codeSpace="urn:uuid:"`) | Permanent identifier, upper case. All AIXM cross-references (`xlink:href="urn:uuid:…"`) point to it; the same point keeps the same uuid from cycle to cycle |
+
+In two layers a row is built from two AIXM objects and the identity is that of one of them:
+
+- `navaidComponents`: the identity of the **navaid equipment feature**. `NavaidComponent` is an AIXM object with no identifier of its own. One piece of equipment can belong to several navaids; the links are in `associatedNavaid`.
+- `routeSegments`: the identity of the **RouteSegment**. The identity of the `Route` is not carried; the route is identified by its `route_designator*` fields.
+
+### AIXM base
+
+From `AbstractAIXMFeature` / `AbstractAIXMTimeSlice`. When a time has no value, the GML `indeterminatePosition` (`unknown` …) is written to the same column.
+
+| Column | AIXM |
+|---|---|
+| `aixm_validTimeBegin` / `aixm_validTimeEnd` | `gml:validTime` (TimePeriod begin/end; for a TimeInstant only begin) |
+| `aixm_interpretation` | `interpretation` |
+| `aixm_sequenceNumber` / `aixm_correctionNumber` | same names (INTEGER) |
+| `aixm_featureLifetimeBegin` / `aixm_featureLifetimeEnd` | `featureLifetime` |
+| `aixm_timeSliceMetadata` | `timeSliceMetadata` (JSON) |
+| `aixm_featureMetadata` | `featureMetadata` (JSON) |
+| `aixm_description` | `gml:description` |
+| `aixm_name` | `gml:name` 0..∞ (JSON array) |
+
+`gml:boundedBy` has no column; it is the envelope of `geom`.
+
+### Provenance
+
+From the `ibosoftais:<Feature>DataProvenance` extension element ([AIXM Schema Extension](aixm-schema-annex.md)). Coding: [Data Coding Policies › Provenance](data-coding-policies.md#provenance).
+
+| Column | Extension element |
+|---|---|
+| `data_provider` | `dataProvider` |
+| `data_originator` | `dataOriginator` — NULL when the source does not state it |
+| `data_effectivity` | `dataEffectivity` — effectivity of the source data set; the validity of the feature is in `aixm_validTime*` |
+
+### Annotation
+
+`annotation/Note/purpose` decides the column; a note without `purpose` goes to `annotationRemark`. No note is dropped.
+
+| Column | `purpose` |
+|---|---|
+| `annotationDescription` | `DESCRIPTION` |
+| `annotationRemark` | `REMARK` |
+| `annotationWarning` | `WARNING` |
+| `annotationDisclaimer` | `DISCLAIMER` |
+
+| Case | Separator |
+|---|---|
+| Several notes of the **same** feature in one column | new line |
+| Notes of **different** features in one column | an empty line |
+
+A row can hold the notes of two features:
+
+| Layer | Order of the notes |
+|---|---|
+| `routeSegments` | the `RouteSegment`'s notes, then its `Route`'s notes |
+| `navaidComponents` | the equipment's notes, then the `NavaidComponent`'s notes |
+| `changeOverPoints` | the `ChangeOverPoint`'s notes, then its `Route`'s notes |
+
+---
+
+## Repeated (0..∞) structures
+
+Repeated AIXM structures are stored as **JSON** in a TEXT column. The whole subtree is kept; only technical attributes such as `gml:id` are left out. An element with `xlink:href` becomes `{"href": "<uuid>"}`; a value with a unit becomes `{"value": …, "uom": …}`.
+
+| AIXM property | Layer | Column | Form |
 |---|---|---|---|
-| `designCriteria` | routeSegments | `_designCriteria` | Virgülle ayrılmış metin |
-| `availability` | routeSegments, navaids, navaidComponents | `_availability` | JSON dizisi (iç içe `levels[]` dahil) |
-| `aircraftCapability` | routeSegments | `_aircraftCapability` | JSON dizisi (25 alt-alan + `radioNavigationEquipment[]`). **Segment boşsa Route'unki alınır** — aşağıya bakın |
-| `airspaceClass` | routeSegments | `_airspaceClass` | JSON dizisi (`associatedLevels[]` dahil) |
-| `minimumEnrouteAltitude` | routeSegments | `_minimumEnrouteAltitude` | JSON dizisi |
-| `facilityMakeup` | routeSegments start/end | `_startFacilityMakeup`, `_endFacilityMakeup` | Tek JSON, tam iç içe yapıyla (`distanceReference[]`/`angleReference[]` dahil) |
-| `fix` | designatedPoints | `_fix` | Tek JSON, tam iç içe `PointReference` yapısı |
-| `monitoring` | navaidComponents | `_monitoring` | JSON dizisi |
-| `navaidEquipment` | — | Ayrı `navaidComponents` katmanı + **çift yönlü** bağ (§6.3) | Kullanıcı kararı |
+| `designCriteria` | routeSegments | `routeSegments_designCriteria` | comma-separated text |
+| `availability` | routeSegments, navaids, navaidComponents | `…_availability` | JSON array (incl. `levels`) |
+| `aircraftCapability` | routeSegments | `routeSegments_aircraftCapability` | JSON array |
+| `airspaceClass` | routeSegments | `routeSegments_airspaceClass` | JSON array (incl. `associatedLevels`) |
+| `minimumEnrouteAltitude` | routeSegments | `routeSegments_minimumEnrouteAltitude` | JSON array |
+| `facilityMakeup` | routeSegments start/end | `routeSegments_startFacilityMakeup`, `routeSegments_endFacilityMakeup` | JSON (incl. distance and angle references) |
+| `fix` | designatedPoints | `designatedPoints_fix` | JSON (`PointReference`) |
+| `monitoring` | navaidComponents | `navaidComponents_monitoring` | JSON array |
+| `navaidEquipment` | navaids | — | the `navaidComponents` layer and the navaid ↔ component link |
 
-### Hem `Route`'ta hem `RouteSegment`'te tanımlı alanlar
+**Properties defined on both `Route` and `RouteSegment`:**
 
-AIXM'de dört alan **her iki** property group'ta da bulunur:
-`aircraftCapability`, `availability`, `annotation`, `extension`. `routeSegments`
-katmanı ikisini birden temsil ettiği için her biri ayrı ele alınır:
-
-| Alan | Davranış | Gerekçe |
-|---|---|---|
-| `aircraftCapability` | Segmentin kendi değeri varsa **o**; yoksa bağlı `Route`'unki alınır | Kullanıcı kararı. Önceden yalnızca segmente bakılıyordu; Route düzeyinde tanımlı 11 kayıt sessizce düşüyordu |
-| `annotation` | **İkisi de** alınır, araya boş satır konarak birleşir | Notlar birbirini dışlamaz; aşağıdaki bölüm |
-| `availability` | Yalnızca segmentinki | Ölçüldü: `Route.availability` hiçbir kayıtta yok (0), `RouteSegment` 12 (7 `KKTC SHD` + 5 `tailored-lb`). Fallback eklenmedi — gereksiz |
-| `extension` | Eşlenmez | Soyut uzatma noktası, somut içeriği yok |
-
-`designCriteria` de aynı desende çalışır (segment → Route), ancak o alan
-yalnızca `Route`'ta 0..∞'dur; segmentteki karşılığı ayrı bir yapıdır.
-
-### `annotation` → 4 sütun
-
-`annotation/Note/purpose` değeri (`DESCRIPTION`, `REMARK`, `WARNING`,
-`DISCLAIMER`) hangi sütuna yazılacağını belirler; `purpose` yoksa `REMARK`
-varsayılır. Hiçbir not atılmaz; iki ayrı ayırıcı vardır:
-
-| Durum | Ayırıcı |
+| Property | In `routeSegments` |
 |---|---|
-| **Aynı** feature içinde, aynı `purpose`'a düşen birden çok not | yeni satır (`"\n"`, `NOTE_SEPARATOR`) |
-| **Farklı** feature'lardan gelen notlar, aynı `purpose` sütununda | bir **boş satır** (`"\n\n"`, `FEATURE_SEPARATOR`) |
+| `aircraftCapability` | The segment's own value; if the segment has none, the route's |
+| `designCriteria` | The segment's own value; if the segment has none, the route's (AIXM allows it on the route) |
+| `annotation` | Both, segment notes first |
+| `availability` | The segment's only |
 
-Bir satır iki farklı feature'ın notlarını taşıyabilir:
+---
 
-| Katman | Notların geldiği feature'lar |
+## `designatedPoints`
+
+Source: `DesignatedPointTimeSlice`. Geometry: `location/Point/gml:pos`.
+
+| Column | AIXM | Type |
+|---|---|---|
+| `designatedPoints_designator` | `designator` | TEXT |
+| `designatedPoints_type` | `type` | TEXT |
+| `designatedPoints_name` | `name` | TEXT |
+| `designatedPoints_codeICAOCountry` | `codeICAOCountry` | TEXT |
+| `designatedPoints_fix` | `fix` | TEXT (JSON) |
+| `annotation*` (4) | `annotation` | TEXT |
+| `data_*` (3) | provenance | TEXT |
+| `atsStatus_*` (13) | derived | see [Route network status](#route-network-status-atsstatus) |
+| `aixm_*` (13) | identity and base | see [Common columns](#common-columns) |
+
+---
+
+## `navaids`
+
+Source: `NavaidTimeSlice`. Geometry: `location/ElevatedPoint` (or `Point`). Route segment end points resolve to this layer.
+
+| Column | AIXM | Type |
+|---|---|---|
+| `navaids_type` | `type` | TEXT |
+| `navaids_designator` | `designator` | TEXT |
+| `navaids_name` | `name` | TEXT |
+| `navaids_flightChecked` | `flightChecked` | TEXT |
+| `navaids_purpose` | `purpose` | TEXT |
+| `navaids_signalPerformance` | `signalPerformance` | TEXT |
+| `navaids_courseQuality` | `courseQuality` | TEXT |
+| `navaids_integrityLevel` | `integrityLevel` | TEXT |
+| `navaids_codeICAOCountry` | `codeICAOCountry` | TEXT |
+| `navaids_locationElevation` (+`Uom`) | `location/ElevatedPoint/elevation` | REAL / TEXT |
+| `navaids_locationGeoidUndulation` | `location/ElevatedPoint/geoidUndulation` | REAL |
+| `navaids_locationVerticalDatum` | `location/ElevatedPoint/verticalDatum` | TEXT |
+| `navaids_locationHorizontalAccuracy` (+`Uom`) | `location/ElevatedPoint/horizontalAccuracy` | REAL / TEXT |
+| `navaids_availability` | `availability` | TEXT (JSON) |
+| `associatedComponent_<Equipment>` (11) | navaid ↔ component link | TEXT (list) |
+| `annotation*` (4) | `annotation` | TEXT |
+| `data_*` (3) | provenance | TEXT |
+| `atsStatus_*` (13) | derived | see [Route network status](#route-network-status-atsstatus) |
+| `navaidLabeling_*` (9) | derived | see [Map labels](#map-labels-navaidlabeling) |
+| `navaidSymbology_declination` | derived | see [Symbol geometry](#symbol-geometry-navaidsymbology) |
+| `aixm_*` (13) | identity and base | see [Common columns](#common-columns) |
+
+> **ILS family name (temporary).** For `ILS`, `ILS_DME`, `LOC` and `LOC_DME` navaids and their Localizer / Glidepath components the sources give no `name`; the runway direction is written there instead (`RWY 04R`). For ILS DME components it is added after the existing name (`BRUSSELS NATIONAL RWY 25R`). The correct AIXM place is the `runwayDirection` association; this will change when aerodrome and runway features are added.
+
+---
+
+## `navaidComponents`
+
+One row per navaid equipment. The fields of the `NavaidComponent` and of the linked equipment feature are flattened into one row:
+
+```
+Navaid.navaidEquipment (0..∞) → NavaidComponent → theNavaidEquipment → equipment feature (VOR, DME …)
+```
+
+Each row has its **own position** (the localizer, glide path and DME of an ILS are three points).
+
+### Common columns
+
+| Column | AIXM | Type |
+|---|---|---|
+| `navaidComponents_equipmentType` | equipment feature type (`VOR`, `DME`, `TACAN`, `NDB`, `Localizer`, `Glidepath`, `MarkerBeacon`, `SDF`, `Azimuth`, `Elevation`, `DirectionFinder`) | TEXT |
+| `associatedNavaid` | parent `navaids.id` list | TEXT (list) |
+| `associatedNavaidType` | `navaids_type` of each parent, same order | TEXT (list) |
+| `navaidComponents_collocationGroup` | `NavaidComponent/collocationGroup` | TEXT |
+| `navaidComponents_markerPosition` | `NavaidComponent/markerPosition` | TEXT |
+| `navaidComponents_providesNavigableLocation` | `NavaidComponent/providesNavigableLocation` | TEXT |
+| `navaidComponents_designator` | `designator` | TEXT |
+| `navaidComponents_name` | `name` | TEXT |
+| `navaidComponents_emissionClass` | `emissionClass` | TEXT |
+| `navaidComponents_mobile` | `mobile` | TEXT |
+| `navaidComponents_magneticVariation` | `magneticVariation` | REAL |
+| `navaidComponents_dateMagneticVariation` | `dateMagneticVariation` | TEXT |
+| `navaidComponents_flightChecked` | `flightChecked` | TEXT |
+| `navaidComponents_locationElevation` (+`Uom`) | `location/ElevatedPoint/elevation` | REAL / TEXT |
+| `navaidComponents_locationGeoidUndulation` | `location/ElevatedPoint/geoidUndulation` | REAL |
+| `navaidComponents_locationVerticalDatum` | `location/ElevatedPoint/verticalDatum` | TEXT |
+| `navaidComponents_locationHorizontalAccuracy` (+`Uom`) | `location/ElevatedPoint/horizontalAccuracy` | REAL / TEXT |
+| `navaidComponents_monitoring` | `monitoring` | TEXT (JSON) |
+| `navaidComponents_availability` | `availability` | TEXT (JSON) |
+| `annotation*` (4) | `annotation` (equipment, then component) | TEXT |
+| `data_*` (3) | provenance | TEXT |
+| `navaidLabeling_*` (9) | derived | see [Map labels](#map-labels-navaidlabeling) |
+| `navaidSymbology_*` (2) | derived | see [Symbol geometry](#symbol-geometry-navaidsymbology) |
+| `aixm_*` (13) | identity and base of the equipment feature | see [Common columns](#common-columns) |
+
+### Equipment-specific columns
+
+A field that belongs to one equipment type is named `navaidComponents_<Equipment>_<field>`. The same AIXM name can exist in several equipment types with **different code lists** (`type`, `class`, `channel`), so each type has its own column. The table is sparse: only the columns of the row's own equipment type have values.
+
+| Equipment | Fields |
 |---|---|
-| `routeSegments` | önce `RouteSegment`'in kendi notları, sonra bağlı `Route`'unkiler |
-| `navaidComponents` | önce `AbstractNavaidEquipment`'ınkiler, sonra `NavaidComponent`'inkiler |
+| `VOR` | `type`, `frequency` (+`Uom`), `zeroBearingDirection`, `declination` |
+| `DME` | `type`, `channel`, `displace` (+`Uom`), `tuningFrequencyVHF` (+`Uom`) |
+| `TACAN` | `channel`, `declination`, `tuningFrequencyVHF` (+`Uom`) |
+| `Localizer` | `frequency` (+`Uom`), `magneticBearing`, `trueBearing`, `declination`, `widthCourse`, `backCourseUsable`, `signalPerformance`, `courseQuality`, `integrityLevel` |
+| `Glidepath` | `frequency` (+`Uom`), `slope`, `rdh` (+`Uom`), `signalPerformance`, `courseQuality`, `integrityLevel` |
+| `MarkerBeacon` | `class`, `frequency` (+`Uom`), `axisBearing`, `auralMorseCode` |
+| `NDB` | `frequency` (+`Uom`), `class`, `emissionBand` |
+| `SDF` | `frequency` (+`Uom`), `magneticBearing`, `trueBearing` |
+| `Azimuth` | `type`, `channel`, `trueBearing`, `magneticBearing`, `angleProportionalLeft`, `angleProportionalRight`, `angleCoverLeft`, `angleCoverRight` |
+| `Elevation` | `angleNominal`, `angleMinimum`, `angleSpan` |
+| `DirectionFinder` | `doppler` |
 
-`annotations()` aynı satır için birden çok kez çağrılabilir; sonraki çağrılar
-mevcut değerin **üzerine yazmaz**, boş satır bırakarak ekler.
+Example: `navaidComponents_VOR_frequency`, `navaidComponents_DME_channel`, `navaidComponents_NDB_class`.
 
-`Route.annotation`, AIXM'de `RouteSegment.annotation`'dan bağımsız bir alandır
-(`RoutePropertyGroup` ve `RouteSegmentPropertyGroup` gruplarının her ikisinde de
-`annotation` 0..∞ olarak tanımlıdır). Ölçüldü: 20 `Route` ve 106 `RouteSegment`
-not taşıyor; `annotationRemark` 128 satırda dolu.
+### Navaid ↔ component link
 
-Yapının tam tanımı:
-[`docs/AIXM_Annotation_Attributes.md`](../common/docs/AIXM_Annotation_Attributes.md).
+The AIXM relation is many-to-many and is shown from both sides:
 
----
-
-## 4. `designatedPoints` (38 sütun)
-
-Kaynak: `DesignatedPointTimeSlice`. Geometri: `location/Point/gml:pos` → POINT.
-
-| Sütun | AIXM kaynağı | Tip | Dolu |
-|---|---|---|---:|
-| `designatedPoints_designator` | `designator` | TEXT | 99,8% |
-| `designatedPoints_type` | `type` | TEXT | 100,0% |
-| `designatedPoints_name` | `name` | TEXT | 98,2% |
-| `designatedPoints_codeICAOCountry` | `codeICAOCountry` | TEXT | **0,0%** |
-| `designatedPoints_fix` | `fix` (JSON) | TEXT | 0,1% |
-| `annotationDescription` | `annotation` purpose=DESCRIPTION | TEXT | 99,4% |
-| `annotationRemark` | purpose=REMARK | TEXT | 0,1% |
-| `annotationWarning` | purpose=WARNING | TEXT | **0,0%** |
-| `annotationDisclaimer` | purpose=DISCLAIMER | TEXT | **0,0%** |
-| `data_provider` | provenance kutusu | TEXT | 100,0% |
-| `data_originator` | provenance kutusu | TEXT | 100,0% |
-| `data_effectivity` | provenance kutusu | TEXT | 100,0% |
-| `aixm_gml_id` | `gml:id` | TEXT | 100,0% |
-| `aixm_uuid` | `gml:identifier` | TEXT | 100,0% |
-| `aixm_*` taban (11) | TimeSlice/feature tabanı | — | §2.2 |
-
-`type` %100 doludur çünkü AIXM'de zorunludur; EAD `WPT` kayıtlarında
-`ICAO`/`COORD`/`OTHER` gibi değerler taşır, antimeridyen noktalarında `OTHER`.
-
----
-
-## 5. `navaids` (70 sütun)
-
-Kaynak: `NavaidTimeSlice`. Geometri: `location/ElevatedPoint` (yoksa `Point`) →
-POINT. Rota uç noktaları **bu katmana** çözülür.
-
-| Sütun | AIXM kaynağı | Tip | Dolu |
-|---|---|---|---:|
-| `navaids_type` | `type` | TEXT | 100,0% |
-| `navaids_designator` | `designator` | TEXT | 100,0% |
-| `navaids_name` | `name` | TEXT | 98,9% |
-| `navaids_flightChecked` | `flightChecked` | TEXT | **0,0%** |
-| `navaids_purpose` | `purpose` | TEXT | **0,0%** |
-| `navaids_signalPerformance` | `signalPerformance` | TEXT | **0,0%** |
-| `navaids_courseQuality` | `courseQuality` | TEXT | **0,0%** |
-| `navaids_integrityLevel` | `integrityLevel` | TEXT | **0,0%** |
-| `navaids_codeICAOCountry` | `codeICAOCountry` | TEXT | **0,0%** |
-| `navaids_locationElevation` | `location/ElevatedPoint/elevation` | REAL | **0,0%** |
-| `navaids_locationElevationUom` | aynı elemanın `uom` niteliği | TEXT | **0,0%** |
-| `navaids_locationGeoidUndulation` | `…/geoidUndulation` | REAL | **0,0%** |
-| `navaids_locationVerticalDatum` | `…/verticalDatum` | TEXT | **0,0%** |
-| `navaids_locationHorizontalAccuracy` | `…/horizontalAccuracy` | REAL | **0,0%** |
-| `navaids_locationHorizontalAccuracyUom` | aynı elemanın `uom` | TEXT | **0,0%** |
-| `navaids_availability` | `availability` (JSON) | TEXT | **0,0%** |
-| `navaids_annotation*` (4) | `annotation` | TEXT | Remark 0,0% (2 kayıt), diğerleri 0,0% |
-| `data_provider` | provenance kutusu | TEXT | 100,0% |
-| `data_originator` | provenance kutusu | TEXT | 67,3% |
-| `data_effectivity` | provenance kutusu | TEXT | 100,0% |
-| `aixm_gml_id` | `gml:id` | TEXT | 100,0% |
-| `aixm_uuid` | `gml:identifier` | TEXT | 100,0% |
-| `aixm_*` taban (11) | TimeSlice/feature tabanı | — | §2.2 |
-
-**`data_originator` neden %67,3:** NULL kalan 3.053 satırın
-3.053'i Jeppesen NDB navaid'leridir. Jeppesen'in `data.json`'ında
-originator boş — kutuya `dataOriginator` yazılmaz, doğrulanmış yokluk, sessiz
-düşürme değil.
-
-**`navaids_type` neden 9.357 (2 eksik):** LT'nin `MEN` ve `AYR` stub kayıtları.
-Bunlar LT'nin VFR `fix`/`PointReference` yapılarından türetilmiştir; ham LT
-verisinde tip ve konum tanımlı değildir, bu yüzden `type` ve `geom` NULL'dur.
-Katmandaki geometrisiz iki satır bunlardır.
-
-- **`MEN`**: EAD'de aynı designator ve `DHMI TURKIYE` originator'ıyla **iki**
-  kayıt var (`VOR_DME` "IZMIR" ve `TACAN` "ADNAN MENDERES"). Tipsiz stub bu
-  ikisi arasında ayırt edilemediği için **eşleştirilmemiştir**; kullanıcı kararı
-  "stub kalsın". Belirsizlik `errored-features.csv`'de
-  `tipsiz_navaid_birden_fazla_ana_kaynak_adayi` olarak durur.
-- **`AYR`**: EAD'de bu designator'la hiç navaid yok, devredilecek bir ana kaynak
-  kaydı yok. Kullanıcı kararı: NULL geometriyle katmanda kalsın.
-
----
-
-> **GEÇİCİ — ILS ailesinde `name` pist bilgisi taşır.** `ILS`, `ILS_DME`,
-> `LOC`, `LOC_DME` navaid'lerinde ve `Localizer`/`Glidepath` bileşenlerinde
-> kaynakta `name` **hiç yok**; yerine `RWY 04R` biçiminde pist yönü yazılıyor.
-> ILS bileşeni DME'lerde mevcut adın **sonuna** ekleniyor
-> (`BRUSSELS NATIONAL RWY 25R`), ad ezilmiyor.
->
-> Sebep: AIXM'de bunun doğru yeri `Navaid/runwayDirection` association'ıdır ama
-> `AirportHeliport` ve `RunwayDirection` feature'ları bu projede **henüz
-> implemente edilmedi**, yani association'ın hedefi yok. O feature'lar
-> eklendiğinde bu çözüm **kaldırılmalıdır**. Ayrıntı:
-> [`EAD-SDO_Field_Mapping.md` §4.3](data-sources/EAD-SDO/generate-aixm-data/EAD-SDO_Field_Mapping.md).
-
----
-
-## 6. `navaidComponents` (110 sütun)
-
-`NavaidComponent` tek başına anlamı olmayan ince bir Object olduğu için kendi
-alanları ile bağlı `AbstractNavaidEquipment`'ın alanları **tek satırda**
-düzleştirilir. Zincir:
-
-```
-Navaid.navaidEquipment (0..∞) → NavaidComponent → theNavaidEquipment (xlink)
-                                                → AbstractNavaidEquipment (Feature)
-```
-
-Her satırın **kendi gerçek konumu** vardır (bir ILS'in LOC/GP/DME'si üç ayrı
-noktadadır). Rota uç noktası çözümlemesinde **kullanılmaz**.
-
-Alt-tür dağılımı (son koşu): DME 4.667 · VOR 3.594 · NDB 3.073 · TACAN 877 ·
-Localizer 550 · Glidepath 524 · MarkerBeacon 77. Alt-türlerin tam öznitelik
-listeleri:
-[`docs/aixm-point-types/AIXM_NavaidEquipment_Attributes.md`](docs/aixm-point-types/AIXM_NavaidEquipment_Attributes.md) §2.1-2.11.
-
-### 6.1 Sütun adlandırması — ortak vs alt-türe özgü
-
-| Alan sınıfı | Sütun adı | Örnek |
+| Layer | Column | Content |
 |---|---|---|
-| `NavaidComponent`'in kendi alanları | `navaidComponents_<alan>` | `navaidComponents_markerPosition` |
-| Ekipman **ortak tabanı** (`NavaidEquipmentPropertyGroup`) | `navaidComponents_<alan>` | `navaidComponents_designator` |
-| **Alt-türe özgü** her alan | `navaidComponents_<AltTür>_<alan>` | `navaidComponents_Glidepath_slope` |
+| `navaids` | `associatedComponent_<Equipment>` (11) | `navaidComponents.id` list of that equipment type |
+| `navaidComponents` | `associatedNavaid` | parent `navaids.id` list |
+| `navaidComponents` | `associatedNavaidType` | parent `navaids_type` list, in the same order |
 
-Ortak taban 11 alt-türde de **birebir aynıdır**, o yüzden önek almaz:
-`designator`, `name`, `emissionClass`, `mobile`, `magneticVariation`,
-`dateMagneticVariation`, `flightChecked`, `location*` (6 sütun), `monitoring`,
-`availability`.
-
-**Aynı alan adı birden çok alt-türde geçebilir** — `frequency` altı alt-türde
-(VOR, Localizer, Glidepath, MarkerBeacon, NDB, SDF), `channel` üçünde
-(DME, TACAN, Azimuth), `type` üçünde (VOR, DME, Azimuth). Bunlar AIXM'de ayrı
-elemanlardır ve bir kısmı **farklı enum taşır**. Bu yüzden her alt-tür kendi
-sütununu alır (kullanıcı kararı):
+Lists are used because a navaid can have several components of one type (e.g. outer and middle marker of an ILS) and one piece of equipment can be shared by several navaids (e.g. a DME used by two navaids).
 
 ```
-navaidComponents_VOR_frequency        navaidComponents_DME_channel
-navaidComponents_NDB_frequency        navaidComponents_TACAN_channel
-navaidComponents_Localizer_frequency  navaidComponents_Azimuth_channel
-…
+navaids          id=12     associatedComponent_Localizer    = "24"
+                           associatedComponent_Glidepath    = "25"
+                           associatedComponent_DME          = "26"
+                           associatedComponent_MarkerBeacon = "13290,13291"
+
+navaidComponents id=13290  MarkerBeacon MIDDLE  associatedNavaid = "12"  associatedNavaidType = "ILS_DME"
+                 id=13291  MarkerBeacon OUTER   associatedNavaid = "12"  associatedNavaidType = "ILS_DME"
 ```
 
-Tablo bilinçli olarak **seyrektir**: her satırda yalnızca kendi alt-türünün
-sütunları dolar. Karşılığında iki kazanç var:
+---
 
-- Hangi alanın hangi alt-türe ait olduğu **sütun adından** okunur.
-- Çakışan enum'lar ayrışır. `type` (CodeVORType / CodeDMEType /
-  CodeMLSAzimuthType), `class` (CodeMarkerBeaconSignalType / CodeNDBUsageType)
-  ve `channel` (CodeDMEChannelType / CodeTACANChannelType / CodeMLSChannelType)
-  eskiden tek sütunu paylaşıyordu; doğrulama `equipmentType`'a bakıp doğru
-  enum'u seçmek zorundaydı, `channel` ise hiç doğrulanamıyordu. Artık her sütun
-  kendi kuralını alır (§8).
+## `routeSegments`
 
-Sütun listesi **elle yazılmaz**: `gpkg/schema.EQUIPMENT_SUBTYPE_FIELDS`
-sözlüğünden türetilir. Alt-tür → alan eşlemesinin tamamı XSD'den doğrulanmıştır
-(`<group name="<AltTür>PropertyGroup">`).
+Source: `RouteSegmentTimeSlice` and the `Route` it belongs to (`routeFormed`). Geometry: `curveExtent` (`gml:posList`). Route segments crossing the antimeridian are split (see [Data Coding Policies](data-coding-policies.md#line-geometry-coding)).
 
-### 6.2 Alt-türe özgü alanlar
+### Segment
 
-```
-VOR             : type, frequency(+Uom), zeroBearingDirection, declination
-DME             : type, channel, displace(+Uom), tuningFrequencyVHF(+Uom)
-TACAN           : channel, declination, tuningFrequencyVHF(+Uom)
-Localizer       : frequency(+Uom), magneticBearing, trueBearing, declination,
-                  widthCourse, backCourseUsable, signalPerformance,
-                  courseQuality, integrityLevel
-Glidepath       : frequency(+Uom), slope, rdh(+Uom), signalPerformance,
-                  courseQuality, integrityLevel
-MarkerBeacon    : class, frequency(+Uom), axisBearing, auralMorseCode
-NDB             : frequency(+Uom), class, emissionBand
-SDF             : frequency(+Uom), magneticBearing, trueBearing
-Azimuth         : type, channel, trueBearing, magneticBearing,
-                  angleProportionalLeft/Right, angleCoverLeft/Right
-Elevation       : angleNominal, angleMinimum, angleSpan
-DirectionFinder : doppler
-```
-
-`SDF`, `Azimuth`, `Elevation`, `DirectionFinder` sütunları şu an **boştur** —
-kaynaklarda bu alt-türlerden feature yok. Sütunlar kaldırılmaz: veri gelirse
-şema değişmeden dolar.
-
-> **Giderilen sessiz atlama:** `merge/aixm_reader.EQUIPMENT_FEATURES` daha önce
-> yalnızca 7 alt-tür sayıyordu; bu dördü listede olmadığı için
-> `run_gpkg` onları **sessizce atıyordu** — ne bileşen satırı olurdu, ne de
-> birleştirmedeki "düşen navaid'in ekipmanı" mantığı görürdü. Liste 11'e
-> tamamlandı.
-
-### 6.3 Navaid ↔ Component çift yönlü bağ
-
-AIXM'de ilişki `Navaid.navaidEquipment → NavaidComponent → theNavaidEquipment`
-xlink zinciriyle kurulur ve **çok-çoka**dır. GeoPackage'da iki yönden birden
-temsil edilir:
-
-| Katman | Sütun | İçerik |
+| Column | AIXM | Type |
 |---|---|---|
-| `navaids` | `associatedComponent_<AltTür>` × 11 | O navaid'in ilgili tipteki bileşenlerinin `navaidComponents.id` listesi |
-| `navaidComponents` | `associatedNavaid` | Ebeveyn `navaids.id` listesi |
-| `navaidComponents` | `associatedNavaidType` | Karşılık gelen `navaids_type` listesi, **aynı sırada** |
+| `routeSegments_level` | `level` | TEXT |
+| `routeSegments_upperLimit` (+`Uom`, +`Reference`) | `upperLimit` | REAL / TEXT |
+| `routeSegments_lowerLimit` (+`Uom`, +`Reference`) | `lowerLimit` | REAL / TEXT |
+| `routeSegments_minimumObstacleClearanceAltitude` (+`Uom`) | `minimumObstacleClearanceAltitude` | REAL / TEXT |
+| `routeSegments_pathType` | `pathType` | TEXT |
+| `routeSegments_trueTrack` | `trueTrack` | REAL |
+| `routeSegments_magneticTrack` | `magneticTrack` | REAL |
+| `routeSegments_reverseTrueTrack` | `reverseTrueTrack` | REAL |
+| `routeSegments_reverseMagneticTrack` | `reverseMagneticTrack` | REAL |
+| `routeSegments_length` (+`Uom`) | `length` | REAL / TEXT |
+| `routeSegments_widthLeft` (+`Uom`) | `widthLeft` | REAL / TEXT |
+| `routeSegments_widthRight` (+`Uom`) | `widthRight` | REAL / TEXT |
+| `routeSegments_turnDirection` | `turnDirection` | TEXT |
+| `routeSegments_signalGap` | `signalGap` | TEXT |
+| `routeSegments_minimumEnrouteAltitude` | `minimumEnrouteAltitude` | TEXT (JSON) |
+| `routeSegments_minimumCrossingAtEnd` (+`Uom`, +`Reference`) | `minimumCrossingAtEnd` | REAL / TEXT |
+| `routeSegments_maximumCrossingAtEnd` (+`Uom`, +`Reference`) | `maximumCrossingAtEnd` | REAL / TEXT |
+| `routeSegments_designatorSuffix` | `designatorSuffix` | TEXT |
+| `routeSegments_availability` | `availability` | TEXT (JSON) |
+| `routeSegments_cardinalDirectionLeft` / `…Right` | `cardinalDirectionLeft` / `cardinalDirectionRight` | TEXT |
+| `routeSegments_aircraftCapability` | `aircraftCapability` (segment, else route) | TEXT (JSON) |
+| `routeSegments_airspaceClass` | `airspaceClass` | TEXT (JSON) |
+| `routeSegments_designCriteria` | `designCriteria/name` (segment, else route) | TEXT (list) |
 
-Üçü de virgülle ayrılmış **liste** tutar ve katman öneki taşımaz.
+### End points
 
-**Neden liste:**
+From `start/EnRouteSegmentPoint` and `end/EnRouteSegmentPoint`. The table shows `start`; the same columns exist with `routeSegments_end…`.
 
-- Bir navaid aynı tipten birden fazla bileşen taşıyabilir — ölçüldü, **31
-  ILS'te ikişer `MarkerBeacon`** var (OUTER + MIDDLE; veride MIDDLE 43,
-  OUTER 31, INNER 3).
-- Bir ekipman birden fazla navaid tarafından **paylaşılabilir** — ölçüldü,
-  **275 ekipman 2–7 navaid'e ait** (230 DME, 45 TACAN; biri 7 navaid'e).
+| Column | AIXM | Type |
+|---|---|---|
+| `routeSegments_startPointLayer` | layer of the resolved point (`navaids` / `designatedPoints`) | TEXT |
+| `routeSegments_startPointId` | row id of the resolved point | INTEGER |
+| `routeSegments_startPointDesignator` | designator of the resolved point | TEXT |
+| `routeSegments_startReportingATC` | `reportingATC` | TEXT |
+| `routeSegments_startFlyOver` | `flyOver` | TEXT |
+| `routeSegments_startWaypoint` | `waypoint` | TEXT |
+| `routeSegments_startRadarGuidance` | `radarGuidance` | TEXT |
+| `routeSegments_startFacilityMakeup` | `facilityMakeup` | TEXT (JSON) |
+| `routeSegments_startRoleFreeFlight` | `roleFreeFlight` | TEXT |
+| `routeSegments_startRoleRVSM` | `roleRVSM` | TEXT |
+| `routeSegments_startTurnRadius` (+`Uom`) | `turnRadius` | REAL / TEXT |
+| `routeSegments_startRoleMilitaryTraining` | `roleMilitaryTraining` | TEXT |
 
-> **Giderilen veri kaybı:** önceki `navaidComponents_navaidId` tek bir FK'ydı ve
-> paylaşımlı ekipmanın **yalnızca son görülen ebeveynini** kaydediyordu.
-> `EAD_DME_AS_4720672` hem `EAD_NAV_AS_4699536` hem `EAD_NAV_AS_4720669`
-> tarafından kullanılırken tabloda yalnızca ikincisi görünüyordu. Artık
-> `associatedNavaid = "550,2181"`, `associatedNavaidType = "VOR_DME,VOR_DME"`.
+`pointChoice_fixDesignatedPoint` resolves to `designatedPoints`, `pointChoice_navaidSystem` to `navaids`. If a point cannot be resolved, its `Layer`/`Id`/`Designator` columns stay empty; the segment is still written.
 
-Örnek — `IBR` (ILS_DME, navaid id 12):
+### Inherited from `Route`
 
-```
-navaids  id=12  associatedComponent_Localizer    = "24"
-                associatedComponent_Glidepath    = "25"
-                associatedComponent_DME          = "26"
-                associatedComponent_MarkerBeacon = "13290,13291"
+The `route_` prefix (not `routeSegments_`) shows that these are properties of the `Route` feature.
 
-navaidComponents id=13290 MarkerBeacon MIDDLE  associatedNavaid="12" Type="ILS_DME"
-                 id=13291 MarkerBeacon OUTER   associatedNavaid="12" Type="ILS_DME"
-```
+| Column | AIXM (`RouteTimeSlice`) |
+|---|---|
+| `route_designatorPrefix` | `designatorPrefix` |
+| `route_designatorSecondLetter` | `designatorSecondLetter` |
+| `route_designatorNumber` | `designatorNumber` |
+| `route_multipleIdentifier` | `multipleIdentifier` |
+| `route_locationDesignator` | `locationDesignator` |
+| `route_name` | `name` |
+| `route_type` | `type` |
+| `route_flightRule` | `flightRule` |
+| `route_internationalUse` | `internationalUse` |
+| `route_militaryUse` | `militaryUse` |
+| `route_militaryTrainingType` | `militaryTrainingType` |
 
-İki yönün tutarlılığı build sırasında ölçülür: her iki yönde de ihlal **0**,
-`associatedNavaid` ile `associatedNavaidType` uzunluk uyuşmazlığı **0**.
+The route code is split in AIXM (`designatorPrefix` + `designatorSecondLetter` + `designatorNumber` + `multipleIdentifier`); the full code is also written to `route_name`.
 
-### 6.4 Not ve provenance
+Plus `annotation*` (segment, then route), `data_*` and `aixm_*` of the RouteSegment.
 
-`annotationDescription/Remark/Warning/Disclaimer` — hem `AbstractNavaidEquipment`'ın
-hem `NavaidComponent`'in notları aynı 4 sütunda, aralarında boş satır bırakılarak
-birleşir (§3). `data_provider` / `data_originator` / `data_effectivity` ve
-`aixm_*` ailesi katman öneksizdir (kimlik ve taban alanlar ekipman feature'ınındır,
-bkz. §2; `NavaidComponent` bir Object'tir, TimeSlice'ı yoktur). `navaidLabeling_*` sütunları için
-ayrıca bkz. `gpkg/navaid_labeling.py`.
+---
 
-`authority` (`AbstractNavaidEquipment` → Organisation/Authority) **kapsam
-dışıdır** — büyük bir ayrı Feature ağacıdır ve bu projede Organisation
-feature'ları üretilmiyor. Kullanıcı onayıyla dışarıda bırakıldı.
+## `changeOverPoints`
 
-## 7. `routeSegments` (93 sütun)
+Source: `ChangeOverPointTimeSlice` and its `applicableRoutePortion/RoutePortion`. Geometry: the route portion as a line, from its start point to its end point, built from the route segments of the portion in order (through `intermediatePoint` where given). If the portion cannot be built, the geometry is empty and the row is still written.
 
-Kaynak: `RouteSegmentTimeSlice` + `routeFormed` ile bağlı `RouteTimeSlice`.
-Geometri: `curveExtent`'in `gml:posList`'i → LINESTRING.
+| Column | AIXM | Type |
+|---|---|---|
+| `changeOverPoints_distance` (+`Uom`) | `distance` — from the **start** of the route portion | REAL / TEXT |
+| `changeOverPoints_distanceFromEnd` (+`Uom`) | `ibosoftais:ChangeOverPointExtension/distanceFromEnd` — from the **end** | REAL / TEXT |
+| `changeOverPoints_startPointLayer` / `…Id` / `…Uuid` / `…Designator` / `…Name` / `…Type` | `RoutePortion/start_*`, resolved | TEXT / INTEGER |
+| `changeOverPoints_endPointLayer` / `…Id` / `…Uuid` / `…Designator` / `…Name` / `…Type` | `RoutePortion/end_*`, resolved | TEXT / INTEGER |
+| `changeOverPoints_intermediatePointLayer` / `…Id` / `…Uuid` / `…Designator` | `RoutePortion/intermediatePoint_*`, resolved | TEXT / INTEGER |
+| `changeOverPoints_locationLatitude` / `…Longitude` | `location_position` (`gml:pos`) | REAL |
+| `changeOverPoints_locationLayer` / `…Id` / `…Uuid` / `…Designator` | `location_fixDesignatedPoint` / `location_navaidSystem`, resolved | TEXT / INTEGER |
+| `associatedRoute_uuid` | `RoutePortion/referencedRoute` | TEXT |
+| `route_designatorPrefix`, `route_designatorSecondLetter`, `route_designatorNumber`, `route_multipleIdentifier`, `route_name` | the referenced `Route` (same names as in `routeSegments`) | TEXT |
+| `associatedRouteSegment_id` | `routeSegments.id` list of the portion, start → end | TEXT (list) |
+| `associatedRouteSegment_uuid` | `aixm_uuid` list of the same segments, same order | TEXT (list) |
+| `copSymbology_offsetPercent` | derived | REAL |
+| `annotation*` (4) | `annotation` (COP, then route) | TEXT |
+| `data_*` (3) | provenance | TEXT |
+| `atsStatus_associatedLevel*` / `atsStatus_associatedType*` (7) | derived from the segments of the portion | BOOLEAN |
+| `aixm_*` (13) | identity and base | see [Common columns](#common-columns) |
 
-### 7.1 Segmentin kendi alanları
+`…Uuid` is always written when the reference exists, even if the target is not in this GeoPackage; `…Layer`/`…Id`/`…Designator` are written only when it resolves.
 
-| Sütun | AIXM kaynağı | Tip | Dolu |
-|---|---|---|---:|
-| `routeSegments_level` | `level` | TEXT | 99,8% |
-| `routeSegments_upperLimit` (+`Uom`, +`Reference`) | `upperLimit` | REAL/TEXT | 50,6% |
-| `routeSegments_lowerLimit` (+`Uom`, +`Reference`) | `lowerLimit` | REAL/TEXT | 46,9% |
-| `routeSegments_minimumObstacleClearanceAltitude` (+`Uom`) | aynı ad | REAL/TEXT | **0,0%** |
-| `routeSegments_pathType` | `pathType` | TEXT | 3,1% |
-| `routeSegments_trueTrack` | `trueTrack` | REAL | 0,2% |
-| `routeSegments_magneticTrack` | `magneticTrack` | REAL | 2,4% |
-| `routeSegments_reverseTrueTrack` | `reverseTrueTrack` | REAL | 0,2% |
-| `routeSegments_reverseMagneticTrack` | `reverseMagneticTrack` | REAL | 2,6% |
-| `routeSegments_length` (+`Uom`) | `length` | REAL/TEXT | 3,1% |
-| `routeSegments_widthLeft` / `widthRight` (+`Uom`) | aynı adlar | REAL/TEXT | **0,0%** |
-| `routeSegments_turnDirection` | `turnDirection` | TEXT | **0,0%** |
-| `routeSegments_signalGap` | `signalGap` | TEXT | **0,0%** |
-| `routeSegments_minimumEnrouteAltitude` | `minimumEnrouteAltitude` (JSON) | TEXT | 2,9% |
-| `routeSegments_minimumCrossingAtEnd` (+`Uom`, +`Reference`) | aynı ad | REAL/TEXT | **0,0%** |
-| `routeSegments_maximumCrossingAtEnd` (+`Uom`, +`Reference`) | aynı ad | REAL/TEXT | **0,0%** |
-| `routeSegments_designatorSuffix` | `designatorSuffix` | TEXT | **0,0%** |
-| `routeSegments_availability` | `availability` (JSON) | TEXT | 0,01% (12 satır) |
-| `routeSegments_cardinalDirectionLeft` / `Right` | aynı adlar | TEXT | **0,0%** |
-| `routeSegments_aircraftCapability` | `aircraftCapability` (JSON) | TEXT | 2,9% |
-| `routeSegments_airspaceClass` | `airspaceClass` (JSON) | TEXT | 0,006% (6 satır) |
-| `routeSegments_designCriteria` | `designCriteria/name` (virgüllü) | TEXT | 3,1% |
+**`copSymbology_offsetPercent`** = `distance` / geodesic length of the line × 100. It places the COP symbol along the line from its start. `distanceFromEnd` is not used for it.
 
-> **`airspaceClass` ve `navigationAccuracy` ilk kez `tailored-lb` ile doldu.**
-> İkisi de bu korpusta daha önce hiçbir kaynakta yoktu (ölçüldü: TLB dışı satır
-> **0**). `routeSegments_aircraftCapability` sütunu 2.698 satırda doluydu ama
-> içindeki `navigationAccuracy` anahtarı yalnızca bu 6 satırda var.
-> `availability` ise ilk kez değil — 12 satırın 7'si `KKTC SHD`'den geliyor.
-> Üçü de şemada zaten tanımlıydı, kod değişikliği gerekmedi.
+**No `designatorSuffix` for COPs.** In AIXM the suffix belongs to `RouteSegment`, not `Route`, and the segments of one portion can have different suffixes, so no single value exists.
 
-`designCriteria` segmentte yoksa bağlı `Route`'un `designCriteria`'sına düşülür —
-bu **bilinçli bir devralmadır**, fallback zinciri değil: AIXM'de tasarım ölçütü
-rota düzeyinde de tanımlanabilir.
+---
 
-### 7.2 Uç noktalar (`start` / `end`)
+## Derived columns
 
-Kaynak: `start|end/EnRouteSegmentPoint`. Aşağıdaki tablo `start` içindir; `end`
-için birebir aynı sütunlar `routeSegments_end…` önekiyle vardır.
+These columns have no AIXM counterpart. They are calculated from the other columns so that maps and queries can use them directly with the indexes of the layer.
 
-| Sütun | AIXM kaynağı | Tip | Dolu (start / end) |
+### Route network status (`atsStatus_*`)
+
+The role of a point in the ATS route network, derived from the route segments that use the point as start or end point. The columns form two groups:
+
+- **`atsStatus_associated*`** — for grouping: they tell which kinds of route segments (level, route type) a point or change-over point is related to, so that points can be grouped and filtered, e.g. "points of upper routes".
+- **`atsStatus_depiction*`** — for chart depiction. This information is **not in AIXM**, and it is **not among the data required by PANS-AIM**. Its definitions exist in several manuals, above all **ICAO Doc 8697** (Aeronautical Chart Manual), and **ICAO Annex 4** gives different symbols according to these definitions. Because the data requirements, the definitions and the symbology do not match each other exactly, these values are **produced by logic: from the other parameters in the existing data, following those definitions**. The rules are given below.
+
+| Column | Type | Layers | Meaning |
 |---|---|---|---|
-| `routeSegments_startPointLayer` | çözülen katman adı | TEXT | 91,6% / 91,5% |
-| `routeSegments_startPointId` | çözülen satır `id` (FK) | INTEGER | 91,6% / 91,5% |
-| `routeSegments_startPointDesignator` | çözülen satırın designator'ı | TEXT | 91,3% / 91,2% |
-| `routeSegments_startReportingATC` | `reportingATC` | TEXT | 2,9% |
-| `routeSegments_startFlyOver` | `flyOver` | TEXT | **0,0%** |
-| `routeSegments_startWaypoint` | `waypoint` | TEXT | **0,0%** |
-| `routeSegments_startRadarGuidance` | `radarGuidance` | TEXT | **0,0%** |
-| `routeSegments_startFacilityMakeup` | `facilityMakeup` (JSON) | TEXT | **0,0%** |
-| `routeSegments_startRoleFreeFlight` | `roleFreeFlight` | TEXT | **0,0%** |
-| `routeSegments_startRoleRVSM` | `roleRVSM` | TEXT | **0,0%** |
-| `routeSegments_startTurnRadius` (+`Uom`) | `turnRadius` | REAL/TEXT | **0,0%** |
-| `routeSegments_startRoleMilitaryTraining` | `roleMilitaryTraining` | TEXT | **0,0%** |
+| `atsStatus_isElementOfRouteSegment` | BOOLEAN | DP, NAV | The point is the start or end point of at least one route segment. Always 0 or 1 |
+| `atsStatus_associatedLevelUpper` | BOOLEAN | DP, NAV, COP | At least one related segment has `level = UPPER` |
+| `atsStatus_associatedLevelLower` | BOOLEAN | DP, NAV, COP | … `level = LOWER` |
+| `atsStatus_associatedLevelBoth` | BOOLEAN | DP, NAV, COP | … `level = BOTH` (not derived from UPPER + LOWER) |
+| `atsStatus_associatedLevelOther` | BOOLEAN | DP, NAV, COP | … `level = OTHER` or `OTHER:<x>` |
+| `atsStatus_associatedTypeAts` | BOOLEAN | DP, NAV, COP | At least one related segment has `route_type = ATS` |
+| `atsStatus_associatedTypeNat` | BOOLEAN | DP, NAV, COP | … `route_type = NAT` |
+| `atsStatus_associatedTypeOther` | BOOLEAN | DP, NAV, COP | … `route_type = OTHER` or `OTHER:<x>` |
+| `atsStatus_reportingAssociation` | TEXT (JSON) | DP, NAV | Reporting type per segment end: `[{"segmentId": …, "role": "START"\|"END", "reportingATC": …}]`; only ends with a reporting type |
+| `atsStatus_depictionCompulsory` | BOOLEAN | DP, NAV | At least one related segment end has `reportingATC = COMPULSORY` |
+| `atsStatus_depictionNav` | TEXT | DP, NAV | Navigation depiction class (below) |
+| `atsStatus_depictionSIGPointBasicFunc` | TEXT | DP, NAV | Basic function of the significant point (below) |
+| `atsStatus_depictionNavAndREP` | TEXT | DP, NAV | `depictionNav` + `_Comp` or `_NonComp` (from `depictionCompulsory`), e.g. `CONV_Comp`, `RNAVFlyBy_NonComp` |
 
-**Çözümleme:** birleşik dosyada her `xlink:href` aynı dosyadaki bir
-`gml:identifier`'a işaret ettiği için çözümleme doğrudan sözlük aramasıdır
-(`uuid → (katman, satır id, designator)`). `pointChoice_fixDesignatedPoint`
-`designatedPoints`'e, `pointChoice_navaidSystem` `navaids`'e çözülür.
+DP = `designatedPoints`, NAV = `navaids`, COP = `changeOverPoints`.
 
-**Kaynaklarda koordinatla verilmiş uç yok.** Ham EAD kaydı uçları yalnızca
-`codeId` + `codeType` olarak taşır (`WPT` → DesignatedPoint; `VOR/DME`,
-`VORTAC`, `NDB`, `VOR`, `DME`, `DME/VOR`, `TACAN`, `TACVOR` → Navaid). Birleşik
-AIXM'de inline `Point` uçlu segment sayısı **0**'dır (tarandı). Bunun sonucu:
-segment geometrisi uç noktalar çözülerek üretilir; iki ucu da çözülemeyen
-segment `NULL` geometriyle yazılır — **kayıt düşürülmez**.
+- **Gate:** when `atsStatus_isElementOfRouteSegment = 0`, all other `atsStatus_*` columns are NULL (not 0). This separates "not in the route network" from "in the network but no such information".
+- The level and type flags are independent; a point on both UPPER and LOWER segments has both flags set. A segment without `level` / `route_type` adds to no flag.
+- For `changeOverPoints` the flags come from the segments of the COP's route portion (`associatedRouteSegment_id`); if the portion cannot be built, the seven columns are NULL.
 
-> **Bilinen boşluk:** ileride bir kaynak segment ucunu koordinatla verirse
-> mevcut kod bunu işlemez (ne geometri ne uç kimliği üretir). Şu an hiçbir
-> kaynakta böyle bir kayıt olmadığı için tetiklenmiyor.
+**`atsStatus_depictionNav`** — first matching rule wins:
 
-### 7.3 `Route`'tan devralınan alanlar
+| Order | Value | Condition |
+|---|---|---|
+| 1 | `RNAVFlyOver` | Reserved; no source gives the fly-over / fly-by distinction yet, so it is not produced |
+| 2 | `RNAVFlyBy` | DesignatedPoint `type = COORD`; or one of the related routes is `PBN` |
+| 3 | `CONV` | One of the related ATS routes is `CONV` or `TACAN` |
+| 4 | `OTHER` | Otherwise |
 
-> **Önek bilinçli olarak farklıdır.** Bu tablo `route_<Attr>` sütunlarını listeler — `routeSegments_<Attr>` DEĞİL. Aynı öneki kullanmak, RouteSegment'in kendi alanlarıyla bağlı Route'un alanlarını ayırt edilemez kılardı (kullanıcı düzeltmesi).
+The navigation type comes from `navigationType` in `routeSegments_aircraftCapability`.
 
-| Sütun | AIXM kaynağı (`RouteTimeSlice`) | Dolu |
-|---|---|---:|
-| `route_designatorPrefix` | `designatorPrefix` | 20,5% |
-| `route_designatorSecondLetter` | `designatorSecondLetter` | 98,9% |
-| `route_designatorNumber` | `designatorNumber` | 98,9% |
-| `route_multipleIdentifier` | `multipleIdentifier` | 1,4% |
-| `route_locationDesignator` | `locationDesignator` | 96,9% |
-| `route_name` | `name` | 1,1% |
-| `route_type` | `type` | 3,1% |
-| `route_flightRule` | `flightRule` | 3,1% |
-| `route_internationalUse` | `internationalUse` | **0,0%** |
-| `route_militaryUse` | `militaryUse` | **0,0%** |
-| `route_militaryTrainingType` | `militaryTrainingType` | **0,0%** |
+**`atsStatus_depictionSIGPointBasicFunc`** — first matching rule wins:
 
-Rota kodu AIXM'de parçalıdır (`prefix` + `secondLetter` + `number` +
-`multipleIdentifier`); tam kod kullanıcı kararıyla `Route.name` alanına da
-yazılır.
+| Order | Value | Condition |
+|---|---|---|
+| 1 | `NAVAID` | Every navaid in the route network (never a DesignatedPoint) |
+| 2 | `VFR_REP` | DesignatedPoint `type = VRP` |
+| 3 | `WPT` | `depictionNav` is not `CONV`, and (`type = COORD` or all related segments are `PBN`) |
+| 4 | `INT` | One of the related routes is `CONV` or `TACAN` |
+| 5 | `OTHER` | Otherwise (DesignatedPoint) |
 
-### 7.4 Not ve provenance
+### Map labels (`navaidLabeling_*`)
 
-`annotationDescription/Remark/Warning/Disclaimer` — `Remark` 128
-satırda dolu (106 antimeridyen segmenti + 22 LT VFR segmenti, notu bağlı
-`Route`'tan gelir), diğer üçü 0. `_data_provider` / `_data_originator` /
-`_data_effectivity` (hepsi 100,0%), ayrıca katman öneksiz `aixm_*` ailesi (RouteSegment feature'ının kimliği ve taban alanları; Route'unki taşınmaz, bkz. §2).
+Values for drawing a navaid label. In AIXM the frequency and channel are on the equipment, not on the navaid, and one piece of equipment has either a frequency or a channel; the missing value is taken from the ICAO VHF/UHF frequency–channel pairing table. `navaids` rows take the resolved values of their components.
 
-Antimeridyen bölmesinden gelen 106 segmentin `annotationRemark`'ı tam olarak şu
-metni taşır (segmentin kendi notlarıyla yeni satırla, `Route`'unkilerle boş satır
-bırakılarak birleşmiş olarak):
+| Column | Type | Meaning |
+|---|---|---|
+| `navaidLabeling_name` | TEXT | Label name (`name` of the row; not taken from a parent) |
+| `navaidLabeling_ident` | TEXT | Label ident (`designator`); NULL for marker beacons that use an aural Morse pattern |
+| `navaidLabeling_freq` | REAL | Frequency: **kHz for NDB, MHz for all other types** |
+| `navaidLabeling_freqUom` | TEXT | `KHZ` or `MHZ` |
+| `navaidLabeling_channel` | TEXT | Channel, e.g. `40X`; MLS: `<DME channel> <MLS channel>`, e.g. `18X 500` |
+| `navaidLabeling_dmeElev` | REAL | Elevation of the DME component |
+| `navaidLabeling_dmeElevUom` | TEXT | `FT` or `M`, as in the source (not converted) |
+| `navaidLabeling_type` | TEXT | Chart abbreviation of the type (below) |
+| `navaidLabeling_morseCode` | TEXT | Morse code of the ident (ITU-R M.1677-1), e.g. `IST` → `· ·   · · ·   −` |
 
-```
-Route segment automatically split by the AIS system at the antimeridian for display on web maps.
-```
+A value is calculated only where it is meaningful for the type; otherwise it is NULL:
+
+| `navaids_type` | freq | channel | dmeElev |
+|---|:---:|:---:|:---:|
+| VOR, TACAN, ILS, ILS_DME, VORTAC, LOC, LOC_DME, SDF | ✔ | ✔ | — |
+| DME, VOR_DME | ✔ | ✔ | ✔ |
+| MLS | — | ✔ | — |
+| MLS_DME | ✔ | ✔ | — |
+| NDB, NDB_DME, NDB_MKR | ✔ | — | — |
+| MKR | ✔ | — | — |
+| TLS, DF | — | — | — |
+
+| `navaidComponents_equipmentType` | freq | channel | dmeElev |
+|---|:---:|:---:|:---:|
+| VOR, TACAN, Localizer, Glidepath, SDF | ✔ | ✔ | — |
+| DME | ✔ | ✔ | ✔ |
+| NDB | ✔ | — | — |
+| Azimuth, Elevation (MLS) | ✔ | ✔ | — |
+| MarkerBeacon | ✔ (75 MHz) | — | — |
+| DirectionFinder | — | — | — |
+
+**`navaidLabeling_type`:**
+
+| AIXM | Label | AIXM | Label |
+|---|---|---|---|
+| VOR | `VOR` | VORTAC | `VORTAC` |
+| DME | `DME` | VOR_DME | `VOR DME` |
+| NDB, NDB_DME, NDB_MKR | `NDB`, or `L` when the NDB `class = L` (locator) | TACAN | `TACAN` |
+| ILS | `ILS` | ILS_DME | `ILS DME` |
+| LOC | `LOC` | LOC_DME | `LOC DME` |
+| MLS | `MLS` | MLS_DME | `MLS DME` |
+| TLS | `TLS` | DF / DirectionFinder | `DF` |
+| SDF | `SDF` | Glidepath | `GP` |
+| Localizer | `LOC` | Azimuth | `MLS AZM` |
+| Elevation | `MLS ELEV` | MKR / MarkerBeacon | by `markerPosition`: `IM`, `MM`, `OM`, `BC MKR`, otherwise `MKR` |
+
+`OTHER` → `OTHER`; `OTHER:<x>` → `<x>`; a value not in the table → NULL.
+
+**Morse code.** Dot `·` (U+00B7), dash `−` (U+2212); one space between the signals of a letter, three between letters, seven between words. For a marker beacon with `auralMorseCode` that pattern is used, without letter spacing. If the ident has a character with no Morse code, the value is NULL.
+
+**MLS.** The MLS frequency is not in AIXM; it is taken from the MLS channel. Azimuth and Elevation rows get the angle guidance frequency (5031.0–5090.7 MHz); an `MLS_DME` navaid gets the VHF frequency paired with its DME channel (about half of the MLS channels have no VHF pair, so this value is often NULL). Elevation takes its channel and frequency from the Azimuth of the same navaid.
+
+### Symbol geometry (`navaidSymbology_*`)
+
+The main purpose of these columns is to help place symbols in mapping: a symbol that belongs to one element but depends on a parameter of another element. The parameter is copied onto the element's own row, so the symbol can be placed from that row alone — e.g. the glide path beam drawn in the direction of the localizer of the same ILS.
+
+| Column | Type | Layers | Meaning |
+|---|---|---|---|
+| `navaidSymbology_declination` | REAL | `navaids`, `navaidComponents` | Station declination for rotating the compass rose. Components: `VOR_declination` or `TACAN_declination` of the row. Navaids (only `VOR`, `VOR_DME`, `TACAN`, `VORTAC`): from the VOR component, for TACAN from the TACAN component, for VORTAC from the VOR if present, else the TACAN |
+| `navaidSymbology_GPAssociatedLOCTrueBrg` | REAL | `navaidComponents` (Glidepath only) | Direction of the glide path beam: `trueBearing` of the Localizer of the same navaid. Not calculated from the magnetic bearing |
+
+If the source has no declination, the value is empty (see [Data Coding Policies](data-coding-policies.md#vortacan-declination)).
 
 ---
 
-## 8. Validasyon politikası
+## Indexes
 
-`gpkg/validation_rules.py`: katman başına `alan → FieldRule(type, max_length,
-enum, allow_other, pattern)`; `docs/*.md` tablolarından bire bir aktarılmıştır.
-`allow_other`, AIXM'in her `Code*Type`'ında bulunan evrensel
-`OTHER(:(\w|_){1,58})?` union desenini karşılar.
+| Index | Applies to |
+|---|---|
+| R-Tree (`rtree_<layer>_geom`, GeoPackage RTree extension) | `geom` of every layer |
+| B-Tree | every attribute column of every layer |
 
-| İhlal | Severity | Davranış |
-|---|---|---|
-| Enum dışı değer | `error` | Alan null'lanır, **kayıt yine yazılır** |
-| Sayısal olmayan / aralık dışı değer | `error` | Alan null'lanır, kayıt yazılır |
-| Serbest metin `max_length` aşımı | `warning` | Kırpılır, tam değer logda |
-| Kaynağın hiç sağlamadığı alan | — | Loglanmaz (boş değer ihlal değildir) |
-
-`navaidComponents_type` ve `_class` sütunları `equipmentType`'a göre farklı enum
-taşıdığı için alt-türe göre ayrıca doğrulanır (`EQUIPMENT_TYPE_ENUM`,
-`EQUIPMENT_CLASS_ENUM`).
-
-`errored-features.csv` sütunları: `stage, layer, record_identifier, field,
-value, violation, severity`.
-
----
-
-## 9. Index'ler
-
-`gpkg/schema.py:finalize()` → ortak `common/data_build_common/gpkg_writer.py:finalize()`:
-
-1. **Her sütunda B-tree index** — beş katmanda 373 sütun.
-2. **Mekânsal index (RTree)** — katman başına `rtree_<katman>_geom` sanal
-   tablosu, GeoPackage 1.2 Ek F.3'teki altı tetikleyici (insert, update1-4,
-   delete) ve `gpkg_extensions` kaydı (`gpkg_rtree_index`, scope `write-only`).
-3. `gpkg_contents` sınırlayıcı kutuları + `gpkg_ogr_contents` sayaçları,
-   ardından `ANALYZE`.
-
-Sınırlayıcı kutular geometri blob'undan Python tarafında hesaplanır
-(`geometry_envelope()`), SpatiaLite gerekmez. Tetikleyiciler `ST_MinX` gibi
-fonksiyonlara başvurur; düz SQLite'ta tanımsız olmaları sorun değildir çünkü
-tetikleyici gövdesi yalnızca çalıştırıldığında çözülür — bu fonksiyonları
-QGIS/GDAL sağlar.
-
----
-
-## 10. Kullanıcı onayıyla kapsam dışı bırakılanlar
-
-| Öğe | Nerede | Gerekçe |
-|---|---|---|
-| `navaidEquipment` iç yapısı | `navaids` | Ayrı `navaidComponents` katmanı + FK olarak modellendi |
-| `authority` | `navaidComponents` | Organisation/Authority ayrı bir büyük Feature ağacı; bu projede üretilmiyor |
-| CRC / veri kalitesi alanları | Jeppesen kaynağı | Düşürüldü, mapping doc'ta belirtildi |
-| `points` katmanı | — | `aixm:Point` Feature değil; katman iptal edildi |
-
-## 11. Kaynaklar arası çakışmanın katmana etkisi
-
-Bir katmandaki satırın hangi kaynaktan geldiği, o kaynağın çakışma ayarına
-bağlıdır ([`Common_Builder_Behaviour.md`](Common_Builder_Behaviour.md) §4.3):
-
-| Katman | LT | TRNC |
-|---|---|---|
-| `designatedPoints` | LT kazanır (override) | LT'de varsa LT kazanır; yoksa EAD-Cyprus DCA kaydını TRNC override eder |
-| `navaids` / `navaidComponents` | Ana kaynak kazanır | Aynı iki yönlü kural |
-| `routeSegments` | LT kazanır (override) | TRNC kazanır (override) |
-
-TRNC'de override ve devretme yönleri **farklı sağlayıcıları** hedefler
-(`override_base_originator` = Cyprus DCA, `prefer_base_originator` = DHMI
-TURKIYE); ikisi aynı kayıtta birlikte işleyebilir ve `remap` zinciri yazımdan
-önce çözülür.
-
-Kaybeden kaynağın kaydı **hiç yazılmaz** ve ona referans veren her şey kazanan
-kaydın UUID'sine yönlendirilir; katmanda tek satır kalır, `xlink` bütünlüğü
-korunur. Alan bazında birleştirme yapılmaz.
-
-## 12. Karar bekleyen konu
-
-Yok. Şemadaki 373 sütunun tamamının AIXM karşılığı kurulu ve çalışır durumda;
-`%0,0` görünen sütunlar kaynakların o alanı sağlamamasındandır (§ girişteki
-açıklama), eşleme eksikliği değildir.
+The spatial index is kept up to date by the standard GeoPackage triggers, which use the `ST_*` functions of GIS software such as QGIS or GDAL. The derived columns are stored, not calculated in queries, so filters such as "route points only" use the same table, spatial index and column indexes.
