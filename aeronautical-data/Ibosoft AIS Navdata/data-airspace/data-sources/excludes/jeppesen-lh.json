@@ -1,9 +1,0 @@
-[
-  {
-    "_aciklama": "Macaristan (BUDAPEST LHCC FIR) icinde MERKEZI kalan Jeppesen sahalari cikarilir: bu bolgenin sahalari LH kaynagindan gelir. Eski Common Airspaces Jeppesen kaynagindaki fir-exclude kuralinin birebir karsiligi. Adinda FREE RT gecen sahalar korunur.",
-    "layer": "airspaces",
-    "match": { "provider": "Jeppesen" },
-    "within": "lh-fir.geojson",
-    "except": { "name_contains": "FREE RT" }
-  }
-]

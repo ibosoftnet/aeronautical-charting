@@ -1,1 +1,0 @@
-Place LittleNavMap sqlite database here.

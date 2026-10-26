@@ -1,9 +1,0 @@
-[
-  {
-    "_aciklama": "Turkiye (ANKARA LTAA + ISTANBUL LTBB FIR) icinde MERKEZI kalan Jeppesen sahalari cikarilir: bu bolgenin sahalari LT ve tailored-LT kaynaklarindan gelir. Eski Common Airspaces Jeppesen kaynagindaki fir-exclude kuralinin birebir karsiligi (ayni poligonlar, ayni merkez testi). Adinda FREE RT gecen sahalar eskiden oldugu gibi korunur.",
-    "layer": "airspaces",
-    "match": { "provider": "Jeppesen" },
-    "within": "lt-fir.geojson",
-    "except": { "name_contains": "FREE RT" }
-  }
-]
