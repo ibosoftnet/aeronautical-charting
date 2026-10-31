@@ -61,6 +61,11 @@ ais-data/
 Place the downloaded `.gpkg` files under `aeronautical-data/Ibosoft AIS Navdata/navdata/`
 next to this repository so the relative layer paths resolve.
 
+### Attribute Names
+Attribute names are absed on converted AIXM 5.2 feature attributes. If your data source is AIXM based but attribute names difefrs from us, you may need to map them accordingly.
+
+The matching list used by our own data set can be found at: [ibonav.aero Developer Portal](https://dev.ibonav.aero/navdata/introduction)
+
 ### Completed
 
 - SVG symbols extracted from ICAO Annex 4 and a QGIS symbol library.
@@ -94,9 +99,9 @@ next to this repository so the relative layer paths resolve.
   şablonları eklendi; Bolu projesinin tamamı henüz paylaşıma hazır değil.
 - **Dokümantasyon:** henüz hazırlanmadı.
 
-### Navigasyon verisi
+### Seyrüsefer verisi
 
-QGIS projeleri navigasyon verisini kardeş klasörden okur
+QGIS projeleri seyrüsefer verisini kardeş klasörden okur
 (`ais-data/aeronautical-data/Ibosoft AIS Navdata/navdata/ibosoft-ais-navdata-*.gpkg`).
 
 - **Örnek veri seti** (projeyi denemek için; güncel tutulmaz, operasyonel olarak geçerli değildir):
@@ -105,6 +110,12 @@ QGIS projeleri navigasyon verisini kardeş klasörden okur
 
 İndirilen `.gpkg` dosyalarını bu deponun yanındaki
 `aeronautical-data/Ibosoft AIS Navdata/navdata/` klasörüne koyun; katman yolları göreli çözülür.
+
+### Öznitelik Adları
+
+Öznitelik adları, dönüştürülmüş AIXM 5.2 özellik özniteliklerini temel alır. Veri kaynağınız AIXM tabanlı olsa bile öznitelik adları bizim kullandığımız adlardan farklı olabilir. Bu durumda, öznitelikleri uygun şekilde eşleştirmeniz gerekebilir.
+
+Kendi veri kümemizde kullanılan eşleştirme listesini [ibonav.aero Geliştirici Portalı](https://dev.ibonav.aero/navdata/introduction?utm_source=chatgpt.com) üzerinden bulabilirsiniz.
 
 ### Tamamlananlar
 
@@ -142,7 +153,9 @@ See [LICENSE](LICENSE).
 Images may not be current. / Görseller güncel olmayabilir.
 
 #### Map views / Harita görünümleri
-![](Images%20About%20Project/Example-1.png)
+![](Images%20About%20Project/image-ais1.png)
+![](Images%20About%20Project/image-ais2.png)
+![](Images%20About%20Project/image_cop.png)
 ![](Images%20About%20Project/Example-2.png)
 ![](Images%20About%20Project/image-9847.png)
 ![](Images%20About%20Project/image-5621.png)
